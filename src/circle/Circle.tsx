@@ -16,7 +16,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
-import Svg, { Circle as SvgCircle } from 'react-native-svg';
+import Svg, { Circle as SvgCircle, G } from 'react-native-svg';
 import { WordFace } from '../components/WordFace';
 import type { Word } from '../data/words';
 import { colors } from '../theme';
@@ -37,9 +37,24 @@ import {
 } from './geometry';
 
 const AnimatedSvgCircle = Animated.createAnimatedComponent(SvgCircle);
+const AnimatedG = Animated.createAnimatedComponent(G);
 
 const STROKE = 14;
 const GHOST_END = 0.62;
+// The glow round the drawn arc: many wider and fainter copies of it, in the same colours, each only
+// a hair wider and a hair fainter than the last, so they blend into one soft halo that fades out with
+// distance and no single layer can be seen. The glow layer is bigger than the circle so the halo is not
+// cut off at its edge.
+// The glow is switched off for now: with it the animation lagged on the phone. Set this to true to
+// bring it back.
+const RING_GLOW = false;
+const GLOW_PAD = 30;
+const GLOW_COUNT = 26;
+const GLOW_STEPS = Array.from({ length: GLOW_COUNT }, (_, j) => ({
+  extra: 2 + j * 1.7, // each copy is a little wider (up to about 46 pixels wider than the arc)...
+  alpha: 0.05 * Math.pow(1 - j / GLOW_COUNT, 1.3), // ...and fainter, so the halo is bright at the arc and fades out
+}));
+const GLOW_COLORS = [RING_RED, RING_AMBER, RING_GREEN] as const;
 const CENTER_DEAD_ZONE = 24; // near the exact centre an angle is meaningless, so ignore it
 
 // SVG strokes start at 3 o'clock; rotate so the ghost's stroke starts at its own start angle.
@@ -64,6 +79,46 @@ function tickSection() {
 }
 function tickKnow() {
   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
+}
+
+// The glow of one of the three colours: all its copies of the arc in one group, so the fill of the
+// arc only has to be animated once for the whole group, and the group as a whole cross-fades with the
+// rating like the arc itself. It gets stronger as the ring fills up: a hint at the start, full when
+// the ring is complete.
+function GlowGroup({
+  cx,
+  r,
+  length,
+  display,
+  layer,
+}: {
+  cx: number;
+  r: number;
+  length: number;
+  display: { readonly value: number };
+  layer: 0 | 1 | 2;
+}) {
+  const groupProps = useAnimatedProps(() => ({ strokeDashoffset: length * (1 - display.value) }));
+  const groupStyle = useAnimatedStyle(() => ({
+    opacity: layerOpacities(display.value)[layer] * (0.3 + 0.7 * Math.min(1, display.value * 1.6)),
+  }));
+  return (
+    <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, groupStyle]}>
+      <Svg width={cx * 2} height={cx * 2}>
+        <AnimatedG
+          animatedProps={groupProps}
+          fill="none"
+          stroke={GLOW_COLORS[layer]}
+          strokeLinecap="round"
+          strokeDasharray={`${length} ${length}`}
+        >
+          {GLOW_STEPS.map((step, i) => (
+            <SvgCircle key={i} cx={cx} cy={cx} r={r} strokeWidth={STROKE + step.extra} opacity={step.alpha} />
+          ))}
+        </AnimatedG>
+      </Svg>
+    </Animated.View>
+  );
 }
 
 export function Circle({ word, size, value, showHint, reveal, onCommit }: Props) {
@@ -230,6 +285,21 @@ export function Circle({ word, size, value, showHint, reveal, onCommit }: Props)
         <Svg width={size} height={size} style={StyleSheet.absoluteFill}>
           <SvgCircle cx={c} cy={c} r={r} stroke={colors.track} strokeWidth={STROKE} fill="none" />
         </Svg>
+
+        {/* the glow: wider, fainter copies of the arc, turned with it */}
+        {RING_GLOW ? (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            { position: 'absolute', left: -GLOW_PAD, top: -GLOW_PAD, width: size + 2 * GLOW_PAD, height: size + 2 * GLOW_PAD },
+            arcLayer,
+          ]}
+        >
+          {([0, 1, 2] as const).map((layer) => (
+            <GlowGroup key={layer} cx={c + GLOW_PAD} r={r} length={length} display={display} layer={layer} />
+          ))}
+        </Animated.View>
+        ) : null}
 
         {/* the drawn arc: red, amber and green layers that cross-fade with the rating */}
         <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, arcLayer]}>

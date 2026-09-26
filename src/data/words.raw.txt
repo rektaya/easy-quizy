@@ -5,11 +5,11 @@
 # to be checked against a real frequency list):
 #   1 = about the 500 most common words, 2 = to ~1,500, 3 = to ~3,000,
 #   4 = to ~5,000, 5 = to ~8,000, 6 = rarer or formal.
-# Lines starting with "## " open a theme. Words in a theme link to their neighbours on the ladder.
+# Lines starting with "## " open a theme: "## German name | english name" (the English name is shown on the Map). Words in a theme link to their neighbours on the ladder.
 # Lines starting with "@ " are extra links across themes: "@ Lemma | Lemma" (both directions).
 # A core word (the hand-written ones in words.ts) can be named by its lemma too.
 
-## Essen und Trinken
+## Essen und Trinken | food and drink
 1|das|Brot|Brote|bread|Ich kaufe frisches Brot beim Bäcker.|I buy fresh bread at the baker’s.|Brötchen,backen
 1|das|Wasser||water|Kann ich bitte ein Glas Wasser haben?|Can I have a glass of water, please?|Mineralwasser,Wasserflasche
 1|der|Kaffee||coffee|Möchtest du einen Kaffee?|Would you like a coffee?|Kaffeetasse,Kaffeemaschine
@@ -31,7 +31,7 @@
 6||sättigend||filling (food)|Linsen sind billig und sehr sättigend.|Lentils are cheap and very filling.|satt,Sättigung
 6|die|Bewirtung||catering, hospitality|Die Bewirtung auf der Hochzeit war großartig.|The catering at the wedding was excellent.|bewirten,Wirt
 
-## Körper und Gesundheit
+## Körper und Gesundheit | body and health
 1|der|Kopf|Köpfe|head|Ich habe Schmerzen im Kopf.|I have a pain in my head.|Kopfschmerzen,Kopfkissen
 1|die|Hand|Hände|hand|Gib mir bitte deine Hand.|Please give me your hand.|Handtuch,Handschuh
 1|der|Arzt|Ärzte|doctor (male)|Ich muss morgen zum Arzt.|I have to see the doctor tomorrow.|Ärztin,Hausarzt
@@ -53,7 +53,7 @@
 6|die|Genesung||recovery (from illness)|Wir wünschen Ihnen gute Genesung!|We wish you a speedy recovery!|genesen,Genesende
 6|die|Nebenwirkung|Nebenwirkungen|side effect|Das Medikament hat kaum Nebenwirkungen.|The medication has hardly any side effects.|Wirkung,wirken
 
-## Wetter und Natur
+## Wetter und Natur | weather and nature
 1|das|Wetter||weather|Das Wetter ist heute schön.|The weather is nice today.|Wetterbericht,Wettervorhersage
 1|der|Regen||rain|Bei Regen bleibe ich zu Hause.|When it rains I stay at home.|regnen,Regenschirm
 1|die|Sonne|Sonnen|sun|Die Sonne scheint den ganzen Tag.|The sun shines all day.|sonnig,Sonnenbrille
@@ -75,7 +75,7 @@
 6|der|Niederschlag|Niederschläge|precipitation|Für morgen ist kein Niederschlag vorhergesagt.|No precipitation is forecast for tomorrow.|niederschlagen,Schlag
 6|die|Sturmflut|Sturmfluten|storm surge|Die Sturmflut hat den Deich beschädigt.|The storm surge damaged the dike.|Sturm,Flut
 
-## Tiere
+## Tiere | animals
 1|der|Hund|Hunde|dog|Unser Hund geht jeden Morgen spazieren.|Our dog goes for a walk every morning.|Hundeleine,Hundefutter
 1|die|Katze|Katzen|cat|Die Katze schläft auf dem Sofa.|The cat is sleeping on the sofa.|Kater,Kätzchen
 1|der|Vogel|Vögel|bird|Morgens singen die Vögel im Garten.|In the morning the birds sing in the garden.|Vogelnest,Vogelhaus
@@ -97,7 +97,7 @@
 6|das|Raubtier|Raubtiere|predator|Der Löwe ist ein Raubtier.|The lion is a predator.|Raub,rauben
 6|das|Ungeziefer||vermin, pests|Im Keller haben wir Ungeziefer entdeckt.|We found pests in the cellar.|Zieferbekämpfung,Schädling
 
-## Kleidung
+## Kleidung | clothes
 1|die|Hose|Hosen|trousers, pants|Diese Hose ist mir zu eng.|These trousers are too tight for me.|Jeanshose,Hosentasche
 1|der|Schuh|Schuhe|shoe|Ich brauche neue Schuhe.|I need new shoes.|Schuhgeschäft,Turnschuh
 1|die|Jacke|Jacken|jacket|Nimm eine Jacke mit, es wird kühl.|Take a jacket, it’s getting cool.|Winterjacke,Jackentasche
@@ -119,7 +119,7 @@
 6|die|Bekleidung||clothing, apparel|Für die Wanderung ist wetterfeste Bekleidung wichtig.|Weatherproof clothing is important for the hike.|bekleiden,Kleidung
 6|der|Schneider|Schneider|tailor|Der Schneider ändert die Länge der Hose.|The tailor is altering the length of the trousers.|Schneiderei,schneidern
 
-## Familie und Beziehungen
+## Familie und Beziehungen | family and relationships
 1|die|Mutter|Mütter|mother|Meine Mutter ruft mich jeden Sonntag an.|My mother calls me every Sunday.|Muttersprache,Mutti
 1|der|Vater|Väter|father|Mein Vater arbeitet als Ingenieur.|My father works as an engineer.|Vatertag,väterlich
 1|das|Kind|Kinder|child|Das Kind spielt im Garten.|The child is playing in the garden.|Kindergarten,kindlich
@@ -141,7 +141,7 @@
 6|der|Vormund|Vormünder|legal guardian|Nach dem Unfall wurde ein Vormund bestellt.|After the accident a guardian was appointed.|Vormundschaft,mündig
 6|der|Trauzeuge|Trauzeugen|best man, witness (at a wedding)|Mein Bruder ist mein Trauzeuge.|My brother is my best man.|Trauung,Zeuge
 
-## Freizeit und Sport
+## Freizeit und Sport | free time and sport
 1|das|Spiel|Spiele|game, match|Das Spiel beginnt um acht Uhr.|The game starts at eight o’clock.|spielen,Spielplatz
 1|die|Musik||music|Ich höre gern Musik beim Kochen.|I like listening to music while cooking.|Musiker,musikalisch
 1|der|Sport||sport|Ich mache zweimal pro Woche Sport.|I do sport twice a week.|Sportler,sportlich
@@ -163,7 +163,7 @@
 6|der|Amateur|Amateure|amateur|Auch Amateure können an dem Rennen teilnehmen.|Amateurs can also take part in the race.|amateurhaft,Amateurfußball
 6|der|Rekordhalter|Rekordhalter|record holder|Er ist der Rekordhalter über hundert Meter.|He is the record holder over a hundred metres.|Rekord,Halter
 
-## Reisen
+## Reisen | travel
 1|der|Urlaub|Urlaube|holiday, vacation|Im Urlaub fahren wir ans Meer.|On holiday we’re going to the seaside.|Urlaubstag,Urlauber
 1|die|Reise|Reisen|trip, journey|Die Reise nach Italien war wunderbar.|The trip to Italy was wonderful.|reisen,Reisepass
 1|das|Hotel|Hotels|hotel|Wir haben ein Hotel am Strand gebucht.|We booked a hotel on the beach.|Hotelzimmer,Hotelrezeption
@@ -185,7 +185,7 @@
 6|die|Stornierung|Stornierungen|cancellation|Eine Stornierung ist bis drei Tage vorher kostenlos.|A cancellation is free up to three days beforehand.|stornieren,Storno
 6|die|Pauschalreise|Pauschalreisen|package holiday|Wir haben eine Pauschalreise nach Spanien gebucht.|We booked a package holiday to Spain.|pauschal,Reise
 
-## Stadt und Einkaufen
+## Stadt und Einkaufen | city and shopping
 1|die|Stadt|Städte|city, town|Die Stadt ist im Sommer sehr schön.|The city is very beautiful in summer.|Stadtmitte,städtisch
 1|das|Geschäft|Geschäfte|shop; business|Das Geschäft öffnet um neun Uhr.|The shop opens at nine o’clock.|Geschäftsleute,Schuhgeschäft
 1|der|Markt|Märkte|market|Am Samstag gehen wir auf den Markt.|On Saturday we go to the market.|Marktplatz,Wochenmarkt
@@ -207,7 +207,7 @@
 6|der|Einzelhandel||retail trade|Der Einzelhandel leidet unter dem Onlinehandel.|Retail suffers from online trade.|Einzelhändler,Handel
 6|der|Verbraucher|Verbraucher|consumer|Verbraucher sollten Preise vergleichen.|Consumers should compare prices.|verbrauchen,Verbraucherschutz
 
-## Haus und Möbel
+## Haus und Möbel | house and furniture
 1|das|Haus|Häuser|house|Sie wohnen in einem kleinen Haus.|They live in a small house.|Hausaufgabe,Haustür
 1|die|Tür|Türen|door|Bitte mach die Tür zu.|Please close the door.|Türklingel,Haustür
 1|das|Fenster|Fenster|window|Kannst du das Fenster öffnen?|Can you open the window?|Fensterbank,Fensterscheibe
@@ -229,7 +229,7 @@
 6|die|Kaution|Kautionen|deposit (for a rental)|Die Kaution beträgt drei Monatsmieten.|The deposit is three months’ rent.|Kautionsrückzahlung,Miete
 6|der|Schimmel||mould|An der Wand wächst Schimmel.|Mould is growing on the wall.|schimmeln,Schimmelpilz
 
-## Schule und Lernen
+## Schule und Lernen | school and learning
 1|die|Schule|Schulen|school|Die Schule beginnt um acht Uhr.|School starts at eight o’clock.|Schüler,Schulbus
 1|der|Lehrer|Lehrer|teacher (male)|Unser Lehrer erklärt alles sehr gut.|Our teacher explains everything very well.|Lehrerin,lehren
 1|das|Buch|Bücher|book|Ich lese gerade ein spannendes Buch.|I’m reading an exciting book right now.|Buchhandlung,Bücherregal
@@ -251,7 +251,7 @@
 6|die|Dissertation|Dissertationen|doctoral thesis|Sie schreibt gerade an ihrer Dissertation.|She’s currently writing her doctoral thesis.|promovieren,Doktorarbeit
 6|die|Seminararbeit|Seminararbeiten|term paper|Die Seminararbeit ist bis Freitag abzugeben.|The term paper is due by Friday.|Seminar,Arbeit
 
-## Geld und Bank
+## Geld und Bank | money and banking
 1|das|Geld||money|Ich habe heute kein Geld dabei.|I don’t have any money on me today.|Geldbeutel,Taschengeld
 1|der|Euro|Euro|euro|Das kostet zehn Euro.|That costs ten euros.|Eurostück,Eurozone
 1||bezahlen||to pay|Kann ich mit Karte bezahlen?|Can I pay by card?|Bezahlung,zahlen
@@ -273,7 +273,7 @@
 6|der|Gläubiger|Gläubiger|creditor|Die Gläubiger verlangen ihr Geld zurück.|The creditors are demanding their money back.|Glaube,gläubig
 6|die|Bürgschaft|Bürgschaften|guarantee, surety|Für den Kredit brauchte er eine Bürgschaft.|For the loan he needed a guarantor.|Bürge,bürgen
 
-## Behörden und Recht
+## Behörden und Recht | offices and law
 1|die|Polizei||police|Rufen Sie bitte die Polizei!|Please call the police!|Polizist,Polizeiauto
 1|die|Adresse|Adressen|address|Können Sie mir Ihre Adresse geben?|Can you give me your address?|Adressbuch,E-Mail-Adresse
 1|der|Name|Namen|name|Wie ist Ihr Name, bitte?|What is your name, please?|nennen,Nachname
@@ -295,7 +295,7 @@
 6|die|Vollmacht|Vollmachten|power of attorney|Ich habe meiner Schwester eine Vollmacht gegeben.|I gave my sister power of attorney.|bevollmächtigen,Macht
 6|die|Haftung||liability|Für Schäden übernehmen wir keine Haftung.|We accept no liability for damage.|haften,haftbar
 
-## Computer und Internet
+## Computer und Internet | computers and internet
 1|der|Computer|Computer|computer|Mein Computer ist sehr langsam.|My computer is very slow.|Computerspiel,Laptop
 1|das|Handy|Handys|mobile phone|Wo ist mein Handy?|Where is my phone?|Handynummer,Handyvertrag
 1|das|Internet||internet|Das Internet ist heute ausgefallen.|The internet is down today.|Internetseite,Internetzugang
@@ -317,7 +317,7 @@
 6|die|Schnittstelle|Schnittstellen|interface|Die Programme kommunizieren über eine Schnittstelle.|The programs communicate through an interface.|schneiden,Stelle
 6|die|Bandbreite|Bandbreiten|bandwidth|Bei geringer Bandbreite ruckelt das Video.|With low bandwidth the video stutters.|Band,breit
 
-## Medien und Kultur
+## Medien und Kultur | media and culture
 1|der|Film|Filme|film, movie|Der Film war wirklich spannend.|The film was really exciting.|Filmabend,filmen
 1|die|Zeitung|Zeitungen|newspaper|Mein Vater liest jeden Morgen die Zeitung.|My father reads the newspaper every morning.|Tageszeitung,Zeitungsartikel
 1|der|Fernseher|Fernseher|television set|Der Fernseher läuft den ganzen Tag.|The TV is on all day.|fernsehen,Fernsehprogramm
@@ -339,7 +339,7 @@
 6|die|Inszenierung|Inszenierungen|staging, production|Die Inszenierung war beeindruckend.|The production was impressive.|inszenieren,Szene
 6|die|Uraufführung|Uraufführungen|premiere|Die Uraufführung findet im Herbst statt.|The premiere takes place in autumn.|aufführen,Aufführung
 
-## Politik und Gesellschaft
+## Politik und Gesellschaft | politics and society
 1|das|Land|Länder|country; countryside|In welchem Land bist du geboren?|Which country were you born in?|ländlich,Landkarte
 1|der|Krieg|Kriege|war|Der Krieg hat viele Menschen vertrieben.|The war has displaced many people.|Kriegsende,kriegerisch
 1|der|Frieden||peace|Alle wünschen sich Frieden.|Everyone wishes for peace.|friedlich,Friedensvertrag
@@ -361,7 +361,7 @@
 6|die|Gesetzgebung||legislation|Die Gesetzgebung ist Sache des Parlaments.|Legislation is the parliament’s business.|Gesetz,Geber
 6|die|Wahlbeteiligung|Wahlbeteiligungen|voter turnout|Die Wahlbeteiligung lag bei siebzig Prozent.|Voter turnout was seventy percent.|Wahl,beteiligen
 
-## Zeit und Kalender
+## Zeit und Kalender | time and calendar
 1|die|Zeit|Zeiten|time|Ich habe heute leider keine Zeit.|Unfortunately I have no time today.|zeitlich,Zeitung
 1|der|Tag|Tage|day|Wir sehen uns in drei Tagen.|We’ll see each other in three days.|täglich,Feiertag
 1|das|Jahr|Jahre|year|Nächstes Jahr ziehe ich um.|Next year I’m moving.|jährlich,Jahreszeit
@@ -383,7 +383,7 @@
 6|das|Jahrzehnt|Jahrzehnte|decade|Das Jahrzehnt war von Veränderungen geprägt.|The decade was marked by change.|Jahr,Dekade
 6|die|Vergänglichkeit||transience|Die Vergänglichkeit des Lebens macht ihm Angst.|The transience of life frightens him.|vergehen,vergänglich
 
-## Gefühle und Charakter
+## Gefühle und Charakter | feelings and character
 1|die|Angst|Ängste|fear, anxiety|Ich habe Angst vor Spinnen.|I’m afraid of spiders.|ängstlich,angstvoll
 1|die|Liebe||love|Die Liebe war groß.|The love was great.|lieben,lieb
 1|das|Glück||luck; happiness|Viel Glück bei der Prüfung!|Good luck with the exam!|glücklich,Glückwunsch
@@ -405,7 +405,7 @@
 6|die|Schadenfreude||malicious joy|Seine Schadenfreude war nicht zu übersehen.|His schadenfreude was impossible to miss.|schadenfroh,Schaden
 6|die|Wehmut||wistfulness, melancholy|Mit Wehmut dachte sie an die Kindheit zurück.|She looked back on her childhood with wistfulness.|wehmütig,Weh
 
-## Sprechen und Mitteilen
+## Sprechen und Mitteilen | speaking
 1||sagen||to say|Was hat er gesagt?|What did he say?|Ansage,sagenhaft
 1||fragen||to ask|Darf ich dich etwas fragen?|May I ask you something?|Frage,befragen
 1||antworten||to answer|Bitte antworte mir schnell.|Please answer me quickly.|Antwort,beantworten
@@ -427,7 +427,7 @@
 6||beteuern||to assure, to protest (one’s innocence)|Er beteuerte, nichts davon gewusst zu haben.|He protested that he had known nothing about it.|Beteuerung,teuer
 6||unterstellen||to insinuate, to accuse|Du unterstellst mir schlechte Absichten.|You’re insinuating I have bad intentions.|Unterstellung,stellen
 
-## Alltag und Bewegung
+## Alltag und Bewegung | everyday actions
 1||gehen||to go, to walk|Wir gehen heute ins Kino.|We’re going to the cinema today.|Gang,Spaziergang
 1||kommen||to come|Kommst du heute Abend zur Party?|Are you coming to the party tonight?|Ankunft,Kommen
 1||machen||to do, to make|Was machst du am Wochenende?|What are you doing at the weekend?|Machbar,Macher
@@ -449,7 +449,7 @@
 6||stolpern||to trip, to stumble|Er ist über eine Wurzel gestolpert.|He tripped over a root.|Stolperstein,stolpern
 6||zerbrechen||to break (into pieces)|Das Glas ist auf dem Boden zerbrochen.|The glass broke on the floor.|Bruch,brechen
 
-## Eigenschaften
+## Eigenschaften | qualities
 1||groß||big, tall|Das ist ein sehr großes Haus.|That’s a very big house.|Größe,vergrößern
 1||klein||small|Meine Wohnung ist ziemlich klein.|My apartment is quite small.|Kleinigkeit,verkleinern
 1||gut||good|Das Essen war wirklich gut.|The food was really good.|besser,Güte
@@ -471,7 +471,7 @@
 6||gewissenhaft||conscientious|Er erledigt seine Arbeit gewissenhaft.|He does his work conscientiously.|Gewissen,gewissenlos
 6||unscheinbar||inconspicuous, unremarkable|Das Haus wirkt von außen unscheinbar.|The house looks unremarkable from the outside.|Schein,scheinbar
 
-## Beruf und Wirtschaft
+## Beruf und Wirtschaft | work and business
 1|die|Firma|Firmen|company, firm|Er arbeitet bei einer großen Firma.|He works at a large company.|Firmenwagen,Firmenname
 1|der|Chef|Chefs|boss (male)|Mein Chef ist heute nicht im Büro.|My boss isn’t in the office today.|Chefin,Küchenchef
 1|der|Job|Jobs|job|Ich suche einen neuen Job.|I’m looking for a new job.|jobben,Nebenjob
@@ -493,7 +493,7 @@
 6|der|Fachkräftemangel||skilled-worker shortage|Der Fachkräftemangel betrifft viele Branchen.|The shortage of skilled workers affects many industries.|Fachkraft,Mangel
 6|die|Insolvenz|Insolvenzen|insolvency|Die Firma musste Insolvenz anmelden.|The company had to file for insolvency.|insolvent,Konkurs
 
-## Umwelt und Energie
+## Umwelt und Energie | environment and energy
 1|die|Umwelt||environment|Wir müssen die Umwelt schützen.|We have to protect the environment.|Umweltschutz,umweltfreundlich
 1|der|Müll||rubbish, trash|Bringst du bitte den Müll raus?|Can you take out the rubbish, please?|Müllabfuhr,Mülleimer
 1|der|Strom||electricity; stream|Der Strom ist seit gestern ausgefallen.|The power has been out since yesterday.|Stromrechnung,Stromausfall
@@ -515,7 +515,7 @@
 6|der|Treibhauseffekt||greenhouse effect|Der Treibhauseffekt erwärmt die Erde.|The greenhouse effect warms the Earth.|Treibhaus,Effekt
 6|die|Emission|Emissionen|emission|Die Emissionen müssen sinken.|Emissions have to fall.|emittieren,Kohlendioxid
 
-## Ideen und Pläne
+## Ideen und Pläne | ideas and plans
 1|die|Idee|Ideen|idea|Das ist eine gute Idee!|That’s a good idea!|ideal,Ideenreichtum
 2|der|Grund|Gründe|reason|Aus welchem Grund bist du gekommen?|For what reason did you come?|gründen,begründen
 2|das|Ziel|Ziele|goal, destination|Mein Ziel ist es, fließend Deutsch zu sprechen.|My goal is to speak German fluently.|zielen,Zielgruppe

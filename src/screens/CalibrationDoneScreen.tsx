@@ -24,7 +24,7 @@ export default function CalibrationDoneScreen({ onContinue }: { onContinue: () =
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg, paddingHorizontal: 24 },
+  screen: { flex: 1, paddingHorizontal: 24 },
   body: { flex: 1, justifyContent: 'center', gap: 16 },
   title: { fontFamily: fonts.medium, fontSize: 30, color: colors.text },
   lead: { fontFamily: fonts.medium, fontSize: 19, lineHeight: 27, color: colors.text },

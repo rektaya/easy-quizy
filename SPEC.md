@@ -23,6 +23,7 @@ A vocabulary app for German learners.
 - One word sits in a circle in the center of the screen. Nouns always show their article: **das Haus**. The article already conveys gender, so there is **no separate gender color-coding**.
 - **The drawing starts wherever the finger lands on the ring** (on the ring itself, or within about a thumb's width of it; touching the word in the middle does nothing). The arc grows from that spot, and can be drawn **either way round**, clockwise or counter-clockwise. A full circle means coming back to where you started. The app tracks how far the finger has turned around the circle's centre, so it works from any starting point.
 - **A continuous scale with no labels.** The arc fills up gradually, and its color moves from **red** (don't know it at all) through to **green** (know it for sure). The user rates by feel, not by picking a named level.
+- **The arc glows (currently switched off: it made the animation lag on the phone; `RING_GLOW` in `src/circle/Circle.tsx` brings it back).** A soft halo in the arc's own colour (red, amber, green) surrounds the drawn part and fades out with distance. It is only a hint when the arc has just started and gets stronger as the ring fills, and it stays round the ring once the word is rated. (It is built from 26 stacked copies of the arc, each a hair wider and fainter than the last, so no single layer shows; the drawing library has no blur. The fill of the arc is animated once per colour for all its copies, to keep the gesture smooth.)
 - **Hidden segments.** The user never sees them, but the arc is divided into four:
 
 | Segment | Share of the arc | Meaning in Explore | Grade in Study |
@@ -74,13 +75,19 @@ A vocabulary app for German learners.
 - **Spoken prompts are not in v1** (possible later).
 - New words in a session get a short "meet it" step first (a white card: the word big with its article small above, then the meaning, the plural, and an example at the bottom under a thin line), then an immediate small test with the Circle.
 - **Celebration:** a word rated above 75% in Study sets off the fireworks and a success haptic. The session ends with "nicely done. you’ve started your journey".
-- **The Study tab opens on a mini-dashboard, not a session:** the number of gathered words, a ring (donut) and list splitting them by status (new, shaky, getting there, solid, learned; until FSRS exists the status comes from the latest Circle rating in Study: below 30%, 30-60%, 60-90%, above 90%), a count of words the user already knew, a way to see **all words** with their status (searchable, sortable by status, a–z or newest), a way to **delete** a word (a bin icon, two taps; a deleted word is never offered again), and one **study** button.
+- **The Study tab opens on a mini-dashboard, not a session:** a ring (donut) split by how firm the words are (new, shaky, getting there, solid, learned, from the FSRS card's stability: under 3 days, under 10, under 21, 21 or more; a word never studied is new), with the number of gathered words in the middle, and a line like "1 to review · 5 new" or "all caught up. next review tomorrow". There is no legend and no count of words the user already knew. Below: a way to see **all words** with their status (searchable, sortable by status, a–z or newest), a way to **delete** a word (a bin icon, two taps; a deleted word is never offered again), and one **study** button.
 - Words are **not** drip-fed daily. They enter only when a session begins.
 
 ### 4.3 Map
-- A **living vocabulary constellation** for motivation and overview. Star states: unexplored (dim), gathered (outline), learning (glow), known (solid).
-- Clusters follow themes and word families.
-- **One action:** tap a cluster, then "Explore from here", which starts Explore with that area as the seed. It is not a full navigation surface.
+- A **night sky** for motivation and overview. The Map is the one dark screen (deep navy `#0C1927`, light status bar), so that glowing stars can read as light.
+- **It looks like an evenly starred sky, not a map of clusters.** Small dim stars are spread evenly over it (no clumps, no gaps). Each theme is **one bigger star** among them (29 in the current list, scattered evenly, no lines, no labels). A theme with more words is a slightly bigger star, but only a little and with a cap, so it still works when the list grows to thousands of words.
+- **A star shines as its theme is learned.** An untouched theme is a bright white star with a cool blue halo. The more of it is learned, the warmer and larger its halo grows, turning orange. How much it shines is the share of the theme's words that are learned: a known word counts in full, a word being studied a bit over half, a word merely gathered a little. A word is *known* once it was marked known in Explore, or its FSRS card lasts 21+ days.
+- **The sky is bigger than the screen (about 2 screens wide and 2 tall).** The Map opens already zoomed in on the middle of it, so stars run off the edges, and the user **drags in any direction to look around** (a flick keeps gliding to a stop, and it stops at the edge of the sky). The sky fills the whole screen, behind the header, the info card and the tab bar, so there are no bare bands at the top or bottom. There is no explanatory caption under the header.
+- **Tap a big star and the sky zooms in on it.** The rest of the sky grows and dims (the other big stars fade out), the star slides to the middle, and its **cluster opens round it: one point per word** (an even sample when there are more than 48), as a ragged, tilted blob with the most learned words at the bright core. Known words glow warm yellow, words being studied glow orange, gathered words are a faint ring, and words not yet met are dim dots.
+- **A card below the cluster** shows the theme's name in English and German, how many of its words are explored, and how many are unexplored / gathered / learning / known.
+- **One action:** **explore from here** on that card switches to Explore, which starts on an unexplored word of that theme closest to the user's level. The button reads "explore is paused" while Explore is locked (20 words waiting) and "all explored" when nothing is left. "close" (or tapping the sky) zooms back out. It is not a full navigation surface.
+- The header shows only how many words have been explored ("25"), never the total, so how many words the app holds stays a surprise.
+- Clusters follow **themes**. Word-family clusters are not built yet (the family links in the data are only strings, not connections between words).
 
 ## 5. Settings
 
@@ -105,7 +112,8 @@ A vocabulary app for German learners.
 
 ## 7. Scheduling
 
-- Spaced repetition with **FSRS** (a maintained TypeScript implementation exists).
+- Spaced repetition with **FSRS** (built: the `ts-fsrs` library, wrapped in `src/srs/scheduler.ts`). Intervals are whole days (no minutes-long learning steps) and there is no fuzz.
+- **A Study batch** is the reviews that are due (up to 10, most overdue first) followed by up to 5 new words from the pile (rated lowest first). Reviews skip the "meet it" step and go straight to the Circle. The dashboard shows "n to review · m new", or "all caught up. next review tomorrow".
 - **Seed the initial state from the Circle value** in Explore. A word rated near green starts with a longer first interval than one rated near red. This is a departure from Anki, which starts every card the same.
 - The four hidden segments map onto the four standard grades (Again / Hard / Good / Easy) for the scheduler.
 - **Spot-checks of "known" words (proposal):**
@@ -121,7 +129,7 @@ A vocabulary app for German learners.
 - **Calibration (the first 15 words).** There is no separate test screen: the opening words are ordinary Explore words, rated with the Circle. But they are chosen adaptively to find where the user's knowledge ends.
   - The words come from a **frequency ladder**, and each rating moves the next pick. A high rating (know it) jumps to a rarer word. A low rating (don't know) steps back to a more common one. Big jumps at first, smaller steps as the estimate settles, like a binary search.
   - **No similar-word chips and no association trail during calibration.** Words linked by association sit in one thematic zone, which would make the estimate read one area of knowledge instead of the level. Instead the picks are spread across themes (ties go to a theme not yet met), and the user just swipes up for the next word. The screen shows a small progress count ("3 / 15").
-  - The first word carries a greeting above the circle: "let’s roll, Name" / "here is your first word".
+  - The first word carries a greeting above the circle: "let’s roll, Name" / "here is your first word", the same distance above the circle as the tip sits below it. The background is still an empty navy: the first star appears when this word is rated.
   - The result is a **level estimate** (a position on the frequency ladder plus how sure the app is). The estimate keeps refining after calibration ends, from every later rating.
   - **The user is told what it did, the moment the 15th word is rated** (after a short beat, so the ring's snap is not cut off): "got it, Name. we adjusted the words you’ll explore so they match your level." No score, no level name, no swipe needed. The words themselves then prove it.
   - Words rated during calibration count like any other: they go to the pile or are marked as known.
@@ -141,9 +149,12 @@ A vocabulary app for German learners.
 
 ## 10. Visual direction
 
-- **The first prototype is clean and straightforward: greyscale, with orange as the accent color only where color is needed.** No visual exploration for now.
-- **One functional exception:** the Circle's arc keeps its red→green color scale, because the color is the rating signal itself (data), not decoration. Everything else stays greyscale plus orange. If red→green clashes with the orange accent in practice, we revisit.
-- A proper visual identity comes later, once the author has collected references (Mobbin) and the interactions are proven.
+- **A deep navy night, everywhere.** The whole app is dark: background `#0C1927`, **at the start the sky is empty, plain navy.** Every word the user rates, whatever the rating (known or to study), lights one more small star somewhere on the background of every screen (with a soft ring that spreads and fades on the new one), so the further they get, the more stars there are. The stars are the same evenly scattered small ones as on the Map, in a scrambled order so the sky fills up all over, not from a corner. The first stars are a little brighter and bigger so each one is noticed; as the sky fills they settle to a small, dim level (after about 80 stars), so the background never competes with the content. Undoing a rating removes its star. The Map draws its own, full sky with the big theme stars on top of it.
+- **Ink and greys are cool and light:** text and icons `#EFF2F5`, secondary text `#A5B0BD`, quiet text `#6F7E90`, the empty ring of the Circle `#22364B`. Cards and fields are frosted (white at 7%, with a white 12% border), a solid card `#15263A` is used where something must hide what is behind it (the new-word card, the Map's info card), and small pills are white at 10%.
+- **One accent: orange `#F75831`** for the main button, the active tab, the counter and its ring, selected options, and the fireworks. Text on it is white.
+- **One functional exception:** the Circle's arc keeps its red→green color scale, and the dashboard's status colors reuse it, because the color is the rating signal itself (data), not decoration.
+- Type is Figtree, lowercase for the interface text (German words keep their capitals).
+- The colors live in `src/theme.ts`. A proper visual identity comes later, once the author has collected references (Mobbin) and the interactions are proven.
 
 ## 11. Out of scope for v1
 

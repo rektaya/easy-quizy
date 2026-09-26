@@ -30,7 +30,11 @@ for (const [i, line] of readFileSync(RAW, 'utf8').split('\n').entries()) {
   if (!line.trim() || line.startsWith('#') && !line.startsWith('## ')) continue;
   if (line.startsWith('## ')) {
     inLinks = line.includes('Verbindungen');
-    if (!inLinks) themes.push({ name: line.slice(3).trim(), words: [] });
+    if (!inLinks) {
+      const [name, english] = line.slice(3).split('|').map((x) => x.trim());
+      if (!english) fail(`${where}: theme "${name}" needs an English name ("## Deutsch | english")`);
+      themes.push({ name, english, words: [] });
+    }
     continue;
   }
   if (line.startsWith('@ ')) {
@@ -115,6 +119,8 @@ writeFileSync(
   OUT,
   header +
     JSON.stringify(words, null, 2) +
+    `;\n\n/** The themes of the generated words, in order, with the English name shown on the Map. */\nexport const THEMES: { id: string; de: string; en: string }[] = ` +
+    JSON.stringify(themes.map((t) => ({ id: t.name, de: t.name, en: t.english })), null, 2) +
     `;\n\n/** Links from core words into the generated list, so the whole graph is one piece. */\nexport const CORE_LINKS: Record<string, string[]> = ` +
     JSON.stringify(coreLinksBack, null, 2) +
     ';\n',

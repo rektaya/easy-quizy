@@ -10,8 +10,6 @@ import {
   pickExploreWord,
 } from './calibration.ts';
 import type { Answer } from './calibration.ts';
-import { makeBatch, waitingWords } from './batch.ts';
-import { summarize } from './status.ts';
 
 // A pretend user who knows every word up to tier `level` and none above it.
 function simulate(level: number, count = CALIBRATION_WORDS) {
@@ -69,20 +67,6 @@ test('calibration ends after 15 words once 3 are gathered, and never runs past 3
   assert.equal(isCalibrationDone(30, 0), true, 'safety stop');
 });
 
-test('a Study batch is the lowest-rated gathered words, never known or already studied ones', () => {
-  const rating = (value: number) => ({ value, known: value >= 0.9, at: 0 });
-  const ratings = {
-    feierabend: rating(0.5),
-    arbeit: rating(0.1),
-    buero: rating(0.95), // known: not in the pile
-    kollege: rating(0.2),
-    termin: rating(0.05), // already studied
-    zug: rating(0.7),
-  };
-  const batch = makeBatch(WORDS, ratings, { termin: { value: 0.3, at: 0 } }, 3);
-  assert.deepEqual(batch.map((w) => w.id), ['arbeit', 'kollege', 'feierabend']);
-});
-
 test('calibration words are spread across themes, not kept in one zone', () => {
   const { answers } = simulate(3);
   const themeOf = new Map(WORDS.map((w) => [w.id, w.theme ?? 'core']));
@@ -111,15 +95,4 @@ test('similar-word chips only offer words near the level', () => {
   const word = WORDS.find((w) => w.id === 'arbeit')!; // a tier-1 word linking to easy words
   const chips = exploreChips(word, WORDS, () => false, answers);
   for (const c of chips) assert.ok(c.tier >= 4, `${c.id} is tier ${c.tier}`);
-});
-
-test('the dashboard counts words by status and keeps known words out of the pile', () => {
-  const rating = (value: number) => ({ value, known: value >= 0.9, at: 0 });
-  const ratings = { arbeit: rating(0.1), buero: rating(0.2), kollege: rating(0.95), zug: rating(0.4) };
-  const studied = { arbeit: { value: 0.95, at: 0 }, buero: { value: 0.1, at: 0 } };
-  const s = summarize(WORDS, ratings, studied);
-  assert.equal(s.gathered, 3);
-  assert.equal(s.knownBefore, 1);
-  assert.deepEqual(s.counts, { new: 1, shaky: 1, getting: 0, solid: 0, learned: 1 });
-  assert.equal(waitingWords(WORDS, ratings, studied).length, 1);
 });

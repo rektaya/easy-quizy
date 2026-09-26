@@ -1,30 +1,37 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { Answer } from '../onboarding/calibration';
+import { firstStudy, reviewCard } from '../srs/scheduler';
+import type { StoredCard } from '../srs/scheduler';
 
 /** Where the user is in the first-run path: name, 15 words, a message, a first Study session. */
 export type Phase = 'name' | 'calibration' | 'message' | 'study' | 'done';
-
-export type StudyResult = { value: number; at: number };
 
 type Profile = {
   name: string;
   phase: Phase;
   /** Every rating made so far, in order (calibration and Explore). The level estimate comes from these. */
   answers: Answer[];
-  /** The latest Study rating of each word (scheduling with FSRS comes later). */
-  studied: Record<string, StudyResult>;
+  /** The FSRS card of every word that has been studied: when it is next due, and how firm it is. */
+  cards: Record<string, StoredCard>;
   /** Words the user deleted from their pile: they are never offered again. */
   removed: Record<string, true>;
 };
 
 type Ctx = Profile & {
   ready: boolean;
+  /** The theme "explore from here" was tapped on in the Map; Explore takes it and clears it. */
+  seedTheme: string | null;
+  setSeedTheme: (themeId: string | null) => void;
   setName: (name: string) => void;
   setPhase: (phase: Phase) => void;
   addAnswer: (answer: Answer) => void;
   removeAnswer: (wordId: string) => void;
-  recordStudy: (wordId: string, value: number) => void;
+  /**
+   * Rate a word in Study. The first time, its card is seeded from the Explore rating (`explore`),
+   * then this rating reviews it; after that it is a plain review.
+   */
+  reviewWord: (wordId: string, value: number, explore: { value: number; at: number } | undefined) => void;
   /** Delete a word from the pile for good (its rating is removed separately). */
   removeWord: (wordId: string) => void;
   /** Back to the very start of the first-run path (the ratings are reset separately). */
@@ -32,12 +39,13 @@ type Ctx = Profile & {
 };
 
 const KEY = 'easyquizy.profile.v1';
-const INITIAL: Profile = { name: '', phase: 'name', answers: [], studied: {}, removed: {} };
+const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {} };
 const ProfileContext = createContext<Ctx | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [profile, setProfile] = useState<Profile>(INITIAL);
+  const [seedTheme, setSeedTheme] = useState<string | null>(null); // not saved: it only bridges Map -> Explore
 
   useEffect(() => {
     AsyncStorage.getItem(KEY)
@@ -66,16 +74,23 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     (wordId: string) => setProfile((p) => ({ ...p, answers: p.answers.filter((a) => a.id !== wordId) })),
     [],
   );
-  const recordStudy = useCallback(
-    (wordId: string, value: number) =>
-      setProfile((p) => ({ ...p, studied: { ...p.studied, [wordId]: { value, at: Date.now() } } })),
+  const reviewWord = useCallback(
+    (wordId: string, value: number, explore: { value: number; at: number } | undefined) =>
+      setProfile((p) => {
+        const now = Date.now();
+        const existing = p.cards[wordId];
+        const card = existing
+          ? reviewCard(existing, value, now)
+          : firstStudy(explore?.value ?? value, explore?.at ?? now, value, now);
+        return { ...p, cards: { ...p.cards, [wordId]: card } };
+      }),
     [],
   );
   const removeWord = useCallback(
     (wordId: string) =>
       setProfile((p) => {
-        const { [wordId]: _studied, ...studied } = p.studied;
-        return { ...p, studied, removed: { ...p.removed, [wordId]: true } };
+        const { [wordId]: _card, ...cards } = p.cards;
+        return { ...p, cards, removed: { ...p.removed, [wordId]: true } };
       }),
     [],
   );
@@ -85,15 +100,17 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     () => ({
       ...profile,
       ready,
+      seedTheme,
+      setSeedTheme,
       setName,
       setPhase,
       addAnswer,
       removeAnswer,
-      recordStudy,
+      reviewWord,
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, setName, setPhase, addAnswer, removeAnswer, recordStudy, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, setName, setPhase, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

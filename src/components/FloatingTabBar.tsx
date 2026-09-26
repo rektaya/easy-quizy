@@ -5,6 +5,15 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, radius, shadow } from '../theme';
 import { ExploreIcon, MapIcon, StudyIcon } from './Icons';
 
+// Space for screens to leave at the bottom so nothing ever sits behind the floating tab bar: the bar's
+// own bottom offset and height, measured from the real safe area of the phone, plus breathing room.
+const BAR_HEIGHT = 68;
+const AIR = 28;
+export function useTabBarSpace(): number {
+  const insets = useSafeAreaInsets();
+  return Math.max(insets.bottom, 12) + 4 + BAR_HEIGHT + AIR;
+}
+
 const ICONS = { Explore: ExploreIcon, Study: StudyIcon, Map: MapIcon } as const;
 
 // A small floating pill with icon-only tabs; the active tab is a filled tile.

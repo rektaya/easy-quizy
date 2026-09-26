@@ -119,3 +119,23 @@ export function exploreChips(
     .sort((a, b) => Math.abs(a.tier - target) - Math.abs(b.tier - target))
     .slice(0, limit);
 }
+
+/**
+ * Where "explore from here" starts: the unrated word in that theme closest to the user's level
+ * (so the first word of the area is neither too easy nor too hard), or null if the whole area
+ * has been explored.
+ */
+export function pickThemeWord(
+  words: Word[],
+  isRated: (id: string) => boolean,
+  answers: Answer[],
+  themeId: string,
+): Word | null {
+  const target = targetTier(estimateLevel(answers));
+  let best: Word | null = null;
+  for (const w of words) {
+    if (w.theme !== themeId || isRated(w.id)) continue;
+    if (!best || Math.abs(w.tier - target) < Math.abs(best.tier - target)) best = w;
+  }
+  return best;
+}

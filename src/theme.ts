@@ -1,18 +1,21 @@
-// Look: cool grey paper, one deep navy ink color, lowercase Figtree, frosted cards, chunky buttons.
+// Look: a deep navy night (#0C1927) with a sparse field of small, dim stars (components/StarBackground), light
+// ink, one orange accent, lowercase Figtree, frosted cards, chunky buttons.
 // The circle's red-to-green arc is the one functional exception (see circle/color.ts):
 // its color is the rating signal itself.
 export const colors = {
-  bg: '#EFF2F5',
-  surface: 'rgba(255,255,255,0.5)',
-  border: 'rgba(255,255,255,0.8)',
-  text: '#0C1927', // deep navy ink, used for text and icons
-  textSecondary: '#566577',
-  textTertiary: '#8E99A6',
-  track: '#D2D9E0',
+  bg: '#0C1927',
+  surface: 'rgba(255,255,255,0.07)', // frosted cards, fields, ghost buttons, the tab bar
+  border: 'rgba(255,255,255,0.12)',
+  card: '#15263A', // a solid card that must hide what is behind it
+  chip: 'rgba(255,255,255,0.1)', // small pills: similar words, sort options
+  text: '#EFF2F5', // light ink, used for text and icons
+  textSecondary: '#A5B0BD',
+  textTertiary: '#6F7E90',
+  track: '#22364B', // the empty ring of the circle
   accent: '#F75831', // filled buttons, active tab
   onAccent: '#FFFFFF',
-  toast: '#0C1927',
-  onToast: '#FFFFFF',
+  toast: '#EFF2F5',
+  onToast: '#0C1927',
 } as const;
 
 export const fonts = {
@@ -23,12 +26,10 @@ export const fonts = {
 export const radius = { chip: 999, card: 26, button: 16, tile: 14 } as const;
 
 export const shadow = {
-  shadowColor: '#1B2B3D',
-  shadowOpacity: 0.14,
+  shadowColor: '#000000',
+  shadowOpacity: 0.35,
   shadowRadius: 18,
   shadowOffset: { width: 0, height: 8 },
   elevation: 4,
 } as const;
 
-/** Bottom space screens leave free for the floating tab bar. */
-export const TAB_BAR_SPACE = 104;

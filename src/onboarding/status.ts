@@ -1,9 +1,9 @@
 import type { Word } from '../data/words';
-import type { StudyResult } from '../state/profile';
+import type { StoredCard } from '../srs/scheduler';
 import type { Rating } from '../state/ratings';
 
-// Where a gathered word stands in learning. Until real scheduling (FSRS) exists, this comes from
-// the latest Circle rating the word got in Study.
+// Where a gathered word stands in learning, from how firm its FSRS card is. Stability is the number
+// of days the memory is expected to last; each successful review pushes it out.
 export type Status = 'new' | 'shaky' | 'getting' | 'solid' | 'learned';
 
 export const STATUS_ORDER: Status[] = ['new', 'shaky', 'getting', 'solid', 'learned'];
@@ -15,11 +15,11 @@ export const STATUS_LABEL: Record<Status, string> = {
   learned: 'learned',
 };
 
-export function statusOf(study: StudyResult | undefined): Status {
-  if (!study) return 'new';
-  if (study.value < 0.3) return 'shaky';
-  if (study.value < 0.6) return 'getting';
-  if (study.value < 0.9) return 'solid';
+export function statusOf(card: StoredCard | undefined): Status {
+  if (!card) return 'new';
+  if (card.stability < 3) return 'shaky';
+  if (card.stability < 10) return 'getting';
+  if (card.stability < 21) return 'solid';
   return 'learned';
 }
 
@@ -34,7 +34,7 @@ export type Summary = {
 export function summarize(
   words: Word[],
   ratings: Record<string, Rating>,
-  studied: Record<string, StudyResult>,
+  cards: Record<string, StoredCard>,
 ): Summary {
   const counts: Record<Status, number> = { new: 0, shaky: 0, getting: 0, solid: 0, learned: 0 };
   let gathered = 0;
@@ -45,7 +45,7 @@ export function summarize(
     if (r.known) knownBefore++;
     else {
       gathered++;
-      counts[statusOf(studied[w.id])]++;
+      counts[statusOf(cards[w.id])]++;
     }
   }
   return { gathered, counts, knownBefore };

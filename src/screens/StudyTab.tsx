@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
-import { TAB_BAR_SPACE } from '../theme';
+import { useTabBarSpace } from '../components/FloatingTabBar';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import StudyHomeScreen from './StudyHomeScreen';
 import StudyScreen from './StudyScreen';
 import WordsScreen from './WordsScreen';
 
-// Extra room above the floating tab bar, so buttons never sit right against it.
-export const TAB_SAFE_SPACE = TAB_BAR_SPACE + 20;
-
 type View = 'home' | 'session' | 'words';
 
 // The Study tab: the dashboard, a session, or the list of all words.
 export default function StudyTab() {
   const [view, setView] = useState<View>('home');
+  const space = useTabBarSpace(); // buttons stay clear of the floating tab bar
   const { reset } = useRatings();
   const { restartOnboarding } = useProfile();
 
   if (view === 'session') {
-    return <StudyScreen bottomSpace={TAB_SAFE_SPACE} exitLabel="back to study" onExit={() => setView('home')} />;
+    return <StudyScreen bottomSpace={space} exitLabel="back to study" onExit={() => setView('home')} />;
   }
-  if (view === 'words') return <WordsScreen bottomSpace={TAB_SAFE_SPACE} onBack={() => setView('home')} />;
+  if (view === 'words') return <WordsScreen bottomSpace={space} onBack={() => setView('home')} />;
   return (
     <StudyHomeScreen
-      bottomSpace={TAB_SAFE_SPACE}
+      bottomSpace={space}
       onStudy={() => setView('session')}
       onAllWords={() => setView('words')}
       onRestartOnboarding={() => {

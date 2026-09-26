@@ -15,6 +15,7 @@ import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
 import { Fireworks } from '../components/Fireworks';
 import { Ring } from '../components/Ring';
+import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
 import { Translation } from '../components/Translation';
@@ -29,10 +30,12 @@ import {
   isCalibrationDone,
   pickCalibrationWord,
   pickExploreWord,
+  pickThemeWord,
 } from '../onboarding/calibration';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { TAB_BAR_SPACE, colors, fonts, radius, shadow } from '../theme';
+import { useTabBarSpace } from '../components/FloatingTabBar';
+import { colors, fonts, radius, shadow } from '../theme';
 
 const DONE_DELAY_MS = 900; // how long the last calibration word lingers before the next screen
 const STATUS_MS = 4000; // how long the "added to study" label (and its undo) stays
@@ -43,7 +46,6 @@ const GLIDE_OUT = 260;
 // The circle sits a little above the middle of the screen, leaving room below it for the
 // example sentence and the similar words.
 const CIRCLE_LIFT = 52;
-const HEADER_HEIGHT = 32;
 
 // The one-time tips under the circle: a tap icon beside "tap", a swipe icon beside "swipe up".
 function TravelHint({ tapText, swipeText }: { tapText?: string; swipeText: string }) {
@@ -72,8 +74,8 @@ type Props = {
 // The tab. When too many gathered words are waiting, Explore pauses until some are learned.
 export default function ExploreScreen({ navigation }: { navigation: { navigate: (name: string) => void } }) {
   const { ratings } = useRatings();
-  const { studied } = useProfile();
-  const waiting = waitingWords(WORDS, ratings, studied).length;
+  const { cards } = useProfile();
+  const waiting = waitingWords(WORDS, ratings, cards).length;
   if (waiting >= EXPLORE_LOCK_AT) return <ExploreLocked waiting={waiting} onStudy={() => navigation.navigate('Study')} />;
   return <ExploreView />;
 }
@@ -81,13 +83,16 @@ export default function ExploreScreen({ navigation }: { navigation: { navigate: 
 function ExploreLocked({ waiting, onStudy }: { waiting: number; onStudy: () => void }) {
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.screen, styles.locked, { paddingTop: insets.top + 12 }]}>
-      <Text style={styles.emptyTitle}>explore is paused</Text>
-      <Text style={styles.emptyBody}>
-        {waiting} words are waiting for you in study. learn some of them first, then explore opens again.
-      </Text>
-      <View style={styles.lockedButton}>
-        <Button label="go to study" onPress={onStudy} />
+    <View style={[styles.screen, { paddingTop: insets.top + 12, paddingBottom: useTabBarSpace() }]}>
+      <TabHeader title="explore" />
+      <View style={styles.locked}>
+        <Text style={styles.emptyTitle}>explore is paused</Text>
+        <Text style={styles.emptyBody}>
+          {waiting} words are waiting for you in study. learn some of them first, then explore opens again.
+        </Text>
+        <View style={styles.lockedButton}>
+          <Button label="go to study" onPress={onStudy} />
+        </View>
       </View>
     </View>
   );
@@ -95,11 +100,12 @@ function ExploreLocked({ waiting, onStudy }: { waiting: number; onStudy: () => v
 
 export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const insets = useSafeAreaInsets();
+  const tabSpace = useTabBarSpace();
   const { width } = useWindowDimensions();
   const { ready, ratings, pileCount, rate, unrate, reset } = useRatings();
-  const { name, answers, removed, studied, addAnswer, removeAnswer } = useProfile();
+  const { name, answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer } = useProfile();
   // how many gathered words are waiting to be studied: at EXPLORE_LOCK_AT, Explore pauses
-  const waiting = waitingWords(WORDS, ratings, studied).length;
+  const waiting = waitingWords(WORDS, ratings, cards).length;
   const calibrating = mode === 'calibration';
   // words that were rated, or deleted from the pile, are never offered again
   const isRated = useCallback((id: string) => !!ratings[id] || !!removed[id], [ratings, removed]);
@@ -204,6 +210,17 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     },
     [arrive],
   );
+
+  // "Explore from here" on the Map: start on a word of that theme, near the user's level.
+  useEffect(() => {
+    if (!seedTheme || !ready) return;
+    const start = pickThemeWord(WORDS, isRated, answers, seedTheme);
+    setSeedTheme(null);
+    if (start) {
+      clearStatus();
+      swapTo(start.id);
+    }
+  }, [seedTheme, ready, isRated, answers, setSeedTheme, clearStatus, swapTo]);
 
   // Swiping up: glide on to the current word's next association.
   const moveOn = useCallback(() => {
@@ -314,37 +331,38 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     </>
   ) : null;
 
+  const counter = (
+    <View
+      style={styles.counterWrap}
+      accessible
+      accessibilityLabel={
+        calibrating
+          ? `word ${Math.min(answers.length + 1, CALIBRATION_WORDS)} of ${CALIBRATION_WORDS}`
+          : `${waiting} of ${EXPLORE_LOCK_AT} words waiting for study. explore pauses at ${EXPLORE_LOCK_AT}`
+      }
+    >
+      <Ring
+        size={18}
+        stroke={3}
+        segments={[{ value: calibrating ? Math.min(answers.length, CALIBRATION_WORDS) : waiting, color: colors.accent }]}
+        total={calibrating ? CALIBRATION_WORDS : EXPLORE_LOCK_AT}
+      />
+      <Text style={styles.counter}>
+        {calibrating
+          ? `${Math.min(answers.length, CALIBRATION_WORDS)} / ${CALIBRATION_WORDS}`
+          : `${waiting} / ${EXPLORE_LOCK_AT}`}
+      </Text>
+    </View>
+  );
+
   return (
     <View
       style={[
         styles.screen,
-        { paddingTop: insets.top + 12 },
-        calibrating && { paddingBottom: insets.bottom + 12 },
+        { paddingTop: insets.top + 12, paddingBottom: calibrating ? insets.bottom + 12 : tabSpace },
       ]}
     >
-      <View style={styles.header}>
-        <View
-          style={styles.counterWrap}
-          accessible
-          accessibilityLabel={
-            calibrating
-              ? `word ${Math.min(answers.length + 1, CALIBRATION_WORDS)} of ${CALIBRATION_WORDS}`
-              : `${waiting} of ${EXPLORE_LOCK_AT} words waiting for study. explore pauses at ${EXPLORE_LOCK_AT}`
-          }
-        >
-          <Ring
-            size={18}
-            stroke={3}
-            segments={[{ value: calibrating ? Math.min(answers.length, CALIBRATION_WORDS) : waiting, color: colors.accent }]}
-            total={calibrating ? CALIBRATION_WORDS : EXPLORE_LOCK_AT}
-          />
-          <Text style={styles.counter}>
-            {calibrating
-              ? `${Math.min(answers.length, CALIBRATION_WORDS)} / ${CALIBRATION_WORDS}`
-              : `${waiting} / ${EXPLORE_LOCK_AT}`}
-          </Text>
-        </View>
-      </View>
+      <TabHeader title={calibrating ? undefined : 'explore'} right={counter} />
 
       <View
         style={styles.body}
@@ -373,7 +391,8 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                 </View>
 
                 {showWelcome ? (
-                  <View style={styles.welcome}>
+                  // sits the same distance above the circle as the tip sits below it (26)
+                  <View style={[styles.welcome, { height: Math.max(0, circleTop - 26) }]}>
                     <Text style={styles.welcomeTitle}>{name ? `let’s roll, ${name}` : 'let’s roll'}</Text>
                     <Text style={styles.welcomeNote}>here is your first word</Text>
                   </View>
@@ -423,12 +442,9 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: colors.bg,
     paddingHorizontal: 24,
-    paddingBottom: TAB_BAR_SPACE,
     userSelect: 'none',
   },
-  header: { flexDirection: 'row', alignItems: 'center', minHeight: HEADER_HEIGHT },
   counterWrap: { flexDirection: 'row', alignItems: 'center', gap: 7 },
   counter: { fontFamily: fonts.medium, fontSize: 15, color: colors.accent },
   body: { flex: 1 },
@@ -447,10 +463,10 @@ const styles = StyleSheet.create({
   travelHint: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', columnGap: 8, rowGap: 6 },
   hintPart: { flexDirection: 'row', alignItems: 'center', gap: 5 },
   hintText: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
-  welcome: { position: 'absolute', left: 0, right: 0, top: 4, alignItems: 'center', gap: 4 },
+  welcome: { position: 'absolute', left: 0, right: 0, top: 0, alignItems: 'center', justifyContent: 'flex-end', gap: 4 },
   welcomeTitle: { fontFamily: fonts.medium, fontSize: 26, color: colors.text },
   welcomeNote: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
-  locked: { alignItems: 'center', justifyContent: 'center', gap: 10, paddingBottom: TAB_BAR_SPACE },
+  locked: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10 },
   lockedButton: { alignSelf: 'stretch', marginTop: 18 },
   // covers the whole circle; the word sits in the middle of it
   flipTarget: { ...StyleSheet.absoluteFill, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 40 },

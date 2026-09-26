@@ -21,7 +21,7 @@ const SORTS: { key: Sort; label: string }[] = [
 export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: number; onBack: () => void }) {
   const insets = useSafeAreaInsets();
   const { ratings, unrate } = useRatings();
-  const { studied, removeWord } = useProfile();
+  const { cards, removeWord } = useProfile();
   const [confirming, setConfirming] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<Sort>('status');
@@ -34,7 +34,7 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
       if (sort === 'newest') return ratings[b.id].at - ratings[a.id].at;
       if (sort === 'a-z') return a.lemma.localeCompare(b.lemma, 'de');
       return (
-        STATUS_ORDER.indexOf(statusOf(studied[a.id])) - STATUS_ORDER.indexOf(statusOf(studied[b.id])) ||
+        STATUS_ORDER.indexOf(statusOf(cards[a.id])) - STATUS_ORDER.indexOf(statusOf(cards[b.id])) ||
         a.lemma.localeCompare(b.lemma, 'de')
       );
     });
@@ -97,7 +97,7 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
           <Text style={styles.empty}>{q ? 'no words match.' : 'no words in your pile.'}</Text>
         ) : null}
         {shown.map((w) => {
-          const status = statusOf(studied[w.id]);
+          const status = statusOf(cards[w.id]);
           const sure = confirming === w.id;
           return (
             <View key={w.id} style={styles.row}>
@@ -132,7 +132,7 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg, paddingHorizontal: 24, gap: 12 },
+  screen: { flex: 1, paddingHorizontal: 24, gap: 12 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 32 },
   back: { fontFamily: fonts.medium, fontSize: 16, color: colors.accent },
   count: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.chip,
     borderWidth: 1.5,
     borderColor: colors.border,
-    backgroundColor: 'rgba(255,255,255,0.55)',
+    backgroundColor: colors.chip,
   },
   sortChipOn: { backgroundColor: colors.accent, borderColor: colors.accent },
   sortText: { fontFamily: fonts.medium, fontSize: 13, color: colors.text },

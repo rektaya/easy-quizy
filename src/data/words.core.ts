@@ -419,3 +419,27 @@ export const CORE_TIERS: Record<string, Word['tier']> = {
   wohnung: 1, umziehen: 2, entscheidung: 2, 'sich-entscheiden': 2, erfahrung: 2,
   gefuehl: 2, 'sich-freuen': 2, wochenende: 1,
 };
+
+/** The themes of the hand-written words, in trail order, with the English name shown on the Map. */
+export const CORE_THEMES: { id: string; de: string; en: string; ids: string[] }[] = [
+  { id: 'Arbeit', de: 'Arbeit', en: 'work', ids: ['feierabend', 'arbeit', 'buero', 'kollege', 'besprechung', 'termin', 'vereinbaren'] },
+  {
+    id: 'Unterwegs',
+    de: 'Unterwegs',
+    en: 'getting around',
+    ids: ['verspaetung', 'zug', 'abfahren', 'haltestelle', 'aussteigen', 'umsteigen', 'fahrschein', 'fahrplan'],
+  },
+  {
+    id: 'Küche',
+    de: 'Küche',
+    en: 'kitchen',
+    ids: ['kueche', 'herd', 'pfanne', 'braten', 'zwiebel', 'spuelmaschine', 'geschirr', 'kuehlschrank'],
+  },
+  { id: 'Wohnen', de: 'Wohnen', en: 'home', ids: ['nachbar', 'miete', 'wohnung', 'umziehen'] },
+  {
+    id: 'Entscheidungen und Gefühle',
+    de: 'Entscheidungen und Gefühle',
+    en: 'decisions and feelings',
+    ids: ['entscheidung', 'sich-entscheiden', 'erfahrung', 'gefuehl', 'sich-freuen', 'wochenende'],
+  },
+];

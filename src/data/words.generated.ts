@@ -10081,6 +10081,130 @@ export const GENERATED: Word[] = [
   }
 ];
 
+/** The themes of the generated words, in order, with the English name shown on the Map. */
+export const THEMES: { id: string; de: string; en: string }[] = [
+  {
+    "id": "Essen und Trinken",
+    "de": "Essen und Trinken",
+    "en": "food and drink"
+  },
+  {
+    "id": "Körper und Gesundheit",
+    "de": "Körper und Gesundheit",
+    "en": "body and health"
+  },
+  {
+    "id": "Wetter und Natur",
+    "de": "Wetter und Natur",
+    "en": "weather and nature"
+  },
+  {
+    "id": "Tiere",
+    "de": "Tiere",
+    "en": "animals"
+  },
+  {
+    "id": "Kleidung",
+    "de": "Kleidung",
+    "en": "clothes"
+  },
+  {
+    "id": "Familie und Beziehungen",
+    "de": "Familie und Beziehungen",
+    "en": "family and relationships"
+  },
+  {
+    "id": "Freizeit und Sport",
+    "de": "Freizeit und Sport",
+    "en": "free time and sport"
+  },
+  {
+    "id": "Reisen",
+    "de": "Reisen",
+    "en": "travel"
+  },
+  {
+    "id": "Stadt und Einkaufen",
+    "de": "Stadt und Einkaufen",
+    "en": "city and shopping"
+  },
+  {
+    "id": "Haus und Möbel",
+    "de": "Haus und Möbel",
+    "en": "house and furniture"
+  },
+  {
+    "id": "Schule und Lernen",
+    "de": "Schule und Lernen",
+    "en": "school and learning"
+  },
+  {
+    "id": "Geld und Bank",
+    "de": "Geld und Bank",
+    "en": "money and banking"
+  },
+  {
+    "id": "Behörden und Recht",
+    "de": "Behörden und Recht",
+    "en": "offices and law"
+  },
+  {
+    "id": "Computer und Internet",
+    "de": "Computer und Internet",
+    "en": "computers and internet"
+  },
+  {
+    "id": "Medien und Kultur",
+    "de": "Medien und Kultur",
+    "en": "media and culture"
+  },
+  {
+    "id": "Politik und Gesellschaft",
+    "de": "Politik und Gesellschaft",
+    "en": "politics and society"
+  },
+  {
+    "id": "Zeit und Kalender",
+    "de": "Zeit und Kalender",
+    "en": "time and calendar"
+  },
+  {
+    "id": "Gefühle und Charakter",
+    "de": "Gefühle und Charakter",
+    "en": "feelings and character"
+  },
+  {
+    "id": "Sprechen und Mitteilen",
+    "de": "Sprechen und Mitteilen",
+    "en": "speaking"
+  },
+  {
+    "id": "Alltag und Bewegung",
+    "de": "Alltag und Bewegung",
+    "en": "everyday actions"
+  },
+  {
+    "id": "Eigenschaften",
+    "de": "Eigenschaften",
+    "en": "qualities"
+  },
+  {
+    "id": "Beruf und Wirtschaft",
+    "de": "Beruf und Wirtschaft",
+    "en": "work and business"
+  },
+  {
+    "id": "Umwelt und Energie",
+    "de": "Umwelt und Energie",
+    "en": "environment and energy"
+  },
+  {
+    "id": "Ideen und Pläne",
+    "de": "Ideen und Pläne",
+    "en": "ideas and plans"
+  }
+];
+
 /** Links from core words into the generated list, so the whole graph is one piece. */
 export const CORE_LINKS: Record<string, string[]> = {
   "zwiebel": [

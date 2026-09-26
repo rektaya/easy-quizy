@@ -4,9 +4,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RING_AMBER, RING_GREEN, RING_RED } from '../circle/color';
 import { Button } from '../components/Button';
 import { Ring } from '../components/Ring';
+import { TabHeader } from '../components/TabHeader';
 import { WORDS } from '../data/words';
-import { EXPLORE_LOCK_AT } from '../onboarding/batch';
-import { STATUS_LABEL, STATUS_ORDER, summarize } from '../onboarding/status';
+import { EXPLORE_LOCK_AT, dueWords, nextDue } from '../onboarding/batch';
+import { whenLabel } from '../srs/scheduler';
+import { STATUS_ORDER, summarize } from '../onboarding/status';
 import type { Status } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
@@ -33,18 +35,23 @@ type Props = {
 export default function StudyHomeScreen({ bottomSpace, onStudy, onAllWords, onRestartOnboarding }: Props) {
   const insets = useSafeAreaInsets();
   const { ratings } = useRatings();
-  const { studied } = useProfile();
-  const { gathered, counts, knownBefore } = summarize(WORDS, ratings, studied);
+  const { cards } = useProfile();
+  const { gathered, counts } = summarize(WORDS, ratings, cards);
+  const now = Date.now();
   const waiting = counts.new;
+  const due = dueWords(WORDS, ratings, cards, now).length;
+  const upcoming = nextDue(WORDS, ratings, cards);
 
   return (
     <View style={[styles.screen, { paddingTop: insets.top + 12, paddingBottom: bottomSpace }]}>
-      <View style={styles.header}>
-        <Text style={styles.title}>study</Text>
-        <Pressable onPress={onRestartOnboarding} accessibilityRole="button" hitSlop={10}>
-          <Text style={styles.restart}>restart onboarding</Text>
-        </Pressable>
-      </View>
+      <TabHeader
+        title="study"
+        right={
+          <Pressable onPress={onRestartOnboarding} accessibilityRole="button" hitSlop={10}>
+            <Text style={styles.restart}>restart onboarding</Text>
+          </Pressable>
+        }
+      />
 
       <View style={styles.card}>
         <View style={styles.donut}>
@@ -59,18 +66,15 @@ export default function StudyHomeScreen({ bottomSpace, onStudy, onAllWords, onRe
           </View>
         </View>
         {gathered === 0 ? <Text style={styles.empty}>nothing here yet. gather words in explore.</Text> : null}
-
-        <View style={styles.rows}>
-          {STATUS_ORDER.map((s) => (
-            <View key={s} style={styles.row}>
-              <View style={[styles.dot, { backgroundColor: STATUS_COLOR[s] }]} />
-              <Text style={styles.rowLabel}>{STATUS_LABEL[s]}</Text>
-              <Text style={styles.rowCount}>{counts[s]}</Text>
-            </View>
-          ))}
-        </View>
-        {knownBefore > 0 ? <Text style={styles.foot}>{knownBefore} more you already knew</Text> : null}
       </View>
+
+      <Text style={styles.plan}>
+        {due > 0 || waiting > 0
+          ? [due > 0 ? `${due} to review` : null, waiting > 0 ? `${waiting} new` : null].filter(Boolean).join(' · ')
+          : upcoming !== null
+            ? `all caught up. next review ${whenLabel(upcoming, now)}.`
+            : ''}
+      </Text>
 
       {waiting >= EXPLORE_LOCK_AT ? (
         <Text style={styles.lockNote}>explore is paused until you learn some of the new words.</Text>
@@ -78,7 +82,7 @@ export default function StudyHomeScreen({ bottomSpace, onStudy, onAllWords, onRe
 
       <View style={styles.spacer} />
       <View style={styles.buttons}>
-        <Button label="study" onPress={onStudy} disabled={waiting === 0} />
+        <Button label="study" onPress={onStudy} disabled={waiting === 0 && due === 0} />
         <Button label="all words" onPress={onAllWords} kind="ghost" disabled={gathered === 0} />
       </View>
     </View>
@@ -86,9 +90,7 @@ export default function StudyHomeScreen({ bottomSpace, onStudy, onAllWords, onRe
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg, paddingHorizontal: 24, gap: 16 },
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 32 },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
+  screen: { flex: 1, paddingHorizontal: 24, gap: 16 },
   restart: { fontFamily: fonts.regular, fontSize: 12, color: colors.textTertiary },
   card: {
     padding: 22,
@@ -104,12 +106,7 @@ const styles = StyleSheet.create({
   big: { fontFamily: fonts.medium, fontSize: 48, lineHeight: 54, color: colors.text },
   bigLabel: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
   empty: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, textAlign: 'center' },
-  rows: { marginTop: 14, gap: 10 },
-  row: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  dot: { width: 10, height: 10, borderRadius: 5 },
-  rowLabel: { flex: 1, fontFamily: fonts.regular, fontSize: 15, color: colors.text },
-  rowCount: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
-  foot: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, marginTop: 14 },
+  plan: { fontFamily: fonts.medium, fontSize: 15, color: colors.text, textAlign: 'center' },
   lockNote: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 19, color: colors.textSecondary, textAlign: 'center' },
   spacer: { flex: 1 },
   buttons: { gap: 12 },

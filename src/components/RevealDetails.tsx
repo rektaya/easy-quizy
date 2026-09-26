@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.chip,
     borderWidth: 1.5,
     borderColor: colors.border,
-    backgroundColor: 'rgba(255,255,255,0.55)',
+    backgroundColor: colors.chip,
   },
   chipPressed: { backgroundColor: colors.accent },
   chipText: { fontFamily: fonts.medium, fontSize: 13, color: colors.text },

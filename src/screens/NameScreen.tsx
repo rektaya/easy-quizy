@@ -39,7 +39,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (name: string) => v
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg },
+  screen: { flex: 1 },
   inner: { flex: 1, paddingHorizontal: 24 },
   body: { flex: 1, justifyContent: 'center', gap: 18 },
   title: { fontFamily: fonts.medium, fontSize: 28, lineHeight: 36, color: colors.text },

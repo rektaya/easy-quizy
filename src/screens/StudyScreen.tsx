@@ -9,8 +9,9 @@ import { Fireworks } from '../components/Fireworks';
 import { Translation } from '../components/Translation';
 import { WordFace } from '../components/WordFace';
 import { WORDS } from '../data/words';
-import { makeBatch } from '../onboarding/batch';
-import type { Word } from '../data/words';
+import { makeBatch, nextDue } from '../onboarding/batch';
+import type { BatchItem } from '../onboarding/batch';
+import { whenLabel } from '../srs/scheduler';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts, radius, shadow } from '../theme';
@@ -29,19 +30,18 @@ type Props = {
   onExit: () => void;
 };
 
-type Stage = 'meet' | 'test';
-
-// A Study session: a small batch of gathered words. Each word is met first (German, meaning, an
-// example), then tested with the Circle: you see the German word, recall what it means, draw how
-// well you knew it, and the meaning appears. Scheduling reviews with FSRS comes next.
+// A Study session: the reviews that are due, then a few new words from the pile. A new word is met
+// first (German, meaning, an example); every word is then tested with the Circle: you see the German
+// word, recall what it means, draw how well you knew it, and the meaning appears. Each rating goes to
+// FSRS, which decides when the word comes back.
 export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready: ratingsReady, ratings } = useRatings();
-  const { ready: profileReady, studied, recordStudy } = useProfile();
-  const [batch, setBatch] = useState<Word[] | null>(null);
+  const { ready: profileReady, cards, reviewWord } = useProfile();
+  const [batch, setBatch] = useState<BatchItem[] | null>(null);
   const [index, setIndex] = useState(0);
-  const [stage, setStage] = useState<Stage>('meet');
+  const [met, setMet] = useState(false); // a new word has been met and is now to be tested
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
   const [burst, setBurst] = useState(0); // counts the fireworks shown for the current word
   const reduceMotion = useReducedMotion();
@@ -50,26 +50,29 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
   // The batch is picked once, when the saved data has loaded (and again for "keep going").
   const loaded = ratingsReady && profileReady;
   useEffect(() => {
-    if (loaded && batch === null) setBatch(makeBatch(WORDS, ratings, studied));
-  }, [loaded, batch, ratings, studied]);
+    if (loaded && batch === null) setBatch(makeBatch(WORDS, ratings, cards, Date.now()));
+  }, [loaded, batch, ratings, cards]);
 
   if (!loaded || batch === null) return <View style={styles.screen} />;
 
-  const word = batch[index];
+  const item = batch[index];
+  const word = item?.word;
+  const stage = item?.isNew && !met ? 'meet' : 'test'; // reviews go straight to the test
   const size = Math.min(width - 48, 300);
   const circleTop = Math.max(0, body.h / 2 - size / 2 - CIRCLE_LIFT);
-  const remaining = makeBatch(WORDS, ratings, studied).length;
+  const remaining = makeBatch(WORDS, ratings, cards, Date.now()).length;
+  const upcoming = nextDue(WORDS, ratings, cards);
 
   const next = () => {
     setValue(null);
     setBurst(0);
-    setStage('meet');
+    setMet(false);
     setIndex((i) => i + 1);
   };
   const keepGoing = () => {
     setBatch(null);
     setIndex(0);
-    setStage('meet');
+    setMet(false);
     setValue(null);
     setBurst(0);
   };
@@ -85,9 +88,14 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
           <Text style={styles.closingTitle}>{none ? 'nothing to study yet' : 'nicely done'}</Text>
           <Text style={styles.closingBody}>
             {none
-              ? 'gather a few words in explore first, then they’ll wait for you here.'
+              ? upcoming !== null
+                ? `you’re all caught up. next review ${whenLabel(upcoming, Date.now())}.`
+                : 'gather a few words in explore first, then they’ll wait for you here.'
               : 'you’ve started your journey.'}
           </Text>
+          {!none && upcoming !== null && remaining === 0 ? (
+            <Text style={styles.closingBody}>next review {whenLabel(upcoming, Date.now())}.</Text>
+          ) : null}
         </Animated.View>
         <View style={styles.buttons}>
           {!none && remaining > 0 ? <Button label="keep going" onPress={keepGoing} /> : null}
@@ -125,7 +133,7 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
             <Text style={styles.exampleEn}>{word.example.en}</Text>
           </View>
         </Animated.View>
-        <Button label="i’ve got it" onPress={() => setStage('test')} />
+        <Button label="i’ve got it" onPress={() => setMet(true)} />
       </View>
     );
   }
@@ -152,7 +160,7 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
                 reveal={value === null ? undefined : <Translation text={word.en} />}
                 onCommit={(v) => {
                   setValue(v);
-                  recordStudy(word.id, v);
+                  reviewWord(word.id, v, ratings[word.id]);
                   if (v > CELEBRATE_ABOVE) {
                     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
                     if (!reduceMotion) setBurst((n) => n + 1);
@@ -182,7 +190,7 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg, paddingHorizontal: 24, gap: 12, userSelect: 'none' },
+  screen: { flex: 1, paddingHorizontal: 24, gap: 12, userSelect: 'none' },
   centered: { justifyContent: 'center' },
   progress: { fontFamily: fonts.medium, fontSize: 16, color: colors.textTertiary, minHeight: 32 },
   meet: {
@@ -191,7 +199,7 @@ const styles = StyleSheet.create({
     padding: 24,
     marginBottom: 8,
     borderRadius: radius.card,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1.5,
     borderColor: colors.border,
     ...shadow,
@@ -205,7 +213,7 @@ const styles = StyleSheet.create({
   meetEn: { fontFamily: fonts.regular, fontSize: 22, lineHeight: 30, color: colors.textSecondary, textAlign: 'center', marginTop: 10 },
   meetPlural: { fontFamily: fonts.regular, fontSize: 14, color: colors.textTertiary, marginTop: 4 },
   // the example sits at the bottom of the card, under a thin line
-  meetExample: { gap: 6, paddingTop: 18, borderTopWidth: 1.5, borderTopColor: colors.bg },
+  meetExample: { gap: 6, paddingTop: 18, borderTopWidth: 1.5, borderTopColor: colors.border },
   meetLabel: { fontFamily: fonts.medium, fontSize: 12, color: colors.textTertiary },
   exampleDe: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 24, color: colors.text },
   exampleEn: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: colors.textSecondary },
