@@ -12,16 +12,29 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
+import { Button } from '../components/Button';
 import { Fireworks } from '../components/Fireworks';
+import { Ring } from '../components/Ring';
+import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
 import { Translation } from '../components/Translation';
 import { UndoToast } from '../components/UndoToast';
 import { WordFace } from '../components/WordFace';
 import { WORDS } from '../data/words';
 import type { Word } from '../data/words';
+import { EXPLORE_LOCK_AT, waitingWords } from '../onboarding/batch';
+import {
+  CALIBRATION_WORDS,
+  exploreChips,
+  isCalibrationDone,
+  pickCalibrationWord,
+  pickExploreWord,
+} from '../onboarding/calibration';
+import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { TAB_BAR_SPACE, colors, fonts, radius, shadow } from '../theme';
 
+const DONE_DELAY_MS = 900; // how long the last calibration word lingers before the next screen
 const STATUS_MS = 4000; // how long the "added to study" label (and its undo) stays
 const SWIPE_DISTANCE = 90; // how far up a swipe must travel to move on
 const SWIPE_VELOCITY = 700;
@@ -32,24 +45,65 @@ const GLIDE_OUT = 260;
 const CIRCLE_LIFT = 52;
 const HEADER_HEIGHT = 32;
 
-type Ratings = ReturnType<typeof useRatings>['ratings'];
-
-function firstUnrated(ratings: Ratings): Word | null {
-  return WORDS.find((w) => !ratings[w.id]) ?? null;
+// The one-time tips under the circle: a tap icon beside "tap", a swipe icon beside "swipe up".
+function TravelHint({ tapText, swipeText }: { tapText?: string; swipeText: string }) {
+  return (
+    <View style={styles.travelHint}>
+      {tapText ? (
+        <View style={styles.hintPart}>
+          <TapIcon color={colors.textSecondary} />
+          <Text style={styles.hintText}>{tapText}</Text>
+        </View>
+      ) : null}
+      <View style={styles.hintPart}>
+        <SwipeUpIcon color={colors.textSecondary} />
+        <Text style={styles.hintText}>{swipeText}</Text>
+      </View>
+    </View>
+  );
 }
 
-const wordById = (id: string) => WORDS.find((w) => w.id === id);
+type Props = {
+  /** 'calibration' is the first-run mode: 15 adaptively picked words, then on to Study. */
+  mode?: 'explore' | 'calibration';
+  onCalibrationDone?: () => void;
+};
 
-// Swiping on follows the current word's associations first, then falls back to the list order.
-function pickNext(from: Word, ratings: Ratings): string | null {
-  const nextRelated = from.related.find((id) => !ratings[id]);
-  return nextRelated ?? firstUnrated(ratings)?.id ?? null;
+// The tab. When too many gathered words are waiting, Explore pauses until some are learned.
+export default function ExploreScreen({ navigation }: { navigation: { navigate: (name: string) => void } }) {
+  const { ratings } = useRatings();
+  const { studied } = useProfile();
+  const waiting = waitingWords(WORDS, ratings, studied).length;
+  if (waiting >= EXPLORE_LOCK_AT) return <ExploreLocked waiting={waiting} onStudy={() => navigation.navigate('Study')} />;
+  return <ExploreView />;
 }
 
-export default function ExploreScreen() {
+function ExploreLocked({ waiting, onStudy }: { waiting: number; onStudy: () => void }) {
+  const insets = useSafeAreaInsets();
+  return (
+    <View style={[styles.screen, styles.locked, { paddingTop: insets.top + 12 }]}>
+      <Text style={styles.emptyTitle}>explore is paused</Text>
+      <Text style={styles.emptyBody}>
+        {waiting} words are waiting for you in study. learn some of them first, then explore opens again.
+      </Text>
+      <View style={styles.lockedButton}>
+        <Button label="go to study" onPress={onStudy} />
+      </View>
+    </View>
+  );
+}
+
+export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready, ratings, pileCount, rate, unrate, reset } = useRatings();
+  const { name, answers, removed, studied, addAnswer, removeAnswer } = useProfile();
+  // how many gathered words are waiting to be studied: at EXPLORE_LOCK_AT, Explore pauses
+  const waiting = waitingWords(WORDS, ratings, studied).length;
+  const calibrating = mode === 'calibration';
+  // words that were rated, or deleted from the pile, are never offered again
+  const isRated = useCallback((id: string) => !!ratings[id] || !!removed[id], [ratings, removed]);
+  const doneTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [currentId, setCurrentId] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null); // "added to study" / "marked as known"
   const [burst, setBurst] = useState<{ id: string; n: number } | null>(null); // fireworks for a known word
@@ -74,12 +128,17 @@ export default function ExploreScreen() {
 
   useEffect(() => () => {
     if (statusTimer.current) clearTimeout(statusTimer.current);
+    if (doneTimer.current) clearTimeout(doneTimer.current);
   }, []);
 
   // Pick the first word once the saved ratings are loaded (or after a reset).
   useEffect(() => {
-    if (ready && currentId === null) setCurrentId(firstUnrated(ratings)?.id ?? null);
-  }, [ready, currentId, ratings]);
+    if (!ready || currentId !== null) return;
+    const first = calibrating
+      ? pickCalibrationWord(WORDS, isRated, answers, null)
+      : pickExploreWord(WORDS, isRated, answers, null);
+    setCurrentId(first?.id ?? null);
+  }, [ready, currentId, calibrating, isRated, answers]);
 
   // When a new word lands, it rises into place.
   useEffect(() => {
@@ -100,6 +159,7 @@ export default function ExploreScreen() {
   // The ghost finger and the tips teach the gestures once, on the very first word.
   const isFirstWord = word?.id === WORDS[0].id;
   const showHint = isFirstWord && !revealed;
+  const showWelcome = calibrating && answers.length === 0 && !revealed;
 
   const circleTop = Math.max(0, body.h / 2 - size / 2 - CIRCLE_LIFT);
   const circleLeft = (body.w - size) / 2;
@@ -108,21 +168,33 @@ export default function ExploreScreen() {
     (value: number) => {
       if (!word) return;
       rate(word.id, value);
+      addAnswer({ id: word.id, tier: word.tier, value }); // every rating refines the level estimate
       const known = value >= 0.9;
       setStatus(known ? 'marked as known' : 'added to study');
       // knowing a word sets off fireworks (unless the phone asks for reduced motion)
       if (known && !reduceMotion) setBurst((b) => ({ id: word.id, n: (b?.n ?? 0) + 1 }));
       if (statusTimer.current) clearTimeout(statusTimer.current);
       statusTimer.current = setTimeout(clearStatus, STATUS_MS);
+      // The moment the calibration words are in, the "got it" screen takes over (a beat later, so
+      // the ring's snap and haptic are not cut off). Undoing the word within that beat cancels it.
+      if (calibrating && isCalibrationDone(answers.length + 1, pileCount + (known ? 0 : 1))) {
+        if (doneTimer.current) clearTimeout(doneTimer.current);
+        doneTimer.current = setTimeout(() => onCalibrationDone?.(), DONE_DELAY_MS);
+      }
     },
-    [word, rate, clearStatus, reduceMotion],
+    [word, rate, calibrating, answers.length, pileCount, onCalibrationDone, addAnswer, clearStatus, reduceMotion],
   );
 
   const onUndo = useCallback(() => {
-    if (word) unrate(word.id);
+    if (word) {
+      unrate(word.id);
+      removeAnswer(word.id);
+    }
+    if (doneTimer.current) clearTimeout(doneTimer.current);
+    doneTimer.current = null;
     setBurst(null);
     clearStatus();
-  }, [word, unrate, clearStatus]);
+  }, [word, unrate, removeAnswer, clearStatus]);
 
   // Swap to another word: it starts hidden, below, and small, then rises into place.
   const swapTo = useCallback(
@@ -137,8 +209,11 @@ export default function ExploreScreen() {
   const moveOn = useCallback(() => {
     if (!word) return;
     clearStatus();
-    swapTo(pickNext(word, ratings));
-  }, [word, ratings, clearStatus, swapTo]);
+    const next = calibrating
+      ? pickCalibrationWord(WORDS, isRated, answers, word)
+      : pickExploreWord(WORDS, isRated, answers, word);
+    swapTo(next?.id ?? null);
+  }, [word, calibrating, isRated, answers, clearStatus, swapTo]);
 
   // Tapping a similar word: the very same glide as swiping up, but to the word you chose.
   const travel = useCallback(
@@ -194,7 +269,9 @@ export default function ExploreScreen() {
   }));
 
   // Words you have already rated are not offered again.
-  const related = word ? word.related.flatMap((id) => (ratings[id] ? [] : wordById(id) ?? [])) : [];
+  // Similar words: only ones near the user's level. None during calibration, where they would keep
+  // the words in one thematic zone.
+  const related = calibrating ? [] : exploreChips(word, WORDS, isRated, answers);
 
   // Tapping anywhere inside the circle flips between the translation and the original word.
   // The tap area is round like the circle, so the empty corners of its square do nothing.
@@ -238,14 +315,35 @@ export default function ExploreScreen() {
   ) : null;
 
   return (
-    <View style={[styles.screen, { paddingTop: insets.top + 12 }]}>
+    <View
+      style={[
+        styles.screen,
+        { paddingTop: insets.top + 12 },
+        calibrating && { paddingBottom: insets.bottom + 12 },
+      ]}
+    >
       <View style={styles.header}>
-        <Text
-          style={styles.counter}
-          accessibilityLabel={`${pileCount} ${pileCount === 1 ? 'word' : 'words'} gathered`}
+        <View
+          style={styles.counterWrap}
+          accessible
+          accessibilityLabel={
+            calibrating
+              ? `word ${Math.min(answers.length + 1, CALIBRATION_WORDS)} of ${CALIBRATION_WORDS}`
+              : `${waiting} of ${EXPLORE_LOCK_AT} words waiting for study. explore pauses at ${EXPLORE_LOCK_AT}`
+          }
         >
-          {pileCount}
-        </Text>
+          <Ring
+            size={18}
+            stroke={3}
+            segments={[{ value: calibrating ? Math.min(answers.length, CALIBRATION_WORDS) : waiting, color: colors.accent }]}
+            total={calibrating ? CALIBRATION_WORDS : EXPLORE_LOCK_AT}
+          />
+          <Text style={styles.counter}>
+            {calibrating
+              ? `${Math.min(answers.length, CALIBRATION_WORDS)} / ${CALIBRATION_WORDS}`
+              : `${waiting} / ${EXPLORE_LOCK_AT}`}
+          </Text>
+        </View>
       </View>
 
       <View
@@ -274,10 +372,17 @@ export default function ExploreScreen() {
                   {burst && burst.id === word.id ? <Fireworks key={burst.n} size={size} /> : null}
                 </View>
 
+                {showWelcome ? (
+                  <View style={styles.welcome}>
+                    <Text style={styles.welcomeTitle}>{name ? `let’s roll, ${name}` : 'let’s roll'}</Text>
+                    <Text style={styles.welcomeNote}>here is your first word</Text>
+                  </View>
+                ) : null}
+
                 {/* The tips teach the gestures once, on the very first word, below the circle. */}
                 {showHint ? (
                   <Text style={[styles.hint, { top: circleTop + size + 26 }]}>
-                    start anywhere on the ring and draw around. the fuller the circle, the better you know it.
+                    start anywhere on the ring and draw around. the fuller the circle, the better you know the word.
                   </Text>
                 ) : null}
 
@@ -288,7 +393,13 @@ export default function ExploreScreen() {
                 ) : null}
 
                 {revealed && isFirstWord ? (
-                  <Text style={[styles.hint, styles.hintBottom]}>tap a word to travel, or swipe up</Text>
+                  <View style={styles.hintBottom}>
+                    {calibrating ? (
+                      <TravelHint swipeText="swipe up for the next word" />
+                    ) : (
+                      <TravelHint tapText="tap a word to travel," swipeText="or swipe up" />
+                    )}
+                  </View>
                 ) : null}
               </View>
             </Animated.View>
@@ -318,7 +429,8 @@ const styles = StyleSheet.create({
     userSelect: 'none',
   },
   header: { flexDirection: 'row', alignItems: 'center', minHeight: HEADER_HEIGHT },
-  counter: { fontFamily: fonts.medium, fontSize: 22, color: colors.accent },
+  counterWrap: { flexDirection: 'row', alignItems: 'center', gap: 7 },
+  counter: { fontFamily: fonts.medium, fontSize: 15, color: colors.accent },
   body: { flex: 1 },
   details: { position: 'absolute', left: 0, right: 0 },
   hint: {
@@ -331,7 +443,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 20,
   },
-  hintBottom: { bottom: 8 },
+  hintBottom: { position: 'absolute', left: 4, right: 4, bottom: 8, alignItems: 'center' },
+  travelHint: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', columnGap: 8, rowGap: 6 },
+  hintPart: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  hintText: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
+  welcome: { position: 'absolute', left: 0, right: 0, top: 4, alignItems: 'center', gap: 4 },
+  welcomeTitle: { fontFamily: fonts.medium, fontSize: 26, color: colors.text },
+  welcomeNote: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
+  locked: { alignItems: 'center', justifyContent: 'center', gap: 10, paddingBottom: TAB_BAR_SPACE },
+  lockedButton: { alignSelf: 'stretch', marginTop: 18 },
   // covers the whole circle; the word sits in the middle of it
   flipTarget: { ...StyleSheet.absoluteFill, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 40 },
   faceBox: { paddingVertical: 14, alignItems: 'center' },

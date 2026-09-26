@@ -60,7 +60,7 @@ A vocabulary app for German learners.
   - **Most useful**: the frequency ladder, filling the most valuable gaps first
   - **In sentences**: words that co-occur (Entscheidung + treffen)
 - **Words always fit the user.** The association trail decides *which area* to explore, and the user's estimated level decides *which words within it*: not too easy, not too hard (see "Calibration" in section 8). The estimate keeps updating from every rating: many high ratings push toward rarer words, many low ratings ease back toward common ones. **Pure Wander** (follow the trail regardless of difficulty) is an option in **Settings**, off by default.
-- **Pile counter.** Just the number of gathered words, left-aligned at the top of the screen. As the user starts studying, it also shows how many words are already in study. A gentle warning appears when the pile gets large.
+- **Counter.** Small, top left: a mini ring and "n / 20", where n is the number of gathered words waiting to be studied and 20 is the point where Explore pauses. (During the first-run calibration it counts "n / 15" instead.) **Explore pauses when the pile gets large:** once 20 gathered words are waiting to be studied, the Explore tab shows "explore is paused" with a button to Study, and opens again as words are studied. (The threshold, 20, is a first guess to tune.) The similar-word chips only offer words within one tier of the user's level, so they are never far too easy or too hard.
 - **Word graph rule.** Semantically close pairs (opposites, near-synonyms) are not introduced back to back, to avoid interference. Theme and word-family links are preferred for new material.
 - **First word for everyone:** *Feierabend* (a delightful, very German word). After roughly ten words, the first stars appear on the Map.
 
@@ -72,7 +72,9 @@ A vocabulary app for German learners.
   2. Cloze (a sentence with a gap; for nouns, also a check of the article, such as "___ Haus")
   3. Typing the word from its meaning
 - **Spoken prompts are not in v1** (possible later).
-- New words in a session get a short "meet it" step first (reveal, then an immediate small test).
+- New words in a session get a short "meet it" step first (a white card: the word big with its article small above, then the meaning, the plural, and an example at the bottom under a thin line), then an immediate small test with the Circle.
+- **Celebration:** a word rated above 75% in Study sets off the fireworks and a success haptic. The session ends with "nicely done. you’ve started your journey".
+- **The Study tab opens on a mini-dashboard, not a session:** the number of gathered words, a ring (donut) and list splitting them by status (new, shaky, getting there, solid, learned; until FSRS exists the status comes from the latest Circle rating in Study: below 30%, 30-60%, 60-90%, above 90%), a count of words the user already knew, a way to see **all words** with their status (searchable, sortable by status, a–z or newest), a way to **delete** a word (a bin icon, two taps; a deleted word is never offered again), and one **study** button.
 - Words are **not** drip-fed daily. They enter only when a session begins.
 
 ### 4.3 Map
@@ -118,9 +120,10 @@ A vocabulary app for German learners.
 - **First launch:** the app asks for a name once (stored on the device, used for greetings and the achievement moments). No login. The first word is then *Feierabend* in the circle, and the ghost finger shows the gesture.
 - **Calibration (the first 15 words).** There is no separate test screen: the opening words are ordinary Explore words, rated with the Circle. But they are chosen adaptively to find where the user's knowledge ends.
   - The words come from a **frequency ladder**, and each rating moves the next pick. A high rating (know it) jumps to a rarer word. A low rating (don't know) steps back to a more common one. Big jumps at first, smaller steps as the estimate settles, like a binary search.
-  - The picks still follow associations where possible, so it feels like exploring, not like an exam.
+  - **No similar-word chips and no association trail during calibration.** Words linked by association sit in one thematic zone, which would make the estimate read one area of knowledge instead of the level. Instead the picks are spread across themes (ties go to a theme not yet met), and the user just swipes up for the next word. The screen shows a small progress count ("3 / 15").
+  - The first word carries a greeting above the circle: "let’s roll, Name" / "here is your first word".
   - The result is a **level estimate** (a position on the frequency ladder plus how sure the app is). The estimate keeps refining after calibration ends, from every later rating.
-  - **The user is told what it did.** After the calibration words, a short, quiet moment, for example: "Got it. From here on you'll see words that aren't too easy and not too hard." No score, no level name. The words themselves then prove it.
+  - **The user is told what it did, the moment the 15th word is rated** (after a short beat, so the ring's snap is not cut off): "got it, Name. we adjusted the words you’ll explore so they match your level." No score, no level name, no swipe needed. The words themselves then prove it.
   - Words rated during calibration count like any other: they go to the pile or are marked as known.
   - **Straight into Study.** The onboarding does not end in Explore. When the 15th word is rated, the message above appears and the user is taken **directly into a first Study session** to learn the words they just gathered, so the first minutes already deliver the app's real loop (find words, then learn them).
     - The session is the usual small batch: **up to 5 words from the pile**, the ones the user rated lowest first (the ones they most need), each with the short "meet it" step. It is a normal Study session in every way (12-20 card badge does not apply, it ends when the batch is done), with a friendly closing line and a choice: "keep going" or "back to Explore".

@@ -6,7 +6,7 @@ import type { SharedValue } from 'react-native-reanimated';
 // A celebration for knowing a word: a few small firework bursts blooming over the circle.
 // Each burst is a ring of little streaks that fly outward, sag a little, and fade.
 
-const COLORS = ['#3FB950', '#F2B01E', '#E85D0C', '#8ED081', '#FFC94D'];
+const COLORS = ['#3FB950', '#F2B01E', '#F75831', '#8ED081', '#FFC94D'];
 const PARTICLES = 14;
 const BURST_MS = 900;
 

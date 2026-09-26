@@ -48,3 +48,35 @@ export function MapIcon({ color, size = 26 }: IconProps) {
     </Svg>
   );
 }
+
+/** A tap: a fingertip with two ripples around it. */
+export function TapIcon({ color, size = 18 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={12} cy={12} r={2.2} fill={color} />
+      <Path d="M7.6 7.8a6.2 6.2 0 0 0 0 8.4M16.4 7.8a6.2 6.2 0 0 1 0 8.4" stroke={color} {...strokeProps} />
+      <Path d="M4.6 5.4a10.4 10.4 0 0 0 0 13.2M19.4 5.4a10.4 10.4 0 0 1 0 13.2" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** A swipe up: an arrow rising from a fingertip. */
+export function SwipeUpIcon({ color, size = 18 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={12} cy={19} r={2.2} fill={color} />
+      <Path d="M12 15.2V5.4M7.6 9.6L12 5.2l4.4 4.4" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** A little bin: lid, handle and a body with two lines. */
+export function TrashIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4.6 6.6c4.9-.3 9.9-.3 14.8 0M9.4 6.4c.1-1.6.6-2.4 2.5-2.4s2.4.8 2.6 2.4" stroke={color} {...strokeProps} />
+      <Path d="M6.2 6.8c.3 3.7.4 8.4 1 12.1 3 .5 6.1.4 8.8 0 .6-3.6.7-8.3 1-12.1" stroke={color} {...strokeProps} />
+      <Path d="M10.1 10.4v5.4M13.9 10.4v5.4" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}

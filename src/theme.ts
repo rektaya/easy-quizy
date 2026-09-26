@@ -2,14 +2,14 @@
 // The circle's red-to-green arc is the one functional exception (see circle/color.ts):
 // its color is the rating signal itself.
 export const colors = {
-  bg: '#E3E1DF',
+  bg: '#EFF2F5',
   surface: 'rgba(255,255,255,0.5)',
   border: 'rgba(255,255,255,0.8)',
   text: '#A8360A', // deep orange ink, used for text and icons
   textSecondary: '#9A6448',
   textTertiary: '#C2A08C',
   track: '#D3CFCB',
-  accent: '#E85D0C', // filled buttons, active tab
+  accent: '#F75831', // filled buttons, active tab
   onAccent: '#FFF6EE',
   toast: '#3A2A20',
   onToast: '#FFF6EE',
