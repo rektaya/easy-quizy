@@ -15,7 +15,7 @@ import { colors, fonts, radius, shadow } from '../theme';
 const DONUT = 210;
 
 export const STATUS_COLOR: Record<Status, string> = {
-  new: '#B9B2AB',
+  new: '#AEB8C3',
   shaky: RING_RED,
   getting: RING_AMBER,
   solid: '#9ACD5A',

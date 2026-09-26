@@ -1,18 +1,18 @@
-// Look: soft grey paper, one warm ink color, lowercase Figtree, frosted cards, chunky buttons.
+// Look: cool grey paper, one deep navy ink color, lowercase Figtree, frosted cards, chunky buttons.
 // The circle's red-to-green arc is the one functional exception (see circle/color.ts):
 // its color is the rating signal itself.
 export const colors = {
   bg: '#EFF2F5',
   surface: 'rgba(255,255,255,0.5)',
   border: 'rgba(255,255,255,0.8)',
-  text: '#A8360A', // deep orange ink, used for text and icons
-  textSecondary: '#9A6448',
-  textTertiary: '#C2A08C',
-  track: '#D3CFCB',
+  text: '#0C1927', // deep navy ink, used for text and icons
+  textSecondary: '#566577',
+  textTertiary: '#8E99A6',
+  track: '#D2D9E0',
   accent: '#F75831', // filled buttons, active tab
-  onAccent: '#FFF6EE',
-  toast: '#3A2A20',
-  onToast: '#FFF6EE',
+  onAccent: '#FFFFFF',
+  toast: '#0C1927',
+  onToast: '#FFFFFF',
 } as const;
 
 export const fonts = {
@@ -23,7 +23,7 @@ export const fonts = {
 export const radius = { chip: 999, card: 26, button: 16, tile: 14 } as const;
 
 export const shadow = {
-  shadowColor: '#5A3A22',
+  shadowColor: '#1B2B3D',
   shadowOpacity: 0.14,
   shadowRadius: 18,
   shadowOffset: { width: 0, height: 8 },
