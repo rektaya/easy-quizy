@@ -13,7 +13,7 @@ A vocabulary app for German learners.
 ## 2. Principles
 
 1. **One gesture everywhere.** The Circle is used to rate a word in Explore and in Study.
-2. **Minimal setup.** No level, no deck. The app asks for a name once and learns the rest from the first ten words.
+2. **Minimal setup.** No level, no deck. The app asks for a name once and learns the rest from the first fifteen words (adaptive calibration, section 8), goes straight into learning them, then keeps every word at the right difficulty.
 3. **Recall over recognition.** You commit to an answer before you see it.
 4. **Never overwhelm.** New words wait in a pile and enter Study in small batches.
 5. **Words in context, but concise.** Gender (through the article), plural, an example sentence and audio belong to the word, but the reveal must be concise and easy to take in at a glance. The user decides what the reveal shows (see Settings).
@@ -59,7 +59,7 @@ A vocabulary app for German learners.
   - **Word families**: fahren → Fahrer, Fahrzeug, Abfahrt
   - **Most useful**: the frequency ladder, filling the most valuable gaps first
   - **In sentences**: words that co-occur (Entscheidung + treffen)
-- **Wander is the default:** the app follows the association trail regardless of difficulty. **Guided mode** (which steers toward the user's frontier: many high ratings push toward rarer words, many low ratings ease back toward common ones) is an option in **Settings**, not on the main screen.
+- **Words always fit the user.** The association trail decides *which area* to explore, and the user's estimated level decides *which words within it*: not too easy, not too hard (see "Calibration" in section 8). The estimate keeps updating from every rating: many high ratings push toward rarer words, many low ratings ease back toward common ones. **Pure Wander** (follow the trail regardless of difficulty) is an option in **Settings**, off by default.
 - **Pile counter.** Just the number of gathered words, left-aligned at the top of the screen. As the user starts studying, it also shows how many words are already in study. A gentle warning appears when the pile gets large.
 - **Word graph rule.** Semantically close pairs (opposites, near-synonyms) are not introduced back to back, to avoid interference. Theme and word-family links are preferred for new material.
 - **First word for everyone:** *Feierabend* (a delightful, very German word). After roughly ten words, the first stars appear on the Map.
@@ -116,6 +116,18 @@ A vocabulary app for German learners.
 ## 8. Onboarding, reminders
 
 - **First launch:** the app asks for a name once (stored on the device, used for greetings and the achievement moments). No login. The first word is then *Feierabend* in the circle, and the ghost finger shows the gesture.
+- **Calibration (the first 15 words).** There is no separate test screen: the opening words are ordinary Explore words, rated with the Circle. But they are chosen adaptively to find where the user's knowledge ends.
+  - The words come from a **frequency ladder**, and each rating moves the next pick. A high rating (know it) jumps to a rarer word. A low rating (don't know) steps back to a more common one. Big jumps at first, smaller steps as the estimate settles, like a binary search.
+  - The picks still follow associations where possible, so it feels like exploring, not like an exam.
+  - The result is a **level estimate** (a position on the frequency ladder plus how sure the app is). The estimate keeps refining after calibration ends, from every later rating.
+  - **The user is told what it did.** After the calibration words, a short, quiet moment, for example: "Got it. From here on you'll see words that aren't too easy and not too hard." No score, no level name. The words themselves then prove it.
+  - Words rated during calibration count like any other: they go to the pile or are marked as known.
+  - **Straight into Study.** The onboarding does not end in Explore. When the 15th word is rated, the message above appears and the user is taken **directly into a first Study session** to learn the words they just gathered, so the first minutes already deliver the app's real loop (find words, then learn them).
+    - The session is the usual small batch: **up to 5 words from the pile**, the ones the user rated lowest first (the ones they most need), each with the short "meet it" step. It is a normal Study session in every way (12-20 card badge does not apply, it ends when the batch is done), with a friendly closing line and a choice: "keep going" or "back to Explore".
+    - Study is where the Circle's value seeds the scheduler (section 7), so the calibration ratings directly set the first review intervals.
+    - **Few words in the pile:** if the user knew most of the 15 (only 1-2 in the pile), do not force a tiny session. Say so ("you know a lot already"), keep exploring further up the ladder, and start Study once at least 3 words have gathered.
+    - The tab bar appears only after this first session, so the first run is one guided path: name, 15 words, learn them. Afterwards the user lands in Explore with all three tabs.
+  - **Edge cases:** if the ratings are inconsistent, keep the estimate wide and keep probing a bit longer. If the user rates everything as known or everything as unknown, move to the far end of the ladder quickly, then settle.
 - **Reminders:** one gentle daily nudge at a time the user chooses, only if something is waiting.
 
 ## 9. Tech direction
@@ -139,6 +151,7 @@ Multiple languages, phrases and collocations, spoken/pronunciation-graded prompt
 1. Visual identity, deferred until the prototype has proven the interactions (the prototype is greyscale plus orange).
 2. The exact position of the circle's starting handle 
 3. Whether the spot-check proposal in section 7 feels right in practice (first check after about 3 weeks, at most 1-2 per session).
+4. Calibration (15 words, decided): whether the "not too easy, not too hard" message feels reassuring or like an exam result, and whether hiding the tab bar until the first Study session feels guided or restrictive. It needs a frequency-ranked word list with enough words at each step of the ladder (the 33-word sample is too small to test it).
 
 ## 12b. Immediate next step: the first prototype
 

@@ -30,3 +30,28 @@ test('every word can be reached by travelling from the first word', () => {
   const unreachable = WORDS.filter((w) => !seen.has(w.id)).map((w) => w.id);
   assert.deepEqual(unreachable, []);
 });
+
+test('every word has a difficulty tier, and each tier has enough words to calibrate on', () => {
+  const counts = [0, 0, 0, 0, 0, 0, 0];
+  for (const w of WORDS) {
+    assert.ok([1, 2, 3, 4, 5, 6].includes(w.tier), `${w.id} has a bad tier`);
+    counts[w.tier]++;
+  }
+  for (let t = 1; t <= 6; t++) assert.ok(counts[t] >= 40, `tier ${t} has only ${counts[t]} words`);
+});
+
+test('every word has a German example that contains its lemma or a form of it', () => {
+  for (const w of WORDS) {
+    assert.ok(w.example.de.length > 10 && w.example.en.length > 5, `${w.id} has a thin example`);
+  }
+});
+
+test('from any theme you can reach both an easier and a harder word within one step', () => {
+  const byId = new Map(WORDS.map((w) => [w.id, w]));
+  const themed = WORDS.filter((w) => w.theme);
+  for (const w of themed) {
+    const tiers = w.related.map((r) => byId.get(r)!.tier);
+    const easierOrHarder = tiers.some((t) => t !== w.tier);
+    assert.ok(easierOrHarder, `${w.id} only links to words of its own tier`);
+  }
+});
