@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { THEMES, WORDS } from '../data/words.ts';
 import { seedCard } from '../srs/scheduler.ts';
 import { pickThemeWord } from './calibration.ts';
-import { buildClusters, clusterStats, glowOf, starState, zoomStates } from './mapdata.ts';
+import { buildClusters, clusterStats, glowOf, starState, themeLinks, zoomStates } from './mapdata.ts';
 import { ambientStars, blob, heroSize, layoutSky, random, shuffled } from './sky.ts';
 
 const T0 = Date.UTC(2026, 8, 26, 10);
@@ -124,4 +124,36 @@ test('the background stars appear in a scrambled, repeatable order, spread over 
   // the first 30 stars must already reach most of a 3x4 division of the screen, not one corner
   const blocks = new Set(a.slice(0, 30).map((s) => `${Math.min(2, Math.floor((s.x / 375) * 3))},${Math.min(3, Math.floor((s.y / 812) * 4))}`));
   assert.ok(blocks.size >= 8, `the first 30 stars only cover ${blocks.size} of 12 blocks`);
+});
+
+test('related themes are linked, every link joins two different themes, and the layout keeps links short', () => {
+  const clusters = buildClusters(THEMES, WORDS);
+  const links = themeLinks(clusters, WORDS);
+  assert.ok(links.length >= clusters.length, 'about one link per theme at least');
+  for (const l of links) {
+    assert.ok(l.a < l.b && l.b < clusters.length, 'links join two different themes, once');
+    assert.ok(l.weight > 0);
+  }
+  assert.equal(new Set(links.map((l) => `${l.a}:${l.b}`)).size, links.length, 'no link twice');
+  const items = clusters.map((c) => ({ id: c.id, words: c.words.length }));
+  const plain = layoutSky(items, 819, 1604);
+  const linked = layoutSky(items, 819, 1604, links);
+  assert.deepEqual(linked, layoutSky(items, 819, 1604, links), 'the layout repeats');
+  const mean = (sky: typeof plain) => links.reduce((n, l) => n + Math.hypot(sky[l.a].cx - sky[l.b].cx, sky[l.a].cy - sky[l.b].cy), 0) / links.length;
+  assert.ok(mean(linked) < mean(plain) * 0.8, 'linked themes end up closer than on the plain scatter');
+  for (const c of linked) assert.ok(c.cx > 0 && c.cx < 819 && c.cy > 0 && c.cy < 1604, `${c.id} is off the sky`);
+});
+
+test('every user gets a sky of their own, and the same seed always gives the same sky', () => {
+  const clusters = buildClusters(THEMES, WORDS);
+  const items = clusters.map((c) => ({ id: c.id, words: c.words.length }));
+  const links = themeLinks(clusters, WORDS);
+  const a = layoutSky(items, 819, 1604, links, 111);
+  assert.deepEqual(a, layoutSky(items, 819, 1604, links, 111));
+  const b = layoutSky(items, 819, 1604, links, 222);
+  assert.notDeepEqual(a.map((c) => [c.cx, c.cy]), b.map((c) => [c.cx, c.cy]), 'a different seed, a different sky');
+  // the themes keep their connections whatever the seed: the links stay short
+  const len = (sky: typeof a) => links.reduce((n, l) => n + Math.hypot(sky[l.a].cx - sky[l.b].cx, sky[l.a].cy - sky[l.b].cy), 0) / links.length;
+  assert.ok(len(b) < len(layoutSky(items, 819, 1604, [], 222)) * 0.85);
+  assert.notDeepEqual(ambientStars(300, 500, [], 22, 5).slice(0, 5), ambientStars(300, 500, [], 22, 6).slice(0, 5));
 });

@@ -3,6 +3,7 @@ import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Easing, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Starry } from './src/components/StarBackground';
@@ -13,11 +14,27 @@ import NameScreen from './src/screens/NameScreen';
 import MapScreen from './src/screens/MapScreen';
 import StudyScreen from './src/screens/StudyScreen';
 import StudyTab from './src/screens/StudyTab';
+import WordsScreen from './src/screens/WordsScreen';
 import { ProfileProvider, useProfile } from './src/state/profile';
 import { RatingsProvider, useRatings } from './src/state/ratings';
 import { colors } from './src/theme';
 
 const Tab = createBottomTabNavigator();
+
+// Switching tabs: the old screen slides a little to the side, shrinks slightly and fades out while the
+// new one slides in from the other side (towards the tab you pressed), easing out so it settles softly.
+const tabTransition = {
+  transitionSpec: { animation: 'timing', config: { duration: 420, easing: Easing.out(Easing.cubic) } },
+  sceneStyleInterpolator: ({ current }: { current: { progress: { interpolate: (c: { inputRange: number[]; outputRange: number[] }) => unknown } } }) => ({
+    sceneStyle: {
+      opacity: current.progress.interpolate({ inputRange: [-1, -0.4, 0, 0.4, 1], outputRange: [0, 0.05, 1, 0.05, 0] }),
+      transform: [
+        { translateX: current.progress.interpolate({ inputRange: [-1, 0, 1], outputRange: [-90, 0, 90] }) },
+        { scale: current.progress.interpolate({ inputRange: [-1, 0, 1], outputRange: [0.94, 1, 0.94] }) },
+      ],
+    },
+  }),
+} as const;
 
 const navTheme = {
   ...DarkTheme,
@@ -30,23 +47,35 @@ const ExploreTabScreen = (props: React.ComponentProps<typeof ExploreScreen>) => 
     <ExploreScreen {...props} />
   </Starry>
 );
-const StudyTabScreen = () => (
+const StudyTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => (
   <Starry>
-    <StudyTab />
+    <StudyTab onExplore={() => navigation.navigate('Explore')} />
   </Starry>
 );
 // The Map draws a night sky of its own, so it has no starry paper.
+// The list of all words opens over the Map (which stays where it was) and closes back onto it.
 const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => {
   const { setSeedTheme } = useProfile();
   const space = useTabBarSpace();
+  const [words, setWords] = React.useState(false);
   return (
-    <MapScreen
-      bottomSpace={space - 8}
-      onExplore={(themeId) => {
-        setSeedTheme(themeId);
-        navigation.navigate('Explore');
-      }}
-    />
+    <View style={{ flex: 1 }}>
+      <MapScreen
+        bottomSpace={space - 8}
+        onWords={() => setWords(true)}
+        onExplore={(themeId) => {
+          setSeedTheme(themeId);
+          navigation.navigate('Explore');
+        }}
+      />
+      {words ? (
+        <View style={StyleSheet.absoluteFill}>
+          <Starry>
+            <WordsScreen bottomSpace={space} onBack={() => setWords(false)} />
+          </Starry>
+        </View>
+      ) : null}
+    </View>
   );
 };
 
@@ -89,7 +118,7 @@ function Root() {
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
         tabBar={(props) => <FloatingTabBar {...props} />}
-        screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: colors.bg } }}
+        screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: colors.bg }, ...(tabTransition as object) }}
       >
         <Tab.Screen name="Explore" component={ExploreTabScreen} />
         <Tab.Screen name="Study" component={StudyTabScreen} />

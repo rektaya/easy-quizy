@@ -67,24 +67,104 @@ export const WORD_POINT_SIZE: [number, number] = [3.4, 8];
  * Place every theme's big star. They sit on a jittered grid, which reads as an even scatter (no
  * two close together, none in a clump), not as a table.
  */
-export function layoutSky(items: { id: string; words: number }[], w: number, h: number): SkyCluster[] {
+export function layoutSky(
+  items: { id: string; words: number }[],
+  w: number,
+  h: number,
+  links: { a: number; b: number; weight: number }[] = [],
+  /** Makes the sky one of a kind: a different seed gives a different arrangement of the themes. */
+  seed = 0,
+): SkyCluster[] {
   const rows = Math.ceil(items.length / COLS);
   const cellW = w / COLS;
   const cellH = h / rows;
+  // which theme starts in which cell of the grid depends on the seed (seed 0 keeps the order)
+  const cells = seed ? shuffled(items.map((_, i) => i), seed) : items.map((_, i) => i);
+  const start = items.map((_, i) => {
+    const rnd = random(1000 + i * 7919 + seed * 31);
+    const cell = cells[i];
+    return {
+      x: ((cell % COLS) + 0.5) * cellW + (rnd() - 0.5) * cellW * 0.6,
+      y: (Math.floor(cell / COLS) + 0.5) * cellH + (rnd() - 0.5) * cellH * 0.6,
+    };
+  });
+  const placed = links.length ? relax(start, links, w, h) : start;
   return items.map((item, i) => {
-    const rnd = random(1000 + i * 7919);
-    const col = i % COLS;
-    const row = Math.floor(i / COLS);
+    const rnd = random(1000 + i * 7919 + seed * 31);
+    rnd();
+    rnd();
     return {
       id: item.id,
-      cx: (col + 0.5) * cellW + (rnd() - 0.5) * cellW * 0.6,
-      cy: (row + 0.5) * cellH + (rnd() - 0.5) * cellH * 0.6,
+      cx: placed[i].x,
+      cy: placed[i].y,
       heroR: heroSize(item.words),
       angle: (rnd() - 0.5) * (Math.PI * 0.7),
       spread: 0.85 + rnd() * 0.3,
-      seed: 5000 + i * 104729,
+      seed: 5000 + i * 104729 + seed,
     };
   });
+}
+
+/**
+ * Pull linked stars together and push every pair apart (a small Fruchterman-Reingold pass that
+ * starts from the even scatter), so that linked themes sit near each other but the sky stays
+ * evenly filled and inside its edges.
+ */
+const REPEL = 0.3;
+const GRAVITY = 0.12;
+
+export function relax(
+  start: { x: number; y: number }[],
+  links: { a: number; b: number; weight: number }[],
+  w: number,
+  h: number,
+): { x: number; y: number }[] {
+  const n = start.length;
+  const pos = start.map((p) => ({ ...p }));
+  const k = Math.sqrt((w * h) / n); // the ideal gap between neighbours
+  const margin = Math.min(w, h) * 0.06;
+  let heat = k * 0.5;
+  for (let it = 0; it < 180; it++) {
+    const move = pos.map(() => ({ x: 0, y: 0 }));
+    for (let i = 0; i < n; i++) {
+      for (let j = i + 1; j < n; j++) {
+        let dx = pos[i].x - pos[j].x;
+        let dy = pos[i].y - pos[j].y;
+        let d = Math.hypot(dx, dy);
+        if (d < 0.01) {
+          dx = 0.01;
+          dy = 0.01;
+          d = 0.0141;
+        }
+        const f = (REPEL * k * k) / d / d; // repulsion, as a share of the offset
+        move[i].x += dx * f;
+        move[i].y += dy * f;
+        move[j].x -= dx * f;
+        move[j].y -= dy * f;
+      }
+    }
+    for (const l of links) {
+      const dx = pos[l.a].x - pos[l.b].x;
+      const dy = pos[l.a].y - pos[l.b].y;
+      const d = Math.hypot(dx, dy) || 0.01;
+      const f = (d / k) * (1 + 0.25 * Math.min(l.weight, 4)); // attraction
+      move[l.a].x -= dx * f;
+      move[l.a].y -= dy * f;
+      move[l.b].x += dx * f;
+      move[l.b].y += dy * f;
+    }
+    for (let i = 0; i < n; i++) {
+      // a light pull to the middle keeps the stars from piling up against the edges
+      move[i].x += (w / 2 - pos[i].x) * GRAVITY;
+      move[i].y += (h / 2 - pos[i].y) * GRAVITY;
+      const m = Math.hypot(move[i].x, move[i].y) || 1;
+      const s = Math.min(m, heat) / m;
+      pos[i].x = Math.min(w - margin, Math.max(margin, pos[i].x + move[i].x * s));
+      pos[i].y = Math.min(h - margin, Math.max(margin, pos[i].y + move[i].y * s));
+    }
+    heat *= 0.97;
+  }
+  return pos;
 }
 
 /**
@@ -96,8 +176,10 @@ export function ambientStars(
   h: number,
   avoid: { x: number; y: number }[] = [],
   cell = 22,
+  /** A different seed scatters the stars differently (0 is the default sky). */
+  seed = 0,
 ): (SkyPoint & { o: number })[] {
-  const rnd = random(42);
+  const rnd = random(42 + seed);
   const stars: (SkyPoint & { o: number })[] = [];
   for (let gy = 0; gy < Math.ceil(h / cell); gy++) {
     for (let gx = 0; gx < Math.ceil(w / cell); gx++) {

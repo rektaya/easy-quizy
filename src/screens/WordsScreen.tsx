@@ -3,11 +3,20 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TrashIcon } from '../components/Icons';
 import { WORDS } from '../data/words';
+import { RING_AMBER, RING_GREEN, RING_RED } from '../circle/color';
 import { STATUS_LABEL, STATUS_ORDER, statusOf } from '../onboarding/status';
+import type { Status } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts, radius } from '../theme';
-import { STATUS_COLOR } from './StudyHomeScreen';
+
+const STATUS_COLOR: Record<Status, string> = {
+  new: '#AEB8C3',
+  shaky: RING_RED,
+  getting: RING_AMBER,
+  solid: '#9ACD5A',
+  learned: RING_GREEN,
+};
 
 type Sort = 'status' | 'a-z' | 'newest';
 const SORTS: { key: Sort; label: string }[] = [
@@ -16,7 +25,7 @@ const SORTS: { key: Sort; label: string }[] = [
   { key: 'newest', label: 'newest' },
 ];
 
-// Every gathered word, with where it stands: searchable, sortable, and each one can be deleted.
+// Every word you have met (gathered for study, or marked known), with where it stands: searchable, sortable, and each one can be deleted.
 // Deleting takes two taps on the bin (the second confirms) and the word is never offered again.
 export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: number; onBack: () => void }) {
   const insets = useSafeAreaInsets();
@@ -27,14 +36,16 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
   const [sort, setSort] = useState<Sort>('status');
 
   const q = query.trim().toLowerCase();
-  const inPile = WORDS.filter((w) => ratings[w.id] && !ratings[w.id].known);
+  const inPile = WORDS.filter((w) => ratings[w.id]);
+  // a word marked known in Explore has no card; it counts as learned
+  const statusFor = (id: string): Status => (!cards[id] && ratings[id]?.known ? 'learned' : statusOf(cards[id]));
   const shown = inPile
     .filter((w) => !q || w.lemma.toLowerCase().includes(q) || w.en.toLowerCase().includes(q))
     .sort((a, b) => {
       if (sort === 'newest') return ratings[b.id].at - ratings[a.id].at;
       if (sort === 'a-z') return a.lemma.localeCompare(b.lemma, 'de');
       return (
-        STATUS_ORDER.indexOf(statusOf(cards[a.id])) - STATUS_ORDER.indexOf(statusOf(cards[b.id])) ||
+        STATUS_ORDER.indexOf(statusFor(a.id)) - STATUS_ORDER.indexOf(statusFor(b.id)) ||
         a.lemma.localeCompare(b.lemma, 'de')
       );
     });
@@ -53,7 +64,7 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
     <View style={[styles.screen, { paddingTop: insets.top + 12 }]}>
       <View style={styles.header}>
         <Pressable onPress={onBack} accessibilityRole="button" hitSlop={10}>
-          <Text style={styles.back}>‹ study</Text>
+          <Text style={styles.back}>‹ map</Text>
         </Pressable>
         <Text style={styles.count}>
           {q ? `${shown.length} of ${inPile.length}` : inPile.length} words
@@ -94,10 +105,10 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
         keyboardShouldPersistTaps="handled"
       >
         {shown.length === 0 ? (
-          <Text style={styles.empty}>{q ? 'no words match.' : 'no words in your pile.'}</Text>
+          <Text style={styles.empty}>{q ? 'no words match.' : 'no words yet. rate some in explore.'}</Text>
         ) : null}
         {shown.map((w) => {
-          const status = statusOf(cards[w.id]);
+          const status = statusFor(w.id);
           const sure = confirming === w.id;
           return (
             <View key={w.id} style={styles.row}>

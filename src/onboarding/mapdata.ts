@@ -67,3 +67,56 @@ export function zoomStates(
   if (all.length <= max) return all;
   return Array.from({ length: max }, (_, i) => all[Math.floor((i * all.length) / max)]);
 }
+
+export type ThemeLink = { a: number; b: number; weight: number };
+
+/**
+ * Which themes are connected: two themes are linked when words of one are related to words of the
+ * other (the same paths you travel in Explore). Every theme keeps its few strongest links, so the
+ * sky reads as a web, not as a hairball. `a` and `b` are indexes into `clusters`.
+ */
+export function themeLinks(clusters: Cluster[], words: Word[], perTheme = 2): ThemeLink[] {
+  const index = new Map(clusters.map((c, i) => [c.id, i]));
+  const themeOf = new Map(words.map((w) => [w.id, w.theme]));
+  const counts = new Map<string, number>();
+  for (const w of words) {
+    const a = w.theme ? index.get(w.theme) : undefined;
+    if (a === undefined) continue;
+    for (const r of w.related) {
+      const t = themeOf.get(r);
+      const b = t ? index.get(t) : undefined;
+      if (b === undefined || b === a) continue;
+      const key = a < b ? `${a}:${b}` : `${b}:${a}`;
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    }
+  }
+  const all = [...counts.entries()].map(([key, weight]) => {
+    const [a, b] = key.split(':').map(Number);
+    return { a, b, weight };
+  });
+  const kept = new Set<string>();
+  for (let i = 0; i < clusters.length; i++) {
+    all
+      .filter((l) => l.a === i || l.b === i)
+      .sort((x, y) => y.weight - x.weight || x.a - y.a || x.b - y.b)
+      .slice(0, perTheme)
+      .forEach((l) => kept.add(`${l.a}:${l.b}`));
+  }
+  return all.filter((l) => kept.has(`${l.a}:${l.b}`)).sort((x, y) => x.a - y.a || x.b - y.b);
+}
+
+export type ZoomWord = { id: string; state: StarState };
+
+/** Like `zoomStates`, but each point also says which word it is, so related words can be joined. */
+export function zoomWords(
+  cluster: Cluster,
+  ratings: Record<string, Rating>,
+  cards: Record<string, StoredCard>,
+  max = 48,
+): ZoomWord[] {
+  const all = cluster.words
+    .map((w) => ({ id: w.id, state: starState(ratings[w.id], cards[w.id]) }))
+    .sort((a, b) => STATE_RANK[a.state] - STATE_RANK[b.state]);
+  if (all.length <= max) return all;
+  return Array.from({ length: max }, (_, i) => all[Math.floor((i * all.length) / max)]);
+}

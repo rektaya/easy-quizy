@@ -38,11 +38,11 @@ function Ripple({ x, y }: { x: number; y: number }) {
 // dim so the background stays quiet, and they never take touches.
 export function StarBackground() {
   const { width, height } = useWindowDimensions();
-  const { answers } = useProfile();
+  const { answers, skySeed } = useProfile();
   const count = answers.length;
 
   // every place a star can appear, in a scrambled order so the sky fills up all over, not from a corner
-  const field = useMemo(() => shuffled(ambientStars(width, height, [], CELL), 7), [width, height]);
+  const field = useMemo(() => shuffled(ambientStars(width, height, [], CELL, skySeed), 7 + skySeed), [width, height, skySeed]);
   const shown = Math.min(count, field.length);
   const settle = Math.min(1, shown / SETTLE_AT); // 0 = just begun, 1 = the sky is full
   const dim = DIM_EARLY + (DIM_SETTLED - DIM_EARLY) * settle;

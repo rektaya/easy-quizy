@@ -16,6 +16,8 @@ type Profile = {
   cards: Record<string, StoredCard>;
   /** Words the user deleted from their pile: they are never offered again. */
   removed: Record<string, true>;
+  /** Makes this user's night sky one of a kind (the Map and the stars in the background). 0 = not chosen yet. */
+  skySeed: number;
 };
 
 type Ctx = Profile & {
@@ -39,7 +41,7 @@ type Ctx = Profile & {
 };
 
 const KEY = 'easyquizy.profile.v1';
-const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {} };
+const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0 };
 const ProfileContext = createContext<Ctx | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
@@ -55,6 +57,11 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       .catch(() => {})
       .finally(() => setReady(true));
   }, []);
+
+  // every user gets a sky of their own, chosen once (and again when onboarding restarts)
+  useEffect(() => {
+    if (ready && !profile.skySeed) setProfile((p) => (p.skySeed ? p : { ...p, skySeed: 1 + Math.floor(Math.random() * 1_000_000) }));
+  }, [ready, profile.skySeed]);
 
   useEffect(() => {
     if (ready) AsyncStorage.setItem(KEY, JSON.stringify(profile)).catch(() => {});
