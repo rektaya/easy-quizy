@@ -80,3 +80,16 @@ export function TrashIcon({ color, size = 20 }: IconProps) {
     </Svg>
   );
 }
+
+/** Camera mode on the Map: a viewfinder (four corners) round a small star. */
+export function LookIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4 9V5.6C4 4.7 4.7 4 5.6 4H9" stroke={color} {...strokeProps} />
+      <Path d="M15 4h3.4c.9 0 1.6.7 1.6 1.6V9" stroke={color} {...strokeProps} />
+      <Path d="M20 15v3.4c0 .9-.7 1.6-1.6 1.6H15" stroke={color} {...strokeProps} />
+      <Path d="M9 20H5.6C4.7 20 4 19.3 4 18.4V15" stroke={color} {...strokeProps} />
+      <Path d="M12 8.6l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" stroke={color} {...strokeProps} strokeWidth={1.6} />
+    </Svg>
+  );
+}

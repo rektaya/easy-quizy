@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { THEMES, WORDS } from '../data/words.ts';
 import { seedCard } from '../srs/scheduler.ts';
 import { pickThemeWord } from './calibration.ts';
-import { buildClusters, clusterStats, glowOf, starState, themeLinks, zoomStates } from './mapdata.ts';
+import { buildClusters, clusterStats, levelOf, starLook, starState, themeLinks, zoomStates } from './mapdata.ts';
 import { ambientStars, blob, heroSize, layoutSky, random, shuffled } from './sky.ts';
 
 const T0 = Date.UTC(2026, 8, 26, 10);
@@ -42,13 +42,22 @@ test('"explore from here" starts on an unrated word of that theme near the level
   assert.equal(pickThemeWord(WORDS, (id) => all.has(id), [], 'Arbeit'), null, 'a finished area has nothing left');
 });
 
-test('a cluster glows in proportion to how much of it is learned, whatever its size', () => {
-  const stats = (o: Partial<ReturnType<typeof clusterStats>>) => ({ unexplored: 0, gathered: 0, learning: 0, known: 0, total: 20, ...o });
-  assert.equal(glowOf(stats({ unexplored: 20 })), 0);
-  assert.equal(glowOf(stats({ known: 20 })), 1);
-  assert.ok(glowOf(stats({ known: 10, unexplored: 10 })) === 0.5);
-  assert.ok(glowOf(stats({ learning: 10, unexplored: 10 })) > glowOf(stats({ gathered: 10, unexplored: 10 })));
-  assert.equal(glowOf({ unexplored: 100, gathered: 0, learning: 0, known: 100, total: 200 }), 0.5, 'same share, same glow');
+test('a star stays dark under 1% of its words, is a plain point up to 10%, then glows more and more', () => {
+  // a theme of 1000 words with `taken` of them taken
+  const theme = (taken: number) => ({ unexplored: 1000 - taken, gathered: taken, learning: 0, known: 0, total: 1000 });
+  assert.equal(starLook(theme(0)).kind, 'dull');
+  assert.equal(starLook(theme(9)).kind, 'dull', 'under 1%');
+  assert.equal(starLook(theme(10)).kind, 'spark', 'from 1%');
+  assert.equal(starLook(theme(99)).kind, 'spark', 'up to 10%');
+  assert.equal(starLook(theme(100)).kind, 'glow', 'from 10%');
+  const t = (taken: number) => { const l = starLook(theme(taken)); return l.kind === 'glow' ? l.t : -1; };
+  assert.ok(t(100) > 0 && t(100) < 0.2, 'barely a glow at 10%');
+  assert.ok(t(250) > t(100) && t(500) > t(250) && t(750) > t(500) && t(1000) > t(750), 'the glow only grows');
+  assert.equal(t(1000), 1);
+  assert.ok(levelOf({ kind: 'dull' }) < levelOf({ kind: 'spark' }) && levelOf({ kind: 'spark' }) < levelOf(starLook(theme(100))));
+  // the same share gives the same star whatever the size of the theme
+  assert.deepEqual(starLook({ unexplored: 18, gathered: 2, learning: 0, known: 0, total: 20 }), starLook(theme(100)));
+  assert.equal(starLook({ unexplored: 0, gathered: 0, learning: 0, known: 0, total: 0 }).kind, 'dull');
 });
 
 test('a bigger theme is a bigger star, but only a little', () => {

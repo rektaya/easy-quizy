@@ -38,17 +38,6 @@ export function clusterStats(
   return stats;
 }
 
-/**
- * How brightly a cluster glows, 0..1: how much of it has been learned. A known word counts in
- * full, a word being studied a bit over half, and one merely gathered a little. This is a share,
- * so it stays meaningful however many words a theme holds.
- */
-export function glowOf(stats: ClusterStats): number {
-  if (stats.total === 0) return 0;
-  const learned = stats.known + 0.6 * stats.learning + 0.2 * stats.gathered;
-  return Math.min(1, learned / stats.total);
-}
-
 const STATE_RANK: Record<StarState, number> = { known: 0, learning: 1, gathered: 2, unexplored: 3 };
 
 /**
@@ -119,4 +108,47 @@ export function zoomWords(
     .sort((a, b) => STATE_RANK[a.state] - STATE_RANK[b.state]);
   if (all.length <= max) return all;
   return Array.from({ length: max }, (_, i) => all[Math.floor((i * all.length) / max)]);
+}
+
+/** How a theme's star looks: a dark star, a plain yellow point, or a glowing star (`t` is 0..1, how strongly). */
+export type StarLook = { kind: 'dull' } | { kind: 'spark' } | { kind: 'glow'; t: number };
+
+/** Below this share of a theme's words taken, its star stays dark. */
+export const SPARK_AT = 0.01;
+/** From here the star starts to glow. */
+export const GLOW_AT = 0.1;
+
+// share of the theme taken -> how strongly the star glows, by steps (a share of 0.1 is barely a glow,
+// a full theme is a full blaze)
+const GLOW_STEPS: [number, number][] = [
+  [GLOW_AT, 0.12],
+  [0.25, 0.35],
+  [0.5, 0.62],
+  [0.75, 0.85],
+  [1, 1],
+];
+
+/**
+ * What a theme's star looks like from how many of its words the user has taken (met and rated), a share
+ * that stays meaningful however many words a theme holds. Under 1% the star is still dark; from 1% to
+ * 10% it is a plain yellow point with no glow; then it glows more and more, up to full at all words.
+ */
+export function starLook(stats: ClusterStats): StarLook {
+  if (stats.total === 0) return { kind: 'dull' };
+  const share = (stats.total - stats.unexplored) / stats.total;
+  if (share < SPARK_AT) return { kind: 'dull' };
+  if (share < GLOW_AT) return { kind: 'spark' };
+  for (let i = 1; i < GLOW_STEPS.length; i++) {
+    const [x1, y1] = GLOW_STEPS[i];
+    if (share <= x1) {
+      const [x0, y0] = GLOW_STEPS[i - 1];
+      return { kind: 'glow', t: y0 + ((share - x0) / (x1 - x0)) * (y1 - y0) };
+    }
+  }
+  return { kind: 'glow', t: 1 };
+}
+
+/** One number for how lit a star is (0 dark, a little for a yellow point, up to 1), for threads and names. */
+export function levelOf(look: StarLook): number {
+  return look.kind === 'dull' ? 0 : look.kind === 'spark' ? 0.06 : look.t;
 }

@@ -16,6 +16,7 @@ uniform float haloK;    // scales the halo and the rays
 uniform float ring;     // 1 draws a hollow ring instead (a word that is only gathered)
 uniform float dull;     // 1 draws a dim, quiet dot (nothing lit yet)
 uniform float3 tint;    // colour of the halo
+uniform float3 coreColor; // colour of the bright core
 uniform float time;
 uniform float phase;    // each point twinkles in its own rhythm
 
@@ -51,7 +52,7 @@ half4 main(float2 p) {
 
   float core = (1.0 - smoothstep(radius * 0.55, radius, dist)) * (0.7 + 0.3 * lit) * (0.8 + 0.2 * twinkle);
 
-  float3 c = tint * halo + float3(1.0, 0.78, 0.34) * ray + float3(1.0, 0.96, 0.86) * core;
+  float3 c = tint * halo + float3(1.0, 0.78, 0.34) * ray + coreColor * core;
   float a = 1.0 - (1.0 - clamp(halo, 0.0, 1.0)) * (1.0 - clamp(ray, 0.0, 1.0)) * (1.0 - clamp(core, 0.0, 1.0));
   return half4(half3(clamp(c, float3(0.0), float3(a))), half(a));
 }
@@ -68,6 +69,8 @@ export type Glow = {
   dull?: boolean;
   /** halo colour, each 0..1 */
   tint?: [number, number, number];
+  /** colour of the bright core (a warm white by default) */
+  core?: [number, number, number];
   phase?: number;
   /** Sit on a turning sphere: its centre and radius, a unit vector (where on the sphere), spin speed (rad/s) and tilt. */
   sphere?: { cx: number; cy: number; R: number; u: [number, number, number]; w: number; tilt: number };
@@ -101,6 +104,7 @@ function GlowPoint({ g, clock, tilt }: { g: Glow; clock: SharedValue<number>; ti
     ring: g.ring ? 1 : 0,
     dull: g.dull ? 1 : 0,
     tint: g.tint ?? [0.97, 0.35, 0.19],
+    coreColor: g.core ?? [1, 0.96, 0.86],
     time: clock.value / 1000,
     phase: g.phase ?? 0,
   }));

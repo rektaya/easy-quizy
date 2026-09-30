@@ -1,22 +1,33 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { Easing, useAnimatedStyle, useReducedMotion, useSharedValue, withDecay, withTiming } from 'react-native-reanimated';
+import Animated, {
+  Easing,
+  useAnimatedReaction,
+  useAnimatedStyle,
+  useReducedMotion,
+  useSharedValue,
+  withDecay,
+  withTiming,
+} from 'react-native-reanimated';
 import { useIsFocused } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import Svg, { Circle, Defs, Line, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
 import { Button } from '../components/Button';
 import { GlowCanvas, sphereUnits } from '../components/GlowShader';
+import { LookIcon } from '../components/Icons';
+import { LookSource } from '../components/LookSource';
 import { TiltSource } from '../components/TiltSource';
 import type { Glow } from '../components/GlowShader';
 import { TabHeader } from '../components/TabHeader';
 import { THEMES, WORDS } from '../data/words';
 import { EXPLORE_LOCK_AT, waitingWords } from '../onboarding/batch';
-import { buildClusters, clusterStats, glowOf, themeLinks, zoomWords } from '../onboarding/mapdata';
-import type { Cluster, StarState } from '../onboarding/mapdata';
+import { buildClusters, clusterStats, levelOf, starLook, themeLinks, zoomWords } from '../onboarding/mapdata';
+import type { Cluster, StarLook, StarState } from '../onboarding/mapdata';
 import { ambientStars, blob, layoutSky, shuffled } from '../onboarding/sky';
 import type { SkyCluster } from '../onboarding/sky';
+import { clampPan, minScale, panRange } from '../onboarding/viewport';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts, radius } from '../theme';
@@ -41,8 +52,11 @@ const PARALLAX_NEAR = 18;
 
 const ZOOM = 2.6; // how far the sky zooms in on a star
 // The sky is bigger than the screen: you start zoomed in on its middle and drag to look around.
-const WORLD_X = 2.1; // width of the whole sky, in screens
-const WORLD_Y = 1.9; // height of the whole sky, in screens
+const WORLD_X = 2.1; // width of the area the theme stars are spread over, in screens
+const WORLD_Y = 1.9; // height of that area, in screens
+// The sky itself is wider than that area by this much (in screens) on every side, so the theme stars
+// never sit near its edges and there is always sky beyond the outermost one.
+const WORLD_PAD = 0.45;
 const SMALL_STAR_CELL = 30; // room for one small star per cell of this size
 const PANEL_HEIGHT = 190; // the card at the bottom, and the tab bar under it
 const MAX_ZOOM_POINTS = 60; // every word of a theme gets its own point (an even sample beyond this)
@@ -79,17 +93,14 @@ function SkyDefs() {
   );
 }
 
-/** How lit a theme's star is, 0..1. Zero only for a theme that is untouched; the first words light it at once. */
-function lit(glow: number): number {
-  return glow <= 0 ? 0 : 0.2 + 0.8 * Math.pow(glow, 0.7);
-}
-
 // A theme's big star and a word's point are drawn by one shader (components/GlowShader). These turn
 // what the Map knows into what the shader needs.
-function heroGlow(x: number, y: number, baseR: number, glow: number, phase: number): Glow {
-  const t = lit(glow);
-  if (t === 0) return { x, y, radius: baseR * 0.75, dull: true }; // untouched: there, but dark
-  // a theme you work on grows and brightens: a bigger core, a wider halo, longer rays
+function heroGlow(x: number, y: number, baseR: number, look: StarLook, phase: number): Glow {
+  if (look.kind === 'dull') return { x, y, radius: baseR * 0.75, dull: true }; // untouched: there, but dark
+  // a little of the theme taken: the same warm point as a glowing star, with only a tiny glow and no rays
+  if (look.kind === 'spark') return { x, y, radius: baseR * 0.85, lit: 0.1, haloK: 0.45, phase };
+  // more of it taken: a bigger core, a wider halo and longer rays
+  const t = look.t;
   return { x, y, radius: baseR * (0.9 + 1.1 * t), lit: t, rays: 1, phase };
 }
 
@@ -129,7 +140,11 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
   const tiltY = useSharedValue(0);
   const focused = useIsFocused();
   const reduceMotion = useReducedMotion();
-  const tiltOn = focused && !reduceMotion && Platform.OS !== 'web';
+  // Camera mode (the LookIcon button): the phone is a camera pointed at the sky. While it is on the tilt
+  // parallax is off and dragging is off, so the two do not fight.
+  const [camera, setCamera] = useState(false);
+  const cameraOn = camera && focused && Platform.OS !== 'web';
+  const tiltOn = focused && !reduceMotion && Platform.OS !== 'web' && !cameraOn;
   // when the tab is left, or there is no sensor, the sky settles back to centre
   useEffect(() => {
     if (!tiltOn) {
@@ -139,11 +154,24 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
   }, [tiltOn, tiltX, tiltY]);
 
   const clusters = useMemo(() => buildClusters(THEMES, WORDS), []);
-  const world = useMemo(() => ({ w: stage.w * WORLD_X, h: stage.h * WORLD_Y }), [stage]);
+  const pad = useMemo(() => ({ x: stage.w * WORLD_PAD, y: stage.h * WORLD_PAD }), [stage]);
+  const world = useMemo(
+    () => ({ w: stage.w * WORLD_X + 2 * pad.x, h: stage.h * WORLD_Y + 2 * pad.y }),
+    [stage, pad],
+  );
   const links = useMemo(() => themeLinks(clusters, WORDS), [clusters]);
   const sky = useMemo(
-    () => (stage.w ? layoutSky(clusters.map((c) => ({ id: c.id, words: c.words.length })), world.w, world.h, links, skySeed) : []),
-    [clusters, stage, world, links, skySeed],
+    () =>
+      stage.w
+        ? layoutSky(
+            clusters.map((c) => ({ id: c.id, words: c.words.length })),
+            world.w - 2 * pad.x,
+            world.h - 2 * pad.y,
+            links,
+            skySeed,
+          ).map((c) => ({ ...c, cx: c.cx + pad.x, cy: c.cy + pad.y }))
+        : [],
+    [clusters, stage, world, pad, links, skySeed],
   );
   const ambient = useMemo(
     () => (stage.w ? ambientStars(world.w, world.h, sky.map((c) => ({ x: c.cx, y: c.cy })), SMALL_STAR_CELL, skySeed) : []),
@@ -160,8 +188,19 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
     panX.value = -(world.w - stage.w) / 2;
     panY.value = -(world.h - stage.h) / 2;
   }, [stage, world, panX, panY]);
-  const minX = -(world.w - stage.w);
-  const minY = -(world.h - stage.h);
+  // Pinching pulls the camera back: 1 = close, the lowest value shows the whole sky. Far out, the theme
+  // names fade and only the stars and the threads between them are left.
+  const scale = useSharedValue(1);
+  const startScale = useSharedValue(1);
+  const lowest = stage.w ? minScale(stage.w, stage.h, world.w, world.h) : 1;
+  const [pulledBack, setPulledBack] = useState(false);
+  useAnimatedReaction(
+    () => scale.value < 0.9,
+    (now, before) => {
+      if (now !== before) scheduleOnRN(setPulledBack, now);
+    },
+    [],
+  );
 
   // The sky is drawn in two layers, once per change of data (they are not redrawn while they
   // animate): an even field of small stars, and one big star per theme.
@@ -175,24 +214,28 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
     ),
     [ambient, world],
   );
+  // how each theme's star looks, from how many of its words have been taken
+  const looks = useMemo(() => clusters.map((c) => starLook(clusterStats(c, ratings, cards))), [clusters, ratings, cards]);
   const bigStars = useMemo(() => {
-    const glows = clusters.map((c) => glowOf(clusterStats(c, ratings, cards)));
+    const glows = looks.map(levelOf);
     return (
       <Svg width={world.w} height={world.h}>
         <SkyDefs />
         {/* a soft nebula behind the themes that shine */}
         {sky.map((c, i) => {
-          const t = lit(glows[i]);
+          const t = looks[i].kind === 'glow' ? glows[i] : 0;
           return t > 0.3 ? (
             <Circle key={`n-${c.id}`} cx={c.cx} cy={c.cy} r={c.heroR * (9 + 8 * t) * (0.9 + 1.1 * t)} fill="url(#nebula)" opacity={Math.min(1, t * 1.3)} />
           ) : null;
         })}
-        {/* the threads between related themes: faint cool lines that turn warm where both ends are lit */}
+        {/* the threads between related themes: none between two dark stars, faint and cool when one end is
+            lit, warm and brighter when both are */}
         {sky.length
           ? links.map((l) => {
               const a = sky[l.a];
               const b = sky[l.b];
-              const both = lit(Math.min(glows[l.a], glows[l.b]));
+              if (glows[l.a] <= 0 && glows[l.b] <= 0) return null;
+              const both = Math.min(glows[l.a], glows[l.b]);
               return (
                 <Line
                   key={`${l.a}-${l.b}`}
@@ -207,6 +250,15 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
               );
             })
           : null}
+      </Svg>
+    );
+  }, [sky, links, looks, world]);
+
+  // the theme names are their own layer, so they can fade away when the camera pulls back
+  const labels = useMemo(() => {
+    const glows = looks.map(levelOf);
+    return (
+      <Svg width={world.w} height={world.h}>
         {sky.map((c, i) => (
           <SvgText
             key={`t-${c.id}`}
@@ -215,7 +267,7 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
             fontSize={11}
             fontFamily={fonts.regular}
             fill={ON_SKY}
-            fillOpacity={0.3 + 0.65 * lit(glows[i])}
+            fillOpacity={0.3 + 0.65 * glows[i]}
             textAnchor="middle"
           >
             {clusters[i].en}
@@ -223,13 +275,13 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
         ))}
       </Svg>
     );
-  }, [sky, links, clusters, ratings, cards, world]);
+  }, [sky, clusters, looks, world]);
 
   // the stars themselves, drawn by the shader so they can twinkle
   const skyGlows = useMemo(
     () =>
-      sky.map((c, i) => heroGlow(c.cx, c.cy, c.heroR, glowOf(clusterStats(clusters[i], ratings, cards)), (i * 2.399) % 6.283)),
-    [sky, clusters, ratings, cards],
+      sky.map((c, i) => heroGlow(c.cx, c.cy, c.heroR, looks[i], (i * 2.399) % 6.283)),
+    [sky, looks],
   );
 
   const opened = sky.find((c) => c.id === openId);
@@ -249,7 +301,8 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
     // shine. The words sit at scattered places of the sphere, so the shining ones are not clumped.
     const R = Math.min(stage.w * 0.36, 150);
     const seats = shuffled(sphereUnits(zw.length), opened.seed);
-    const glow = glowOf(clusterStats(cluster, ratings, cards));
+    const look = starLook(clusterStats(cluster, ratings, cards));
+    const glow = look.kind === 'glow' ? look.t : 0; // the haze behind an open theme
     const glows = zw.map((z, i) => ({
       ...wordGlow(states[i], 3.4 + ((i * 7) % 5) * 0.8, (i * 2.399) % 6.283),
       sphere: { cx: target.x, cy: target.y, R, u: seats[i], w: SPHERE_SPIN, tilt: SPHERE_TILT },
@@ -295,12 +348,12 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
   };
   const smallStyle = useAnimatedStyle(() => ({
     opacity: 1 - 0.7 * open.value,
-    transform: [{ translateX: -tiltX.value * PARALLAX_FAR }, { translateY: -tiltY.value * PARALLAX_FAR }, ...zoomTransform()],
+    transform: [{ translateX: -tiltX.value * PARALLAX_FAR }, { translateY: -tiltY.value * PARALLAX_FAR }, ...zoomTransform(), { scale: scale.value }],
   }));
   // the other themes' big stars fade out quickly, so only the opened cluster stays lit
   const bigStyle = useAnimatedStyle(() => ({
     opacity: Math.max(0, 1 - 1.6 * open.value),
-    transform: [{ translateX: -tiltX.value * PARALLAX_NEAR }, { translateY: -tiltY.value * PARALLAX_NEAR }, ...zoomTransform()],
+    transform: [{ translateX: -tiltX.value * PARALLAX_NEAR }, { translateY: -tiltY.value * PARALLAX_NEAR }, ...zoomTransform(), { scale: scale.value }],
   }));
   const openStyle = useAnimatedStyle(() => {
     const k = 1 / ZOOM + (1 - 1 / ZOOM) * open.value;
@@ -316,7 +369,7 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
 
   // Dragging looks around the sky (not while a cluster is open); a flick keeps gliding to a stop.
   const drag = Gesture.Pan()
-    .enabled(!selectedId)
+    .enabled(!selectedId && !cameraOn)
     .minDistance(6)
     .onStart(() => {
       'worklet';
@@ -325,14 +378,35 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
     })
     .onUpdate((e) => {
       'worklet';
-      panX.value = Math.min(0, Math.max(minX, startX.value + e.translationX));
-      panY.value = Math.min(0, Math.max(minY, startY.value + e.translationY));
+      // the picture is scaled, so a finger moves the sky by less than its own distance
+      panX.value = clampPan(startX.value + e.translationX / scale.value, scale.value, stage.w, world.w);
+      panY.value = clampPan(startY.value + e.translationY / scale.value, scale.value, stage.h, world.h);
     })
     .onEnd((e) => {
       'worklet';
-      panX.value = withDecay({ velocity: e.velocityX, clamp: [minX, 0] });
-      panY.value = withDecay({ velocity: e.velocityY, clamp: [minY, 0] });
+      const [x0, x1] = panRange(scale.value, stage.w, world.w);
+      const [y0, y1] = panRange(scale.value, stage.h, world.h);
+      if (x1 > x0) panX.value = withDecay({ velocity: e.velocityX / scale.value, clamp: [x0, x1] });
+      if (y1 > y0) panY.value = withDecay({ velocity: e.velocityY / scale.value, clamp: [y0, y1] });
     });
+  const pinch = Gesture.Pinch()
+    .enabled(!selectedId)
+    .onStart(() => {
+      'worklet';
+      startScale.value = scale.value;
+    })
+    .onUpdate((e) => {
+      'worklet';
+      scale.value = Math.min(1, Math.max(lowest, startScale.value * e.scale));
+      panX.value = clampPan(panX.value, scale.value, stage.w, world.w);
+      panY.value = clampPan(panY.value, scale.value, stage.h, world.h);
+    });
+  const look = Gesture.Simultaneous(drag, pinch);
+  const cameraPaused = useSharedValue(false);
+  useEffect(() => {
+    cameraPaused.value = !!selectedId;
+  }, [selectedId, cameraPaused]);
+  const labelStyle = useAnimatedStyle(() => ({ opacity: Math.min(1, Math.max(0, (scale.value - 0.62) / 0.3)) }));
   const worldStyle = useAnimatedStyle(() => ({ transform: [{ translateX: panX.value }, { translateY: panY.value }] }));
 
   const explored = WORDS.filter((w) => ratings[w.id]).length;
@@ -340,11 +414,14 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
   return (
     <View style={styles.screen}>
       {tiltOn ? <TiltSource x={tiltX} y={tiltY} /> : null}
+      {cameraOn && stage.w > 0 ? (
+        <LookSource panX={panX} panY={panY} scale={scale} paused={cameraPaused} stage={stage} world={world} />
+      ) : null}
       <View style={styles.stage} onLayout={(e) => setStage({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}>
         {stage.w > 0 ? (
           <>
             {/* the sky is bigger than the screen; the drag moves the screen over it */}
-            <GestureDetector gesture={drag}>
+            <GestureDetector gesture={look}>
               <View style={StyleSheet.absoluteFill}>
                 <Animated.View style={[StyleSheet.absoluteFill, smallStyle]} pointerEvents="none">
                   <Animated.View style={[{ position: 'absolute', width: world.w, height: world.h }, worldStyle]}>{smallStars}</Animated.View>
@@ -358,8 +435,11 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
                     <View style={StyleSheet.absoluteFill} pointerEvents="none">
                       <GlowCanvas width={world.w} height={world.h} points={skyGlows} />
                     </View>
+                    <Animated.View style={[StyleSheet.absoluteFill, labelStyle]} pointerEvents="none">
+                      {labels}
+                    </Animated.View>
                     {/* tap targets: one per big star; while a cluster is open, tapping the sky closes it */}
-                    {selectedId
+                    {selectedId || pulledBack
                       ? null
                       : sky.map((c, i) => (
                           <Pressable
@@ -403,16 +483,30 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
 
       <View style={[styles.head, { paddingTop: insets.top + 12 }]}>
         <TabHeader title="map" color={ON_SKY} right={
-            <Pressable onPress={onWords} accessibilityRole="button" accessibilityLabel={`all words, ${explored}`} hitSlop={10}>
-              <Text style={styles.total}>{explored} words ›</Text>
-            </Pressable>
+            <View style={styles.headRight}>
+              {Platform.OS !== 'web' ? (
+                <Pressable
+                  onPress={() => setCamera((c) => !c)}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: camera }}
+                  accessibilityLabel={camera ? 'camera mode on: turn off' : 'camera mode: look around by turning the phone'}
+                  hitSlop={10}
+                  style={[styles.lookButton, camera && styles.lookButtonOn]}
+                >
+                  <LookIcon color={camera ? colors.onAccent : ON_SKY_DIM} />
+                </Pressable>
+              ) : null}
+              <Pressable onPress={onWords} accessibilityRole="button" accessibilityLabel={`all words, ${explored}`} hitSlop={10}>
+                <Text style={styles.total}>{explored} words ›</Text>
+              </Pressable>
+            </View>
           }
         />
         {!selectedId ? <Text style={styles.sub}>every star is a topic. it lights up as you learn its words.</Text> : null}
       </View>
 
       {cluster ? (
-        <Panel cluster={cluster} bottom={bottomSpace} locked={locked} onExplore={onExplore} onClose={close} />
+        <Panel cluster={cluster} bottom={bottomSpace} locked={locked} onExplore={onExplore} />
       ) : null}
     </View>
   );
@@ -423,13 +517,11 @@ function Panel({
   bottom,
   locked,
   onExplore,
-  onClose,
 }: {
   cluster: Cluster;
   bottom: number;
   locked: boolean;
   onExplore: (id: string) => void;
-  onClose: () => void;
 }) {
   const { ratings } = useRatings();
   const { cards } = useProfile();
@@ -444,9 +536,6 @@ function Panel({
             {cluster.de} · {stats.total - stats.unexplored} of {stats.total} words explored
           </Text>
         </View>
-        <Pressable onPress={onClose} accessibilityRole="button" accessibilityLabel="close" hitSlop={12}>
-          <Text style={styles.close}>close</Text>
-        </Pressable>
       </View>
       <Button
         label={locked ? 'explore is paused' : done ? 'all explored' : 'explore from here'}
@@ -460,6 +549,9 @@ function Panel({
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: SKY },
   head: { position: 'absolute', top: 0, left: 0, right: 0, paddingHorizontal: 24, gap: 6 },
+  headRight: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  lookButton: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
+  lookButtonOn: { backgroundColor: colors.accent },
   sub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
   total: { fontFamily: fonts.medium, fontSize: 15, color: ON_SKY_DIM },
   // the sky fills the whole screen, behind the header, the card and the tab bar, so there are no bare bands
@@ -479,5 +571,4 @@ const styles = StyleSheet.create({
   cardHead: { flex: 1, gap: 2 },
   cardTitle: { fontFamily: fonts.medium, fontSize: 20, color: ON_SKY },
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
-  close: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
 });
