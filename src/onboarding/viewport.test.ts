@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { clampPan, minScale, panRange } from './viewport.ts';
+import { clampPan, minScale, panRange, snapScale } from './viewport.ts';
 
 test('close up, the sky fills the screen and pan stays inside it', () => {
   assert.deepEqual(panRange(1, 400, 840), [-440, 0]);
@@ -27,4 +27,16 @@ test('between the two there is always some room, and the sky edge never comes in
     }
   }
   assert.equal(minScale(400, 800, 300, 300), 1, 'never zooms in past 1');
+});
+
+test('the map only rests close up or fully pulled back, and a pinch of about a fifth of the way flips it', () => {
+  const low = 0.4;
+  assert.equal(snapScale(0.9, 1, low), 1, 'a small pinch springs back');
+  assert.equal(snapScale(0.85, 1, low), low, 'a real pinch from close goes to the whole sky');
+  assert.equal(snapScale(low, 1, low), low);
+  assert.equal(snapScale(0.45, low, low), low, 'a small spread springs back');
+  assert.equal(snapScale(0.55, low, low), 1, 'a real spread from far goes close');
+  assert.equal(snapScale(1, low, low), 1);
+  assert.equal(snapScale(0.7, 1, 1), 1, 'nothing to snap to when the sky fits');
+  for (const s of [0.41, 0.6, 0.8, 0.99]) for (const start of [1, low]) assert.ok([1, low].includes(snapScale(s, start, low)), 'only ever one of the two');
 });

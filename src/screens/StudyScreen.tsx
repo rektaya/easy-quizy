@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import Animated, { FadeIn } from 'react-native-reanimated';
@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
 import { Translation } from '../components/Translation';
+import { WordCard } from '../components/WordCard';
 import { WordFace } from '../components/WordFace';
 import { WORDS } from '../data/words';
 import { makeBatch, nextDue } from '../onboarding/batch';
@@ -13,7 +14,7 @@ import type { BatchItem } from '../onboarding/batch';
 import { whenLabel } from '../srs/scheduler';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts, radius, shadow } from '../theme';
+import { colors, fonts } from '../theme';
 
 // The circle sits where it does in Explore: a little above the middle of its area. It is placed
 // absolutely, so nothing that appears after rating (the example, the button) can move it.
@@ -22,25 +23,44 @@ const CIRCLE_LIFT = 52;
 /** A word rated above this in Study is a small win: a buzz. */
 const CELEBRATE_ABOVE = 0.75;
 
+/** How long "nicely done" stays before the user is taken on to Explore. */
+const CLOSE_DELAY_MS = 2200;
+
 type Props = {
   /** Space to leave at the bottom (the floating tab bar, when there is one). */
   bottomSpace: number;
   exitLabel: string;
   onExit: () => void;
+  /**
+   * Called (after a beat) when a session has been finished and there is nothing left to study: Study has
+   * closed, and the user is taken on to Explore. Not called when the screen is simply opened with nothing to do.
+   */
+  onClosed?: () => void;
 };
+
+// Calls `onClosed` a beat after it appears, unless it goes away first (the user pressed something).
+function CloseTimer({ onClosed }: { onClosed: () => void }) {
+  const latest = useRef(onClosed);
+  latest.current = onClosed;
+  useEffect(() => {
+    const t = setTimeout(() => latest.current(), CLOSE_DELAY_MS);
+    return () => clearTimeout(t);
+  }, []);
+  return null;
+}
 
 // A Study session: the reviews that are due, then a few new words from the pile. A new word is met
 // first (German, meaning, an example); every word is then tested with the Circle: you see the German
 // word, recall what it means, draw how well you knew it, and the meaning appears. Each rating goes to
 // FSRS, which decides when the word comes back.
-export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
+export default function StudyScreen({ bottomSpace, exitLabel, onExit, onClosed }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready: ratingsReady, ratings } = useRatings();
   const { ready: profileReady, cards, reviewWord } = useProfile();
   const [batch, setBatch] = useState<BatchItem[] | null>(null);
   const [index, setIndex] = useState(0);
-  const [met, setMet] = useState(false); // a new word has been met and is now to be tested
+  const [metCount, setMetCount] = useState(0); // how many of the new words have been met (their cards seen)
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
   const [body, setBody] = useState({ w: 0, h: 0 }); // the area the circle sits in
 
@@ -52,23 +72,27 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
 
   if (!loaded || batch === null) return <View style={styles.screen} />;
 
-  const item = batch[index];
+  // A session goes in two parts: first the new words, one card after another (to learn them), then every
+  // word of the session, the new ones included, in the Circle (to test them). Reviews have no card.
+  const newItems = batch.filter((i) => i.isNew);
+  const meeting = metCount < newItems.length;
+  const item = meeting ? newItems[metCount] : batch[index];
   const word = item?.word;
-  const stage = item?.isNew && !met ? 'meet' : 'test'; // reviews go straight to the test
+  const stage = meeting ? 'meet' : 'test';
   const size = Math.min(width - 48, 300);
   const circleTop = Math.max(0, body.h / 2 - size / 2 - CIRCLE_LIFT);
   const remaining = makeBatch(WORDS, ratings, cards, Date.now()).length;
   const upcoming = nextDue(WORDS, ratings, cards);
 
+
   const next = () => {
     setValue(null);
-    setMet(false);
     setIndex((i) => i + 1);
   };
   const keepGoing = () => {
     setBatch(null);
     setIndex(0);
-    setMet(false);
+    setMetCount(0);
     setValue(null);
   };
 
@@ -91,6 +115,8 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
           {!none && upcoming !== null && remaining === 0 ? (
             <Text style={styles.closingBody}>next review {whenLabel(upcoming, Date.now())}.</Text>
           ) : null}
+          {/* a finished session with nothing left to study closes Study: on to Explore after a beat */}
+          {!none && remaining === 0 && onClosed ? <CloseTimer onClosed={onClosed} /> : null}
         </Animated.View>
         <View style={styles.buttons}>
           {!none && remaining > 0 ? <Button label="keep going" onPress={keepGoing} /> : null}
@@ -102,7 +128,7 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
 
   const progress = (
     <Text style={styles.progress}>
-      {index + 1} / {batch.length}
+      {meeting ? `new words · ${metCount + 1} / ${newItems.length}` : `${index + 1} / ${batch.length}`}
     </Text>
   );
 
@@ -110,25 +136,8 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
     return (
       <View style={shell}>
         {progress}
-        <Animated.View key={word.id} entering={FadeIn.duration(320)} style={styles.meet}>
-          <Text style={styles.meetTag}>new word</Text>
-
-          <View style={styles.meetWord}>
-            {word.article ? <Text style={styles.meetArticle}>{word.article}</Text> : null}
-            <Text style={styles.meetLemma} numberOfLines={1} adjustsFontSizeToFit>
-              {word.lemma}
-            </Text>
-            <Text style={styles.meetEn}>{word.en}</Text>
-            {word.plural ? <Text style={styles.meetPlural}>plural: {word.plural}</Text> : null}
-          </View>
-
-          <View style={styles.meetExample}>
-            <Text style={styles.meetLabel}>example</Text>
-            <Text style={styles.exampleDe}>{word.example.de}</Text>
-            <Text style={styles.exampleEn}>{word.example.en}</Text>
-          </View>
-        </Animated.View>
-        <Button label="i’ve got it" onPress={() => setMet(true)} />
+        <WordCard word={word} tag="new word" />
+        <Button label={metCount + 1 < newItems.length ? 'next word' : 'test me'} onPress={() => setMetCount((n) => n + 1)} />
       </View>
     );
   }
@@ -186,30 +195,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: 24, gap: 12, userSelect: 'none' },
   centered: { justifyContent: 'center' },
   progress: { fontFamily: fonts.medium, fontSize: 16, color: colors.textTertiary, minHeight: 32 },
-  meet: {
-    flex: 1,
-    justifyContent: 'space-between',
-    padding: 24,
-    marginBottom: 8,
-    borderRadius: radius.card,
-    backgroundColor: colors.card,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    ...shadow,
-  },
-  // small label chip, top left
-  meetTag: { fontFamily: fonts.medium, fontSize: 12, color: colors.textTertiary },
-  // the word: the article small and quiet, the lemma big, then the meaning and the plural
-  meetWord: { alignItems: 'center', gap: 6 },
-  meetArticle: { fontFamily: fonts.regular, fontSize: 18, color: colors.textTertiary },
-  meetLemma: { fontFamily: fonts.medium, fontSize: 44, lineHeight: 52, color: colors.text, textAlign: 'center' },
-  meetEn: { fontFamily: fonts.regular, fontSize: 22, lineHeight: 30, color: colors.textSecondary, textAlign: 'center', marginTop: 10 },
-  meetPlural: { fontFamily: fonts.regular, fontSize: 14, color: colors.textTertiary, marginTop: 4 },
-  // the example sits at the bottom of the card, under a thin line
-  meetExample: { gap: 6, paddingTop: 18, borderTopWidth: 1.5, borderTopColor: colors.border },
-  meetLabel: { fontFamily: fonts.medium, fontSize: 12, color: colors.textTertiary },
   exampleDe: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 24, color: colors.text },
-  exampleEn: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: colors.textSecondary },
   test: { flex: 1 },
   testTag: {
     position: 'absolute',

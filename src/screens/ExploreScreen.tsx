@@ -35,6 +35,7 @@ import { useRatings } from '../state/ratings';
 import { useTabBarSpace } from '../components/FloatingTabBar';
 import { colors, fonts, radius, shadow } from '../theme';
 
+const CLOSE_DELAY_MS = 1800; // how long the last word of a full pile lingers before the user is taken to Study
 const DONE_DELAY_MS = 900; // how long the last calibration word lingers before the next screen
 const STATUS_MS = 4000; // how long the "added to study" label (and its undo) stays
 const SWIPE_DISTANCE = 90; // how far up a swipe must travel to move on
@@ -74,7 +75,28 @@ export default function ExploreScreen({ navigation }: { navigation: { navigate: 
   const { ratings } = useRatings();
   const { cards } = useProfile();
   const waiting = waitingWords(WORDS, ratings, cards).length;
-  if (waiting >= EXPLORE_LOCK_AT) return <ExploreLocked waiting={waiting} onStudy={() => navigation.navigate('Study')} />;
+  const over = waiting >= EXPLORE_LOCK_AT;
+  // When the word that fills the pile is rated, Explore closes: after a beat (so the rating's animation
+  // is not cut off) the user is taken to Study, which is what is open. Coming to Explore while it is
+  // already closed just shows the "paused" screen.
+  const [showLocked, setShowLocked] = useState(over);
+  const wasOver = useRef(over);
+  useEffect(() => {
+    if (!over) {
+      wasOver.current = false;
+      setShowLocked(false);
+      return;
+    }
+    if (wasOver.current) return;
+    wasOver.current = true;
+    const t = setTimeout(() => {
+      setShowLocked(true);
+      navigation.navigate('Study');
+    }, CLOSE_DELAY_MS);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [over]);
+  if (over && showLocked) return <ExploreLocked waiting={waiting} onStudy={() => navigation.navigate('Study')} />;
   return <ExploreView />;
 }
 

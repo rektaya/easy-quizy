@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   Easing,
@@ -27,7 +28,7 @@ import { buildClusters, clusterStats, levelOf, starLook, themeLinks, zoomWords }
 import type { Cluster, StarLook, StarState } from '../onboarding/mapdata';
 import { ambientStars, blob, layoutSky, shuffled } from '../onboarding/sky';
 import type { SkyCluster } from '../onboarding/sky';
-import { clampPan, minScale, panRange } from '../onboarding/viewport';
+import { clampPan, minScale, panRange, snapScale } from '../onboarding/viewport';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts, radius } from '../theme';
@@ -127,6 +128,10 @@ type Props = {
   /** Open the list of all words. */
   onWords: () => void;
 };
+
+function snapTick() {
+  Haptics.selectionAsync().catch(() => {});
+}
 
 export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
   const insets = useSafeAreaInsets();
@@ -400,7 +405,25 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
       scale.value = Math.min(1, Math.max(lowest, startScale.value * e.scale));
       panX.value = clampPan(panX.value, scale.value, stage.w, world.w);
       panY.value = clampPan(panY.value, scale.value, stage.h, world.h);
+    })
+    // the map only rests at two distances: when the fingers lift it snaps to the nearer, close up or the
+    // whole sky, never somewhere in between
+    .onEnd(() => {
+      'worklet';
+      const target = snapScale(scale.value, startScale.value, lowest);
+      if (target !== startScale.value) scheduleOnRN(snapTick);
+      scale.value = withTiming(target, { duration: 340, easing: Easing.out(Easing.cubic) });
     });
+  // the sky's offset follows the scale as it snaps, so its edge never comes inside the screen
+  useAnimatedReaction(
+    () => scale.value,
+    (sc, before) => {
+      if (before === null || sc === before) return;
+      panX.value = clampPan(panX.value, sc, stage.w, world.w);
+      panY.value = clampPan(panY.value, sc, stage.h, world.h);
+    },
+    [stage.w, stage.h, world.w, world.h],
+  );
   const look = Gesture.Simultaneous(drag, pinch);
   const cameraPaused = useSharedValue(false);
   useEffect(() => {

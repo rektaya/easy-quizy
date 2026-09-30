@@ -23,3 +23,17 @@ export function clampPan(pan: number, scale: number, stage: number, world: numbe
   const [lo, hi] = panRange(scale, stage, world);
   return Math.min(hi, Math.max(lo, pan));
 }
+
+/**
+ * Where a pinch settles when the fingers lift: the map only rests at two distances, close up (1) and the
+ * whole sky (`lowest`), never in between. A pinch that has covered about a fifth of the way from where it
+ * started flips to the other distance; a smaller one springs back to where it started.
+ */
+export function snapScale(scale: number, start: number, lowest: number): number {
+  'worklet';
+  const range = 1 - lowest;
+  if (range <= 0) return 1;
+  const startedClose = start > (1 + lowest) / 2;
+  if (startedClose) return scale <= 1 - 0.2 * range ? lowest : 1;
+  return scale >= lowest + 0.2 * range ? 1 : lowest;
+}

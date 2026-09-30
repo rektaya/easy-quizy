@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Button } from '../components/Button';
 import { TrashIcon } from '../components/Icons';
+import { WordCard } from '../components/WordCard';
 import { WORDS } from '../data/words';
 import { RING_AMBER, RING_GREEN, RING_RED } from '../circle/color';
 import { STATUS_LABEL, STATUS_ORDER, statusOf } from '../onboarding/status';
@@ -32,6 +34,8 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
   const { ratings, unrate } = useRatings();
   const { cards, removeWord } = useProfile();
   const [confirming, setConfirming] = useState<string | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null); // the word whose card is showing
+  const opened = openId ? WORDS.find((w) => w.id === openId) : undefined;
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<Sort>('status');
 
@@ -112,19 +116,29 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
           const sure = confirming === w.id;
           return (
             <View key={w.id} style={styles.row}>
-              <View style={styles.text}>
-                <Text style={styles.lemma}>
-                  {w.article ? <Text style={styles.article}>{w.article} </Text> : null}
-                  {w.lemma}
-                </Text>
-                <Text style={styles.en} numberOfLines={1}>
-                  {w.en}
-                </Text>
-              </View>
-              <View style={styles.status}>
-                <View style={[styles.dot, { backgroundColor: STATUS_COLOR[status] }]} />
-                <Text style={styles.statusText}>{STATUS_LABEL[status]}</Text>
-              </View>
+              <Pressable
+                style={styles.open}
+                onPress={() => {
+                  setConfirming(null);
+                  setOpenId(w.id);
+                }}
+                accessibilityRole="button"
+                accessibilityLabel={`${w.article ? w.article + ' ' : ''}${w.lemma}, ${w.en}: open the card`}
+              >
+                <View style={styles.text}>
+                  <Text style={styles.lemma}>
+                    {w.article ? <Text style={styles.article}>{w.article} </Text> : null}
+                    {w.lemma}
+                  </Text>
+                  <Text style={styles.en} numberOfLines={1}>
+                    {w.en}
+                  </Text>
+                </View>
+                <View style={styles.status}>
+                  <View style={[styles.dot, { backgroundColor: STATUS_COLOR[status] }]} />
+                  <Text style={styles.statusText}>{STATUS_LABEL[status]}</Text>
+                </View>
+              </Pressable>
               <Pressable
                 onPress={() => remove(w.id)}
                 accessibilityRole="button"
@@ -138,11 +152,24 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
           );
         })}
       </ScrollView>
+
+      {opened ? (
+        <View style={styles.overlay}>
+          <Pressable style={StyleSheet.absoluteFill} onPress={() => setOpenId(null)} accessibilityLabel="close the card" accessibilityRole="button" />
+          <View style={[styles.cardWrap, { paddingTop: insets.top + 24, paddingBottom: bottomSpace }]} pointerEvents="box-none">
+            <WordCard word={opened} tag={STATUS_LABEL[statusFor(opened.id)]} />
+            <Button label="close" kind="ghost" onPress={() => setOpenId(null)} />
+          </View>
+        </View>
+      ) : null}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  // the card of a tapped word, over the list (tap outside it to close)
+  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: 'rgba(8,16,26,0.95)' },
+  cardWrap: { flex: 1, paddingHorizontal: 24, gap: 12 },
   screen: { flex: 1, paddingHorizontal: 24, gap: 12 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 32 },
   back: { fontFamily: fonts.medium, fontSize: 16, color: colors.accent },
@@ -182,6 +209,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: colors.border,
   },
+  open: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 },
   text: { flex: 1, gap: 2 },
   lemma: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   article: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },

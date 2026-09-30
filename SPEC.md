@@ -61,7 +61,7 @@ A vocabulary app for German learners.
   - **Most useful**: the frequency ladder, filling the most valuable gaps first
   - **In sentences**: words that co-occur (Entscheidung + treffen)
 - **Words always fit the user.** The association trail decides *which area* to explore, and the user's estimated level decides *which words within it*: not too easy, not too hard (see "Calibration" in section 8). The estimate keeps updating from every rating: many high ratings push toward rarer words, many low ratings ease back toward common ones. **Pure Wander** (follow the trail regardless of difficulty) is an option in **Settings**, off by default.
-- **Counter.** Small, top left: a mini ring and "n / 20", where n is the number of gathered words waiting to be studied and 20 is the point where Explore pauses. (During the first-run calibration it counts "n / 15" instead.) **Explore pauses when the pile gets large:** once 20 gathered words are waiting to be studied, the Explore tab shows "explore is paused" with a button to Study, and opens again as words are studied. (The threshold, 20, is a first guess to tune.) The similar-word chips only offer words within one tier of the user's level, so they are never far too easy or too hard.
+- **Counter.** Small, top left: a mini ring and "n / 20", where n is the number of gathered words waiting to be studied and 20 is the point where Explore pauses. (During the first-run calibration it counts "n / 15" instead.) **Explore pauses when the pile gets large:** once 20 gathered words are waiting to be studied, the Explore tab shows "explore is paused" with a button to Study, and opens again as words are studied. **When the word that fills the pile is rated, Explore closes and the user is taken to Study automatically** (after about two seconds, so the rating's animation is not cut off); coming to Explore while it is already closed just shows the "paused" screen. (The threshold, 20, is a first guess to tune.) The similar-word chips only offer words within one tier of the user's level, so they are never far too easy or too hard.
 - **Word graph rule.** Semantically close pairs (opposites, near-synonyms) are not introduced back to back, to avoid interference. Theme and word-family links are preferred for new material.
 - **First word for everyone:** *Feierabend* (a delightful, very German word). After roughly ten words, the first stars appear on the Map.
 
@@ -73,9 +73,9 @@ A vocabulary app for German learners.
   2. Cloze (a sentence with a gap; for nouns, also a check of the article, such as "___ Haus")
   3. Typing the word from its meaning
 - **Spoken prompts are not in v1** (possible later).
-- New words in a session get a short "meet it" step first (a white card: the word big with its article small above, then the meaning, the plural, and an example at the bottom under a thin line), then an immediate small test with the Circle.
+- **A session goes in two parts.** First the session's new words (up to 5) as cards, one after another, to learn them (a white card: the word big with its article small above, then the meaning, the plural, and an example at the bottom under a thin line; the counter reads "new words · 1 / 5", the button "next word", and "test me" on the last card). Then every word of the session, the same new words included (and the reviews that are due, which have no card), one by one in the Circle, to test them (the counter reads "1 / 5").
 - **Celebration:** a word rated above 75% in Study gives a success haptic (a word rated as known also gets the light of a known word on the Circle). The session ends with "nicely done. you’ve started your journey".
-- **The Study tab opens straight on a session.** There is no dashboard (removed 2026-09-30). When there is nothing to study the tab says so and offers "go to explore".
+- **The Study tab opens straight on a session.** There is no dashboard (removed 2026-09-30). When there is nothing to study the tab says so and offers "go to explore". **When a session is finished and there is nothing left to study, Study closes and the user is taken to Explore automatically** (after about two seconds on "nicely done"); opening Study when there is nothing to study just says so, with "go to explore".
 - Words are **not** drip-fed daily. They enter only when a session begins.
 
 ### 4.3 Map
@@ -86,7 +86,7 @@ A vocabulary app for German learners.
 - **Tap a big star and the sky zooms in on it.** The rest of the sky grows and dims (the other big stars fade out) and the star slides to the middle, where the theme opens as **a slowly turning sphere of dots** (fine dust gives it its shape, the near side brighter and bigger than the far side). **Each word of the theme is one point of the sphere** (an even sample beyond 60 words), scattered over it so none clump. **The words you have taken into study shine** (orange while being learned, warm yellow once known); words you have not met are dim dots. The more words are learned, the more of the sphere shines. Drawn by the same shader as the big stars. Inspired by the dotted "thinking orbs" of libraries.dev, redrawn on our own Skia, no code taken from there.
 - **A card below the cluster** shows only the theme's name in English and German and how many of its words are explored. There is no breakdown by state.
 - **One action:** **explore from here** on that card switches to Explore, which starts on an unexplored word of that theme closest to the user's level. The button reads "explore is paused" while Explore is locked (20 words waiting) and "all explored" when nothing is left. Tapping the sky zooms back out (the card has no "close" label). It is not a full navigation surface.
-- The header shows only how many words have been explored ("25 words ›"), never the total, so how many words the app holds stays a surprise. **Tapping it opens the list of all words** you have met: searchable, sortable by status, a–z or newest, each with its status (new, shaky, getting there, solid, learned; a word marked known counts as learned) and a bin icon to delete it (two taps; a deleted word is never offered again). "‹ map" goes back to the sky where it was.
+- The header shows only how many words have been explored ("25 words ›"), never the total, so how many words the app holds stays a surprise. **Tapping it opens the list of all words** you have met: searchable, sortable by status, a–z or newest, each with its status (new, shaky, getting there, solid, learned; a word marked known counts as learned) and a bin icon to delete it (two taps; a deleted word is never offered again). **Tapping a word opens its card**, the same card as "new word" in Study (article, word, meaning, plural, example), tagged with the word's status instead of "new word"; tap outside it or "close" to go back to the list. "‹ map" goes back to the sky where it was.
 - Clusters follow **themes**. Word-family clusters are not built yet (the family links in the data are only strings, not connections between words).
 
 ## 5. Settings
@@ -113,7 +113,7 @@ A vocabulary app for German learners.
 ## 7. Scheduling
 
 - Spaced repetition with **FSRS** (built: the `ts-fsrs` library, wrapped in `src/srs/scheduler.ts`). Intervals are whole days (no minutes-long learning steps) and there is no fuzz.
-- **A Study batch** is the reviews that are due (up to 10, most overdue first) followed by up to 5 new words from the pile (rated lowest first). Reviews skip the "meet it" step and go straight to the Circle.
+- **A Study batch** is the reviews that are due (up to 10, most overdue first) followed by up to 5 new words from the pile (rated lowest first). Reviews have no card: they only appear in the Circle part.
 - **Seed the initial state from the Circle value** in Explore. A word rated near green starts with a longer first interval than one rated near red. This is a departure from Anki, which starts every card the same.
 - The four hidden segments map onto the four standard grades (Again / Hard / Good / Easy) for the scheduler.
 - **Spot-checks of "known" words (proposal):**
@@ -134,7 +134,7 @@ A vocabulary app for German learners.
   - **The user is told what it did, the moment the 15th word is rated** (after a short beat, so the ring's snap is not cut off): "got it, Name. we adjusted the words you’ll explore so they match your level." No score, no level name, no swipe needed. The words themselves then prove it.
   - Words rated during calibration count like any other: they go to the pile or are marked as known.
   - **Straight into Study.** The onboarding does not end in Explore. When the 15th word is rated, the message above appears and the user is taken **directly into a first Study session** to learn the words they just gathered, so the first minutes already deliver the app's real loop (find words, then learn them).
-    - The session is the usual small batch: **up to 5 words from the pile**, the ones the user rated lowest first (the ones they most need), each with the short "meet it" step. It is a normal Study session in every way (12-20 card badge does not apply, it ends when the batch is done), with a friendly closing line and a choice: "keep going" or "back to Explore".
+    - The session is the usual small batch: **up to 5 words from the pile**, the ones the user rated lowest first (the ones they most need), first as cards, then in the Circle (the same two parts as any session). It is a normal Study session in every way (12-20 card badge does not apply, it ends when the batch is done), with a friendly closing line and a choice: "keep going" or "back to Explore".
     - Study is where the Circle's value seeds the scheduler (section 7), so the calibration ratings directly set the first review intervals.
     - **Few words in the pile:** if the user knew most of the 15 (only 1-2 in the pile), do not force a tiny session. Say so ("you know a lot already"), keep exploring further up the ladder, and start Study once at least 3 words have gathered.
     - The tab bar appears only after this first session, so the first run is one guided path: name, 15 words, learn them. Afterwards the user lands in Explore with all three tabs.
@@ -167,25 +167,29 @@ Multiple languages, phrases and collocations, spoken/pronunciation-graded prompt
 3. Whether the spot-check proposal in section 7 feels right in practice (first check after about 3 weeks, at most 1-2 per session).
 4. Calibration (15 words, decided): whether the "not too easy, not too hard" message feels reassuring or like an exam result, and whether hiding the tab bar until the first Study session feels guided or restrictive. It needs a frequency-ranked word list with enough words at each step of the ladder (the 33-word sample is too small to test it).
 
-## 12b. Immediate next step: the first prototype
+## 12b. Where we are, and the next steps (written 2026-09-30)
 
-A clean, greyscale prototype (orange accent only where color is needed) that proves the core loop on the author's phone.
+**State of the app (all committed except the last small changes: see `git log`).** Expo prototype with: onboarding (name, 15 adaptive words, first Study session); **Explore** (endless feed, the stardust Circle, similar words, pause at 20 waiting words and an automatic move to Study when it closes); **Study** (a session in two parts: new-word cards, then every word in the Circle; FSRS scheduling; automatic move to Explore when nothing is left); **Map** (Skia night sky: theme stars in steps by share of words taken, threads between related themes, a turning sphere of dots per theme, pinch to the whole sky with a snap, camera mode that turns the phone into a camera pointed at the sky, tilt parallax, a unique sky per user, the list of all words with a card per word). 65 unit tests, `npm run typecheck` clean. It has been checked a lot **in the browser** (web build, phone-sized, scripted with puppeteer) and **very little on a real phone**.
 
-**In scope**
-- New Expo (React Native, TypeScript) project in `/Users/taya/Documents/design/vibecoding/better-anki`.
-- Three-tab shell in the agreed order: Explore, Study, Map. Study and Map are simple placeholders.
-- **Explore tab, working end to end:**
-  - The word in a circle, with the article for nouns.
-  - The Circle gesture: start anywhere on the ring and draw either way round, stars along an invisible ring that shine more with the rating, hidden 30/30/30/10 segments with haptic ticks between them, snap in the last 10%, plain tap does nothing, ghost-finger hint on the first word, brief undo toast.
-  - The reveal after the gesture: English meaning, one example sentence, word family chips.
-  - The pile counter ("You've gathered X words"), fed by the ratings.
-  - "Know" (last 10%) words are kept out of the pile.
-- A hard-coded list of around 30 German words as sample data (mostly nouns with articles), so the gesture and reveal can be judged without building the data pipeline.
-- Local persistence of the pile (a simple store is enough for now).
+**First thing next time: try it all on the phone (Expo Go over the iPhone hotspot) and report what feels wrong.** What has only been seen in a browser, and what to look at:
+1. **Smoothness** of everything drawn by Skia: the stardust Circle (210 dots, glow), the light of a known word across the whole screen, the Map (29 stars, threads, a full-screen canvas of about two screens), the sphere of dots. The Circle glow once lagged on the phone, so this is the biggest risk. Cheapest fixes if it lags: fewer dots, no blur on the halo, twinkle only on screen.
+2. **The Circle by feel:** is it clear where to draw without a visible ring (only the ghost finger on the first word shows it); are the four levels (blue dim, icy blue-white, warm cream, golden blaze) easy to tell apart; the self-completing ring after a short drawing (no stutter at the end any more, to be confirmed); the bigger word (max 36) on the longest words.
+3. **Sensors:** tilt parallax and camera mode were written without a gyroscope to test with. The direction may be reversed (flip a sign), the strengths (`PARALLAX_*` in `MapScreen.tsx`, `TILT_*` in `GlowShader.tsx`, `SWEEP_X/SWEEP_Y` in `onboarding/camera.ts`) need tuning, and the gyroscope may drift.
+4. **Map snap:** is the threshold (a fifth of the way) and the speed right.
+5. **Study's auto-close** (a finished session with nothing left goes to Explore): the path was never reached in testing because there were always more words waiting.
 
-**Out of scope for the prototype:** the real dataset, lenses, Guided mode, Study sessions and FSRS, the Map, Settings, reminders, audio, name entry.
+**Known gaps and ideas, roughly in the order I would do them**
+- **Reduce Motion:** the stardust (twinkle), the light across the screen and the Map's parallax/camera mode should respect the phone's setting (the old fireworks did; the new animations do not yet, except the tilt).
+- **First-word hint** without a ring: maybe a few faint stars or a clearer tip; watch a new user try.
+- **Study order in the test part:** reviews first, then new words (as now), or new words first while they are fresh?
+- **The ring's meaning after letting go early:** any ring now completes itself, so brightness alone carries the rating; consider making the completed part a little fainter than the drawn part.
+- **Map:** tapping a star while pulled back could zoom in on it; cluster card and sphere polish; word-family clusters (the family links are only strings in the data).
+- **Not built yet from the spec:** spot-checks of known words, reminders, Settings, audio, a real frequency list to check the difficulty tiers, a credits screen for the free fonts (Figtree, OFL) before shipping.
+- **Accounts and sync:** none yet, everything is on the device (the name, ratings, FSRS cards, the sky seed).
+- **Cleanups:** `summarize` in `onboarding/status.ts`, `WORD_POINT_SIZE` in `sky.ts` and `zoomStates`/`glowOf`-style leftovers may now be unused; the ghost-finger arc in `circle/Circle.tsx` is the only old-style piece of the Circle.
+- **Sharing:** the walkthrough page made at the start (an Artifact, Russian captions) shows the **old** app (red-to-green Circle, Study dashboard, no sphere); redo the screenshots with `puppeteer-core` against `expo start` web (390x844) when the app is worth showing colleagues.
 
-**Done when:** the Circle feels natural on a real iPhone, and a short Explore session produces a sensible pile count.
+**How to run it:** `npx expo start` in the project folder (use the iPhone Personal Hotspot; Expo Go and `npx expo login` must use the same Expo account). Web: `http://localhost:8081` (needs `public/canvaskit.wasm`, copied by `npm install`). Tests: `npm test`.
 
 ## 13. Suggested build order
 
@@ -203,6 +207,6 @@ A clean, greyscale prototype (orange accent only where color is needed) that pro
 
 - **Moving between the three tabs is animated:** the old screen slides a little to the side, shrinks slightly and fades while the new one comes in from the side of the tab you pressed (about 0.4 s, easing out), and the orange tile in the tab bar glides to the new tab with a soft spring.
 - **The Map reacts to the phone's tilt (gyroscope).** Tilting nudges the layers of the sky by different amounts, so it has depth (the small far stars move least, the big stars and their names most), and in an opened theme the sphere turns a little further and leans with the tilt. The tilt is measured from where the phone was held a moment ago (the zero slowly follows it) and smoothed. The sensor runs only while the Map is on screen, and not at all when the phone's Reduce Motion is on. Not available on the web.
-- **Pinch to pull the camera back.** Two fingers pulling together zoom the Map out, smoothly, down to a view of the **whole sky at once**; spreading them brings it back. As the camera pulls back the theme names fade out, so the far view shows only the stars and the threads between themes (the shape of the whole sky, and where it shines). While pulled back, tapping a star does nothing; pinch back in to open a theme. Dragging still works at every distance (and the sky is centred when it fits the screen).
+- **Pinch to pull the camera back (with a snap).** Two fingers pulling together zoom the Map out, smoothly, down to a view of the **whole sky at once**; spreading them brings it back. As the camera pulls back the theme names fade out, so the far view shows only the stars and the threads between themes (the shape of the whole sky, and where it shines). While pulled back, tapping a star does nothing; pinch back in to open a theme. Dragging still works at every distance (and the sky is centred when it fits the screen). **The map only rests at two distances, close up and the whole sky:** while the fingers are down the map follows them, and when they lift it snaps (about a third of a second, with a light haptic tick) to the nearer of the two; a pinch that covered about a fifth of the way flips it, a smaller one springs back.
 - **Camera mode (Map, phone only).** A small viewfinder button next to "words ›" turns the phone into a camera pointed at the sky: where the back of the phone points decides which part of the map is on screen, so the user finds a star by turning round like looking for it in the real sky. **The sky is above you**, so when the mode is switched on the view glides to the **bottom** of the map, and the phone has to be **raised** to climb (120 degrees of raising from the starting angle goes from the bottom of the map to the top); looking lower than where it started changes nothing. Sideways, 120 degrees of turning crosses the whole width. The view glides after the phone, and pinch still works. While it is on, dragging and the tilt parallax are off; it pauses while a theme is open (and afterwards carries on from the same view) and is off by default. There is no re-centre gesture (switch it off and on to start again).
 - **The sky extends well past the outermost theme stars** (about half a screen of empty starry sky on every side), so no theme star sits near the edge of the sky, and the camera always has sky to look at beyond them.
