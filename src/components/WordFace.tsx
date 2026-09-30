@@ -7,7 +7,7 @@ import { colors, fonts } from '../theme';
 // The German word as it sits in the middle of the circle: article above, lemma below.
 // Long words step down in size so they stay inside the ring.
 export function WordFace({ word, fade = false }: { word: Word; fade?: boolean }) {
-  const size = Math.min(30, Math.floor(200 / (word.lemma.length * 0.6)));
+  const size = Math.min(36, Math.floor(244 / (word.lemma.length * 0.6)));
   return (
     <Animated.View entering={fade ? FadeIn.duration(220) : undefined} style={styles.wrap}>
       {word.article ? <Text style={styles.article}>{word.article}</Text> : null}
@@ -20,6 +20,6 @@ export function WordFace({ word, fade = false }: { word: Word; fade?: boolean })
 
 const styles = StyleSheet.create({
   wrap: { alignItems: 'center' },
-  article: { fontFamily: fonts.regular, fontSize: 16, color: colors.textSecondary, marginBottom: 4 },
+  article: { fontFamily: fonts.regular, fontSize: 20, color: colors.textSecondary, marginBottom: 4 },
   lemma: { fontFamily: fonts.medium, color: colors.text },
 });

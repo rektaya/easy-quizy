@@ -21,9 +21,9 @@ A vocabulary app for German learners.
 ## 3. The Circle (core interaction)
 
 - One word sits in a circle in the center of the screen. Nouns always show their article: **das Haus**. The article already conveys gender, so there is **no separate gender color-coding**.
-- **The drawing starts wherever the finger lands on the ring** (on the ring itself, or within about a thumb's width of it; touching the word in the middle does nothing). The arc grows from that spot, and can be drawn **either way round**, clockwise or counter-clockwise. A full circle means coming back to where you started. The app tracks how far the finger has turned around the circle's centre, so it works from any starting point.
-- **A continuous scale with no labels.** The arc fills up gradually, and its color moves from **red** (don't know it at all) through to **green** (know it for sure). The user rates by feel, not by picking a named level.
-- **The arc glows (currently switched off: it made the animation lag on the phone; `RING_GLOW` in `src/circle/Circle.tsx` brings it back).** A soft halo in the arc's own colour (red, amber, green) surrounds the drawn part and fades out with distance. It is only a hint when the arc has just started and gets stronger as the ring fills, and it stays round the ring once the word is rated. (It is built from 26 stacked copies of the arc, each a hair wider and fainter than the last, so no single layer shows; the drawing library has no blur. The fill of the arc is animated once per colour for all its copies, to keep the gesture smooth.)
+- **There is no visible ring.** The user draws a circle round the word with a finger, and the app tracks it along an invisible ring (the drawing starts wherever the finger lands on that ring, or within about a thumb's width of it; touching the word in the middle does nothing). It can be drawn **either way round**, clockwise or counter-clockwise; a full circle means coming back to where you started. The app tracks how far the finger has turned around the circle's centre, so it works from any starting point.
+- **Stardust.** Stars appear where the finger goes (up to 210 of them along the circle), each settling in from slightly outside and then drifting and twinkling in its own way, with a soft glow at the finger. **The colour does not go from red to green; the rating shows as how much the stars shine**, in clear steps that match the hidden segments: "don't know" is a few small but clear **blue** stars with a soft blue glow; "hard" a little bigger and brighter, an icy blue-white; "good" warm cream with an orange glow; "know" large golden-white stars in a strong orange-gold glow. The user rates by feel, not by picking a named level.
+- **When the finger lets go early**, the ring carries on by itself to the end (about 1.5 s), in the same colour and brightness the finger stopped at: the rating is carried by how bright the stars are, not by whether the ring is complete.
 - **Hidden segments.** The user never sees them, but the arc is divided into four:
 
 | Segment | Share of the arc | Meaning in Explore | Grade in Study |
@@ -38,7 +38,7 @@ A vocabulary app for German learners.
 - **What the rating does in Explore:**
   - In the "know" segment: the word is treated as known and is not added to the pile (silent spot-checks later).
   - In any other segment: the word goes to the pile, and the exact continuous value is kept for scheduling.
-- **Discoverability:** on the very first word only (*Feierabend*), a ghost finger draws an arc, with a tip below the circle: "start anywhere on the ring and draw around". There is no other tutorial.
+- **Discoverability:** on the very first word only (*Feierabend*), a ghost finger draws a thin arc, with a tip below the circle: "draw a circle round the word, starting anywhere. the brighter it shines, the better you know the word." There is no other tutorial.
 - **Undo:** the "undo" in the status pill inside the circle, for a few seconds after each draw (mirrors Anki's undo).
 - **Moving on (two ways, one motion):**
   - **Tap any similar word** below the circle to go to it. Words you have already rated are not shown as chips.
@@ -47,7 +47,7 @@ A vocabulary app for German learners.
 - **Layout.** The circle sits a little above the middle of the screen so the example sentence and similar words have room below it.
 - **Flip the word.** After rating, tap anywhere inside the circle (the tap area is round, like the circle) to see the original German word again (with its article, exactly as before rating), and tap again to get the translation back. It resets to the translation on every new word.
 - **Status line.** After you rate a word, a small line of text appears **inside the circle, above the word** ("added to study", or "marked as known"), with an orange **undo** beside it, and no background. It floats on top of the circle, so the translation stays exactly centred. It fades away after a few seconds.
-- **Fireworks.** Marking a word as known sets off a short firework animation over the circle: a few bursts of little streaks in greens, amber and orange that fly outward and fade. It is skipped when the phone's "reduce motion" setting is on.
+- **A star lights up (a known word).** Marking a word as known makes the ring flare once, a small star ignite at the centre of the circle (a bright point with short rays, gone within about half a second), and **a warm wave of light spread from it across the whole screen** and fade out (about two seconds). The screen's own content (words, buttons) is drawn above the light, so nothing gets harder to read. The ring then stays bright. (This replaces the old fireworks.)
 - **Tips.** The gestures are taught once, on the very first word, with tips **below** the circle: "start anywhere on the ring and draw around…" before rating, and "tap a word to travel, or swipe up" after.
 - **In Study,** typed answers are auto-graded. The circle animates to the grade the app decided (for example, a typo lands in the "Good" segment). The user can override by drawing.
 
@@ -74,7 +74,7 @@ A vocabulary app for German learners.
   3. Typing the word from its meaning
 - **Spoken prompts are not in v1** (possible later).
 - New words in a session get a short "meet it" step first (a white card: the word big with its article small above, then the meaning, the plural, and an example at the bottom under a thin line), then an immediate small test with the Circle.
-- **Celebration:** a word rated above 75% in Study sets off the fireworks and a success haptic. The session ends with "nicely done. you’ve started your journey".
+- **Celebration:** a word rated above 75% in Study gives a success haptic (a word rated as known also gets the light of a known word on the Circle). The session ends with "nicely done. you’ve started your journey".
 - **The Study tab opens straight on a session.** There is no dashboard (removed 2026-09-30). When there is nothing to study the tab says so and offers "go to explore".
 - Words are **not** drip-fed daily. They enter only when a session begins.
 
@@ -151,8 +151,8 @@ A vocabulary app for German learners.
 
 - **A deep navy night, everywhere.** The whole app is dark: background `#0C1927`, **at the start the sky is empty, plain navy.** Every word the user rates, whatever the rating (known or to study), lights one more small star somewhere on the background of every screen (with a soft ring that spreads and fades on the new one), so the further they get, the more stars there are. The stars are the same evenly scattered small ones as on the Map, in a scrambled order so the sky fills up all over, not from a corner. The first stars are a little brighter and bigger so each one is noticed; as the sky fills they settle to a small, dim level (after about 80 stars), so the background never competes with the content. Undoing a rating removes its star. The Map draws its own, full sky with the big theme stars on top of it.
 - **Ink and greys are cool and light:** text and icons `#EFF2F5`, secondary text `#A5B0BD`, quiet text `#6F7E90`, the empty ring of the Circle `#22364B`. Cards and fields are frosted (white at 7%, with a white 12% border), a solid card `#15263A` is used where something must hide what is behind it (the new-word card, the Map's info card), and small pills are white at 10%.
-- **One accent: orange `#F75831`** for the main button, the active tab, the counter and its ring, selected options, and the fireworks. Text on it is white.
-- **One functional exception:** the Circle's arc keeps its red→green color scale, because the color is the rating signal itself (data), not decoration.
+- **One accent: orange `#F75831`** for the main button, the active tab, the counter and its ring, and selected options. Text on it is white.
+- **No red-to-green anywhere:** the Circle's rating is shown by how much its stars shine (blue and dim for "don't know" up to a golden blaze for "know"), not by a colour scale.
 - Type is Figtree, lowercase for the interface text (German words keep their capitals).
 - The colors live in `src/theme.ts`. A proper visual identity comes later, once the author has collected references (Mobbin) and the interactions are proven.
 
@@ -176,7 +176,7 @@ A clean, greyscale prototype (orange accent only where color is needed) that pro
 - Three-tab shell in the agreed order: Explore, Study, Map. Study and Map are simple placeholders.
 - **Explore tab, working end to end:**
   - The word in a circle, with the article for nouns.
-  - The Circle gesture: start anywhere on the ring and draw either way round, continuous arc fill, red→green color, hidden 30/30/30/10 segments with haptic ticks between them, snap in the last 10%, plain tap does nothing, ghost-finger hint on the first word, brief undo toast.
+  - The Circle gesture: start anywhere on the ring and draw either way round, stars along an invisible ring that shine more with the rating, hidden 30/30/30/10 segments with haptic ticks between them, snap in the last 10%, plain tap does nothing, ghost-finger hint on the first word, brief undo toast.
   - The reveal after the gesture: English meaning, one example sentence, word family chips.
   - The pile counter ("You've gathered X words"), fed by the ratings.
   - "Know" (last 10%) words are kept out of the pile.
@@ -189,7 +189,7 @@ A clean, greyscale prototype (orange accent only where color is needed) that pro
 
 ## 13. Suggested build order
 
-1. **Circle prototype** on a real device (continuous fill, red→green scale, snap at the top, ghost hint). This is the riskiest and most distinctive piece.
+1. **Circle prototype** on a real device (stars that shine more with the rating, snap at the top, ghost hint). This is the riskiest and most distinctive piece.
 2. **Data pipeline** for a small slice (around 300-500 senses) with all fields filled.
 3. **Explore loop** on local data: lenses, Wander, pile counter, reveal settings.
 4. **Study** with FSRS, seeded from the Circle, plus the session badge.
@@ -206,4 +206,3 @@ A clean, greyscale prototype (orange accent only where color is needed) that pro
 - **Pinch to pull the camera back.** Two fingers pulling together zoom the Map out, smoothly, down to a view of the **whole sky at once**; spreading them brings it back. As the camera pulls back the theme names fade out, so the far view shows only the stars and the threads between themes (the shape of the whole sky, and where it shines). While pulled back, tapping a star does nothing; pinch back in to open a theme. Dragging still works at every distance (and the sky is centred when it fits the screen).
 - **Camera mode (Map, phone only).** A small viewfinder button next to "words ›" turns the phone into a camera pointed at the sky: where the back of the phone points decides which part of the map is on screen, so the user finds a star by turning round like looking for it in the real sky. **The sky is above you**, so when the mode is switched on the view glides to the **bottom** of the map, and the phone has to be **raised** to climb (120 degrees of raising from the starting angle goes from the bottom of the map to the top); looking lower than where it started changes nothing. Sideways, 120 degrees of turning crosses the whole width. The view glides after the phone, and pinch still works. While it is on, dragging and the tilt parallax are off; it pauses while a theme is open (and afterwards carries on from the same view) and is off by default. There is no re-centre gesture (switch it off and on to start again).
 - **The sky extends well past the outermost theme stars** (about half a screen of empty starry sky on every side), so no theme star sits near the edge of the sky, and the camera always has sky to look at beyond them.
-- **Circle lab (temporary sandbox) and the stardust Circle.** Holding the word "map" in the Map header opens a screen to try the chosen look for the Circle's fill animation, **stardust**, on the phone (comet and liquid were tried and dropped). **There is no ring at the start**: the user draws along an invisible circle and stars appear where the finger goes (210 possible dots, each settling in from slightly outside, then drifting and twinkling in its own way, with a glow at the finger). **There is no red-to-green; what grows with the rating is how much the stars shine**, in clearly different steps matching the four hidden segments: "don't know" is a few small but clear blue stars with a soft blue glow; "hard" a little bigger and brighter, an icy blue-white; "good" warm cream with an orange glow; "know" large golden-white stars in a strong orange-gold glow. **Let go before the end** and the ring carries on by itself to the end, in the same colour and brightness the finger stopped at (a glow runs round the rest of the circle, about 1.5 s); the rating is carried by how bright it is, not by whether the ring is complete. **Reach the end (a known word)** and the ring flares once while **the whole circle fills with bright light**: it spills in from the ring to the centre (a brief cream-white peak), then draws back and settles into a soft warm glow that is strongest at the ring and fades towards the word, so the word stays clear. Code in `src/circle/lab/`; once the look is settled it moves into the real Circle (replacing the fireworks and the red-to-green arc) and the lab goes away.

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
 import { Gesture } from 'react-native-gesture-handler';
 import {
@@ -17,16 +18,16 @@ import {
   nextZone,
   onRing,
   snapValue,
-} from '../geometry';
-import type { Segment } from '../geometry';
+} from './geometry';
+import type { Segment } from './geometry';
 
-// The Circle gesture for the animation lab: the same drawing rules as the real Circle (start anywhere
-// on the ring, either way round, hidden 30/30/30/10 segments with haptic ticks, snap in the last 10%),
-// but it exposes everything an animation might want to react to, instead of drawing anything itself.
+// The Circle gesture: start anywhere on the invisible ring and draw either way round; hidden 30/30/30/10
+// segments with haptic ticks; a snap in the last 10%. It draws nothing itself: it exposes everything the
+// animation (StardustRing) reacts to, as shared values.
 
 export const RING_STROKE = 14;
-/** Room round the ring that the animations may draw in. */
-export const LAB_PAD = 36;
+/** Room round the ring that the animation may draw in (the glow of the stars spills past the circle). */
+export const RING_PAD = 36;
 
 export type Ring = ReturnType<typeof useRing>;
 
@@ -37,7 +38,11 @@ function tickKnow() {
   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
 }
 
-export function useRing(size: number, onCommit: (value: number) => void) {
+/**
+ * `value` is the committed rating (0..1) or null while the word is still to be rated. Once it is set the
+ * ring is locked and swipes fall through to the screen behind it.
+ */
+export function useRing(size: number, value: number | null, onCommit: (value: number) => void) {
   const c = size / 2;
   const r = c - RING_STROKE;
 
@@ -61,6 +66,7 @@ export function useRing(size: number, onCommit: (value: number) => void) {
   });
 
   const gesture = Gesture.Pan()
+    .enabled(value === null)
     .minDistance(0)
     .onBegin((e) => {
       'worklet';
@@ -115,7 +121,7 @@ export function useRing(size: number, onCommit: (value: number) => void) {
           burst.value = withTiming(1, { duration: 2200 });
         } else {
           finish.value = 0;
-          finish.value = withTiming(1, { duration: 1500, easing: Easing.out(Easing.cubic) });
+          finish.value = withTiming(1, { duration: 1400, easing: Easing.inOut(Easing.quad) });
         }
         scheduleOnRN(onCommit, v);
       } else {
@@ -132,6 +138,21 @@ export function useRing(size: number, onCommit: (value: number) => void) {
     pulse.value = 0;
     zone.value = 1;
   };
+
+  // Keep the ring in step with the committed rating. A rating that is already there when the ring appears
+  // (restored) is shown at rest, without the animation; a rating the finger has just made is left alone
+  // (the ring is already locked and animating); and when the rating goes away (undo) the ring empties.
+  useEffect(() => {
+    if (value === null) {
+      if (locked.value) reset();
+    } else if (!locked.value) {
+      progress.value = value;
+      locked.value = true;
+      if (value >= 0.9) burst.value = 1;
+      else finish.value = 1;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   // The shared values are kept together in `v`, apart from the gesture and `reset`: a worklet may only
   // capture things it can copy to the UI thread, and a gesture is not one of them. So the animations

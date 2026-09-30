@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import * as Haptics from 'expo-haptics';
-import Animated, { FadeIn, useReducedMotion } from 'react-native-reanimated';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
-import { Fireworks } from '../components/Fireworks';
 import { Translation } from '../components/Translation';
 import { WordFace } from '../components/WordFace';
 import { WORDS } from '../data/words';
@@ -20,7 +19,7 @@ import { colors, fonts, radius, shadow } from '../theme';
 // absolutely, so nothing that appears after rating (the example, the button) can move it.
 const CIRCLE_LIFT = 52;
 
-/** A word rated above this in Study is a small win: fireworks and a buzz. */
+/** A word rated above this in Study is a small win: a buzz. */
 const CELEBRATE_ABOVE = 0.75;
 
 type Props = {
@@ -43,8 +42,6 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
   const [index, setIndex] = useState(0);
   const [met, setMet] = useState(false); // a new word has been met and is now to be tested
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
-  const [burst, setBurst] = useState(0); // counts the fireworks shown for the current word
-  const reduceMotion = useReducedMotion();
   const [body, setBody] = useState({ w: 0, h: 0 }); // the area the circle sits in
 
   // The batch is picked once, when the saved data has loaded (and again for "keep going").
@@ -65,7 +62,6 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
 
   const next = () => {
     setValue(null);
-    setBurst(0);
     setMet(false);
     setIndex((i) => i + 1);
   };
@@ -74,7 +70,6 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
     setIndex(0);
     setMet(false);
     setValue(null);
-    setBurst(0);
   };
 
   const shell = [styles.screen, { paddingTop: insets.top + 12, paddingBottom: bottomSpace }];
@@ -163,11 +158,9 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit }: Props) {
                   reviewWord(word.id, v, ratings[word.id]);
                   if (v > CELEBRATE_ABOVE) {
                     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-                    if (!reduceMotion) setBurst((n) => n + 1);
                   }
                 }}
               />
-              {burst > 0 ? <Fireworks key={burst} size={size} /> : null}
             </View>
             {value !== null ? (
               <Animated.Text

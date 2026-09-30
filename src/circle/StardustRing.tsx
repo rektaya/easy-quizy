@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { BlurMask, Canvas, Circle, Group, Points, RadialGradient, useClock, vec } from '@shopify/react-native-skia';
 import type { SharedValue } from 'react-native-reanimated';
 import { useDerivedValue } from 'react-native-reanimated';
-import { random } from '../../onboarding/sky';
-import { LAB_PAD } from './useRing';
+import { random } from '../onboarding/sky';
+import { RING_PAD } from './useRing';
 import type { Ring } from './useRing';
 
 const DOTS = 210;
@@ -12,12 +12,17 @@ const DOTS = 210;
 // appear where your finger goes, each settling in from slightly outside and then drifting and twinkling in
 // its own way. The colour never changes (the warm white and orange of the stars on the Map); what grows
 // with the rating is how much they shine: a short arc is a few faint, small stars, a full ring is a bright
-// glowing one. A known word makes the ring flare once and the whole circle fills with bright light,
-// which then settles into a soft warm glow behind the word.
+// glowing one. A known word makes the ring flare once (the screen then lights up, see ScreenGlow).
 
 type Dust = { s: number; jitter: number; big: boolean; fly: number; phase: number };
 type Placed = { x: number; y: number; lit: boolean };
 type Shared<T> = SharedValue<T>;
+
+const ease = (t: number) => {
+  'worklet';
+  const k = Math.min(1, Math.max(0, t));
+  return k * k * (3 - 2 * k);
+};
 
 // How much a rating shines, 0..1, by the four hidden segments: "don't know" is barely a glimmer, "know" is
 // a blaze, and the steps in between are clearly different from each other.
@@ -70,7 +75,7 @@ const HALO_RAMP = [
   [1, 255, 150, 55],
 ];
 
-export function DustRing({ ring }: { ring: Ring }) {
+export function StardustRing({ ring }: { ring: Ring }) {
   const { c, r, size, v } = ring;
   const clock = useClock();
   const dots = useMemo<Dust[]>(() => {
@@ -95,7 +100,8 @@ export function DustRing({ ring }: { ring: Ring }) {
       const lit = d.s <= p;
       const a = startA + dir * d.s * Math.PI * 2 + Math.sin(time * 0.5 + d.phase * 1.7) * 0.012;
       // the dots nearest the finger are still arriving; once the ring is complete they have all settled
-      const settle = p < 1 ? Math.exp(-(p - d.s) * 15) : 0;
+      // (when a ring finishes itself they catch up gradually, so there is no jump when it reaches the end)
+      const settle = v.display.value < 1 ? Math.exp(-(p - d.s) * 15) * (1 - ease(v.finish.value)) : 0;
       const rad = r + d.jitter * 0.55 + Math.sin(time * 0.7 + d.phase) * 1.8 + settle * 15 * d.fly;
       return { x: c + rad * Math.sin(a), y: c - rad * Math.cos(a), lit };
     });
@@ -117,9 +123,8 @@ export function DustRing({ ring }: { ring: Ring }) {
   const haloW = useDerivedValue(() => 5 + 15 * shine.value);
 
   return (
-    <Canvas style={{ width: size + 2 * LAB_PAD, height: size + 2 * LAB_PAD }} pointerEvents="none">
-      <Group transform={[{ translateX: LAB_PAD }, { translateY: LAB_PAD }]}>
-        <Light c={c} r={r} burst={v.burst} />
+    <Canvas style={{ width: size + 2 * RING_PAD, height: size + 2 * RING_PAD }} pointerEvents="none">
+      <Group transform={[{ translateX: RING_PAD }, { translateY: RING_PAD }]}>
         {[true, false].map((big) => (
           <Halo key={`h${big}`} dots={dots} all={all} big={big} opacity={big ? haloBig : haloSmall} width={haloW} color={haloColor} />
         ))}
@@ -157,49 +162,6 @@ function Core({ dots, all, big, opacity, width, color }: { dots: Dust[]; all: Sh
   return <Points points={points} mode="points" style="stroke" strokeCap="round" strokeWidth={width} color={color} opacity={opacity} />;
 }
 
-// The light that fills the circle when a word is known: it spills inward from the ring until the whole
-// circle is bright (a brief peak), then draws back towards the ring and settles into a soft warm glow
-// that is brightest at the ring and fades towards the word, so the word stays clear.
-function Light({ c, r, burst }: { c: number; r: number; burst: Shared<number> }) {
-  const ease = (t: number) => {
-    'worklet';
-    const k = Math.min(1, Math.max(0, t));
-    return k * k * (3 - 2 * k);
-  };
-  const reach = r + 10;
-  const opacity = useDerivedValue(() => {
-    const b = burst.value;
-    if (b <= 0) return 0;
-    return (0.42 + 0.54 * (1 - ease((b - 0.36) / 0.4))) * ease(b / 0.12);
-  });
-  // where the inner edge of the light is (0 = the centre, r/reach = the ring): it runs in to the centre,
-  // then draws back to about half way
-  const inner = useDerivedValue(() => {
-    const fill = ease(burst.value / 0.38);
-    const settle = ease((burst.value - 0.4) / 0.45);
-    return (r / reach) * (1 - fill * (1 - 0.55 * settle));
-  });
-  // cream at the peak, warming to orange-gold as it settles
-  const colors = useDerivedValue(() => {
-    const settle = ease((burst.value - 0.4) / 0.45);
-    const g = Math.round(241 - 75 * settle);
-    const bl = Math.round(205 - 120 * settle);
-    const soft = 0.4 + 0.6 * (1 - settle); // at rest the glow is faint towards the word and strong at the ring
-    return [
-      `rgba(255,${g},${bl},0)`,
-      `rgba(255,${g},${bl},0)`,
-      `rgba(255,${g},${bl},${0.9 * soft})`,
-      `rgba(255,${Math.min(255, g + 12)},${Math.min(255, bl + 25)},1)`,
-    ];
-  });
-  const positions = useDerivedValue(() => [0, inner.value * 0.3, Math.max(inner.value * 0.8, 0.001), r / reach]);
-  return (
-    <Circle cx={c} cy={c} r={reach} opacity={opacity}>
-      <RadialGradient c={vec(c, c)} r={reach} colors={colors} positions={positions} />
-    </Circle>
-  );
-}
-
 // a glow at the finger's end while drawing
 function Head({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
   // the glow rides on the front of the stars: where the finger is, then where the ring finishes itself
@@ -215,7 +177,7 @@ function Head({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
   const opacity = useDerivedValue(() => {
     if (v.display.value < 0.004) return 0;
     if (v.dragging.value) return 1;
-    return v.finish.value > 0 && v.finish.value < 1 ? 0.85 : 0;
+    return v.finish.value > 0 && v.finish.value < 1 ? 0.85 * (1 - ease((v.finish.value - 0.7) / 0.3)) : 0;
   });
   return (
     <Circle cx={x} cy={y} r={rad} opacity={opacity}>

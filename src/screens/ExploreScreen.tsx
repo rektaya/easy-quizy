@@ -5,7 +5,6 @@ import Animated, {
   Easing,
   useAnimatedStyle,
   useSharedValue,
-  useReducedMotion,
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
@@ -13,7 +12,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
-import { Fireworks } from '../components/Fireworks';
 import { Ring } from '../components/Ring';
 import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
@@ -112,11 +110,9 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const doneTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [currentId, setCurrentId] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null); // "added to study" / "marked as known"
-  const [burst, setBurst] = useState<{ id: string; n: number } | null>(null); // fireworks for a known word
   const flipRef = useRef<View>(null);
   const [faceHeight, setFaceHeight] = useState(0); // height of the word in the middle of the circle
   const [showOriginal, setShowOriginal] = useState(false); // after rating: tap the word to flip to German and back
-  const reduceMotion = useReducedMotion();
   const [body, setBody] = useState({ w: 0, h: 0 });
   const statusTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -177,8 +173,6 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
       addAnswer({ id: word.id, tier: word.tier, value }); // every rating refines the level estimate
       const known = value >= 0.9;
       setStatus(known ? 'marked as known' : 'added to study');
-      // knowing a word sets off fireworks (unless the phone asks for reduced motion)
-      if (known && !reduceMotion) setBurst((b) => ({ id: word.id, n: (b?.n ?? 0) + 1 }));
       if (statusTimer.current) clearTimeout(statusTimer.current);
       statusTimer.current = setTimeout(clearStatus, STATUS_MS);
       // The moment the calibration words are in, the "got it" screen takes over (a beat later, so
@@ -188,7 +182,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         doneTimer.current = setTimeout(() => onCalibrationDone?.(), DONE_DELAY_MS);
       }
     },
-    [word, rate, calibrating, answers.length, pileCount, onCalibrationDone, addAnswer, clearStatus, reduceMotion],
+    [word, rate, calibrating, answers.length, pileCount, onCalibrationDone, addAnswer, clearStatus],
   );
 
   const onUndo = useCallback(() => {
@@ -198,7 +192,6 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     }
     if (doneTimer.current) clearTimeout(doneTimer.current);
     doneTimer.current = null;
-    setBurst(null);
     clearStatus();
   }, [word, unrate, removeAnswer, clearStatus]);
 
@@ -387,7 +380,6 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                     reveal={revealed ? revealInside : undefined}
                     onCommit={onCommit}
                   />
-                  {burst && burst.id === word.id ? <Fireworks key={burst.n} size={size} /> : null}
                 </View>
 
                 {showWelcome ? (
@@ -401,7 +393,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                 {/* The tips teach the gestures once, on the very first word, below the circle. */}
                 {showHint ? (
                   <Text style={[styles.hint, { top: circleTop + size + 26 }]}>
-                    start anywhere on the ring and draw around. the fuller the circle, the better you know the word.
+                    draw a circle round the word, starting anywhere. the brighter it shines, the better you know the word.
                   </Text>
                 ) : null}
 

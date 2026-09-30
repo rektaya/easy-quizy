@@ -6,10 +6,10 @@ import { colors, fonts } from '../theme';
 // The translation takes the place of the German word inside the circle, in the same style.
 // Longer translations step down in size and wrap, so they stay inside the ring.
 function sizeFor(text: string): number {
-  if (text.length <= 12) return 30;
-  if (text.length <= 18) return 24;
-  if (text.length <= 28) return 20;
-  return 17;
+  if (text.length <= 12) return 36;
+  if (text.length <= 18) return 30;
+  if (text.length <= 28) return 24;
+  return 20;
 }
 
 export function Translation({ text }: { text: string }) {
