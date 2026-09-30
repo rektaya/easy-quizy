@@ -6,18 +6,20 @@ type IconProps = { color: string; size?: number };
 
 const strokeProps = { fill: 'none', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
 
-/** Explore: a little flower with five petals. */
+/** Explore: a telescope on a tripod, pointed at the sky. */
 export function ExploreIcon({ color, size = 26 }: IconProps) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Circle cx={12.00} cy={4.30} r={2.3} stroke={color} {...strokeProps} />
-      <Circle cx={15.52} cy={6.86} r={2.3} stroke={color} {...strokeProps} />
-      <Circle cx={14.17} cy={10.99} r={2.3} stroke={color} {...strokeProps} />
-      <Circle cx={9.83} cy={10.99} r={2.3} stroke={color} {...strokeProps} />
-      <Circle cx={8.48} cy={6.86} r={2.3} stroke={color} {...strokeProps} />
-      <Circle cx={12} cy={8} r={0.9} fill={color} />
-      <Path d="M12 14.4c.3 2.4.1 4.6-.4 6.4" stroke={color} {...strokeProps} />
-      <Path d="M11.8 18.2c-1.8-1-3.4-.7-4.6.5 1.6 1.1 3.4 1 4.6-.5z" stroke={color} {...strokeProps} />
+      {/* the wide barrel with its lens */}
+      <Path d="M8.9 7.4L17.2 2.6c.9-.4 1.6-.1 2 .6l.8 1.7c.3.8 0 1.5-.8 2L11.6 11.8c-.8.4-1.5.2-1.9-.5L8.6 9.3c-.3-.7-.1-1.6.3-1.9z" stroke={color} {...strokeProps} />
+      {/* the eyepiece */}
+      <Path d="M9.4 8.5L5.6 10.7l1.5 2.6L10.9 11" stroke={color} {...strokeProps} />
+      {/* a band round the barrel */}
+      <Path d="M13.2 5.3l2.4 4.1" stroke={color} {...strokeProps} />
+      {/* the tripod */}
+      <Path d="M11.3 12.7L8.1 21.2" stroke={color} {...strokeProps} />
+      <Path d="M11.3 12.7L15.9 21.2" stroke={color} {...strokeProps} />
+      <Path d="M11.4 12.9v5.4" stroke={color} {...strokeProps} />
     </Svg>
   );
 }

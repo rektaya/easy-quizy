@@ -126,9 +126,11 @@ type Props = {
   onExplore: (themeId: string) => void;
   /** Open the list of all words. */
   onWords: () => void;
+  /** Holding the "map" title opens the circle animation lab. */
+  onLab?: () => void;
 };
 
-export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
+export default function MapScreen({ bottomSpace, onExplore, onWords, onLab }: Props) {
   const insets = useSafeAreaInsets();
   const { ratings } = useRatings();
   const { cards, skySeed } = useProfile();
@@ -482,7 +484,7 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
       </View>
 
       <View style={[styles.head, { paddingTop: insets.top + 12 }]}>
-        <TabHeader title="map" color={ON_SKY} right={
+        <TabHeader title="map" color={ON_SKY} onTitleLongPress={onLab} right={
             <View style={styles.headRight}>
               {Platform.OS !== 'web' ? (
                 <Pressable

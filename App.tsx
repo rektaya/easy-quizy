@@ -15,6 +15,7 @@ import MapScreen from './src/screens/MapScreen';
 import StudyScreen from './src/screens/StudyScreen';
 import StudyTab from './src/screens/StudyTab';
 import WordsScreen from './src/screens/WordsScreen';
+import CircleLabScreen from './src/screens/CircleLabScreen';
 import { ProfileProvider, useProfile } from './src/state/profile';
 import { RatingsProvider, useRatings } from './src/state/ratings';
 import { colors } from './src/theme';
@@ -58,16 +59,25 @@ const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) =
   const { setSeedTheme } = useProfile();
   const space = useTabBarSpace();
   const [words, setWords] = React.useState(false);
+  const [lab, setLab] = React.useState(false);
   return (
     <View style={{ flex: 1 }}>
       <MapScreen
         bottomSpace={space - 8}
         onWords={() => setWords(true)}
+        onLab={() => setLab(true)}
         onExplore={(themeId) => {
           setSeedTheme(themeId);
           navigation.navigate('Explore');
         }}
       />
+      {lab ? (
+        <View style={StyleSheet.absoluteFill}>
+          <Starry>
+            <CircleLabScreen onBack={() => setLab(false)} />
+          </Starry>
+        </View>
+      ) : null}
       {words ? (
         <View style={StyleSheet.absoluteFill}>
           <Starry>
