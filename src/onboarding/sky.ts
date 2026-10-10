@@ -56,7 +56,7 @@ export function blob(
 
 /** Core radius of a theme's big star: a bigger theme is a bigger star, but not by much. */
 export function heroSize(words: number): number {
-  return Math.min(7, 2.4 + 0.5 * Math.sqrt(words));
+  return Math.min(10, 3.4 + 0.7 * Math.sqrt(words));
 }
 
 const COLS = 5;

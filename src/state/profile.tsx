@@ -4,8 +4,8 @@ import type { Answer } from '../onboarding/calibration';
 import { firstStudy, reviewCard } from '../srs/scheduler';
 import type { StoredCard } from '../srs/scheduler';
 
-/** Where the user is in the first-run path: name, 15 words, a message, a first Study session. */
-export type Phase = 'name' | 'calibration' | 'message' | 'study' | 'done';
+/** Where the user is in the first-run path: name, two intro screens, 15 words, a message, a first Study session. */
+export type Phase = 'name' | 'intro' | 'calibration' | 'message' | 'study' | 'done';
 
 type Profile = {
   name: string;
@@ -68,7 +68,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   }, [profile, ready]);
 
   const setName = useCallback(
-    (name: string) => setProfile((p) => ({ ...p, name: name.trim(), phase: 'calibration' })),
+    (name: string) => setProfile((p) => ({ ...p, name: name.trim(), phase: 'intro' })),
     [],
   );
   const setPhase = useCallback((phase: Phase) => setProfile((p) => ({ ...p, phase })), []);

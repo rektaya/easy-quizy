@@ -10,15 +10,17 @@ type Props = {
   right?: React.ReactNode;
   /** Title colour, for screens on a dark background. */
   color?: string;
+  /** A hidden gesture on the title (used for "start over" while the app is being tested). */
+  onTitleLongPress?: () => void;
 };
 
 // The header of a tab's main screen: its name, always in the same place (top left), with room for a
 // small status on the right. Without a title (the first-run calibration) the status sits on the left.
-export function TabHeader({ title, right, color }: Props) {
+export function TabHeader({ title, right, color, onTitleLongPress }: Props) {
   return (
     <View style={[styles.row, !title && styles.noTitle]}>
       {title ? (
-        <Text style={[styles.title, color ? { color } : null]} accessibilityRole="header">
+        <Text style={[styles.title, color ? { color } : null]} accessibilityRole="header" onLongPress={onTitleLongPress}>
           {title}
         </Text>
       ) : null}

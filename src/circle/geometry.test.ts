@@ -10,7 +10,7 @@ import {
   gradeOf,
   isKnown,
   nextZone,
-  onRing,
+  canStartDraw,
   pointOnRing,
   segmentOf,
   snapValue,
@@ -85,13 +85,15 @@ test('the running total never goes beyond one full circle', () => {
   near(accumulate(TAU, -0.5), TAU - 0.5); // backing off from a full circle works straight away
 });
 
-test('a touch starts a drawing only on or near the ring', () => {
+test('a touch starts a drawing anywhere round the word, not only on the ring', () => {
   const c = 150;
   const r = 146;
-  assert.equal(onRing(c, c - r, c, c, r), true); // on the ring
-  assert.equal(onRing(c, c - r + 30, c, c, r), true); // a little inside
-  assert.equal(onRing(c, c, c, c, r), false); // the word in the middle
-  assert.equal(onRing(c + 50, c, c, c, r), false); // well inside, near the word
+  assert.equal(canStartDraw(c, c - r, c, c, r), true); // on the ring
+  assert.equal(canStartDraw(c, c - r + 30, c, c, r), true); // a little inside
+  assert.equal(canStartDraw(c + 50, c, c, c, r), true); // on the word itself, still fine
+  assert.equal(canStartDraw(c, c - r - 40, c, c, r), true); // outside the ring
+  assert.equal(canStartDraw(c + 5, c, c, c, r), false); // the exact centre: no stable angle
+  assert.equal(canStartDraw(c, c - r - 200, c, c, r), false); // far away
 });
 
 test('haptic sections tick at 30 60 and 90 percent', () => {

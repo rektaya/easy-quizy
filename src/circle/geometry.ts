@@ -10,8 +10,10 @@ export const TAU = Math.PI * 2;
  */
 export const DEFAULT_START_DEG = 65;
 
-/** How far from the ring's centre line a touch may land and still start a drawing. */
-export const RING_BAND = 40;
+/** A drawing may start anywhere around the word, but not on its very centre (the angle is unstable there). */
+export const DRAW_MIN = 30;
+/** How far beyond the ring a touch may land and still start a drawing. */
+export const DRAW_REACH = 120;
 
 /** The last 10% of the arc is the "know it for sure" segment. */
 export const KNOW_THRESHOLD = 0.9;
@@ -91,8 +93,12 @@ export function accumulate(total: number, delta: number): number {
   return Math.max(-TAU, Math.min(TAU, total + delta));
 }
 
-/** Whether a touch landed on the ring, with a thumb-width of margin either side. */
-export function onRing(x: number, y: number, cx: number, cy: number, r: number): boolean {
+/**
+ * Whether a touch may start a drawing. The ring is invisible, so it is not enough to ask people to
+ * land on it: any touch round the word counts, and the arc is measured by the angle around the centre.
+ */
+export function canStartDraw(x: number, y: number, cx: number, cy: number, r: number): boolean {
   'worklet';
-  return Math.abs(Math.hypot(x - cx, y - cy) - r) <= RING_BAND;
+  const d = Math.hypot(x - cx, y - cy);
+  return d >= DRAW_MIN && d <= r + DRAW_REACH;
 }

@@ -63,8 +63,8 @@ test('a star stays dark under 1% of its words, is a plain point up to 10%, then 
 test('a bigger theme is a bigger star, but only a little', () => {
   assert.ok(heroSize(20) > heroSize(4));
   assert.ok(heroSize(300) > heroSize(20));
-  assert.ok(heroSize(1_000_000) <= 7, 'capped, so it stays a star');
-  assert.ok(heroSize(0) >= 2.4);
+  assert.ok(heroSize(1_000_000) <= 10, 'capped, so it stays a star');
+  assert.ok(heroSize(0) >= 3.4);
 });
 
 test('the sky is the same every time, and every big star sits on the stage, well apart', () => {

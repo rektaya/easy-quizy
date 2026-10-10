@@ -2,6 +2,7 @@ import type { Word } from '../data/words';
 import { isDue } from '../srs/scheduler.ts';
 import type { StoredCard } from '../srs/scheduler.ts';
 import type { Rating } from '../state/ratings';
+import { MIN_PILE_TO_STUDY } from './calibration.ts';
 
 /** New words per Study batch. */
 export const NEW_PER_BATCH = 5;
@@ -29,19 +30,21 @@ export function dueWords(words: Word[], ratings: Ratings, cards: Cards, now: num
 
 /**
  * A Study batch: the reviews that are due (up to 10), then a few new words from the pile (up to
- * 5, the ones rated lowest first: the ones the user most needs).
+ * 5, the ones rated lowest first: the ones the user most needs). With no review due, a session
+ * waits until MIN_PILE_TO_STUDY new words have gathered: fewer is not worth a session.
  */
 export function makeBatch(
   words: Word[],
   ratings: Ratings,
   cards: Cards,
   now: number,
-  limits = { reviews: REVIEWS_PER_BATCH, fresh: NEW_PER_BATCH },
+  limits: { reviews: number; fresh: number; minFresh?: number } = { reviews: REVIEWS_PER_BATCH, fresh: NEW_PER_BATCH },
 ): BatchItem[] {
   const reviews = dueWords(words, ratings, cards, now).slice(0, limits.reviews);
   const fresh = waitingWords(words, ratings, cards)
     .sort((a, b) => ratings[a.id].value - ratings[b.id].value)
     .slice(0, limits.fresh);
+  if (reviews.length === 0 && fresh.length < (limits.minFresh ?? MIN_PILE_TO_STUDY)) return [];
   return [
     ...reviews.map((word) => ({ word, isNew: false })),
     ...fresh.map((word) => ({ word, isNew: true })),

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -135,8 +135,21 @@ function snapTick() {
 
 export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
   const insets = useSafeAreaInsets();
-  const { ratings } = useRatings();
-  const { cards, skySeed } = useProfile();
+  const { ratings, reset } = useRatings();
+  const { cards, skySeed, restartOnboarding } = useProfile();
+  // Testing helper: hold the "map" title to wipe this phone's progress and begin from the name screen.
+  const confirmStartOver = () =>
+    Alert.alert('Start over?', 'Everything on this phone is erased and the app begins from the very start.', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Start over',
+        style: 'destructive',
+        onPress: () => {
+          reset();
+          restartOnboarding();
+        },
+      },
+    ]);
   const [stage, setStage] = useState({ w: 0, h: 0 });
   const [selectedId, setSelectedId] = useState<string | null>(null); // whose card is showing
   const [openId, setOpenId] = useState<string | null>(null); // whose cluster is drawn opened up
@@ -505,7 +518,7 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
       </View>
 
       <View style={[styles.head, { paddingTop: insets.top + 12 }]}>
-        <TabHeader title="map" color={ON_SKY} right={
+        <TabHeader title="map" color={ON_SKY} onTitleLongPress={confirmStartOver} right={
             <View style={styles.headRight}>
               {Platform.OS !== 'web' ? (
                 <Pressable

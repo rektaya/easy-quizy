@@ -2,7 +2,7 @@ import { Figtree_400Regular, Figtree_500Medium, useFonts } from '@expo-google-fo
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Easing, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,6 +10,7 @@ import { Starry } from './src/components/StarBackground';
 import { FloatingTabBar, useTabBarSpace } from './src/components/FloatingTabBar';
 import CalibrationDoneScreen from './src/screens/CalibrationDoneScreen';
 import ExploreScreen, { ExploreView } from './src/screens/ExploreScreen';
+import IntroScreen from './src/screens/IntroScreen';
 import NameScreen from './src/screens/NameScreen';
 import MapScreen from './src/screens/MapScreen';
 import StudyScreen from './src/screens/StudyScreen';
@@ -103,20 +104,26 @@ function OnboardingStep() {
       />
     );
   }
+  if (phase === 'intro') return <IntroScreen onDone={() => setPhase('calibration')} />;
   if (phase === 'calibration') {
     return <ExploreView mode="calibration" onCalibrationDone={() => setPhase('message')} />;
   }
-  if (phase === 'message') return <CalibrationDoneScreen onContinue={() => setPhase('study')} />;
+  if (phase === 'message') return <CalibrationDoneScreen onContinue={() => setPhase('done')} />;
   return <StudyScreen bottomSpace={insets.bottom + 20} exitLabel="go to explore" onExit={() => setPhase('done')} />;
 }
 
 function Root() {
   const { ready, phase } = useProfile();
+  // Straight after the first-run path the tabs open on Study (the first session), with the tab bar there
+  // so the user can leave at any moment. Any later launch opens on Explore.
+  const fromOnboarding = useRef(false);
+  if (ready && phase !== 'done') fromOnboarding.current = true;
   if (!ready) return null;
   if (phase !== 'done') return <Onboarding />;
   return (
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
+        initialRouteName={fromOnboarding.current ? 'Study' : 'Explore'}
         tabBar={(props) => <FloatingTabBar {...props} />}
         screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: colors.bg }, ...(tabTransition as object) }}
       >

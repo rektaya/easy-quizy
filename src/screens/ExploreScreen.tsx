@@ -38,6 +38,8 @@ import { colors, fonts, radius, shadow } from '../theme';
 const CLOSE_DELAY_MS = 1800; // how long the last word of a full pile lingers before the user is taken to Study
 const DONE_DELAY_MS = 900; // how long the last calibration word lingers before the next screen
 const STATUS_MS = 4000; // how long the "added to study" label (and its undo) stays
+/** The written tips (how to draw, how to move on) are shown for this many first words. */
+const EARLY_WORDS = 3;
 const SWIPE_DISTANCE = 90; // how far up a swipe must travel to move on
 const SWIPE_VELOCITY = 700;
 const GLIDE_OUT = 260;
@@ -52,12 +54,12 @@ function TravelHint({ tapText, swipeText }: { tapText?: string; swipeText: strin
     <View style={styles.travelHint}>
       {tapText ? (
         <View style={styles.hintPart}>
-          <TapIcon color={colors.textSecondary} />
+          <TapIcon color={colors.text} size={26} />
           <Text style={styles.hintText}>{tapText}</Text>
         </View>
       ) : null}
       <View style={styles.hintPart}>
-        <SwipeUpIcon color={colors.textSecondary} />
+        <SwipeUpIcon color={colors.text} size={26} />
         <Text style={styles.hintText}>{swipeText}</Text>
       </View>
     </View>
@@ -183,6 +185,10 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   // The ghost finger and the tips teach the gestures once, on the very first word.
   const isFirstWord = word?.id === WORDS[0].id;
   const showHint = isFirstWord && !revealed;
+  // The written tips stay for the first few words, so they can sink in (the ghost finger is for the first only).
+  const ratedCount = Object.keys(ratings).length;
+  const showTip = !revealed && ratedCount < EARLY_WORDS;
+  const showSwipeTip = revealed && ratedCount <= EARLY_WORDS;
   const showWelcome = calibrating && answers.length === 0 && !revealed;
 
   const circleTop = Math.max(0, body.h / 2 - size / 2 - CIRCLE_LIFT);
@@ -404,19 +410,17 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                   />
                 </View>
 
-                {showWelcome ? (
-                  // sits the same distance above the circle as the tip sits below it (26)
+                {showWelcome || showTip ? (
+                  // sits the same distance above the circle as the details sit below it (26)
                   <View style={[styles.welcome, { height: Math.max(0, circleTop - 26) }]}>
-                    <Text style={styles.welcomeTitle}>{name ? `let’s roll, ${name}` : 'let’s roll'}</Text>
-                    <Text style={styles.welcomeNote}>here is your first word</Text>
+                    {showWelcome ? <Text style={styles.welcomeTitle}>{name ? `let’s roll, ${name}` : 'let’s roll'}</Text> : null}
+                    {showTip ? (
+                      <Text style={styles.tip}>
+                        {showWelcome ? 'a quick test: 15 words to find your level. ' : ''}
+                        draw a circle around the word. a short arc means you barely know it, a full circle means you know it well.
+                      </Text>
+                    ) : null}
                   </View>
-                ) : null}
-
-                {/* The tips teach the gestures once, on the very first word, below the circle. */}
-                {showHint ? (
-                  <Text style={[styles.hint, { top: circleTop + size + 26 }]}>
-                    draw a circle round the word, starting anywhere. the brighter it shines, the better you know the word.
-                  </Text>
                 ) : null}
 
                 {revealed ? (
@@ -425,7 +429,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                   </View>
                 ) : null}
 
-                {revealed && isFirstWord ? (
+                {showSwipeTip ? (
                   <View style={styles.hintBottom}>
                     {calibrating ? (
                       <TravelHint swipeText="swipe up for the next word" />
@@ -463,23 +467,13 @@ const styles = StyleSheet.create({
   counter: { fontFamily: fonts.medium, fontSize: 15, color: colors.accent },
   body: { flex: 1 },
   details: { position: 'absolute', left: 0, right: 0 },
-  hint: {
-    position: 'absolute',
-    left: 4,
-    right: 4,
-    fontFamily: fonts.regular,
-    fontSize: 13,
-    color: colors.textSecondary,
-    textAlign: 'center',
-    lineHeight: 20,
-  },
-  hintBottom: { position: 'absolute', left: 4, right: 4, bottom: 8, alignItems: 'center' },
+  hintBottom: { position: 'absolute', left: 4, right: 4, bottom: 48, alignItems: 'center' },
   travelHint: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', columnGap: 8, rowGap: 6 },
   hintPart: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  hintText: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
+  hintText: { fontFamily: fonts.medium, fontSize: 17, color: colors.text },
   welcome: { position: 'absolute', left: 0, right: 0, top: 0, alignItems: 'center', justifyContent: 'flex-end', gap: 4 },
   welcomeTitle: { fontFamily: fonts.medium, fontSize: 26, color: colors.text },
-  welcomeNote: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
+  tip: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: colors.textSecondary, textAlign: 'center', paddingHorizontal: 4, marginTop: 4 },
   locked: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10 },
   lockedButton: { alignSelf: 'stretch', marginTop: 18 },
   // covers the whole circle; the word sits in the middle of it

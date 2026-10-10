@@ -66,3 +66,17 @@ test('due words are the most overdue first', () => {
   const due = dueWords(WORDS, ratings, { termin: b, arbeit: a }, T0 + 20 * DAY);
   assert.deepEqual(due.map((w) => w.id), ['arbeit', 'termin']);
 });
+
+test('with nothing due, a session waits until three new words have gathered', () => {
+  const two = { feierabend: rating(0.5), arbeit: rating(0.1), buero: rating(0.95) }; // 2 in the pile
+  assert.equal(makeBatch(WORDS, two, {}, T0).length, 0);
+  const three = { ...two, kollege: rating(0.2) };
+  assert.equal(makeBatch(WORDS, three, {}, T0).length, 3);
+});
+
+test('a due review brings the session even when few new words wait', () => {
+  const cards = { termin: seedCard(0.05, T0) };
+  const some = { termin: rating(0.05), arbeit: rating(0.1) };
+  const batch = makeBatch(WORDS, some, cards, T0 + 3 * DAY);
+  assert.deepEqual(batch.map((b) => [b.word.id, b.isNew]), [['termin', false], ['arbeit', true]]);
+});

@@ -15,13 +15,13 @@ import {
   accumulate,
   angleAround,
   angleDelta,
+  canStartDraw,
   nextZone,
-  onRing,
   snapValue,
 } from './geometry';
 import type { Segment } from './geometry';
 
-// The Circle gesture: start anywhere on the invisible ring and draw either way round; hidden 30/30/30/10
+// The Circle gesture: start anywhere round the word and draw either way round; hidden 30/30/30/10
 // segments with haptic ticks; a snap in the last 10%. It draws nothing itself: it exposes everything the
 // animation (StardustRing) reacts to, as shared values.
 
@@ -68,9 +68,10 @@ export function useRing(size: number, value: number | null, onCommit: (value: nu
   const gesture = Gesture.Pan()
     .enabled(value === null)
     .minDistance(0)
+    .hitSlop(56) // the ring is invisible, so touches just outside the circle's box count too
     .onBegin((e) => {
       'worklet';
-      armed.value = !locked.value && onRing(e.x, e.y, c, c, r);
+      armed.value = !locked.value && canStartDraw(e.x, e.y, c, c, r);
       if (armed.value) {
         const a = angleAround(e.x, e.y, c, c);
         startRad.value = a;

@@ -21,7 +21,7 @@ A vocabulary app for German learners.
 ## 3. The Circle (core interaction)
 
 - One word sits in a circle in the center of the screen. Nouns always show their article: **das Haus**. The article already conveys gender, so there is **no separate gender color-coding**.
-- **There is no visible ring.** The user draws a circle round the word with a finger, and the app tracks it along an invisible ring (the drawing starts wherever the finger lands on that ring, or within about a thumb's width of it; touching the word in the middle does nothing). It can be drawn **either way round**, clockwise or counter-clockwise; a full circle means coming back to where you started. The app tracks how far the finger has turned around the circle's centre, so it works from any starting point.
+- **There is no visible ring.** The user draws a circle round the word with a finger, and the app tracks it along an invisible ring (the drawing may start anywhere round the word: on the word, on the ring, or a little outside it; only the exact centre does not count. Usability tests showed people could not find an invisible ring). It can be drawn **either way round**, clockwise or counter-clockwise; a full circle means coming back to where you started. The app tracks how far the finger has turned around the circle's centre, so it works from any starting point.
 - **Stardust.** Stars appear where the finger goes (up to 210 of them along the circle), each settling in from slightly outside and then drifting and twinkling in its own way, with a soft glow at the finger. **The colour does not go from red to green; the rating shows as how much the stars shine**, in clear steps that match the hidden segments: "don't know" is a few small but clear **blue** stars with a soft blue glow; "hard" a little bigger and brighter, an icy blue-white; "good" warm cream with an orange glow; "know" large golden-white stars in a strong orange-gold glow. The user rates by feel, not by picking a named level.
 - **When the finger lets go early**, the ring carries on by itself to the end (about 1.5 s), in the same colour and brightness the finger stopped at: the rating is carried by how bright the stars are, not by whether the ring is complete.
 - **Hidden segments.** The user never sees them, but the arc is divided into four:
@@ -38,7 +38,7 @@ A vocabulary app for German learners.
 - **What the rating does in Explore:**
   - In the "know" segment: the word is treated as known and is not added to the pile (silent spot-checks later).
   - In any other segment: the word goes to the pile, and the exact continuous value is kept for scheduling.
-- **Discoverability:** on the very first word only (*Feierabend*), a ghost finger draws a thin arc, with a tip below the circle: "draw a circle round the word, starting anywhere. the brighter it shines, the better you know the word." There is no other tutorial.
+- **Discoverability:** on the very first word only (*Feierabend*), a ghost finger draws a thin arc. For the first three words a tip sits **above** the circle: "draw a circle around the word. a short arc means you barely know it, a full circle means you know it well." (on the first word it starts with "a quick test: 15 words to find your level."). There is no other tutorial.
 - **Undo:** the "undo" in the status pill inside the circle, for a few seconds after each draw (mirrors Anki's undo).
 - **Moving on (two ways, one motion):**
   - **Tap any similar word** below the circle to go to it. Words you have already rated are not shown as chips.
@@ -48,7 +48,7 @@ A vocabulary app for German learners.
 - **Flip the word.** After rating, tap anywhere inside the circle (the tap area is round, like the circle) to see the original German word again (with its article, exactly as before rating), and tap again to get the translation back. It resets to the translation on every new word.
 - **Status line.** After you rate a word, a small line of text appears **inside the circle, above the word** ("added to study", or "marked as known"), with an orange **undo** beside it, and no background. It floats on top of the circle, so the translation stays exactly centred. It fades away after a few seconds.
 - **A star lights up (a known word).** Marking a word as known makes the ring flare once, a small star ignite at the centre of the circle (a bright point with short rays, gone within about half a second), and **a warm wave of light spread from it across the whole screen** and fade out (about two seconds). The screen's own content (words, buttons) is drawn above the light, so nothing gets harder to read. The ring then stays bright. (This replaces the old fireworks.)
-- **Tips.** The gestures are taught once, on the very first word, with tips **below** the circle: "start anywhere on the ring and draw around…" before rating, and "tap a word to travel, or swipe up" after.
+- **Tips.** The gestures are taught on the first three words: the drawing tip above the circle before rating, and a large "swipe up for the next word" (or "tap a word to travel, or swipe up") above the bottom after.
 - **In Study,** typed answers are auto-graded. The circle animates to the grade the app decided (for example, a typo lands in the "Good" segment). The user can override by drawing.
 
 ## 4. The three tabs (in this order)
@@ -77,6 +77,8 @@ A vocabulary app for German learners.
 - **Celebration:** a word rated above 75% in Study gives a success haptic (a word rated as known also gets the light of a known word on the Circle). The session ends with "nicely done. you’ve started your journey".
 - **The Study tab opens straight on a session.** There is no dashboard (removed 2026-09-30). When there is nothing to study the tab says so and offers "go to explore". **When a session is finished and there is nothing left to study, Study closes and the user is taken to Explore automatically** (after about two seconds on "nicely done"); opening Study when there is nothing to study just says so, with "go to explore".
 - Words are **not** drip-fed daily. They enter only when a session begins.
+- **Moving on in the test part is a swipe up**, the same motion as in Explore (no button); a tip shows for the first three words studied. The new-word cards still use a button. After rating, the example sentence shows in German with its English translation under it.
+- **A session needs at least 3 new words waiting** (or a review that is due). With fewer, Study says how many are gathered. The 20 that pauses Explore is only the ceiling, not a gate. The tab looks at the queue again every time it is opened (unless a session is under way).
 
 ### 4.3 Map
 - A **night sky** for motivation and overview. The Map is the one dark screen (deep navy `#0C1927`, light status bar), so that glowing stars can read as light.
@@ -125,7 +127,7 @@ A vocabulary app for German learners.
 
 ## 8. Onboarding, reminders
 
-- **First launch:** the app asks for a name once (stored on the device, used for greetings and the achievement moments). No login. The first word is then *Feierabend* in the circle, and the ghost finger shows the gesture.
+- **First launch:** the app asks for a name once (stored on the device, used for greetings and the achievement moments). No login. **One intro screen** follows (what the app is: explore, study, map), then the first word, *Feierabend*, in the circle with the ghost finger and the tip that this is a quick 15-word test.
 - **Calibration (the first 15 words).** There is no separate test screen: the opening words are ordinary Explore words, rated with the Circle. But they are chosen adaptively to find where the user's knowledge ends.
   - The words come from a **frequency ladder**, and each rating moves the next pick. A high rating (know it) jumps to a rarer word. A low rating (don't know) steps back to a more common one. Big jumps at first, smaller steps as the estimate settles, like a binary search.
   - **No similar-word chips and no association trail during calibration.** Words linked by association sit in one thematic zone, which would make the estimate read one area of knowledge instead of the level. Instead the picks are spread across themes (ties go to a theme not yet met), and the user just swipes up for the next word. The screen shows a small progress count ("3 / 15").
@@ -137,7 +139,7 @@ A vocabulary app for German learners.
     - The session is the usual small batch: **up to 5 words from the pile**, the ones the user rated lowest first (the ones they most need), first as cards, then in the Circle (the same two parts as any session). It is a normal Study session in every way (12-20 card badge does not apply, it ends when the batch is done), with a friendly closing line and a choice: "keep going" or "back to Explore".
     - Study is where the Circle's value seeds the scheduler (section 7), so the calibration ratings directly set the first review intervals.
     - **Few words in the pile:** if the user knew most of the 15 (only 1-2 in the pile), do not force a tiny session. Say so ("you know a lot already"), keep exploring further up the ladder, and start Study once at least 3 words have gathered.
-    - The tab bar appears only after this first session, so the first run is one guided path: name, 15 words, learn them. Afterwards the user lands in Explore with all three tabs.
+    - The tab bar is hidden during the 15 words and **appears with the first Study session** (the tabs open on Study), so the user can leave at any moment. Later launches open on Explore.
   - **Edge cases:** if the ratings are inconsistent, keep the estimate wide and keep probing a bit longer. If the user rates everything as known or everything as unknown, move to the far end of the ladder quickly, then settle.
 - **Reminders:** one gentle daily nudge at a time the user chooses, only if something is waiting.
 
@@ -174,6 +176,8 @@ Multiple languages, phrases and collocations, spoken/pronunciation-graded prompt
 **How it was checked:** the author has been running every step on her own iPhone in Expo Go and steering by feel, so the animations, the Circle, the sensors (tilt, camera mode) and the snap have all been seen on a real phone and adjusted from her feedback. Claude additionally checks in a browser (web build, phone-sized, scripted with puppeteer); sensors do not work there, so those were only ever judged on her phone.
 
 **Next time:** start by asking what she wants to change or build next; there is no open list of "things to verify on the phone". Two things were never reached in testing and are worth a glance: Study's automatic move to Explore when a finished session leaves nothing to study (the test profiles always had more words waiting), and very long words in the Circle.
+
+**From the first usability tests (2 people, 2026-10-10).** Done: one intro screen, the drawing tip above the circle, drawing may start anywhere round the word, the swipe tip larger and for three words, Study available at 3 waiting words and refreshed on open, swipe up in the Study test, English example in the Study test, bigger theme stars, the tab bar in the first session. **Decided, not built yet:** the "known word" animation is not understood (people did not see a star light up): design a new one; a Map where themes that are close in meaning sit close on screen (keep the structure the same for everyone, randomise only rotation, mirroring and the background); a choice between a short session (10 words) and a normal one, and a list of the words in study inside Study; a smooth zoom on the Map at all levels. **No undo in Study for now.** **Later:** adding your own words; more example sentences per word (data work). Temporary: holding the "map" title offers "start over" (for testing on friends); remove before release.
 
 **Known gaps and ideas, roughly in the order Claude would do them**
 - **Reduce Motion:** the stardust (twinkle), the light across the screen and the Map's parallax/camera mode should respect the phone's setting (the old fireworks did; the new animations do not yet, except the tilt).
