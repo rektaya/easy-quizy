@@ -13,7 +13,7 @@ export const DEFAULT_START_DEG = 65;
 /** A drawing may start anywhere around the word, but not on its very centre (the angle is unstable there). */
 export const DRAW_MIN = 30;
 /** How far beyond the ring a touch may land and still start a drawing. */
-export const DRAW_REACH = 120;
+export const DRAW_REACH = 500;
 
 /** The last 10% of the arc is the "know it for sure" segment. */
 export const KNOW_THRESHOLD = 0.9;

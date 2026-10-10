@@ -4,6 +4,7 @@ import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   Easing,
+  FadeIn,
   useAnimatedReaction,
   useAnimatedStyle,
   useReducedMotion,
@@ -58,7 +59,7 @@ const WORLD_Y = 1.9; // height of that area, in screens
 // The sky itself is wider than that area by this much (in screens) on every side, so the theme stars
 // never sit near its edges and there is always sky beyond the outermost one.
 const WORLD_PAD = 0.45;
-const SMALL_STAR_CELL = 30; // room for one small star per cell of this size
+const SMALL_STAR_CELL = 38; // room for one small star per cell of this size (bigger cell, sparser sky)
 const PANEL_HEIGHT = 190; // the card at the bottom, and the tab bar under it
 const MAX_ZOOM_POINTS = 60; // every word of a theme gets its own point (an even sample beyond this)
 const SPHERE_DUST = 230; // the fine dots that give the sphere its shape
@@ -126,17 +127,16 @@ type Props = {
   /** "Explore from here": Explore starts in the chosen area. */
   onExplore: (themeId: string) => void;
   /** Open the list of all words. */
-  onWords: () => void;
 };
 
 function snapTick() {
   Haptics.selectionAsync().catch(() => {});
 }
 
-export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
+export default function MapScreen({ bottomSpace, onExplore }: Props) {
   const insets = useSafeAreaInsets();
   const { ratings, reset } = useRatings();
-  const { cards, skySeed, restartOnboarding } = useProfile();
+  const { cards, skySeed, restartOnboarding, mapIntroSeen, setMapIntroSeen } = useProfile();
   // Testing helper: hold the "map" title to wipe this phone's progress and begin from the name screen.
   const confirmStartOver = () =>
     Alert.alert('Start over?', 'Everything on this phone is erased and the app begins from the very start.', [
@@ -532,9 +532,9 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
                   <LookIcon color={camera ? colors.onAccent : ON_SKY_DIM} />
                 </Pressable>
               ) : null}
-              <Pressable onPress={onWords} accessibilityRole="button" accessibilityLabel={`all words, ${explored}`} hitSlop={10}>
-                <Text style={styles.total}>{explored} words ›</Text>
-              </Pressable>
+              <Text style={styles.total} accessibilityLabel={`${explored} words explored`}>
+                {explored} words
+              </Text>
             </View>
           }
         />
@@ -543,6 +543,17 @@ export default function MapScreen({ bottomSpace, onExplore, onWords }: Props) {
 
       {cluster ? (
         <Panel cluster={cluster} bottom={bottomSpace} locked={locked} onExplore={onExplore} />
+      ) : !mapIntroSeen ? (
+        // the first time the Map is opened: what it is, and how to move around it
+        <Animated.View entering={FadeIn.duration(400)} style={[styles.card, { bottom: bottomSpace }]}>
+          <View style={styles.cardHead}>
+            <Text style={styles.cardTitle}>your map</Text>
+            <Text style={styles.cardSub}>
+              every star is a topic, and it lights up as you learn its words. tap a star to look inside it, pinch to see the whole sky, and drag to look around.
+            </Text>
+          </View>
+          <Button label="got it" onPress={setMapIntroSeen} />
+        </Animated.View>
       ) : null}
     </View>
   );

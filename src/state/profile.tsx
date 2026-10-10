@@ -4,8 +4,11 @@ import type { Answer } from '../onboarding/calibration';
 import { firstStudy, reviewCard } from '../srs/scheduler';
 import type { StoredCard } from '../srs/scheduler';
 
-/** Where the user is in the first-run path: name, two intro screens, 15 words, a message, a first Study session. */
-export type Phase = 'name' | 'intro' | 'calibration' | 'message' | 'study' | 'done';
+/**
+ * Where the user is in the first-run path: name, an intro, a practice word, the quick-test screen, 15 words,
+ * a message. ('study' is an older value, kept so saved profiles still load; it is treated as done.)
+ */
+export type Phase = 'name' | 'intro' | 'practice' | 'quiz' | 'calibration' | 'message' | 'study' | 'done';
 
 type Profile = {
   name: string;
@@ -18,6 +21,8 @@ type Profile = {
   removed: Record<string, true>;
   /** Makes this user's night sky one of a kind (the Map and the stars in the background). 0 = not chosen yet. */
   skySeed: number;
+  /** The Map explains itself the first time it is opened. */
+  mapIntroSeen: boolean;
 };
 
 type Ctx = Profile & {
@@ -27,6 +32,7 @@ type Ctx = Profile & {
   setSeedTheme: (themeId: string | null) => void;
   setName: (name: string) => void;
   setPhase: (phase: Phase) => void;
+  setMapIntroSeen: () => void;
   addAnswer: (answer: Answer) => void;
   removeAnswer: (wordId: string) => void;
   /**
@@ -41,7 +47,7 @@ type Ctx = Profile & {
 };
 
 const KEY = 'easyquizy.profile.v1';
-const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0 };
+const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false };
 const ProfileContext = createContext<Ctx | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
@@ -72,6 +78,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     [],
   );
   const setPhase = useCallback((phase: Phase) => setProfile((p) => ({ ...p, phase })), []);
+  const setMapIntroSeen = useCallback(() => setProfile((p) => ({ ...p, mapIntroSeen: true })), []);
   const addAnswer = useCallback(
     (answer: Answer) =>
       setProfile((p) => ({ ...p, answers: [...p.answers.filter((a) => a.id !== answer.id), answer] })),
@@ -111,13 +118,14 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       setSeedTheme,
       setName,
       setPhase,
+      setMapIntroSeen,
       addAnswer,
       removeAnswer,
       reviewWord,
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, seedTheme, setName, setPhase, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

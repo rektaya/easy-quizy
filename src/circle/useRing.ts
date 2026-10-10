@@ -6,6 +6,7 @@ import {
   useDerivedValue,
   useFrameCallback,
   useSharedValue,
+  withDelay,
   withTiming,
 } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
@@ -42,7 +43,14 @@ function tickKnow() {
  * `value` is the committed rating (0..1) or null while the word is still to be rated. Once it is set the
  * ring is locked and swipes fall through to the screen behind it.
  */
-export function useRing(size: number, value: number | null, onCommit: (value: number) => void) {
+export function useRing(
+  size: number,
+  value: number | null,
+  onCommit: (value: number) => void,
+  /** Where the circle's box sits inside the area the gesture listens to. */
+  ox = 0,
+  oy = 0,
+) {
   const c = size / 2;
   const r = c - RING_STROKE;
 
@@ -68,12 +76,11 @@ export function useRing(size: number, value: number | null, onCommit: (value: nu
   const gesture = Gesture.Pan()
     .enabled(value === null)
     .minDistance(0)
-    .hitSlop(56) // the ring is invisible, so touches just outside the circle's box count too
     .onBegin((e) => {
       'worklet';
-      armed.value = !locked.value && canStartDraw(e.x, e.y, c, c, r);
+      armed.value = !locked.value && canStartDraw(e.x - ox, e.y - oy, c, c, r);
       if (armed.value) {
-        const a = angleAround(e.x, e.y, c, c);
+        const a = angleAround(e.x - ox, e.y - oy, c, c);
         startRad.value = a;
         lastAngle.value = a;
         turned.value = 0;
@@ -83,14 +90,16 @@ export function useRing(size: number, value: number | null, onCommit: (value: nu
     .onStart(() => {
       'worklet';
       if (!armed.value) return;
+      finish.value = 0; // a drawing started during an undo takes over from it
+      progress.value = 0;
       dragging.value = true;
       zone.value = 1;
     })
     .onUpdate((e) => {
       'worklet';
       if (!armed.value) return;
-      if (Math.hypot(e.x - c, e.y - c) < 24) return;
-      const a = angleAround(e.x, e.y, c, c);
+      if (Math.hypot(e.x - ox - c, e.y - oy - c) < 24) return;
+      const a = angleAround(e.x - ox, e.y - oy, c, c);
       const delta = angleDelta(lastAngle.value, a);
       turned.value = accumulate(turned.value, delta);
       lastAngle.value = a;
@@ -131,13 +140,25 @@ export function useRing(size: number, value: number | null, onCommit: (value: nu
       }
     });
 
+  // Undo: the ring is drawn backwards, slowly and at one even speed all the way round. A ring that
+  // completed itself first draws back its self-made part, then what the finger had drawn; each part gets
+  // the time that is its share of the whole circle, so the front never speeds up or slows down.
   const reset = () => {
-    progress.value = withTiming(0, { duration: 260 });
+    const FULL_TURN_MS = 1200; // time for a whole circle to unwind
+    const drawn = progress.value; // what the finger drew (a "know" ring counts as 1)
+    const made = finish.value; // how much of the rest the ring had completed by itself, 0..1
+    const madeMs = FULL_TURN_MS * (1 - drawn) * made;
+    const drawnMs = FULL_TURN_MS * drawn;
     locked.value = false;
     burst.value = 0;
-    finish.value = 0;
     pulse.value = 0;
     zone.value = 1;
+    if (made > 0) {
+      finish.value = withTiming(0, { duration: madeMs, easing: Easing.linear });
+      progress.value = withDelay(madeMs, withTiming(0, { duration: drawnMs, easing: Easing.linear }));
+    } else {
+      progress.value = withTiming(0, { duration: drawnMs, easing: Easing.linear });
+    }
   };
 
   // Keep the ring in step with the committed rating. A rating that is already there when the ring appears

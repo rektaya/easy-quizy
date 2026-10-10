@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -14,21 +14,18 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
-import { SwipeUpIcon } from '../components/Icons';
-import { Translation } from '../components/Translation';
-import { WordCard } from '../components/WordCard';
-import { WordFace } from '../components/WordFace';
+import { FlipReveal } from '../components/FlipReveal';
+import { Ring } from '../components/Ring';
+import { TabHeader } from '../components/TabHeader';
 import { WORDS } from '../data/words';
-import { makeBatch, nextDue, waitingWords } from '../onboarding/batch';
-import { MIN_PILE_TO_STUDY } from '../onboarding/calibration';
+import { makeBatch } from '../onboarding/batch';
 import type { BatchItem } from '../onboarding/batch';
-import { whenLabel } from '../srs/scheduler';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts } from '../theme';
 
 // The circle sits where it does in Explore: a little above the middle of its area. It is placed
-// absolutely, so nothing that appears after rating (the example, the button) can move it.
+// absolutely, so nothing that appears after rating (the example) can move it.
 const CIRCLE_LIFT = 52;
 
 /** A word rated above this in Study is a small win: a buzz. */
@@ -38,53 +35,27 @@ const CELEBRATE_ABOVE = 0.75;
 const SWIPE_DISTANCE = 90;
 const SWIPE_VELOCITY = 700;
 const GLIDE_OUT = 260;
-/** The "swipe up" tip is shown for the first words ever studied. */
-const EARLY_WORDS = 3;
-
-/** How long "nicely done" stays before the user is taken on to Explore. */
-const CLOSE_DELAY_MS = 2200;
 
 type Props = {
-  /** Space to leave at the bottom (the floating tab bar, when there is one). */
+  /** Space to leave at the bottom (the floating tab bar). */
   bottomSpace: number;
-  exitLabel: string;
-  onExit: () => void;
-  /**
-   * Called (after a beat) when a session has been finished and there is nothing left to study: Study has
-   * closed, and the user is taken on to Explore. Not called when the screen is simply opened with nothing to do.
-   */
-  onClosed?: () => void;
-  /**
-   * Changes each time the tab is opened. A session is picked once, so without this the tab would keep
-   * showing "nothing to study" (or a finished session) while words gathered in Explore wait unseen.
-   * A session that is under way is left alone.
-   */
-  focusTick?: number;
+  /** "show my map" on the closing screen. */
+  onMap: () => void;
+  /** Back to the list of words in study. */
+  onList: () => void;
 };
 
-// Calls `onClosed` a beat after it appears, unless it goes away first (the user pressed something).
-function CloseTimer({ onClosed }: { onClosed: () => void }) {
-  const latest = useRef(onClosed);
-  latest.current = onClosed;
-  useEffect(() => {
-    const t = setTimeout(() => latest.current(), CLOSE_DELAY_MS);
-    return () => clearTimeout(t);
-  }, []);
-  return null;
-}
-
-// A Study session: the reviews that are due, then a few new words from the pile. A new word is met
-// first (German, meaning, an example); every word is then tested with the Circle: you see the German
-// word, recall what it means, draw how well you knew it, and the meaning appears. Each rating goes to
-// FSRS, which decides when the word comes back.
-export default function StudyScreen({ bottomSpace, exitLabel, onExit, onClosed, focusTick }: Props) {
+// A Study session: the reviews that are due, then a few new words from the pile. Every word is tested
+// with the Circle, laid out exactly as in Explore: you see the German word, recall what it means, draw
+// how well you knew it, and the meaning appears. Each rating goes to FSRS, which decides when the word
+// comes back. (The words to study are first seen as a list; tapping one there opens its card.)
+export default function StudyScreen({ bottomSpace, onMap, onList }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready: ratingsReady, ratings } = useRatings();
   const { ready: profileReady, cards, reviewWord } = useProfile();
   const [batch, setBatch] = useState<BatchItem[] | null>(null);
   const [index, setIndex] = useState(0);
-  const [metCount, setMetCount] = useState(0); // how many of the new words have been met (their cards seen)
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
   const [body, setBody] = useState({ w: 0, h: 0 }); // the area the circle sits in
 
@@ -140,43 +111,22 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit, onClosed, 
     ],
   }));
 
-  useEffect(() => {
-    if (focusTick === undefined || batch === null) return;
-    const underWay = batch.length > 0 && index < batch.length && (metCount > 0 || index > 0);
-    if (underWay) return;
-    setBatch(null);
-    setIndex(0);
-    setMetCount(0);
-    setValue(null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [focusTick]);
-
   if (!loaded || batch === null) return <View style={styles.screen} />;
 
-  // A session goes in two parts: first the new words, one card after another (to learn them), then every
-  // word of the session, the new ones included, in the Circle (to test them). Reviews have no card.
-  const newItems = batch.filter((i) => i.isNew);
-  const meeting = metCount < newItems.length;
-  const item = meeting ? newItems[metCount] : batch[index];
-  const word = item?.word;
-  const stage = meeting ? 'meet' : 'test';
-  const size = Math.min(width - 48, 320); // as big as in Explore, so drawing feels the same
-  const circleTop = Math.max(0, body.h / 2 - size / 2 - CIRCLE_LIFT);
+  const word = batch[index]?.word;
+  const size = Math.min(width - 48, 320); // the same as in Explore, so drawing feels the same
+  const circleTop = Math.max(56, body.h / 2 - size / 2 - CIRCLE_LIFT); // 56: room for the undo plate above
   const remaining = makeBatch(WORDS, ratings, cards, Date.now()).length;
-  const upcoming = nextDue(WORDS, ratings, cards);
-  const waiting = waitingWords(WORDS, ratings, cards).length;
-
 
   const keepGoing = () => {
     setBatch(null);
     setIndex(0);
-    setMetCount(0);
     setValue(null);
   };
 
   const shell = [styles.screen, { paddingTop: insets.top + 12, paddingBottom: bottomSpace }];
 
-  // Nothing to study, or the batch is done.
+  // The batch is done (or there was nothing to study).
   if (!word) {
     const none = batch.length === 0;
     return (
@@ -185,50 +135,39 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit, onClosed, 
           <Text style={styles.closingTitle}>{none ? 'nothing to study yet' : 'nicely done'}</Text>
           <Text style={styles.closingBody}>
             {none
-              ? upcoming !== null
-                ? `you’re all caught up. next review ${whenLabel(upcoming, Date.now())}.`
-                : waiting > 0
-                  ? `${waiting} of ${MIN_PILE_TO_STUDY} words gathered. rate a few more in explore and they’ll wait for you here.`
-                  : 'gather a few words in explore first, then they’ll wait for you here.'
-              : 'you’ve started your journey.'}
+              ? 'gather a few more words in explore, then they’ll wait for you here.'
+              : 'the key is in daily practice, so come back to your words regularly! want to know how much your vocabulary has grown? let’s look at your map.'}
           </Text>
-          {!none && upcoming !== null && remaining === 0 ? (
-            <Text style={styles.closingBody}>next review {whenLabel(upcoming, Date.now())}.</Text>
-          ) : null}
-          {/* a finished session with nothing left to study closes Study: on to Explore after a beat */}
-          {!none && remaining === 0 && onClosed ? <CloseTimer onClosed={onClosed} /> : null}
         </Animated.View>
         <View style={styles.buttons}>
-          {!none && remaining > 0 ? <Button label="keep going" onPress={keepGoing} /> : null}
-          <Button label={exitLabel} onPress={onExit} kind={!none && remaining > 0 ? 'ghost' : 'primary'} />
+          {none ? (
+            <Button label="back to my words" onPress={onList} />
+          ) : (
+            <>
+              <Button label="show my map" onPress={onMap} />
+              {remaining > 0 ? (
+                <Button label="keep going" kind="ghost" onPress={keepGoing} />
+              ) : (
+                <Button label="back to my words" kind="ghost" onPress={onList} />
+              )}
+            </>
+          )}
         </View>
       </View>
     );
   }
 
-  const progress = (
-    <Text style={styles.progress}>
-      {meeting ? `new words · ${metCount + 1} / ${newItems.length}` : `${index + 1} / ${batch.length}`}
-    </Text>
+  const counter = (
+    <View style={styles.counterWrap} accessible accessibilityLabel={`word ${index + 1} of ${batch.length}`}>
+      <Ring size={18} stroke={3} segments={[{ value: index, color: colors.textSecondary }]} total={batch.length} />
+      <Text style={styles.counter}>{`${index + 1} / ${batch.length}`}</Text>
+    </View>
   );
-
-  if (stage === 'meet') {
-    return (
-      <View style={shell}>
-        {progress}
-        <WordCard word={word} tag="new word" />
-        <Button label={metCount + 1 < newItems.length ? 'next word' : 'test me'} onPress={() => setMetCount((n) => n + 1)} />
-      </View>
-    );
-  }
 
   return (
     <View style={shell}>
-      {progress}
-      <View
-        style={styles.test}
-        onLayout={(e) => setBody({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}
-      >
+      <TabHeader title="study" right={counter} />
+      <View style={styles.test} onLayout={(e) => setBody({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}>
         {body.h > 0 ? (
           <GestureDetector gesture={swipe}>
             <Animated.View
@@ -238,17 +177,15 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit, onClosed, 
               accessibilityActions={value !== null ? [{ name: 'activate', label: 'next word' }] : []}
               onAccessibilityAction={goNext}
             >
-            <Text style={[styles.testTag, { top: circleTop - 34 }]}>
-              {value === null ? 'what does it mean? draw how well you know it' : ''}
-            </Text>
-            <View style={{ position: 'absolute', top: circleTop, left: (body.w - size) / 2, width: size, height: size }}>
               <Circle
+                x={(body.w - size) / 2}
+                y={circleTop}
                 key={word.id}
                 word={word}
                 size={size}
                 value={value}
                 showHint={false}
-                reveal={value === null ? undefined : <Translation text={word.en} />}
+                reveal={value === null ? undefined : <FlipReveal word={word} />}
                 onCommit={(v) => {
                   setValue(v);
                   reviewWord(word.id, v, ratings[word.id]);
@@ -257,55 +194,35 @@ export default function StudyScreen({ bottomSpace, exitLabel, onExit, onClosed, 
                   }
                 }}
               />
-            </View>
-            {value !== null ? (
-              <Animated.View
-                entering={FadeIn.duration(320).delay(120)}
-                style={[styles.testExample, { top: circleTop + size + 26 }]}
-              >
-                <Text style={[styles.exampleDe, styles.exampleText]}>{word.example.de}</Text>
-                <Text style={[styles.exampleEn, styles.exampleText]}>{word.example.en}</Text>
-              </Animated.View>
-            ) : null}
+              {value !== null ? (
+                <Animated.View
+                  entering={FadeIn.duration(320).delay(120)}
+                  style={[styles.example, { top: circleTop + size + 26 }]}
+                >
+                  <Text style={[styles.exampleDe, styles.exampleText]}>{word.example.de}</Text>
+                  <Text style={[styles.exampleEn, styles.exampleText]}>{word.example.en}</Text>
+                </Animated.View>
+              ) : null}
             </Animated.View>
           </GestureDetector>
         ) : null}
       </View>
-      {value !== null && Object.keys(cards).length <= EARLY_WORDS ? (
-        <View style={[styles.buttonSpace, styles.swipeTip]}>
-          <SwipeUpIcon color={colors.text} size={26} />
-          <Text style={styles.swipeTipText}>{index + 1 === batch.length ? 'swipe up to finish' : 'swipe up for the next word'}</Text>
-        </View>
-      ) : (
-        <View style={styles.buttonSpace} />
-      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, paddingHorizontal: 24, gap: 12, userSelect: 'none' },
+  screen: { flex: 1, paddingHorizontal: 24, userSelect: 'none' },
   centered: { justifyContent: 'center' },
-  progress: { fontFamily: fonts.medium, fontSize: 16, color: colors.textTertiary, minHeight: 32 },
-  exampleDe: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 24, color: colors.text },
-  test: { flex: 1 },
-  testTag: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    fontFamily: fonts.regular,
-    fontSize: 13,
-    color: colors.textSecondary,
-    textAlign: 'center',
-  },
-  testExample: { position: 'absolute', left: 4, right: 4, gap: 6 },
+  test: { flex: 1, marginHorizontal: -24 }, // edge to edge, so drawing and swiping work across the whole width
+  counterWrap: { flexDirection: 'row', alignItems: 'center', gap: 7 },
+  counter: { fontFamily: fonts.medium, fontSize: 15, color: colors.textSecondary },
+  example: { position: 'absolute', left: 28, right: 28, gap: 6 },
   exampleText: { textAlign: 'center' },
+  exampleDe: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 24, color: colors.text },
   exampleEn: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary },
-  buttonSpace: { height: 54 },
-  swipeTip: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
-  swipeTipText: { fontFamily: fonts.medium, fontSize: 17, color: colors.text },
   closing: { alignItems: 'center', gap: 10, paddingHorizontal: 8 },
-  closingTitle: { fontFamily: fonts.medium, fontSize: 26, color: colors.text },
-  closingBody: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary, textAlign: 'center' },
+  closingTitle: { fontFamily: fonts.medium, fontSize: 30, color: colors.text },
+  closingBody: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 23, color: colors.textSecondary, textAlign: 'center' },
   buttons: { alignSelf: 'stretch', gap: 12, marginTop: 28 },
 });

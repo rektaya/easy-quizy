@@ -15,7 +15,7 @@ type Props = {
 };
 
 // The header of a tab's main screen: its name, always in the same place (top left), with room for a
-// small status on the right. Without a title (the first-run calibration) the status sits on the left.
+// small status on the right (also without a title, as in the first-run calibration).
 export function TabHeader({ title, right, color, onTitleLongPress }: Props) {
   return (
     <View style={[styles.row, !title && styles.noTitle]}>
@@ -31,6 +31,6 @@ export function TabHeader({ title, right, color, onTitleLongPress }: Props) {
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: HEADER_HEIGHT },
-  noTitle: { justifyContent: 'flex-start' },
+  noTitle: { justifyContent: 'flex-end' },
   title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
 });

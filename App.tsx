@@ -12,10 +12,10 @@ import CalibrationDoneScreen from './src/screens/CalibrationDoneScreen';
 import ExploreScreen, { ExploreView } from './src/screens/ExploreScreen';
 import IntroScreen from './src/screens/IntroScreen';
 import NameScreen from './src/screens/NameScreen';
+import PracticeScreen from './src/screens/PracticeScreen';
+import QuizIntroScreen from './src/screens/QuizIntroScreen';
 import MapScreen from './src/screens/MapScreen';
-import StudyScreen from './src/screens/StudyScreen';
 import StudyTab from './src/screens/StudyTab';
-import WordsScreen from './src/screens/WordsScreen';
 import { ProfileProvider, useProfile } from './src/state/profile';
 import { RatingsProvider, useRatings } from './src/state/ratings';
 import { colors } from './src/theme';
@@ -50,38 +50,26 @@ const ExploreTabScreen = (props: React.ComponentProps<typeof ExploreScreen>) => 
 );
 const StudyTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => (
   <Starry>
-    <StudyTab onExplore={() => navigation.navigate('Explore')} />
+    <StudyTab onMap={() => navigation.navigate('Map')} />
   </Starry>
 );
 // The Map draws a night sky of its own, so it has no starry paper.
-// The list of all words opens over the Map (which stays where it was) and closes back onto it.
 const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => {
   const { setSeedTheme } = useProfile();
   const space = useTabBarSpace();
-  const [words, setWords] = React.useState(false);
   return (
-    <View style={{ flex: 1 }}>
-      <MapScreen
-        bottomSpace={space - 8}
-        onWords={() => setWords(true)}
-        onExplore={(themeId) => {
-          setSeedTheme(themeId);
-          navigation.navigate('Explore');
-        }}
-      />
-      {words ? (
-        <View style={StyleSheet.absoluteFill}>
-          <Starry>
-            <WordsScreen bottomSpace={space} onBack={() => setWords(false)} />
-          </Starry>
-        </View>
-      ) : null}
-    </View>
+    <MapScreen
+      bottomSpace={space - 8}
+      onExplore={(themeId) => {
+        setSeedTheme(themeId);
+        navigation.navigate('Explore');
+      }}
+    />
   );
 };
 
-// The first-run path: name, 15 adaptive words, a message, a first Study session. No tab bar until
-// it is finished, so the first minutes are one guided road.
+// The first-run path: name, an intro, a practice word, the quick-test screen, 15 adaptive words, a message.
+// No tab bar until it is finished, so the first minutes are one guided road. It ends in the tabs, on Study.
 function Onboarding() {
   return (
     <Starry>
@@ -93,7 +81,6 @@ function Onboarding() {
 function OnboardingStep() {
   const { phase, setName, setPhase } = useProfile();
   const { reset } = useRatings();
-  const insets = useSafeAreaInsets();
   if (phase === 'name') {
     return (
       <NameScreen
@@ -104,12 +91,14 @@ function OnboardingStep() {
       />
     );
   }
-  if (phase === 'intro') return <IntroScreen onDone={() => setPhase('calibration')} />;
+  if (phase === 'intro') return <IntroScreen onDone={() => setPhase('practice')} />;
+  if (phase === 'practice') return <PracticeScreen onDone={() => setPhase('quiz')} />;
+  if (phase === 'quiz') return <QuizIntroScreen onStart={() => setPhase('calibration')} />;
   if (phase === 'calibration') {
     return <ExploreView mode="calibration" onCalibrationDone={() => setPhase('message')} />;
   }
   if (phase === 'message') return <CalibrationDoneScreen onContinue={() => setPhase('done')} />;
-  return <StudyScreen bottomSpace={insets.bottom + 20} exitLabel="go to explore" onExit={() => setPhase('done')} />;
+  return null;
 }
 
 function Root() {
@@ -117,9 +106,10 @@ function Root() {
   // Straight after the first-run path the tabs open on Study (the first session), with the tab bar there
   // so the user can leave at any moment. Any later launch opens on Explore.
   const fromOnboarding = useRef(false);
-  if (ready && phase !== 'done') fromOnboarding.current = true;
+  const inOnboarding = phase !== 'done' && phase !== 'study'; // 'study' is an older saved value: treated as done
+  if (ready && inOnboarding) fromOnboarding.current = true;
   if (!ready) return null;
-  if (phase !== 'done') return <Onboarding />;
+  if (inOnboarding) return <Onboarding />;
   return (
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator

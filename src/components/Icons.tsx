@@ -72,6 +72,16 @@ export function SwipeUpIcon({ color, size = 18 }: IconProps) {
   );
 }
 
+/** A magnifying glass: a lens and its handle. */
+export function SearchIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={10.5} cy={10.5} r={6.4} stroke={color} {...strokeProps} />
+      <Path d="M15.3 15.4l5 5" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
 /** A little bin: lid, handle and a body with two lines. */
 export function TrashIcon({ color, size = 20 }: IconProps) {
   return (

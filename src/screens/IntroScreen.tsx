@@ -7,13 +7,12 @@ import { useProfile } from '../state/profile';
 import { colors, fonts } from '../theme';
 
 const STEPS: { label: string; text: string }[] = [
-  { label: 'explore', text: 'meet new words and show how well you know each one.' },
-  { label: 'study', text: 'learn the ones you gathered. each word comes back right before you’d forget it.' },
-  { label: 'map', text: 'watch your vocabulary grow on a map.' },
+  { label: 'explore', text: 'meet new words' },
+  { label: 'study', text: 'learn the ones you gathered' },
+  { label: 'map', text: 'watch your vocabulary grow on a map' },
 ];
 
-// One screen between the name and the first word: what the app is. Nothing to learn here, it only says
-// where the user is. (What happens next, the quick test, is said on the first word itself.)
+// One screen after the name: what the app is. Nothing to learn here, it only says where the user is.
 export default function IntroScreen({ onDone }: { onDone: () => void }) {
   const insets = useSafeAreaInsets();
   const { name } = useProfile();
@@ -45,12 +44,12 @@ export default function IntroScreen({ onDone }: { onDone: () => void }) {
 const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: 24 },
   body: { flex: 1, justifyContent: 'center', gap: 18 },
-  title: { fontFamily: fonts.medium, fontSize: 30, lineHeight: 38, color: colors.text },
-  lead: { fontFamily: fonts.medium, fontSize: 19, lineHeight: 27, color: colors.text },
+  title: { fontFamily: fonts.medium, fontSize: 36, lineHeight: 44, color: colors.text },
+  lead: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 25, color: colors.textSecondary },
   steps: { gap: 18, marginTop: 6 },
   step: { flexDirection: 'row', gap: 14, alignItems: 'flex-start' },
   stepNumber: { fontFamily: fonts.medium, fontSize: 22, lineHeight: 26, color: colors.accent, width: 20 },
   stepBody: { flex: 1, gap: 2 },
-  stepLabel: { fontFamily: fonts.medium, fontSize: 19, color: colors.text },
-  stepText: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 23, color: colors.textSecondary },
+  stepLabel: { fontFamily: fonts.medium, fontSize: 18, color: colors.text },
+  stepText: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 22, color: colors.textSecondary },
 });

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
-import { TrashIcon } from '../components/Icons';
+import { SearchIcon, TrashIcon } from '../components/Icons';
+import { TabHeader } from '../components/TabHeader';
 import { WordCard } from '../components/WordCard';
 import { WORDS } from '../data/words';
 import { RING_AMBER, RING_GREEN, RING_RED } from '../circle/color';
@@ -27,9 +28,23 @@ const SORTS: { key: Sort; label: string }[] = [
   { key: 'newest', label: 'newest' },
 ];
 
-// Every word you have met (gathered for study, or marked known), with where it stands: searchable, sortable, and each one can be deleted.
-// Deleting takes two taps on the bin (the second confirms) and the word is never offered again.
-export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: number; onBack: () => void }) {
+// The Study tab's home: the words you are learning (gathered, not yet learned), with where each stands:
+// searchable, sortable, and each one can be deleted. Tapping a word opens its full card. The "study"
+// button starts a session. Deleting takes two taps on the bin (the second confirms) and the word is
+// never offered again.
+export default function WordsScreen({
+  bottomSpace,
+  canStudy,
+  note,
+  onStudy,
+}: {
+  bottomSpace: number;
+  /** Whether a session is ready (enough new words are waiting, or a review is due). */
+  canStudy: boolean;
+  /** Said above the button when no session is ready. */
+  note?: string;
+  onStudy: () => void;
+}) {
   const insets = useSafeAreaInsets();
   const { ratings, unrate } = useRatings();
   const { cards, removeWord } = useProfile();
@@ -37,12 +52,14 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
   const [openId, setOpenId] = useState<string | null>(null); // the word whose card is showing
   const opened = openId ? WORDS.find((w) => w.id === openId) : undefined;
   const [query, setQuery] = useState('');
+  const [searching, setSearching] = useState(false); // the search field is hidden until the magnifier is tapped
   const [sort, setSort] = useState<Sort>('status');
 
   const q = query.trim().toLowerCase();
-  const inPile = WORDS.filter((w) => ratings[w.id]);
   // a word marked known in Explore has no card; it counts as learned
   const statusFor = (id: string): Status => (!cards[id] && ratings[id]?.known ? 'learned' : statusOf(cards[id]));
+  // the words in study: gathered, and not yet learned
+  const inPile = WORDS.filter((w) => ratings[w.id] && statusFor(w.id) !== 'learned');
   const shown = inPile
     .filter((w) => !q || w.lemma.toLowerCase().includes(q) || w.en.toLowerCase().includes(q))
     .sort((a, b) => {
@@ -65,27 +82,10 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
   };
 
   return (
-    <View style={[styles.screen, { paddingTop: insets.top + 12 }]}>
-      <View style={styles.header}>
-        <Pressable onPress={onBack} accessibilityRole="button" hitSlop={10}>
-          <Text style={styles.back}>‹ map</Text>
-        </Pressable>
-        <Text style={styles.count}>
-          {q ? `${shown.length} of ${inPile.length}` : inPile.length} words
-        </Text>
-      </View>
-
-      <TextInput
-        value={query}
-        onChangeText={setQuery}
-        placeholder="search words"
-        placeholderTextColor={colors.textTertiary}
-        autoCorrect={false}
-        autoCapitalize="none"
-        clearButtonMode="while-editing"
-        returnKeyType="search"
-        style={styles.search}
-        accessibilityLabel="search words"
+    <View style={[styles.screen, { paddingTop: insets.top + 12, paddingBottom: bottomSpace }]}>
+      <TabHeader
+        title="study"
+        right={<Text style={styles.count}>{q ? `${shown.length} of ${inPile.length}` : inPile.length} words</Text>}
       />
 
       <View style={styles.sorts}>
@@ -101,15 +101,46 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
             <Text style={[styles.sortText, sort === o.key && styles.sortTextOn]}>{o.label}</Text>
           </Pressable>
         ))}
+        <View style={styles.spacer} />
+        <Pressable
+          onPress={() => {
+            if (searching) setQuery('');
+            setSearching((v) => !v);
+          }}
+          accessibilityRole="button"
+          accessibilityLabel={searching ? 'close the search' : 'search words'}
+          accessibilityState={{ selected: searching }}
+          hitSlop={8}
+          style={[styles.searchButton, searching && styles.searchButtonOn]}
+        >
+          <SearchIcon color={searching ? colors.onAccent : colors.textSecondary} />
+        </Pressable>
       </View>
 
+      {searching ? (
+        <TextInput
+          value={query}
+          onChangeText={setQuery}
+          placeholder="search words"
+          placeholderTextColor={colors.textTertiary}
+          autoFocus
+          autoCorrect={false}
+          autoCapitalize="none"
+          clearButtonMode="while-editing"
+          returnKeyType="search"
+          style={styles.search}
+          accessibilityLabel="search words"
+        />
+      ) : null}
+
       <ScrollView
-        contentContainerStyle={{ paddingBottom: bottomSpace, gap: 10 }}
+        contentContainerStyle={{ paddingBottom: 8, gap: 10 }}
+        style={styles.list}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
       >
         {shown.length === 0 ? (
-          <Text style={styles.empty}>{q ? 'no words match.' : 'no words yet. rate some in explore.'}</Text>
+          <Text style={styles.empty}>{q ? 'no words match' : 'no words yet. rate some in explore'}</Text>
         ) : null}
         {shown.map((w) => {
           const status = statusFor(w.id);
@@ -153,6 +184,11 @@ export default function WordsScreen({ bottomSpace, onBack }: { bottomSpace: numb
         })}
       </ScrollView>
 
+      <View style={styles.action}>
+        {!canStudy && note ? <Text style={styles.note}>{note}</Text> : null}
+        <Button label="study" onPress={onStudy} disabled={!canStudy} />
+      </View>
+
       {opened ? (
         <View style={styles.overlay}>
           <Pressable style={StyleSheet.absoluteFill} onPress={() => setOpenId(null)} accessibilityLabel="close the card" accessibilityRole="button" />
@@ -171,8 +207,6 @@ const styles = StyleSheet.create({
   overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: 'rgba(8,16,26,0.95)' },
   cardWrap: { flex: 1, paddingHorizontal: 24, gap: 12 },
   screen: { flex: 1, paddingHorizontal: 24, gap: 12 },
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: 32 },
-  back: { fontFamily: fonts.medium, fontSize: 16, color: colors.accent },
   count: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
   search: {
     paddingHorizontal: 16,
@@ -186,6 +220,9 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   sorts: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  spacer: { flex: 1 },
+  searchButton: { width: 34, height: 34, borderRadius: radius.chip, alignItems: 'center', justifyContent: 'center' },
+  searchButtonOn: { backgroundColor: colors.accent },
   sortLabel: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, marginRight: 2 },
   sortChip: {
     paddingHorizontal: 12,
@@ -198,6 +235,9 @@ const styles = StyleSheet.create({
   sortChipOn: { backgroundColor: colors.accent, borderColor: colors.accent },
   sortText: { fontFamily: fonts.medium, fontSize: 13, color: colors.text },
   sortTextOn: { color: colors.onAccent },
+  list: { flex: 1 },
+  action: { gap: 10, paddingTop: 4 },
+  note: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center' },
   empty: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center', marginTop: 40 },
   row: {
     flexDirection: 'row',

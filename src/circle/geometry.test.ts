@@ -93,7 +93,7 @@ test('a touch starts a drawing anywhere round the word, not only on the ring', (
   assert.equal(canStartDraw(c + 50, c, c, c, r), true); // on the word itself, still fine
   assert.equal(canStartDraw(c, c - r - 40, c, c, r), true); // outside the ring
   assert.equal(canStartDraw(c + 5, c, c, c, r), false); // the exact centre: no stable angle
-  assert.equal(canStartDraw(c, c - r - 200, c, c, r), false); // far away
+  assert.equal(canStartDraw(c, c - r - 800, c, c, r), false); // far away
 });
 
 test('haptic sections tick at 30 60 and 90 percent', () => {

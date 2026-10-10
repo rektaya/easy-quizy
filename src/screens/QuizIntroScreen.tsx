@@ -1,0 +1,27 @@
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Button } from '../components/Button';
+import { colors, fonts } from '../theme';
+
+// Between the practice word and the 15 test words: says what the test is for.
+export default function QuizIntroScreen({ onStart }: { onStart: () => void }) {
+  const insets = useSafeAreaInsets();
+  return (
+    <View style={[styles.screen, { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 }]}>
+      <Animated.View entering={FadeIn.duration(450)} style={styles.body}>
+        <Text style={styles.title}>here is a quick test to adjust new words you explore to your vocabulary level</Text>
+        <Text style={styles.lead}>show how well you know these 15 words</Text>
+      </Animated.View>
+      <Button label="start" onPress={onStart} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  screen: { flex: 1, paddingHorizontal: 24 },
+  body: { flex: 1, justifyContent: 'center', gap: 18 },
+  title: { fontFamily: fonts.medium, fontSize: 28, lineHeight: 36, color: colors.text },
+  lead: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 25, color: colors.textSecondary },
+});

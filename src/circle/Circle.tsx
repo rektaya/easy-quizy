@@ -39,13 +39,16 @@ type Props = {
   /** Shown inside the ring in place of the word (the reveal, after the user has rated). */
   reveal?: React.ReactNode;
   onCommit: (value: number) => void;
+  /** Where the circle's box sits inside the area the Circle fills (its parent, which must be positioned and cover the screen area). */
+  x: number;
+  y: number;
 };
 
 // The Circle. There is no visible ring: the user draws a circle round the word, and stars appear where
 // the finger goes (StardustRing). Only the ghost finger on the very first word shows where to draw. The
 // drawing and its haptics are in useRing; what you see is in StardustRing.
-export function Circle({ word, size, value, showHint, reveal, onCommit }: Props) {
-  const ring = useRing(size, value, onCommit);
+export function Circle({ word, size, value, showHint, reveal, onCommit, x, y }: Props) {
+  const ring = useRing(size, value, onCommit, x, y);
   const { c, r, v } = ring;
   const length = 2 * Math.PI * r;
   const ghost = useSharedValue(0);
@@ -97,9 +100,12 @@ export function Circle({ word, size, value, showHint, reveal, onCommit }: Props)
 
   return (
     <GestureDetector gesture={ring.gesture}>
+      {/* the touch area is the whole area the Circle fills (the screen's working area), not just the circle:
+          the ring is invisible, so a drawing may start anywhere round the word */}
+      <View style={StyleSheet.absoluteFill} collapsable={false}>
       <View
         ref={box}
-        style={{ width: size, height: size }}
+        style={{ position: 'absolute', left: x, top: y, width: size, height: size }}
         collapsable={false}
         onLayout={measure}
       >
@@ -126,6 +132,8 @@ export function Circle({ word, size, value, showHint, reveal, onCommit }: Props)
             fill="none"
             strokeDasharray={`${length} ${length}`}
             stroke="#9BC0FF"
+            strokeDashoffset={length} // hidden until the animation runs: no full ring flashes on the first frame
+            opacity={0}
             animatedProps={ghostArcProps}
           />
         </Svg>
@@ -137,6 +145,7 @@ export function Circle({ word, size, value, showHint, reveal, onCommit }: Props)
         <View pointerEvents={reveal ? 'box-none' : 'none'} style={styles.center}>
           {reveal ?? <WordFace word={word} />}
         </View>
+      </View>
       </View>
     </GestureDetector>
   );
