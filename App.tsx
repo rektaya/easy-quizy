@@ -10,6 +10,7 @@ import { Starry } from './src/components/StarBackground';
 import { FloatingTabBar, useTabBarSpace } from './src/components/FloatingTabBar';
 import CalibrationDoneScreen from './src/screens/CalibrationDoneScreen';
 import ExploreScreen, { ExploreView } from './src/screens/ExploreScreen';
+import { KnownDust } from './src/components/KnownDust';
 import IntroScreen from './src/screens/IntroScreen';
 import NameScreen from './src/screens/NameScreen';
 import PracticeScreen from './src/screens/PracticeScreen';
@@ -64,6 +65,7 @@ const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) =
         setSeedTheme(themeId);
         navigation.navigate('Explore');
       }}
+      onStudy={() => navigation.navigate('Study')}
     />
   );
 };
@@ -109,8 +111,16 @@ function Root() {
   const inOnboarding = phase !== 'done' && phase !== 'study'; // 'study' is an older saved value: treated as done
   if (ready && inOnboarding) fromOnboarding.current = true;
   if (!ready) return null;
-  if (inOnboarding) return <Onboarding />;
+  if (inOnboarding) {
+    return (
+      <>
+        <Onboarding />
+        <KnownDust />
+      </>
+    );
+  }
   return (
+    <>
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
         initialRouteName={fromOnboarding.current ? 'Study' : 'Explore'}
@@ -122,6 +132,8 @@ function Root() {
         <Tab.Screen name="Map" component={MapTabScreen} />
       </Tab.Navigator>
     </NavigationContainer>
+    <KnownDust />
+    </>
   );
 }
 

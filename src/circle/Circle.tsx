@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   Easing,
@@ -18,9 +18,9 @@ import { WordFace } from '../components/WordFace';
 import type { Word } from '../data/words';
 import { colors } from '../theme';
 import { DEFAULT_START_DEG, pointOnRing } from './geometry';
-import { ScreenGlow } from './ScreenGlow';
 import { StardustRing } from './StardustRing';
-import { RING_PAD, useRing } from './useRing';
+import { emitKnown } from './knownEvents';
+import { RING_PAD, RING_STROKE, useRing } from './useRing';
 
 const AnimatedSvgCircle = Animated.createAnimatedComponent(SvgCircle);
 
@@ -48,24 +48,16 @@ type Props = {
 // the finger goes (StardustRing). Only the ghost finger on the very first word shows where to draw. The
 // drawing and its haptics are in useRing; what you see is in StardustRing.
 export function Circle({ word, size, value, showHint, reveal, onCommit, x, y }: Props) {
-  const ring = useRing(size, value, onCommit, x, y);
+  // A known word lets stardust float up off the ring and out of the top of the screen (KnownDust, drawn
+  // above the whole app). It starts from the circle's place on the screen, measured fresh.
+  const onKnown = () => {
+    box.current?.measureInWindow((bx, by) => emitKnown({ x: bx + size / 2, y: by + size / 2, r: size / 2 - RING_STROKE }));
+  };
+  const ring = useRing(size, value, onCommit, x, y, onKnown);
   const { c, r, v } = ring;
   const length = 2 * Math.PI * r;
   const ghost = useSharedValue(0);
-  // where the circle is on the screen, so that the light of a known word can cover the whole screen
   const box = useRef<View>(null);
-  const [origin, setOrigin] = useState<{ x: number; y: number } | null>(null);
-  const screen = useWindowDimensions();
-  // The word glides and grows into place when it arrives, so the circle is measured again once it has
-  // settled, and whenever it gets its rating.
-  const measure = () => box.current?.measureInWindow((x, y) => setOrigin({ x, y }));
-  useEffect(() => {
-    const t = setTimeout(measure, 900);
-    return () => clearTimeout(t);
-  }, []);
-  useEffect(() => {
-    measure();
-  }, [value]);
 
   useEffect(() => {
     if (showHint && value === null) {
@@ -107,19 +99,12 @@ export function Circle({ word, size, value, showHint, reveal, onCommit, x, y }: 
         ref={box}
         style={{ position: 'absolute', left: x, top: y, width: size, height: size }}
         collapsable={false}
-        onLayout={measure}
       >
-        {/* the light of a known word, over the whole screen (the screen's own content is drawn above it) */}
-        {origin ? (
-          <View pointerEvents="none" style={{ position: 'absolute', left: -origin.x, top: -origin.y }}>
-            <ScreenGlow width={screen.width} height={screen.height} cx={origin.x + c} cy={origin.y + c} burst={v.burst} />
-          </View>
-        ) : null}
-
         {/* the stars of the drawing (and the light of a known word): drawn a little beyond the circle */}
         <View pointerEvents="none" style={{ position: 'absolute', left: -RING_PAD, top: -RING_PAD }}>
           <StardustRing ring={ring} />
         </View>
+
 
         {/* the ghost finger's demonstration arc */}
         <Svg width={size} height={size} style={[StyleSheet.absoluteFill, ghostRotation]} pointerEvents="none">

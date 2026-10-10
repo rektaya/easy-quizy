@@ -63,32 +63,63 @@ const COLS = 5;
 /** The range of the points' core radius when a cluster is opened up. */
 export const WORD_POINT_SIZE: [number, number] = [3.4, 8];
 
-/**
- * Place every theme's big star. They sit on a jittered grid, which reads as an even scatter (no
- * two close together, none in a clump), not as a table.
- */
-export function layoutSky(
-  items: { id: string; words: number }[],
-  w: number,
-  h: number,
-  links: { a: number; b: number; weight: number }[] = [],
-  /** Makes the sky one of a kind: a different seed gives a different arrangement of the themes. */
-  seed = 0,
-): SkyCluster[] {
-  const rows = Math.ceil(items.length / COLS);
+/** How many starting scatters are tried; the one that keeps related themes closest wins. */
+const CANDIDATES = 16;
+
+function scatter(n: number, w: number, h: number, seed: number) {
+  const rows = Math.ceil(n / COLS);
   const cellW = w / COLS;
   const cellH = h / rows;
   // which theme starts in which cell of the grid depends on the seed (seed 0 keeps the order)
-  const cells = seed ? shuffled(items.map((_, i) => i), seed) : items.map((_, i) => i);
-  const start = items.map((_, i) => {
+  const cells = seed ? shuffled(Array.from({ length: n }, (_, i) => i), seed) : Array.from({ length: n }, (_, i) => i);
+  return cells.map((cell, i) => {
     const rnd = random(1000 + i * 7919 + seed * 31);
-    const cell = cells[i];
     return {
       x: ((cell % COLS) + 0.5) * cellW + (rnd() - 0.5) * cellW * 0.6,
       y: (Math.floor(cell / COLS) + 0.5) * cellH + (rnd() - 0.5) * cellH * 0.6,
     };
   });
-  const placed = links.length ? relax(start, links, w, h) : start;
+}
+
+/**
+ * Place every theme's big star.
+ *
+ * Without links they sit on a jittered grid, which reads as an even scatter (no two close together,
+ * none in a clump), not as a table; `seed` then gives a different arrangement.
+ *
+ * With links (which themes are close in meaning) the arrangement is a map, and the SAME one for everyone:
+ * the best of several pulls-together of the linked stars, so neighbours in meaning are neighbours on screen.
+ * If the themes have a `level` (1 easy .. 5 hard) the easy ones drift to the top left and the hard ones to
+ * the bottom right, across the grain of the meaning. `seed` only makes each sky one's own: every star is
+ * nudged a little (the corners must stay where they are, so the map is never mirrored).
+ */
+export function layoutSky(
+  items: { id: string; words: number; level?: number }[],
+  w: number,
+  h: number,
+  links: { a: number; b: number; weight: number }[] = [],
+  /** Makes the sky one of a kind (see above). */
+  seed = 0,
+): SkyCluster[] {
+  const n = items.length;
+  let placed: { x: number; y: number }[];
+  if (links.length) {
+    const slope = items.map((it) => (it.level === undefined ? undefined : 0.1 + (0.8 * (it.level - 1)) / 4));
+    placed = bestRelaxed(n, links, w, h, slope);
+    if (seed) {
+      const k = Math.sqrt((w * h) / n);
+      const margin = Math.min(w, h) * 0.06;
+      placed = placed.map((p, i) => {
+        const rnd = random(2000 + i * 6007 + seed * 17);
+        return {
+          x: Math.min(w - margin, Math.max(margin, p.x + (rnd() - 0.5) * k * 0.3)),
+          y: Math.min(h - margin, Math.max(margin, p.y + (rnd() - 0.5) * k * 0.3)),
+        };
+      });
+    }
+  } else {
+    placed = scatter(n, w, h, seed);
+  }
   return items.map((item, i) => {
     const rnd = random(1000 + i * 7919 + seed * 31);
     rnd();
@@ -106,6 +137,74 @@ export function layoutSky(
 }
 
 /**
+ * Pull linked stars together from several fixed starting scatters and keep the arrangement in which the
+ * linked stars are nearest, as long as no two stars crowd each other. Always the same for the same input.
+ */
+const relaxedCache = new Map<string, { x: number; y: number }[]>();
+function bestRelaxed(
+  n: number,
+  links: { a: number; b: number; weight: number }[],
+  w: number,
+  h: number,
+  slope: (number | undefined)[],
+): { x: number; y: number }[] {
+  // the same for everyone, so it is worked out once per screen size
+  const key = `${n}:${Math.round(w)}:${Math.round(h)}:${links.map((l) => `${l.a}.${l.b}.${l.weight}`).join(',')}:${slope.join(',')}`;
+  const cached = relaxedCache.get(key);
+  if (cached) return cached;
+  const result = searchRelaxed(n, links, w, h, slope);
+  relaxedCache.set(key, result);
+  return result;
+}
+
+function searchRelaxed(
+  n: number,
+  links: { a: number; b: number; weight: number }[],
+  w: number,
+  h: number,
+  slope: (number | undefined)[],
+): { x: number; y: number }[] {
+  const k = Math.sqrt((w * h) / n);
+  let best: { x: number; y: number }[] | null = null;
+  let bestScore = Infinity;
+  for (let c = 1; c <= CANDIDATES; c++) {
+    const pos = relax(scatter(n, w, h, c), links, w, h, 1.2, 0.12, 0.05, 220, slope, 0.6);
+    let crowded = false;
+    for (let i = 0; i < n && !crowded; i++) {
+      for (let j = i + 1; j < n; j++) {
+        if (Math.hypot(pos[i].x - pos[j].x, pos[i].y - pos[j].y) < k * 0.12) {
+          crowded = true;
+          break;
+        }
+      }
+    }
+    if (crowded) continue;
+    let score = 0;
+    for (const l of links) score += l.weight * Math.hypot(pos[l.a].x - pos[l.b].x, pos[l.a].y - pos[l.b].y);
+    if (score < bestScore) {
+      bestScore = score;
+      best = pos;
+    }
+  }
+  return spread(best ?? relax(scatter(n, w, h, 1), links, w, h, 1, 0.3, 0.08, 220, slope, 0.4), w, h);
+}
+
+/** Stretches an arrangement so that it fills the whole sky (the pull to the middle leaves the edges bare). */
+function spread(pos: { x: number; y: number }[], w: number, h: number): { x: number; y: number }[] {
+  const margin = Math.min(w, h) * 0.06;
+  const xs = pos.map((p) => p.x);
+  const ys = pos.map((p) => p.y);
+  const x0 = Math.min(...xs);
+  const y0 = Math.min(...ys);
+  const dx = Math.max(...xs) - x0 || 1;
+  const dy = Math.max(...ys) - y0 || 1;
+  return pos.map((p) => ({
+    x: margin + ((p.x - x0) / dx) * (w - 2 * margin),
+    y: margin + ((p.y - y0) / dy) * (h - 2 * margin),
+  }));
+}
+
+/**
  * Pull linked stars together and push every pair apart (a small Fruchterman-Reingold pass that
  * starts from the even scatter), so that linked themes sit near each other but the sky stays
  * evenly filled and inside its edges.
@@ -118,13 +217,25 @@ export function relax(
   links: { a: number; b: number; weight: number }[],
   w: number,
   h: number,
+  /** How hard linked stars pull on each other (a bigger number draws related themes closer). */
+  pull = 0.25,
+  repel = REPEL,
+  gravity = GRAVITY,
+  iterations = 180,
+  /**
+   * Where each star wants to sit along the diagonal from the top left (0) to the bottom right (1), or
+   * undefined for no wish; and how hard it is pulled there. Only the position ALONG the diagonal is
+   * pulled, so related stars can still gather across it.
+   */
+  slope: (number | undefined)[] = [],
+  slopePull = 0.35,
 ): { x: number; y: number }[] {
   const n = start.length;
   const pos = start.map((p) => ({ ...p }));
   const k = Math.sqrt((w * h) / n); // the ideal gap between neighbours
   const margin = Math.min(w, h) * 0.06;
   let heat = k * 0.5;
-  for (let it = 0; it < 180; it++) {
+  for (let it = 0; it < iterations; it++) {
     const move = pos.map(() => ({ x: 0, y: 0 }));
     for (let i = 0; i < n; i++) {
       for (let j = i + 1; j < n; j++) {
@@ -136,7 +247,7 @@ export function relax(
           dy = 0.01;
           d = 0.0141;
         }
-        const f = (REPEL * k * k) / d / d; // repulsion, as a share of the offset
+        const f = (repel * k * k) / d / d; // repulsion, as a share of the offset
         move[i].x += dx * f;
         move[i].y += dy * f;
         move[j].x -= dx * f;
@@ -147,7 +258,7 @@ export function relax(
       const dx = pos[l.a].x - pos[l.b].x;
       const dy = pos[l.a].y - pos[l.b].y;
       const d = Math.hypot(dx, dy) || 0.01;
-      const f = (d / k) * (1 + 0.25 * Math.min(l.weight, 4)); // attraction
+      const f = (d / k) * (1 + pull * Math.min(l.weight, 4)); // attraction
       move[l.a].x -= dx * f;
       move[l.a].y -= dy * f;
       move[l.b].x += dx * f;
@@ -155,8 +266,14 @@ export function relax(
     }
     for (let i = 0; i < n; i++) {
       // a light pull to the middle keeps the stars from piling up against the edges
-      move[i].x += (w / 2 - pos[i].x) * GRAVITY;
-      move[i].y += (h / 2 - pos[i].y) * GRAVITY;
+      move[i].x += (w / 2 - pos[i].x) * gravity;
+      move[i].y += (h / 2 - pos[i].y) * gravity;
+      const want = slope[i];
+      if (want !== undefined) {
+        const u = (pos[i].x / w + pos[i].y / h) / 2; // where it is along the diagonal, 0..1
+        move[i].x += (want - u) * w * slopePull;
+        move[i].y += (want - u) * h * slopePull;
+      }
       const m = Math.hypot(move[i].x, move[i].y) || 1;
       const s = Math.min(m, heat) / m;
       pos[i].x = Math.min(w - margin, Math.max(margin, pos[i].x + move[i].x * s));

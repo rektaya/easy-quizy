@@ -18,8 +18,8 @@ import { FlipReveal } from '../components/FlipReveal';
 import { Ring } from '../components/Ring';
 import { TabHeader } from '../components/TabHeader';
 import { WORDS } from '../data/words';
-import { makeBatch } from '../onboarding/batch';
-import type { BatchItem } from '../onboarding/batch';
+import { makeSession } from '../onboarding/batch';
+import type { BatchItem, SessionKind } from '../onboarding/batch';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts } from '../theme';
@@ -37,6 +37,8 @@ const SWIPE_VELOCITY = 700;
 const GLIDE_OUT = 260;
 
 type Props = {
+  /** The size of the session: a quick one or a longer one. */
+  kind: SessionKind;
   /** Space to leave at the bottom (the floating tab bar). */
   bottomSpace: number;
   /** "show my map" on the closing screen. */
@@ -49,7 +51,7 @@ type Props = {
 // with the Circle, laid out exactly as in Explore: you see the German word, recall what it means, draw
 // how well you knew it, and the meaning appears. Each rating goes to FSRS, which decides when the word
 // comes back. (The words to study are first seen as a list; tapping one there opens its card.)
-export default function StudyScreen({ bottomSpace, onMap, onList }: Props) {
+export default function StudyScreen({ kind, bottomSpace, onMap, onList }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready: ratingsReady, ratings } = useRatings();
@@ -62,8 +64,8 @@ export default function StudyScreen({ bottomSpace, onMap, onList }: Props) {
   // The batch is picked once, when the saved data has loaded (and again for "keep going").
   const loaded = ratingsReady && profileReady;
   useEffect(() => {
-    if (loaded && batch === null) setBatch(makeBatch(WORDS, ratings, cards, Date.now()));
-  }, [loaded, batch, ratings, cards]);
+    if (loaded && batch === null) setBatch(makeSession(WORDS, ratings, cards, Date.now(), kind));
+  }, [loaded, batch, ratings, cards, kind]);
 
   // Moving on after a rating is a swipe up, the same motion as in Explore: the word follows the finger,
   // glides away, and the next one rises in from below.
@@ -116,7 +118,7 @@ export default function StudyScreen({ bottomSpace, onMap, onList }: Props) {
   const word = batch[index]?.word;
   const size = Math.min(width - 48, 320); // the same as in Explore, so drawing feels the same
   const circleTop = Math.max(56, body.h / 2 - size / 2 - CIRCLE_LIFT); // 56: room for the undo plate above
-  const remaining = makeBatch(WORDS, ratings, cards, Date.now()).length;
+  const remaining = makeSession(WORDS, ratings, cards, Date.now(), kind).length;
 
   const keepGoing = () => {
     setBatch(null);

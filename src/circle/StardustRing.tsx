@@ -12,7 +12,7 @@ const DOTS = 210;
 // appear where your finger goes, each settling in from slightly outside and then drifting and twinkling in
 // its own way. The colour never changes (the warm white and orange of the stars on the Map); what grows
 // with the rating is how much they shine: a short arc is a few faint, small stars, a full ring is a bright
-// glowing one. A known word makes the ring flare once (the screen then lights up, see ScreenGlow).
+// glowing one. A known word makes the ring flare and glow (KnownGlow), and stardust floats up out of the screen (see components/KnownDust).
 
 type Dust = { s: number; jitter: number; big: boolean; fly: number; phase: number };
 type Placed = { x: number; y: number; lit: boolean };
@@ -23,6 +23,15 @@ const ease = (t: number) => {
   const k = Math.min(1, Math.max(0, t));
   return k * k * (3 - 2 * k);
 };
+
+// How strongly a known word's celebration glows, 0..1, over the burst (0 -> 1): it rises at once, holds while
+// the stardust is leaving the screen, and is gone by the time the last star has left. After that the ring is
+// just a full golden ring, as it stays for as long as the word is shown.
+function celebration(b: number): number {
+  'worklet';
+  if (b <= 0 || b >= 1) return 0;
+  return ease(b / 0.1) * (1 - ease((b - 0.78) / 0.14));
+}
 
 // How much a rating shines, 0..1, by the four hidden segments: "don't know" is barely a glimmer, "know" is
 // a blaze, and the steps in between are clearly different from each other.
@@ -120,7 +129,7 @@ export function StardustRing({ ring }: { ring: Ring }) {
   const haloSmall = useDerivedValue(() => Math.min(1, (0.22 + 0.55 * Math.pow(shine.value, 1.6)) * (0.75 + 0.25 * Math.sin(clock.value / 480 + 3.1))));
   const sizeBig = useDerivedValue(() => 3.3 + 2.4 * shine.value);
   const sizeSmall = useDerivedValue(() => 2.4 + 1.9 * shine.value);
-  const haloW = useDerivedValue(() => 5 + 15 * shine.value);
+  const haloW = useDerivedValue(() => 5 + 15 * shine.value + 9 * celebration(v.burst.value));
 
   return (
     <Canvas style={{ width: size + 2 * RING_PAD, height: size + 2 * RING_PAD }} pointerEvents="none">
@@ -131,6 +140,7 @@ export function StardustRing({ ring }: { ring: Ring }) {
         {[true, false].map((big) => (
           <Core key={`c${big}`} dots={dots} all={all} big={big} opacity={big ? coreBig : coreSmall} width={big ? sizeBig : sizeSmall} color={coreColor} />
         ))}
+        <KnownGlow c={c} r={r} v={v} />
         <Head c={c} r={r} v={v} />
       </Group>
     </Canvas>
@@ -188,5 +198,22 @@ function Head({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
         positions={[0, 0.3, 1]}
       />
     </Circle>
+  );
+}
+
+
+// A known word glows: a soft orange-gold light all round the ring while the stardust floats away, which
+// fades once the last star has left. The ring then settles to its ordinary golden look.
+function KnownGlow({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
+  const opacity = useDerivedValue(() => (v.display.value < 1 ? 0 : celebration(v.burst.value)));
+  return (
+    <>
+      <Circle cx={c} cy={c} r={r} style="stroke" strokeWidth={34} color="rgba(255,140,50,0.55)" opacity={opacity}>
+        <BlurMask blur={20} style="normal" />
+      </Circle>
+      <Circle cx={c} cy={c} r={r} style="stroke" strokeWidth={14} color="rgba(255,205,130,0.6)" opacity={opacity}>
+        <BlurMask blur={9} style="normal" />
+      </Circle>
+    </>
   );
 }

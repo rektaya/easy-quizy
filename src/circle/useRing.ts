@@ -21,6 +21,7 @@ import {
   snapValue,
 } from './geometry';
 import type { Segment } from './geometry';
+import { KNOWN_MS } from './knownEvents';
 
 // The Circle gesture: start anywhere round the word and draw either way round; hidden 30/30/30/10
 // segments with haptic ticks; a snap in the last 10%. It draws nothing itself: it exposes everything the
@@ -50,6 +51,8 @@ export function useRing(
   /** Where the circle's box sits inside the area the gesture listens to. */
   ox = 0,
   oy = 0,
+  /** Called (on the JS thread) the moment a ring is drawn all the way: the word is known. */
+  onKnown?: () => void,
 ) {
   const c = size / 2;
   const r = c - RING_STROKE;
@@ -128,7 +131,8 @@ export function useRing(
         locked.value = true;
         if (v >= 0.9) {
           burst.value = 0;
-          burst.value = withTiming(1, { duration: 2200 });
+          burst.value = withTiming(1, { duration: KNOWN_MS });
+          if (onKnown) scheduleOnRN(onKnown);
         } else {
           finish.value = 0;
           finish.value = withTiming(1, { duration: 1400, easing: Easing.inOut(Easing.quad) });

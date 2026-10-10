@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import { THEME_LEVEL, THEME_LINKS } from '../data/themeLinks.ts';
 import { THEMES, WORDS } from '../data/words.ts';
 import { seedCard } from '../srs/scheduler.ts';
 import { pickThemeWord } from './calibration.ts';
-import { buildClusters, clusterStats, levelOf, starLook, starState, themeLinks, zoomStates } from './mapdata.ts';
+import { buildClusters, clusterStats, curatedLinks, levelOf, starLook, starState, themeLinks, zoomStates } from './mapdata.ts';
 import { ambientStars, blob, heroSize, layoutSky, random, shuffled } from './sky.ts';
 
 const T0 = Date.UTC(2026, 8, 26, 10);
@@ -165,4 +166,44 @@ test('every user gets a sky of their own, and the same seed always gives the sam
   const len = (sky: typeof a) => links.reduce((n, l) => n + Math.hypot(sky[l.a].cx - sky[l.b].cx, sky[l.a].cy - sky[l.b].cy), 0) / links.length;
   assert.ok(len(b) < len(layoutSky(items, 819, 1604, [], 222)) * 0.85);
   assert.notDeepEqual(ambientStars(300, 500, [], 22, 5).slice(0, 5), ambientStars(300, 500, [], 22, 6).slice(0, 5));
+});
+
+test('the hand-made theme links name real themes, give every theme two neighbours, and join the whole sky', () => {
+  const clusters = buildClusters(THEMES, WORDS);
+  const ids = new Set(clusters.map((c) => c.id));
+  for (const [x, y] of THEME_LINKS) assert.ok(ids.has(x) && ids.has(y), `unknown theme in ${x} - ${y}`);
+  const links = curatedLinks(clusters);
+  assert.equal(links.length, THEME_LINKS.length);
+  clusters.forEach((c, i) => {
+    assert.ok(links.filter((l) => l.a === i || l.b === i).length >= 2, `${c.id} has fewer than two neighbours`);
+  });
+  const seen = new Set([0]);
+  for (let round = 0; round < clusters.length; round++) {
+    for (const l of links) if (seen.has(l.a) || seen.has(l.b)) (seen.add(l.a), seen.add(l.b));
+  }
+  assert.equal(seen.size, clusters.length, 'some theme is cut off from the others');
+});
+
+test('the map has the same structure for everyone, related themes are near, and easy themes sit top left', () => {
+  const clusters = buildClusters(THEMES, WORDS);
+  const items = clusters.map((c) => ({ id: c.id, words: c.words.length, level: THEME_LEVEL[c.id] }));
+  const links = curatedLinks(clusters);
+  const W = 820;
+  const H = 1230;
+  const k = Math.sqrt((W * H) / items.length);
+  const a = layoutSky(items, W, H, links, 5); // two different users
+  const b = layoutSky(items, W, H, links, 6);
+  for (let i = 0; i < a.length; i++) {
+    assert.ok(Math.hypot(a[i].cx - b[i].cx, a[i].cy - b[i].cy) < k * 0.5, `${a[i].id} sits somewhere else for another user`);
+  }
+  const mean = (xs: number[]) => xs.reduce((s, x) => s + x, 0) / xs.length;
+  const linked = mean(links.map((l) => Math.hypot(a[l.a].cx - a[l.b].cx, a[l.a].cy - a[l.b].cy)));
+  const pairs: number[] = [];
+  for (let i = 0; i < a.length; i++) for (let j = i + 1; j < a.length; j++) pairs.push(Math.hypot(a[i].cx - a[j].cx, a[i].cy - a[j].cy));
+  assert.ok(linked < mean(pairs) * 0.5, `related themes are not near enough: ${linked.toFixed(0)} vs ${mean(pairs).toFixed(0)}`);
+  // the easy themes are on the top left side of the map, the hard ones on the bottom right
+  const along = (i: number) => (a[i].cx / W + a[i].cy / H) / 2;
+  const easy = mean(items.map((it, i) => (it.level === 1 ? along(i) : NaN)).filter((x) => !Number.isNaN(x)));
+  const hard = mean(items.map((it, i) => (it.level === 5 ? along(i) : NaN)).filter((x) => !Number.isNaN(x)));
+  assert.ok(easy < 0.4 && hard > 0.6, `easy ${easy.toFixed(2)}, hard ${hard.toFixed(2)}`);
 });

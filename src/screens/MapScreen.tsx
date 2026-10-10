@@ -25,7 +25,8 @@ import type { Glow } from '../components/GlowShader';
 import { TabHeader } from '../components/TabHeader';
 import { THEMES, WORDS } from '../data/words';
 import { EXPLORE_LOCK_AT, waitingWords } from '../onboarding/batch';
-import { buildClusters, clusterStats, levelOf, starLook, themeLinks, zoomWords } from '../onboarding/mapdata';
+import { THEME_LEVEL } from '../data/themeLinks';
+import { buildClusters, clusterStats, curatedLinks, levelOf, starLook, zoomWords } from '../onboarding/mapdata';
 import type { Cluster, StarLook, StarState } from '../onboarding/mapdata';
 import { ambientStars, blob, layoutSky, shuffled } from '../onboarding/sky';
 import type { SkyCluster } from '../onboarding/sky';
@@ -126,14 +127,15 @@ type Props = {
   bottomSpace: number;
   /** "Explore from here": Explore starts in the chosen area. */
   onExplore: (themeId: string) => void;
-  /** Open the list of all words. */
+  /** "Study" on a theme whose words are all explored: on to the Study tab. */
+  onStudy: () => void;
 };
 
 function snapTick() {
   Haptics.selectionAsync().catch(() => {});
 }
 
-export default function MapScreen({ bottomSpace, onExplore }: Props) {
+export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   const insets = useSafeAreaInsets();
   const { ratings, reset } = useRatings();
   const { cards, skySeed, restartOnboarding, mapIntroSeen, setMapIntroSeen } = useProfile();
@@ -177,12 +179,12 @@ export default function MapScreen({ bottomSpace, onExplore }: Props) {
     () => ({ w: stage.w * WORLD_X + 2 * pad.x, h: stage.h * WORLD_Y + 2 * pad.y }),
     [stage, pad],
   );
-  const links = useMemo(() => themeLinks(clusters, WORDS), [clusters]);
+  const links = useMemo(() => curatedLinks(clusters), [clusters]);
   const sky = useMemo(
     () =>
       stage.w
         ? layoutSky(
-            clusters.map((c) => ({ id: c.id, words: c.words.length })),
+            clusters.map((c) => ({ id: c.id, words: c.words.length, level: THEME_LEVEL[c.id] })),
             world.w - 2 * pad.x,
             world.h - 2 * pad.y,
             links,
@@ -407,37 +409,99 @@ export default function MapScreen({ bottomSpace, onExplore }: Props) {
       if (x1 > x0) panX.value = withDecay({ velocity: e.velocityX / scale.value, clamp: [x0, x1] });
       if (y1 > y0) panY.value = withDecay({ velocity: e.velocityY / scale.value, clamp: [y0, y1] });
     });
+  // Pinching in once the camera is already close opens the star under the fingers (it zooms into it, the
+  // same as a tap); pinching out on an open star closes it again, following the fingers. So the map zooms
+  // at every level: the whole sky, the sky close up, and one theme.
+  const opening = useSharedValue(false);
+  // Pinching zooms into the point between the fingers, not the middle of the map: the sky is scaled
+  // around the middle of the screen, so the offset is adjusted by how far the point is from that middle.
+  // While the map settles on a distance after the fingers lift, it keeps the same point still.
+  const snapping = useSharedValue(false);
+  const focusX = useSharedValue(0);
+  const focusY = useSharedValue(0);
   const pinch = Gesture.Pinch()
     .enabled(!selectedId)
     .onStart(() => {
       'worklet';
       startScale.value = scale.value;
+      opening.value = false;
+      snapping.value = false;
     })
     .onUpdate((e) => {
       'worklet';
-      scale.value = Math.min(1, Math.max(lowest, startScale.value * e.scale));
-      panX.value = clampPan(panX.value, scale.value, stage.w, world.w);
-      panY.value = clampPan(panY.value, scale.value, stage.h, world.h);
+      if (!opening.value && startScale.value > 0.95 && e.scale > 1.25) {
+        // the star nearest to the middle of the pinch, if it is near enough
+        let best = -1;
+        let bestD = 130;
+        for (let i = 0; i < sky.length; i++) {
+          const d = Math.hypot(sky[i].cx + panX.value - e.focalX, sky[i].cy + panY.value - e.focalY);
+          if (d < bestD) {
+            bestD = d;
+            best = i;
+          }
+        }
+        if (best >= 0) {
+          opening.value = true;
+          scheduleOnRN(snapTick);
+          scheduleOnRN(select, sky[best]);
+        }
+      }
+      const before = scale.value;
+      const next = Math.min(1, Math.max(lowest, startScale.value * e.scale));
+      scale.value = next;
+      panX.value = clampPan(panX.value + (e.focalX - stage.w / 2) * (1 / next - 1 / before), next, stage.w, world.w);
+      panY.value = clampPan(panY.value + (e.focalY - stage.h / 2) * (1 / next - 1 / before), next, stage.h, world.h);
     })
     // the map only rests at two distances: when the fingers lift it snaps to the nearer, close up or the
     // whole sky, never somewhere in between
-    .onEnd(() => {
+    .onEnd((e) => {
       'worklet';
       const target = snapScale(scale.value, startScale.value, lowest);
       if (target !== startScale.value) scheduleOnRN(snapTick);
-      scale.value = withTiming(target, { duration: 340, easing: Easing.out(Easing.cubic) });
+      focusX.value = e.focalX;
+      focusY.value = e.focalY;
+      snapping.value = true;
+      scale.value = withTiming(target, { duration: 340, easing: Easing.out(Easing.cubic) }, () => {
+        'worklet';
+        snapping.value = false;
+      });
+    });
+  const closePinch = Gesture.Pinch()
+    .enabled(!!selectedId)
+    .onUpdate((e) => {
+      'worklet';
+      open.value = Math.min(1, Math.max(0, 1 - (1 - e.scale) * 1.4));
+    })
+    .onEnd(() => {
+      'worklet';
+      if (open.value < 0.62) {
+        scheduleOnRN(snapTick);
+        open.value = withTiming(0, { duration: 260, easing: Easing.out(Easing.cubic) }, (finished) => {
+          'worklet';
+          if (finished) scheduleOnRN(finishClose);
+        });
+      } else {
+        open.value = withTiming(1, { duration: 260, easing: Easing.out(Easing.cubic) });
+      }
     });
   // the sky's offset follows the scale as it snaps, so its edge never comes inside the screen
   useAnimatedReaction(
     () => scale.value,
     (sc, before) => {
       if (before === null || sc === before) return;
-      panX.value = clampPan(panX.value, sc, stage.w, world.w);
-      panY.value = clampPan(panY.value, sc, stage.h, world.h);
+      let px = panX.value;
+      let py = panY.value;
+      if (snapping.value) {
+        // keep the point the user pinched on where it is while the map settles
+        px += (focusX.value - stage.w / 2) * (1 / sc - 1 / before);
+        py += (focusY.value - stage.h / 2) * (1 / sc - 1 / before);
+      }
+      panX.value = clampPan(px, sc, stage.w, world.w);
+      panY.value = clampPan(py, sc, stage.h, world.h);
     },
     [stage.w, stage.h, world.w, world.h],
   );
-  const look = Gesture.Simultaneous(drag, pinch);
+  const look = Gesture.Simultaneous(drag, pinch, closePinch);
   const cameraPaused = useSharedValue(false);
   useEffect(() => {
     cameraPaused.value = !!selectedId;
@@ -542,7 +606,7 @@ export default function MapScreen({ bottomSpace, onExplore }: Props) {
       </View>
 
       {cluster ? (
-        <Panel cluster={cluster} bottom={bottomSpace} locked={locked} onExplore={onExplore} />
+        <Panel cluster={cluster} bottom={bottomSpace} locked={locked} onExplore={onExplore} onStudy={onStudy} />
       ) : !mapIntroSeen ? (
         // the first time the Map is opened: what it is, and how to move around it
         <Animated.View entering={FadeIn.duration(400)} style={[styles.card, { bottom: bottomSpace }]}>
@@ -564,11 +628,13 @@ function Panel({
   bottom,
   locked,
   onExplore,
+  onStudy,
 }: {
   cluster: Cluster;
   bottom: number;
   locked: boolean;
   onExplore: (id: string) => void;
+  onStudy: () => void;
 }) {
   const { ratings } = useRatings();
   const { cards } = useProfile();
@@ -582,13 +648,18 @@ function Panel({
           <Text style={styles.cardSub}>
             {cluster.de} · {stats.total - stats.unexplored} of {stats.total} words explored
           </Text>
+          {done ? <Text style={styles.cardNote}>all the words in this cluster are already explored, so it’s time to study them</Text> : null}
         </View>
       </View>
-      <Button
-        label={locked ? 'explore is paused' : done ? 'all explored' : 'explore from here'}
-        onPress={() => onExplore(cluster.id)}
-        disabled={locked || done}
-      />
+      {done ? (
+        <Button label="study" onPress={onStudy} />
+      ) : (
+        <Button
+          label={locked ? 'explore is paused' : 'explore from here'}
+          onPress={() => onExplore(cluster.id)}
+          disabled={locked}
+        />
+      )}
     </View>
   );
 }
@@ -618,4 +689,5 @@ const styles = StyleSheet.create({
   cardHead: { flex: 1, gap: 2 },
   cardTitle: { fontFamily: fonts.medium, fontSize: 20, color: ON_SKY },
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
+  cardNote: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: ON_SKY, marginTop: 8 },
 });

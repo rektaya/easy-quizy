@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { WORDS } from '../data/words.ts';
 import { firstStudy, reviewCard, seedCard } from '../srs/scheduler.ts';
-import { dueWords, makeBatch, nextDue, waitingWords } from './batch.ts';
+import { dueWords, makeBatch, makeSession, nextDue, waitingWords } from './batch.ts';
 import { statusOf, summarize } from './status.ts';
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -79,4 +79,18 @@ test('a due review brings the session even when few new words wait', () => {
   const some = { termin: rating(0.05), arbeit: rating(0.1) };
   const batch = makeBatch(WORDS, some, cards, T0 + 3 * DAY);
   assert.deepEqual(batch.map((b) => [b.word.id, b.isNew]), [['termin', false], ['arbeit', true]]);
+});
+
+test('a quick session is at most 10 words and "study all" up to 50, with the new words keeping their share', () => {
+  const ids = WORDS.slice(0, 40).map((w) => w.id);
+  const ratings40 = Object.fromEntries(ids.map((id, i) => [id, rating(0.1 + (i % 5) * 0.1)]));
+  // the first 20 have been studied and are due; the other 20 are new
+  const cards40 = Object.fromEntries(ids.slice(0, 20).map((id) => [id, seedCard(0.2, T0)]));
+  const now = T0 + 5 * DAY;
+  const quick = makeSession(WORDS, ratings40, cards40, now, 'quick');
+  const long = makeSession(WORDS, ratings40, cards40, now, 'long');
+  assert.equal(quick.length, 10);
+  assert.equal(quick.filter((b) => b.isNew).length, 5);
+  assert.equal(long.length, 40); // all 20 due reviews and all 20 new words
+  assert.equal(long.filter((b) => b.isNew).length, 20);
 });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { SearchIcon, TrashIcon } from '../components/Icons';
@@ -30,25 +30,22 @@ const SORTS: { key: Sort; label: string }[] = [
 
 // The Study tab's home: the words you are learning (gathered, not yet learned), with where each stands:
 // searchable, sortable, and each one can be deleted. Tapping a word opens its full card. The "study"
-// button starts a session. Deleting takes two taps on the bin (the second confirms) and the word is
+// buttons start a session ("quick study", or "study all"). Deleting asks first, in a window, and the word is
 // never offered again.
 export default function WordsScreen({
   bottomSpace,
-  canStudy,
+  sessions,
   note,
-  onStudy,
 }: {
   bottomSpace: number;
-  /** Whether a session is ready (enough new words are waiting, or a review is due). */
-  canStudy: boolean;
-  /** Said above the button when no session is ready. */
+  /** The sessions that can be started now (a quick one, a longer one): a button each. */
+  sessions: { label: string; caption: string; onPress: () => void }[];
+  /** Said above the buttons when no session is ready. */
   note?: string;
-  onStudy: () => void;
 }) {
   const insets = useSafeAreaInsets();
   const { ratings, unrate } = useRatings();
   const { cards, removeWord } = useProfile();
-  const [confirming, setConfirming] = useState<string | null>(null);
   const [openId, setOpenId] = useState<string | null>(null); // the word whose card is showing
   const opened = openId ? WORDS.find((w) => w.id === openId) : undefined;
   const [query, setQuery] = useState('');
@@ -71,14 +68,23 @@ export default function WordsScreen({
       );
     });
 
-  const remove = (id: string) => {
-    if (confirming !== id) {
-      setConfirming(id);
-      return;
-    }
-    unrate(id);
-    removeWord(id);
-    setConfirming(null);
+  // Deleting asks first, in a window: the word is never offered again.
+  const remove = (id: string, lemma: string) => {
+    Alert.alert(
+      'delete this word?',
+      `are you sure you want to delete “${lemma}”? it will not be offered to you again.`,
+      [
+        { text: 'cancel', style: 'cancel' },
+        {
+          text: 'delete',
+          style: 'destructive',
+          onPress: () => {
+            unrate(id);
+            removeWord(id);
+          },
+        },
+      ],
+    );
   };
 
   return (
@@ -144,13 +150,11 @@ export default function WordsScreen({
         ) : null}
         {shown.map((w) => {
           const status = statusFor(w.id);
-          const sure = confirming === w.id;
           return (
             <View key={w.id} style={styles.row}>
               <Pressable
                 style={styles.open}
                 onPress={() => {
-                  setConfirming(null);
                   setOpenId(w.id);
                 }}
                 accessibilityRole="button"
@@ -171,13 +175,13 @@ export default function WordsScreen({
                 </View>
               </Pressable>
               <Pressable
-                onPress={() => remove(w.id)}
+                onPress={() => remove(w.id, w.lemma)}
                 accessibilityRole="button"
-                accessibilityLabel={sure ? `confirm: delete ${w.lemma}` : `delete ${w.lemma}`}
+                accessibilityLabel={`delete ${w.lemma}`}
                 hitSlop={6}
-                style={[styles.trash, sure && styles.trashSure]}
+                style={styles.trash}
               >
-                <TrashIcon color={sure ? colors.onAccent : colors.textSecondary} />
+                <TrashIcon color={colors.textSecondary} />
               </Pressable>
             </View>
           );
@@ -185,8 +189,16 @@ export default function WordsScreen({
       </ScrollView>
 
       <View style={styles.action}>
-        {!canStudy && note ? <Text style={styles.note}>{note}</Text> : null}
-        <Button label="study" onPress={onStudy} disabled={!canStudy} />
+        {sessions.length === 0 && note ? <Text style={styles.note}>{note}</Text> : null}
+        {sessions.length === 0 ? <Button label="quick study" onPress={() => {}} disabled /> : null}
+        <View style={styles.buttons}>
+          {sessions.map((s, i) => (
+            <View key={s.label} style={styles.session}>
+              <Button label={s.label} onPress={s.onPress} kind={i === 0 ? 'primary' : 'ghost'} />
+              <Text style={styles.caption}>{s.caption}</Text>
+            </View>
+          ))}
+        </View>
       </View>
 
       {opened ? (
@@ -236,6 +248,9 @@ const styles = StyleSheet.create({
   sortText: { fontFamily: fonts.medium, fontSize: 13, color: colors.text },
   sortTextOn: { color: colors.onAccent },
   list: { flex: 1 },
+  buttons: { flexDirection: 'row', gap: 12 },
+  session: { flex: 1, gap: 6 },
+  caption: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary, textAlign: 'center' },
   action: { gap: 10, paddingTop: 4 },
   note: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center' },
   empty: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center', marginTop: 40 },
@@ -258,5 +273,4 @@ const styles = StyleSheet.create({
   dot: { width: 8, height: 8, borderRadius: 4 },
   statusText: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary },
   trash: { width: 36, height: 36, borderRadius: radius.tile, alignItems: 'center', justifyContent: 'center' },
-  trashSure: { backgroundColor: colors.accent },
 });

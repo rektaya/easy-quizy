@@ -1,4 +1,5 @@
 import type { Theme, Word } from '../data/words';
+import { THEME_LINKS } from '../data/themeLinks.ts';
 import type { StoredCard } from '../srs/scheduler';
 import type { Rating } from '../state/ratings';
 
@@ -92,6 +93,22 @@ export function themeLinks(clusters: Cluster[], words: Word[], perTheme = 2): Th
       .forEach((l) => kept.add(`${l.a}:${l.b}`));
   }
   return all.filter((l) => kept.has(`${l.a}:${l.b}`)).sort((x, y) => x.a - y.a || x.b - y.b);
+}
+
+/**
+ * The links the Map uses: the hand-made neighbours of src/data/themeLinks.ts. `a` and `b` are indexes into
+ * `clusters`; a pair that names a theme that does not exist is skipped.
+ */
+export function curatedLinks(clusters: Cluster[]): ThemeLink[] {
+  const index = new Map(clusters.map((c, i) => [c.id, i]));
+  const out: ThemeLink[] = [];
+  for (const [x, y, weight] of THEME_LINKS) {
+    const a = index.get(x);
+    const b = index.get(y);
+    if (a === undefined || b === undefined || a === b) continue;
+    out.push({ a: Math.min(a, b), b: Math.max(a, b), weight });
+  }
+  return out;
 }
 
 export type ZoomWord = { id: string; state: StarState };
