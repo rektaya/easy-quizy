@@ -3,28 +3,6 @@ import type { Word } from './words';
 
 export const GENERATED: Word[] = [
   {
-    "id": "brot",
-    "tier": 1,
-    "article": "das",
-    "lemma": "Brot",
-    "plural": "Brote",
-    "en": "bread",
-    "example": {
-      "de": "Ich kaufe frisches Brot beim Bäcker.",
-      "en": "I buy fresh bread at the baker’s."
-    },
-    "family": [
-      "Brötchen",
-      "backen"
-    ],
-    "related": [
-      "fruehstueck",
-      "wasser",
-      "kaffee"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
     "id": "wasser",
     "tier": 1,
     "article": "das",
@@ -39,15 +17,14 @@ export const GENERATED: Word[] = [
       "Wasserflasche"
     ],
     "related": [
-      "fruehstueck",
       "kaffee",
-      "brot"
+      "fruehstueck"
     ],
     "theme": "Essen und Trinken"
   },
   {
     "id": "kaffee",
-    "tier": 1,
+    "tier": 2,
     "article": "der",
     "lemma": "Kaffee",
     "en": "coffee",
@@ -60,9 +37,9 @@ export const GENERATED: Word[] = [
       "Kaffeemaschine"
     ],
     "related": [
+      "brot",
       "fruehstueck",
-      "wasser",
-      "gemuese"
+      "wasser"
     ],
     "theme": "Essen und Trinken"
   },
@@ -82,54 +59,9 @@ export const GENERATED: Word[] = [
       "Frühstückstisch"
     ],
     "related": [
-      "rezept",
-      "gemuese",
-      "kaffee"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
-    "id": "gemuese",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Gemüse",
-    "en": "vegetables",
-    "example": {
-      "de": "Ich esse jeden Tag viel Gemüse.",
-      "en": "I eat a lot of vegetables every day."
-    },
-    "family": [
-      "Gemüsesuppe",
-      "Gemüsehändler"
-    ],
-    "related": [
-      "rezept",
-      "obst",
-      "fruehstueck",
-      "zwiebel",
-      "supermarkt"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
-    "id": "obst",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Obst",
-    "en": "fruit",
-    "example": {
-      "de": "Auf dem Markt gibt es frisches Obst.",
-      "en": "There’s fresh fruit at the market."
-    },
-    "family": [
-      "Obstsalat",
-      "Obstkorb"
-    ],
-    "related": [
-      "rezept",
+      "brot",
       "fleisch",
-      "gemuese",
-      "kuehlschrank"
+      "kaffee"
     ],
     "theme": "Essen und Trinken"
   },
@@ -148,103 +80,132 @@ export const GENERATED: Word[] = [
       "Fleischer"
     ],
     "related": [
-      "rezept",
-      "obst",
-      "speisekarte",
+      "brot",
+      "bier",
+      "fruehstueck",
       "schwein"
     ],
     "theme": "Essen und Trinken"
   },
   {
-    "id": "rezept",
+    "id": "bier",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Bier",
+    "plural": "Biere",
+    "en": "beer",
+    "example": {
+      "de": "Wir reisten nach Belgien des Bieres wegen.",
+      "en": "We went to Belgium for the beer."
+    },
+    "family": [],
+    "related": [
+      "brot",
+      "wein",
+      "fleisch"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "wein",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Wein",
+    "plural": "Weine",
+    "en": "wine",
+    "example": {
+      "de": "Eine Flasche Wein steht da auf dem Tisch.",
+      "en": "There is a bottle of wine on the table."
+    },
+    "family": [],
+    "related": [
+      "brot",
+      "tee",
+      "bier"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "tee",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Tee",
+    "plural": "Tees",
+    "en": "tea",
+    "example": {
+      "de": "Lassen Sie den Tee zehn Minuten lang ziehen.",
+      "en": "Let the tea sit for ten minutes."
+    },
+    "family": [],
+    "related": [
+      "brot",
+      "hunger",
+      "wein"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "hunger",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Hunger",
+    "en": "hunger",
+    "example": {
+      "de": "Die Flüchtlinge kämpften gegen den Hunger.",
+      "en": "The refugees struggled against hunger."
+    },
+    "family": [],
+    "related": [
+      "brot",
+      "abendessen",
+      "tee"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "abendessen",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Abendessen",
+    "plural": "Abendessen",
+    "en": "dinner, supper",
+    "example": {
+      "de": "Vor dem Abendessen übt sie immer Klavier.",
+      "en": "She always practices the piano before dinner."
+    },
+    "family": [],
+    "related": [
+      "brot",
+      "hunger",
+      "rechnung"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "brot",
     "tier": 3,
     "article": "das",
-    "lemma": "Rezept",
-    "plural": "Rezepte",
-    "en": "recipe",
+    "lemma": "Brot",
+    "plural": "Brote",
+    "en": "bread",
     "example": {
-      "de": "Hast du ein gutes Rezept für Suppe?",
-      "en": "Do you have a good recipe for soup?"
+      "de": "Ich kaufe frisches Brot beim Bäcker.",
+      "en": "I buy fresh bread at the baker’s."
     },
     "family": [
-      "Kochrezept",
-      "Rezeptbuch"
+      "Brötchen",
+      "backen"
     ],
     "related": [
+      "gemuese",
       "rechnung",
-      "speisekarte",
-      "fleisch",
-      "kueche"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
-    "id": "speisekarte",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Speisekarte",
-    "plural": "Speisekarten",
-    "en": "menu",
-    "example": {
-      "de": "Könnten wir bitte die Speisekarte haben?",
-      "en": "Could we have the menu, please?"
-    },
-    "family": [
-      "Speise",
-      "Karte"
-    ],
-    "related": [
-      "rechnung",
-      "schmecken",
-      "rezept"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
-    "id": "schmecken",
-    "tier": 3,
-    "lemma": "schmecken",
-    "en": "to taste",
-    "example": {
-      "de": "Die Suppe schmeckt wirklich gut.",
-      "en": "The soup tastes really good."
-    },
-    "family": [
-      "Geschmack",
-      "abschmecken"
-    ],
-    "related": [
-      "rechnung",
-      "mahlzeit",
-      "speisekarte"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
-    "id": "mahlzeit",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Mahlzeit",
-    "plural": "Mahlzeiten",
-    "en": "meal",
-    "example": {
-      "de": "Drei Mahlzeiten am Tag sind genug.",
-      "en": "Three meals a day are enough."
-    },
-    "family": [
-      "Mittagsmahlzeit",
-      "Mahl"
-    ],
-    "related": [
-      "rechnung",
-      "schmecken",
-      "trinkgeld"
+      "abendessen"
     ],
     "theme": "Essen und Trinken"
   },
   {
     "id": "rechnung",
-    "tier": 4,
+    "tier": 3,
     "article": "die",
     "lemma": "Rechnung",
     "plural": "Rechnungen",
@@ -258,10 +219,394 @@ export const GENERATED: Word[] = [
       "Rechnungsnummer"
     ],
     "related": [
-      "wuerzen",
-      "trinkgeld",
-      "mahlzeit",
+      "gemuese",
+      "restaurant",
+      "brot",
       "speisekarte"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "restaurant",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Restaurant",
+    "plural": "Restaurants",
+    "en": "restaurant",
+    "example": {
+      "de": "Wir haben im Restaurant zu Abend gegessen.",
+      "en": "We had dinner at a restaurant."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "kuchen",
+      "rechnung"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "kuchen",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Kuchen",
+    "plural": "Kuchen",
+    "en": "pie, cake",
+    "example": {
+      "de": "Kuchen? Ich bin plötzlich wieder hungrig!!",
+      "en": "Cake? I'm suddenly hungry again."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "garen",
+      "restaurant"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "garen",
+    "tier": 3,
+    "lemma": "garen",
+    "en": "to cook",
+    "example": {
+      "de": "Wir haben die Kartoffeln im Backofen gegart.",
+      "en": "We cooked the potatoes in the oven."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "milch",
+      "kuchen"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "milch",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Milch",
+    "plural": "Milchen",
+    "en": "milk",
+    "example": {
+      "de": "Milch wird zu Butter und Käse verarbeitet.",
+      "en": "Milk is made into butter and cheese."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "kochen",
+      "garen"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "kochen",
+    "tier": 3,
+    "lemma": "kochen",
+    "en": "to cook, to prepare food",
+    "example": {
+      "de": "Zwiebeln kochen schneller als Kartoffeln.",
+      "en": "Onions cook more quickly than potatoes."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "satt",
+      "milch"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "satt",
+    "tier": 3,
+    "lemma": "satt",
+    "en": "not hungry, satiated",
+    "example": {
+      "de": "Willst du noch was? − Nein danke, ich bin satt.",
+      "en": "Do you want some more? – No thanks, I'm done."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "lecker",
+      "kochen"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "lecker",
+    "tier": 3,
+    "lemma": "lecker",
+    "en": "yummy, tasty",
+    "example": {
+      "de": "Das riecht ja lecker! Was kochst du gerade?",
+      "en": "This smells great! What are you cooking?"
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "schneiden",
+      "satt"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "schneiden",
+    "tier": 3,
+    "lemma": "schneiden",
+    "en": "to cut, to carve",
+    "example": {
+      "de": "Der Friseur hat ihm die Haare geschnitten.",
+      "en": "The barber cut his hair."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "kaese",
+      "lecker"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "kaese",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Käse",
+    "plural": "Käse",
+    "en": "cheese",
+    "example": {
+      "de": "Zwei der belegten Brötchen waren mit Käse.",
+      "en": "Two of the sandwiches had cheese in them."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "zucker",
+      "schneiden"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "zucker",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Zucker",
+    "plural": "Zucker",
+    "en": "sugar",
+    "example": {
+      "de": "Sie verkaufen Zucker und Salz in dem Laden.",
+      "en": "They sell sugar and salt at that store."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "suppe",
+      "kaese"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "suppe",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Suppe",
+    "plural": "Suppen",
+    "en": "soup",
+    "example": {
+      "de": "Koche die Suppe so lange, bis sie andickt.",
+      "en": "Boil the soup down until it becomes thick."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "durst",
+      "zucker"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "durst",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Durst",
+    "en": "thirst",
+    "example": {
+      "de": "Sieht so aus, als ob dein Hund Durst hätte.",
+      "en": "Looks as if your dog's thirsty."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "mittagessen",
+      "suppe"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "mittagessen",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Mittagessen",
+    "plural": "Mittagessen",
+    "en": "lunch",
+    "example": {
+      "de": "Ein Butterbrot war mein einziges Mittagessen.",
+      "en": "A single sandwich was my whole lunch."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "teller",
+      "durst"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "teller",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Teller",
+    "plural": "Teller",
+    "en": "plate, dish",
+    "example": {
+      "de": "Hast du einen tiefen Teller für die Suppe?",
+      "en": "Do you have a bowl for soup?"
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "schokolade",
+      "mittagessen"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "schokolade",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Schokolade",
+    "plural": "Schokoladen",
+    "en": "chocolate",
+    "example": {
+      "de": "Schokolade enthält mehr Eisen als Spinat.",
+      "en": "Chocolate has more iron than spinach."
+    },
+    "family": [],
+    "related": [
+      "gemuese",
+      "teller",
+      "obst"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "gemuese",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Gemüse",
+    "en": "vegetables",
+    "example": {
+      "de": "Ich esse jeden Tag viel Gemüse.",
+      "en": "I eat a lot of vegetables every day."
+    },
+    "family": [
+      "Gemüsesuppe",
+      "Gemüsehändler"
+    ],
+    "related": [
+      "speisekarte",
+      "obst",
+      "schokolade",
+      "zwiebel",
+      "supermarkt"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "obst",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Obst",
+    "en": "fruit",
+    "example": {
+      "de": "Auf dem Markt gibt es frisches Obst.",
+      "en": "There’s fresh fruit at the market."
+    },
+    "family": [
+      "Obstsalat",
+      "Obstkorb"
+    ],
+    "related": [
+      "speisekarte",
+      "rezept",
+      "gemuese",
+      "kuehlschrank"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "rezept",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Rezept",
+    "plural": "Rezepte",
+    "en": "recipe",
+    "example": {
+      "de": "Hast du ein gutes Rezept für Suppe?",
+      "en": "Do you have a good recipe for soup?"
+    },
+    "family": [
+      "Kochrezept",
+      "Rezeptbuch"
+    ],
+    "related": [
+      "speisekarte",
+      "schmecken",
+      "obst",
+      "kueche"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "schmecken",
+    "tier": 4,
+    "lemma": "schmecken",
+    "en": "to taste",
+    "example": {
+      "de": "Die Suppe schmeckt wirklich gut.",
+      "en": "The soup tastes really good."
+    },
+    "family": [
+      "Geschmack",
+      "abschmecken"
+    ],
+    "related": [
+      "speisekarte",
+      "mahlzeit",
+      "rezept"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "mahlzeit",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Mahlzeit",
+    "plural": "Mahlzeiten",
+    "en": "meal",
+    "example": {
+      "de": "Drei Mahlzeiten am Tag sind genug.",
+      "en": "Three meals a day are enough."
+    },
+    "family": [
+      "Mittagsmahlzeit",
+      "Mahl"
+    ],
+    "related": [
+      "speisekarte",
+      "trinkgeld",
+      "schmecken"
     ],
     "theme": "Essen und Trinken"
   },
@@ -281,15 +626,318 @@ export const GENERATED: Word[] = [
       "Geld"
     ],
     "related": [
-      "wuerzen",
+      "speisekarte",
+      "verderben",
+      "mahlzeit"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "verderben",
+    "tier": 4,
+    "lemma": "verderben",
+    "en": "to spoil, to go bad",
+    "example": {
+      "de": "Bei dieser Hitze verdirbt das Fleisch schnell.",
+      "en": "In this heat the meat spoils quickly."
+    },
+    "family": [
+      "verdorben",
+      "Verderb"
+    ],
+    "related": [
+      "speisekarte",
+      "toast",
+      "trinkgeld"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "toast",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Toast",
+    "plural": "Toasts",
+    "en": "toast",
+    "example": {
+      "de": "Wie viele Scheiben Toast hast du gegessen?",
+      "en": "How many pieces of toast did you eat?"
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "reis",
+      "verderben"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "reis",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Reis",
+    "plural": "Reise",
+    "en": "rice",
+    "example": {
+      "de": "Ihre Gespräche drehten sich um ihre Reise.",
+      "en": "Their talks centered on their trip."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "ernaehren",
+      "toast"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "ernaehren",
+    "tier": 4,
+    "lemma": "ernähren",
+    "en": "to nourish, to feed",
+    "example": {
+      "de": "Ich versuche, mich ausgewogen zu ernähren.",
+      "en": "I try to eat a balanced diet."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "servieren",
+      "reis"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "servieren",
+    "tier": 4,
+    "lemma": "servieren",
+    "en": "to serve, to wait",
+    "example": {
+      "de": "Ich aß nicht alles, was sie mir servierte.",
+      "en": "I didn't eat everything that she served me."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "apfel",
+      "ernaehren"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "apfel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Apfel",
+    "plural": "Äpfel",
+    "en": "apple",
+    "example": {
+      "de": "Schälen Sie die Äpfel oder waschen Sie sie.",
+      "en": "Peel or wash the apples."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "kartoffel",
+      "servieren"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "kartoffel",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Kartoffel",
+    "plural": "Kartoffeln",
+    "en": "potato",
+    "example": {
+      "de": "Ich schäle die Sellerie und die Kartoffeln.",
+      "en": "I'm peeling the celery and the potatoes."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "tomate",
+      "apfel"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "tomate",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Tomate",
+    "plural": "Tomaten",
+    "en": "tomato",
+    "example": {
+      "de": "Ist die Tomate eine Frucht oder ein Gemüse?",
+      "en": "Is a tomato a fruit or a vegetable?"
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "salz",
+      "kartoffel"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "salz",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Salz",
+    "plural": "Salze",
+    "en": "salt, table salt",
+    "example": {
+      "de": "Ich würzte den Fisch mit Salz und Pfeffer.",
+      "en": "I seasoned the fish with salt and pepper."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "nudel",
+      "tomate"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "nudel",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Nudel",
+    "plural": "Nudeln",
+    "en": "noodle, pasta",
+    "example": {
+      "de": "Kinder mögen gern Nudeln mit Tomatensoße.",
+      "en": "Kids love pasta in tomato sauce."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "salat",
+      "salz"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "salat",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Salat",
+    "plural": "Salate",
+    "en": "salad",
+    "example": {
+      "de": "Du hast die Wahl zwischen Suppe und Salat.",
+      "en": "You have the choice of soup or salad."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "saft",
+      "nudel"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "saft",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Saft",
+    "plural": "Säfte",
+    "en": "juice",
+    "example": {
+      "de": "Die Kellnerin setzte mir ein Glas Saft vor.",
+      "en": "The waitress set a glass of juice in front of me."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "loeffel",
+      "salat"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "loeffel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Löffel",
+    "plural": "Löffel",
+    "en": "spoon",
+    "example": {
+      "de": "Das Baby kann noch keinen Löffel benutzen.",
+      "en": "The baby cannot use a spoon yet."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "backen",
+      "saft"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "backen",
+    "tier": 4,
+    "lemma": "backen",
+    "en": "to bake, to roast",
+    "example": {
+      "de": "Der Bäcker backt jeden Morgen 30 Laib Brot.",
+      "en": "The baker bakes 30 loaves of bread every morning."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "honig",
+      "loeffel"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "honig",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Honig",
+    "plural": "Honige",
+    "en": "honey",
+    "example": {
+      "de": "Er schmiert seinem Chef Honig um den Bart.",
+      "en": "He's buttering up his boss."
+    },
+    "family": [],
+    "related": [
+      "speisekarte",
+      "backen",
+      "vorspeise"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "speisekarte",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Speisekarte",
+    "plural": "Speisekarten",
+    "en": "menu",
+    "example": {
+      "de": "Könnten wir bitte die Speisekarte haben?",
+      "en": "Could we have the menu, please?"
+    },
+    "family": [
+      "Speise",
+      "Karte"
+    ],
+    "related": [
+      "gewuerz",
       "vorspeise",
+      "honig",
       "rechnung"
     ],
     "theme": "Essen und Trinken"
   },
   {
     "id": "vorspeise",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Vorspeise",
     "plural": "Vorspeisen",
@@ -303,51 +951,9 @@ export const GENERATED: Word[] = [
       "Hauptspeise"
     ],
     "related": [
-      "wuerzen",
       "gewuerz",
-      "trinkgeld"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
-    "id": "gewuerz",
-    "tier": 4,
-    "article": "das",
-    "lemma": "Gewürz",
-    "plural": "Gewürze",
-    "en": "spice",
-    "example": {
-      "de": "In dieses Gericht gehören viele Gewürze.",
-      "en": "This dish needs a lot of spices."
-    },
-    "family": [
-      "würzen",
-      "Gewürzmischung"
-    ],
-    "related": [
-      "wuerzen",
-      "vorspeise",
-      "vorrat"
-    ],
-    "theme": "Essen und Trinken"
-  },
-  {
-    "id": "wuerzen",
-    "tier": 5,
-    "lemma": "würzen",
-    "en": "to season",
-    "example": {
-      "de": "Ich würze die Soße mit Pfeffer.",
-      "en": "I season the sauce with pepper."
-    },
-    "family": [
-      "Gewürz",
-      "würzig"
-    ],
-    "related": [
-      "saettigend",
       "vorrat",
-      "gewuerz"
+      "speisekarte"
     ],
     "theme": "Essen und Trinken"
   },
@@ -367,29 +973,369 @@ export const GENERATED: Word[] = [
       "vorrätig"
     ],
     "related": [
-      "saettigend",
-      "verderben",
+      "gewuerz",
+      "plaetzchen",
+      "vorspeise"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "plaetzchen",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Plätzchen",
+    "plural": "Plätzchen",
+    "en": "cookie, biscuit",
+    "example": {
+      "de": "Nimm dir so viele Plätzchen, wie du willst.",
+      "en": "Take as many cookies as you want."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "banane",
+      "vorrat"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "banane",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Banane",
+    "plural": "Bananen",
+    "en": "banana",
+    "example": {
+      "de": "Ich halte mehr von Bananen als von Äpfeln.",
+      "en": "I like bananas more than apples."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "speisen",
+      "plaetzchen"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "speisen",
+    "tier": 5,
+    "lemma": "speisen",
+    "en": "to dine",
+    "example": {
+      "de": "Sie speisten in den edelsten Restaurants.",
+      "en": "They dined in the most luxurious restaurants."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "knoblauch",
+      "banane"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "knoblauch",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Knoblauch",
+    "en": "garlic",
+    "example": {
+      "de": "Das Essen schmeckte leicht nach Knoblauch.",
+      "en": "The food tasted slightly of garlic."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "muffin",
+      "speisen"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "muffin",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Muffin",
+    "plural": "Muffins",
+    "en": "muffin",
+    "example": {
+      "de": "Diese Muffins kommen frisch aus dem Ofen.",
+      "en": "These muffins just came out of the oven."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "schnitte",
+      "knoblauch"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "schnitte",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Schnitte",
+    "plural": "Schnitten",
+    "en": "slice",
+    "example": {
+      "de": "Wie tief sind die Schnitte?",
+      "en": "How deep are the cuts?"
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "koffein",
+      "muffin"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "koffein",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Koffein",
+    "en": "caffeine",
+    "example": {
+      "de": "Warum hilft Coffein gegen Kopfschmerzen?",
+      "en": "Why does caffeine help headaches?"
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "wurst",
+      "schnitte"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "wurst",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Wurst",
+    "plural": "Würste",
+    "en": "sausage",
+    "example": {
+      "de": "Er ließ die Wurst auf den Boden fallen.",
+      "en": "He dropped the sausage on the ground."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "gabel",
+      "koffein"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "gabel",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Gabel",
+    "plural": "Gabeln",
+    "en": "fork",
+    "example": {
+      "de": "Gib uns bitte zwei Messer und vier Gabeln!",
+      "en": "Give us two knives and four forks, please."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "zitrone",
+      "wurst"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "zitrone",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Zitrone",
+    "plural": "Zitronen",
+    "en": "lemon",
+    "example": {
+      "de": "Zitronen und Limonen sind saure Früchte.",
+      "en": "Lemons and limes are acidic fruits."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "sahne",
+      "gabel"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "sahne",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Sahne",
+    "en": "cream",
+    "example": {
+      "de": "Es gibt ein bisschen Sahne im Kühlschrank.",
+      "en": "There's some cream in the fridge."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "pfeffer",
+      "zitrone"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "pfeffer",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Pfeffer",
+    "plural": "Pfeffer",
+    "en": "pepper",
+    "example": {
+      "de": "Das isst man besser mit Pfeffer und Salz.",
+      "en": "It's better to eat it with salt and pepper."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "birne",
+      "sahne"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "birne",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Birne",
+    "plural": "Birnen",
+    "en": "pear",
+    "example": {
+      "de": "Magst du lieber einen Apfel oder eine Birne?",
+      "en": "Do you prefer an apple or a pear?"
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "erdbeere",
+      "pfeffer"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "erdbeere",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Erdbeere",
+    "plural": "Erdbeeren",
+    "en": "strawberry",
+    "example": {
+      "de": "Es ist schwer, nur eine Erdbeere zu essen.",
+      "en": "It's hard to eat just one strawberry."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "karotte",
+      "birne"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "karotte",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Karotte",
+    "plural": "Karotten",
+    "en": "carrot",
+    "example": {
+      "de": "Rettiche könnten teurer als Karotten sein.",
+      "en": "Radishes might be more expensive than the carrots."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "gurke",
+      "erdbeere"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "gurke",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Gurke",
+    "plural": "Gurken",
+    "en": "cucumber",
+    "example": {
+      "de": "Gurken sind mit Wassermelonen verwandt.",
+      "en": "A cucumber is related to a watermelon."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "pilz",
+      "karotte"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "pilz",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Pilz",
+    "plural": "Pilze",
+    "en": "mushroom",
+    "example": {
+      "de": "Startups sprießen wie Pilze aus dem Boden.",
+      "en": "Startups are springing up like mushrooms."
+    },
+    "family": [],
+    "related": [
+      "gewuerz",
+      "gurke",
       "wuerzen"
     ],
     "theme": "Essen und Trinken"
   },
   {
-    "id": "verderben",
-    "tier": 5,
-    "lemma": "verderben",
-    "en": "to spoil, to go bad",
+    "id": "gewuerz",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Gewürz",
+    "plural": "Gewürze",
+    "en": "spice",
     "example": {
-      "de": "Bei dieser Hitze verdirbt das Fleisch schnell.",
-      "en": "In this heat the meat spoils quickly."
+      "de": "In dieses Gericht gehören viele Gewürze.",
+      "en": "This dish needs a lot of spices."
     },
     "family": [
-      "verdorben",
-      "Verderb"
+      "würzen",
+      "Gewürzmischung"
     ],
     "related": [
+      "pilz",
+      "wuerzen",
+      "saettigend"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "wuerzen",
+    "tier": 6,
+    "lemma": "würzen",
+    "en": "to season",
+    "example": {
+      "de": "Ich würze die Soße mit Pfeffer.",
+      "en": "I season the sauce with pepper."
+    },
+    "family": [
+      "Gewürz",
+      "würzig"
+    ],
+    "related": [
+      "pilz",
       "saettigend",
-      "vorrat",
-      "bewirtung"
+      "gewuerz"
     ],
     "theme": "Essen und Trinken"
   },
@@ -407,8 +1353,9 @@ export const GENERATED: Word[] = [
       "Sättigung"
     ],
     "related": [
-      "verderben",
-      "bewirtung"
+      "pilz",
+      "bewirtung",
+      "wuerzen"
     ],
     "theme": "Essen und Trinken"
   },
@@ -427,8 +1374,27 @@ export const GENERATED: Word[] = [
       "Wirt"
     ],
     "related": [
-      "verderben",
+      "pilz",
+      "pfirsich",
       "saettigend"
+    ],
+    "theme": "Essen und Trinken"
+  },
+  {
+    "id": "pfirsich",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Pfirsich",
+    "plural": "Pfirsiche",
+    "en": "peach",
+    "example": {
+      "de": "Die Haut eines Pfirsichs ist verletztlich.",
+      "en": "The skin of peaches bruises easily."
+    },
+    "family": [],
+    "related": [
+      "pilz",
+      "bewirtung"
     ],
     "theme": "Essen und Trinken"
   },
@@ -448,9 +1414,9 @@ export const GENERATED: Word[] = [
       "Kopfkissen"
     ],
     "related": [
-      "schmerz",
+      "arzt",
       "hand",
-      "arzt"
+      "tot"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -470,15 +1436,125 @@ export const GENERATED: Word[] = [
       "Handschuh"
     ],
     "related": [
-      "schmerz",
       "arzt",
+      "tot",
       "kopf"
     ],
     "theme": "Körper und Gesundheit"
   },
   {
-    "id": "arzt",
+    "id": "tot",
     "tier": 1,
+    "lemma": "tot",
+    "en": "dead, deceased",
+    "example": {
+      "de": "Zehn Jahre sind seit seinem Tod vergangen.",
+      "en": "Ten years have gone by since his death."
+    },
+    "family": [],
+    "related": [
+      "arzt",
+      "herz",
+      "hand"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "herz",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Herz",
+    "plural": "Herzen",
+    "en": "heart",
+    "example": {
+      "de": "Sie schüttete ihren Freunden ihr Herz aus.",
+      "en": "She unburdened her heart to her friends."
+    },
+    "family": [],
+    "related": [
+      "arzt",
+      "auge",
+      "tot"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "auge",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Auge",
+    "plural": "Augen",
+    "en": "eye",
+    "example": {
+      "de": "Seine Augen lächelten hinter seiner Brille.",
+      "en": "His eyes were smiling behind his glasses."
+    },
+    "family": [],
+    "related": [
+      "arzt",
+      "blut",
+      "herz"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "blut",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Blut",
+    "plural": "Blute",
+    "en": "blood",
+    "example": {
+      "de": "Das ist kein Blut. Es ist bloß rote Farbe.",
+      "en": "This isn't blood. It's just red paint."
+    },
+    "family": [],
+    "related": [
+      "arzt",
+      "schlafen",
+      "auge"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "schlafen",
+    "tier": 1,
+    "lemma": "schlafen",
+    "en": "to sleep",
+    "example": {
+      "de": "Ich werde eine Nacht darüber schlafen.",
+      "en": "I'll sleep on it tonight."
+    },
+    "family": [],
+    "related": [
+      "arzt",
+      "gesicht",
+      "blut"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "gesicht",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Gesicht",
+    "plural": "Gesichter",
+    "en": "face",
+    "example": {
+      "de": "Deinetwegen habe ich das Gesicht verloren.",
+      "en": "You really made me lose face."
+    },
+    "family": [],
+    "related": [
+      "arzt",
+      "schlafen",
+      "schmerz"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "arzt",
+    "tier": 2,
     "article": "der",
     "lemma": "Arzt",
     "plural": "Ärzte",
@@ -492,9 +1568,9 @@ export const GENERATED: Word[] = [
       "Hausarzt"
     ],
     "related": [
+      "gesundheit",
       "schmerz",
-      "hand",
-      "krank",
+      "gesicht",
       "termin"
     ],
     "theme": "Körper und Gesundheit"
@@ -515,7 +1591,7 @@ export const GENERATED: Word[] = [
       "schmerzhaft"
     ],
     "related": [
-      "medikament",
+      "gesundheit",
       "krank",
       "arzt"
     ],
@@ -535,31 +1611,9 @@ export const GENERATED: Word[] = [
       "Krankenhaus"
     ],
     "related": [
-      "medikament",
       "gesundheit",
-      "schmerz"
-    ],
-    "theme": "Körper und Gesundheit"
-  },
-  {
-    "id": "gesundheit",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Gesundheit",
-    "en": "health",
-    "example": {
-      "de": "Gesundheit ist wichtiger als Geld.",
-      "en": "Health is more important than money."
-    },
-    "family": [
-      "gesund",
-      "gesundheitlich"
-    ],
-    "related": [
-      "medikament",
       "koerper",
-      "krank",
-      "sorge"
+      "schmerz"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -579,38 +1633,16 @@ export const GENERATED: Word[] = [
       "Körperteil"
     ],
     "related": [
-      "medikament",
       "gesundheit",
       "krankenhaus",
+      "krank",
       "sport"
     ],
     "theme": "Körper und Gesundheit"
   },
   {
-    "id": "medikament",
-    "tier": 3,
-    "article": "das",
-    "lemma": "Medikament",
-    "plural": "Medikamente",
-    "en": "medication",
-    "example": {
-      "de": "Nehmen Sie das Medikament dreimal täglich.",
-      "en": "Take the medication three times a day."
-    },
-    "family": [
-      "Medizin",
-      "Arzneimittel"
-    ],
-    "related": [
-      "verletzung",
-      "krankenhaus",
-      "koerper"
-    ],
-    "theme": "Körper und Gesundheit"
-  },
-  {
     "id": "krankenhaus",
-    "tier": 3,
+    "tier": 2,
     "article": "das",
     "lemma": "Krankenhaus",
     "plural": "Krankenhäuser",
@@ -624,31 +1656,382 @@ export const GENERATED: Word[] = [
       "Haus"
     ],
     "related": [
-      "verletzung",
-      "erkaeltung",
-      "medikament"
+      "gesundheit",
+      "doktor",
+      "koerper"
     ],
     "theme": "Körper und Gesundheit"
   },
   {
-    "id": "erkaeltung",
+    "id": "doktor",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Doktor",
+    "plural": "Doktoren",
+    "en": "doctor",
+    "example": {
+      "de": "Der Doktor entschied, sofort zu operieren.",
+      "en": "The doctor decided to operate at once."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "verletzen",
+      "krankenhaus"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "verletzen",
+    "tier": 2,
+    "lemma": "verletzen",
+    "en": "to hurt, to injure",
+    "example": {
+      "de": "Er hat sich bei einem Sturz verletzt.",
+      "en": "He had a tumble and hurt himself."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "verletzt",
+      "doktor"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "verletzt",
+    "tier": 2,
+    "lemma": "verletzt",
+    "en": "hurt, injured",
+    "example": {
+      "de": "Sie wurde bei dem Verkehrsunfall verletzt.",
+      "en": "She was injured in the traffic accident."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "unfall",
+      "verletzen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "unfall",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Unfall",
+    "plural": "Unfälle",
+    "en": "accident",
+    "example": {
+      "de": "Sein Sohn kam bei einem Unfall ums Leben.",
+      "en": "His son lost his life in an accident."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "kraft",
+      "verletzt"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "kraft",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Kraft",
+    "plural": "Kräfte",
+    "en": "power, force",
+    "example": {
+      "de": "Bei der Geschwindigkeit wirken immense Kräfte.",
+      "en": "Immense forces act at this speed."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "schmerzen",
+      "unfall"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "schmerzen",
+    "tier": 2,
+    "lemma": "schmerzen",
+    "en": "to hurt, to ache",
+    "example": {
+      "de": "Der Schmerz ist größtenteils verschwunden.",
+      "en": "The pain has mostly gone away."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "hals",
+      "kraft"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "hals",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Hals",
+    "plural": "Hälse",
+    "en": "neck",
+    "example": {
+      "de": "Das Mädchen trägt einen Schal um den Hals.",
+      "en": "The girl has a scarf around her neck."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "ruecken",
+      "schmerzen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "ruecken",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Rücken",
+    "plural": "Rücken",
+    "en": "back",
+    "example": {
+      "de": "Rede nicht über andere hinter ihrem Rücken.",
+      "en": "You shouldn't talk about people behind their backs."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "ohr",
+      "hals"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "ohr",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Ohr",
+    "plural": "Ohren",
+    "en": "ear",
+    "example": {
+      "de": "Seine Stimme klingt noch in meinen Ohren.",
+      "en": "His voice still rings in my ears."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "nase",
+      "ruecken"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "nase",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Nase",
+    "plural": "Nasen",
+    "en": "nose",
+    "example": {
+      "de": "Er hat die Nase voll von meinen Problemen.",
+      "en": "He is fed up with my problems."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "mund",
+      "ohr"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "mund",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Mund",
+    "plural": "Münder",
+    "en": "mouth of a person",
+    "example": {
+      "de": "Du sollst nicht mit vollem Mund sprechen.",
+      "en": "You must not speak with your mouth full."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "haut",
+      "nase"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "haut",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Haut",
+    "plural": "Häute",
+    "en": "skin, hide of a person",
+    "example": {
+      "de": "Ich würde nicht gern in Toms Haut stecken.",
+      "en": "I wouldn't like to be in Tom's shoes."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "schlaf",
+      "mund"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "schlaf",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Schlaf",
+    "plural": "Schläfe",
+    "en": "sleep",
+    "example": {
+      "de": "Der Tod wird oft mit dem Schlaf verglichen.",
+      "en": "Death is often compared to sleep."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "muede",
+      "haut"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "muede",
+    "tier": 2,
+    "lemma": "müde",
+    "en": "tired",
+    "example": {
+      "de": "Ich bin so müde, dass ich kaum gehen kann.",
+      "en": "I am so tired that I can hardly walk."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "gesund",
+      "schlaf"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "gesund",
+    "tier": 2,
+    "lemma": "gesund",
+    "en": "healthy",
+    "example": {
+      "de": "Wenn ich gesund wäre, wäre ich glücklich.",
+      "en": "If I were healthy, I would be happy."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "finger",
+      "muede"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "finger",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Finger",
+    "plural": "Finger",
+    "en": "finger",
+    "example": {
+      "de": "Das hat mir mein kleiner Finger erzählt.",
+      "en": "A little bird told me."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "bein",
+      "gesund"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "bein",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Bein",
+    "plural": "Beine",
+    "en": "leg of a person, animal",
+    "example": {
+      "de": "Ich wurde von einem Hund ins Bein gebissen.",
+      "en": "I was bitten on the leg by a dog."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "arm",
+      "finger"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "arm",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Arm",
+    "plural": "Arme",
+    "en": "arm",
+    "example": {
+      "de": "Er brach sich beim Fußballspielen den Arm.",
+      "en": "He broke his arm playing soccer."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "haar",
+      "bein"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "haar",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Haar",
+    "plural": "Haare",
+    "en": "hair",
+    "example": {
+      "de": "Lange Haare sind gegenwärtig aus der Mode.",
+      "en": "Long hair is out of fashion now."
+    },
+    "family": [],
+    "related": [
+      "gesundheit",
+      "arm",
+      "untersuchung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "gesundheit",
     "tier": 3,
     "article": "die",
-    "lemma": "Erkältung",
-    "plural": "Erkältungen",
-    "en": "cold (illness)",
+    "lemma": "Gesundheit",
+    "en": "health",
     "example": {
-      "de": "Ich habe eine leichte Erkältung.",
-      "en": "I have a mild cold."
+      "de": "Gesundheit ist wichtiger als Geld.",
+      "en": "Health is more important than money."
     },
     "family": [
-      "erkältet",
-      "kalt"
+      "gesund",
+      "gesundheitlich"
     ],
     "related": [
-      "verletzung",
+      "medikament",
       "untersuchung",
-      "krankenhaus"
+      "haar",
+      "sorge"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -668,9 +2051,270 @@ export const GENERATED: Word[] = [
       "Suche"
     ],
     "related": [
-      "verletzung",
+      "medikament",
+      "behandeln",
+      "gesundheit"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "behandeln",
+    "tier": 3,
+    "lemma": "behandeln",
+    "en": "to treat",
+    "example": {
+      "de": "Behandle mich nicht, als sei ich ein Kind.",
+      "en": "Don't treat me as if I were a child."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "riechen",
+      "untersuchung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "riechen",
+    "tier": 3,
+    "lemma": "riechen",
+    "en": "to smell, to sniff",
+    "example": {
+      "de": "Es riecht, als hätte hier jemand geraucht.",
+      "en": "It smells as though someone has been smoking here."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "fuss",
+      "behandeln"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "fuss",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Fuß",
+    "plural": "Füße",
+    "en": "foot",
+    "example": {
+      "de": "Ich gehe lieber zu Fuß als Rad zu fahren.",
+      "en": "I prefer walking to cycling."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "nerv",
+      "riechen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "nerv",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Nerv",
+    "plural": "Nerven",
+    "en": "nerve",
+    "example": {
+      "de": "Mir geht Toms Art zu reden auf die Nerven.",
+      "en": "Tom's way of talking gets on my nerves."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "knie",
+      "fuss"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "knie",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Knie",
+    "plural": "Knie",
+    "en": "knee",
+    "example": {
+      "de": "Das Knie ist das größte Gelenk des Körpers.",
+      "en": "The knee is the body's largest joint."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "krankheit",
+      "nerv"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "krankheit",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Krankheit",
+    "plural": "Krankheiten",
+    "en": "sickness, illness",
+    "example": {
+      "de": "Sie leidet an einer chronischen Krankheit.",
+      "en": "She suffers from a chronic malady."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "rauchen",
+      "knie"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "rauchen",
+    "tier": 3,
+    "lemma": "rauchen",
+    "en": "to smoke, give off smoke",
+    "example": {
+      "de": "Das abgebrannte Haus raucht noch immer.",
+      "en": "The burned-down house is still smoking."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "untersuchen",
+      "krankheit"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "untersuchen",
+    "tier": 3,
+    "lemma": "untersuchen",
+    "en": "to examine, investigate",
+    "example": {
+      "de": "Sie sollten Ihre Augen untersuchen lassen.",
+      "en": "You should have your eyes examined."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "bauch",
+      "rauchen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "bauch",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Bauch",
+    "plural": "Bäuche",
+    "en": "abdomen, belly",
+    "example": {
+      "de": "Mir tut vor lauter Lachen der Bauch weh!",
+      "en": "I laughed so much my stomach hurts."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "zahn",
+      "untersuchen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "zahn",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Zahn",
+    "plural": "Zähne",
+    "en": "tooth",
+    "example": {
+      "de": "Putz deine Zähne, bevor du schlafen gehst.",
+      "en": "Brush your teeth before you go to sleep."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "fieber",
+      "bauch"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "fieber",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Fieber",
+    "plural": "Fieber",
+    "en": "fever",
+    "example": {
+      "de": "Ich hatte heute Morgen ein wenig Fieber.",
+      "en": "I had a little fever this morning."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "knochen",
+      "zahn"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "knochen",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Knochen",
+    "plural": "Knochen",
+    "en": "bone",
+    "example": {
+      "de": "Unser Hund vergräbt seine Knochen im Garten.",
+      "en": "Our dog buries its bones in the garden."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "magen",
+      "fieber"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "magen",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Magen",
+    "plural": "Mägen",
+    "en": "stomach, maw",
+    "example": {
+      "de": "Mein Magen zieht sich vor Hunger zusammen.",
+      "en": "My stomach is clenched with hunger."
+    },
+    "family": [],
+    "related": [
+      "medikament",
+      "knochen",
+      "verletzung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "medikament",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Medikament",
+    "plural": "Medikamente",
+    "en": "medication",
+    "example": {
+      "de": "Nehmen Sie das Medikament dreimal täglich.",
+      "en": "Take the medication three times a day."
+    },
+    "family": [
+      "Medizin",
+      "Arzneimittel"
+    ],
+    "related": [
       "erkaeltung",
-      "impfung"
+      "verletzung",
+      "magen"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -690,53 +2334,9 @@ export const GENERATED: Word[] = [
       "verletzt"
     ],
     "related": [
-      "beschwerden",
-      "impfung",
-      "untersuchung"
-    ],
-    "theme": "Körper und Gesundheit"
-  },
-  {
-    "id": "impfung",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Impfung",
-    "plural": "Impfungen",
-    "en": "vaccination",
-    "example": {
-      "de": "Für die Reise brauchst du eine Impfung.",
-      "en": "You need a vaccination for the trip."
-    },
-    "family": [
-      "impfen",
-      "Impfstoff"
-    ],
-    "related": [
-      "beschwerden",
-      "allergie",
-      "verletzung"
-    ],
-    "theme": "Körper und Gesundheit"
-  },
-  {
-    "id": "allergie",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Allergie",
-    "plural": "Allergien",
-    "en": "allergy",
-    "example": {
-      "de": "Ich habe eine Allergie gegen Nüsse.",
-      "en": "I have an allergy to nuts."
-    },
-    "family": [
-      "allergisch",
-      "Allergiker"
-    ],
-    "related": [
-      "beschwerden",
+      "erkaeltung",
       "blutdruck",
-      "impfung"
+      "medikament"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -755,15 +2355,15 @@ export const GENERATED: Word[] = [
       "Druck"
     ],
     "related": [
+      "erkaeltung",
       "beschwerden",
-      "allergie",
-      "ansteckend"
+      "verletzung"
     ],
     "theme": "Körper und Gesundheit"
   },
   {
     "id": "beschwerden",
-    "tier": 5,
+    "tier": 4,
     "article": "die",
     "lemma": "Beschwerden",
     "en": "complaints, symptoms",
@@ -776,9 +2376,369 @@ export const GENERATED: Word[] = [
       "Beschwerde"
     ],
     "related": [
-      "genesung",
-      "ansteckend",
+      "erkaeltung",
+      "heilung",
       "blutdruck"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "heilung",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Heilung",
+    "plural": "Heilungen",
+    "en": "healing, recovery",
+    "example": {
+      "de": "Die Heilung braucht Zeit.",
+      "en": "Healing takes time."
+    },
+    "family": [
+      "heilen",
+      "heil"
+    ],
+    "related": [
+      "erkaeltung",
+      "strecken",
+      "beschwerden"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "strecken",
+    "tier": 4,
+    "lemma": "strecken",
+    "en": "to stretch",
+    "example": {
+      "de": "Ich streckte meine Hand nach dem Buch aus.",
+      "en": "I stretched out my hand for the book."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "vertragen",
+      "heilung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "vertragen",
+    "tier": 4,
+    "lemma": "vertragen",
+    "en": "to tolerate, bear",
+    "example": {
+      "de": "Ich könnte jetzt ein kühles Bier vertragen.",
+      "en": "I could do with a cold beer."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "gebiss",
+      "strecken"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "gebiss",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Gebiss",
+    "plural": "Gebisse",
+    "en": "set of teeth",
+    "example": {
+      "de": "Es ist das künstliche Gebiss meiner Großmutter.",
+      "en": "These are my grandmother's artificial teeth."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "niesen",
+      "vertragen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "niesen",
+    "tier": 4,
+    "lemma": "niesen",
+    "en": "to sneeze",
+    "example": {
+      "de": "Ich habe es genossen, mit ihm zu sprechen.",
+      "en": "I enjoyed talking with him."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "gen",
+      "gebiss"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "gen",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Gen",
+    "plural": "Gene",
+    "en": "gene",
+    "example": {
+      "de": "Die Funktion der meisten Gene bleibt ein Rätsel.",
+      "en": "The function of most genes remains a mystery."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "notaufnahme",
+      "niesen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "notaufnahme",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Notaufnahme",
+    "plural": "Notaufnahmen",
+    "en": "emergency room",
+    "example": {
+      "de": "Sie arbeitet im Krankenhaus in der Notaufnahme.",
+      "en": "She works in the hospital's casualty department."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "fit",
+      "gen"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "fit",
+    "tier": 4,
+    "lemma": "fit",
+    "en": "fit",
+    "example": {
+      "de": "Ich möchte mit 60 so fit sein wie Brad Pitt.",
+      "en": "I want to be as fit as Brad Pitt when I'm 60."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "dosis",
+      "notaufnahme"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "dosis",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Dosis",
+    "plural": "Dosen",
+    "en": "dose",
+    "example": {
+      "de": "Es liegen Millionen Dosen Impfstoff auf Halde.",
+      "en": "There are millions of doses of unused vaccine."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "allergisch",
+      "fit"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "allergisch",
+    "tier": 4,
+    "lemma": "allergisch",
+    "en": "allergic",
+    "example": {
+      "de": "Ich bin nicht allergisch gegen Penicillin.",
+      "en": "I am not allergic to penicillin."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "husten",
+      "dosis"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "husten",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Husten",
+    "plural": "Husten",
+    "en": "cough",
+    "example": {
+      "de": "Liebe und Husten kann man nicht verbergen.",
+      "en": "Love and cough cannot be hidden."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "apotheke",
+      "allergisch"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "apotheke",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Apotheke",
+    "plural": "Apotheken",
+    "en": "pharmacy",
+    "example": {
+      "de": "Ist hier in der Gegend auch eine Apotheke?",
+      "en": "Is there also a pharmacy in the area?"
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "tablette",
+      "husten"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "tablette",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Tablette",
+    "plural": "Tabletten",
+    "en": "tablet",
+    "example": {
+      "de": "Vergiss nicht, deine Tabletten zu nehmen!",
+      "en": "Don't forget to take your pills."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "verband",
+      "apotheke"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "verband",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Verband",
+    "plural": "Verbände",
+    "en": "bandage",
+    "example": {
+      "de": "Der Krankenpfleger entfernte Toms Verband.",
+      "en": "The nurse removed Tom's bandages."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "spritze",
+      "tablette"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "spritze",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Spritze",
+    "plural": "Spritzen",
+    "en": "syringe",
+    "example": {
+      "de": "Die Krankenschwester gab mir eine Spritze.",
+      "en": "The nurse gave me a shot."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "muskel",
+      "verband"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "muskel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Muskel",
+    "plural": "Muskeln",
+    "en": "muscle",
+    "example": {
+      "de": "Sie massierte seine verspannten Muskeln.",
+      "en": "She massaged his stiff muscles."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "lunge",
+      "spritze"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "lunge",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Lunge",
+    "plural": "Lungen",
+    "en": "lung, lungs",
+    "example": {
+      "de": "Der Smog ist der Feind gesunder Lungen.",
+      "en": "Smog is the enemy of healthy lungs."
+    },
+    "family": [],
+    "related": [
+      "erkaeltung",
+      "muskel",
+      "allergie"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "erkaeltung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Erkältung",
+    "plural": "Erkältungen",
+    "en": "cold (illness)",
+    "example": {
+      "de": "Ich habe eine leichte Erkältung.",
+      "en": "I have a mild cold."
+    },
+    "family": [
+      "erkältet",
+      "kalt"
+    ],
+    "related": [
+      "impfung",
+      "allergie",
+      "lunge"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "allergie",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Allergie",
+    "plural": "Allergien",
+    "en": "allergy",
+    "example": {
+      "de": "Ich habe eine Allergie gegen Nüsse.",
+      "en": "I have an allergy to nuts."
+    },
+    "family": [
+      "allergisch",
+      "Allergiker"
+    ],
+    "related": [
+      "impfung",
+      "ansteckend",
+      "erkaeltung"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -796,37 +2756,15 @@ export const GENERATED: Word[] = [
       "anstecken"
     ],
     "related": [
+      "impfung",
       "genesung",
-      "heilung",
-      "beschwerden"
-    ],
-    "theme": "Körper und Gesundheit"
-  },
-  {
-    "id": "heilung",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Heilung",
-    "plural": "Heilungen",
-    "en": "healing, recovery",
-    "example": {
-      "de": "Die Heilung braucht Zeit.",
-      "en": "Healing takes time."
-    },
-    "family": [
-      "heilen",
-      "heil"
-    ],
-    "related": [
-      "genesung",
-      "ansteckend",
-      "nebenwirkung"
+      "allergie"
     ],
     "theme": "Körper und Gesundheit"
   },
   {
     "id": "genesung",
-    "tier": 6,
+    "tier": 5,
     "article": "die",
     "lemma": "Genesung",
     "en": "recovery (from illness)",
@@ -839,8 +2777,120 @@ export const GENERATED: Word[] = [
       "Genesende"
     ],
     "related": [
-      "heilung",
+      "impfung",
+      "giftig",
+      "ansteckend"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "giftig",
+    "tier": 5,
+    "lemma": "giftig",
+    "en": "poisonous",
+    "example": {
+      "de": "Woran erkennt man, ob ein Pilz giftig ist?",
+      "en": "How do you know if a mushroom is poisonous?"
+    },
+    "family": [],
+    "related": [
+      "impfung",
+      "atmung",
+      "genesung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "atmung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Atmung",
+    "plural": "Atmungen",
+    "en": "respiration, breathing",
+    "example": {
+      "de": "Die Atmung wird schneller, wenn man läuft.",
+      "en": "Respiration gets faster when one runs."
+    },
+    "family": [],
+    "related": [
+      "impfung",
+      "taetowierung",
+      "giftig"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "taetowierung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Tätowierung",
+    "plural": "Tätowierungen",
+    "en": "tattoo",
+    "example": {
+      "de": "Was hältst du von Toms neuer Tätowierung?",
+      "en": "What do you think of Tom's new tattoo?"
+    },
+    "family": [],
+    "related": [
+      "impfung",
+      "genetisch",
+      "atmung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "genetisch",
+    "tier": 5,
+    "lemma": "genetisch",
+    "en": "genetic",
+    "example": {
+      "de": "Ich bin ein genetisch veränderter Organismus.",
+      "en": "I'm a genetically modified organism."
+    },
+    "family": [],
+    "related": [
+      "impfung",
+      "blinzeln",
+      "taetowierung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "blinzeln",
+    "tier": 5,
+    "lemma": "blinzeln",
+    "en": "to squint",
+    "example": {
+      "de": "Sie trat blinzelnd hinaus ins Sonnenlicht.",
+      "en": "She emerged blinking into the sunlight."
+    },
+    "family": [],
+    "related": [
+      "impfung",
+      "genetisch",
       "nebenwirkung"
+    ],
+    "theme": "Körper und Gesundheit"
+  },
+  {
+    "id": "impfung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Impfung",
+    "plural": "Impfungen",
+    "en": "vaccination",
+    "example": {
+      "de": "Für die Reise brauchst du eine Impfung.",
+      "en": "You need a vaccination for the trip."
+    },
+    "family": [
+      "impfen",
+      "Impfstoff"
+    ],
+    "related": [
+      "blinzeln",
+      "nebenwirkung",
+      "hustensaft"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -860,59 +2910,50 @@ export const GENERATED: Word[] = [
       "wirken"
     ],
     "related": [
-      "heilung",
-      "genesung"
+      "blinzeln",
+      "hustensaft",
+      "impfung"
     ],
     "theme": "Körper und Gesundheit"
   },
   {
-    "id": "wetter",
-    "tier": 1,
-    "article": "das",
-    "lemma": "Wetter",
-    "en": "weather",
+    "id": "hustensaft",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Hustensaft",
+    "plural": "Hustensäfte",
+    "en": "cough syrup",
     "example": {
-      "de": "Das Wetter ist heute schön.",
-      "en": "The weather is nice today."
+      "de": "Du solltest Hustensaft und Aspirin kaufen.",
+      "en": "You should buy some cough medicine and aspirin."
     },
-    "family": [
-      "Wetterbericht",
-      "Wettervorhersage"
-    ],
+    "family": [],
     "related": [
-      "wald",
-      "regen",
-      "sonne",
-      "urlaub",
-      "klima",
-      "mantel"
+      "blinzeln",
+      "klinisch",
+      "nebenwirkung"
     ],
-    "theme": "Wetter und Natur"
+    "theme": "Körper und Gesundheit"
   },
   {
-    "id": "regen",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Regen",
-    "en": "rain",
+    "id": "klinisch",
+    "tier": 6,
+    "lemma": "klinisch",
+    "en": "clinical",
     "example": {
-      "de": "Bei Regen bleibe ich zu Hause.",
-      "en": "When it rains I stay at home."
+      "de": "Quantitative klinische Daten folgen einem breiten Spektrum an Verteilungen.",
+      "en": "Quantitative clinical data follow a wide range of distributions."
     },
-    "family": [
-      "regnen",
-      "Regenschirm"
-    ],
+    "family": [],
     "related": [
-      "wald",
-      "sonne",
-      "wetter"
+      "blinzeln",
+      "hustensaft"
     ],
-    "theme": "Wetter und Natur"
+    "theme": "Körper und Gesundheit"
   },
   {
     "id": "sonne",
-    "tier": 1,
+    "tier": 2,
     "article": "die",
     "lemma": "Sonne",
     "plural": "Sonnen",
@@ -926,9 +2967,9 @@ export const GENERATED: Word[] = [
       "Sonnenbrille"
     ],
     "related": [
+      "wetter",
       "wald",
-      "regen",
-      "schnee"
+      "wind"
     ],
     "theme": "Wetter und Natur"
   },
@@ -948,31 +2989,10 @@ export const GENERATED: Word[] = [
       "Waldspaziergang"
     ],
     "related": [
-      "gewitter",
-      "schnee",
+      "wetter",
+      "wind",
       "sonne",
       "vogel"
-    ],
-    "theme": "Wetter und Natur"
-  },
-  {
-    "id": "schnee",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Schnee",
-    "en": "snow",
-    "example": {
-      "de": "Im Winter liegt hier viel Schnee.",
-      "en": "There’s a lot of snow here in winter."
-    },
-    "family": [
-      "schneien",
-      "Schneemann"
-    ],
-    "related": [
-      "gewitter",
-      "wind",
-      "wald"
     ],
     "theme": "Wetter und Natur"
   },
@@ -992,9 +3012,9 @@ export const GENERATED: Word[] = [
       "Windstoß"
     ],
     "related": [
-      "gewitter",
+      "wetter",
       "luft",
-      "schnee"
+      "wald"
     ],
     "theme": "Wetter und Natur"
   },
@@ -1013,59 +3033,476 @@ export const GENERATED: Word[] = [
       "Luftballon"
     ],
     "related": [
-      "gewitter",
-      "wind",
-      "landschaft"
+      "wetter",
+      "feuer",
+      "wind"
     ],
     "theme": "Wetter und Natur"
   },
   {
-    "id": "gewitter",
-    "tier": 3,
+    "id": "feuer",
+    "tier": 2,
     "article": "das",
-    "lemma": "Gewitter",
-    "plural": "Gewitter",
-    "en": "thunderstorm",
+    "lemma": "Feuer",
+    "plural": "Feuer",
+    "en": "fire",
     "example": {
-      "de": "Am Abend kommt ein Gewitter.",
-      "en": "A thunderstorm is coming this evening."
+      "de": "Entschuldigung, können Sie mir Feuer geben?",
+      "en": "May I trouble you for a light?"
     },
-    "family": [
-      "Wetter",
-      "gewittrig"
-    ],
+    "family": [],
     "related": [
-      "nebel",
-      "landschaft",
+      "wetter",
+      "himmel",
       "luft"
     ],
     "theme": "Wetter und Natur"
   },
   {
-    "id": "landschaft",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Landschaft",
-    "plural": "Landschaften",
-    "en": "landscape, scenery",
+    "id": "himmel",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Himmel",
+    "plural": "Himmel",
+    "en": "sky",
     "example": {
-      "de": "Die Landschaft hier ist wunderschön.",
-      "en": "The scenery here is beautiful."
+      "de": "Es kam wie ein Blitz aus heiterem Himmel.",
+      "en": "It was like a bolt out of the blue."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "erde",
+      "feuer"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "erde",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Erde",
+    "plural": "Erden",
+    "en": "earth",
+    "example": {
+      "de": "Wale sind die größten Tiere auf der Erde.",
+      "en": "The whale is the largest animal on the earth."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "heiss",
+      "himmel"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "heiss",
+    "tier": 2,
+    "lemma": "heiß",
+    "en": "hot",
+    "example": {
+      "de": "Was ich nicht weiß, macht mich nicht heiß.",
+      "en": "Ignorance is bliss."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "eis",
+      "erde"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "eis",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Eis",
+    "plural": "Eis",
+    "en": "ice",
+    "example": {
+      "de": "Das Eis wird unter deinem Gewicht brechen.",
+      "en": "The ice will give under your weight."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "see",
+      "heiss"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "see",
+    "tier": 2,
+    "article": "der",
+    "lemma": "See",
+    "plural": "Seen",
+    "en": "lake",
+    "example": {
+      "de": "Auf Ihrer rechten Seite sehen Sie die See.",
+      "en": "You can see the sea on your right."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "meer",
+      "eis"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "meer",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Meer",
+    "plural": "Meere",
+    "en": "sea",
+    "example": {
+      "de": "Wir haben unsere Ferien am Meer verbracht.",
+      "en": "We spent our holiday at the seaside."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "baum",
+      "see"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "baum",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Baum",
+    "plural": "Bäume",
+    "en": "tree",
+    "example": {
+      "de": "Bäume zählen zu den größten Lebensformen.",
+      "en": "Trees are one of the biggest life forms."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "blume",
+      "meer"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "blume",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Blume",
+    "plural": "Blumen",
+    "en": "flower",
+    "example": {
+      "de": "Insekten helfen Blumen bei der Reproduktion.",
+      "en": "Insects help flowers reproduce."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "stein",
+      "baum"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "stein",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Stein",
+    "plural": "Steine",
+    "en": "stone, rock",
+    "example": {
+      "de": "Wer ohne Sünde ist, werfe den ersten Stein.",
+      "en": "Let him who is without sin cast the first stone."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "insel",
+      "blume"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "insel",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Insel",
+    "plural": "Inseln",
+    "en": "island",
+    "example": {
+      "de": "Napoleon lebte auf der Insel Elba im Exil.",
+      "en": "Napoleon lived in exile on the island of Elba."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "sommer",
+      "stein"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "sommer",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Sommer",
+    "plural": "Sommer",
+    "en": "summer",
+    "example": {
+      "de": "Im Sommer trage ich kurzärmelige Hemden.",
+      "en": "In the summer, I wear short-sleeve shirts."
+    },
+    "family": [],
+    "related": [
+      "wetter",
+      "insel",
+      "regen"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "wetter",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Wetter",
+    "en": "weather",
+    "example": {
+      "de": "Das Wetter ist heute schön.",
+      "en": "The weather is nice today."
     },
     "family": [
-      "Land",
-      "landschaftlich"
+      "Wetterbericht",
+      "Wettervorhersage"
     ],
     "related": [
-      "nebel",
       "pflanze",
-      "gewitter"
+      "regen",
+      "sommer",
+      "urlaub",
+      "klima",
+      "mantel"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "regen",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Regen",
+    "en": "rain",
+    "example": {
+      "de": "Bei Regen bleibe ich zu Hause.",
+      "en": "When it rains I stay at home."
+    },
+    "family": [
+      "regnen",
+      "Regenschirm"
+    ],
+    "related": [
+      "pflanze",
+      "schnee",
+      "wetter"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "schnee",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Schnee",
+    "en": "snow",
+    "example": {
+      "de": "Im Winter liegt hier viel Schnee.",
+      "en": "There’s a lot of snow here in winter."
+    },
+    "family": [
+      "schneien",
+      "Schneemann"
+    ],
+    "related": [
+      "pflanze",
+      "natur",
+      "regen"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "natur",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Natur",
+    "plural": "Naturen",
+    "en": "nature",
+    "example": {
+      "de": "Wissenschaft ist das Studium der Natur.",
+      "en": "Science is the study of nature."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "fluss",
+      "schnee"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "fluss",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Fluss",
+    "plural": "Flüsse",
+    "en": "river",
+    "example": {
+      "de": "Im Fluss wimmelte es von Süßwasserfischen.",
+      "en": "The river was alive with fresh water fish."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "mond",
+      "natur"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "mond",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Mond",
+    "plural": "Monde",
+    "en": "moon",
+    "example": {
+      "de": "Ganymed ist der größte Mond des Sonnensystems.",
+      "en": "Ganymede is the biggest moon of the Solar System."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "warm",
+      "fluss"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "warm",
+    "tier": 3,
+    "lemma": "warm",
+    "en": "warm, mildly hot",
+    "example": {
+      "de": "Ich zahle 800 € warm für meine Wohnung.",
+      "en": "I pay €800 for my apartment, including utilities."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "sturm",
+      "mond"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "sturm",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Sturm",
+    "plural": "Stürme",
+    "en": "storm",
+    "example": {
+      "de": "Das Dach wurde durch den Sturm beschädigt.",
+      "en": "The roof was damaged by the storm."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "berg",
+      "warm"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "berg",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Berg",
+    "plural": "Berge",
+    "en": "mountain",
+    "example": {
+      "de": "Welcher Berg ist der höchste Nordamerikas?",
+      "en": "What is the highest mountain in North America?"
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "gras",
+      "sturm"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "gras",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Gras",
+    "plural": "Gräser",
+    "en": "grass",
+    "example": {
+      "de": "Beim Nachbarn ist das Gras immer grüner.",
+      "en": "The grass is always greener on the other side."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "sand",
+      "berg"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "sand",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Sand",
+    "plural": "Sande",
+    "en": "sand",
+    "example": {
+      "de": "Wir haben die Fußspuren im Sand gefunden.",
+      "en": "We found the footprints in the sand."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "winter",
+      "gras"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "winter",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Winter",
+    "plural": "Winter",
+    "en": "winter",
+    "example": {
+      "de": "Wir haben dieses Jahr einen milden Winter.",
+      "en": "We're having a mild winter."
+    },
+    "family": [],
+    "related": [
+      "pflanze",
+      "sand",
+      "temperatur"
     ],
     "theme": "Wetter und Natur"
   },
   {
     "id": "pflanze",
-    "tier": 3,
+    "tier": 4,
     "article": "die",
     "lemma": "Pflanze",
     "plural": "Pflanzen",
@@ -1079,15 +3516,15 @@ export const GENERATED: Word[] = [
       "Zimmerpflanze"
     ],
     "related": [
-      "nebel",
+      "gewitter",
       "temperatur",
-      "landschaft"
+      "winter"
     ],
     "theme": "Wetter und Natur"
   },
   {
     "id": "temperatur",
-    "tier": 3,
+    "tier": 4,
     "article": "die",
     "lemma": "Temperatur",
     "plural": "Temperaturen",
@@ -1101,9 +3538,9 @@ export const GENERATED: Word[] = [
       "Körpertemperatur"
     ],
     "related": [
+      "gewitter",
       "nebel",
-      "pflanze",
-      "ufer"
+      "pflanze"
     ],
     "theme": "Wetter und Natur"
   },
@@ -1123,7 +3560,7 @@ export const GENERATED: Word[] = [
       "Nebelscheinwerfer"
     ],
     "related": [
-      "duerre",
+      "gewitter",
       "ufer",
       "temperatur"
     ],
@@ -1145,31 +3582,9 @@ export const GENERATED: Word[] = [
       "Seeufer"
     ],
     "related": [
-      "duerre",
-      "ueberschwemmung",
-      "nebel"
-    ],
-    "theme": "Wetter und Natur"
-  },
-  {
-    "id": "ueberschwemmung",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Überschwemmung",
-    "plural": "Überschwemmungen",
-    "en": "flood",
-    "example": {
-      "de": "Nach dem Regen gab es eine Überschwemmung.",
-      "en": "After the rain there was a flood."
-    },
-    "family": [
-      "überschwemmen",
-      "Schwemme"
-    ],
-    "related": [
-      "duerre",
+      "gewitter",
       "blitz",
-      "ufer"
+      "nebel"
     ],
     "theme": "Wetter und Natur"
   },
@@ -1189,9 +3604,262 @@ export const GENERATED: Word[] = [
       "Blitzschlag"
     ],
     "related": [
-      "duerre",
+      "gewitter",
+      "kueste",
+      "ufer"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "kueste",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Küste",
+    "plural": "Küsten",
+    "en": "coast",
+    "example": {
+      "de": "Die Promenade verläuft parallel zur Küste.",
+      "en": "The promenade runs parallel to the shore."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "duft",
+      "blitz"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "duft",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Duft",
+    "plural": "Düfte",
+    "en": "aroma, fragrance",
+    "example": {
+      "de": "Nichts mag ich mehr als den Duft von Rosen.",
+      "en": "There is nothing I like so much as the smell of roses."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "wolke",
+      "kueste"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "wolke",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Wolke",
+    "plural": "Wolken",
+    "en": "cloud",
+    "example": {
+      "de": "Der Himmel ist heute von Wolken bedeckt.",
+      "en": "The sky is covered in clouds today."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "frost",
+      "duft"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "frost",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Frost",
+    "plural": "Fröste",
+    "en": "frost, freezing weather",
+    "example": {
+      "de": "Der Frost vernichtete die Apfelsinenernte.",
+      "en": "The frost rendered the orange crop worthless."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "blatt",
+      "wolke"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "blatt",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Blatt",
+    "plural": "Blätter",
+    "en": "leaf",
+    "example": {
+      "de": "Im Oktober beginnen die Blätter zu fallen.",
+      "en": "Leaves begin to fall in October."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "tal",
+      "frost"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "tal",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Tal",
+    "plural": "Täler",
+    "en": "valley",
+    "example": {
+      "de": "Die Abenddämmerung zog über das Tal herein.",
+      "en": "Evening was closing in on the valley."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "huegel",
+      "blatt"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "huegel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Hügel",
+    "plural": "Hügel",
+    "en": "hill",
+    "example": {
+      "de": "Der Hügel bestimmt das Panorama der Stadt.",
+      "en": "The hill commands the panorama of the city."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "fruehling",
+      "tal"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "fruehling",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Frühling",
+    "plural": "Frühlinge",
+    "en": "spring",
+    "example": {
+      "de": "Was magst du lieber, Frühling oder Herbst?",
+      "en": "Which do you like better, spring or autumn?"
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "herbst",
+      "huegel"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "herbst",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Herbst",
+    "plural": "Herbste",
+    "en": "autumn, fall",
+    "example": {
+      "de": "Im Herbst ziehen viele Vögel in den Süden.",
+      "en": "Many birds head south in autumn."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "donner",
+      "fruehling"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "donner",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Donner",
+    "plural": "Donner",
+    "en": "thunder",
+    "example": {
+      "de": "Donner kündigt an, dass ein Gewitter naht.",
+      "en": "Thunder indicates that a storm is near."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "gipfel",
+      "herbst"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "gipfel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Gipfel",
+    "plural": "Gipfel",
+    "en": "peak, pinnacle",
+    "example": {
+      "de": "Wir sind auf den Gipfel des Fuji gestiegen.",
+      "en": "We climbed to the top of Mt. Fuji."
+    },
+    "family": [],
+    "related": [
+      "gewitter",
+      "donner",
+      "landschaft"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "gewitter",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Gewitter",
+    "plural": "Gewitter",
+    "en": "thunderstorm",
+    "example": {
+      "de": "Am Abend kommt ein Gewitter.",
+      "en": "A thunderstorm is coming this evening."
+    },
+    "family": [
+      "Wetter",
+      "gewittrig"
+    ],
+    "related": [
       "ueberschwemmung",
-      "boee"
+      "landschaft",
+      "gipfel"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "landschaft",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Landschaft",
+    "plural": "Landschaften",
+    "en": "landscape, scenery",
+    "example": {
+      "de": "Die Landschaft hier ist wunderschön.",
+      "en": "The scenery here is beautiful."
+    },
+    "family": [
+      "Land",
+      "landschaftlich"
+    ],
+    "related": [
+      "ueberschwemmung",
+      "duerre",
+      "gewitter"
     ],
     "theme": "Wetter und Natur"
   },
@@ -1211,9 +3879,9 @@ export const GENERATED: Word[] = [
       "trocken"
     ],
     "related": [
-      "niederschlag",
+      "ueberschwemmung",
       "boee",
-      "blitz"
+      "landschaft"
     ],
     "theme": "Wetter und Natur"
   },
@@ -1233,7 +3901,7 @@ export const GENERATED: Word[] = [
       "Windböe"
     ],
     "related": [
-      "niederschlag",
+      "ueberschwemmung",
       "daemmerung",
       "duerre"
     ],
@@ -1254,8 +3922,104 @@ export const GENERATED: Word[] = [
       "Morgendämmerung"
     ],
     "related": [
+      "ueberschwemmung",
+      "duften",
+      "boee"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "duften",
+    "tier": 5,
+    "lemma": "duften",
+    "en": "to smell very pleasantly",
+    "example": {
+      "de": "Dieser Blume entströmt ein starker Duft.",
+      "en": "This flower gives off a strong fragrance."
+    },
+    "family": [],
+    "related": [
+      "ueberschwemmung",
+      "brise",
+      "daemmerung"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "brise",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Brise",
+    "plural": "Brisen",
+    "en": "breeze",
+    "example": {
+      "de": "Eine kühle Brise wehte zum Fenster herein.",
+      "en": "A cold breeze blew in through the window."
+    },
+    "family": [],
+    "related": [
+      "ueberschwemmung",
+      "wiese",
+      "duften"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "wiese",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Wiese",
+    "plural": "Wiesen",
+    "en": "meadow",
+    "example": {
+      "de": "In den engen Tälern ergrünte manche Wiese.",
+      "en": "Meadows were greening up in the narrow valleys."
+    },
+    "family": [],
+    "related": [
+      "ueberschwemmung",
+      "wasserfall",
+      "brise"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "wasserfall",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Wasserfall",
+    "plural": "Wasserfälle",
+    "en": "waterfall",
+    "example": {
+      "de": "Fyodor hat den schönen Wasserfall gesehen.",
+      "en": "Fyodor saw the beautiful waterfall."
+    },
+    "family": [],
+    "related": [
+      "ueberschwemmung",
+      "wiese",
+      "niederschlag"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "ueberschwemmung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Überschwemmung",
+    "plural": "Überschwemmungen",
+    "en": "flood",
+    "example": {
+      "de": "Nach dem Regen gab es eine Überschwemmung.",
+      "en": "After the rain there was a flood."
+    },
+    "family": [
+      "überschwemmen",
+      "Schwemme"
+    ],
+    "related": [
+      "wasserfall",
       "niederschlag",
-      "boee",
       "sturmflut"
     ],
     "theme": "Wetter und Natur"
@@ -1276,8 +4040,9 @@ export const GENERATED: Word[] = [
       "Schlag"
     ],
     "related": [
-      "daemmerung",
-      "sturmflut"
+      "wasserfall",
+      "sturmflut",
+      "ueberschwemmung"
     ],
     "theme": "Wetter und Natur"
   },
@@ -1297,14 +4062,50 @@ export const GENERATED: Word[] = [
       "Flut"
     ],
     "related": [
-      "daemmerung",
+      "wasserfall",
+      "fruchtbar",
       "niederschlag"
     ],
     "theme": "Wetter und Natur"
   },
   {
+    "id": "fruchtbar",
+    "tier": 6,
+    "lemma": "fruchtbar",
+    "en": "fertile",
+    "example": {
+      "de": "Unsere Zusammenarbeit ist fruchtbar gewesen.",
+      "en": "Our collaboration was fruitful."
+    },
+    "family": [],
+    "related": [
+      "wasserfall",
+      "windmuehle",
+      "sturmflut"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
+    "id": "windmuehle",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Windmühle",
+    "plural": "Windmühlen",
+    "en": "windmill",
+    "example": {
+      "de": "Ich weiß, dass ich gegen Windmühlen kämpfe.",
+      "en": "I know I'm fighting against windmills."
+    },
+    "family": [],
+    "related": [
+      "wasserfall",
+      "fruchtbar"
+    ],
+    "theme": "Wetter und Natur"
+  },
+  {
     "id": "hund",
-    "tier": 1,
+    "tier": 2,
     "article": "der",
     "lemma": "Hund",
     "plural": "Hunde",
@@ -1318,15 +4119,15 @@ export const GENERATED: Word[] = [
       "Hundefutter"
     ],
     "related": [
-      "pferd",
+      "vogel",
       "katze",
-      "vogel"
+      "pferd"
     ],
     "theme": "Tiere"
   },
   {
     "id": "katze",
-    "tier": 1,
+    "tier": 2,
     "article": "die",
     "lemma": "Katze",
     "plural": "Katzen",
@@ -1340,32 +4141,9 @@ export const GENERATED: Word[] = [
       "Kätzchen"
     ],
     "related": [
-      "pferd",
       "vogel",
-      "hund"
-    ],
-    "theme": "Tiere"
-  },
-  {
-    "id": "vogel",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Vogel",
-    "plural": "Vögel",
-    "en": "bird",
-    "example": {
-      "de": "Morgens singen die Vögel im Garten.",
-      "en": "In the morning the birds sing in the garden."
-    },
-    "family": [
-      "Vogelnest",
-      "Vogelhaus"
-    ],
-    "related": [
       "pferd",
-      "katze",
-      "fisch",
-      "wald"
+      "hund"
     ],
     "theme": "Tiere"
   },
@@ -1385,31 +4163,9 @@ export const GENERATED: Word[] = [
       "reiten"
     ],
     "related": [
-      "haustier",
-      "fisch",
-      "vogel"
-    ],
-    "theme": "Tiere"
-  },
-  {
-    "id": "fisch",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Fisch",
-    "plural": "Fische",
-    "en": "fish",
-    "example": {
-      "de": "Am Freitag essen wir immer Fisch.",
-      "en": "On Fridays we always eat fish."
-    },
-    "family": [
-      "Fischer",
-      "fischen"
-    ],
-    "related": [
-      "haustier",
+      "vogel",
       "tier",
-      "pferd"
+      "katze"
     ],
     "theme": "Tiere"
   },
@@ -1429,60 +4185,15 @@ export const GENERATED: Word[] = [
       "Haustier"
     ],
     "related": [
-      "haustier",
-      "kuh",
-      "fisch"
-    ],
-    "theme": "Tiere"
-  },
-  {
-    "id": "kuh",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Kuh",
-    "plural": "Kühe",
-    "en": "cow",
-    "example": {
-      "de": "Die Kühe stehen auf der Weide.",
-      "en": "The cows are standing in the pasture."
-    },
-    "family": [
-      "Kuhstall",
-      "Kuhmilch"
-    ],
-    "related": [
-      "haustier",
-      "tier",
-      "schwein"
-    ],
-    "theme": "Tiere"
-  },
-  {
-    "id": "haustier",
-    "tier": 3,
-    "article": "das",
-    "lemma": "Haustier",
-    "plural": "Haustiere",
-    "en": "pet",
-    "example": {
-      "de": "Hast du ein Haustier zu Hause?",
-      "en": "Do you have a pet at home?"
-    },
-    "family": [
-      "Tier",
-      "Haus"
-    ],
-    "related": [
-      "schmetterling",
+      "vogel",
       "schwein",
-      "kuh",
-      "familie"
+      "pferd"
     ],
     "theme": "Tiere"
   },
   {
     "id": "schwein",
-    "tier": 3,
+    "tier": 2,
     "article": "das",
     "lemma": "Schwein",
     "plural": "Schweine",
@@ -1496,16 +4207,252 @@ export const GENERATED: Word[] = [
       "Schweinestall"
     ],
     "related": [
-      "schmetterling",
-      "ente",
-      "haustier",
+      "vogel",
+      "fliege",
+      "tier",
       "fleisch"
     ],
     "theme": "Tiere"
   },
   {
-    "id": "ente",
+    "id": "fliege",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Fliege",
+    "plural": "Fliegen",
+    "en": "fly",
+    "example": {
+      "de": "Ich wünschte, ich hätte Flügel zum Fliegen.",
+      "en": "I wish I had wings to fly."
+    },
+    "family": [],
+    "related": [
+      "vogel",
+      "schwein",
+      "fisch"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "vogel",
     "tier": 3,
+    "article": "der",
+    "lemma": "Vogel",
+    "plural": "Vögel",
+    "en": "bird",
+    "example": {
+      "de": "Morgens singen die Vögel im Garten.",
+      "en": "In the morning the birds sing in the garden."
+    },
+    "family": [
+      "Vogelnest",
+      "Vogelhaus"
+    ],
+    "related": [
+      "ente",
+      "fisch",
+      "fliege",
+      "wald"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "fisch",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Fisch",
+    "plural": "Fische",
+    "en": "fish",
+    "example": {
+      "de": "Am Freitag essen wir immer Fisch.",
+      "en": "On Fridays we always eat fish."
+    },
+    "family": [
+      "Fischer",
+      "fischen"
+    ],
+    "related": [
+      "ente",
+      "kuh",
+      "vogel"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "kuh",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Kuh",
+    "plural": "Kühe",
+    "en": "cow",
+    "example": {
+      "de": "Die Kühe stehen auf der Weide.",
+      "en": "The cows are standing in the pasture."
+    },
+    "family": [
+      "Kuhstall",
+      "Kuhmilch"
+    ],
+    "related": [
+      "ente",
+      "wolf",
+      "fisch"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "wolf",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Wolf",
+    "plural": "Wölfe",
+    "en": "wolf",
+    "example": {
+      "de": "Zwei Schafe wurden von einem Wolf getötet.",
+      "en": "Two sheep were killed by a wolf."
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "fressen",
+      "kuh"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "fressen",
+    "tier": 3,
+    "lemma": "fressen",
+    "en": "to eat, to feed on",
+    "example": {
+      "de": "Erst kommt das Fressen, dann kommt die Moral.",
+      "en": "First comes the stomach, then comes ethics."
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "baer",
+      "wolf"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "baer",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Bär",
+    "plural": "Bären",
+    "en": "bear",
+    "example": {
+      "de": "Der Bär ist ziemlich zahm und beißt nicht.",
+      "en": "The bear is quite tame and doesn't bite."
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "maus",
+      "fressen"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "maus",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Maus",
+    "plural": "Mäuse",
+    "en": "mouse",
+    "example": {
+      "de": "Diese Maus wurde von meiner Katze getötet.",
+      "en": "This mouse was killed by my cat."
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "affe",
+      "baer"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "affe",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Affe",
+    "plural": "Affen",
+    "en": "monkey or ape",
+    "example": {
+      "de": "Die Affen pflegen sich gegenseitig das Fell.",
+      "en": "The apes groom each other."
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "schlange",
+      "maus"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "schlange",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Schlange",
+    "plural": "Schlangen",
+    "en": "snake",
+    "example": {
+      "de": "Ich habe schreckliche Angst vor Schlangen.",
+      "en": "I have a horror of snakes."
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "tiger",
+      "affe"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "tiger",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Tiger",
+    "plural": "Tiger",
+    "en": "tiger",
+    "example": {
+      "de": "Wo kann ich einen lebendigen Tiger kaufen?",
+      "en": "Where can I buy a live tiger?"
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "ratte",
+      "schlange"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "ratte",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Ratte",
+    "plural": "Ratten",
+    "en": "rat",
+    "example": {
+      "de": "Hier ist die Ratte! Holt schnell die Katze!",
+      "en": "The rat's here! Go call the cat!"
+    },
+    "family": [],
+    "related": [
+      "ente",
+      "tiger",
+      "hase"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "ente",
+    "tier": 4,
     "article": "die",
     "lemma": "Ente",
     "plural": "Enten",
@@ -1519,15 +4466,15 @@ export const GENERATED: Word[] = [
       "Entenbraten"
     ],
     "related": [
-      "schmetterling",
+      "haustier",
       "hase",
-      "schwein"
+      "ratte"
     ],
     "theme": "Tiere"
   },
   {
     "id": "hase",
-    "tier": 3,
+    "tier": 4,
     "article": "der",
     "lemma": "Hase",
     "plural": "Hasen",
@@ -1541,15 +4488,338 @@ export const GENERATED: Word[] = [
       "Häschen"
     ],
     "related": [
+      "haustier",
+      "beissen",
+      "ente"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "beissen",
+    "tier": 4,
+    "lemma": "beißen",
+    "en": "to bite",
+    "example": {
+      "de": "Wenn du mich beißt, dann beiße ich zurück.",
+      "en": "If you bite me, I'll bite you back."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "fuettern",
+      "hase"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "fuettern",
+    "tier": 4,
+    "lemma": "füttern",
+    "en": "to feed",
+    "example": {
+      "de": "Ich füttere meinen Hund des Morgens nicht.",
+      "en": "I don't feed my dog in the morning."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "zoo",
+      "beissen"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "zoo",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Zoo",
+    "plural": "Zoos",
+    "en": "zoo",
+    "example": {
+      "de": "Ein großes Tier ist dem Zoo davongelaufen.",
+      "en": "A big animal ran away from the zoo."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "schaf",
+      "fuettern"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "schaf",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Schaf",
+    "plural": "Schafe",
+    "en": "sheep",
+    "example": {
+      "de": "In jeder Herde gibt es ein schwarzes Schaf.",
+      "en": "There's a black sheep in every flock."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "huhn",
+      "zoo"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "huhn",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Huhn",
+    "plural": "Hühner",
+    "en": "chicken",
+    "example": {
+      "de": "Auch ein blindes Huhn findet mal ein Korn.",
+      "en": "Even a broken clock is right twice a day."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "fuchs",
+      "schaf"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "fuchs",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Fuchs",
+    "plural": "Füchse",
+    "en": "fox",
+    "example": {
+      "de": "Unser Paul ist ja ein kleiner Fuchs.",
+      "en": "Our Paul is a little redhead."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "loewe",
+      "huhn"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "loewe",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Löwe",
+    "plural": "Löwen",
+    "en": "lion",
+    "example": {
+      "de": "Pferd, Löwe, Hund, Ziege: dies sind Tiere.",
+      "en": "Horse, lion, dog, goat: these are animals."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "elefant",
+      "fuchs"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "elefant",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Elefant",
+    "plural": "Elefanten",
+    "en": "elephant",
+    "example": {
+      "de": "Er macht aus einer Mücke einen Elefanten.",
+      "en": "He makes a mountain out of a molehill."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "frosch",
+      "loewe"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "frosch",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Frosch",
+    "plural": "Frösche",
+    "en": "frog",
+    "example": {
+      "de": "Wer hat mir einen Frosch ins Bett gesetzt?",
+      "en": "Who put a frog in my bed?"
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "spinne",
+      "elefant"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "spinne",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Spinne",
+    "plural": "Spinnen",
+    "en": "spider",
+    "example": {
+      "de": "Spinnen weben stets dreidimensionale Netze.",
+      "en": "Spiders always weave their webs in three dimensions."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "adler",
+      "frosch"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "adler",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Adler",
+    "plural": "Adler",
+    "en": "eagle",
+    "example": {
+      "de": "Adler, Falken und Habichte sind Raubvögel.",
+      "en": "Eagles, falcons and hawks are birds of prey."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "ziege",
+      "spinne"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "ziege",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Ziege",
+    "plural": "Ziegen",
+    "en": "goat",
+    "example": {
+      "de": "Das ist kein Schaf, sondern eine Ziege!",
+      "en": "This isn't a sheep. It's a goat."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "esel",
+      "adler"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "esel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Esel",
+    "plural": "Esel",
+    "en": "ass, donkey",
+    "example": {
+      "de": "Ich habe noch nie einen Esel schreien gehört.",
+      "en": "I've never heard a donkey braying."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "kaefer",
+      "ziege"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "kaefer",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Käfer",
+    "plural": "Käfer",
+    "en": "beetle",
+    "example": {
+      "de": "Mein Vater hat früher einen Käfer gefahren.",
+      "en": "My dad used to drive a Beetle."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "hai",
+      "esel"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "hai",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Hai",
+    "plural": "Haie",
+    "en": "shark",
+    "example": {
+      "de": "Haben Sie schon einmal einen Hai gesehen?",
+      "en": "Have you ever seen a shark?"
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "gans",
+      "kaefer"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "gans",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Gans",
+    "plural": "Gänse",
+    "en": "goose",
+    "example": {
+      "de": "Sie sahen den Gänsen zu, bis es dunkel war.",
+      "en": "They watched the geese till it was dark."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "hai",
+      "schmetterling"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "haustier",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Haustier",
+    "plural": "Haustiere",
+    "en": "pet",
+    "example": {
+      "de": "Hast du ein Haustier zu Hause?",
+      "en": "Do you have a pet at home?"
+    },
+    "family": [
+      "Tier",
+      "Haus"
+    ],
+    "related": [
+      "igel",
       "schmetterling",
-      "ente",
-      "eichhoernchen"
+      "gans",
+      "familie"
     ],
     "theme": "Tiere"
   },
   {
     "id": "schmetterling",
-    "tier": 4,
+    "tier": 5,
     "article": "der",
     "lemma": "Schmetterling",
     "plural": "Schmetterlinge",
@@ -1565,13 +4835,13 @@ export const GENERATED: Word[] = [
     "related": [
       "igel",
       "eichhoernchen",
-      "hase"
+      "haustier"
     ],
     "theme": "Tiere"
   },
   {
     "id": "eichhoernchen",
-    "tier": 4,
+    "tier": 5,
     "article": "das",
     "lemma": "Eichhörnchen",
     "plural": "Eichhörnchen",
@@ -1593,7 +4863,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "biene",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Biene",
     "plural": "Bienen",
@@ -1615,7 +4885,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "fledermaus",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Fledermaus",
     "plural": "Fledermäuse",
@@ -1630,52 +4900,8 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "igel",
-      "biene",
-      "ameise"
-    ],
-    "theme": "Tiere"
-  },
-  {
-    "id": "igel",
-    "tier": 5,
-    "article": "der",
-    "lemma": "Igel",
-    "plural": "Igel",
-    "en": "hedgehog",
-    "example": {
-      "de": "Im Garten wohnt ein kleiner Igel.",
-      "en": "A little hedgehog lives in the garden."
-    },
-    "family": [
-      "Igelfamilie",
-      "Stachel"
-    ],
-    "related": [
-      "raubtier",
-      "ameise",
-      "fledermaus"
-    ],
-    "theme": "Tiere"
-  },
-  {
-    "id": "ameise",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Ameise",
-    "plural": "Ameisen",
-    "en": "ant",
-    "example": {
-      "de": "Die Ameisen tragen kleine Blätter.",
-      "en": "The ants are carrying little leaves."
-    },
-    "family": [
-      "Ameisenhaufen",
-      "Ameisenbär"
-    ],
-    "related": [
-      "raubtier",
       "schnecke",
-      "igel"
+      "biene"
     ],
     "theme": "Tiere"
   },
@@ -1695,9 +4921,226 @@ export const GENERATED: Word[] = [
       "Nacktschnecke"
     ],
     "related": [
-      "raubtier",
-      "ameise",
+      "igel",
+      "ungeziefer",
+      "fledermaus"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "ungeziefer",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Ungeziefer",
+    "en": "vermin, pests",
+    "example": {
+      "de": "Im Keller haben wir Ungeziefer entdeckt.",
+      "en": "We found pests in the cellar."
+    },
+    "family": [
+      "Zieferbekämpfung",
+      "Schädling"
+    ],
+    "related": [
+      "igel",
+      "bueffel",
+      "schnecke"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "bueffel",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Büffel",
+    "plural": "Büffel",
+    "en": "buffalo",
+    "example": {
+      "de": "Sie folgten dem Büffel über die Prärie.",
+      "en": "They followed the buffalo across the plains."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "taube",
       "ungeziefer"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "taube",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Taube",
+    "plural": "Tauben",
+    "en": "pigeon, dove",
+    "example": {
+      "de": "Tauben sind sehr lästige Vögel in Städten.",
+      "en": "Pigeons are very bothersome birds in cities."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "eule",
+      "bueffel"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "eule",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Eule",
+    "plural": "Eulen",
+    "en": "owl",
+    "example": {
+      "de": "Ich habe gerade eine riesige Eule gesehen.",
+      "en": "I've just seen a huge owl."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "hirsch",
+      "taube"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "hirsch",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Hirsch",
+    "plural": "Hirsche",
+    "en": "deer",
+    "example": {
+      "de": "Der Hirsch schlief auf einem Bett aus Laub.",
+      "en": "The deer was sleeping on a bed of leaves."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "krokodil",
+      "eule"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "krokodil",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Krokodil",
+    "plural": "Krokodile",
+    "en": "crocodile",
+    "example": {
+      "de": "Krokodile und Alligatoren sind Reptilien.",
+      "en": "Crocodiles and alligators are reptiles."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "wal",
+      "hirsch"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "wal",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Wal",
+    "plural": "Wale",
+    "en": "whale",
+    "example": {
+      "de": "Wirf eine Sprotte, um einen Wal zu fangen.",
+      "en": "Throw a sprat to catch a whale."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "muecke",
+      "krokodil"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "muecke",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Mücke",
+    "plural": "Mücken",
+    "en": "mosquito, gnat",
+    "example": {
+      "de": "Du machst aus einer Mücke einen Elefanten.",
+      "en": "You're making a big fuss about nothing."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "pinguin",
+      "wal"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "pinguin",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Pinguin",
+    "plural": "Pinguine",
+    "en": "penguin",
+    "example": {
+      "de": "Diese Fernsehsendung handelt von Pinguinen.",
+      "en": "This TV show is about penguins."
+    },
+    "family": [],
+    "related": [
+      "igel",
+      "muecke",
+      "ameise"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "igel",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Igel",
+    "plural": "Igel",
+    "en": "hedgehog",
+    "example": {
+      "de": "Im Garten wohnt ein kleiner Igel.",
+      "en": "A little hedgehog lives in the garden."
+    },
+    "family": [
+      "Igelfamilie",
+      "Stachel"
+    ],
+    "related": [
+      "pinguin",
+      "ameise",
+      "raubtier"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "ameise",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Ameise",
+    "plural": "Ameisen",
+    "en": "ant",
+    "example": {
+      "de": "Die Ameisen tragen kleine Blätter.",
+      "en": "The ants are carrying little leaves."
+    },
+    "family": [
+      "Ameisenhaufen",
+      "Ameisenbär"
+    ],
+    "related": [
+      "pinguin",
+      "raubtier",
+      "igel"
     ],
     "theme": "Tiere"
   },
@@ -1717,34 +5160,70 @@ export const GENERATED: Word[] = [
       "rauben"
     ],
     "related": [
-      "schnecke",
-      "ungeziefer"
+      "pinguin",
+      "rotkehlchen",
+      "ameise"
     ],
     "theme": "Tiere"
   },
   {
-    "id": "ungeziefer",
+    "id": "rotkehlchen",
     "tier": 6,
     "article": "das",
-    "lemma": "Ungeziefer",
-    "en": "vermin, pests",
+    "lemma": "Rotkehlchen",
+    "plural": "Rotkehlchen",
+    "en": "European robin",
     "example": {
-      "de": "Im Keller haben wir Ungeziefer entdeckt.",
-      "en": "We found pests in the cellar."
+      "de": "Ein Rotkehlchen flog in den Busch hinein.",
+      "en": "A robin flew into the bush."
     },
-    "family": [
-      "Zieferbekämpfung",
-      "Schädling"
-    ],
+    "family": [],
     "related": [
-      "schnecke",
+      "pinguin",
+      "hummel",
       "raubtier"
     ],
     "theme": "Tiere"
   },
   {
-    "id": "hose",
+    "id": "hummel",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Hummel",
+    "plural": "Hummeln",
+    "en": "bumblebee",
+    "example": {
+      "de": "Ich wurde vom Summen einer Hummel geweckt.",
+      "en": "I was woken up by the buzzing of a bumblebee."
+    },
+    "family": [],
+    "related": [
+      "pinguin",
+      "rotkehlchen"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "wolle",
     "tier": 1,
+    "article": "die",
+    "lemma": "Wolle",
+    "plural": "Wollen",
+    "en": "wool",
+    "example": {
+      "de": "Wollen Sie auch an diesem Kurs teilnehmen?",
+      "en": "Do you also want to take part in this course?"
+    },
+    "family": [],
+    "related": [
+      "hose",
+      "kleid"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "hose",
+    "tier": 2,
     "article": "die",
     "lemma": "Hose",
     "plural": "Hosen",
@@ -1758,76 +5237,10 @@ export const GENERATED: Word[] = [
       "Hosentasche"
     ],
     "related": [
-      "hemd",
-      "schuh",
       "jacke",
-      "geschaeft"
-    ],
-    "theme": "Kleidung"
-  },
-  {
-    "id": "schuh",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Schuh",
-    "plural": "Schuhe",
-    "en": "shoe",
-    "example": {
-      "de": "Ich brauche neue Schuhe.",
-      "en": "I need new shoes."
-    },
-    "family": [
-      "Schuhgeschäft",
-      "Turnschuh"
-    ],
-    "related": [
-      "hemd",
-      "jacke",
-      "hose"
-    ],
-    "theme": "Kleidung"
-  },
-  {
-    "id": "jacke",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Jacke",
-    "plural": "Jacken",
-    "en": "jacket",
-    "example": {
-      "de": "Nimm eine Jacke mit, es wird kühl.",
-      "en": "Take a jacket, it’s getting cool."
-    },
-    "family": [
-      "Winterjacke",
-      "Jackentasche"
-    ],
-    "related": [
-      "hemd",
-      "schuh",
-      "kleid"
-    ],
-    "theme": "Kleidung"
-  },
-  {
-    "id": "hemd",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Hemd",
-    "plural": "Hemden",
-    "en": "shirt",
-    "example": {
-      "de": "Er trägt zur Arbeit ein weißes Hemd.",
-      "en": "He wears a white shirt to work."
-    },
-    "family": [
-      "Hemdkragen",
-      "Oberhemd"
-    ],
-    "related": [
-      "pullover",
       "kleid",
-      "jacke"
+      "wolle",
+      "geschaeft"
     ],
     "theme": "Kleidung"
   },
@@ -1847,32 +5260,9 @@ export const GENERATED: Word[] = [
       "kleiden"
     ],
     "related": [
-      "pullover",
-      "mantel",
-      "hemd"
-    ],
-    "theme": "Kleidung"
-  },
-  {
-    "id": "mantel",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Mantel",
-    "plural": "Mäntel",
-    "en": "coat",
-    "example": {
-      "de": "Im Winter trage ich einen warmen Mantel.",
-      "en": "In winter I wear a warm coat."
-    },
-    "family": [
-      "Wintermantel",
-      "Regenmantel"
-    ],
-    "related": [
-      "pullover",
+      "jacke",
       "tragen",
-      "kleid",
-      "wetter"
+      "hose"
     ],
     "theme": "Kleidung"
   },
@@ -1890,75 +5280,150 @@ export const GENERATED: Word[] = [
       "Tasche"
     ],
     "related": [
-      "pullover",
-      "mantel",
-      "socke"
+      "jacke",
+      "schick",
+      "kleid"
     ],
     "theme": "Kleidung"
   },
   {
-    "id": "pullover",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Pullover",
-    "plural": "Pullover",
-    "en": "sweater, jumper",
+    "id": "schick",
+    "tier": 2,
+    "lemma": "schick",
+    "en": "elegant, dressy",
     "example": {
-      "de": "Dieser Pullover ist sehr weich.",
-      "en": "This sweater is very soft."
+      "de": "Ich möchte diese hier nach Japan schicken.",
+      "en": "I'd like to send these to Japan."
     },
-    "family": [
-      "Wollpullover",
-      "pullen"
-    ],
+    "family": [],
     "related": [
-      "guertel",
-      "socke",
+      "jacke",
+      "tasche",
       "tragen"
     ],
     "theme": "Kleidung"
   },
   {
-    "id": "socke",
-    "tier": 3,
+    "id": "tasche",
+    "tier": 2,
     "article": "die",
-    "lemma": "Socke",
-    "plural": "Socken",
-    "en": "sock",
+    "lemma": "Tasche",
+    "plural": "Taschen",
+    "en": "bag",
     "example": {
-      "de": "Ich habe zwei verschiedene Socken an.",
-      "en": "I’m wearing two different socks."
+      "de": "Willst du, dass ich dir deine Tasche trage?",
+      "en": "Shall I carry your bag?"
     },
-    "family": [
-      "Wollsocke",
-      "Sockenpaar"
-    ],
+    "family": [],
     "related": [
-      "guertel",
-      "muetze",
-      "pullover"
+      "jacke",
+      "ring",
+      "schick"
     ],
     "theme": "Kleidung"
   },
   {
-    "id": "muetze",
+    "id": "ring",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Ring",
+    "plural": "Ringe",
+    "en": "ring",
+    "example": {
+      "de": "Er schenkte ihr einen Ring mit Diamanten.",
+      "en": "He gave her a diamond ring."
+    },
+    "family": [],
+    "related": [
+      "jacke",
+      "hut",
+      "tasche"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "hut",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Hut",
+    "plural": "Hüte",
+    "en": "hat",
+    "example": {
+      "de": "Bitte höre auf, mit deinem Hut zu spielen!",
+      "en": "Please stop playing with your hat."
+    },
+    "family": [],
+    "related": [
+      "jacke",
+      "ring",
+      "hemd"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "jacke",
     "tier": 3,
     "article": "die",
-    "lemma": "Mütze",
-    "plural": "Mützen",
-    "en": "hat, cap",
+    "lemma": "Jacke",
+    "plural": "Jacken",
+    "en": "jacket",
     "example": {
-      "de": "Setz eine Mütze auf, es ist kalt.",
-      "en": "Put on a hat, it’s cold."
+      "de": "Nimm eine Jacke mit, es wird kühl.",
+      "en": "Take a jacket, it’s getting cool."
     },
     "family": [
-      "Wollmütze",
-      "Wintermütze"
+      "Winterjacke",
+      "Jackentasche"
     ],
     "related": [
-      "guertel",
+      "schuh",
+      "hemd",
+      "hut"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "hemd",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Hemd",
+    "plural": "Hemden",
+    "en": "shirt",
+    "example": {
+      "de": "Er trägt zur Arbeit ein weißes Hemd.",
+      "en": "He wears a white shirt to work."
+    },
+    "family": [
+      "Hemdkragen",
+      "Oberhemd"
+    ],
+    "related": [
+      "schuh",
+      "mantel",
+      "jacke"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "mantel",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Mantel",
+    "plural": "Mäntel",
+    "en": "coat",
+    "example": {
+      "de": "Im Winter trage ich einen warmen Mantel.",
+      "en": "In winter I wear a warm coat."
+    },
+    "family": [
+      "Wintermantel",
+      "Regenmantel"
+    ],
+    "related": [
+      "schuh",
       "anziehen",
-      "socke"
+      "hemd",
+      "wetter"
     ],
     "theme": "Kleidung"
   },
@@ -1976,9 +5441,171 @@ export const GENERATED: Word[] = [
       "ausziehen"
     ],
     "related": [
-      "guertel",
+      "schuh",
+      "stoff",
+      "mantel"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "stoff",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Stoff",
+    "plural": "Stoffe",
+    "en": "fabric, material",
+    "example": {
+      "de": "Dieser Stoff fühlt sich angenehm an.",
+      "en": "This fabric feels pleasant."
+    },
+    "family": [
+      "Stoffbahn",
+      "stofflich"
+    ],
+    "related": [
+      "schuh",
+      "knopf",
+      "anziehen"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "knopf",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Knopf",
+    "plural": "Knöpfe",
+    "en": "button",
+    "example": {
+      "de": "An meinem Hemd fehlt ein Knopf.",
+      "en": "A button is missing from my shirt."
+    },
+    "family": [
+      "knöpfen",
+      "Knopfloch"
+    ],
+    "related": [
+      "schuh",
+      "rock",
+      "stoff"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "rock",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Rock",
+    "plural": "Röcke",
+    "en": "skirt",
+    "example": {
+      "de": "Kurze Röcke sind längst nicht mehr in Mode.",
+      "en": "Short skirts are already out of fashion."
+    },
+    "family": [],
+    "related": [
+      "schuh",
+      "anzug",
+      "knopf"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "anzug",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Anzug",
+    "plural": "Anzüge",
+    "en": "suit, outfit",
+    "example": {
+      "de": "Die feindlichen Truppen sind im Anzug.",
+      "en": "The enemy troops are approaching."
+    },
+    "family": [],
+    "related": [
+      "schuh",
+      "brille",
+      "rock"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "brille",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Brille",
+    "plural": "Brillen",
+    "en": "glasses, spectacles",
+    "example": {
+      "de": "Meine Mutter kann ohne Brille nicht lesen.",
+      "en": "My mother can't read without glasses."
+    },
+    "family": [],
+    "related": [
+      "schuh",
+      "ausziehen",
+      "anzug"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "ausziehen",
+    "tier": 3,
+    "lemma": "ausziehen",
+    "en": "to move out, to vacate",
+    "example": {
+      "de": "Herr Müller ist vor einer Woche ausgezogen.",
+      "en": "Mr. Müller moved out a week ago."
+    },
+    "family": [],
+    "related": [
+      "schuh",
+      "brille",
+      "muetze"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "schuh",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Schuh",
+    "plural": "Schuhe",
+    "en": "shoe",
+    "example": {
+      "de": "Ich brauche neue Schuhe.",
+      "en": "I need new shoes."
+    },
+    "family": [
+      "Schuhgeschäft",
+      "Turnschuh"
+    ],
+    "related": [
+      "pullover",
       "muetze",
-      "schal"
+      "ausziehen"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "muetze",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Mütze",
+    "plural": "Mützen",
+    "en": "hat, cap",
+    "example": {
+      "de": "Setz eine Mütze auf, es ist kalt.",
+      "en": "Put on a hat, it’s cold."
+    },
+    "family": [
+      "Wollmütze",
+      "Wintermütze"
+    ],
+    "related": [
+      "pullover",
+      "guertel",
+      "schuh"
     ],
     "theme": "Kleidung"
   },
@@ -1998,9 +5625,9 @@ export const GENERATED: Word[] = [
       "gürten"
     ],
     "related": [
-      "stoff",
+      "pullover",
       "schal",
-      "anziehen"
+      "muetze"
     ],
     "theme": "Kleidung"
   },
@@ -2020,31 +5647,9 @@ export const GENERATED: Word[] = [
       "Wollschal"
     ],
     "related": [
-      "stoff",
-      "handschuh",
-      "guertel"
-    ],
-    "theme": "Kleidung"
-  },
-  {
-    "id": "handschuh",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Handschuh",
-    "plural": "Handschuhe",
-    "en": "glove",
-    "example": {
-      "de": "Vergiss deine Handschuhe nicht!",
-      "en": "Don’t forget your gloves!"
-    },
-    "family": [
-      "Hand",
-      "Schuh"
-    ],
-    "related": [
-      "stoff",
+      "pullover",
       "aermel",
-      "schal"
+      "guertel"
     ],
     "theme": "Kleidung"
   },
@@ -2064,53 +5669,154 @@ export const GENERATED: Word[] = [
       "Kurzarm"
     ],
     "related": [
-      "stoff",
-      "handschuh",
-      "knopf"
+      "pullover",
+      "schneider",
+      "schal"
     ],
     "theme": "Kleidung"
   },
   {
-    "id": "stoff",
-    "tier": 5,
+    "id": "schneider",
+    "tier": 4,
     "article": "der",
-    "lemma": "Stoff",
-    "plural": "Stoffe",
-    "en": "fabric, material",
+    "lemma": "Schneider",
+    "plural": "Schneider",
+    "en": "tailor",
     "example": {
-      "de": "Dieser Stoff fühlt sich angenehm an.",
-      "en": "This fabric feels pleasant."
+      "de": "Der Schneider ändert die Länge der Hose.",
+      "en": "The tailor is altering the length of the trousers."
     },
     "family": [
-      "Stoffbahn",
-      "stofflich"
+      "Schneiderei",
+      "schneidern"
     ],
     "related": [
-      "bekleidung",
-      "knopf",
+      "pullover",
+      "krawatte",
       "aermel"
     ],
     "theme": "Kleidung"
   },
   {
-    "id": "knopf",
+    "id": "krawatte",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Krawatte",
+    "plural": "Krawatten",
+    "en": "necktie",
+    "example": {
+      "de": "Seine Krawatte passt gut zu seinem Anzug.",
+      "en": "His tie corresponds well with his suit."
+    },
+    "family": [],
+    "related": [
+      "pullover",
+      "stiefel",
+      "schneider"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "stiefel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Stiefel",
+    "plural": "Stiefel",
+    "en": "boot",
+    "example": {
+      "de": "An meinem linken Stiefel fehlt der Absatz.",
+      "en": "The heel is missing on my left shoe."
+    },
+    "family": [],
+    "related": [
+      "pullover",
+      "unterwaesche",
+      "krawatte"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "unterwaesche",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Unterwäsche",
+    "plural": "Unterwäschen",
+    "en": "underwear",
+    "example": {
+      "de": "Bitte bis auf die Unterwäsche entkleiden!",
+      "en": "Please remove all of your clothes, except your underwear."
+    },
+    "family": [],
+    "related": [
+      "pullover",
+      "stiefel",
+      "socke"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "pullover",
     "tier": 5,
     "article": "der",
-    "lemma": "Knopf",
-    "plural": "Knöpfe",
-    "en": "button",
+    "lemma": "Pullover",
+    "plural": "Pullover",
+    "en": "sweater, jumper",
     "example": {
-      "de": "An meinem Hemd fehlt ein Knopf.",
-      "en": "A button is missing from my shirt."
+      "de": "Dieser Pullover ist sehr weich.",
+      "en": "This sweater is very soft."
     },
     "family": [
-      "knöpfen",
-      "Knopfloch"
+      "Wollpullover",
+      "pullen"
+    ],
+    "related": [
+      "bekleidung",
+      "socke",
+      "unterwaesche"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "socke",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Socke",
+    "plural": "Socken",
+    "en": "sock",
+    "example": {
+      "de": "Ich habe zwei verschiedene Socken an.",
+      "en": "I’m wearing two different socks."
+    },
+    "family": [
+      "Wollsocke",
+      "Sockenpaar"
+    ],
+    "related": [
+      "bekleidung",
+      "handschuh",
+      "pullover"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "handschuh",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Handschuh",
+    "plural": "Handschuhe",
+    "en": "glove",
+    "example": {
+      "de": "Vergiss deine Handschuhe nicht!",
+      "en": "Don’t forget your gloves!"
+    },
+    "family": [
+      "Hand",
+      "Schuh"
     ],
     "related": [
       "bekleidung",
       "reissverschluss",
-      "stoff"
+      "socke"
     ],
     "theme": "Kleidung"
   },
@@ -2131,8 +5837,101 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "bekleidung",
-      "knopf",
-      "schneider"
+      "anhaben",
+      "handschuh"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "anhaben",
+    "tier": 5,
+    "lemma": "anhaben",
+    "en": "to wear",
+    "example": {
+      "de": "Du hast gestern dasselbe T-Shirt angehabt.",
+      "en": "You had the same T-shirt on yesterday."
+    },
+    "family": [],
+    "related": [
+      "bekleidung",
+      "pyjama",
+      "reissverschluss"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "pyjama",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Pyjama",
+    "plural": "Pyjamas",
+    "en": "pyjamas, pajamas",
+    "example": {
+      "de": "Gehen Sie sich Ihren Pyjama anziehen!",
+      "en": "Go put your pajamas on."
+    },
+    "family": [],
+    "related": [
+      "bekleidung",
+      "bluse",
+      "anhaben"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "bluse",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Bluse",
+    "plural": "Blusen",
+    "en": "blouse",
+    "example": {
+      "de": "Deine gelbe Bluse leuchtet wie die Sonne.",
+      "en": "Your yellow blouse shines like the sun."
+    },
+    "family": [],
+    "related": [
+      "bekleidung",
+      "badeanzug",
+      "pyjama"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "badeanzug",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Badeanzug",
+    "plural": "Badeanzüge",
+    "en": "swimsuit, bathing suit",
+    "example": {
+      "de": "Sie starrten staunend auf ihren Badeanzug.",
+      "en": "They stared at her swimming suit in amazement."
+    },
+    "family": [],
+    "related": [
+      "bekleidung",
+      "kragen",
+      "bluse"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "kragen",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Kragen",
+    "plural": "Kragen",
+    "en": "collar",
+    "example": {
+      "de": "Die bringen sich noch um Kopf und Kragen!",
+      "en": "They're going to get themselves killed."
+    },
+    "family": [],
+    "related": [
+      "bekleidung",
+      "badeanzug",
+      "hausschuh"
     ],
     "theme": "Kleidung"
   },
@@ -2151,29 +5950,103 @@ export const GENERATED: Word[] = [
       "Kleidung"
     ],
     "related": [
-      "reissverschluss",
-      "schneider"
+      "kragen",
+      "hausschuh",
+      "sandale"
     ],
     "theme": "Kleidung"
   },
   {
-    "id": "schneider",
+    "id": "hausschuh",
     "tier": 6,
     "article": "der",
-    "lemma": "Schneider",
-    "plural": "Schneider",
-    "en": "tailor",
+    "lemma": "Hausschuh",
+    "plural": "Hausschuhe",
+    "en": "slipper",
     "example": {
-      "de": "Der Schneider ändert die Länge der Hose.",
-      "en": "The tailor is altering the length of the trousers."
+      "de": "Er schlug mich sogar mit einem Hausschuh.",
+      "en": "He even hit me with a slipper."
     },
-    "family": [
-      "Schneiderei",
-      "schneidern"
-    ],
+    "family": [],
     "related": [
-      "reissverschluss",
+      "kragen",
+      "sandale",
       "bekleidung"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "sandale",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Sandale",
+    "plural": "Sandalen",
+    "en": "sandal",
+    "example": {
+      "de": "Wieviel Paar Sandalen stellt ihr pro Monat her?",
+      "en": "How many pairs of sandals do you make per month?"
+    },
+    "family": [],
+    "related": [
+      "kragen",
+      "baumwolle",
+      "hausschuh"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "baumwolle",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Baumwolle",
+    "plural": "Baumwollen",
+    "en": "cotton",
+    "example": {
+      "de": "Wir haben Erdnüsse statt Baumwolle gepflanzt.",
+      "en": "We planted peanuts instead of cotton."
+    },
+    "family": [],
+    "related": [
+      "kragen",
+      "groesse",
+      "sandale"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "groesse",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Größe",
+    "plural": "Größen",
+    "en": "size, height",
+    "example": {
+      "de": "Wir haben die Bücher nach Größe geordnet.",
+      "en": "We arranged the books according to size."
+    },
+    "family": [],
+    "related": [
+      "kragen",
+      "regenschirm",
+      "baumwolle"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "regenschirm",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Regenschirm",
+    "plural": "Regenschirme",
+    "en": "umbrella",
+    "example": {
+      "de": "Es regnet und ich habe keinen Regenschirm.",
+      "en": "It's raining, and I haven't got an umbrella."
+    },
+    "family": [],
+    "related": [
+      "kragen",
+      "groesse"
     ],
     "theme": "Kleidung"
   },
@@ -2193,7 +6066,7 @@ export const GENERATED: Word[] = [
       "Mutti"
     ],
     "related": [
-      "eltern",
+      "hochzeit",
       "vater",
       "kind"
     ],
@@ -2215,7 +6088,7 @@ export const GENERATED: Word[] = [
       "väterlich"
     ],
     "related": [
-      "eltern",
+      "hochzeit",
       "kind",
       "mutter"
     ],
@@ -2237,16 +6110,16 @@ export const GENERATED: Word[] = [
       "kindlich"
     ],
     "related": [
+      "hochzeit",
       "eltern",
       "vater",
-      "freund",
       "schule"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
     "id": "eltern",
-    "tier": 2,
+    "tier": 1,
     "article": "die",
     "lemma": "Eltern",
     "en": "parents",
@@ -2268,7 +6141,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "freund",
-    "tier": 2,
+    "tier": 1,
     "article": "der",
     "lemma": "Freund",
     "plural": "Freunde",
@@ -2283,36 +6156,15 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "hochzeit",
-      "geschwister",
+      "familie",
       "eltern",
       "freundschaft"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
-    "id": "geschwister",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Geschwister",
-    "en": "siblings",
-    "example": {
-      "de": "Ich habe zwei Geschwister.",
-      "en": "I have two siblings."
-    },
-    "family": [
-      "Bruder",
-      "Schwester"
-    ],
-    "related": [
-      "hochzeit",
-      "familie",
-      "freund"
-    ],
-    "theme": "Familie und Beziehungen"
-  },
-  {
     "id": "familie",
-    "tier": 2,
+    "tier": 1,
     "article": "die",
     "lemma": "Familie",
     "plural": "Familien",
@@ -2327,15 +6179,186 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "hochzeit",
-      "geschwister",
-      "beziehung",
+      "mann",
+      "freund",
       "haustier"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
+    "id": "mann",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Mann",
+    "plural": "Männer",
+    "en": "man, male human being",
+    "example": {
+      "de": "Man muss den Worten Taten folgen lassen.",
+      "en": "You have to turn words into deeds."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "frau",
+      "familie"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "frau",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Frau",
+    "plural": "Frauen",
+    "en": "woman",
+    "example": {
+      "de": "Ich habe letztes Jahr meine Frau verloren.",
+      "en": "I lost my wife last year."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "junge",
+      "mann"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "junge",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Junge",
+    "plural": "Jungen",
+    "en": "boy",
+    "example": {
+      "de": "Jeder Junge und jedes Mädchen war erfreut.",
+      "en": "Every boy and every girl was delighted."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "alter",
+      "frau"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "alter",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Alter",
+    "plural": "Alter",
+    "en": "age, old age",
+    "example": {
+      "de": "Er schrieb das Buch im Alter von zwanzig.",
+      "en": "He wrote this book at the age of twenty."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "bruder",
+      "junge"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "bruder",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Bruder",
+    "plural": "Brüder",
+    "en": "brother",
+    "example": {
+      "de": "Mein Bruder und ich teilten uns ein Zimmer.",
+      "en": "My brother and I shared the room."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "schwester",
+      "alter"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "schwester",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Schwester",
+    "plural": "Schwestern",
+    "en": "sister",
+    "example": {
+      "de": "Sie spielte meiner Schwester einen Streich.",
+      "en": "She played a trick on my sister."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "sohn",
+      "bruder"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "sohn",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Sohn",
+    "plural": "Söhne",
+    "en": "son",
+    "example": {
+      "de": "Er ermutigte seinen Sohn, mehr zu lernen.",
+      "en": "He encouraged his son to study harder."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "tochter",
+      "schwester"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "tochter",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Tochter",
+    "plural": "Töchter",
+    "en": "daughter",
+    "example": {
+      "de": "Ich bin die Tochter von Helen Cartwright.",
+      "en": "I'm Helen Cartwright's daughter."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "baby",
+      "sohn"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "baby",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Baby",
+    "plural": "Babys",
+    "en": "baby",
+    "example": {
+      "de": "Ein Baby kann sich nicht selbst versorgen.",
+      "en": "A baby can't look after itself."
+    },
+    "family": [],
+    "related": [
+      "hochzeit",
+      "tochter",
+      "beziehung"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
     "id": "hochzeit",
-    "tier": 3,
+    "tier": 2,
     "article": "die",
     "lemma": "Hochzeit",
     "plural": "Hochzeiten",
@@ -2349,16 +6372,16 @@ export const GENERATED: Word[] = [
       "heiraten"
     ],
     "related": [
-      "enkel",
+      "freundschaft",
       "beziehung",
-      "familie",
+      "baby",
       "verein"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
     "id": "beziehung",
-    "tier": 3,
+    "tier": 2,
     "article": "die",
     "lemma": "Beziehung",
     "plural": "Beziehungen",
@@ -2372,7 +6395,7 @@ export const GENERATED: Word[] = [
       "Beziehungsstatus"
     ],
     "related": [
-      "enkel",
+      "freundschaft",
       "heiraten",
       "hochzeit",
       "liebe"
@@ -2381,7 +6404,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "heiraten",
-    "tier": 3,
+    "tier": 2,
     "lemma": "heiraten",
     "en": "to marry",
     "example": {
@@ -2393,9 +6416,199 @@ export const GENERATED: Word[] = [
       "verheiratet"
     ],
     "related": [
-      "enkel",
       "freundschaft",
+      "papa",
       "beziehung"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "papa",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Papa",
+    "plural": "Papas",
+    "en": "dad, daddy",
+    "example": {
+      "de": "Das ist das Gebäude, in dem Papa arbeitet.",
+      "en": "That's the building where Dad works."
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "kumpel",
+      "heiraten"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "kumpel",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Kumpel",
+    "plural": "Kumpel",
+    "en": "miner",
+    "example": {
+      "de": "Was man haben sollte, sind Freunde, Kumpel!",
+      "en": "Something you should have is friends, buddy!"
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "heirat",
+      "papa"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "heirat",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Heirat",
+    "plural": "Heiraten",
+    "en": "marrying, marriage",
+    "example": {
+      "de": "Ich habe nie auf eine Heirat hingedeutet.",
+      "en": "I have never alluded to marriage."
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "onkel",
+      "kumpel"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "onkel",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Onkel",
+    "plural": "Onkel",
+    "en": "uncle",
+    "example": {
+      "de": "Mein Onkel, der in Paris lebt, kam vorbei.",
+      "en": "My uncle, who lives in Paris, came to see us."
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "person",
+      "heirat"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "person",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Person",
+    "plural": "Personen",
+    "en": "person, individual",
+    "example": {
+      "de": "Diese Person kommt mir nicht mehr ins Haus!",
+      "en": "I don’t want this person in my house again!"
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "oma",
+      "onkel"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "oma",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Oma",
+    "plural": "Omas",
+    "en": "grandma, granny",
+    "example": {
+      "de": "Meine Oma jätete im Hintergarten Unkraut.",
+      "en": "My nan was pulling up weeds in her back garden."
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "ehe",
+      "person"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "ehe",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Ehe",
+    "plural": "Ehen",
+    "en": "marriage",
+    "example": {
+      "de": "Ehe ist die Verbindung von Mann und Frau.",
+      "en": "Marriage is the union of a man and woman."
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "geburtstag",
+      "oma"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "geburtstag",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Geburtstag",
+    "plural": "Geburtstage",
+    "en": "birthday",
+    "example": {
+      "de": "Ich habe heute zufälligerweise Geburtstag.",
+      "en": "It so happens that today is my birthday."
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "ehemann",
+      "ehe"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "ehemann",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Ehemann",
+    "plural": "Ehemänner",
+    "en": "married man, husband",
+    "example": {
+      "de": "Sie war verzweifelt, als ihr Ehemann starb.",
+      "en": "She was in despair when her husband died."
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "partner",
+      "geburtstag"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "partner",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Partner",
+    "plural": "Partner",
+    "en": "partner, associate",
+    "example": {
+      "de": "Hast du inzwischen einen Partner gefunden?",
+      "en": "Have you found a partner by now?"
+    },
+    "family": [],
+    "related": [
+      "freundschaft",
+      "ehemann",
+      "scheidung"
     ],
     "theme": "Familie und Beziehungen"
   },
@@ -2415,10 +6628,276 @@ export const GENERATED: Word[] = [
       "Freund"
     ],
     "related": [
-      "enkel",
-      "heiraten",
+      "geschwister",
       "scheidung",
+      "partner",
       "freund"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "scheidung",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Scheidung",
+    "plural": "Scheidungen",
+    "en": "divorce",
+    "example": {
+      "de": "Nach der Scheidung zog sie um.",
+      "en": "After the divorce she moved."
+    },
+    "family": [
+      "scheiden",
+      "geschieden"
+    ],
+    "related": [
+      "geschwister",
+      "sich-trennen",
+      "freundschaft"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "sich-trennen",
+    "tier": 3,
+    "lemma": "sich trennen",
+    "en": "to break up, to separate",
+    "example": {
+      "de": "Sie haben sich letztes Jahr getrennt.",
+      "en": "They broke up last year."
+    },
+    "family": [
+      "Trennung",
+      "getrennt"
+    ],
+    "related": [
+      "geschwister",
+      "mami",
+      "scheidung"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "mami",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Mami",
+    "plural": "Mamis",
+    "en": "mom, mum",
+    "example": {
+      "de": "Sie ist nicht meine Oma, sondern meine Mami.",
+      "en": "She's not my grandma; she's my mom."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "streit",
+      "sich-trennen"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "streit",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Streit",
+    "plural": "Streite",
+    "en": "quarrel, dispute",
+    "example": {
+      "de": "An einem Streit sind immer zwei beteiligt.",
+      "en": "It takes two to tango."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "kuessen",
+      "mami"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "kuessen",
+    "tier": 3,
+    "lemma": "küssen",
+    "en": "to kiss",
+    "example": {
+      "de": "Sie küsste ihn nur wie eine Schwester.",
+      "en": "She only kissed him like a sister."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "kuss",
+      "streit"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "kuss",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Kuss",
+    "plural": "Küsse",
+    "en": "kiss",
+    "example": {
+      "de": "Sie gab ihrem Vater einen Kuss auf die Wange.",
+      "en": "She kissed her father on the cheek."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "grossmutter",
+      "kuessen"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "grossmutter",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Großmutter",
+    "plural": "Großmütter",
+    "en": "grandmother",
+    "example": {
+      "de": "Sie wurde von ihrer Großmutter aufgezogen.",
+      "en": "She was brought up by her grandmother."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "opa",
+      "kuss"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "opa",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Opa",
+    "plural": "Opas",
+    "en": "grandpa",
+    "example": {
+      "de": "Ich komme von Opa und gehe nun zum Onkel.",
+      "en": "I'm coming from grandpa now, and going to my uncle."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "braut",
+      "grossmutter"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "braut",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Braut",
+    "plural": "Bräute",
+    "en": "bride",
+    "example": {
+      "de": "Die Braut trug ein Seidenkleid mit Tupfen.",
+      "en": "The bride was wearing a silk dress with polka dots."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "trennen",
+      "opa"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "trennen",
+    "tier": 3,
+    "lemma": "trennen",
+    "en": "to separate, sever",
+    "example": {
+      "de": "Man kann Sprache und Kultur nicht trennen.",
+      "en": "You can't separate language from culture."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "kennenlernen",
+      "braut"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "kennenlernen",
+    "tier": 3,
+    "lemma": "kennenlernen",
+    "en": "to get to know",
+    "example": {
+      "de": "Ich habe sie in Frankreich kennengelernt.",
+      "en": "I met her in France."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "cousin",
+      "trennen"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "cousin",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Cousin",
+    "plural": "Cousins",
+    "en": "male cousin",
+    "example": {
+      "de": "Mein Cousin ist etwas älter als ich es bin.",
+      "en": "My cousin is a little older than I am."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "ehefrau",
+      "kennenlernen"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "ehefrau",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Ehefrau",
+    "plural": "Ehefrauen",
+    "en": "married woman, wife",
+    "example": {
+      "de": "Er hat sich eine gute Ehefrau ausgesucht.",
+      "en": "He chose a good wife."
+    },
+    "family": [],
+    "related": [
+      "geschwister",
+      "cousin",
+      "enkel"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "geschwister",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Geschwister",
+    "en": "siblings",
+    "example": {
+      "de": "Ich habe zwei Geschwister.",
+      "en": "I have two siblings."
+    },
+    "family": [
+      "Bruder",
+      "Schwester"
+    ],
+    "related": [
+      "schwiegermutter",
+      "enkel",
+      "ehefrau"
     ],
     "theme": "Familie und Beziehungen"
   },
@@ -2438,57 +6917,110 @@ export const GENERATED: Word[] = [
       "Enkelkind"
     ],
     "related": [
+      "schwiegermutter",
       "vorfahren",
-      "scheidung",
-      "freundschaft"
+      "geschwister"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
-    "id": "scheidung",
+    "id": "vorfahren",
     "tier": 4,
     "article": "die",
-    "lemma": "Scheidung",
-    "plural": "Scheidungen",
-    "en": "divorce",
+    "lemma": "Vorfahren",
+    "en": "ancestors",
     "example": {
-      "de": "Nach der Scheidung zog sie um.",
-      "en": "After the divorce she moved."
+      "de": "Meine Vorfahren stammen aus Polen.",
+      "en": "My ancestors come from Poland."
     },
     "family": [
-      "scheiden",
-      "geschieden"
+      "Vorfahr",
+      "Ahnen"
     ],
     "related": [
-      "vorfahren",
-      "sich-trennen",
+      "schwiegermutter",
+      "umarmen",
       "enkel"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
-    "id": "sich-trennen",
+    "id": "umarmen",
     "tier": 4,
-    "lemma": "sich trennen",
-    "en": "to break up, to separate",
+    "lemma": "umarmen",
+    "en": "to embrace, to hug",
     "example": {
-      "de": "Sie haben sich letztes Jahr getrennt.",
-      "en": "They broke up last year."
+      "de": "Das kleine Mädchen umarmte sein Teddybärchen.",
+      "en": "The little girl hugged her teddy bear."
     },
-    "family": [
-      "Trennung",
-      "getrennt"
-    ],
+    "family": [],
     "related": [
-      "vorfahren",
       "schwiegermutter",
-      "scheidung"
+      "erwachsener",
+      "vorfahren"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "erwachsener",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Erwachsener",
+    "plural": "Erwachsene",
+    "en": "adult, grown-up",
+    "example": {
+      "de": "Zwei Eintrittskarten für Erwachsene bitte.",
+      "en": "Two adults, please."
+    },
+    "family": [],
+    "related": [
+      "schwiegermutter",
+      "vati",
+      "umarmen"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "vati",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Vati",
+    "plural": "Vatis",
+    "en": "dad",
+    "example": {
+      "de": "Vati und Mutti sind auf den Markt gegangen.",
+      "en": "Dad and Mom went to the market."
+    },
+    "family": [],
+    "related": [
+      "schwiegermutter",
+      "zwilling",
+      "erwachsener"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "zwilling",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Zwilling",
+    "plural": "Zwillinge",
+    "en": "twin",
+    "example": {
+      "de": "Sie ist schwanger und erwartet Zwillinge.",
+      "en": "She's pregnant with twins."
+    },
+    "family": [],
+    "related": [
+      "schwiegermutter",
+      "vati",
+      "sich-versoehnen"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
     "id": "schwiegermutter",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Schwiegermutter",
     "plural": "Schwiegermütter",
@@ -2502,51 +7034,9 @@ export const GENERATED: Word[] = [
       "Schwiegereltern"
     ],
     "related": [
-      "vorfahren",
-      "sich-trennen",
-      "verwandtschaft"
-    ],
-    "theme": "Familie und Beziehungen"
-  },
-  {
-    "id": "vorfahren",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Vorfahren",
-    "en": "ancestors",
-    "example": {
-      "de": "Meine Vorfahren stammen aus Polen.",
-      "en": "My ancestors come from Poland."
-    },
-    "family": [
-      "Vorfahr",
-      "Ahnen"
-    ],
-    "related": [
-      "vormund",
       "verwandtschaft",
-      "schwiegermutter"
-    ],
-    "theme": "Familie und Beziehungen"
-  },
-  {
-    "id": "verwandtschaft",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Verwandtschaft",
-    "en": "relatives, kinship",
-    "example": {
-      "de": "Die ganze Verwandtschaft kommt zur Feier.",
-      "en": "All the relatives are coming to the celebration."
-    },
-    "family": [
-      "Verwandte",
-      "verwandt"
-    ],
-    "related": [
-      "vormund",
       "sich-versoehnen",
-      "vorfahren"
+      "zwilling"
     ],
     "theme": "Familie und Beziehungen"
   },
@@ -2564,15 +7054,15 @@ export const GENERATED: Word[] = [
       "versöhnlich"
     ],
     "related": [
-      "vormund",
       "verwandtschaft",
-      "trauzeuge"
+      "vormund",
+      "schwiegermutter"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
     "id": "vormund",
-    "tier": 6,
+    "tier": 5,
     "article": "der",
     "lemma": "Vormund",
     "plural": "Vormünder",
@@ -2586,14 +7076,15 @@ export const GENERATED: Word[] = [
       "mündig"
     ],
     "related": [
-      "sich-versoehnen",
-      "trauzeuge"
+      "verwandtschaft",
+      "trauzeuge",
+      "sich-versoehnen"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
     "id": "trauzeuge",
-    "tier": 6,
+    "tier": 5,
     "article": "der",
     "lemma": "Trauzeuge",
     "plural": "Trauzeugen",
@@ -2607,8 +7098,84 @@ export const GENERATED: Word[] = [
       "Zeuge"
     ],
     "related": [
-      "sich-versoehnen",
+      "verwandtschaft",
+      "verlobungsring",
       "vormund"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "verlobungsring",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Verlobungsring",
+    "plural": "Verlobungsringe",
+    "en": "engagement ring",
+    "example": {
+      "de": "Was für ein wunderschöner Verlobungsring!",
+      "en": "What a beautiful engagement ring!"
+    },
+    "family": [],
+    "related": [
+      "verwandtschaft",
+      "trauzeuge",
+      "familienfoto"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "verwandtschaft",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Verwandtschaft",
+    "en": "relatives, kinship",
+    "example": {
+      "de": "Die ganze Verwandtschaft kommt zur Feier.",
+      "en": "All the relatives are coming to the celebration."
+    },
+    "family": [
+      "Verwandte",
+      "verwandt"
+    ],
+    "related": [
+      "verlobungsring",
+      "familienfoto",
+      "vaeterlich"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "familienfoto",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Familienfoto",
+    "plural": "Familienfotos",
+    "en": "family photo",
+    "example": {
+      "de": "Dieses Familienfoto mag sie besonders gern.",
+      "en": "She especially likes this family photo."
+    },
+    "family": [],
+    "related": [
+      "verlobungsring",
+      "vaeterlich",
+      "verwandtschaft"
+    ],
+    "theme": "Familie und Beziehungen"
+  },
+  {
+    "id": "vaeterlich",
+    "tier": 6,
+    "lemma": "väterlich",
+    "en": "fatherly",
+    "example": {
+      "de": "Ich gebe dir einen väterlichen Rat.",
+      "en": "I'll give you some fatherly advice."
+    },
+    "family": [],
+    "related": [
+      "verlobungsring",
+      "familienfoto"
     ],
     "theme": "Familie und Beziehungen"
   },
@@ -2628,9 +7195,9 @@ export const GENERATED: Word[] = [
       "Spielplatz"
     ],
     "related": [
-      "freizeit",
+      "party",
       "musik",
-      "sport"
+      "spielen"
     ],
     "theme": "Freizeit und Sport"
   },
@@ -2649,16 +7216,124 @@ export const GENERATED: Word[] = [
       "musikalisch"
     ],
     "related": [
-      "freizeit",
-      "sport",
+      "party",
+      "spielen",
       "spiel",
       "konzert"
     ],
     "theme": "Freizeit und Sport"
   },
   {
-    "id": "sport",
+    "id": "spielen",
     "tier": 1,
+    "lemma": "spielen",
+    "en": "to play",
+    "example": {
+      "de": "Ich spielte oft Fußball, als ich jung war.",
+      "en": "I often played soccer when I was young."
+    },
+    "family": [],
+    "related": [
+      "party",
+      "musik",
+      "tanzen"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "party",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Party",
+    "plural": "Partys",
+    "en": "party",
+    "example": {
+      "de": "Wir haben alle an der Party teilgenommen.",
+      "en": "We were all present at the party."
+    },
+    "family": [],
+    "related": [
+      "sport",
+      "tanzen",
+      "spielen"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "tanzen",
+    "tier": 2,
+    "lemma": "tanzen",
+    "en": "to dance",
+    "example": {
+      "de": "Ich kann nicht einen Schritt Salsa tanzen.",
+      "en": "I cannot dance one single step of Salsa."
+    },
+    "family": [],
+    "related": [
+      "sport",
+      "feiern",
+      "party"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "feiern",
+    "tier": 2,
+    "lemma": "feiern",
+    "en": "to celebrate, to party",
+    "example": {
+      "de": "Ich traf einen Herrn Kimura auf der Feier.",
+      "en": "I met a Mr Kimura at the party."
+    },
+    "family": [],
+    "related": [
+      "sport",
+      "ball",
+      "tanzen"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "ball",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Ball",
+    "plural": "Bälle",
+    "en": "ball",
+    "example": {
+      "de": "Können wir uns deinen Ball ausleihen?",
+      "en": "Can we borrow your ball?"
+    },
+    "family": [],
+    "related": [
+      "sport",
+      "tor",
+      "feiern"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "tor",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Tor",
+    "plural": "Tore",
+    "en": "gate, archway",
+    "example": {
+      "de": "Dieses Tor erlaubt einen Zugang zum Garten.",
+      "en": "This gate allows access to the garden."
+    },
+    "family": [],
+    "related": [
+      "sport",
+      "ball",
+      "schwimmen"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "sport",
+    "tier": 3,
     "article": "der",
     "lemma": "Sport",
     "en": "sport",
@@ -2672,15 +7347,145 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "freizeit",
-      "musik",
-      "hobby",
+      "schwimmen",
+      "tor",
       "koerper"
     ],
     "theme": "Freizeit und Sport"
   },
   {
+    "id": "schwimmen",
+    "tier": 3,
+    "lemma": "schwimmen",
+    "en": "to swim",
+    "example": {
+      "de": "Im Sommer schwimmen wir jeden Tag im See.",
+      "en": "In summer we swim in the lake every day."
+    },
+    "family": [
+      "Schwimmbad",
+      "Schwimmer"
+    ],
+    "related": [
+      "freizeit",
+      "sieg",
+      "sport"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "sieg",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Sieg",
+    "plural": "Siege",
+    "en": "victory",
+    "example": {
+      "de": "Wir haben diesmal den Sieg davongetragen.",
+      "en": "We won this time."
+    },
+    "family": [],
+    "related": [
+      "freizeit",
+      "wetten",
+      "schwimmen"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "wetten",
+    "tier": 3,
+    "lemma": "wetten",
+    "en": "to bet",
+    "example": {
+      "de": "Ich wette, Lisa wartet schon auf uns.",
+      "en": "I bet Lisa is waiting for us already."
+    },
+    "family": [],
+    "related": [
+      "freizeit",
+      "training",
+      "sieg"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "training",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Training",
+    "plural": "Trainings",
+    "en": "training",
+    "example": {
+      "de": "Nach dem Training sollte man sich ausruhen.",
+      "en": "You should rest after exercise."
+    },
+    "family": [],
+    "related": [
+      "freizeit",
+      "theater",
+      "wetten"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "theater",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Theater",
+    "plural": "Theater",
+    "en": "theater",
+    "example": {
+      "de": "Möchtet ihr heute Abend ins Theater gehen?",
+      "en": "Would you like to go to the theater this evening?"
+    },
+    "family": [],
+    "related": [
+      "freizeit",
+      "museum",
+      "training"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "museum",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Museum",
+    "plural": "Museen",
+    "en": "museum",
+    "example": {
+      "de": "Wird das Museum von vielen Leuten besucht?",
+      "en": "Is the museum visited by many people?"
+    },
+    "family": [],
+    "related": [
+      "freizeit",
+      "angeln",
+      "theater"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "angeln",
+    "tier": 3,
+    "lemma": "angeln",
+    "en": "to angle, to fish",
+    "example": {
+      "de": "Wenn du morgen angeln gehst, gehe ich auch.",
+      "en": "If you go fishing tomorrow, I'll go, too."
+    },
+    "family": [],
+    "related": [
+      "freizeit",
+      "museum",
+      "hobby"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
     "id": "freizeit",
-    "tier": 2,
+    "tier": 4,
     "article": "die",
     "lemma": "Freizeit",
     "en": "free time",
@@ -2693,16 +7498,16 @@ export const GENERATED: Word[] = [
       "Zeit"
     ],
     "related": [
-      "mannschaft",
+      "verein",
       "hobby",
-      "sport",
+      "angeln",
       "wochenende"
     ],
     "theme": "Freizeit und Sport"
   },
   {
     "id": "hobby",
-    "tier": 2,
+    "tier": 4,
     "article": "das",
     "lemma": "Hobby",
     "plural": "Hobbys",
@@ -2716,56 +7521,15 @@ export const GENERATED: Word[] = [
       "Hobbyraum"
     ],
     "related": [
+      "verein",
       "mannschaft",
-      "schwimmen",
       "freizeit"
     ],
     "theme": "Freizeit und Sport"
   },
   {
-    "id": "schwimmen",
-    "tier": 2,
-    "lemma": "schwimmen",
-    "en": "to swim",
-    "example": {
-      "de": "Im Sommer schwimmen wir jeden Tag im See.",
-      "en": "In summer we swim in the lake every day."
-    },
-    "family": [
-      "Schwimmbad",
-      "Schwimmer"
-    ],
-    "related": [
-      "mannschaft",
-      "fussball",
-      "hobby"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
-    "id": "fussball",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Fußball",
-    "en": "football, soccer",
-    "example": {
-      "de": "Am Samstag spielen wir Fußball.",
-      "en": "On Saturday we’re playing football."
-    },
-    "family": [
-      "Fußballspiel",
-      "Fußballer"
-    ],
-    "related": [
-      "mannschaft",
-      "schwimmen",
-      "wanderung"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
     "id": "mannschaft",
-    "tier": 3,
+    "tier": 4,
     "article": "die",
     "lemma": "Mannschaft",
     "plural": "Mannschaften",
@@ -2779,61 +7543,15 @@ export const GENERATED: Word[] = [
       "Fußballmannschaft"
     ],
     "related": [
-      "wettkampf",
-      "wanderung",
-      "fussball"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
-    "id": "wanderung",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Wanderung",
-    "plural": "Wanderungen",
-    "en": "hike",
-    "example": {
-      "de": "Die Wanderung dauert etwa drei Stunden.",
-      "en": "The hike takes about three hours."
-    },
-    "family": [
-      "wandern",
-      "Wanderer"
-    ],
-    "related": [
-      "wettkampf",
       "verein",
-      "mannschaft",
-      "ausflug"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
-    "id": "verein",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Verein",
-    "plural": "Vereine",
-    "en": "club, association",
-    "example": {
-      "de": "Ich bin Mitglied in einem Sportverein.",
-      "en": "I’m a member of a sports club."
-    },
-    "family": [
-      "vereinen",
-      "Mitglied"
-    ],
-    "related": [
-      "wettkampf",
       "trainieren",
-      "wanderung",
-      "hochzeit"
+      "hobby"
     ],
     "theme": "Freizeit und Sport"
   },
   {
     "id": "trainieren",
-    "tier": 3,
+    "tier": 4,
     "lemma": "trainieren",
     "en": "to train, to work out",
     "example": {
@@ -2845,75 +7563,9 @@ export const GENERATED: Word[] = [
       "Trainer"
     ],
     "related": [
-      "wettkampf",
       "verein",
-      "turnier"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
-    "id": "wettkampf",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Wettkampf",
-    "plural": "Wettkämpfe",
-    "en": "competition",
-    "example": {
-      "de": "Der Wettkampf beginnt am Vormittag.",
-      "en": "The competition starts in the morning."
-    },
-    "family": [
-      "Kampf",
-      "Wettkämpfer"
-    ],
-    "related": [
-      "ausdauer",
-      "turnier",
-      "trainieren"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
-    "id": "turnier",
-    "tier": 4,
-    "article": "das",
-    "lemma": "Turnier",
-    "plural": "Turniere",
-    "en": "tournament",
-    "example": {
-      "de": "Sie hat ein Tennisturnier gewonnen.",
-      "en": "She won a tennis tournament."
-    },
-    "family": [
-      "Tennisturnier",
-      "Schachturnier"
-    ],
-    "related": [
-      "ausdauer",
-      "schiedsrichter",
-      "wettkampf"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
-    "id": "schiedsrichter",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Schiedsrichter",
-    "plural": "Schiedsrichter",
-    "en": "referee",
-    "example": {
-      "de": "Der Schiedsrichter hat das Tor nicht gegeben.",
-      "en": "The referee didn’t award the goal."
-    },
-    "family": [
-      "schiedlich",
-      "Richter"
-    ],
-    "related": [
-      "ausdauer",
       "ausflug",
-      "turnier"
+      "mannschaft"
     ],
     "theme": "Freizeit und Sport"
   },
@@ -2933,10 +7585,231 @@ export const GENERATED: Word[] = [
       "Ausflügler"
     ],
     "related": [
-      "ausdauer",
-      "schiedsrichter",
-      "pokal",
+      "verein",
+      "zuschauer",
+      "trainieren",
       "wanderung"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "zuschauer",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Zuschauer",
+    "plural": "Zuschauer",
+    "en": "spectator",
+    "example": {
+      "de": "Im Stadion waren tausende Zuschauer.",
+      "en": "There were thousands of spectators in the stadium."
+    },
+    "family": [
+      "zuschauen",
+      "schauen"
+    ],
+    "related": [
+      "verein",
+      "coach",
+      "ausflug"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "coach",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Coach",
+    "plural": "Coaches",
+    "en": "coach",
+    "example": {
+      "de": "Der Coach gab ihm ein paar gute Ratschläge.",
+      "en": "The coach gave him some good advice."
+    },
+    "family": [],
+    "related": [
+      "verein",
+      "klettern",
+      "zuschauer"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "klettern",
+    "tier": 4,
+    "lemma": "klettern",
+    "en": "to climb",
+    "example": {
+      "de": "Das Mädchen kletterte sehr gern auf Bäume.",
+      "en": "That girl loved climbing trees."
+    },
+    "family": [],
+    "related": [
+      "verein",
+      "feuerwerk",
+      "coach"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "feuerwerk",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Feuerwerk",
+    "plural": "Feuerwerke",
+    "en": "fireworks",
+    "example": {
+      "de": "Von dort kann man das Feuerwerk gut sehen.",
+      "en": "It's easy to see the fireworks from over there."
+    },
+    "family": [],
+    "related": [
+      "verein",
+      "wandern",
+      "klettern"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "wandern",
+    "tier": 4,
+    "lemma": "wandern",
+    "en": "to hike, to go trekking",
+    "example": {
+      "de": "Lassen Sie Ihren Gedanken einfach wandern.",
+      "en": "Just let your thoughts wander."
+    },
+    "family": [],
+    "related": [
+      "verein",
+      "spaziergang",
+      "feuerwerk"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "spaziergang",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Spaziergang",
+    "plural": "Spaziergänge",
+    "en": "walk",
+    "example": {
+      "de": "Dieser Kampf wird für ihn kein Spaziergang.",
+      "en": "This fight won’t be a walk in the park for him."
+    },
+    "family": [],
+    "related": [
+      "verein",
+      "schach",
+      "wandern"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "schach",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Schach",
+    "plural": "Schachs",
+    "en": "chess",
+    "example": {
+      "de": "Greifen die Türme beim Schach vorwärts an?",
+      "en": "Can a rook in chess attack in a forward direction?"
+    },
+    "family": [],
+    "related": [
+      "verein",
+      "spaziergang",
+      "wettkampf"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "verein",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Verein",
+    "plural": "Vereine",
+    "en": "club, association",
+    "example": {
+      "de": "Ich bin Mitglied in einem Sportverein.",
+      "en": "I’m a member of a sports club."
+    },
+    "family": [
+      "vereinen",
+      "Mitglied"
+    ],
+    "related": [
+      "fussball",
+      "wettkampf",
+      "schach",
+      "hochzeit"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "wettkampf",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Wettkampf",
+    "plural": "Wettkämpfe",
+    "en": "competition",
+    "example": {
+      "de": "Der Wettkampf beginnt am Vormittag.",
+      "en": "The competition starts in the morning."
+    },
+    "family": [
+      "Kampf",
+      "Wettkämpfer"
+    ],
+    "related": [
+      "fussball",
+      "turnier",
+      "verein"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "turnier",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Turnier",
+    "plural": "Turniere",
+    "en": "tournament",
+    "example": {
+      "de": "Sie hat ein Tennisturnier gewonnen.",
+      "en": "She won a tennis tournament."
+    },
+    "family": [
+      "Tennisturnier",
+      "Schachturnier"
+    ],
+    "related": [
+      "fussball",
+      "schiedsrichter",
+      "wettkampf"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "schiedsrichter",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Schiedsrichter",
+    "plural": "Schiedsrichter",
+    "en": "referee",
+    "example": {
+      "de": "Der Schiedsrichter hat das Tor nicht gegeben.",
+      "en": "The referee didn’t award the goal."
+    },
+    "family": [
+      "schiedlich",
+      "Richter"
+    ],
+    "related": [
+      "fussball",
+      "ausdauer",
+      "turnier"
     ],
     "theme": "Freizeit und Sport"
   },
@@ -2955,9 +7828,9 @@ export const GENERATED: Word[] = [
       "dauern"
     ],
     "related": [
-      "amateur",
+      "fussball",
       "pokal",
-      "ausflug"
+      "schiedsrichter"
     ],
     "theme": "Freizeit und Sport"
   },
@@ -2977,37 +7850,15 @@ export const GENERATED: Word[] = [
       "Pokalsieger"
     ],
     "related": [
+      "fussball",
       "amateur",
-      "zuschauer",
       "ausdauer"
     ],
     "theme": "Freizeit und Sport"
   },
   {
-    "id": "zuschauer",
-    "tier": 5,
-    "article": "der",
-    "lemma": "Zuschauer",
-    "plural": "Zuschauer",
-    "en": "spectator",
-    "example": {
-      "de": "Im Stadion waren tausende Zuschauer.",
-      "en": "There were thousands of spectators in the stadium."
-    },
-    "family": [
-      "zuschauen",
-      "schauen"
-    ],
-    "related": [
-      "amateur",
-      "pokal",
-      "rekordhalter"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
     "id": "amateur",
-    "tier": 6,
+    "tier": 5,
     "article": "der",
     "lemma": "Amateur",
     "plural": "Amateure",
@@ -3021,8 +7872,179 @@ export const GENERATED: Word[] = [
       "Amateurfußball"
     ],
     "related": [
-      "zuschauer",
+      "fussball",
+      "veranstalten",
+      "pokal"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "veranstalten",
+    "tier": 5,
+    "lemma": "veranstalten",
+    "en": "to organize, to arrange",
+    "example": {
+      "de": "Wir veranstalteten eine Schneeballschlacht.",
+      "en": "We had a snowball fight."
+    },
+    "family": [],
+    "related": [
+      "fussball",
+      "tennis",
+      "amateur"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "tennis",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Tennis",
+    "en": "tennis",
+    "example": {
+      "de": "Lasst uns nach der Schule Tennis spielen.",
+      "en": "Let's play tennis after school."
+    },
+    "family": [],
+    "related": [
+      "fussball",
+      "partie",
+      "veranstalten"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "partie",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Partie",
+    "plural": "Partien",
+    "en": "match, game",
+    "example": {
+      "de": "Lassen Sie uns eine Partie Schach spielen!",
+      "en": "Let's play a game of chess."
+    },
+    "family": [],
+    "related": [
+      "fussball",
+      "herausfordern",
+      "tennis"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "herausfordern",
+    "tier": 5,
+    "lemma": "herausfordern",
+    "en": "to challenge",
+    "example": {
+      "de": "Ich will nicht das Schicksal herausfordern.",
+      "en": "I don't want to tempt fate."
+    },
+    "family": [],
+    "related": [
+      "fussball",
+      "stadion",
+      "partie"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "stadion",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Stadion",
+    "plural": "Stadien",
+    "en": "stadium",
+    "example": {
+      "de": "Es waren viele begeisterte Fans im Stadion.",
+      "en": "There were a lot of excited fans in the stadium."
+    },
+    "family": [],
+    "related": [
+      "fussball",
+      "fitnessstudio",
+      "herausfordern"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "fitnessstudio",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Fitnessstudio",
+    "plural": "Fitnessstudios",
+    "en": "fitness centre, health club",
+    "example": {
+      "de": "Wir trainieren jeden Tag im Fitnessstudio.",
+      "en": "We train every day at the gym."
+    },
+    "family": [],
+    "related": [
+      "fussball",
+      "joggen",
+      "stadion"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "joggen",
+    "tier": 5,
+    "lemma": "joggen",
+    "en": "to jog",
+    "example": {
+      "de": "Sie hat sich wieder in Form gejoggt.",
+      "en": "She jogged herself back into shape."
+    },
+    "family": [],
+    "related": [
+      "fussball",
+      "fitnessstudio",
+      "wanderung"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "fussball",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Fußball",
+    "en": "football, soccer",
+    "example": {
+      "de": "Am Samstag spielen wir Fußball.",
+      "en": "On Saturday we’re playing football."
+    },
+    "family": [
+      "Fußballspiel",
+      "Fußballer"
+    ],
+    "related": [
+      "joggen",
+      "wanderung",
       "rekordhalter"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "wanderung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Wanderung",
+    "plural": "Wanderungen",
+    "en": "hike",
+    "example": {
+      "de": "Die Wanderung dauert etwa drei Stunden.",
+      "en": "The hike takes about three hours."
+    },
+    "family": [
+      "wandern",
+      "Wanderer"
+    ],
+    "related": [
+      "joggen",
+      "rekordhalter",
+      "fussball",
+      "ausflug"
     ],
     "theme": "Freizeit und Sport"
   },
@@ -3042,14 +8064,124 @@ export const GENERATED: Word[] = [
       "Halter"
     ],
     "related": [
-      "zuschauer",
-      "amateur"
+      "joggen",
+      "turnen",
+      "wanderung"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "turnen",
+    "tier": 6,
+    "lemma": "turnen",
+    "en": "to do gymnastics",
+    "example": {
+      "de": "Sie vollzog einen U-Turn.",
+      "en": "She performed a U-turn."
+    },
+    "family": [],
+    "related": [
+      "joggen",
+      "nachtklub",
+      "rekordhalter"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "nachtklub",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Nachtklub",
+    "plural": "Nachtklubs",
+    "en": "nightclub",
+    "example": {
+      "de": "Markku ging mit einem Nachbarn in einen Nachtclub.",
+      "en": "Markku went with a neighbor to a nightclub."
+    },
+    "family": [],
+    "related": [
+      "joggen",
+      "gym",
+      "turnen"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "gym",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Gym",
+    "plural": "Gyms",
+    "en": "gym, fitness center",
+    "example": {
+      "de": "Ich bin im Fitnessstudio / Gym.",
+      "en": "I'm at the gym."
+    },
+    "family": [],
+    "related": [
+      "joggen",
+      "baseballspiel",
+      "nachtklub"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "baseballspiel",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Baseballspiel",
+    "plural": "Baseballspiele",
+    "en": "baseball game",
+    "example": {
+      "de": "Er brach sich beim Baseballspiel sein Bein.",
+      "en": "He broke his leg in the baseball game."
+    },
+    "family": [],
+    "related": [
+      "joggen",
+      "radfahren",
+      "gym"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "radfahren",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Radfahren",
+    "en": "cycling",
+    "example": {
+      "de": "Was mögen Sie mehr, Radfahren oder Joggen?",
+      "en": "Which do you like better, cycling or jogging?"
+    },
+    "family": [],
+    "related": [
+      "joggen",
+      "camping",
+      "baseballspiel"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "camping",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Camping",
+    "en": "camping",
+    "example": {
+      "de": "Viele Leute interessieren sich für Camping.",
+      "en": "A lot of people are interested in camping."
+    },
+    "family": [],
+    "related": [
+      "joggen",
+      "radfahren"
     ],
     "theme": "Freizeit und Sport"
   },
   {
     "id": "urlaub",
-    "tier": 1,
+    "tier": 2,
     "article": "der",
     "lemma": "Urlaub",
     "plural": "Urlaube",
@@ -3063,7 +8195,7 @@ export const GENERATED: Word[] = [
       "Urlauber"
     ],
     "related": [
-      "flugzeug",
+      "koffer",
       "reise",
       "hotel",
       "wetter"
@@ -3072,7 +8204,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "reise",
-    "tier": 1,
+    "tier": 2,
     "article": "die",
     "lemma": "Reise",
     "plural": "Reisen",
@@ -3086,15 +8218,16 @@ export const GENERATED: Word[] = [
       "Reisepass"
     ],
     "related": [
-      "flugzeug",
+      "koffer",
       "hotel",
-      "urlaub"
+      "urlaub",
+      "flugzeug"
     ],
     "theme": "Reisen"
   },
   {
     "id": "hotel",
-    "tier": 1,
+    "tier": 2,
     "article": "das",
     "lemma": "Hotel",
     "plural": "Hotels",
@@ -3108,9 +8241,9 @@ export const GENERATED: Word[] = [
       "Hotelrezeption"
     ],
     "related": [
+      "koffer",
       "flugzeug",
       "reise",
-      "koffer",
       "reservierung"
     ],
     "theme": "Reisen"
@@ -3131,16 +8264,54 @@ export const GENERATED: Word[] = [
       "Flug"
     ],
     "related": [
-      "flughafen",
       "koffer",
+      "schiff",
       "hotel",
       "reise"
     ],
     "theme": "Reisen"
   },
   {
-    "id": "koffer",
+    "id": "schiff",
     "tier": 2,
+    "article": "das",
+    "lemma": "Schiff",
+    "plural": "Schiffe",
+    "en": "ship",
+    "example": {
+      "de": "Die Länge dieses Schiffs beträgt 30 Meter.",
+      "en": "The length of this ship is 30 meters."
+    },
+    "family": [],
+    "related": [
+      "koffer",
+      "bus",
+      "flugzeug"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "bus",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Bus",
+    "plural": "Busse",
+    "en": "bus",
+    "example": {
+      "de": "Der Bus wird Sie zum Stadtzentrum bringen.",
+      "en": "The bus will take you to the center of the city."
+    },
+    "family": [],
+    "related": [
+      "koffer",
+      "schiff",
+      "bahnhof"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "koffer",
+    "tier": 3,
     "article": "der",
     "lemma": "Koffer",
     "plural": "Koffer",
@@ -3154,15 +8325,15 @@ export const GENERATED: Word[] = [
       "kofferlos"
     ],
     "related": [
-      "flughafen",
+      "ausland",
       "bahnhof",
-      "flugzeug"
+      "bus"
     ],
     "theme": "Reisen"
   },
   {
     "id": "bahnhof",
-    "tier": 2,
+    "tier": 3,
     "article": "der",
     "lemma": "Bahnhof",
     "plural": "Bahnhöfe",
@@ -3176,31 +8347,10 @@ export const GENERATED: Word[] = [
       "Hauptbahnhof"
     ],
     "related": [
-      "flughafen",
       "ausland",
+      "flughafen",
       "koffer",
       "zug"
-    ],
-    "theme": "Reisen"
-  },
-  {
-    "id": "ausland",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Ausland",
-    "en": "abroad",
-    "example": {
-      "de": "Sie hat ein Jahr im Ausland gelebt.",
-      "en": "She lived abroad for a year."
-    },
-    "family": [
-      "Ausländer",
-      "ausländisch"
-    ],
-    "related": [
-      "flughafen",
-      "bahnhof",
-      "reservierung"
     ],
     "theme": "Reisen"
   },
@@ -3220,33 +8370,10 @@ export const GENERATED: Word[] = [
       "Hafen"
     ],
     "related": [
-      "unterkunft",
-      "reservierung",
       "ausland",
-      "zoll"
-    ],
-    "theme": "Reisen"
-  },
-  {
-    "id": "reservierung",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Reservierung",
-    "plural": "Reservierungen",
-    "en": "reservation",
-    "example": {
-      "de": "Haben Sie eine Reservierung?",
-      "en": "Do you have a reservation?"
-    },
-    "family": [
-      "reservieren",
-      "reserviert"
-    ],
-    "related": [
-      "unterkunft",
       "sehenswuerdigkeit",
-      "flughafen",
-      "hotel"
+      "bahnhof",
+      "zoll"
     ],
     "theme": "Reisen"
   },
@@ -3266,9 +8393,9 @@ export const GENERATED: Word[] = [
       "würdig"
     ],
     "related": [
-      "unterkunft",
+      "ausland",
       "gepaeck",
-      "reservierung"
+      "flughafen"
     ],
     "theme": "Reisen"
   },
@@ -3287,9 +8414,178 @@ export const GENERATED: Word[] = [
       "Gepäckstück"
     ],
     "related": [
+      "ausland",
+      "flug",
+      "sehenswuerdigkeit"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "flug",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Flug",
+    "plural": "Flüge",
+    "en": "flight",
+    "example": {
+      "de": "Toms Flug wurde um drei Stunden verschoben.",
+      "en": "Tom's flight was postponed for three hours."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "strand",
+      "gepaeck"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "strand",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Strand",
+    "plural": "Strände",
+    "en": "beach",
+    "example": {
+      "de": "Wir ließen uns am Strand photographieren.",
+      "en": "We had our photo taken on the beach."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "reisen",
+      "flug"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "reisen",
+    "tier": 3,
+    "lemma": "reisen",
+    "en": "to travel",
+    "example": {
+      "de": "Im Sommer wollen wir an das Rote Meer reisen.",
+      "en": "We want to travel to the Red Sea in summer."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "grenze",
+      "strand"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "grenze",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Grenze",
+    "plural": "Grenzen",
+    "en": "border",
+    "example": {
+      "de": "Flensburg liegt an der Grenze zu Dänemark.",
+      "en": "Flensburg is on the border with Denmark."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "kapitaen",
+      "reisen"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "kapitaen",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Kapitän",
+    "plural": "Kapitäne",
+    "en": "captain",
+    "example": {
+      "de": "Yoko ist Kapitän der Volleyballmannschaft.",
+      "en": "Yoko is the captain of the volleyball team."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "landen",
+      "grenze"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "landen",
+    "tier": 3,
+    "lemma": "landen",
+    "en": "to land",
+    "example": {
+      "de": "Das Flugzeug landet auf der Landebahn.",
+      "en": "The plane lands on the runway."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "ankunft",
+      "kapitaen"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "ankunft",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Ankunft",
+    "plural": "Ankünfte",
+    "en": "arrival",
+    "example": {
+      "de": "Sie ging lange vor deiner Ankunft hier weg.",
+      "en": "She left here long before you arrived."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "hafen",
+      "landen"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "hafen",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Hafen",
+    "plural": "Häfen",
+    "en": "harbour/harbor, port",
+    "example": {
+      "de": "Wir haben viele Schiffe im Hafen gesehen.",
+      "en": "We saw many ships in the harbour."
+    },
+    "family": [],
+    "related": [
+      "ausland",
+      "ankunft",
+      "unterkunft"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "ausland",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Ausland",
+    "en": "abroad",
+    "example": {
+      "de": "Sie hat ein Jahr im Ausland gelebt.",
+      "en": "She lived abroad for a year."
+    },
+    "family": [
+      "Ausländer",
+      "ausländisch"
+    ],
+    "related": [
+      "reservierung",
       "unterkunft",
-      "sehenswuerdigkeit",
-      "reisepass"
+      "hafen"
     ],
     "theme": "Reisen"
   },
@@ -3309,32 +8605,9 @@ export const GENERATED: Word[] = [
       "Kunft"
     ],
     "related": [
-      "reisefuehrer",
-      "reisepass",
-      "gepaeck"
-    ],
-    "theme": "Reisen"
-  },
-  {
-    "id": "reisepass",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Reisepass",
-    "plural": "Reisepässe",
-    "en": "passport",
-    "example": {
-      "de": "Vergessen Sie Ihren Reisepass nicht!",
-      "en": "Don’t forget your passport!"
-    },
-    "family": [
-      "Reise",
-      "Pass"
-    ],
-    "related": [
-      "reisefuehrer",
+      "reservierung",
       "zoll",
-      "unterkunft",
-      "ausweis"
+      "ausland"
     ],
     "theme": "Reisen"
   },
@@ -3353,76 +8626,126 @@ export const GENERATED: Word[] = [
       "zollfrei"
     ],
     "related": [
-      "reisefuehrer",
-      "uebernachtung",
-      "reisepass",
+      "reservierung",
+      "strecke",
+      "unterkunft",
       "flughafen"
     ],
     "theme": "Reisen"
   },
   {
-    "id": "uebernachtung",
+    "id": "strecke",
     "tier": 4,
     "article": "die",
-    "lemma": "Übernachtung",
-    "plural": "Übernachtungen",
-    "en": "overnight stay",
+    "lemma": "Strecke",
+    "plural": "Strecken",
+    "en": "stretch",
     "example": {
-      "de": "Die Übernachtung kostet achtzig Euro.",
-      "en": "The overnight stay costs eighty euros."
+      "de": "Heute fahren statt Zügen Busse die Strecke.",
+      "en": "Buses are running instead of trains on the route today."
     },
-    "family": [
-      "übernachten",
-      "Nacht"
-    ],
+    "family": [],
     "related": [
-      "reisefuehrer",
-      "zoll",
-      "anreise"
+      "reservierung",
+      "ankommen",
+      "zoll"
     ],
     "theme": "Reisen"
   },
   {
-    "id": "reisefuehrer",
-    "tier": 5,
+    "id": "ankommen",
+    "tier": 4,
+    "lemma": "ankommen",
+    "en": "to arrive",
+    "example": {
+      "de": "Ich bin ungefähr um 5 Uhr hier angekommen.",
+      "en": "I arrived here about five o'clock."
+    },
+    "family": [],
+    "related": [
+      "reservierung",
+      "ticket",
+      "strecke"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "ticket",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Ticket",
+    "plural": "Tickets",
+    "en": "ticket",
+    "example": {
+      "de": "Er hat sein Ticket zu Hause liegen lassen.",
+      "en": "He left his ticket at home."
+    },
+    "family": [],
+    "related": [
+      "reservierung",
+      "rucksack",
+      "ankommen"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "rucksack",
+    "tier": 4,
     "article": "der",
-    "lemma": "Reiseführer",
-    "plural": "Reiseführer",
-    "en": "guidebook; tour guide",
+    "lemma": "Rucksack",
+    "plural": "Rucksäcke",
+    "en": "backpack",
     "example": {
-      "de": "Im Reiseführer steht ein guter Tipp.",
-      "en": "There’s a good tip in the guidebook."
+      "de": "Er schnappte sich seinen Rucksack und ging.",
+      "en": "He grabbed his backpack and left."
     },
-    "family": [
-      "Reise",
-      "führen"
-    ],
+    "family": [],
     "related": [
-      "stornierung",
-      "anreise",
-      "uebernachtung"
+      "reservierung",
+      "tourist",
+      "ticket"
     ],
     "theme": "Reisen"
   },
   {
-    "id": "anreise",
+    "id": "tourist",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Tourist",
+    "plural": "Touristen",
+    "en": "tourist",
+    "example": {
+      "de": "In Venedig sind immer so viele Touristen.",
+      "en": "There are always so many tourists in Venice."
+    },
+    "family": [],
+    "related": [
+      "reservierung",
+      "rucksack",
+      "gastgeber"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "reservierung",
     "tier": 5,
     "article": "die",
-    "lemma": "Anreise",
-    "plural": "Anreisen",
-    "en": "journey there, arrival",
+    "lemma": "Reservierung",
+    "plural": "Reservierungen",
+    "en": "reservation",
     "example": {
-      "de": "Die Anreise dauert etwa sechs Stunden.",
-      "en": "The journey there takes about six hours."
+      "de": "Haben Sie eine Reservierung?",
+      "en": "Do you have a reservation?"
     },
     "family": [
-      "anreisen",
-      "Abreise"
+      "reservieren",
+      "reserviert"
     ],
     "related": [
-      "stornierung",
+      "reisepass",
       "gastgeber",
-      "reisefuehrer"
+      "tourist",
+      "hotel"
     ],
     "theme": "Reisen"
   },
@@ -3442,9 +8765,212 @@ export const GENERATED: Word[] = [
       "Gastfreundschaft"
     ],
     "related": [
-      "stornierung",
+      "reisepass",
+      "kontinent",
+      "reservierung"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "kontinent",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Kontinent",
+    "plural": "Kontinente",
+    "en": "continent",
+    "example": {
+      "de": "Europa wird als Kontinent betrachtet.",
+      "en": "Europe is regarded as a continent."
+    },
+    "family": [],
+    "related": [
+      "reisepass",
+      "visum",
+      "gastgeber"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "visum",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Visum",
+    "plural": "Visa",
+    "en": "visa",
+    "example": {
+      "de": "Sie haben vergessen, ihre Visa zu erneuern.",
+      "en": "They forgot to renew their visas."
+    },
+    "family": [],
+    "related": [
+      "reisepass",
+      "gleis",
+      "kontinent"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "gleis",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Gleis",
+    "plural": "Gleise",
+    "en": "railway",
+    "example": {
+      "de": "Der Zug nach Cambridge fährt auf Gleis 5 ab.",
+      "en": "The train to Cambridge departs from Platform 5."
+    },
+    "family": [],
+    "related": [
+      "reisepass",
+      "abfahrt",
+      "visum"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "abfahrt",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Abfahrt",
+    "plural": "Abfahrten",
+    "en": "departure",
+    "example": {
+      "de": "Die Abfahrt des Zuges wird sich verzögern.",
+      "en": "The train's departure will be delayed."
+    },
+    "family": [],
+    "related": [
+      "reisepass",
+      "faehre",
+      "gleis"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "faehre",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Fähre",
+    "plural": "Fähren",
+    "en": "ferry",
+    "example": {
+      "de": "Die nächste Fähre geht erst morgen früh.",
+      "en": "The next ferry isn't until tomorrow morning."
+    },
+    "family": [],
+    "related": [
+      "reisepass",
+      "auskunft",
+      "abfahrt"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "auskunft",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Auskunft",
+    "plural": "Auskünfte",
+    "en": "enquiry",
+    "example": {
+      "de": "Können Sie mir bitte eine Auskunft geben?",
+      "en": "Could you please give me some information?"
+    },
+    "family": [],
+    "related": [
+      "reisepass",
+      "faehre",
+      "uebernachtung"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "reisepass",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Reisepass",
+    "plural": "Reisepässe",
+    "en": "passport",
+    "example": {
+      "de": "Vergessen Sie Ihren Reisepass nicht!",
+      "en": "Don’t forget your passport!"
+    },
+    "family": [
+      "Reise",
+      "Pass"
+    ],
+    "related": [
+      "auskunft",
+      "uebernachtung",
+      "reisefuehrer",
+      "ausweis"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "uebernachtung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Übernachtung",
+    "plural": "Übernachtungen",
+    "en": "overnight stay",
+    "example": {
+      "de": "Die Übernachtung kostet achtzig Euro.",
+      "en": "The overnight stay costs eighty euros."
+    },
+    "family": [
+      "übernachten",
+      "Nacht"
+    ],
+    "related": [
+      "auskunft",
+      "reisefuehrer",
+      "reisepass"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "reisefuehrer",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Reiseführer",
+    "plural": "Reiseführer",
+    "en": "guidebook; tour guide",
+    "example": {
+      "de": "Im Reiseführer steht ein guter Tipp.",
+      "en": "There’s a good tip in the guidebook."
+    },
+    "family": [
+      "Reise",
+      "führen"
+    ],
+    "related": [
+      "auskunft",
       "anreise",
-      "pauschalreise"
+      "uebernachtung"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "anreise",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Anreise",
+    "plural": "Anreisen",
+    "en": "journey there, arrival",
+    "example": {
+      "de": "Die Anreise dauert etwa sechs Stunden.",
+      "en": "The journey there takes about six hours."
+    },
+    "family": [
+      "anreisen",
+      "Abreise"
+    ],
+    "related": [
+      "auskunft",
+      "stornierung",
+      "reisefuehrer"
     ],
     "theme": "Reisen"
   },
@@ -3464,8 +8990,9 @@ export const GENERATED: Word[] = [
       "Storno"
     ],
     "related": [
-      "gastgeber",
-      "pauschalreise"
+      "auskunft",
+      "pauschalreise",
+      "anreise"
     ],
     "theme": "Reisen"
   },
@@ -3485,8 +9012,103 @@ export const GENERATED: Word[] = [
       "Reise"
     ],
     "related": [
-      "gastgeber",
+      "auskunft",
+      "safari",
       "stornierung"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "safari",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Safari",
+    "plural": "Safaris",
+    "en": "safari",
+    "example": {
+      "de": "Letztes Jahr waren wir auf Safari.",
+      "en": "We went on a safari last year."
+    },
+    "family": [],
+    "related": [
+      "auskunft",
+      "ausstieg",
+      "pauschalreise"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "ausstieg",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Ausstieg",
+    "plural": "Ausstiege",
+    "en": "exit",
+    "example": {
+      "de": "Einstieg und Ausstieg aus einem Flugzeug.",
+      "en": "Embarkation and disembarkation from an airplane."
+    },
+    "family": [],
+    "related": [
+      "auskunft",
+      "fahrgast",
+      "safari"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "fahrgast",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Fahrgast",
+    "plural": "Fahrgäste",
+    "en": "passenger",
+    "example": {
+      "de": "Zum Glück waren alle Fahrgäste angeschnallt.",
+      "en": "Luckily, all of the passengers were wearing seat belts."
+    },
+    "family": [],
+    "related": [
+      "auskunft",
+      "doppelzimmer",
+      "ausstieg"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "doppelzimmer",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Doppelzimmer",
+    "plural": "Doppelzimmer",
+    "en": "double room",
+    "example": {
+      "de": "Ich möchte ein Doppelzimmer reservieren.",
+      "en": "I'd like to book a double room."
+    },
+    "family": [],
+    "related": [
+      "auskunft",
+      "landkarte",
+      "fahrgast"
+    ],
+    "theme": "Reisen"
+  },
+  {
+    "id": "landkarte",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Landkarte",
+    "plural": "Landkarten",
+    "en": "map",
+    "example": {
+      "de": "Ohne die Landkarte hätte er sich verirrt.",
+      "en": "Without the map, he would have gotten lost."
+    },
+    "family": [],
+    "related": [
+      "auskunft",
+      "doppelzimmer"
     ],
     "theme": "Reisen"
   },
@@ -3506,15 +9128,72 @@ export const GENERATED: Word[] = [
       "städtisch"
     ],
     "related": [
-      "strasse",
       "geschaeft",
-      "markt"
+      "ware",
+      "auto"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "ware",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Ware",
+    "plural": "Waren",
+    "en": "goods, merchandise",
+    "example": {
+      "de": "Waren Sie das gestern Abend im Fernsehen?",
+      "en": "Was that you on TV last night?"
+    },
+    "family": [],
+    "related": [
+      "geschaeft",
+      "auto",
+      "stadt"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "auto",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Auto",
+    "plural": "Autos",
+    "en": "car",
+    "example": {
+      "de": "Ich habe vor, mir ein neues Auto zu kaufen.",
+      "en": "I am going to buy a new car."
+    },
+    "family": [],
+    "related": [
+      "geschaeft",
+      "ort",
+      "ware"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "ort",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Ort",
+    "plural": "Orte",
+    "en": "place, location",
+    "example": {
+      "de": "Sie setzen Ort und Zeit der Hochzeit fest.",
+      "en": "They set the time and place of the wedding."
+    },
+    "family": [],
+    "related": [
+      "geschaeft",
+      "auto",
+      "kaufen"
     ],
     "theme": "Stadt und Einkaufen"
   },
   {
     "id": "geschaeft",
-    "tier": 1,
+    "tier": 2,
     "article": "das",
     "lemma": "Geschäft",
     "plural": "Geschäfte",
@@ -3528,78 +9207,10 @@ export const GENERATED: Word[] = [
       "Schuhgeschäft"
     ],
     "related": [
-      "strasse",
       "markt",
-      "stadt",
-      "hose"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "markt",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Markt",
-    "plural": "Märkte",
-    "en": "market",
-    "example": {
-      "de": "Am Samstag gehen wir auf den Markt.",
-      "en": "On Saturday we go to the market."
-    },
-    "family": [
-      "Marktplatz",
-      "Wochenmarkt"
-    ],
-    "related": [
-      "strasse",
-      "geschaeft",
-      "supermarkt"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "strasse",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Straße",
-    "plural": "Straßen",
-    "en": "street, road",
-    "example": {
-      "de": "Die Straße ist wegen einer Baustelle gesperrt.",
-      "en": "The street is closed because of roadworks."
-    },
-    "family": [
-      "Straßenbahn",
-      "Straßenschild"
-    ],
-    "related": [
-      "angebot",
-      "supermarkt",
-      "markt",
-      "haltestelle"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "supermarkt",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Supermarkt",
-    "plural": "Supermärkte",
-    "en": "supermarket",
-    "example": {
-      "de": "Ich gehe schnell zum Supermarkt.",
-      "en": "I’m quickly popping to the supermarket."
-    },
-    "family": [
-      "Markt",
-      "super"
-    ],
-    "related": [
-      "angebot",
       "kaufen",
-      "strasse",
-      "gemuese"
+      "ort",
+      "hose"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3617,9 +9228,9 @@ export const GENERATED: Word[] = [
       "Einkauf"
     ],
     "related": [
-      "angebot",
+      "markt",
       "preis",
-      "supermarkt"
+      "geschaeft"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3639,15 +9250,15 @@ export const GENERATED: Word[] = [
       "Preisliste"
     ],
     "related": [
+      "markt",
       "angebot",
-      "kaufen",
-      "einkauf"
+      "kaufen"
     ],
     "theme": "Stadt und Einkaufen"
   },
   {
     "id": "angebot",
-    "tier": 3,
+    "tier": 2,
     "article": "das",
     "lemma": "Angebot",
     "plural": "Angebote",
@@ -3661,37 +9272,269 @@ export const GENERATED: Word[] = [
       "Sonderangebot"
     ],
     "related": [
-      "fussgaenger",
-      "einkauf",
+      "markt",
+      "platz",
       "preis"
     ],
     "theme": "Stadt und Einkaufen"
   },
   {
-    "id": "einkauf",
-    "tier": 3,
+    "id": "platz",
+    "tier": 2,
     "article": "der",
-    "lemma": "Einkauf",
-    "plural": "Einkäufe",
-    "en": "purchase, shopping",
+    "lemma": "Platz",
+    "plural": "Plätze",
+    "en": "square, plaza",
     "example": {
-      "de": "Ich trage die Einkäufe nach oben.",
-      "en": "I’m carrying the shopping upstairs."
+      "de": "Gibt es reservierte Plätze für diesen Film?",
+      "en": "Are there reserved seats for this film?"
     },
-    "family": [
-      "einkaufen",
-      "Einkaufsliste"
-    ],
+    "family": [],
     "related": [
-      "fussgaenger",
-      "kasse",
+      "markt",
+      "kirche",
       "angebot"
     ],
     "theme": "Stadt und Einkaufen"
   },
   {
-    "id": "kasse",
+    "id": "kirche",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Kirche",
+    "plural": "Kirchen",
+    "en": "church",
+    "example": {
+      "de": "In einer Kirche ist gewöhnlich eine Orgel.",
+      "en": "There is usually an organ in a church."
+    },
+    "family": [],
+    "related": [
+      "markt",
+      "bruecke",
+      "platz"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "bruecke",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Brücke",
+    "plural": "Brücken",
+    "en": "bridge",
+    "example": {
+      "de": "Diese Brücke ist dreimal so lang wie jene.",
+      "en": "This bridge is three times as long as that bridge."
+    },
+    "family": [],
+    "related": [
+      "markt",
+      "bank",
+      "kirche"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "bank",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Bank",
+    "plural": "Bänke",
+    "en": "bench, pew",
+    "example": {
+      "de": "Wir müssen die Bank um ein Darlehen bitten.",
+      "en": "We must ask the bank for the loan."
+    },
+    "family": [],
+    "related": [
+      "markt",
+      "park",
+      "bruecke"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "park",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Park",
+    "plural": "Parks",
+    "en": "park",
+    "example": {
+      "de": "Wir sind zum Spielen in den Park gegangen.",
+      "en": "We went to the park to play."
+    },
+    "family": [],
+    "related": [
+      "markt",
+      "laden",
+      "bank"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "laden",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Laden",
+    "plural": "Läden",
+    "en": "shop, store",
+    "example": {
+      "de": "Was kostet denn das Bier hier in dem Laden?",
+      "en": "So how much is a beer in this place?"
+    },
+    "family": [],
+    "related": [
+      "markt",
+      "park",
+      "city"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "markt",
     "tier": 3,
+    "article": "der",
+    "lemma": "Markt",
+    "plural": "Märkte",
+    "en": "market",
+    "example": {
+      "de": "Am Samstag gehen wir auf den Markt.",
+      "en": "On Saturday we go to the market."
+    },
+    "family": [
+      "Marktplatz",
+      "Wochenmarkt"
+    ],
+    "related": [
+      "supermarkt",
+      "city",
+      "laden"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "city",
+    "tier": 3,
+    "article": "die",
+    "lemma": "City",
+    "plural": "Citys",
+    "en": "city center, downtown",
+    "example": {
+      "de": "Wir fahren heute Nachmittag in die City.",
+      "en": "We’re going downtown this afternoon."
+    },
+    "family": [],
+    "related": [
+      "supermarkt",
+      "gast",
+      "markt"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "gast",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Gast",
+    "plural": "Gäste",
+    "en": "guest",
+    "example": {
+      "de": "Weißt du nicht, dass Gäste kommen werden?",
+      "en": "Don't you know that guests will be coming?"
+    },
+    "family": [],
+    "related": [
+      "supermarkt",
+      "post",
+      "city"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "post",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Post",
+    "plural": "Posten",
+    "en": "mail, post",
+    "example": {
+      "de": "Ich bin gerade von der Post zurückgekommen.",
+      "en": "I have just returned from the post office."
+    },
+    "family": [],
+    "related": [
+      "supermarkt",
+      "fahrrad",
+      "gast"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "fahrrad",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Fahrrad",
+    "plural": "Fahrräder",
+    "en": "bicycle",
+    "example": {
+      "de": "Der Junge ist verrückt nach einem Fahrrad.",
+      "en": "The boy is mad for a bicycle."
+    },
+    "family": [],
+    "related": [
+      "supermarkt",
+      "bibliothek",
+      "post"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "bibliothek",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Bibliothek",
+    "plural": "Bibliotheken",
+    "en": "library",
+    "example": {
+      "de": "In dieser Bibliothek gibt es viele Bücher.",
+      "en": "The library has many books."
+    },
+    "family": [],
+    "related": [
+      "supermarkt",
+      "fahrrad",
+      "kasse"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "supermarkt",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Supermarkt",
+    "plural": "Supermärkte",
+    "en": "supermarket",
+    "example": {
+      "de": "Ich gehe schnell zum Supermarkt.",
+      "en": "I’m quickly popping to the supermarket."
+    },
+    "family": [
+      "Markt",
+      "super"
+    ],
+    "related": [
+      "strasse",
+      "kasse",
+      "bibliothek",
+      "gemuese"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "kasse",
+    "tier": 4,
     "article": "die",
     "lemma": "Kasse",
     "plural": "Kassen",
@@ -3705,31 +9548,10 @@ export const GENERATED: Word[] = [
       "Kassierer"
     ],
     "related": [
+      "strasse",
       "fussgaenger",
-      "kreuzung",
+      "supermarkt",
       "einkauf"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "kreuzung",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Kreuzung",
-    "plural": "Kreuzungen",
-    "en": "intersection",
-    "example": {
-      "de": "An der Kreuzung müssen Sie links abbiegen.",
-      "en": "At the intersection you have to turn left."
-    },
-    "family": [
-      "kreuzen",
-      "Kreuz"
-    ],
-    "related": [
-      "fussgaenger",
-      "kasse",
-      "buergersteig"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3749,53 +9571,9 @@ export const GENERATED: Word[] = [
       "Fuß"
     ],
     "related": [
-      "sonderangebot",
-      "buergersteig",
-      "kreuzung"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "buergersteig",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Bürgersteig",
-    "plural": "Bürgersteige",
-    "en": "pavement, sidewalk",
-    "example": {
-      "de": "Bitte parken Sie nicht auf dem Bürgersteig.",
-      "en": "Please don’t park on the pavement."
-    },
-    "family": [
-      "Bürger",
-      "Steig"
-    ],
-    "related": [
-      "sonderangebot",
-      "schaufenster",
-      "fussgaenger"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "schaufenster",
-    "tier": 4,
-    "article": "das",
-    "lemma": "Schaufenster",
-    "plural": "Schaufenster",
-    "en": "shop window",
-    "example": {
-      "de": "Im Schaufenster hängt ein schönes Kleid.",
-      "en": "A beautiful dress hangs in the shop window."
-    },
-    "family": [
-      "Schau",
-      "Fenster"
-    ],
-    "related": [
-      "sonderangebot",
+      "strasse",
       "umtausch",
-      "buergersteig"
+      "kasse"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3814,31 +9592,281 @@ export const GENERATED: Word[] = [
       "tauschen"
     ],
     "related": [
-      "sonderangebot",
-      "schaufenster",
-      "innenstadt"
+      "strasse",
+      "friedhof",
+      "fussgaenger"
     ],
     "theme": "Stadt und Einkaufen"
   },
   {
-    "id": "sonderangebot",
-    "tier": 5,
-    "article": "das",
-    "lemma": "Sonderangebot",
-    "plural": "Sonderangebote",
-    "en": "special offer",
+    "id": "friedhof",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Friedhof",
+    "plural": "Friedhöfe",
+    "en": "cemetery, graveyard",
     "example": {
-      "de": "Die Äpfel sind diese Woche im Sonderangebot.",
-      "en": "The apples are on special offer this week."
+      "de": "Die Friedhöfe liegen außerhalb der Stadt.",
+      "en": "The cemeteries are outside the city."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "zurueckgeben",
+      "umtausch"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "zurueckgeben",
+    "tier": 4,
+    "lemma": "zurückgeben",
+    "en": "to give back, return",
+    "example": {
+      "de": "Sie hat mir mein Geld nicht zurückgegeben.",
+      "en": "She didn't give me my money back."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "aussuchen",
+      "friedhof"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "aussuchen",
+    "tier": 4,
+    "lemma": "aussuchen",
+    "en": "to select, to choose",
+    "example": {
+      "de": "Hast du ein Kleid für die Party ausgesucht?",
+      "en": "Did you pick out a dress for the party?"
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "kloster",
+      "zurueckgeben"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "kloster",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Kloster",
+    "plural": "Klöster",
+    "en": "convent, monastery",
+    "example": {
+      "de": "Dieses Gebäude war ursprünglich ein Kloster.",
+      "en": "The structure was originally a monastery."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "tankstelle",
+      "aussuchen"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "tankstelle",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Tankstelle",
+    "plural": "Tankstellen",
+    "en": "gas station",
+    "example": {
+      "de": "Mein Bruder arbeitet bei einer Tankstelle.",
+      "en": "My brother works at a petrol station."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "kennzeichen",
+      "kloster"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "kennzeichen",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Kennzeichen",
+    "plural": "Kennzeichen",
+    "en": "characteristic, mark",
+    "example": {
+      "de": "Haben Sie besondere Kennzeichen?",
+      "en": "Do you have special licence plates?"
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "gasse",
+      "tankstelle"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "gasse",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Gasse",
+    "plural": "Gassen",
+    "en": "alley, lane",
+    "example": {
+      "de": "Es gibt viele enge Gassen in der Stadt.",
+      "en": "The town has many narrow lanes."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "einkaufszentrum",
+      "kennzeichen"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "einkaufszentrum",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Einkaufszentrum",
+    "plural": "Einkaufszentren",
+    "en": "shopping center, shopping mall",
+    "example": {
+      "de": "Layla und Sami fahren zum Einkaufszentrum.",
+      "en": "Layla and Sami are going to the mall."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "parkplatz",
+      "gasse"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "parkplatz",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Parkplatz",
+    "plural": "Parkplätze",
+    "en": "parking lot, outdoor car park",
+    "example": {
+      "de": "Wir fanden keinen Parkplatz auf dem Parkplatz.",
+      "en": "We couldn’t find a parking space in the car park."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "motorrad",
+      "einkaufszentrum"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "motorrad",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Motorrad",
+    "plural": "Motorräder",
+    "en": "motorcycle",
+    "example": {
+      "de": "Tims Motorrad ist weitaus teurer als meins.",
+      "en": "Tim's motorbike is far more expensive than mine is."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "brunnen",
+      "parkplatz"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "brunnen",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Brunnen",
+    "plural": "Brunnen",
+    "en": "well, fountain",
+    "example": {
+      "de": "Er ist wie ein Frosch in einem Brunnen.",
+      "en": "He is like a frog in a well."
+    },
+    "family": [],
+    "related": [
+      "strasse",
+      "motorrad",
+      "kreuzung"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "strasse",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Straße",
+    "plural": "Straßen",
+    "en": "street, road",
+    "example": {
+      "de": "Die Straße ist wegen einer Baustelle gesperrt.",
+      "en": "The street is closed because of roadworks."
     },
     "family": [
-      "Angebot",
-      "sonder"
+      "Straßenbahn",
+      "Straßenschild"
     ],
     "related": [
-      "einzelhandel",
+      "einkauf",
+      "kreuzung",
+      "brunnen",
+      "haltestelle"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "kreuzung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Kreuzung",
+    "plural": "Kreuzungen",
+    "en": "intersection",
+    "example": {
+      "de": "An der Kreuzung müssen Sie links abbiegen.",
+      "en": "At the intersection you have to turn left."
+    },
+    "family": [
+      "kreuzen",
+      "Kreuz"
+    ],
+    "related": [
+      "einkauf",
+      "buergersteig",
+      "strasse"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "buergersteig",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Bürgersteig",
+    "plural": "Bürgersteige",
+    "en": "pavement, sidewalk",
+    "example": {
+      "de": "Bitte parken Sie nicht auf dem Bürgersteig.",
+      "en": "Please don’t park on the pavement."
+    },
+    "family": [
+      "Bürger",
+      "Steig"
+    ],
+    "related": [
+      "einkauf",
       "innenstadt",
-      "umtausch"
+      "kreuzung"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3858,9 +9886,9 @@ export const GENERATED: Word[] = [
       "innen"
     ],
     "related": [
-      "einzelhandel",
+      "einkauf",
       "quittung",
-      "sonderangebot"
+      "buergersteig"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3880,9 +9908,266 @@ export const GENERATED: Word[] = [
       "Kassenbon"
     ],
     "related": [
+      "einkauf",
+      "fassade",
+      "innenstadt"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "fassade",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Fassade",
+    "plural": "Fassaden",
+    "en": "facade",
+    "example": {
+      "de": "Die Fassade dieses Hauses ist der Horror.",
+      "en": "The façade of that house is a nightmare."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "rabatt",
+      "quittung"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "rabatt",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Rabatt",
+    "plural": "Rabatte",
+    "en": "discount",
+    "example": {
+      "de": "Ich habe das Auto mit 10 % Rabatt gekauft.",
+      "en": "I bought the car at a 10% discount."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "grabstein",
+      "fassade"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "grabstein",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Grabstein",
+    "plural": "Grabsteine",
+    "en": "gravestone, tombstone",
+    "example": {
+      "de": "Ich kann mir keinen Grabstein leisten.",
+      "en": "I can't afford a tombstone."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "briefmarke",
+      "rabatt"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "briefmarke",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Briefmarke",
+    "plural": "Briefmarken",
+    "en": "postage stamp",
+    "example": {
+      "de": "Einen Umschlag und eine Briefmarke, bitte.",
+      "en": "An envelope and a stamp, please."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "katalog",
+      "grabstein"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "katalog",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Katalog",
+    "plural": "Kataloge",
+    "en": "catalogue",
+    "example": {
+      "de": "Das ist der Katalog vom heurigen Jahr.",
+      "en": "This is this year's catalogue."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "ampel",
+      "briefmarke"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "ampel",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Ampel",
+    "plural": "Ampeln",
+    "en": "traffic light",
+    "example": {
+      "de": "Biege bitte an der zweiten Ampel links ab!",
+      "en": "Turn left at the second traffic light."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "baeckerei",
+      "katalog"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "baeckerei",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Bäckerei",
+    "plural": "Bäckereien",
+    "en": "bakery, baker’s",
+    "example": {
+      "de": "Ich kaufe mein Brot immer in der Bäckerei.",
+      "en": "I always buy my bread from the bakery."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "rathaus",
+      "ampel"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "rathaus",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Rathaus",
+    "plural": "Rathäuser",
+    "en": "city hall, town hall",
+    "example": {
+      "de": "Da ist eine Menschenmenge vor dem Rathaus.",
+      "en": "There is a crowd of people in front of the town hall."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "stau",
+      "baeckerei"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "stau",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Stau",
+    "plural": "Staus",
+    "en": "congestion",
+    "example": {
+      "de": "Staus sind in jeder Großstadt ein Problem.",
+      "en": "Congestion is a problem in every big city."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "denkmal",
+      "rathaus"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "denkmal",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Denkmal",
+    "plural": "Denkmale",
+    "en": "monument, memorial",
+    "example": {
+      "de": "Im Zentrum der Stadt steht ein Denkmal.",
+      "en": "There is a monument in the center of the city."
+    },
+    "family": [],
+    "related": [
+      "einkauf",
+      "stau",
+      "schaufenster"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "einkauf",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Einkauf",
+    "plural": "Einkäufe",
+    "en": "purchase, shopping",
+    "example": {
+      "de": "Ich trage die Einkäufe nach oben.",
+      "en": "I’m carrying the shopping upstairs."
+    },
+    "family": [
+      "einkaufen",
+      "Einkaufsliste"
+    ],
+    "related": [
+      "denkmal",
+      "schaufenster",
+      "sonderangebot",
+      "kasse"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "schaufenster",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Schaufenster",
+    "plural": "Schaufenster",
+    "en": "shop window",
+    "example": {
+      "de": "Im Schaufenster hängt ein schönes Kleid.",
+      "en": "A beautiful dress hangs in the shop window."
+    },
+    "family": [
+      "Schau",
+      "Fenster"
+    ],
+    "related": [
+      "denkmal",
+      "sonderangebot",
+      "einkauf"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "sonderangebot",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Sonderangebot",
+    "plural": "Sonderangebote",
+    "en": "special offer",
+    "example": {
+      "de": "Die Äpfel sind diese Woche im Sonderangebot.",
+      "en": "The apples are on special offer this week."
+    },
+    "family": [
+      "Angebot",
+      "sonder"
+    ],
+    "related": [
+      "denkmal",
       "einzelhandel",
-      "innenstadt",
-      "verbraucher"
+      "schaufenster"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3901,8 +10186,9 @@ export const GENERATED: Word[] = [
       "Handel"
     ],
     "related": [
-      "quittung",
-      "verbraucher"
+      "denkmal",
+      "verbraucher",
+      "sonderangebot"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3922,8 +10208,103 @@ export const GENERATED: Word[] = [
       "Verbraucherschutz"
     ],
     "related": [
-      "quittung",
+      "denkmal",
+      "vorstadt",
       "einzelhandel"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "vorstadt",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Vorstadt",
+    "plural": "Vorstädte",
+    "en": "suburb",
+    "example": {
+      "de": "Sie haben ein Haus in der Vorstadt gekauft.",
+      "en": "They've bought a house in the suburbs."
+    },
+    "family": [],
+    "related": [
+      "denkmal",
+      "hochhaus",
+      "verbraucher"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "hochhaus",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Hochhaus",
+    "plural": "Hochhäuser",
+    "en": "skyscraper, high-rise building",
+    "example": {
+      "de": "Neben meinem Haus wurde ein Hochhaus errichtet.",
+      "en": "A tall building was built next to my house."
+    },
+    "family": [],
+    "related": [
+      "denkmal",
+      "stadtplan",
+      "vorstadt"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "stadtplan",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Stadtplan",
+    "plural": "Stadtpläne",
+    "en": "street map, city map",
+    "example": {
+      "de": "Schaut noch einmal gut den Stadtplan an.",
+      "en": "Take another good look at the city map."
+    },
+    "family": [],
+    "related": [
+      "denkmal",
+      "stadtmitte",
+      "hochhaus"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "stadtmitte",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Stadtmitte",
+    "plural": "Stadtmitten",
+    "en": "city center, downtown",
+    "example": {
+      "de": "Es gibt einen tollen Park in der Stadtmitte.",
+      "en": "There's a splendid park in the centre of the town."
+    },
+    "family": [],
+    "related": [
+      "denkmal",
+      "blumenladen",
+      "stadtplan"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "blumenladen",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Blumenladen",
+    "plural": "Blumenläden",
+    "en": "flower shop, florist's",
+    "example": {
+      "de": "Es gibt hier in der Nähe einen Blumenladen.",
+      "en": "There's a flower shop near by."
+    },
+    "family": [],
+    "related": [
+      "denkmal",
+      "stadtmitte"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -3943,9 +10324,9 @@ export const GENERATED: Word[] = [
       "Haustür"
     ],
     "related": [
-      "zimmer",
-      "tuer",
       "fenster",
+      "tuer",
+      "zimmer",
       "wohnung",
       "gross"
     ],
@@ -3967,37 +10348,15 @@ export const GENERATED: Word[] = [
       "Haustür"
     ],
     "related": [
-      "zimmer",
       "fenster",
+      "zimmer",
       "haus"
     ],
     "theme": "Haus und Möbel"
   },
   {
-    "id": "fenster",
-    "tier": 1,
-    "article": "das",
-    "lemma": "Fenster",
-    "plural": "Fenster",
-    "en": "window",
-    "example": {
-      "de": "Kannst du das Fenster öffnen?",
-      "en": "Can you open the window?"
-    },
-    "family": [
-      "Fensterbank",
-      "Fensterscheibe"
-    ],
-    "related": [
-      "zimmer",
-      "tuer",
-      "tisch"
-    ],
-    "theme": "Haus und Möbel"
-  },
-  {
     "id": "zimmer",
-    "tier": 2,
+    "tier": 1,
     "article": "das",
     "lemma": "Zimmer",
     "plural": "Zimmer",
@@ -4011,10 +10370,54 @@ export const GENERATED: Word[] = [
       "Schlafzimmer"
     ],
     "related": [
-      "schluessel",
-      "tisch",
       "fenster",
+      "bett",
+      "tuer",
       "kueche"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "bett",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Bett",
+    "plural": "Betten",
+    "en": "bed",
+    "example": {
+      "de": "Das Bett ist noch nicht gemacht.",
+      "en": "The bed isn’t made yet."
+    },
+    "family": [
+      "Bettdecke",
+      "Doppelbett"
+    ],
+    "related": [
+      "fenster",
+      "zimmer",
+      "tisch"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "fenster",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Fenster",
+    "plural": "Fenster",
+    "en": "window",
+    "example": {
+      "de": "Kannst du das Fenster öffnen?",
+      "en": "Can you open the window?"
+    },
+    "family": [
+      "Fensterbank",
+      "Fensterscheibe"
+    ],
+    "related": [
+      "stuhl",
+      "tisch",
+      "bett"
     ],
     "theme": "Haus und Möbel"
   },
@@ -4034,59 +10437,15 @@ export const GENERATED: Word[] = [
       "Schreibtisch"
     ],
     "related": [
-      "schluessel",
       "stuhl",
-      "zimmer"
-    ],
-    "theme": "Haus und Möbel"
-  },
-  {
-    "id": "stuhl",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Stuhl",
-    "plural": "Stühle",
-    "en": "chair",
-    "example": {
-      "de": "Ich brauche einen bequemen Stuhl.",
-      "en": "I need a comfortable chair."
-    },
-    "family": [
-      "Stuhlbein",
-      "Klappstuhl"
-    ],
-    "related": [
       "schluessel",
-      "bett",
-      "tisch"
-    ],
-    "theme": "Haus und Möbel"
-  },
-  {
-    "id": "bett",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Bett",
-    "plural": "Betten",
-    "en": "bed",
-    "example": {
-      "de": "Das Bett ist noch nicht gemacht.",
-      "en": "The bed isn’t made yet."
-    },
-    "family": [
-      "Bettdecke",
-      "Doppelbett"
-    ],
-    "related": [
-      "schluessel",
-      "stuhl",
-      "treppe"
+      "fenster"
     ],
     "theme": "Haus und Möbel"
   },
   {
     "id": "schluessel",
-    "tier": 3,
+    "tier": 2,
     "article": "der",
     "lemma": "Schlüssel",
     "plural": "Schlüssel",
@@ -4100,9 +10459,148 @@ export const GENERATED: Word[] = [
       "schließen"
     ],
     "related": [
-      "vermieter",
+      "stuhl",
+      "keller",
+      "tisch"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "keller",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Keller",
+    "plural": "Keller",
+    "en": "cellar, basement",
+    "example": {
+      "de": "Die Fahrräder stehen im Keller.",
+      "en": "The bikes are in the cellar."
+    },
+    "family": [
+      "Kellerwohnung",
+      "Weinkeller"
+    ],
+    "related": [
+      "stuhl",
+      "licht",
+      "schluessel"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "licht",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Licht",
+    "plural": "Lichter",
+    "en": "light",
+    "example": {
+      "de": "Kelly brachte Licht in die Angelegenheit.",
+      "en": "Kelly brought the matter to light."
+    },
+    "family": [],
+    "related": [
+      "stuhl",
+      "sitz",
+      "keller"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "sitz",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Sitz",
+    "plural": "Sitze",
+    "en": "seat",
+    "example": {
+      "de": "Die Firma hat ihren Sitz an der Westküste.",
+      "en": "The company is located on the West Coast."
+    },
+    "family": [],
+    "related": [
+      "stuhl",
+      "boden",
+      "licht"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "boden",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Boden",
+    "plural": "Böden",
+    "en": "ground, soil",
+    "example": {
+      "de": "Die heiße Sonne brannte den Boden trocken.",
+      "en": "The hot sun baked the ground dry."
+    },
+    "family": [],
+    "related": [
+      "stuhl",
+      "wand",
+      "sitz"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "wand",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Wand",
+    "plural": "Wände",
+    "en": "wall, partition",
+    "example": {
+      "de": "Dort ist ein Portrait von Bob an der Wand.",
+      "en": "There is a portrait of Bob on the wall."
+    },
+    "family": [],
+    "related": [
+      "stuhl",
+      "dach",
+      "boden"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "dach",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Dach",
+    "plural": "Dächer",
+    "en": "roof",
+    "example": {
+      "de": "Das mit dem roten Dach dort ist Toms Haus.",
+      "en": "That's Tom's house with the red roof."
+    },
+    "family": [],
+    "related": [
+      "stuhl",
+      "wand",
+      "treppe"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "stuhl",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Stuhl",
+    "plural": "Stühle",
+    "en": "chair",
+    "example": {
+      "de": "Ich brauche einen bequemen Stuhl.",
+      "en": "I need a comfortable chair."
+    },
+    "family": [
+      "Stuhlbein",
+      "Klappstuhl"
+    ],
+    "related": [
+      "balkon",
       "treppe",
-      "bett"
+      "dach"
     ],
     "theme": "Haus und Möbel"
   },
@@ -4122,15 +10620,241 @@ export const GENERATED: Word[] = [
       "Treppenstufe"
     ],
     "related": [
-      "vermieter",
       "balkon",
-      "schluessel"
+      "kissen",
+      "stuhl"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "kissen",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Kissen",
+    "plural": "Kissen",
+    "en": "cushion, pillow",
+    "example": {
+      "de": "Ich habe zwei Mädchen beim Küssen gesehen.",
+      "en": "I saw two girls kissing."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "baden",
+      "treppe"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "baden",
+    "tier": 3,
+    "lemma": "baden",
+    "en": "to bathe",
+    "example": {
+      "de": "Während ich badete, klingelte das Telefon.",
+      "en": "When I was taking a bath, the telephone rang."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "bad",
+      "kissen"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "bad",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Bad",
+    "plural": "Bäder",
+    "en": "bath",
+    "example": {
+      "de": "In unserem Bad gibt es nur ein Handtuch.",
+      "en": "There's only one bath towel in our bathroom."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "garten",
+      "baden"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "garten",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Garten",
+    "plural": "Gärten",
+    "en": "garden, yard",
+    "example": {
+      "de": "Er pflanzte Kartoffeln in seinem Garten an.",
+      "en": "He grew potatoes in his garden."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "schlafzimmer",
+      "bad"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "schlafzimmer",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Schlafzimmer",
+    "plural": "Schlafzimmer",
+    "en": "bedroom, bedchamber",
+    "example": {
+      "de": "Lass das Fenster im Schlafzimmer nicht auf!",
+      "en": "Don't leave the bedroom window open."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "wohnzimmer",
+      "garten"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "wohnzimmer",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Wohnzimmer",
+    "plural": "Wohnzimmer",
+    "en": "living room",
+    "example": {
+      "de": "Miho war im Wohnzimmer, als ich sie besuchte.",
+      "en": "Miho was in the living room when I visited her."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "badezimmer",
+      "schlafzimmer"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "badezimmer",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Badezimmer",
+    "plural": "Badezimmer",
+    "en": "bathroom",
+    "example": {
+      "de": "Sie hat sich im Badezimmer eingeschlossen.",
+      "en": "She's locked herself in the bathroom."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "schrank",
+      "wohnzimmer"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "schrank",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Schrank",
+    "plural": "Schränke",
+    "en": "cabinet, or:",
+    "example": {
+      "de": "Öffne den Schrank mit diesem Schlüssel hier.",
+      "en": "Unlock the cabinet with this key."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "regal",
+      "badezimmer"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "regal",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Regal",
+    "plural": "Regale",
+    "en": "shelf, shelves",
+    "example": {
+      "de": "Ich komme an nichts im oberen Regal heran.",
+      "en": "I can't reach anything on the top shelf."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "spiegel",
+      "schrank"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "spiegel",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Spiegel",
+    "plural": "Spiegel",
+    "en": "mirror",
+    "example": {
+      "de": "Seine Oberfläche war glatt wie ein Spiegel.",
+      "en": "Its surface was as flat as a mirror."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "dusche",
+      "regal"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "dusche",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Dusche",
+    "plural": "Duschen",
+    "en": "shower",
+    "example": {
+      "de": "Sie nimmt lieber ein Bad als eine Dusche.",
+      "en": "She prefers baths rather than showers."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "decke",
+      "spiegel"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "decke",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Decke",
+    "plural": "Decken",
+    "en": "blanket, ceiling",
+    "example": {
+      "de": "Wir versorgten die Flüchtlinge mit Decken.",
+      "en": "We furnished the refugees with blankets."
+    },
+    "family": [],
+    "related": [
+      "balkon",
+      "dusche",
+      "hausmeister"
     ],
     "theme": "Haus und Möbel"
   },
   {
     "id": "balkon",
-    "tier": 3,
+    "tier": 4,
     "article": "der",
     "lemma": "Balkon",
     "plural": "Balkone",
@@ -4145,74 +10869,8 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "vermieter",
-      "keller",
-      "treppe"
-    ],
-    "theme": "Haus und Möbel"
-  },
-  {
-    "id": "keller",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Keller",
-    "plural": "Keller",
-    "en": "cellar, basement",
-    "example": {
-      "de": "Die Fahrräder stehen im Keller.",
-      "en": "The bikes are in the cellar."
-    },
-    "family": [
-      "Kellerwohnung",
-      "Weinkeller"
-    ],
-    "related": [
-      "vermieter",
-      "balkon",
-      "nebenkosten"
-    ],
-    "theme": "Haus und Möbel"
-  },
-  {
-    "id": "vermieter",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Vermieter",
-    "plural": "Vermieter",
-    "en": "landlord",
-    "example": {
-      "de": "Mein Vermieter repariert die Heizung.",
-      "en": "My landlord is repairing the heating."
-    },
-    "family": [
-      "Vermieterin",
-      "vermieten"
-    ],
-    "related": [
-      "heizung",
-      "nebenkosten",
-      "keller",
-      "miete"
-    ],
-    "theme": "Haus und Möbel"
-  },
-  {
-    "id": "nebenkosten",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Nebenkosten",
-    "en": "additional costs (utilities)",
-    "example": {
-      "de": "Die Nebenkosten sind in der Miete nicht enthalten.",
-      "en": "The additional costs aren’t included in the rent."
-    },
-    "family": [
-      "neben",
-      "Kosten"
-    ],
-    "related": [
-      "heizung",
       "hausmeister",
-      "vermieter"
+      "decke"
     ],
     "theme": "Haus und Möbel"
   },
@@ -4232,31 +10890,222 @@ export const GENERATED: Word[] = [
       "Meister"
     ],
     "related": [
-      "heizung",
-      "steckdose",
-      "nebenkosten"
+      "vermieter",
+      "kaution",
+      "balkon"
     ],
     "theme": "Haus und Möbel"
   },
   {
-    "id": "steckdose",
+    "id": "kaution",
     "tier": 4,
     "article": "die",
-    "lemma": "Steckdose",
-    "plural": "Steckdosen",
-    "en": "power socket",
+    "lemma": "Kaution",
+    "plural": "Kautionen",
+    "en": "deposit (for a rental)",
     "example": {
-      "de": "Es gibt keine Steckdose neben dem Bett.",
-      "en": "There’s no socket next to the bed."
+      "de": "Die Kaution beträgt drei Monatsmieten.",
+      "en": "The deposit is three months’ rent."
     },
     "family": [
-      "stecken",
-      "Dose"
+      "Kautionsrückzahlung",
+      "Miete"
     ],
     "related": [
-      "heizung",
+      "vermieter",
+      "lampe",
       "hausmeister",
-      "dachboden"
+      "miete"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "lampe",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Lampe",
+    "plural": "Lampen",
+    "en": "lamp, light",
+    "example": {
+      "de": "Die Lampe an der Decke ist kaputtgegangen.",
+      "en": "The ceiling lamp has packed up."
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "schublade",
+      "kaution"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "schublade",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Schublade",
+    "plural": "Schubladen",
+    "en": "drawer",
+    "example": {
+      "de": "Warum hast du diese Schublade geschlossen?",
+      "en": "Why did you close this drawer?"
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "dreckig",
+      "lampe"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "dreckig",
+    "tier": 4,
+    "lemma": "dreckig",
+    "en": "dirty",
+    "example": {
+      "de": "Es ist ihm egal, wenn ihr Auto dreckig ist.",
+      "en": "He doesn't mind if her car is dirty."
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "dose",
+      "schublade"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "dose",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Dose",
+    "plural": "Dosen",
+    "en": "box",
+    "example": {
+      "de": "Könnte ich noch eine Dose Bier bekommen?",
+      "en": "Could I please have one more can of beer?"
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "einrichten",
+      "dreckig"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "einrichten",
+    "tier": 4,
+    "lemma": "einrichten",
+    "en": "to establish",
+    "example": {
+      "de": "Dieses Büro ist sehr modern eingerichtet.",
+      "en": "This office has very modern furniture."
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "sofa",
+      "dose"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "sofa",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Sofa",
+    "plural": "Sofas",
+    "en": "sofa, couch",
+    "example": {
+      "de": "Großvater hält auf dem Sofa ein Nickerchen.",
+      "en": "Grandfather is napping on the sofa."
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "teppich",
+      "einrichten"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "teppich",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Teppich",
+    "plural": "Teppiche",
+    "en": "rug, carpet",
+    "example": {
+      "de": "Wird der Kaffeefleck den Teppich ruinieren?",
+      "en": "Will the coffee stain ruin the carpet?"
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "vorhang",
+      "sofa"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "vorhang",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Vorhang",
+    "plural": "Vorhänge",
+    "en": "curtain",
+    "example": {
+      "de": "Als ich die Vorhänge öffnete, schneite es.",
+      "en": "When I opened the curtains, it was snowing."
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "kerze",
+      "teppich"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "kerze",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Kerze",
+    "plural": "Kerzen",
+    "en": "candle",
+    "example": {
+      "de": "Haben Sie daran gedacht, Kerzen zu kaufen?",
+      "en": "Did you remember to buy candles?"
+    },
+    "family": [],
+    "related": [
+      "vermieter",
+      "vorhang",
+      "heizung"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "vermieter",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Vermieter",
+    "plural": "Vermieter",
+    "en": "landlord",
+    "example": {
+      "de": "Mein Vermieter repariert die Heizung.",
+      "en": "My landlord is repairing the heating."
+    },
+    "family": [
+      "Vermieterin",
+      "vermieten"
+    ],
+    "related": [
+      "nebenkosten",
+      "heizung",
+      "kerze",
+      "miete"
     ],
     "theme": "Haus und Möbel"
   },
@@ -4276,9 +11125,9 @@ export const GENERATED: Word[] = [
       "Heizkörper"
     ],
     "related": [
-      "kaution",
+      "nebenkosten",
       "dachboden",
-      "steckdose"
+      "vermieter"
     ],
     "theme": "Haus und Möbel"
   },
@@ -4298,7 +11147,7 @@ export const GENERATED: Word[] = [
       "Boden"
     ],
     "related": [
-      "kaution",
+      "nebenkosten",
       "rollladen",
       "heizung"
     ],
@@ -4320,31 +11169,165 @@ export const GENERATED: Word[] = [
       "Laden"
     ],
     "related": [
-      "kaution",
-      "dachboden",
+      "nebenkosten",
+      "matratze",
+      "dachboden"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "matratze",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Matratze",
+    "plural": "Matratzen",
+    "en": "mattress",
+    "example": {
+      "de": "Ich habe es unter der Matratze versteckt.",
+      "en": "I hid it under the mattress."
+    },
+    "family": [],
+    "related": [
+      "nebenkosten",
+      "schmutz",
+      "rollladen"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "schmutz",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Schmutz",
+    "en": "dirt",
+    "example": {
+      "de": "Etwas Schmutz hat noch niemandem weh getan.",
+      "en": "A little dirt won't hurt you."
+    },
+    "family": [],
+    "related": [
+      "nebenkosten",
+      "deckel",
+      "matratze"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "deckel",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Deckel",
+    "plural": "Deckel",
+    "en": "lid, cap",
+    "example": {
+      "de": "Sie nahm den Deckel von der Schachtel.",
+      "en": "She took off the lid of the box."
+    },
+    "family": [],
+    "related": [
+      "nebenkosten",
+      "truhe",
+      "schmutz"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "truhe",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Truhe",
+    "plural": "Truhen",
+    "en": "chest",
+    "example": {
+      "de": "Die alte, hölzerne Truhe war voller Briefe.",
+      "en": "The old wooden chest was full of letters."
+    },
+    "family": [],
+    "related": [
+      "nebenkosten",
+      "penthouse",
+      "deckel"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "penthouse",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Penthouse",
+    "plural": "Penthouses",
+    "en": "penthouse",
+    "example": {
+      "de": "Tom wohnt in einem Penthouse im dreißigsten Stock.",
+      "en": "Tom lives in a penthouse on the 30th floor."
+    },
+    "family": [],
+    "related": [
+      "nebenkosten",
+      "waschmaschine",
+      "truhe"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "waschmaschine",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Waschmaschine",
+    "plural": "Waschmaschinen",
+    "en": "washing machine",
+    "example": {
+      "de": "Wir müssen eine neue Waschmaschine kaufen.",
+      "en": "We need to buy a new washing machine."
+    },
+    "family": [],
+    "related": [
+      "nebenkosten",
+      "penthouse",
+      "steckdose"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "nebenkosten",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Nebenkosten",
+    "en": "additional costs (utilities)",
+    "example": {
+      "de": "Die Nebenkosten sind in der Miete nicht enthalten.",
+      "en": "The additional costs aren’t included in the rent."
+    },
+    "family": [
+      "neben",
+      "Kosten"
+    ],
+    "related": [
+      "waschmaschine",
+      "steckdose",
       "schimmel"
     ],
     "theme": "Haus und Möbel"
   },
   {
-    "id": "kaution",
+    "id": "steckdose",
     "tier": 6,
     "article": "die",
-    "lemma": "Kaution",
-    "plural": "Kautionen",
-    "en": "deposit (for a rental)",
+    "lemma": "Steckdose",
+    "plural": "Steckdosen",
+    "en": "power socket",
     "example": {
-      "de": "Die Kaution beträgt drei Monatsmieten.",
-      "en": "The deposit is three months’ rent."
+      "de": "Es gibt keine Steckdose neben dem Bett.",
+      "en": "There’s no socket next to the bed."
     },
     "family": [
-      "Kautionsrückzahlung",
-      "Miete"
+      "stecken",
+      "Dose"
     ],
     "related": [
-      "rollladen",
+      "waschmaschine",
       "schimmel",
-      "miete"
+      "nebenkosten"
     ],
     "theme": "Haus und Möbel"
   },
@@ -4363,8 +11346,61 @@ export const GENERATED: Word[] = [
       "Schimmelpilz"
     ],
     "related": [
-      "rollladen",
-      "kaution"
+      "waschmaschine",
+      "undicht",
+      "steckdose"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "undicht",
+    "tier": 6,
+    "lemma": "undicht",
+    "en": "leaky, not watertight",
+    "example": {
+      "de": "Der Eimer ist undicht. Nehmen Sie diesen!",
+      "en": "That bucket leaks. Use this one."
+    },
+    "family": [],
+    "related": [
+      "waschmaschine",
+      "aufwischen",
+      "schimmel"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "aufwischen",
+    "tier": 6,
+    "lemma": "aufwischen",
+    "en": "to wipe something up",
+    "example": {
+      "de": "Schnapp dir einen Fetzen und hilf mir, diesen Saustall aufzuwischen!",
+      "en": "Grab a rag and help me clean up this mess."
+    },
+    "family": [],
+    "related": [
+      "waschmaschine",
+      "ziegelstein",
+      "undicht"
+    ],
+    "theme": "Haus und Möbel"
+  },
+  {
+    "id": "ziegelstein",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Ziegelstein",
+    "plural": "Ziegelsteine",
+    "en": "brick",
+    "example": {
+      "de": "Der Schornstein besteht aus Ziegelsteinen.",
+      "en": "The chimney is made of brick."
+    },
+    "family": [],
+    "related": [
+      "waschmaschine",
+      "aufwischen"
     ],
     "theme": "Haus und Möbel"
   },
@@ -4384,7 +11420,6 @@ export const GENERATED: Word[] = [
       "Schulbus"
     ],
     "related": [
-      "lernen",
       "lehrer",
       "buch",
       "kind"
@@ -4393,7 +11428,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "lehrer",
-    "tier": 1,
+    "tier": 2,
     "article": "der",
     "lemma": "Lehrer",
     "plural": "Lehrer",
@@ -4407,7 +11442,7 @@ export const GENERATED: Word[] = [
       "lehren"
     ],
     "related": [
-      "lernen",
+      "kurs",
       "buch",
       "schule",
       "erklaeren"
@@ -4416,7 +11451,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "buch",
-    "tier": 1,
+    "tier": 2,
     "article": "das",
     "lemma": "Buch",
     "plural": "Bücher",
@@ -4430,9 +11465,9 @@ export const GENERATED: Word[] = [
       "Bücherregal"
     ],
     "related": [
+      "kurs",
       "lernen",
-      "lehrer",
-      "kurs"
+      "lehrer"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4450,31 +11485,9 @@ export const GENERATED: Word[] = [
       "Lernkarte"
     ],
     "related": [
-      "pruefung",
       "kurs",
-      "buch"
-    ],
-    "theme": "Schule und Lernen"
-  },
-  {
-    "id": "kurs",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Kurs",
-    "plural": "Kurse",
-    "en": "course, class",
-    "example": {
-      "de": "Ich besuche einen Kurs an der Volkshochschule.",
-      "en": "I’m taking a course at the adult education centre."
-    },
-    "family": [
-      "Sprachkurs",
-      "Kurszeit"
-    ],
-    "related": [
-      "pruefung",
       "aufgabe",
-      "lernen"
+      "buch"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4494,32 +11507,68 @@ export const GENERATED: Word[] = [
       "Hausaufgabe"
     ],
     "related": [
-      "pruefung",
-      "hausaufgabe",
       "kurs",
+      "klasse",
+      "lernen",
       "schwierig"
     ],
     "theme": "Schule und Lernen"
   },
   {
-    "id": "hausaufgabe",
+    "id": "klasse",
     "tier": 2,
     "article": "die",
-    "lemma": "Hausaufgabe",
-    "plural": "Hausaufgaben",
-    "en": "homework",
+    "lemma": "Klasse",
+    "plural": "Klassen",
+    "en": "class",
     "example": {
-      "de": "Hast du deine Hausaufgaben schon gemacht?",
-      "en": "Have you done your homework yet?"
+      "de": "Die ganze Klasse lachte über seinen Witz.",
+      "en": "The whole class laughed at his joke."
+    },
+    "family": [],
+    "related": [
+      "kurs",
+      "lesen",
+      "aufgabe"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "lesen",
+    "tier": 2,
+    "lemma": "lesen",
+    "en": "to read",
+    "example": {
+      "de": "Das liest sich fast wie ein Abenteuerroman.",
+      "en": "This almost reads like an adventure novel."
+    },
+    "family": [],
+    "related": [
+      "kurs",
+      "klasse",
+      "pruefung"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "kurs",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Kurs",
+    "plural": "Kurse",
+    "en": "course, class",
+    "example": {
+      "de": "Ich besuche einen Kurs an der Volkshochschule.",
+      "en": "I’m taking a course at the adult education centre."
     },
     "family": [
-      "Haus",
-      "Aufgabe"
+      "Sprachkurs",
+      "Kurszeit"
     ],
     "related": [
+      "studium",
       "pruefung",
-      "aufgabe",
-      "note"
+      "lesen"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4539,54 +11588,10 @@ export const GENERATED: Word[] = [
       "Prüfer"
     ],
     "related": [
-      "abschluss",
-      "note",
-      "hausaufgabe"
-    ],
-    "theme": "Schule und Lernen"
-  },
-  {
-    "id": "note",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Note",
-    "plural": "Noten",
-    "en": "grade, mark",
-    "example": {
-      "de": "Er hat in Mathe eine gute Note bekommen.",
-      "en": "He got a good grade in maths."
-    },
-    "family": [
-      "benoten",
-      "Notenspiegel"
-    ],
-    "related": [
-      "abschluss",
       "studium",
-      "pruefung"
-    ],
-    "theme": "Schule und Lernen"
-  },
-  {
-    "id": "studium",
-    "tier": 3,
-    "article": "das",
-    "lemma": "Studium",
-    "plural": "Studien",
-    "en": "university studies",
-    "example": {
-      "de": "Nach dem Studium will sie im Ausland arbeiten.",
-      "en": "After her studies she wants to work abroad."
-    },
-    "family": [
-      "Student",
-      "studieren"
-    ],
-    "related": [
-      "abschluss",
       "unterricht",
-      "note",
-      "bewerbung"
+      "kurs",
+      "note"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4605,15 +11610,15 @@ export const GENERATED: Word[] = [
       "Deutschunterricht"
     ],
     "related": [
-      "abschluss",
       "studium",
-      "stipendium"
+      "abschluss",
+      "pruefung"
     ],
     "theme": "Schule und Lernen"
   },
   {
     "id": "abschluss",
-    "tier": 4,
+    "tier": 3,
     "article": "der",
     "lemma": "Abschluss",
     "plural": "Abschlüsse",
@@ -4627,9 +11632,218 @@ export const GENERATED: Word[] = [
       "Schulabschluss"
     ],
     "related": [
-      "lehrplan",
-      "stipendium",
+      "studium",
+      "college",
       "unterricht"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "college",
+    "tier": 3,
+    "article": "das",
+    "lemma": "College",
+    "plural": "Colleges",
+    "en": "college",
+    "example": {
+      "de": "Mache das Beste aus deinem Leben am College.",
+      "en": "Make the most of your college life."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "labor",
+      "abschluss"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "labor",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Labor",
+    "plural": "Labors",
+    "en": "laboratory",
+    "example": {
+      "de": "Sie sind im naturwissenschaftlichen Labor.",
+      "en": "They're in the science lab."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "zaehlen",
+      "college"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "zaehlen",
+    "tier": 3,
+    "lemma": "zählen",
+    "en": "to count",
+    "example": {
+      "de": "Ich wusste, dass ich auf dich zählen kann!",
+      "en": "I knew I could rely on you!"
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "test",
+      "labor"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "test",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Test",
+    "plural": "Tests",
+    "en": "test",
+    "example": {
+      "de": "Ich wette, wir schreiben heute einen Test.",
+      "en": "I bet we'll have a test today."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "uebersetzung",
+      "zaehlen"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "uebersetzung",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Übersetzung",
+    "plural": "Übersetzungen",
+    "en": "translation",
+    "example": {
+      "de": "Warum ist maschinelle Übersetzung nutzlos?",
+      "en": "Why is machine translation useless?"
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "konzentrieren",
+      "test"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "konzentrieren",
+    "tier": 3,
+    "lemma": "konzentrieren",
+    "en": "to concentrate, to focus",
+    "example": {
+      "de": "Konzentrieren Sie sich auf dieses Problem.",
+      "en": "Concentrate your attention on this problem."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "papier",
+      "uebersetzung"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "papier",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Papier",
+    "plural": "Papiere",
+    "en": "paper",
+    "example": {
+      "de": "Er hatte einen guten Blick auf die Papiere.",
+      "en": "He had a good look at the papers."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "satz",
+      "konzentrieren"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "satz",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Satz",
+    "plural": "Sätze",
+    "en": "sentence",
+    "example": {
+      "de": "Beethovens Fünfte Sinfonie hat vier Sätze.",
+      "en": "Beethoven's Fifth Symphony has four movements."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "schueler",
+      "papier"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "schueler",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Schüler",
+    "plural": "Schüler",
+    "en": "pupil, student",
+    "example": {
+      "de": "Kein Schüler konnte die Frage beantworten.",
+      "en": "None of the pupils were able to answer the question."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "universitaet",
+      "satz"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "universitaet",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Universität",
+    "plural": "Universitäten",
+    "en": "university",
+    "example": {
+      "de": "Ich studiere an der Universität von Hyogo.",
+      "en": "I study at the University of Hyogo."
+    },
+    "family": [],
+    "related": [
+      "studium",
+      "schueler",
+      "stipendium"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "studium",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Studium",
+    "plural": "Studien",
+    "en": "university studies",
+    "example": {
+      "de": "Nach dem Studium will sie im Ausland arbeiten.",
+      "en": "After her studies she wants to work abroad."
+    },
+    "family": [
+      "Student",
+      "studieren"
+    ],
+    "related": [
+      "note",
+      "stipendium",
+      "universitaet",
+      "bewerbung"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4649,15 +11863,167 @@ export const GENERATED: Word[] = [
       "Stipendiengeber"
     ],
     "related": [
-      "lehrplan",
+      "note",
+      "forschung",
+      "studium"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "forschung",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Forschung",
+    "plural": "Forschungen",
+    "en": "research",
+    "example": {
+      "de": "Letzten Endes trug seine Forschung Früchte.",
+      "en": "His research bore fruit in the end."
+    },
+    "family": [],
+    "related": [
+      "note",
+      "konzentriert",
+      "stipendium"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "konzentriert",
+    "tier": 4,
+    "lemma": "konzentriert",
+    "en": "concentrated",
+    "example": {
+      "de": "Sie hat sich auf eine Sache konzentriert.",
+      "en": "She concentrated on one thing."
+    },
+    "family": [],
+    "related": [
+      "note",
+      "disziplin",
+      "forschung"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "disziplin",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Disziplin",
+    "plural": "Disziplinen",
+    "en": "discipline",
+    "example": {
+      "de": "Das Kind kannte überhaupt keine Disziplin.",
+      "en": "The child was completely lacking in discipline."
+    },
+    "family": [],
+    "related": [
+      "note",
+      "vorlesen",
+      "konzentriert"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "vorlesen",
+    "tier": 4,
+    "lemma": "vorlesen",
+    "en": "to read",
+    "example": {
+      "de": "Die Lehrerin lässt den Text laut vorlesen.",
+      "en": "The teacher has the text read aloud."
+    },
+    "family": [],
+    "related": [
+      "note",
+      "student",
+      "disziplin"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "student",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Student",
+    "plural": "Studenten",
+    "en": "student",
+    "example": {
+      "de": "Die Studenten konnten keine Antwort geben.",
+      "en": "The students could not give an answer."
+    },
+    "family": [],
+    "related": [
+      "note",
+      "stift",
+      "vorlesen"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "stift",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Stift",
+    "plural": "Stifte",
+    "en": "pin",
+    "example": {
+      "de": "Mit diesem Stift will ich nicht schreiben.",
+      "en": "I don't want to write with this pen."
+    },
+    "family": [],
+    "related": [
+      "note",
+      "tafel",
+      "student"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "tafel",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Tafel",
+    "plural": "Tafeln",
+    "en": "panel, board",
+    "example": {
+      "de": "Anne hat etwas auf die Tafel geschrieben.",
+      "en": "Ann wrote something on the blackboard."
+    },
+    "family": [],
+    "related": [
+      "note",
+      "stift",
+      "vorlesung"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "note",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Note",
+    "plural": "Noten",
+    "en": "grade, mark",
+    "example": {
+      "de": "Er hat in Mathe eine gute Note bekommen.",
+      "en": "He got a good grade in maths."
+    },
+    "family": [
+      "benoten",
+      "Notenspiegel"
+    ],
+    "related": [
+      "hausaufgabe",
       "vorlesung",
-      "abschluss"
+      "tafel",
+      "pruefung"
     ],
     "theme": "Schule und Lernen"
   },
   {
     "id": "vorlesung",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Vorlesung",
     "plural": "Vorlesungen",
@@ -4671,15 +12037,15 @@ export const GENERATED: Word[] = [
       "Vorlesungsverzeichnis"
     ],
     "related": [
-      "lehrplan",
+      "hausaufgabe",
       "wiederholung",
-      "stipendium"
+      "note"
     ],
     "theme": "Schule und Lernen"
   },
   {
     "id": "wiederholung",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Wiederholung",
     "plural": "Wiederholungen",
@@ -4693,31 +12059,9 @@ export const GENERATED: Word[] = [
       "wieder"
     ],
     "related": [
-      "lehrplan",
-      "vorlesung",
-      "zeugnis"
-    ],
-    "theme": "Schule und Lernen"
-  },
-  {
-    "id": "lehrplan",
-    "tier": 5,
-    "article": "der",
-    "lemma": "Lehrplan",
-    "plural": "Lehrpläne",
-    "en": "curriculum",
-    "example": {
-      "de": "Der Lehrplan wurde grundlegend überarbeitet.",
-      "en": "The curriculum was fundamentally revised."
-    },
-    "family": [
-      "Lehre",
-      "Plan"
-    ],
-    "related": [
-      "dissertation",
+      "hausaufgabe",
       "zeugnis",
-      "wiederholung"
+      "vorlesung"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4737,9 +12081,9 @@ export const GENERATED: Word[] = [
       "Arbeitszeugnis"
     ],
     "related": [
-      "dissertation",
+      "hausaufgabe",
       "nachhilfe",
-      "lehrplan"
+      "wiederholung"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4758,9 +12102,199 @@ export const GENERATED: Word[] = [
       "helfen"
     ],
     "related": [
+      "hausaufgabe",
+      "bueffeln",
+      "zeugnis"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "bueffeln",
+    "tier": 5,
+    "lemma": "büffeln",
+    "en": "to swot, cram",
+    "example": {
+      "de": "Er büffelte die ganze Nacht für den Test.",
+      "en": "He spent all night cramming for the test."
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "nachsitzen",
+      "nachhilfe"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "nachsitzen",
+    "tier": 5,
+    "lemma": "nachsitzen",
+    "en": "to be in detention",
+    "example": {
+      "de": "Die Lehrerin hat ihn nachsitzen lassen.",
+      "en": "The teacher made him stay after school."
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "durchfallen",
+      "bueffeln"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "durchfallen",
+    "tier": 5,
+    "lemma": "durchfallen",
+    "en": "to fall through",
+    "example": {
+      "de": "Ich bin bei / in der Prüfung durchgefallen.",
+      "en": "I failed the exam."
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "these",
+      "nachsitzen"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "these",
+    "tier": 5,
+    "article": "die",
+    "lemma": "These",
+    "plural": "Thesen",
+    "en": "thesis",
+    "example": {
+      "de": "Die These ist nicht mehr haltbar.",
+      "en": "This thesis is no longer tenable."
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "heft",
+      "durchfallen"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "heft",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Heft",
+    "plural": "Hefte",
+    "en": "notebook, writing booklet",
+    "example": {
+      "de": "Ich habe schon wieder mein Heft vergessen.",
+      "en": "I've forgotten my exercise book again."
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "fach",
+      "these"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "fach",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Fach",
+    "plural": "Fächer",
+    "en": "compartment",
+    "example": {
+      "de": "Wir lernen in der Oberschule viele Fächer.",
+      "en": "We study many subjects in high school."
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "klassenzimmer",
+      "heft"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "klassenzimmer",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Klassenzimmer",
+    "plural": "Klassenzimmer",
+    "en": "classroom",
+    "example": {
+      "de": "Wann hat sie das Klassenzimmer verlassen?",
+      "en": "When did she leave the classroom?"
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "kindergarten",
+      "fach"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "kindergarten",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Kindergarten",
+    "plural": "Kindergärten",
+    "en": "nursery school, kindergarten",
+    "example": {
+      "de": "Geht euer Sohn gerne in den Kindergarten?",
+      "en": "Does your son like kindergarten?"
+    },
+    "family": [],
+    "related": [
+      "hausaufgabe",
+      "klassenzimmer",
+      "lehrplan"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "hausaufgabe",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Hausaufgabe",
+    "plural": "Hausaufgaben",
+    "en": "homework",
+    "example": {
+      "de": "Hast du deine Hausaufgaben schon gemacht?",
+      "en": "Have you done your homework yet?"
+    },
+    "family": [
+      "Haus",
+      "Aufgabe"
+    ],
+    "related": [
+      "kindergarten",
+      "lehrplan",
+      "dissertation"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "lehrplan",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Lehrplan",
+    "plural": "Lehrpläne",
+    "en": "curriculum",
+    "example": {
+      "de": "Der Lehrplan wurde grundlegend überarbeitet.",
+      "en": "The curriculum was fundamentally revised."
+    },
+    "family": [
+      "Lehre",
+      "Plan"
+    ],
+    "related": [
+      "kindergarten",
       "dissertation",
-      "zeugnis",
-      "seminararbeit"
+      "hausaufgabe"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4780,8 +12314,9 @@ export const GENERATED: Word[] = [
       "Doktorarbeit"
     ],
     "related": [
-      "nachhilfe",
-      "seminararbeit"
+      "kindergarten",
+      "seminararbeit",
+      "lehrplan"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4801,8 +12336,84 @@ export const GENERATED: Word[] = [
       "Arbeit"
     ],
     "related": [
-      "nachhilfe",
+      "kindergarten",
+      "woerterbuch",
       "dissertation"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "woerterbuch",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Wörterbuch",
+    "plural": "Wörterbücher",
+    "en": "dictionary",
+    "example": {
+      "de": "Ich habe ihr ihr Wörterbuch zurückgegeben.",
+      "en": "I gave her her dictionary back."
+    },
+    "family": [],
+    "related": [
+      "kindergarten",
+      "schulhof",
+      "seminararbeit"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "schulhof",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Schulhof",
+    "plural": "Schulhöfe",
+    "en": "schoolyard",
+    "example": {
+      "de": "Ich stehe in der Mitte des Schulhofes.",
+      "en": "I am standing in the middle of the schoolyard."
+    },
+    "family": [],
+    "related": [
+      "kindergarten",
+      "stundenplan",
+      "woerterbuch"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "stundenplan",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Stundenplan",
+    "plural": "Stundenpläne",
+    "en": "timetable, schedule",
+    "example": {
+      "de": "Hast du den neuen Stundenplan schon gesehen?",
+      "en": "Have you seen the new timetable?"
+    },
+    "family": [],
+    "related": [
+      "kindergarten",
+      "referat",
+      "schulhof"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "referat",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Referat",
+    "plural": "Referate",
+    "en": "oral report, presentation",
+    "example": {
+      "de": "Bitte erinnere mich daran, das Referat einzureichen.",
+      "en": "Please remind me to turn in the paper."
+    },
+    "family": [],
+    "related": [
+      "kindergarten",
+      "stundenplan"
     ],
     "theme": "Schule und Lernen"
   },
@@ -4821,38 +12432,34 @@ export const GENERATED: Word[] = [
       "Taschengeld"
     ],
     "related": [
-      "konto",
-      "euro",
       "bezahlen",
+      "schuld",
       "miete"
     ],
     "theme": "Geld und Bank"
   },
   {
-    "id": "euro",
+    "id": "schuld",
     "tier": 1,
-    "article": "der",
-    "lemma": "Euro",
-    "plural": "Euro",
-    "en": "euro",
+    "article": "die",
+    "lemma": "Schuld",
+    "plural": "Schulden",
+    "en": "debt",
     "example": {
-      "de": "Das kostet zehn Euro.",
-      "en": "That costs ten euros."
+      "de": "Wer wird für diese Schulden aufkommen?",
+      "en": "Who will pay for these debts?"
     },
-    "family": [
-      "Eurostück",
-      "Eurozone"
-    ],
+    "family": [],
     "related": [
-      "konto",
       "bezahlen",
-      "geld"
+      "geld",
+      "karte"
     ],
     "theme": "Geld und Bank"
   },
   {
     "id": "bezahlen",
-    "tier": 1,
+    "tier": 2,
     "lemma": "bezahlen",
     "en": "to pay",
     "example": {
@@ -4864,32 +12471,9 @@ export const GENERATED: Word[] = [
       "zahlen"
     ],
     "related": [
-      "konto",
       "euro",
-      "karte"
-    ],
-    "theme": "Geld und Bank"
-  },
-  {
-    "id": "konto",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Konto",
-    "plural": "Konten",
-    "en": "bank account",
-    "example": {
-      "de": "Ich habe ein Konto bei der Sparkasse.",
-      "en": "I have an account at the savings bank."
-    },
-    "family": [
-      "Kontonummer",
-      "Girokonto"
-    ],
-    "related": [
-      "kredit",
       "karte",
-      "bezahlen",
-      "gehalt"
+      "schuld"
     ],
     "theme": "Geld und Bank"
   },
@@ -4909,9 +12493,9 @@ export const GENERATED: Word[] = [
       "Landkarte"
     ],
     "related": [
-      "kredit",
+      "euro",
       "kosten",
-      "konto"
+      "bezahlen"
     ],
     "theme": "Geld und Bank"
   },
@@ -4929,15 +12513,151 @@ export const GENERATED: Word[] = [
       "kostenlos"
     ],
     "related": [
-      "kredit",
-      "sparen",
+      "euro",
+      "dollar",
       "karte"
     ],
     "theme": "Geld und Bank"
   },
   {
-    "id": "sparen",
+    "id": "dollar",
     "tier": 2,
+    "article": "der",
+    "lemma": "Dollar",
+    "plural": "Dollars",
+    "en": "dollar",
+    "example": {
+      "de": "Wir teilten zehn Dollar unter uns fünf auf.",
+      "en": "We divided ten dollars among the five of us."
+    },
+    "family": [],
+    "related": [
+      "euro",
+      "wert",
+      "kosten"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "wert",
+    "tier": 2,
+    "lemma": "wert",
+    "en": "worth, worthy of",
+    "example": {
+      "de": "Könnt ihr den Wert des Diamanten schätzen?",
+      "en": "Can you guess the worth of the diamond?"
+    },
+    "family": [],
+    "related": [
+      "euro",
+      "million",
+      "dollar"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "million",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Million",
+    "plural": "Millionen",
+    "en": "million",
+    "example": {
+      "de": "Belgrad hat etwa zwei Millionen Einwohner.",
+      "en": "Belgrade has about 2 million inhabitants."
+    },
+    "family": [],
+    "related": [
+      "euro",
+      "gewinn",
+      "wert"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "gewinn",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Gewinn",
+    "plural": "Gewinne",
+    "en": "profit, gain",
+    "example": {
+      "de": "Wir teilen die Gewinne unter uns allen auf.",
+      "en": "We'll divide the profits among all of us."
+    },
+    "family": [],
+    "related": [
+      "euro",
+      "reich",
+      "million"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "reich",
+    "tier": 2,
+    "lemma": "reich",
+    "en": "rich, wealthy",
+    "example": {
+      "de": "China ist reich an natürlichen Ressourcen.",
+      "en": "China is rich in natural resources."
+    },
+    "family": [],
+    "related": [
+      "euro",
+      "gewinn",
+      "konto"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "euro",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Euro",
+    "plural": "Euro",
+    "en": "euro",
+    "example": {
+      "de": "Das kostet zehn Euro.",
+      "en": "That costs ten euros."
+    },
+    "family": [
+      "Eurostück",
+      "Eurozone"
+    ],
+    "related": [
+      "kredit",
+      "konto",
+      "reich"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "konto",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Konto",
+    "plural": "Konten",
+    "en": "bank account",
+    "example": {
+      "de": "Ich habe ein Konto bei der Sparkasse.",
+      "en": "I have an account at the savings bank."
+    },
+    "family": [
+      "Kontonummer",
+      "Girokonto"
+    ],
+    "related": [
+      "kredit",
+      "sparen",
+      "euro",
+      "gehalt"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "sparen",
+    "tier": 3,
     "lemma": "sparen",
     "en": "to save (money)",
     "example": {
@@ -4950,14 +12670,172 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "kredit",
-      "kosten",
+      "schulden",
+      "konto"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "schulden",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Schulden",
+    "en": "debts",
+    "example": {
+      "de": "Er hat viele Schulden bei der Bank.",
+      "en": "He has a lot of debts with the bank."
+    },
+    "family": [
+      "Schuld",
+      "verschuldet"
+    ],
+    "related": [
+      "kredit",
+      "versicherung",
+      "sparen"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "versicherung",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Versicherung",
+    "plural": "Versicherungen",
+    "en": "insurance",
+    "example": {
+      "de": "Die Versicherung zahlt den Schaden.",
+      "en": "The insurance pays for the damage."
+    },
+    "family": [
+      "versichern",
+      "Krankenversicherung"
+    ],
+    "related": [
+      "kredit",
+      "vermoegen",
+      "schulden"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "vermoegen",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Vermögen",
+    "plural": "Vermögen",
+    "en": "wealth, fortune",
+    "example": {
+      "de": "Er hat ein großes Vermögen geerbt.",
+      "en": "He inherited a large fortune."
+    },
+    "family": [
+      "vermögend",
+      "vermögen"
+    ],
+    "related": [
+      "kredit",
+      "pfund",
+      "versicherung"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "pfund",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Pfund",
+    "plural": "Pfunde",
+    "en": "pound",
+    "example": {
+      "de": "Wo kann ich meine Dollar in Pfund tauschen?",
+      "en": "Where can I exchange my dollars for pounds?"
+    },
+    "family": [],
+    "related": [
+      "kredit",
+      "rate",
+      "vermoegen"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "rate",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Rate",
+    "plural": "Raten",
+    "en": "rate",
+    "example": {
+      "de": "Raten Sie mal, was ich gerne machen möchte!",
+      "en": "Guess what I want to do."
+    },
+    "family": [],
+    "related": [
+      "kredit",
+      "teuer",
+      "pfund"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "teuer",
+    "tier": 3,
+    "lemma": "teuer",
+    "en": "expensive, dear",
+    "example": {
+      "de": "Biolebensmittel sind üblicherweise teurer.",
+      "en": "Organic food is usually more expensive."
+    },
+    "family": [],
+    "related": [
+      "kredit",
+      "cent",
+      "rate"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "cent",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Cent",
+    "plural": "Cents",
+    "en": "cent",
+    "example": {
+      "de": "Sie waren ungefähr 25 Cent pro Pfund billiger.",
+      "en": "They were about 25 cents a pound cheaper."
+    },
+    "family": [],
+    "related": [
+      "kredit",
+      "verlust",
+      "teuer"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "verlust",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Verlust",
+    "plural": "Verluste",
+    "en": "loss",
+    "example": {
+      "de": "Wir müssen ihn nach seinem Verlust trösten.",
+      "en": "We've got to comfort him after his loss."
+    },
+    "family": [],
+    "related": [
+      "kredit",
+      "cent",
       "gehalt"
     ],
     "theme": "Geld und Bank"
   },
   {
     "id": "kredit",
-    "tier": 3,
+    "tier": 4,
     "article": "der",
     "lemma": "Kredit",
     "plural": "Kredite",
@@ -4973,14 +12851,14 @@ export const GENERATED: Word[] = [
     "related": [
       "zinsen",
       "gehalt",
-      "sparen",
+      "verlust",
       "konto"
     ],
     "theme": "Geld und Bank"
   },
   {
     "id": "gehalt",
-    "tier": 3,
+    "tier": 4,
     "article": "das",
     "lemma": "Gehalt",
     "plural": "Gehälter",
@@ -4995,7 +12873,7 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "zinsen",
-      "ueberweisung",
+      "bargeld",
       "kredit",
       "konto",
       "arbeit"
@@ -5003,30 +12881,8 @@ export const GENERATED: Word[] = [
     "theme": "Geld und Bank"
   },
   {
-    "id": "ueberweisung",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Überweisung",
-    "plural": "Überweisungen",
-    "en": "bank transfer",
-    "example": {
-      "de": "Die Überweisung dauert zwei Tage.",
-      "en": "The transfer takes two days."
-    },
-    "family": [
-      "überweisen",
-      "Weisung"
-    ],
-    "related": [
-      "zinsen",
-      "bargeld",
-      "gehalt"
-    ],
-    "theme": "Geld und Bank"
-  },
-  {
     "id": "bargeld",
-    "tier": 3,
+    "tier": 4,
     "article": "das",
     "lemma": "Bargeld",
     "en": "cash",
@@ -5040,50 +12896,8 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "zinsen",
-      "ueberweisung",
-      "schulden"
-    ],
-    "theme": "Geld und Bank"
-  },
-  {
-    "id": "zinsen",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Zinsen",
-    "en": "interest (on money)",
-    "example": {
-      "de": "Die Zinsen sind im Moment sehr niedrig.",
-      "en": "Interest rates are very low at the moment."
-    },
-    "family": [
-      "verzinsen",
-      "Zinssatz"
-    ],
-    "related": [
-      "vermoegen",
-      "schulden",
-      "bargeld"
-    ],
-    "theme": "Geld und Bank"
-  },
-  {
-    "id": "schulden",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Schulden",
-    "en": "debts",
-    "example": {
-      "de": "Er hat viele Schulden bei der Bank.",
-      "en": "He has a lot of debts with the bank."
-    },
-    "family": [
-      "Schuld",
-      "verschuldet"
-    ],
-    "related": [
-      "vermoegen",
       "steuer",
-      "zinsen"
+      "gehalt"
     ],
     "theme": "Geld und Bank"
   },
@@ -5103,59 +12917,15 @@ export const GENERATED: Word[] = [
       "versteuern"
     ],
     "related": [
-      "vermoegen",
-      "versicherung",
-      "schulden"
-    ],
-    "theme": "Geld und Bank"
-  },
-  {
-    "id": "versicherung",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Versicherung",
-    "plural": "Versicherungen",
-    "en": "insurance",
-    "example": {
-      "de": "Die Versicherung zahlt den Schaden.",
-      "en": "The insurance pays for the damage."
-    },
-    "family": [
-      "versichern",
-      "Krankenversicherung"
-    ],
-    "related": [
-      "vermoegen",
-      "steuer",
-      "rente"
-    ],
-    "theme": "Geld und Bank"
-  },
-  {
-    "id": "vermoegen",
-    "tier": 5,
-    "article": "das",
-    "lemma": "Vermögen",
-    "plural": "Vermögen",
-    "en": "wealth, fortune",
-    "example": {
-      "de": "Er hat ein großes Vermögen geerbt.",
-      "en": "He inherited a large fortune."
-    },
-    "family": [
-      "vermögend",
-      "vermögen"
-    ],
-    "related": [
-      "glaeubiger",
+      "zinsen",
       "rente",
-      "versicherung"
+      "bargeld"
     ],
     "theme": "Geld und Bank"
   },
   {
     "id": "rente",
-    "tier": 5,
+    "tier": 4,
     "article": "die",
     "lemma": "Rente",
     "plural": "Renten",
@@ -5169,9 +12939,210 @@ export const GENERATED: Word[] = [
       "Altersrente"
     ],
     "related": [
-      "glaeubiger",
+      "zinsen",
+      "rechnen",
+      "steuer"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "rechnen",
+    "tier": 4,
+    "lemma": "rechnen",
+    "en": "to count, reckon",
+    "example": {
+      "de": "Damit haben die Fans nicht gerechnet.",
+      "en": "Here's something fans never thought they'd see."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "ausgeben",
+      "rente"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "ausgeben",
+    "tier": 4,
+    "lemma": "ausgeben",
+    "en": "to spend, to expend",
+    "example": {
+      "de": "Zehntausend Yen decken nicht die Ausgaben.",
+      "en": "Ten thousand yen will not cover the expenses."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "spenden",
+      "rechnen"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "spenden",
+    "tier": 4,
+    "lemma": "spenden",
+    "en": "to donate, to give as charity",
+    "example": {
+      "de": "Er spendete seiner Schwester eine Niere.",
+      "en": "He donated a kidney to his sister."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "spende",
+      "ausgeben"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "spende",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Spende",
+    "plural": "Spenden",
+    "en": "donation",
+    "example": {
+      "de": "Alle Spenden sind von der Steuer absetzbar.",
+      "en": "All contributions are tax deductible."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "ersparen",
+      "spenden"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "ersparen",
+    "tier": 4,
+    "lemma": "ersparen",
+    "en": "to save, save up",
+    "example": {
+      "de": "Ich möchte dir diese Frustration ersparen!",
+      "en": "I want to spare you this frustration!"
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "bezahlung",
+      "spende"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "bezahlung",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Bezahlung",
+    "plural": "Bezahlungen",
+    "en": "payment",
+    "example": {
+      "de": "Er ist mit der Bezahlung im Rückstand.",
+      "en": "He's in arrears."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "investieren",
+      "ersparen"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "investieren",
+    "tier": 4,
+    "lemma": "investieren",
+    "en": "to invest",
+    "example": {
+      "de": "Ich investiere Geld in dieses Unternehmen.",
+      "en": "I am investing money into this venture."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "muenze",
+      "bezahlung"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "muenze",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Münze",
+    "plural": "Münzen",
+    "en": "money, in its senses as",
+    "example": {
+      "de": "Ich habe viele Münzen in dieser Schachtel.",
+      "en": "I have many coins in this box."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "lohn",
+      "investieren"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "lohn",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Lohn",
+    "plural": "Löhne",
+    "en": "wage",
+    "example": {
+      "de": "Ich habe die Löhne meiner Arbeiter erhöht.",
+      "en": "I raised the wages of my workers."
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "kreditkarte",
+      "muenze"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "kreditkarte",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Kreditkarte",
+    "plural": "Kreditkarten",
+    "en": "credit card",
+    "example": {
+      "de": "Wird diese Kreditkarte weltweit akzeptiert?",
+      "en": "Is this credit card accepted internationally?"
+    },
+    "family": [],
+    "related": [
+      "zinsen",
+      "lohn",
+      "betrag"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "zinsen",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Zinsen",
+    "en": "interest (on money)",
+    "example": {
+      "de": "Die Zinsen sind im Moment sehr niedrig.",
+      "en": "Interest rates are very low at the moment."
+    },
+    "family": [
+      "verzinsen",
+      "Zinssatz"
+    ],
+    "related": [
+      "ueberweisung",
       "betrag",
-      "vermoegen"
+      "kreditkarte"
     ],
     "theme": "Geld und Bank"
   },
@@ -5191,8 +13162,68 @@ export const GENERATED: Word[] = [
       "Rechnungsbetrag"
     ],
     "related": [
+      "ueberweisung",
+      "budget",
+      "zinsen"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "budget",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Budget",
+    "plural": "Budgets",
+    "en": "budget",
+    "example": {
+      "de": "Es ist wichtig, dass man ein Budget hat.",
+      "en": "It is important to have a budget."
+    },
+    "family": [],
+    "related": [
+      "ueberweisung",
+      "geldbeutel",
+      "betrag"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "geldbeutel",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Geldbeutel",
+    "plural": "Geldbeutel",
+    "en": "wallet, purse",
+    "example": {
+      "de": "Sie fand einen Geldbeutel unter dem Tisch.",
+      "en": "She found a purse under the table."
+    },
+    "family": [],
+    "related": [
+      "ueberweisung",
+      "budget",
+      "glaeubiger"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "ueberweisung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Überweisung",
+    "plural": "Überweisungen",
+    "en": "bank transfer",
+    "example": {
+      "de": "Die Überweisung dauert zwei Tage.",
+      "en": "The transfer takes two days."
+    },
+    "family": [
+      "überweisen",
+      "Weisung"
+    ],
+    "related": [
+      "geldbeutel",
       "glaeubiger",
-      "rente",
       "buergschaft"
     ],
     "theme": "Geld und Bank"
@@ -5213,8 +13244,9 @@ export const GENERATED: Word[] = [
       "gläubig"
     ],
     "related": [
-      "betrag",
-      "buergschaft"
+      "geldbeutel",
+      "buergschaft",
+      "ueberweisung"
     ],
     "theme": "Geld und Bank"
   },
@@ -5234,8 +13266,27 @@ export const GENERATED: Word[] = [
       "bürgen"
     ],
     "related": [
-      "betrag",
+      "geldbeutel",
+      "erbschaft",
       "glaeubiger"
+    ],
+    "theme": "Geld und Bank"
+  },
+  {
+    "id": "erbschaft",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Erbschaft",
+    "plural": "Erbschaften",
+    "en": "estate",
+    "example": {
+      "de": "Tom hat seine ganze Erbschaft vergeudet.",
+      "en": "Tom squandered his entire inheritance."
+    },
+    "family": [],
+    "related": [
+      "geldbeutel",
+      "buergschaft"
     ],
     "theme": "Geld und Bank"
   },
@@ -5254,31 +13305,9 @@ export const GENERATED: Word[] = [
       "Polizeiauto"
     ],
     "related": [
-      "formular",
       "adresse",
-      "name"
-    ],
-    "theme": "Behörden und Recht"
-  },
-  {
-    "id": "adresse",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Adresse",
-    "plural": "Adressen",
-    "en": "address",
-    "example": {
-      "de": "Können Sie mir Ihre Adresse geben?",
-      "en": "Can you give me your address?"
-    },
-    "family": [
-      "Adressbuch",
-      "E-Mail-Adresse"
-    ],
-    "related": [
-      "formular",
       "name",
-      "polizei"
+      "recht"
     ],
     "theme": "Behörden und Recht"
   },
@@ -5298,59 +13327,271 @@ export const GENERATED: Word[] = [
       "Nachname"
     ],
     "related": [
-      "formular",
       "adresse",
-      "unterschrift"
+      "recht",
+      "polizei"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "formular",
-    "tier": 2,
+    "id": "recht",
+    "tier": 1,
     "article": "das",
-    "lemma": "Formular",
-    "plural": "Formulare",
-    "en": "form (document)",
+    "lemma": "Recht",
+    "plural": "Rechte",
+    "en": "right, privilege",
     "example": {
-      "de": "Füllen Sie bitte dieses Formular aus.",
-      "en": "Please fill out this form."
+      "de": "Jeder hat das Recht auf eine eigene Meinung.",
+      "en": "Everyone has the right to their own opinion."
     },
-    "family": [
-      "Antragsformular",
-      "Form"
-    ],
+    "family": [],
     "related": [
-      "antrag",
-      "unterschrift",
-      "name"
+      "adresse",
+      "name",
+      "gesetz"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "unterschrift",
+    "id": "adresse",
     "tier": 2,
     "article": "die",
-    "lemma": "Unterschrift",
-    "plural": "Unterschriften",
-    "en": "signature",
+    "lemma": "Adresse",
+    "plural": "Adressen",
+    "en": "address",
     "example": {
-      "de": "Hier fehlt noch Ihre Unterschrift.",
-      "en": "Your signature is still missing here."
+      "de": "Können Sie mir Ihre Adresse geben?",
+      "en": "Can you give me your address?"
     },
     "family": [
-      "unterschreiben",
-      "Schrift"
+      "Adressbuch",
+      "E-Mail-Adresse"
     ],
     "related": [
-      "antrag",
       "ausweis",
-      "formular"
+      "gesetz",
+      "recht"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "gesetz",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Gesetz",
+    "plural": "Gesetze",
+    "en": "law",
+    "example": {
+      "de": "Das neue Gesetz tritt im Januar in Kraft.",
+      "en": "The new law comes into force in January."
+    },
+    "family": [
+      "gesetzlich",
+      "Gesetzgeber"
+    ],
+    "related": [
+      "ausweis",
+      "bescheid",
+      "adresse"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "bescheid",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Bescheid",
+    "plural": "Bescheide",
+    "en": "notice, decision (official)",
+    "example": {
+      "de": "Den Bescheid erhalten Sie per Post.",
+      "en": "You will receive the notice by post."
+    },
+    "family": [
+      "bescheiden",
+      "Steuerbescheid"
+    ],
+    "related": [
+      "ausweis",
+      "gefaengnis",
+      "gesetz"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "gefaengnis",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Gefängnis",
+    "plural": "Gefängnisse",
+    "en": "prison, jail",
+    "example": {
+      "de": "Diese Schule sieht aus wie ein Gefängnis.",
+      "en": "That school looks just like a prison."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "opfer",
+      "bescheid"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "opfer",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Opfer",
+    "plural": "Opfer",
+    "en": "sacrifice",
+    "example": {
+      "de": "Ich will, dass du unter mir stehst, du Opfer.",
+      "en": "I want you to be beneath me, you wimp."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "polizist",
+      "gefaengnis"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "polizist",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Polizist",
+    "plural": "Polizisten",
+    "en": "police officer, policeman",
+    "example": {
+      "de": "Die Polizisten nahmen den Einbrecher fest.",
+      "en": "The police officers arrested the burglar."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "gericht",
+      "opfer"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "gericht",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Gericht",
+    "plural": "Gerichte",
+    "en": "court",
+    "example": {
+      "de": "Ich bereite gerne traditionelle Gerichte zu.",
+      "en": "I like to cook traditional dishes."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "richter",
+      "polizist"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "richter",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Richter",
+    "plural": "Richter",
+    "en": "judge",
+    "example": {
+      "de": "Die Öffentlichkeit ist der beste Richter.",
+      "en": "The public is the best judge."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "anwalt",
+      "gericht"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "anwalt",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Anwalt",
+    "plural": "Anwälte",
+    "en": "attorney, lawyer",
+    "example": {
+      "de": "Dieser Anwalt hat in keinem Fall verloren.",
+      "en": "This lawyer has never lost a case."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "verbrechen",
+      "richter"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "verbrechen",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Verbrechen",
+    "plural": "Verbrechen",
+    "en": "crime",
+    "example": {
+      "de": "Was ist der Hauptgrund für das Verbrechen?",
+      "en": "What is the main cause of the crime?"
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "zeuge",
+      "anwalt"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "zeuge",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Zeuge",
+    "plural": "Zeugen",
+    "en": "witness, wit",
+    "example": {
+      "de": "Rufen Sie bitte Ihren ersten Zeugen auf!",
+      "en": "Please call your first witness."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "beweis",
+      "verbrechen"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "beweis",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Beweis",
+    "plural": "Beweise",
+    "en": "proof",
+    "example": {
+      "de": "Ich habe keinen Beweis für das Gegenteil.",
+      "en": "I have no proof to the contrary."
+    },
+    "family": [],
+    "related": [
+      "ausweis",
+      "zeuge",
+      "erlaubnis"
     ],
     "theme": "Behörden und Recht"
   },
   {
     "id": "ausweis",
-    "tier": 2,
+    "tier": 3,
     "article": "der",
     "lemma": "Ausweis",
     "plural": "Ausweise",
@@ -5364,16 +13605,16 @@ export const GENERATED: Word[] = [
       "Personalausweis"
     ],
     "related": [
-      "antrag",
-      "erlaubnis",
       "unterschrift",
+      "erlaubnis",
+      "beweis",
       "reisepass"
     ],
     "theme": "Behörden und Recht"
   },
   {
     "id": "erlaubnis",
-    "tier": 2,
+    "tier": 3,
     "article": "die",
     "lemma": "Erlaubnis",
     "en": "permission",
@@ -5386,9 +13627,9 @@ export const GENERATED: Word[] = [
       "Parkerlaubnis"
     ],
     "related": [
+      "unterschrift",
       "antrag",
-      "ausweis",
-      "behoerde"
+      "ausweis"
     ],
     "theme": "Behörden und Recht"
   },
@@ -5408,82 +13649,16 @@ export const GENERATED: Word[] = [
       "Antragsteller"
     ],
     "related": [
+      "unterschrift",
       "vertrag",
-      "behoerde",
       "erlaubnis",
       "formular"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "behoerde",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Behörde",
-    "plural": "Behörden",
-    "en": "authority, government office",
-    "example": {
-      "de": "Die Behörde ist nur vormittags geöffnet.",
-      "en": "The office is only open in the mornings."
-    },
-    "family": [
-      "Behördengang",
-      "Beamter"
-    ],
-    "related": [
-      "vertrag",
-      "genehmigung",
-      "antrag"
-    ],
-    "theme": "Behörden und Recht"
-  },
-  {
-    "id": "genehmigung",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Genehmigung",
-    "plural": "Genehmigungen",
-    "en": "permit, approval",
-    "example": {
-      "de": "Für den Umbau brauchen wir eine Genehmigung.",
-      "en": "We need a permit for the renovation."
-    },
-    "family": [
-      "genehmigen",
-      "Baugenehmigung"
-    ],
-    "related": [
-      "vertrag",
-      "gesetz",
-      "behoerde"
-    ],
-    "theme": "Behörden und Recht"
-  },
-  {
-    "id": "gesetz",
-    "tier": 3,
-    "article": "das",
-    "lemma": "Gesetz",
-    "plural": "Gesetze",
-    "en": "law",
-    "example": {
-      "de": "Das neue Gesetz tritt im Januar in Kraft.",
-      "en": "The new law comes into force in January."
-    },
-    "family": [
-      "gesetzlich",
-      "Gesetzgeber"
-    ],
-    "related": [
-      "vertrag",
-      "genehmigung",
-      "frist"
-    ],
-    "theme": "Behörden und Recht"
-  },
-  {
     "id": "vertrag",
-    "tier": 4,
+    "tier": 3,
     "article": "der",
     "lemma": "Vertrag",
     "plural": "Verträge",
@@ -5497,105 +13672,297 @@ export const GENERATED: Word[] = [
       "Mietvertrag"
     ],
     "related": [
-      "bescheid",
-      "frist",
-      "gesetz",
+      "unterschrift",
+      "erlauben",
+      "antrag",
       "kuendigung"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "frist",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Frist",
-    "plural": "Fristen",
-    "en": "deadline, time limit",
+    "id": "erlauben",
+    "tier": 3,
+    "lemma": "erlauben",
+    "en": "to allow, to permit",
     "example": {
-      "de": "Die Frist endet am Freitag.",
-      "en": "The deadline ends on Friday."
+      "de": "Essen ist in der Bibliothek nicht erlaubt.",
+      "en": "Eating is not permitted in the library."
     },
-    "family": [
-      "fristgerecht",
-      "Anmeldefrist"
-    ],
+    "family": [],
     "related": [
-      "bescheid",
-      "anmeldung",
+      "unterschrift",
+      "erlaubt",
       "vertrag"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "anmeldung",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Anmeldung",
-    "plural": "Anmeldungen",
-    "en": "registration",
+    "id": "erlaubt",
+    "tier": 3,
+    "lemma": "erlaubt",
+    "en": "allowed, allowable",
     "example": {
-      "de": "Die Anmeldung beim Amt dauert nicht lange.",
-      "en": "Registering at the office doesn’t take long."
+      "de": "Rauchen ist in diesem Raum nicht erlaubt.",
+      "en": "Smoking is not allowed in this room."
     },
-    "family": [
-      "anmelden",
-      "Meldung"
-    ],
+    "family": [],
     "related": [
-      "bescheid",
-      "gebuehr",
-      "frist",
-      "wohnung"
+      "unterschrift",
+      "stehlen",
+      "erlauben"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "gebuehr",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Gebühr",
-    "plural": "Gebühren",
-    "en": "fee",
+    "id": "stehlen",
+    "tier": 3,
+    "lemma": "stehlen",
+    "en": "to steal",
     "example": {
-      "de": "Für den Ausweis fällt eine Gebühr an.",
-      "en": "A fee is charged for the ID card."
+      "de": "Sogar eine Nadel zu stehlen ist eine Sünde.",
+      "en": "It is a sin to steal even a pin."
     },
-    "family": [
-      "gebührenfrei",
-      "Verwaltungsgebühr"
-    ],
+    "family": [],
     "related": [
-      "bescheid",
-      "anmeldung",
-      "einspruch"
+      "unterschrift",
+      "akte",
+      "erlaubt"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "bescheid",
-    "tier": 5,
+    "id": "akte",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Akte",
+    "plural": "Akten",
+    "en": "file",
+    "example": {
+      "de": "Die Akte wurde ans Ministerium geschickt.",
+      "en": "The record was sent to the ministry."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "pflicht",
+      "stehlen"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "pflicht",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Pflicht",
+    "plural": "Pflichten",
+    "en": "duty",
+    "example": {
+      "de": "Es ist unsere Pflicht, einander zu helfen.",
+      "en": "It is our duty to help one another."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "unschuldig",
+      "akte"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "unschuldig",
+    "tier": 3,
+    "lemma": "unschuldig",
+    "en": "innocent",
+    "example": {
+      "de": "Woher wissen wir, dass er unschuldig ist?",
+      "en": "How do we know that he's innocent?"
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "schutz",
+      "pflicht"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "schutz",
+    "tier": 3,
     "article": "der",
-    "lemma": "Bescheid",
-    "plural": "Bescheide",
-    "en": "notice, decision (official)",
+    "lemma": "Schutz",
+    "plural": "Schutze",
+    "en": "protection",
     "example": {
-      "de": "Den Bescheid erhalten Sie per Post.",
-      "en": "You will receive the notice by post."
+      "de": "Er ist im Schutz der Dunkelheit entwischt.",
+      "en": "He escaped under cover of darkness."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "verteidigen",
+      "unschuldig"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "verteidigen",
+    "tier": 3,
+    "lemma": "verteidigen",
+    "en": "to defend",
+    "example": {
+      "de": "Jeder hat das Recht, sich zu verteidigen.",
+      "en": "Every person has a right to defend themselves."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "strafe",
+      "schutz"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "strafe",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Strafe",
+    "plural": "Strafen",
+    "en": "punishment",
+    "example": {
+      "de": "Teenager sind Gottes Strafe fürs Sexhaben.",
+      "en": "Teenagers are God's punishment for having sex."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "dieb",
+      "verteidigen"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "dieb",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Dieb",
+    "plural": "Diebe",
+    "en": "thief",
+    "example": {
+      "de": "Mein Auto wurde von einem Dieb gestohlen.",
+      "en": "My car was stolen by a thief."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "urteil",
+      "strafe"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "urteil",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Urteil",
+    "plural": "Urteile",
+    "en": "judgment, verdict",
+    "example": {
+      "de": "Wir können uns auf sein Urteil verlassen.",
+      "en": "We can rely on his judgement."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "verbot",
+      "dieb"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "verbot",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Verbot",
+    "plural": "Verbote",
+    "en": "prohibition, ban",
+    "example": {
+      "de": "Das Verbot wird von keinem mehr ernst genommen.",
+      "en": "The ban is no longer taken seriously by anyone."
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "staatsanwalt",
+      "urteil"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "staatsanwalt",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Staatsanwalt",
+    "plural": "Staatsanwälte",
+    "en": "public prosecutor, district attorney",
+    "example": {
+      "de": "Wer war der ehemalige Staatsanwalt?",
+      "en": "Who was the former prosecutor?"
+    },
+    "family": [],
+    "related": [
+      "unterschrift",
+      "verbot",
+      "genehmigung"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "unterschrift",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Unterschrift",
+    "plural": "Unterschriften",
+    "en": "signature",
+    "example": {
+      "de": "Hier fehlt noch Ihre Unterschrift.",
+      "en": "Your signature is still missing here."
     },
     "family": [
-      "bescheiden",
-      "Steuerbescheid"
+      "unterschreiben",
+      "Schrift"
     ],
     "related": [
-      "vollmacht",
+      "formular",
+      "genehmigung",
+      "staatsanwalt"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "genehmigung",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Genehmigung",
+    "plural": "Genehmigungen",
+    "en": "permit, approval",
+    "example": {
+      "de": "Für den Umbau brauchen wir eine Genehmigung.",
+      "en": "We need a permit for the renovation."
+    },
+    "family": [
+      "genehmigen",
+      "Baugenehmigung"
+    ],
+    "related": [
+      "formular",
       "einspruch",
-      "gebuehr"
+      "unterschrift"
     ],
     "theme": "Behörden und Recht"
   },
   {
     "id": "einspruch",
-    "tier": 5,
+    "tier": 4,
     "article": "der",
     "lemma": "Einspruch",
     "plural": "Einsprüche",
@@ -5609,37 +13976,283 @@ export const GENERATED: Word[] = [
       "Spruch"
     ],
     "related": [
-      "vollmacht",
-      "zustaendigkeit",
-      "bescheid"
+      "formular",
+      "verhandlung",
+      "genehmigung"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "zustaendigkeit",
-    "tier": 5,
+    "id": "verhandlung",
+    "tier": 4,
     "article": "die",
-    "lemma": "Zuständigkeit",
-    "plural": "Zuständigkeiten",
-    "en": "responsibility, jurisdiction",
+    "lemma": "Verhandlung",
+    "plural": "Verhandlungen",
+    "en": "negotiation",
     "example": {
-      "de": "Das liegt nicht in meiner Zuständigkeit.",
-      "en": "That isn’t within my remit."
+      "de": "Wir möchten diese Verhandlungen abbrechen.",
+      "en": "We want to break off this negotiation."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "verdaechtig",
+      "einspruch"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "verdaechtig",
+    "tier": 4,
+    "lemma": "verdächtig",
+    "en": "suspicious, suspect",
+    "example": {
+      "de": "Die Verdächtige ist eine hellhäutige Frau.",
+      "en": "The suspect is a caucasian female."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "zeugin",
+      "verhandlung"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "zeugin",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Zeugin",
+    "plural": "Zeuginnen",
+    "en": "witness",
+    "example": {
+      "de": "Ich muss morgen bei Gericht als Zeugin aussagen.",
+      "en": "I have to give a testimony in the courtroom tomorrow."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "gefaehrden",
+      "verdaechtig"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "gefaehrden",
+    "tier": 4,
+    "lemma": "gefährden",
+    "en": "to endanger, compromise",
+    "example": {
+      "de": "Ich gefährde weder mich selbst noch andere.",
+      "en": "I don't pose a danger to myself or to others."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "verdaechtiger",
+      "zeugin"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "verdaechtiger",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Verdächtiger",
+    "plural": "Verdächtige",
+    "en": "suspect",
+    "example": {
+      "de": "Wir haben einen Verdächtigen in Gewahrsam.",
+      "en": "We've got a suspect in custody."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "registrieren",
+      "gefaehrden"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "registrieren",
+    "tier": 4,
+    "lemma": "registrieren",
+    "en": "to register",
+    "example": {
+      "de": "Ist es zu spät, um sich zu registrieren?",
+      "en": "Is it too late for us to register?"
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "lizenz",
+      "verdaechtiger"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "lizenz",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Lizenz",
+    "plural": "Lizenzen",
+    "en": "license",
+    "example": {
+      "de": "Meine Lizenz ist mir immer noch entzogen.",
+      "en": "My license is still suspended."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "unterzeichnen",
+      "registrieren"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "unterzeichnen",
+    "tier": 4,
+    "lemma": "unterzeichnen",
+    "en": "to sign",
+    "example": {
+      "de": "Ich habe gerade den Vertrag unterzeichnet.",
+      "en": "I just signed the contract."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "amt",
+      "lizenz"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "amt",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Amt",
+    "plural": "Ämter",
+    "en": "agency, department",
+    "example": {
+      "de": "Der Politiker wurde seines Amtes enthoben.",
+      "en": "The politician was removed from office."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "klage",
+      "unterzeichnen"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "klage",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Klage",
+    "plural": "Klagen",
+    "en": "complaint",
+    "example": {
+      "de": "Ich möchte keinerlei Klagen von dir hören!",
+      "en": "I don't want to hear any of your complaints."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "verfahren",
+      "amt"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "verfahren",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Verfahren",
+    "plural": "Verfahren",
+    "en": "procedure, process",
+    "example": {
+      "de": "Die Polizei eröffnete ein Verfahren.",
+      "en": "The police opened an investigation."
+    },
+    "family": [],
+    "related": [
+      "formular",
+      "klage",
+      "behoerde"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "formular",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Formular",
+    "plural": "Formulare",
+    "en": "form (document)",
+    "example": {
+      "de": "Füllen Sie bitte dieses Formular aus.",
+      "en": "Please fill out this form."
     },
     "family": [
-      "zuständig",
-      "Zustand"
+      "Antragsformular",
+      "Form"
     ],
     "related": [
+      "anmeldung",
+      "behoerde",
+      "verfahren",
+      "antrag"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "behoerde",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Behörde",
+    "plural": "Behörden",
+    "en": "authority, government office",
+    "example": {
+      "de": "Die Behörde ist nur vormittags geöffnet.",
+      "en": "The office is only open in the mornings."
+    },
+    "family": [
+      "Behördengang",
+      "Beamter"
+    ],
+    "related": [
+      "anmeldung",
+      "frist",
+      "formular"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "frist",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Frist",
+    "plural": "Fristen",
+    "en": "deadline, time limit",
+    "example": {
+      "de": "Die Frist endet am Freitag.",
+      "en": "The deadline ends on Friday."
+    },
+    "family": [
+      "fristgerecht",
+      "Anmeldefrist"
+    ],
+    "related": [
+      "anmeldung",
       "vollmacht",
-      "einspruch",
-      "haftung"
+      "behoerde"
     ],
     "theme": "Behörden und Recht"
   },
   {
     "id": "vollmacht",
-    "tier": 6,
+    "tier": 5,
     "article": "die",
     "lemma": "Vollmacht",
     "plural": "Vollmachten",
@@ -5653,8 +14266,133 @@ export const GENERATED: Word[] = [
       "Macht"
     ],
     "related": [
+      "anmeldung",
+      "festnahme",
+      "frist"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "festnahme",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Festnahme",
+    "plural": "Festnahmen",
+    "en": "arrest",
+    "example": {
+      "de": "Bisher hat es keine Festnahmen gegeben.",
+      "en": "There have been no arrests so far."
+    },
+    "family": [],
+    "related": [
+      "anmeldung",
+      "privatdetektiv",
+      "vollmacht"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "privatdetektiv",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Privatdetektiv",
+    "plural": "Privatdetektive",
+    "en": "private investigator",
+    "example": {
+      "de": "Schalte doch einen Privatdetektiv ein!",
+      "en": "Why don't you hire a private detective?"
+    },
+    "family": [],
+    "related": [
+      "anmeldung",
+      "befugnis",
+      "festnahme"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "befugnis",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Befugnis",
+    "plural": "Befugnisse",
+    "en": "permission, authorization",
+    "example": {
+      "de": "Du hast deine Befugnisse überschritten.",
+      "en": "You have overstepped your authority."
+    },
+    "family": [],
+    "related": [
+      "anmeldung",
+      "privatdetektiv",
+      "gebuehr"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "anmeldung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Anmeldung",
+    "plural": "Anmeldungen",
+    "en": "registration",
+    "example": {
+      "de": "Die Anmeldung beim Amt dauert nicht lange.",
+      "en": "Registering at the office doesn’t take long."
+    },
+    "family": [
+      "anmelden",
+      "Meldung"
+    ],
+    "related": [
+      "befugnis",
+      "gebuehr",
       "zustaendigkeit",
-      "haftung"
+      "wohnung"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "gebuehr",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Gebühr",
+    "plural": "Gebühren",
+    "en": "fee",
+    "example": {
+      "de": "Für den Ausweis fällt eine Gebühr an.",
+      "en": "A fee is charged for the ID card."
+    },
+    "family": [
+      "gebührenfrei",
+      "Verwaltungsgebühr"
+    ],
+    "related": [
+      "befugnis",
+      "zustaendigkeit",
+      "anmeldung"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "zustaendigkeit",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Zuständigkeit",
+    "plural": "Zuständigkeiten",
+    "en": "responsibility, jurisdiction",
+    "example": {
+      "de": "Das liegt nicht in meiner Zuständigkeit.",
+      "en": "That isn’t within my remit."
+    },
+    "family": [
+      "zuständig",
+      "Zustand"
+    ],
+    "related": [
+      "befugnis",
+      "haftung",
+      "gebuehr"
     ],
     "theme": "Behörden und Recht"
   },
@@ -5673,14 +14411,48 @@ export const GENERATED: Word[] = [
       "haftbar"
     ],
     "related": [
-      "zustaendigkeit",
-      "vollmacht"
+      "befugnis",
+      "ungesetzlich",
+      "zustaendigkeit"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "ungesetzlich",
+    "tier": 6,
+    "lemma": "ungesetzlich",
+    "en": "illegal",
+    "example": {
+      "de": "Hausunterricht ist in Deutschland immer noch ungesetzlich.",
+      "en": "Homeschooling is still illegal in Germany."
+    },
+    "family": [],
+    "related": [
+      "befugnis",
+      "bewilligen",
+      "haftung"
+    ],
+    "theme": "Behörden und Recht"
+  },
+  {
+    "id": "bewilligen",
+    "tier": 6,
+    "lemma": "bewilligen",
+    "en": "to grant, to concede",
+    "example": {
+      "de": "Der Gesetzentwurf wurde im letzten Moment bewilligt.",
+      "en": "The bill passed at the last moment."
+    },
+    "family": [],
+    "related": [
+      "befugnis",
+      "ungesetzlich"
     ],
     "theme": "Behörden und Recht"
   },
   {
     "id": "computer",
-    "tier": 1,
+    "tier": 2,
     "article": "der",
     "lemma": "Computer",
     "plural": "Computer",
@@ -5694,16 +14466,16 @@ export const GENERATED: Word[] = [
       "Laptop"
     ],
     "related": [
-      "nachricht",
-      "handy",
       "internet",
+      "handy",
+      "nachricht",
       "buero"
     ],
     "theme": "Computer und Internet"
   },
   {
     "id": "handy",
-    "tier": 1,
+    "tier": 2,
     "article": "das",
     "lemma": "Handy",
     "plural": "Handys",
@@ -5717,30 +14489,9 @@ export const GENERATED: Word[] = [
       "Handyvertrag"
     ],
     "related": [
-      "nachricht",
       "internet",
-      "computer"
-    ],
-    "theme": "Computer und Internet"
-  },
-  {
-    "id": "internet",
-    "tier": 1,
-    "article": "das",
-    "lemma": "Internet",
-    "en": "internet",
-    "example": {
-      "de": "Das Internet ist heute ausgefallen.",
-      "en": "The internet is down today."
-    },
-    "family": [
-      "Internetseite",
-      "Internetzugang"
-    ],
-    "related": [
       "nachricht",
-      "handy",
-      "bild"
+      "computer"
     ],
     "theme": "Computer und Internet"
   },
@@ -5760,9 +14511,8 @@ export const GENERATED: Word[] = [
       "Textnachricht"
     ],
     "related": [
-      "bildschirm",
-      "bild",
       "internet",
+      "bild",
       "handy"
     ],
     "theme": "Computer und Internet"
@@ -5783,15 +14533,129 @@ export const GENERATED: Word[] = [
       "Bildschirm"
     ],
     "related": [
-      "bildschirm",
-      "passwort",
+      "internet",
+      "telefon",
       "nachricht"
     ],
     "theme": "Computer und Internet"
   },
   {
-    "id": "passwort",
+    "id": "telefon",
     "tier": 2,
+    "article": "das",
+    "lemma": "Telefon",
+    "plural": "Telefone",
+    "en": "telephone",
+    "example": {
+      "de": "Herr Green, Sie werden am Telefon verlangt.",
+      "en": "Mr. Green, you are wanted on the phone."
+    },
+    "family": [],
+    "related": [
+      "internet",
+      "anrufen",
+      "bild"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "anrufen",
+    "tier": 2,
+    "lemma": "anrufen",
+    "en": "to call, to ring",
+    "example": {
+      "de": "Hast du deinen Freund in Kanada angerufen?",
+      "en": "Have you rung your friend in Canada?"
+    },
+    "family": [],
+    "related": [
+      "internet",
+      "verbindung",
+      "telefon"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "verbindung",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Verbindung",
+    "plural": "Verbindungen",
+    "en": "connection",
+    "example": {
+      "de": "Freundschaft ist die Verbindung der Seelen.",
+      "en": "Friendship is the connection of souls."
+    },
+    "family": [],
+    "related": [
+      "internet",
+      "kamera",
+      "anrufen"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "kamera",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Kamera",
+    "plural": "Kameras",
+    "en": "camera",
+    "example": {
+      "de": "Wo hast du deine Kamera reparieren lassen?",
+      "en": "Where did you get your camera repaired?"
+    },
+    "family": [],
+    "related": [
+      "internet",
+      "foto",
+      "verbindung"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "foto",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Foto",
+    "plural": "Fotos",
+    "en": "photograph",
+    "example": {
+      "de": "Wir gingen in den Park, um Fotos zu machen.",
+      "en": "We went to the park to take pictures."
+    },
+    "family": [],
+    "related": [
+      "internet",
+      "kamera",
+      "passwort"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "internet",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Internet",
+    "en": "internet",
+    "example": {
+      "de": "Das Internet ist heute ausgefallen.",
+      "en": "The internet is down today."
+    },
+    "family": [
+      "Internetseite",
+      "Internetzugang"
+    ],
+    "related": [
+      "passwort",
+      "foto",
+      "netzwerk"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "passwort",
+    "tier": 4,
     "article": "das",
     "lemma": "Passwort",
     "plural": "Passwörter",
@@ -5805,81 +14669,15 @@ export const GENERATED: Word[] = [
       "Passwortmanager"
     ],
     "related": [
-      "bildschirm",
       "datei",
-      "bild"
-    ],
-    "theme": "Computer und Internet"
-  },
-  {
-    "id": "datei",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Datei",
-    "plural": "Dateien",
-    "en": "file",
-    "example": {
-      "de": "Speichere die Datei auf dem Desktop.",
-      "en": "Save the file on the desktop."
-    },
-    "family": [
-      "Daten",
-      "Dateiname"
-    ],
-    "related": [
-      "bildschirm",
-      "passwort",
-      "anhang"
-    ],
-    "theme": "Computer und Internet"
-  },
-  {
-    "id": "bildschirm",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Bildschirm",
-    "plural": "Bildschirme",
-    "en": "screen, monitor",
-    "example": {
-      "de": "Der Bildschirm ist zu hell eingestellt.",
-      "en": "The screen is set too bright."
-    },
-    "family": [
-      "Bild",
-      "Schirm"
-    ],
-    "related": [
-      "datenschutz",
-      "anhang",
-      "datei"
-    ],
-    "theme": "Computer und Internet"
-  },
-  {
-    "id": "anhang",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Anhang",
-    "plural": "Anhänge",
-    "en": "attachment",
-    "example": {
-      "de": "Ich habe die Rechnung im Anhang geschickt.",
-      "en": "I sent the invoice as an attachment."
-    },
-    "family": [
-      "anhängen",
-      "Hang"
-    ],
-    "related": [
-      "datenschutz",
       "netzwerk",
-      "bildschirm"
+      "internet"
     ],
     "theme": "Computer und Internet"
   },
   {
     "id": "netzwerk",
-    "tier": 3,
+    "tier": 4,
     "article": "das",
     "lemma": "Netzwerk",
     "plural": "Netzwerke",
@@ -5893,29 +14691,9 @@ export const GENERATED: Word[] = [
       "Netzwerkkabel"
     ],
     "related": [
+      "datei",
       "datenschutz",
-      "herunterladen",
-      "anhang"
-    ],
-    "theme": "Computer und Internet"
-  },
-  {
-    "id": "herunterladen",
-    "tier": 3,
-    "lemma": "herunterladen",
-    "en": "to download",
-    "example": {
-      "de": "Du kannst das Programm kostenlos herunterladen.",
-      "en": "You can download the program for free."
-    },
-    "family": [
-      "Download",
-      "laden"
-    ],
-    "related": [
-      "datenschutz",
-      "netzwerk",
-      "einstellungen"
+      "passwort"
     ],
     "theme": "Computer und Internet"
   },
@@ -5934,36 +14712,146 @@ export const GENERATED: Word[] = [
       "Schutz"
     ],
     "related": [
-      "benutzer",
-      "einstellungen",
-      "herunterladen"
+      "datei",
+      "ausschalten",
+      "netzwerk"
     ],
     "theme": "Computer und Internet"
   },
   {
-    "id": "einstellungen",
+    "id": "ausschalten",
     "tier": 4,
-    "article": "die",
-    "lemma": "Einstellungen",
-    "en": "settings",
+    "lemma": "ausschalten",
+    "en": "to turn off, to switch off",
     "example": {
-      "de": "Ändere das in den Einstellungen.",
-      "en": "Change that in the settings."
+      "de": "Du solltest dein Mobiltelefon ausschalten.",
+      "en": "You should turn off your cell phone."
     },
-    "family": [
-      "einstellen",
-      "Einstellung"
-    ],
+    "family": [],
     "related": [
-      "benutzer",
-      "speicher",
+      "datei",
+      "aktivieren",
       "datenschutz"
     ],
     "theme": "Computer und Internet"
   },
   {
-    "id": "speicher",
+    "id": "aktivieren",
     "tier": 4,
+    "lemma": "aktivieren",
+    "en": "to activate, to enable",
+    "example": {
+      "de": "Flugmodus muss vor Abflug aktiviert werden.",
+      "en": "Flight mode must be activated prior to departure."
+    },
+    "family": [],
+    "related": [
+      "datei",
+      "programmieren",
+      "ausschalten"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "programmieren",
+    "tier": 4,
+    "lemma": "programmieren",
+    "en": "to program",
+    "example": {
+      "de": "Leon war darauf programmiert, das zu sagen.",
+      "en": "Leon was programmed to say that."
+    },
+    "family": [],
+    "related": [
+      "datei",
+      "automatisch",
+      "aktivieren"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "automatisch",
+    "tier": 4,
+    "lemma": "automatisch",
+    "en": "automatic",
+    "example": {
+      "de": "Die Drohne fliegt automatisch weiter.",
+      "en": "The drone continued to fly automatically."
+    },
+    "family": [],
+    "related": [
+      "datei",
+      "laptop",
+      "programmieren"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "laptop",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Laptop",
+    "plural": "Laptops",
+    "en": "laptop computer",
+    "example": {
+      "de": "Sie verbringt ihre Abende vor ihrem Laptop.",
+      "en": "She spends her evenings in front of her laptop."
+    },
+    "family": [],
+    "related": [
+      "datei",
+      "automatisch",
+      "bildschirm"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "datei",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Datei",
+    "plural": "Dateien",
+    "en": "file",
+    "example": {
+      "de": "Speichere die Datei auf dem Desktop.",
+      "en": "Save the file on the desktop."
+    },
+    "family": [
+      "Daten",
+      "Dateiname"
+    ],
+    "related": [
+      "anhang",
+      "bildschirm",
+      "laptop"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "bildschirm",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Bildschirm",
+    "plural": "Bildschirme",
+    "en": "screen, monitor",
+    "example": {
+      "de": "Der Bildschirm ist zu hell eingestellt.",
+      "en": "The screen is set too bright."
+    },
+    "family": [
+      "Bild",
+      "Schirm"
+    ],
+    "related": [
+      "anhang",
+      "speicher",
+      "datei"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "speicher",
+    "tier": 5,
     "article": "der",
     "lemma": "Speicher",
     "plural": "Speicher",
@@ -5977,15 +14865,15 @@ export const GENERATED: Word[] = [
       "Speicherplatz"
     ],
     "related": [
-      "benutzer",
+      "anhang",
       "absturz",
-      "einstellungen"
+      "bildschirm"
     ],
     "theme": "Computer und Internet"
   },
   {
     "id": "absturz",
-    "tier": 4,
+    "tier": 5,
     "article": "der",
     "lemma": "Absturz",
     "plural": "Abstürze",
@@ -5999,53 +14887,9 @@ export const GENERATED: Word[] = [
       "Sturz"
     ],
     "related": [
-      "benutzer",
-      "speicher",
-      "verschluesselung"
-    ],
-    "theme": "Computer und Internet"
-  },
-  {
-    "id": "benutzer",
-    "tier": 5,
-    "article": "der",
-    "lemma": "Benutzer",
-    "plural": "Benutzer",
-    "en": "user",
-    "example": {
-      "de": "Neue Benutzer müssen sich registrieren.",
-      "en": "New users have to register."
-    },
-    "family": [
-      "benutzen",
-      "Benutzername"
-    ],
-    "related": [
-      "schnittstelle",
-      "verschluesselung",
-      "absturz"
-    ],
-    "theme": "Computer und Internet"
-  },
-  {
-    "id": "verschluesselung",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Verschlüsselung",
-    "plural": "Verschlüsselungen",
-    "en": "encryption",
-    "example": {
-      "de": "Die Nachrichten sind durch Verschlüsselung geschützt.",
-      "en": "The messages are protected by encryption."
-    },
-    "family": [
-      "verschlüsseln",
-      "Schlüssel"
-    ],
-    "related": [
-      "schnittstelle",
+      "anhang",
       "sicherheitskopie",
-      "benutzer"
+      "speicher"
     ],
     "theme": "Computer und Internet"
   },
@@ -6065,9 +14909,340 @@ export const GENERATED: Word[] = [
       "Kopie"
     ],
     "related": [
-      "schnittstelle",
+      "anhang",
+      "scanner",
+      "absturz"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "scanner",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Scanner",
+    "plural": "Scanner",
+    "en": "scanner",
+    "example": {
+      "de": "Legen Sie Ihren Daumen auf den Scanner.",
+      "en": "Put your thumb on the scanner."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "anmachen",
+      "sicherheitskopie"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "anmachen",
+    "tier": 5,
+    "lemma": "anmachen",
+    "en": "to switch on, to turn on",
+    "example": {
+      "de": "Könnt ihr bitte eure Kamera anmachen?",
+      "en": "Could you all please turn on your camera?"
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "telefonbuch",
+      "scanner"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "telefonbuch",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Telefonbuch",
+    "plural": "Telefonbücher",
+    "en": "telephone directory, phone book",
+    "example": {
+      "de": "Warum schaust du nicht im Telefonbuch nach?",
+      "en": "Why don't you look it up in the phone book?"
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "handbuch",
+      "anmachen"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "handbuch",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Handbuch",
+    "plural": "Handbücher",
+    "en": "handbook, manual",
+    "example": {
+      "de": "Die Esperanto-Handbücher sind billig.",
+      "en": "The Esperanto handbooks are cheap."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "googeln",
+      "telefonbuch"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "googeln",
+    "tier": 5,
+    "lemma": "googeln",
+    "en": "to google",
+    "example": {
+      "de": "Ich spreche fließend Google-Übersetzerisch.",
+      "en": "I speak Google Translate fluently."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "server",
+      "handbuch"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "server",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Server",
+    "plural": "Server",
+    "en": "server",
+    "example": {
+      "de": "Ich werde die Datei auf den Server hochladen.",
+      "en": "I'll upload the data to the server."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "webseite",
+      "googeln"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "webseite",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Webseite",
+    "plural": "Webseiten",
+    "en": "web page",
+    "example": {
+      "de": "Jede Webseite hat eine eindeutige Adresse.",
+      "en": "Every website has a unique address."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "akku",
+      "server"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "akku",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Akku",
+    "plural": "Akkus",
+    "en": "rechargeable battery",
+    "example": {
+      "de": "Mein Handy-Akku geht viel zu schnell leer.",
+      "en": "My phone's battery dies way too fast."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "drucker",
+      "webseite"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "drucker",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Drucker",
+    "plural": "Drucker",
+    "en": "printer",
+    "example": {
+      "de": "Es ist kaum noch Tinte in meinem Drucker.",
+      "en": "My printer is low on ink."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "software",
+      "akku"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "software",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Software",
+    "plural": "Softwares",
+    "en": "software",
+    "example": {
+      "de": "Können Sie unsere Software aktualisieren?",
+      "en": "Can you update our software?"
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "hacker",
+      "drucker"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "hacker",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Hacker",
+    "plural": "Hacker",
+    "en": "hacker",
+    "example": {
+      "de": "Hacker brechen ohne Erlaubnis in Computer ein.",
+      "en": "Hackers break into computers without permission."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "drohne",
+      "software"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "drohne",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Drohne",
+    "plural": "Drohnen",
+    "en": "drone",
+    "example": {
+      "de": "Skura kaufte eine Drohne.",
+      "en": "Skura bought a drone."
+    },
+    "family": [],
+    "related": [
+      "anhang",
+      "hacker",
+      "herunterladen"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "anhang",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Anhang",
+    "plural": "Anhänge",
+    "en": "attachment",
+    "example": {
+      "de": "Ich habe die Rechnung im Anhang geschickt.",
+      "en": "I sent the invoice as an attachment."
+    },
+    "family": [
+      "anhängen",
+      "Hang"
+    ],
+    "related": [
+      "drohne",
+      "herunterladen",
+      "einstellungen"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "herunterladen",
+    "tier": 6,
+    "lemma": "herunterladen",
+    "en": "to download",
+    "example": {
+      "de": "Du kannst das Programm kostenlos herunterladen.",
+      "en": "You can download the program for free."
+    },
+    "family": [
+      "Download",
+      "laden"
+    ],
+    "related": [
+      "drohne",
+      "einstellungen",
+      "anhang"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "einstellungen",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Einstellungen",
+    "en": "settings",
+    "example": {
+      "de": "Ändere das in den Einstellungen.",
+      "en": "Change that in the settings."
+    },
+    "family": [
+      "einstellen",
+      "Einstellung"
+    ],
+    "related": [
+      "drohne",
+      "benutzer",
+      "herunterladen"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "benutzer",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Benutzer",
+    "plural": "Benutzer",
+    "en": "user",
+    "example": {
+      "de": "Neue Benutzer müssen sich registrieren.",
+      "en": "New users have to register."
+    },
+    "family": [
+      "benutzen",
+      "Benutzername"
+    ],
+    "related": [
+      "drohne",
       "verschluesselung",
-      "bandbreite"
+      "einstellungen"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "verschluesselung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Verschlüsselung",
+    "plural": "Verschlüsselungen",
+    "en": "encryption",
+    "example": {
+      "de": "Die Nachrichten sind durch Verschlüsselung geschützt.",
+      "en": "The messages are protected by encryption."
+    },
+    "family": [
+      "verschlüsseln",
+      "Schlüssel"
+    ],
+    "related": [
+      "drohne",
+      "schnittstelle",
+      "benutzer"
     ],
     "theme": "Computer und Internet"
   },
@@ -6087,8 +15262,9 @@ export const GENERATED: Word[] = [
       "Stelle"
     ],
     "related": [
-      "sicherheitskopie",
-      "bandbreite"
+      "drohne",
+      "bandbreite",
+      "verschluesselung"
     ],
     "theme": "Computer und Internet"
   },
@@ -6108,14 +15284,161 @@ export const GENERATED: Word[] = [
       "breit"
     ],
     "related": [
-      "sicherheitskopie",
+      "drohne",
+      "elektronisch",
       "schnittstelle"
     ],
     "theme": "Computer und Internet"
   },
   {
-    "id": "film",
+    "id": "elektronisch",
+    "tier": 6,
+    "lemma": "elektronisch",
+    "en": "electronic",
+    "example": {
+      "de": "Was für Bücher lesen Sie? Gewöhnliche oder elektronische?",
+      "en": "What books do you read: regular or electronic?"
+    },
+    "family": [],
+    "related": [
+      "drohne",
+      "blocken",
+      "bandbreite"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "blocken",
+    "tier": 6,
+    "lemma": "blocken",
+    "en": "to block",
+    "example": {
+      "de": "Sie wohnen im gleichen Block wie wir.",
+      "en": "They live in our block."
+    },
+    "family": [],
+    "related": [
+      "drohne",
+      "headset",
+      "elektronisch"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "headset",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Headset",
+    "plural": "Headsets",
+    "en": "headset",
+    "example": {
+      "de": "Zeigen Sie mir bitte, wie man das Headset benutzt.",
+      "en": "Please show me how to use the headset."
+    },
+    "family": [],
+    "related": [
+      "drohne",
+      "suchmaschine",
+      "blocken"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "suchmaschine",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Suchmaschine",
+    "plural": "Suchmaschinen",
+    "en": "search engine",
+    "example": {
+      "de": "Welche Suchmaschine verwendest du am liebsten?",
+      "en": "What's your favorite search engine?"
+    },
+    "family": [],
+    "related": [
+      "drohne",
+      "tastatur",
+      "headset"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "tastatur",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Tastatur",
+    "plural": "Tastaturen",
+    "en": "keyboard",
+    "example": {
+      "de": "Wie sieht eine chinesische Tastatur aus?",
+      "en": "What does a Chinese keyboard look like?"
+    },
+    "family": [],
+    "related": [
+      "drohne",
+      "tablet",
+      "suchmaschine"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "tablet",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Tablet",
+    "plural": "Tablets",
+    "en": "tablet",
+    "example": {
+      "de": "Meine Mutter hat einen Laptop und ein Tablet.",
+      "en": "My mother has a notebook and a tablet."
+    },
+    "family": [],
+    "related": [
+      "drohne",
+      "tastatur"
+    ],
+    "theme": "Computer und Internet"
+  },
+  {
+    "id": "sage",
     "tier": 1,
+    "article": "die",
+    "lemma": "Sage",
+    "plural": "Sagen",
+    "en": "saga, legend",
+    "example": {
+      "de": "Sage ihr, sie solle nicht nach mir suchen.",
+      "en": "Tell her to not look for me."
+    },
+    "family": [],
+    "related": [
+      "film",
+      "geschichte"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "geschichte",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Geschichte",
+    "plural": "Geschichten",
+    "en": "history",
+    "example": {
+      "de": "Der Anfang der Geschichte war interessant.",
+      "en": "The beginning of the story was interesting."
+    },
+    "family": [],
+    "related": [
+      "film",
+      "sage",
+      "zeitung"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "film",
+    "tier": 2,
     "article": "der",
     "lemma": "Film",
     "plural": "Filme",
@@ -6129,16 +15452,16 @@ export const GENERATED: Word[] = [
       "filmen"
     ],
     "related": [
-      "nachrichten",
-      "zeitung",
       "fernseher",
+      "zeitung",
+      "geschichte",
       "kino"
     ],
     "theme": "Medien und Kultur"
   },
   {
     "id": "zeitung",
-    "tier": 1,
+    "tier": 2,
     "article": "die",
     "lemma": "Zeitung",
     "plural": "Zeitungen",
@@ -6152,31 +15475,9 @@ export const GENERATED: Word[] = [
       "Zeitungsartikel"
     ],
     "related": [
-      "nachrichten",
       "fernseher",
-      "film"
-    ],
-    "theme": "Medien und Kultur"
-  },
-  {
-    "id": "fernseher",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Fernseher",
-    "plural": "Fernseher",
-    "en": "television set",
-    "example": {
-      "de": "Der Fernseher läuft den ganzen Tag.",
-      "en": "The TV is on all day."
-    },
-    "family": [
-      "fernsehen",
-      "Fernsehprogramm"
-    ],
-    "related": [
       "nachrichten",
-      "zeitung",
-      "kino"
+      "film"
     ],
     "theme": "Medien und Kultur"
   },
@@ -6195,16 +15496,108 @@ export const GENERATED: Word[] = [
       "Nachricht"
     ],
     "related": [
-      "sendung",
-      "kino",
       "fernseher",
+      "klingen",
       "zeitung"
     ],
     "theme": "Medien und Kultur"
   },
   {
-    "id": "kino",
+    "id": "klingen",
     "tier": 2,
+    "lemma": "klingen",
+    "en": "to ring, to clink",
+    "example": {
+      "de": "Alle Glocken klingen unterschiedlich.",
+      "en": "All bells sound differently."
+    },
+    "family": [],
+    "related": [
+      "fernseher",
+      "filmen",
+      "nachrichten"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "filmen",
+    "tier": 2,
+    "lemma": "filmen",
+    "en": "to film, to shoot",
+    "example": {
+      "de": "Der Film war so traurig, dass alle weinten.",
+      "en": "The movie was so sad that everybody cried."
+    },
+    "family": [],
+    "related": [
+      "fernseher",
+      "fernsehen",
+      "klingen"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "fernsehen",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Fernsehen",
+    "en": "television",
+    "example": {
+      "de": "Wir kommen ohne Fernsehen aus, nicht wahr.",
+      "en": "We can do without a television, can't we?"
+    },
+    "family": [],
+    "related": [
+      "fernseher",
+      "lied",
+      "filmen"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "lied",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Lied",
+    "plural": "Lieder",
+    "en": "song",
+    "example": {
+      "de": "Lasst uns zusammen englische Lieder singen.",
+      "en": "Let's sing some English songs together."
+    },
+    "family": [],
+    "related": [
+      "fernseher",
+      "fernsehen",
+      "kino"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "fernseher",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Fernseher",
+    "plural": "Fernseher",
+    "en": "television set",
+    "example": {
+      "de": "Der Fernseher läuft den ganzen Tag.",
+      "en": "The TV is on all day."
+    },
+    "family": [
+      "fernsehen",
+      "Fernsehprogramm"
+    ],
+    "related": [
+      "ausstellung",
+      "kino",
+      "lied"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "kino",
+    "tier": 3,
     "article": "das",
     "lemma": "Kino",
     "plural": "Kinos",
@@ -6218,16 +15611,16 @@ export const GENERATED: Word[] = [
       "Kinofilm"
     ],
     "related": [
-      "sendung",
+      "ausstellung",
       "konzert",
-      "nachrichten",
+      "fernseher",
       "film"
     ],
     "theme": "Medien und Kultur"
   },
   {
     "id": "konzert",
-    "tier": 2,
+    "tier": 3,
     "article": "das",
     "lemma": "Konzert",
     "plural": "Konzerte",
@@ -6241,7 +15634,7 @@ export const GENERATED: Word[] = [
       "konzertieren"
     ],
     "related": [
-      "sendung",
+      "ausstellung",
       "programm",
       "kino",
       "musik"
@@ -6250,7 +15643,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "programm",
-    "tier": 2,
+    "tier": 3,
     "article": "das",
     "lemma": "Programm",
     "plural": "Programme",
@@ -6264,9 +15657,9 @@ export const GENERATED: Word[] = [
       "Programmheft"
     ],
     "related": [
+      "ausstellung",
       "sendung",
-      "konzert",
-      "schauspieler"
+      "konzert"
     ],
     "theme": "Medien und Kultur"
   },
@@ -6286,7 +15679,7 @@ export const GENERATED: Word[] = [
       "Fernsehsendung"
     ],
     "related": [
-      "kritik",
+      "ausstellung",
       "schauspieler",
       "programm"
     ],
@@ -6308,15 +15701,207 @@ export const GENERATED: Word[] = [
       "Schauspiel"
     ],
     "related": [
-      "kritik",
       "ausstellung",
+      "publikum",
       "sendung"
     ],
     "theme": "Medien und Kultur"
   },
   {
-    "id": "ausstellung",
+    "id": "publikum",
     "tier": 3,
+    "article": "das",
+    "lemma": "Publikum",
+    "en": "audience",
+    "example": {
+      "de": "Das Publikum klatschte begeistert.",
+      "en": "The audience applauded enthusiastically."
+    },
+    "family": [
+      "publik",
+      "Publikumsliebling"
+    ],
+    "related": [
+      "ausstellung",
+      "radio",
+      "schauspieler"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "radio",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Radio",
+    "plural": "Radios",
+    "en": "radio",
+    "example": {
+      "de": "Ich lasse dieses Radio morgen reparieren.",
+      "en": "I'll have this radio fixed tomorrow."
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "szene",
+      "publikum"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "szene",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Szene",
+    "plural": "Szenen",
+    "en": "scene, tableau",
+    "example": {
+      "de": "Die Szene brannte sich in mein Gedächtnis.",
+      "en": "The scene was burned into my memory."
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "video",
+      "radio"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "video",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Video",
+    "plural": "Videos",
+    "en": "video",
+    "example": {
+      "de": "Wie viele Videos lädst du am Tag herunter?",
+      "en": "How many videos do you download per day?"
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "kunst",
+      "szene"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "kunst",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Kunst",
+    "plural": "Künste",
+    "en": "art",
+    "example": {
+      "de": "Mein Onkel hat großes Interesse an Kunst.",
+      "en": "My uncle has a deep interest in art."
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "presse",
+      "video"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "presse",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Presse",
+    "plural": "Pressen",
+    "en": "press",
+    "example": {
+      "de": "Der Presse ist jeglicher Zutritt verwehrt.",
+      "en": "The press is not allowed inside."
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "roman",
+      "kunst"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "roman",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Roman",
+    "plural": "Romane",
+    "en": "novel",
+    "example": {
+      "de": "Letztes Jahr habe ich einen Roman gelesen.",
+      "en": "I read a novel last year."
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "kuenstler",
+      "presse"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "kuenstler",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Künstler",
+    "plural": "Künstler",
+    "en": "artist",
+    "example": {
+      "de": "Viele berühmte Künstler leben in New York.",
+      "en": "Many famous artists live in New York."
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "serie",
+      "roman"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "serie",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Serie",
+    "plural": "Serien",
+    "en": "series",
+    "example": {
+      "de": "Ich habe eine amerikanische Serie gesehen.",
+      "en": "I watched an American drama."
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "buehne",
+      "kuenstler"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "buehne",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Bühne",
+    "plural": "Bühnen",
+    "en": "stage",
+    "example": {
+      "de": "Sind berühmte Musikerinnen auf der Bühne?",
+      "en": "Are there any famous musicians on the stage?"
+    },
+    "family": [],
+    "related": [
+      "ausstellung",
+      "serie",
+      "kritik"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "ausstellung",
+    "tier": 4,
     "article": "die",
     "lemma": "Ausstellung",
     "plural": "Ausstellungen",
@@ -6330,31 +15915,9 @@ export const GENERATED: Word[] = [
       "Stellung"
     ],
     "related": [
-      "kritik",
       "veranstaltung",
-      "schauspieler"
-    ],
-    "theme": "Medien und Kultur"
-  },
-  {
-    "id": "veranstaltung",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Veranstaltung",
-    "plural": "Veranstaltungen",
-    "en": "event",
-    "example": {
-      "de": "Die Veranstaltung beginnt um 19 Uhr.",
-      "en": "The event begins at 7 p.m."
-    },
-    "family": [
-      "veranstalten",
-      "Veranstalter"
-    ],
-    "related": [
       "kritik",
-      "ausstellung",
-      "werbung"
+      "buehne"
     ],
     "theme": "Medien und Kultur"
   },
@@ -6374,9 +15937,9 @@ export const GENERATED: Word[] = [
       "Kritiker"
     ],
     "related": [
-      "berichterstattung",
+      "veranstaltung",
       "werbung",
-      "veranstaltung"
+      "ausstellung"
     ],
     "theme": "Medien und Kultur"
   },
@@ -6396,36 +15959,264 @@ export const GENERATED: Word[] = [
       "Werbespot"
     ],
     "related": [
-      "berichterstattung",
-      "publikum",
+      "veranstaltung",
+      "uebertragung",
       "kritik"
     ],
     "theme": "Medien und Kultur"
   },
   {
-    "id": "publikum",
+    "id": "uebertragung",
     "tier": 4,
-    "article": "das",
-    "lemma": "Publikum",
-    "en": "audience",
+    "article": "die",
+    "lemma": "Übertragung",
+    "plural": "Übertragungen",
+    "en": "broadcast, transmission",
     "example": {
-      "de": "Das Publikum klatschte begeistert.",
-      "en": "The audience applauded enthusiastically."
+      "de": "Die Übertragung des Spiels beginnt um acht.",
+      "en": "The broadcast of the match starts at eight."
     },
     "family": [
-      "publik",
-      "Publikumsliebling"
+      "übertragen",
+      "tragen"
     ],
     "related": [
-      "berichterstattung",
-      "schlagzeile",
+      "veranstaltung",
+      "malen",
       "werbung"
     ],
     "theme": "Medien und Kultur"
   },
   {
-    "id": "schlagzeile",
+    "id": "malen",
     "tier": 4,
+    "lemma": "malen",
+    "en": "to paint",
+    "example": {
+      "de": "Wie viele Male hast du den Film gesehen?",
+      "en": "How many times did you see the movie?"
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "symbol",
+      "uebertragung"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "symbol",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Symbol",
+    "plural": "Symbole",
+    "en": "symbol, icon",
+    "example": {
+      "de": "Warum ist der Hase ein Symbol für Ostern?",
+      "en": "Why is the rabbit a symbol for Easter?"
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "staffel",
+      "malen"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "staffel",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Staffel",
+    "plural": "Staffeln",
+    "en": "season, relay",
+    "example": {
+      "de": "Die Originalserie lief über sechs Staffeln.",
+      "en": "The original series ran for six seasons."
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "oper",
+      "symbol"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "oper",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Oper",
+    "plural": "Opern",
+    "en": "opera",
+    "example": {
+      "de": "Sind Sie schon einmal in der Oper gewesen?",
+      "en": "Have you ever been to the opera?"
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "fotografieren",
+      "staffel"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "fotografieren",
+    "tier": 4,
+    "lemma": "fotografieren",
+    "en": "to photograph",
+    "example": {
+      "de": "Sara hat den Berg im Sommer fotografiert.",
+      "en": "Sara took pictures of that mountain in summer."
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "gedicht",
+      "oper"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "gedicht",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Gedicht",
+    "plural": "Gedichte",
+    "en": "poem",
+    "example": {
+      "de": "Von wem wurden diese Gedichte geschrieben?",
+      "en": "By whom were these poems written?"
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "gemaelde",
+      "fotografieren"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "gemaelde",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Gemälde",
+    "plural": "Gemälde",
+    "en": "painting",
+    "example": {
+      "de": "Die Farben dieses Gemäldes sind sehr hell.",
+      "en": "The colors of this painting are very bright."
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "interview",
+      "gedicht"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "interview",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Interview",
+    "plural": "Interviews",
+    "en": "interview",
+    "example": {
+      "de": "Wie ist das Interview zustande gekommen?",
+      "en": "How did this interview come about?"
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "kanal",
+      "gemaelde"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "kanal",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Kanal",
+    "plural": "Kanäle",
+    "en": "canal",
+    "example": {
+      "de": "Welcher Horrorfilm läuft auf diesem Kanal?",
+      "en": "Which horror film is on this channel?"
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "journalist",
+      "interview"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "journalist",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Journalist",
+    "plural": "Journalisten",
+    "en": "journalist",
+    "example": {
+      "de": "Die Journalisten sprechen bereits darüber.",
+      "en": "The journalists are already talking about it."
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "autor",
+      "kanal"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "autor",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Autor",
+    "plural": "Autoren",
+    "en": "author",
+    "example": {
+      "de": "Ich verstehe nicht, was der Autor hier meint.",
+      "en": "I don't understand what the author's saying here."
+    },
+    "family": [],
+    "related": [
+      "veranstaltung",
+      "journalist",
+      "schlagzeile"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "veranstaltung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Veranstaltung",
+    "plural": "Veranstaltungen",
+    "en": "event",
+    "example": {
+      "de": "Die Veranstaltung beginnt um 19 Uhr.",
+      "en": "The event begins at 7 p.m."
+    },
+    "family": [
+      "veranstalten",
+      "Veranstalter"
+    ],
+    "related": [
+      "berichterstattung",
+      "schlagzeile",
+      "autor"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "schlagzeile",
+    "tier": 5,
     "article": "die",
     "lemma": "Schlagzeile",
     "plural": "Schlagzeilen",
@@ -6440,51 +16231,8 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "berichterstattung",
-      "publikum",
-      "uebertragung"
-    ],
-    "theme": "Medien und Kultur"
-  },
-  {
-    "id": "berichterstattung",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Berichterstattung",
-    "en": "coverage (news)",
-    "example": {
-      "de": "Die Berichterstattung war sehr einseitig.",
-      "en": "The coverage was very one-sided."
-    },
-    "family": [
-      "berichten",
-      "Bericht"
-    ],
-    "related": [
-      "inszenierung",
-      "uebertragung",
-      "schlagzeile"
-    ],
-    "theme": "Medien und Kultur"
-  },
-  {
-    "id": "uebertragung",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Übertragung",
-    "plural": "Übertragungen",
-    "en": "broadcast, transmission",
-    "example": {
-      "de": "Die Übertragung des Spiels beginnt um acht.",
-      "en": "The broadcast of the match starts at eight."
-    },
-    "family": [
-      "übertragen",
-      "tragen"
-    ],
-    "related": [
-      "inszenierung",
       "rezension",
-      "berichterstattung"
+      "veranstaltung"
     ],
     "theme": "Medien und Kultur"
   },
@@ -6504,8 +16252,160 @@ export const GENERATED: Word[] = [
       "Rezensent"
     ],
     "related": [
+      "berichterstattung",
+      "vorspielen",
+      "schlagzeile"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "vorspielen",
+    "tier": 5,
+    "lemma": "vorspielen",
+    "en": "to perform something for",
+    "example": {
+      "de": "Ich habe für die Hauptrolle vorgespielt.",
+      "en": "I auditioned for the lead role."
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "floete",
+      "rezension"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "floete",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Flöte",
+    "plural": "Flöten",
+    "en": "flute",
+    "example": {
+      "de": "Hast du erst Klarinette oder Flöte gelernt?",
+      "en": "Which did you learn to play first, the clarinet or the flute?"
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "darsteller",
+      "vorspielen"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "darsteller",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Darsteller",
+    "plural": "Darsteller",
+    "en": "actor, player",
+    "example": {
+      "de": "Der Darsteller ist zwei Jahre älter als ich.",
+      "en": "The actor is two years senior to me."
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "malerei",
+      "floete"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "malerei",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Malerei",
+    "plural": "Malereien",
+    "en": "painting",
+    "example": {
+      "de": "Ich schwärme für zeitgenössische Malerei.",
+      "en": "I have enthusiasm for modern paintings."
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "saenger",
+      "darsteller"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "saenger",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Sänger",
+    "plural": "Sänger",
+    "en": "agent noun of singen, singer",
+    "example": {
+      "de": "Viele junge Mädchen lieben diesen Sänger.",
+      "en": "Many young girls like that singer."
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "zeitschrift",
+      "malerei"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "zeitschrift",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Zeitschrift",
+    "plural": "Zeitschriften",
+    "en": "magazine",
+    "example": {
+      "de": "Sie leihen sich Zeitschriften von Taninna.",
+      "en": "They borrow magazines from Taninna."
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "zeichnung",
+      "saenger"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "zeichnung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Zeichnung",
+    "plural": "Zeichnungen",
+    "en": "drawing",
+    "example": {
+      "de": "Haben Sie sich die Zeichnungen angesehen?",
+      "en": "Did you look at those drawings?"
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "zeitschrift",
+      "inszenierung"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "berichterstattung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Berichterstattung",
+    "en": "coverage (news)",
+    "example": {
+      "de": "Die Berichterstattung war sehr einseitig.",
+      "en": "The coverage was very one-sided."
+    },
+    "family": [
+      "berichten",
+      "Bericht"
+    ],
+    "related": [
+      "zeichnung",
       "inszenierung",
-      "uebertragung",
       "urauffuehrung"
     ],
     "theme": "Medien und Kultur"
@@ -6526,8 +16426,9 @@ export const GENERATED: Word[] = [
       "Szene"
     ],
     "related": [
-      "rezension",
-      "urauffuehrung"
+      "zeichnung",
+      "urauffuehrung",
+      "berichterstattung"
     ],
     "theme": "Medien und Kultur"
   },
@@ -6547,8 +16448,61 @@ export const GENERATED: Word[] = [
       "Aufführung"
     ],
     "related": [
-      "rezension",
+      "zeichnung",
+      "poetisch",
       "inszenierung"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "poetisch",
+    "tier": 6,
+    "lemma": "poetisch",
+    "en": "poetic",
+    "example": {
+      "de": "Berberisch ist eine sehr poetische Sprache.",
+      "en": "Berber is a pretty poetic language."
+    },
+    "family": [],
+    "related": [
+      "zeichnung",
+      "akustik",
+      "urauffuehrung"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "akustik",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Akustik",
+    "plural": "Akustiken",
+    "en": "acoustic, acoustics",
+    "example": {
+      "de": "Die Akustik in diesem Raum ist ausgezeichnet.",
+      "en": "The acoustics in this space are excellent."
+    },
+    "family": [],
+    "related": [
+      "zeichnung",
+      "prominent",
+      "poetisch"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "prominent",
+    "tier": 6,
+    "lemma": "prominent",
+    "en": "prominent",
+    "example": {
+      "de": "Man wirbt oft mit Prominenten für Produkte.",
+      "en": "Celebrities are often used to promote products."
+    },
+    "family": [],
+    "related": [
+      "zeichnung",
+      "akustik"
     ],
     "theme": "Medien und Kultur"
   },
@@ -6568,9 +16522,9 @@ export const GENERATED: Word[] = [
       "Landkarte"
     ],
     "related": [
-      "regierung",
+      "frieden",
       "krieg",
-      "frieden"
+      "macht"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6590,15 +16544,72 @@ export const GENERATED: Word[] = [
       "kriegerisch"
     ],
     "related": [
-      "regierung",
       "frieden",
+      "macht",
       "land"
     ],
     "theme": "Politik und Gesellschaft"
   },
   {
-    "id": "frieden",
+    "id": "macht",
     "tier": 1,
+    "article": "die",
+    "lemma": "Macht",
+    "plural": "Mächte",
+    "en": "power, authority",
+    "example": {
+      "de": "Die Kanzlerin übernahm die Macht im Jahr 2005.",
+      "en": "The Chancellor took power in 2005."
+    },
+    "family": [],
+    "related": [
+      "frieden",
+      "gott",
+      "krieg"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "gott",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Gott",
+    "plural": "Götter",
+    "en": "god",
+    "example": {
+      "de": "Gott schuf das Land, der Mensch die Stadt.",
+      "en": "God made the country and man made the town."
+    },
+    "family": [],
+    "related": [
+      "frieden",
+      "glaube",
+      "macht"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "glaube",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Glaube",
+    "plural": "Glauben",
+    "en": "belief, faith",
+    "example": {
+      "de": "Glauben Sie, ihre Geschichte stimmt nicht?",
+      "en": "Do you think her story is false?"
+    },
+    "family": [],
+    "related": [
+      "frieden",
+      "gott",
+      "regierung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "frieden",
+    "tier": 2,
     "article": "der",
     "lemma": "Frieden",
     "en": "peace",
@@ -6611,9 +16622,9 @@ export const GENERATED: Word[] = [
       "Friedensvertrag"
     ],
     "related": [
+      "buerger",
       "regierung",
-      "krieg",
-      "wahl"
+      "glaube"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6657,31 +16668,9 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "buerger",
-      "partei",
+      "gesellschaft",
       "regierung",
       "entscheidung"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "partei",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Partei",
-    "plural": "Parteien",
-    "en": "political party",
-    "example": {
-      "de": "Welche Partei hast du gewählt?",
-      "en": "Which party did you vote for?"
-    },
-    "family": [
-      "parteiisch",
-      "Parteitag"
-    ],
-    "related": [
-      "buerger",
-      "gesellschaft",
-      "wahl"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6702,9 +16691,126 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "buerger",
-      "partei",
       "meinung",
+      "wahl",
       "regierung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "meinung",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Meinung",
+    "plural": "Meinungen",
+    "en": "opinion",
+    "example": {
+      "de": "Ich habe dazu eine andere Meinung.",
+      "en": "I have a different opinion on this."
+    },
+    "family": [
+      "meinen",
+      "Meinungsfreiheit"
+    ],
+    "related": [
+      "buerger",
+      "waffe",
+      "gesellschaft"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "waffe",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Waffe",
+    "plural": "Waffen",
+    "en": "weapon, arm",
+    "example": {
+      "de": "Er wurde mit einer stumpfen Waffe getötet.",
+      "en": "He was killed by a blunt weapon."
+    },
+    "family": [],
+    "related": [
+      "buerger",
+      "koenig",
+      "meinung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "koenig",
+    "tier": 2,
+    "article": "der",
+    "lemma": "König",
+    "plural": "Könige",
+    "en": "king",
+    "example": {
+      "de": "Der König ist heute Morgen jagen gegangen.",
+      "en": "The king went hunting this morning."
+    },
+    "family": [],
+    "related": [
+      "buerger",
+      "praesident",
+      "waffe"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "praesident",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Präsident",
+    "plural": "Präsidenten",
+    "en": "president, chairman",
+    "example": {
+      "de": "Lincoln wurde 1860 zum Präsidenten gewählt.",
+      "en": "Lincoln was elected President in 1860."
+    },
+    "family": [],
+    "related": [
+      "buerger",
+      "freiheit",
+      "koenig"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "freiheit",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Freiheit",
+    "plural": "Freiheiten",
+    "en": "freedom",
+    "example": {
+      "de": "Keine Freiheit für die Feinde der Freiheit.",
+      "en": "No liberty for the enemies of liberty."
+    },
+    "family": [],
+    "related": [
+      "buerger",
+      "armee",
+      "praesident"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "armee",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Armee",
+    "plural": "Armeen",
+    "en": "army",
+    "example": {
+      "de": "Napoleons Armee rückte bis nach Moskau vor.",
+      "en": "Napoleon's army advanced up to Moscow."
+    },
+    "family": [],
+    "related": [
+      "buerger",
+      "freiheit",
+      "gerechtigkeit"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6724,37 +16830,265 @@ export const GENERATED: Word[] = [
       "bürgerlich"
     ],
     "related": [
-      "mehrheit",
-      "meinung",
-      "gesellschaft"
+      "partei",
+      "gerechtigkeit",
+      "armee"
     ],
     "theme": "Politik und Gesellschaft"
   },
   {
-    "id": "meinung",
+    "id": "gerechtigkeit",
     "tier": 3,
     "article": "die",
-    "lemma": "Meinung",
-    "plural": "Meinungen",
-    "en": "opinion",
+    "lemma": "Gerechtigkeit",
+    "en": "justice, fairness",
     "example": {
-      "de": "Ich habe dazu eine andere Meinung.",
-      "en": "I have a different opinion on this."
+      "de": "Alle fordern mehr Gerechtigkeit.",
+      "en": "Everyone is demanding more justice."
     },
     "family": [
-      "meinen",
-      "Meinungsfreiheit"
+      "gerecht",
+      "ungerecht"
     ],
     "related": [
-      "mehrheit",
-      "demonstration",
+      "partei",
+      "amerikaner",
       "buerger"
     ],
     "theme": "Politik und Gesellschaft"
   },
   {
-    "id": "demonstration",
+    "id": "amerikaner",
     "tier": 3,
+    "article": "der",
+    "lemma": "Amerikaner",
+    "plural": "Amerikaner",
+    "en": "American",
+    "example": {
+      "de": "Er ist kein Amerikaner, sondern Engländer.",
+      "en": "He is not an American but an Englishman."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "soldat",
+      "gerechtigkeit"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "soldat",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Soldat",
+    "plural": "Soldaten",
+    "en": "soldier",
+    "example": {
+      "de": "Die Soldaten marschieren in Tarnuniformen.",
+      "en": "The soldiers march in camouflaged uniforms."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "buergermeister",
+      "amerikaner"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "buergermeister",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Bürgermeister",
+    "plural": "Bürgermeister",
+    "en": "mayor",
+    "example": {
+      "de": "Das Büro des Bürgermeisters ist im Rathaus.",
+      "en": "The mayor's office is in the city hall."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "waehlen",
+      "soldat"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "waehlen",
+    "tier": 3,
+    "lemma": "wählen",
+    "en": "to choose, to select",
+    "example": {
+      "de": "Welche Partei wählst du dieses Jahr?",
+      "en": "What party are you voting for this year?"
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "minister",
+      "buergermeister"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "minister",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Minister",
+    "plural": "Minister",
+    "en": "minister",
+    "example": {
+      "de": "Mein Vater ist Abgeordneter, kein Minister.",
+      "en": "My father is a deputy, not a minister."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "staat",
+      "waehlen"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "staat",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Staat",
+    "plural": "Staaten",
+    "en": "country, state",
+    "example": {
+      "de": "Ich bin nicht aus den Vereinigten Staaten.",
+      "en": "No, I'm not from the United States."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "politik",
+      "minister"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "politik",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Politik",
+    "plural": "Politiken",
+    "en": "politics",
+    "example": {
+      "de": "In der Politik muss man schlagfertig sein.",
+      "en": "You have to have a ready tongue in politics."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "staat",
+      "generation"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "partei",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Partei",
+    "plural": "Parteien",
+    "en": "political party",
+    "example": {
+      "de": "Welche Partei hast du gewählt?",
+      "en": "Which party did you vote for?"
+    },
+    "family": [
+      "parteiisch",
+      "Parteitag"
+    ],
+    "related": [
+      "demonstration",
+      "generation",
+      "politik"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "generation",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Generation",
+    "plural": "Generationen",
+    "en": "generation",
+    "example": {
+      "de": "Er ist der Führer der nächsten Generation.",
+      "en": "He's the leader of the next generation."
+    },
+    "family": [],
+    "related": [
+      "demonstration",
+      "auslaender",
+      "partei"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "auslaender",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Ausländer",
+    "plural": "Ausländer",
+    "en": "foreigner, foreign national",
+    "example": {
+      "de": "Viele Ausländer besuchen jedes Jahr Japan.",
+      "en": "A lot of foreigners visit Japan every year."
+    },
+    "family": [],
+    "related": [
+      "demonstration",
+      "demokratie",
+      "generation"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "demokratie",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Demokratie",
+    "plural": "Demokratien",
+    "en": "democracy",
+    "example": {
+      "de": "Freiheit ist das Wesen unserer Demokratie.",
+      "en": "Freedom is the very essence of our democracy."
+    },
+    "family": [],
+    "related": [
+      "demonstration",
+      "verfassung",
+      "auslaender"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "verfassung",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Verfassung",
+    "plural": "Verfassungen",
+    "en": "constitution",
+    "example": {
+      "de": "Sie ist in guter körperlicher Verfassung.",
+      "en": "She's in good physical condition."
+    },
+    "family": [],
+    "related": [
+      "demonstration",
+      "demokratie",
+      "mehrheit"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "demonstration",
+    "tier": 5,
     "article": "die",
     "lemma": "Demonstration",
     "plural": "Demonstrationen",
@@ -6768,37 +17102,15 @@ export const GENERATED: Word[] = [
       "Demo"
     ],
     "related": [
-      "mehrheit",
       "umfrage",
-      "meinung"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "umfrage",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Umfrage",
-    "plural": "Umfragen",
-    "en": "survey, poll",
-    "example": {
-      "de": "Laut Umfrage ist die Mehrheit dagegen.",
-      "en": "According to the poll, the majority is against it."
-    },
-    "family": [
-      "befragen",
-      "Frage"
-    ],
-    "related": [
       "mehrheit",
-      "demonstration",
-      "gerechtigkeit"
+      "verfassung"
     ],
     "theme": "Politik und Gesellschaft"
   },
   {
     "id": "mehrheit",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Mehrheit",
     "plural": "Mehrheiten",
@@ -6812,72 +17124,9 @@ export const GENERATED: Word[] = [
       "Mehrheitsbeschluss"
     ],
     "related": [
+      "umfrage",
       "bundestag",
-      "gerechtigkeit",
-      "umfrage"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "gerechtigkeit",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Gerechtigkeit",
-    "en": "justice, fairness",
-    "example": {
-      "de": "Alle fordern mehr Gerechtigkeit.",
-      "en": "Everyone is demanding more justice."
-    },
-    "family": [
-      "gerecht",
-      "ungerecht"
-    ],
-    "related": [
-      "bundestag",
-      "einwanderung",
-      "mehrheit"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "einwanderung",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Einwanderung",
-    "en": "immigration",
-    "example": {
-      "de": "Die Einwanderung wird kontrovers diskutiert.",
-      "en": "Immigration is being discussed controversially."
-    },
-    "family": [
-      "einwandern",
-      "Einwanderer"
-    ],
-    "related": [
-      "bundestag",
-      "gleichberechtigung",
-      "gerechtigkeit"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "gleichberechtigung",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Gleichberechtigung",
-    "en": "equal rights",
-    "example": {
-      "de": "Gleichberechtigung ist ein wichtiges Ziel.",
-      "en": "Equal rights are an important goal."
-    },
-    "family": [
-      "gleich",
-      "Recht"
-    ],
-    "related": [
-      "bundestag",
-      "einwanderung",
-      "koalition"
+      "demonstration"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6896,31 +17145,9 @@ export const GENERATED: Word[] = [
       "Tag"
     ],
     "related": [
-      "gesetzgebung",
-      "koalition",
-      "gleichberechtigung"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "koalition",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Koalition",
-    "plural": "Koalitionen",
-    "en": "coalition",
-    "example": {
-      "de": "Die Koalition hat sich auf einen Plan geeinigt.",
-      "en": "The coalition agreed on a plan."
-    },
-    "family": [
-      "Koalitionsvertrag",
-      "koalieren"
-    ],
-    "related": [
-      "gesetzgebung",
+      "umfrage",
       "zivilcourage",
-      "bundestag"
+      "mehrheit"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6939,9 +17166,226 @@ export const GENERATED: Word[] = [
       "Courage"
     ],
     "related": [
-      "gesetzgebung",
+      "umfrage",
+      "abstimmung",
+      "bundestag"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "abstimmung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Abstimmung",
+    "plural": "Abstimmungen",
+    "en": "vote",
+    "example": {
+      "de": "Die Abstimmung hat mal wieder nicht geklappt.",
+      "en": "Again, co-ordination didn’t work."
+    },
+    "family": [],
+    "related": [
+      "umfrage",
+      "beitreten",
+      "zivilcourage"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "beitreten",
+    "tier": 5,
+    "lemma": "beitreten",
+    "en": "to join",
+    "example": {
+      "de": "Sie weigerten sich, der Armee beizutreten.",
+      "en": "They refused to join the army."
+    },
+    "family": [],
+    "related": [
+      "umfrage",
+      "franzoesin",
+      "abstimmung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "franzoesin",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Französin",
+    "plural": "Französinnen",
+    "en": "Frenchwoman",
+    "example": {
+      "de": "Marie Curie war Polin, keine Französin.",
+      "en": "Marie Curie was Polish, not French."
+    },
+    "family": [],
+    "related": [
+      "umfrage",
+      "kanzler",
+      "beitreten"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "kanzler",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Kanzler",
+    "plural": "Kanzler",
+    "en": "chancellor",
+    "example": {
+      "de": "Wen nannte man den eisernen Kanzler?",
+      "en": "Who was called the Iron Chancellor?"
+    },
+    "family": [],
+    "related": [
+      "umfrage",
+      "parlament",
+      "franzoesin"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "parlament",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Parlament",
+    "plural": "Parlamente",
+    "en": "parliament",
+    "example": {
+      "de": "Das Parlament wird bald aufgelöst werden.",
+      "en": "The Diet will soon be dissolved."
+    },
+    "family": [],
+    "related": [
+      "umfrage",
+      "protest",
+      "kanzler"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "protest",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Protest",
+    "plural": "Proteste",
+    "en": "protest",
+    "example": {
+      "de": "Hast du dich an den Protesten beteiligt?",
+      "en": "Did you take part in the protests?"
+    },
+    "family": [],
+    "related": [
+      "umfrage",
+      "abgeordneter",
+      "parlament"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "abgeordneter",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Abgeordneter",
+    "plural": "Abgeordnete",
+    "en": "delegate, assemblyman",
+    "example": {
+      "de": "Es ist ein Ausschuss Abgeordneter angekommen.",
+      "en": "A committee of congressmen has arrived."
+    },
+    "family": [],
+    "related": [
+      "umfrage",
+      "protest",
+      "einwanderung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "umfrage",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Umfrage",
+    "plural": "Umfragen",
+    "en": "survey, poll",
+    "example": {
+      "de": "Laut Umfrage ist die Mehrheit dagegen.",
+      "en": "According to the poll, the majority is against it."
+    },
+    "family": [
+      "befragen",
+      "Frage"
+    ],
+    "related": [
+      "abgeordneter",
+      "einwanderung",
+      "gleichberechtigung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "einwanderung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Einwanderung",
+    "en": "immigration",
+    "example": {
+      "de": "Die Einwanderung wird kontrovers diskutiert.",
+      "en": "Immigration is being discussed controversially."
+    },
+    "family": [
+      "einwandern",
+      "Einwanderer"
+    ],
+    "related": [
+      "abgeordneter",
+      "gleichberechtigung",
+      "umfrage"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "gleichberechtigung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Gleichberechtigung",
+    "en": "equal rights",
+    "example": {
+      "de": "Gleichberechtigung ist ein wichtiges Ziel.",
+      "en": "Equal rights are an important goal."
+    },
+    "family": [
+      "gleich",
+      "Recht"
+    ],
+    "related": [
+      "abgeordneter",
       "koalition",
-      "wahlbeteiligung"
+      "einwanderung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "koalition",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Koalition",
+    "plural": "Koalitionen",
+    "en": "coalition",
+    "example": {
+      "de": "Die Koalition hat sich auf einen Plan geeinigt.",
+      "en": "The coalition agreed on a plan."
+    },
+    "family": [
+      "Koalitionsvertrag",
+      "koalieren"
+    ],
+    "related": [
+      "abgeordneter",
+      "gesetzgebung",
+      "gleichberechtigung"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6960,8 +17404,9 @@ export const GENERATED: Word[] = [
       "Geber"
     ],
     "related": [
-      "zivilcourage",
-      "wahlbeteiligung"
+      "abgeordneter",
+      "wahlbeteiligung",
+      "koalition"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -6981,8 +17426,44 @@ export const GENERATED: Word[] = [
       "beteiligen"
     ],
     "related": [
-      "zivilcourage",
+      "abgeordneter",
+      "britisch",
       "gesetzgebung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "britisch",
+    "tier": 6,
+    "lemma": "britisch",
+    "en": "British",
+    "example": {
+      "de": "Kenia war einmal eine britische Kolonie.",
+      "en": "Kenya used to be a British colony."
+    },
+    "family": [],
+    "related": [
+      "abgeordneter",
+      "reform",
+      "wahlbeteiligung"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "reform",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Reform",
+    "plural": "Reformen",
+    "en": "reform",
+    "example": {
+      "de": "Ich protestiere gegen diese dumme Reform!",
+      "en": "I protest against this stupid reform!"
+    },
+    "family": [],
+    "related": [
+      "abgeordneter",
+      "britisch"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -7002,7 +17483,7 @@ export const GENERATED: Word[] = [
       "Zeitung"
     ],
     "related": [
-      "woche",
+      "monat",
       "tag",
       "jahr",
       "termin"
@@ -7025,7 +17506,7 @@ export const GENERATED: Word[] = [
       "Feiertag"
     ],
     "related": [
-      "woche",
+      "monat",
       "jahr",
       "zeit"
     ],
@@ -7047,16 +17528,16 @@ export const GENERATED: Word[] = [
       "Jahreszeit"
     ],
     "related": [
+      "monat",
       "woche",
       "tag",
-      "monat",
       "zukunft"
     ],
     "theme": "Zeit und Kalender"
   },
   {
     "id": "woche",
-    "tier": 2,
+    "tier": 1,
     "article": "die",
     "lemma": "Woche",
     "plural": "Wochen",
@@ -7070,10 +17551,316 @@ export const GENERATED: Word[] = [
       "Wochentag"
     ],
     "related": [
-      "vergangenheit",
       "monat",
+      "uhr",
       "jahr",
       "wochenende"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "uhr",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Uhr",
+    "plural": "Uhren",
+    "en": "clock; o’clock",
+    "example": {
+      "de": "Wie viel Uhr ist es?",
+      "en": "What time is it?"
+    },
+    "family": [
+      "Armbanduhr",
+      "Uhrzeit"
+    ],
+    "related": [
+      "monat",
+      "noch",
+      "woche",
+      "fahrplan",
+      "stunde"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "noch",
+    "tier": 1,
+    "lemma": "noch",
+    "en": "still, yet",
+    "example": {
+      "de": "Nur noch ein Wunder kann sie jetzt retten.",
+      "en": "Nothing but a miracle can save her now."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "schon",
+      "uhr"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "schon",
+    "tier": 1,
+    "lemma": "schon",
+    "en": "already",
+    "example": {
+      "de": "Er ist schon seit drei Wochen krank.",
+      "en": "He’s been sick for three weeks already."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "mal",
+      "noch"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "mal",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Mal",
+    "plural": "Male",
+    "en": "time",
+    "example": {
+      "de": "Ich höre diese Geschichte zum ersten Mal.",
+      "en": "This is the first time I've heard this story."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "jetzt",
+      "schon"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "jetzt",
+    "tier": 1,
+    "lemma": "jetzt",
+    "en": "now",
+    "example": {
+      "de": "Ihr Bruder Kensaku ist jetzt in Brasilien.",
+      "en": "Her brother Kensaku is now in Brazil."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "dann",
+      "mal"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "dann",
+    "tier": 1,
+    "lemma": "dann",
+    "en": "then, after that",
+    "example": {
+      "de": "Ich ziehe mich erst an, dann frühstücke ich.",
+      "en": "First I'm getting dressed, then I'll have breakfast."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "immer",
+      "jetzt"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "immer",
+    "tier": 1,
+    "lemma": "immer",
+    "en": "always",
+    "example": {
+      "de": "Er erzählt immer dieselbe Geschichte.",
+      "en": "He always tells that same story."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "wieder",
+      "dann"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "wieder",
+    "tier": 1,
+    "lemma": "wieder",
+    "en": "again",
+    "example": {
+      "de": "Siehst du, jetzt hast du’s schon wieder gesagt!",
+      "en": "See, now you’ve said it again!"
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "nie",
+      "immer"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "nie",
+    "tier": 1,
+    "lemma": "nie",
+    "en": "never, never at all",
+    "example": {
+      "de": "Wir werden die Wahrheit wohl nie erfahren.",
+      "en": "We'll probably never know the truth."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "heute",
+      "wieder"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "heute",
+    "tier": 1,
+    "lemma": "heute",
+    "en": "today",
+    "example": {
+      "de": "Heute Morgen habe ich Butterbrot gegessen.",
+      "en": "I ate bread and butter this morning."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "morgen",
+      "nie"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "morgen",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Morgen",
+    "plural": "Morgen",
+    "en": "morning",
+    "example": {
+      "de": "Morgen werde ich in der Bibliothek lernen.",
+      "en": "Tomorrow, I'm going to study at the library."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "minute",
+      "heute"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "minute",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Minute",
+    "plural": "Minuten",
+    "en": "minute",
+    "example": {
+      "de": "Er hat seinen Zug um eine Minute verpasst.",
+      "en": "He's missed his train by a minute."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "abend",
+      "morgen"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "abend",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Abend",
+    "plural": "Abende",
+    "en": "evening",
+    "example": {
+      "de": "Kannst du mich bitte heute Abend anrufen?",
+      "en": "Could you call me tonight, please?"
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "nacht",
+      "minute"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "nacht",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Nacht",
+    "plural": "Nächte",
+    "en": "night",
+    "example": {
+      "de": "Hast du letzte Nacht ein Erdbeben gespürt?",
+      "en": "Did you feel an earthquake last night?"
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "gestern",
+      "abend"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "gestern",
+    "tier": 1,
+    "lemma": "gestern",
+    "en": "yesterday",
+    "example": {
+      "de": "Sie hat gestern Nacht ein Kochbuch gelesen.",
+      "en": "She read a cookbook last night."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "spaet",
+      "nacht"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "spaet",
+    "tier": 1,
+    "lemma": "spät",
+    "en": "late",
+    "example": {
+      "de": "Sie kommt montags oft zu spät zur Schule.",
+      "en": "She is often late for school on Mondays."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "bald",
+      "gestern"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "bald",
+    "tier": 1,
+    "lemma": "bald",
+    "en": "soon",
+    "example": {
+      "de": "Ich hoffe, es wird Ihnen bald besser gehen.",
+      "en": "I hope you'll soon get well."
+    },
+    "family": [],
+    "related": [
+      "monat",
+      "spaet",
+      "stunde"
     ],
     "theme": "Zeit und Kalender"
   },
@@ -7093,9 +17880,9 @@ export const GENERATED: Word[] = [
       "Monatsende"
     ],
     "related": [
-      "vergangenheit",
+      "jahrhundert",
       "stunde",
-      "woche"
+      "bald"
     ],
     "theme": "Zeit und Kalender"
   },
@@ -7115,38 +17902,16 @@ export const GENERATED: Word[] = [
       "Stundenplan"
     ],
     "related": [
+      "jahrhundert",
       "vergangenheit",
-      "uhr",
-      "monat"
-    ],
-    "theme": "Zeit und Kalender"
-  },
-  {
-    "id": "uhr",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Uhr",
-    "plural": "Uhren",
-    "en": "clock; o’clock",
-    "example": {
-      "de": "Wie viel Uhr ist es?",
-      "en": "What time is it?"
-    },
-    "family": [
-      "Armbanduhr",
-      "Uhrzeit"
-    ],
-    "related": [
-      "vergangenheit",
-      "stunde",
-      "zukunft",
-      "fahrplan"
+      "monat",
+      "uhr"
     ],
     "theme": "Zeit und Kalender"
   },
   {
     "id": "vergangenheit",
-    "tier": 3,
+    "tier": 2,
     "article": "die",
     "lemma": "Vergangenheit",
     "en": "past",
@@ -7161,13 +17926,13 @@ export const GENERATED: Word[] = [
     "related": [
       "jahrhundert",
       "zukunft",
-      "uhr"
+      "stunde"
     ],
     "theme": "Zeit und Kalender"
   },
   {
     "id": "zukunft",
-    "tier": 3,
+    "tier": 2,
     "article": "die",
     "lemma": "Zukunft",
     "en": "future",
@@ -7181,7 +17946,7 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "jahrhundert",
-      "gegenwart",
+      "zeitpunkt",
       "vergangenheit",
       "ziel",
       "jahr"
@@ -7189,51 +17954,151 @@ export const GENERATED: Word[] = [
     "theme": "Zeit und Kalender"
   },
   {
-    "id": "gegenwart",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Gegenwart",
-    "en": "present",
+    "id": "zeitpunkt",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Zeitpunkt",
+    "plural": "Zeitpunkte",
+    "en": "point in time",
     "example": {
-      "de": "In der Gegenwart zählt nur der Moment.",
-      "en": "In the present only the moment counts."
+      "de": "Zum jetzigen Zeitpunkt kann ich nichts sagen.",
+      "en": "At this point in time I can’t say anything."
     },
     "family": [
-      "gegenwärtig",
-      "Gegenwartsform"
+      "Zeit",
+      "Punkt"
     ],
     "related": [
       "jahrhundert",
-      "datum",
+      "frueh",
       "zukunft"
     ],
     "theme": "Zeit und Kalender"
   },
   {
-    "id": "datum",
-    "tier": 3,
-    "article": "das",
-    "lemma": "Datum",
-    "plural": "Daten",
-    "en": "date",
+    "id": "frueh",
+    "tier": 2,
+    "lemma": "früh",
+    "en": "early",
     "example": {
-      "de": "Welches Datum haben wir heute?",
-      "en": "What’s the date today?"
+      "de": "Warum ist sie früher nach Hause gekommen?",
+      "en": "Why did she come home early?"
     },
-    "family": [
-      "datieren",
-      "Geburtsdatum"
-    ],
+    "family": [],
     "related": [
       "jahrhundert",
-      "gegenwart",
-      "jahreszeit"
+      "frueher",
+      "zeitpunkt"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "frueher",
+    "tier": 2,
+    "lemma": "früher",
+    "en": "former, erstwhile",
+    "example": {
+      "de": "Früher bin ich hier jeden Tag geschwommen.",
+      "en": "I used to swim here every day."
+    },
+    "family": [],
+    "related": [
+      "jahrhundert",
+      "zuerst",
+      "frueh"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "zuerst",
+    "tier": 2,
+    "lemma": "zuerst",
+    "en": "first, firstly",
+    "example": {
+      "de": "Reinigen Sie immer zuerst die Räder.",
+      "en": "Always clean the wheels first."
+    },
+    "family": [],
+    "related": [
+      "jahrhundert",
+      "bereits",
+      "frueher"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "bereits",
+    "tier": 2,
+    "lemma": "bereits",
+    "en": "already",
+    "example": {
+      "de": "Wir müssen aufstehen: Es ist bereits 8 Uhr.",
+      "en": "We have to get up: it’s already 8 o'clock"
+    },
+    "family": [],
+    "related": [
+      "jahrhundert",
+      "danach",
+      "zuerst"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "danach",
+    "tier": 2,
+    "lemma": "danach",
+    "en": "after it, after that",
+    "example": {
+      "de": "Ich habe den ganzen Morgen danach gesucht.",
+      "en": "I've been looking for it all morning."
+    },
+    "family": [],
+    "related": [
+      "jahrhundert",
+      "damals",
+      "bereits"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "damals",
+    "tier": 2,
+    "lemma": "damals",
+    "en": "at that time, at the time",
+    "example": {
+      "de": "Stimmt es, dass du damals schwanger warst?",
+      "en": "Is it true that you were pregnant then?"
+    },
+    "family": [],
+    "related": [
+      "jahrhundert",
+      "sekunde",
+      "danach"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "sekunde",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Sekunde",
+    "plural": "Sekunden",
+    "en": "second (of time)",
+    "example": {
+      "de": "Es bleiben dir nur zehn Sekunden zu leben.",
+      "en": "You have only ten seconds left to live."
+    },
+    "family": [],
+    "related": [
+      "jahrhundert",
+      "damals",
+      "morgens"
     ],
     "theme": "Zeit und Kalender"
   },
   {
     "id": "jahrhundert",
-    "tier": 4,
+    "tier": 3,
     "article": "das",
     "lemma": "Jahrhundert",
     "plural": "Jahrhunderte",
@@ -7247,15 +18112,297 @@ export const GENERATED: Word[] = [
       "hundert"
     ],
     "related": [
-      "zeitalter",
-      "jahreszeit",
+      "gegenwart",
+      "morgens",
+      "sekunde"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "morgens",
+    "tier": 3,
+    "lemma": "morgens",
+    "en": "in the morning, a.m",
+    "example": {
+      "de": "Wir sind morgens um vier Uhr aufgestanden.",
+      "en": "We got up at four in the morning."
+    },
+    "family": [],
+    "related": [
+      "gegenwart",
+      "neulich",
+      "jahrhundert"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "neulich",
+    "tier": 3,
+    "lemma": "neulich",
+    "en": "recently",
+    "example": {
+      "de": "Ich möchte mich für neulich entschuldigen.",
+      "en": "I want to apologize for the other day."
+    },
+    "family": [],
+    "related": [
+      "gegenwart",
+      "mitternacht",
+      "morgens"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "mitternacht",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Mitternacht",
+    "plural": "Mitternächte",
+    "en": "midnight",
+    "example": {
+      "de": "Ich bin spätestens um Mitternacht zu Hause.",
+      "en": "I'll be home by midnight at the latest."
+    },
+    "family": [],
+    "related": [
+      "gegenwart",
+      "mittag",
+      "neulich"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "mittag",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Mittag",
+    "plural": "Mittage",
+    "en": "noon, midday",
+    "example": {
+      "de": "Sie isst hier von Zeit zu Zeit zu Mittag.",
+      "en": "She eats lunch here from time to time."
+    },
+    "family": [],
+    "related": [
+      "gegenwart",
+      "montag",
+      "mitternacht"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "montag",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Montag",
+    "plural": "Montage",
+    "en": "Monday",
+    "example": {
+      "de": "Die Sommerferien beginnen nächsten Montag.",
+      "en": "Summer vacation begins next Monday."
+    },
+    "family": [],
+    "related": [
+      "gegenwart",
+      "sonntag",
+      "mittag"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "sonntag",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Sonntag",
+    "plural": "Sonntage",
+    "en": "Sunday",
+    "example": {
+      "de": "Ich bin letzten Sonntag nicht ausgegangen.",
+      "en": "I didn't go out last Sunday."
+    },
+    "family": [],
+    "related": [
+      "gegenwart",
+      "montag",
       "datum"
     ],
     "theme": "Zeit und Kalender"
   },
   {
-    "id": "jahreszeit",
+    "id": "gegenwart",
     "tier": 4,
+    "article": "die",
+    "lemma": "Gegenwart",
+    "en": "present",
+    "example": {
+      "de": "In der Gegenwart zählt nur der Moment.",
+      "en": "In the present only the moment counts."
+    },
+    "family": [
+      "gegenwärtig",
+      "Gegenwartsform"
+    ],
+    "related": [
+      "jahreszeit",
+      "datum",
+      "sonntag"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "datum",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Datum",
+    "plural": "Daten",
+    "en": "date",
+    "example": {
+      "de": "Welches Datum haben wir heute?",
+      "en": "What’s the date today?"
+    },
+    "family": [
+      "datieren",
+      "Geburtsdatum"
+    ],
+    "related": [
+      "jahreszeit",
+      "zwischenzeit",
+      "gegenwart"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "zwischenzeit",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Zwischenzeit",
+    "en": "meantime",
+    "example": {
+      "de": "In der Zwischenzeit können Sie warten.",
+      "en": "In the meantime you can wait."
+    },
+    "family": [
+      "zwischen",
+      "Zeit"
+    ],
+    "related": [
+      "jahreszeit",
+      "vergehen",
+      "datum"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "vergehen",
+    "tier": 4,
+    "lemma": "vergehen",
+    "en": "to pass, to elapse",
+    "example": {
+      "de": "Stunden vergehen und sie zählt die Minuten.",
+      "en": "Hours pass, and she's counting the minutes."
+    },
+    "family": [],
+    "related": [
+      "jahreszeit",
+      "allmaehlich",
+      "zwischenzeit"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "allmaehlich",
+    "tier": 4,
+    "lemma": "allmählich",
+    "en": "gradual",
+    "example": {
+      "de": "Toms Japanisch verbessert sich allmählich.",
+      "en": "Tom's Japanese is improving little by little."
+    },
+    "family": [],
+    "related": [
+      "jahreszeit",
+      "letztens",
+      "vergehen"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "letztens",
+    "tier": 4,
+    "lemma": "letztens",
+    "en": "recently, the other day",
+    "example": {
+      "de": "Wie ist dein Rendezvous letztens gelaufen?",
+      "en": "How was your date the other night?"
+    },
+    "family": [],
+    "related": [
+      "jahreszeit",
+      "kalender",
+      "allmaehlich"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "kalender",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Kalender",
+    "plural": "Kalender",
+    "en": "calendar",
+    "example": {
+      "de": "Ich habe den Kalender an die Wand gehängt.",
+      "en": "I've hung the calendar on the wall."
+    },
+    "family": [],
+    "related": [
+      "jahreszeit",
+      "januar",
+      "letztens"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "januar",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Januar",
+    "plural": "Januare",
+    "en": "January",
+    "example": {
+      "de": "Gestern war Dienstag, der 26. Januar 2010.",
+      "en": "Yesterday was Tuesday, January 26, 2010."
+    },
+    "family": [],
+    "related": [
+      "jahreszeit",
+      "dezember",
+      "kalender"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "dezember",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Dezember",
+    "plural": "Dezember",
+    "en": "December",
+    "example": {
+      "de": "Die Wintersonnenwende ist am 21. Dezember.",
+      "en": "Winter Solstice is 21st December."
+    },
+    "family": [],
+    "related": [
+      "jahreszeit",
+      "januar",
+      "zeitraum"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "jahreszeit",
+    "tier": 5,
     "article": "die",
     "lemma": "Jahreszeit",
     "plural": "Jahreszeiten",
@@ -7269,15 +18416,15 @@ export const GENERATED: Word[] = [
       "Zeit"
     ],
     "related": [
-      "zeitalter",
+      "vergaenglichkeit",
       "zeitraum",
-      "jahrhundert"
+      "dezember"
     ],
     "theme": "Zeit und Kalender"
   },
   {
     "id": "zeitraum",
-    "tier": 4,
+    "tier": 5,
     "article": "der",
     "lemma": "Zeitraum",
     "plural": "Zeiträume",
@@ -7291,7 +18438,7 @@ export const GENERATED: Word[] = [
       "Raum"
     ],
     "related": [
-      "zeitalter",
+      "vergaenglichkeit",
       "dauer",
       "jahreszeit"
     ],
@@ -7299,7 +18446,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "dauer",
-    "tier": 4,
+    "tier": 5,
     "article": "die",
     "lemma": "Dauer",
     "en": "duration",
@@ -7312,9 +18459,9 @@ export const GENERATED: Word[] = [
       "dauerhaft"
     ],
     "related": [
+      "vergaenglichkeit",
       "zeitalter",
-      "zeitraum",
-      "zeitpunkt"
+      "zeitraum"
     ],
     "theme": "Zeit und Kalender"
   },
@@ -7334,58 +18481,15 @@ export const GENERATED: Word[] = [
       "Alter"
     ],
     "related": [
+      "vergaenglichkeit",
       "jahrzehnt",
-      "zeitpunkt",
       "dauer"
     ],
     "theme": "Zeit und Kalender"
   },
   {
-    "id": "zeitpunkt",
-    "tier": 5,
-    "article": "der",
-    "lemma": "Zeitpunkt",
-    "plural": "Zeitpunkte",
-    "en": "point in time",
-    "example": {
-      "de": "Zum jetzigen Zeitpunkt kann ich nichts sagen.",
-      "en": "At this point in time I can’t say anything."
-    },
-    "family": [
-      "Zeit",
-      "Punkt"
-    ],
-    "related": [
-      "jahrzehnt",
-      "zwischenzeit",
-      "zeitalter"
-    ],
-    "theme": "Zeit und Kalender"
-  },
-  {
-    "id": "zwischenzeit",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Zwischenzeit",
-    "en": "meantime",
-    "example": {
-      "de": "In der Zwischenzeit können Sie warten.",
-      "en": "In the meantime you can wait."
-    },
-    "family": [
-      "zwischen",
-      "Zeit"
-    ],
-    "related": [
-      "jahrzehnt",
-      "zeitpunkt",
-      "vergaenglichkeit"
-    ],
-    "theme": "Zeit und Kalender"
-  },
-  {
     "id": "jahrzehnt",
-    "tier": 6,
+    "tier": 5,
     "article": "das",
     "lemma": "Jahrzehnt",
     "plural": "Jahrzehnte",
@@ -7399,8 +18503,66 @@ export const GENERATED: Word[] = [
       "Dekade"
     ],
     "related": [
-      "zwischenzeit",
-      "vergaenglichkeit"
+      "vergaenglichkeit",
+      "jahrestag",
+      "zeitalter"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "jahrestag",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Jahrestag",
+    "plural": "Jahrestage",
+    "en": "anniversary",
+    "example": {
+      "de": "Wir haben den hundertsten Jahrestag gefeiert.",
+      "en": "We celebrated the centenary anniversary day."
+    },
+    "family": [],
+    "related": [
+      "vergaenglichkeit",
+      "vormittag",
+      "jahrzehnt"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "vormittag",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Vormittag",
+    "plural": "Vormittage",
+    "en": "mid-morning, late morning",
+    "example": {
+      "de": "Ich komme gewöhnlich am Vormittag hierher.",
+      "en": "I usually come here in the morning."
+    },
+    "family": [],
+    "related": [
+      "vergaenglichkeit",
+      "feiertag",
+      "jahrestag"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "feiertag",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Feiertag",
+    "plural": "Feiertage",
+    "en": "holiday",
+    "example": {
+      "de": "Weihnachten ist kein weltlicher Feiertag.",
+      "en": "Christmas isn't a secular holiday."
+    },
+    "family": [],
+    "related": [
+      "vergaenglichkeit",
+      "vormittag",
+      "ortszeit"
     ],
     "theme": "Zeit und Kalender"
   },
@@ -7419,8 +18581,26 @@ export const GENERATED: Word[] = [
       "vergänglich"
     ],
     "related": [
-      "zwischenzeit",
-      "jahrzehnt"
+      "feiertag",
+      "ortszeit"
+    ],
+    "theme": "Zeit und Kalender"
+  },
+  {
+    "id": "ortszeit",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Ortszeit",
+    "plural": "Ortszeiten",
+    "en": "local time",
+    "example": {
+      "de": "Der Unterricht beginnt um 16 Uhr Ortszeit Rio de Janeiro (GMT −3).",
+      "en": "The classes will start at 4:00 PM Rio de Janeiro Time (GMT -3)."
+    },
+    "family": [],
+    "related": [
+      "feiertag",
+      "vergaenglichkeit"
     ],
     "theme": "Zeit und Kalender"
   },
@@ -7485,8 +18665,102 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "freude",
-      "liebe",
-      "stimmung"
+      "sorge",
+      "liebe"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "sorge",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Sorge",
+    "plural": "Sorgen",
+    "en": "worry",
+    "example": {
+      "de": "Ich mache mir Sorgen um dich.",
+      "en": "I’m worried about you."
+    },
+    "family": [
+      "sorgen",
+      "besorgt"
+    ],
+    "related": [
+      "freude",
+      "wuerde",
+      "glueck",
+      "gesundheit"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "wuerde",
+    "tier": 1,
+    "article": "die",
+    "lemma": "Würde",
+    "plural": "Würden",
+    "en": "dignity",
+    "example": {
+      "de": "Würden Sie mir bitte den Pfeffer reichen?",
+      "en": "Could you please pass me the pepper?"
+    },
+    "family": [],
+    "related": [
+      "freude",
+      "leid",
+      "sorge"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "leid",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Leid",
+    "en": "woe, grief",
+    "example": {
+      "de": "Tut mir Leid, ich kann dir nicht folgen.",
+      "en": "I'm sorry, I don't follow."
+    },
+    "family": [],
+    "related": [
+      "freude",
+      "gefallen",
+      "wuerde"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "gefallen",
+    "tier": 1,
+    "lemma": "gefallen",
+    "en": "to please",
+    "example": {
+      "de": "Sie haben alle abgestorbenen Bäume gefällt.",
+      "en": "They chopped down all the withered trees."
+    },
+    "family": [],
+    "related": [
+      "freude",
+      "gluecklich",
+      "leid"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "gluecklich",
+    "tier": 1,
+    "lemma": "glücklich",
+    "en": "happy",
+    "example": {
+      "de": "Ungeachtet seiner Armut war er glücklich.",
+      "en": "Even though he was poor, he was happy."
+    },
+    "family": [],
+    "related": [
+      "freude",
+      "gefallen",
+      "nervoes"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7506,32 +18780,10 @@ export const GENERATED: Word[] = [
       "fröhlich"
     ],
     "related": [
-      "enttaeuschung",
       "stimmung",
-      "glueck",
-      "sich-freuen"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "stimmung",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Stimmung",
-    "plural": "Stimmungen",
-    "en": "mood, atmosphere",
-    "example": {
-      "de": "Die Stimmung auf der Party war toll.",
-      "en": "The atmosphere at the party was great."
-    },
-    "family": [
-      "stimmen",
-      "Laune"
-    ],
-    "related": [
-      "enttaeuschung",
       "nervoes",
-      "freude"
+      "gluecklich",
+      "sich-freuen"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7549,38 +18801,448 @@ export const GENERATED: Word[] = [
       "Nervosität"
     ],
     "related": [
+      "stimmung",
+      "stolz",
+      "freude"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "stolz",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Stolz",
+    "en": "pride",
+    "example": {
+      "de": "Sie sah mit Stolz auf ihre Tochter.",
+      "en": "She looked at her daughter with pride."
+    },
+    "family": [
+      "stolz",
+      "stolzieren"
+    ],
+    "related": [
+      "stimmung",
+      "mut",
+      "nervoes"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "mut",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Mut",
+    "en": "courage",
+    "example": {
+      "de": "Es braucht Mut, das zu sagen.",
+      "en": "It takes courage to say that."
+    },
+    "family": [
+      "mutig",
+      "Mutprobe"
+    ],
+    "related": [
+      "stimmung",
+      "lieben",
+      "stolz",
+      "entscheidung"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "lieben",
+    "tier": 2,
+    "lemma": "lieben",
+    "en": "to love",
+    "example": {
+      "de": "Könntest du mir sagen, wieso du sie liebst?",
+      "en": "Could you tell me why you love her?"
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "fuehlen",
+      "mut"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "fuehlen",
+    "tier": 2,
+    "lemma": "fühlen",
+    "en": "to feel",
+    "example": {
+      "de": "Ich fühle den Sonnenschein auf meinem Gesicht.",
+      "en": "I feel the sunshine on my face."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "froh",
+      "lieben"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "froh",
+    "tier": 2,
+    "lemma": "froh",
+    "en": "glad, happy",
+    "example": {
+      "de": "Du wirst deines Lebens nicht mehr froh.",
+      "en": "You will no longer be happy with your life."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "vertrauen",
+      "fuehlen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "vertrauen",
+    "tier": 2,
+    "lemma": "vertrauen",
+    "en": "to trust, to place confidence in",
+    "example": {
+      "de": "Offen gesagt kann man ihm nicht vertrauen.",
+      "en": "Frankly speaking, he is untrustworthy."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "interessieren",
+      "froh"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "interessieren",
+    "tier": 2,
+    "lemma": "interessieren",
+    "en": "to interest",
+    "example": {
+      "de": "Sie sind nicht am Geldsparen interessiert.",
+      "en": "They are not interested in saving money."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "interessiert",
+      "vertrauen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "interessiert",
+    "tier": 2,
+    "lemma": "interessiert",
+    "en": "interested",
+    "example": {
+      "de": "Ich bin an dieser Geschichte interessiert.",
+      "en": "I am interested in this story."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "moegen",
+      "interessieren"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "moegen",
+    "tier": 2,
+    "lemma": "mögen",
+    "en": "to like",
+    "example": {
+      "de": "Ich mag es, mit dir ins Kino zu gehen.",
+      "en": "I like going to the movies with you."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "lachen",
+      "interessiert"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "lachen",
+    "tier": 2,
+    "lemma": "lachen",
+    "en": "to laugh",
+    "example": {
+      "de": "Sie brach in Lachen aus, als sie mich sah.",
+      "en": "She burst out laughing when she saw me."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "hoffnung",
+      "moegen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "hoffnung",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Hoffnung",
+    "plural": "Hoffnungen",
+    "en": "hope",
+    "example": {
+      "de": "Im Laufe der Zeit schwand unsere Hoffnung.",
+      "en": "As time went on, our hopes sank."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "traurig",
+      "lachen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "traurig",
+    "tier": 2,
+    "lemma": "traurig",
+    "en": "sad",
+    "example": {
+      "de": "Wenn er traurig ist, zieht er sich zurück.",
+      "en": "When he's sad, he withdraws from other people."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "hoffnung",
+      "geduld"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "stimmung",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Stimmung",
+    "plural": "Stimmungen",
+    "en": "mood, atmosphere",
+    "example": {
+      "de": "Die Stimmung auf der Party war toll.",
+      "en": "The atmosphere at the party was great."
+    },
+    "family": [
+      "stimmen",
+      "Laune"
+    ],
+    "related": [
       "enttaeuschung",
-      "sorge",
+      "geduld",
+      "traurig"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "geduld",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Geduld",
+    "en": "patience",
+    "example": {
+      "de": "Hab bitte etwas Geduld mit mir.",
+      "en": "Please have a little patience with me."
+    },
+    "family": [
+      "geduldig",
+      "dulden"
+    ],
+    "related": [
+      "enttaeuschung",
+      "beruhigen",
       "stimmung"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "sorge",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Sorge",
-    "plural": "Sorgen",
-    "en": "worry",
+    "id": "beruhigen",
+    "tier": 3,
+    "lemma": "beruhigen",
+    "en": "to calm down, to quiet",
     "example": {
-      "de": "Ich mache mir Sorgen um dich.",
-      "en": "I’m worried about you."
+      "de": "Die Mutter beruhigte ihr schreiendes Kind.",
+      "en": "The mother was quieting her crying baby."
     },
-    "family": [
-      "sorgen",
-      "besorgt"
-    ],
+    "family": [],
     "related": [
       "enttaeuschung",
-      "nervoes",
-      "stolz",
-      "gesundheit"
+      "wunsch",
+      "geduld"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "wunsch",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Wunsch",
+    "plural": "Wünsche",
+    "en": "wish",
+    "example": {
+      "de": "Mögen all deine Wünsche in Erfüllung gehen!",
+      "en": "May all your wishes come true!"
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "scherz",
+      "beruhigen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "scherz",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Scherz",
+    "plural": "Scherze",
+    "en": "joke",
+    "example": {
+      "de": "Höre nicht auf ihn! Er macht nur Scherze.",
+      "en": "Don't listen to him. He's just kidding."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "nerven",
+      "wunsch"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "nerven",
+    "tier": 3,
+    "lemma": "nerven",
+    "en": "to annoy, to irritate",
+    "example": {
+      "de": "Toms Art zu reden geht mir auf die Nerven.",
+      "en": "Tom's way of speaking gets on my nerves."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "hassen",
+      "scherz"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "hassen",
+    "tier": 3,
+    "lemma": "hassen",
+    "en": "to hate",
+    "example": {
+      "de": "Die Rabenkrähen hassten auf den Waldkauz.",
+      "en": "The carrion crows mobbed the tawny owl."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "peinlich",
+      "nerven"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "peinlich",
+    "tier": 3,
+    "lemma": "peinlich",
+    "en": "woeful, hurtful",
+    "example": {
+      "de": "Mir unterlief ein peinlicher Fehler.",
+      "en": "I made an embarrassing mistake."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "benehmen",
+      "hassen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "benehmen",
+    "tier": 3,
+    "lemma": "benehmen",
+    "en": "to behave, to act",
+    "example": {
+      "de": "Manchmal benimmt er sich echt wie ein Kind.",
+      "en": "Sometimes he really acts like a child."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "wut",
+      "peinlich"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "wut",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Wut",
+    "en": "rage, fury",
+    "example": {
+      "de": "Sie konnte vor lauter Wut nicht sprechen.",
+      "en": "She was so angry that she could not speak."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "mutig",
+      "benehmen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "mutig",
+    "tier": 3,
+    "lemma": "mutig",
+    "en": "courageous",
+    "example": {
+      "de": "Obwohl sie ein Mädchen ist, ist sie mutig.",
+      "en": "She's a girl, but she's brave."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "eifersuechtig",
+      "wut"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "eifersuechtig",
+    "tier": 3,
+    "lemma": "eifersüchtig",
+    "en": "jealous",
+    "example": {
+      "de": "Du hast keinen Grund, eifersüchtig zu sein.",
+      "en": "You've got no reason to be jealous."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "mutig",
+      "eifersucht"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
     "id": "enttaeuschung",
-    "tier": 3,
+    "tier": 4,
     "article": "die",
     "lemma": "Enttäuschung",
     "plural": "Enttäuschungen",
@@ -7594,36 +19256,15 @@ export const GENERATED: Word[] = [
       "enttäuscht"
     ],
     "related": [
-      "neugier",
-      "stolz",
-      "sorge"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "stolz",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Stolz",
-    "en": "pride",
-    "example": {
-      "de": "Sie sah mit Stolz auf ihre Tochter.",
-      "en": "She looked at her daughter with pride."
-    },
-    "family": [
-      "stolz",
-      "stolzieren"
-    ],
-    "related": [
-      "neugier",
+      "misstrauen",
       "eifersucht",
-      "enttaeuschung"
+      "eifersuechtig"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
     "id": "eifersucht",
-    "tier": 3,
+    "tier": 4,
     "article": "die",
     "lemma": "Eifersucht",
     "en": "jealousy",
@@ -7636,31 +19277,9 @@ export const GENERATED: Word[] = [
       "Eifer"
     ],
     "related": [
+      "misstrauen",
       "neugier",
-      "mut",
-      "stolz"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "mut",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Mut",
-    "en": "courage",
-    "example": {
-      "de": "Es braucht Mut, das zu sagen.",
-      "en": "It takes courage to say that."
-    },
-    "family": [
-      "mutig",
-      "Mutprobe"
-    ],
-    "related": [
-      "neugier",
-      "eifersucht",
-      "geduld",
-      "entscheidung"
+      "enttaeuschung"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7679,30 +19298,9 @@ export const GENERATED: Word[] = [
       "Gier"
     ],
     "related": [
-      "gelassenheit",
-      "geduld",
-      "mut"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "geduld",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Geduld",
-    "en": "patience",
-    "example": {
-      "de": "Hab bitte etwas Geduld mit mir.",
-      "en": "Please have a little patience with me."
-    },
-    "family": [
-      "geduldig",
-      "dulden"
-    ],
-    "related": [
-      "gelassenheit",
+      "misstrauen",
       "verzweiflung",
-      "neugier"
+      "eifersucht"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7721,9 +19319,9 @@ export const GENERATED: Word[] = [
       "Zweifel"
     ],
     "related": [
-      "gelassenheit",
+      "misstrauen",
       "sehnsucht",
-      "geduld"
+      "neugier"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7743,51 +19341,146 @@ export const GENERATED: Word[] = [
       "sehnsüchtig"
     ],
     "related": [
-      "gelassenheit",
-      "verzweiflung",
-      "zuversicht"
+      "misstrauen",
+      "geniessen",
+      "verzweiflung"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "gelassenheit",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Gelassenheit",
-    "en": "composure, calm",
+    "id": "geniessen",
+    "tier": 4,
+    "lemma": "genießen",
+    "en": "to enjoy, to relish",
     "example": {
-      "de": "Er begegnete der Kritik mit Gelassenheit.",
-      "en": "He met the criticism with composure."
+      "de": "Wir haben es genossen, Tennis zu spielen.",
+      "en": "We enjoyed playing tennis."
     },
-    "family": [
-      "gelassen",
-      "lassen"
-    ],
+    "family": [],
     "related": [
-      "schadenfreude",
-      "zuversicht",
+      "misstrauen",
+      "schluchzen",
       "sehnsucht"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "zuversicht",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Zuversicht",
-    "en": "confidence, optimism",
+    "id": "schluchzen",
+    "tier": 4,
+    "lemma": "schluchzen",
+    "en": "to sob",
     "example": {
-      "de": "Sie blickt voller Zuversicht in die Zukunft.",
-      "en": "She looks to the future with confidence."
+      "de": "Ich habe sie in ihrem Zimmer schluchzen gehört.",
+      "en": "I heard her sobbing in her room."
     },
-    "family": [
-      "zuversichtlich",
-      "Versicht"
-    ],
+    "family": [],
     "related": [
-      "schadenfreude",
       "misstrauen",
-      "gelassenheit"
+      "aergern",
+      "geniessen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "aergern",
+    "tier": 4,
+    "lemma": "ärgern",
+    "en": "to annoy, to make angry",
+    "example": {
+      "de": "Ich ärgere mich über die hohen Preise.",
+      "en": "I am angry over the high prices."
+    },
+    "family": [],
+    "related": [
+      "misstrauen",
+      "egoistisch",
+      "schluchzen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "egoistisch",
+    "tier": 4,
+    "lemma": "egoistisch",
+    "en": "egoistic",
+    "example": {
+      "de": "Bist du schon immer so egoistisch gewesen?",
+      "en": "Have you always been so selfish?"
+    },
+    "family": [],
+    "related": [
+      "misstrauen",
+      "veraengstigt",
+      "aergern"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "veraengstigt",
+    "tier": 4,
+    "lemma": "verängstigt",
+    "en": "frightened, scared",
+    "example": {
+      "de": "Du machtest einen verängstigten Eindruck.",
+      "en": "You looked like you were frightened."
+    },
+    "family": [],
+    "related": [
+      "misstrauen",
+      "verknallt",
+      "egoistisch"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "verknallt",
+    "tier": 4,
+    "lemma": "verknallt",
+    "en": "infatuated, having a crush",
+    "example": {
+      "de": "Sie ist in den Nachbarsjungen verknallt.",
+      "en": "She has a crush on the boy next door."
+    },
+    "family": [],
+    "related": [
+      "misstrauen",
+      "trauer",
+      "veraengstigt"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "trauer",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Trauer",
+    "en": "grief, sorrow",
+    "example": {
+      "de": "Krieg wird von Elend und Trauer begleitet.",
+      "en": "Misery and sorrow accompany war."
+    },
+    "family": [],
+    "related": [
+      "misstrauen",
+      "schuechtern",
+      "verknallt"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "schuechtern",
+    "tier": 4,
+    "lemma": "schüchtern",
+    "en": "shy, timid",
+    "example": {
+      "de": "Er ist zu schüchtern, Mädchen anzusprechen.",
+      "en": "He is too shy to talk to girls."
+    },
+    "family": [],
+    "related": [
+      "misstrauen",
+      "trauer",
+      "troesten"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7806,9 +19499,207 @@ export const GENERATED: Word[] = [
       "trauen"
     ],
     "related": [
-      "schadenfreude",
+      "gelassenheit",
+      "troesten",
+      "schuechtern"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "troesten",
+    "tier": 5,
+    "lemma": "trösten",
+    "en": "to console, to comfort",
+    "example": {
+      "de": "Niemand tröstete sie, als sie traurig war.",
+      "en": "No one comforted her when she was sad."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "unverschaemt",
+      "misstrauen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "unverschaemt",
+    "tier": 5,
+    "lemma": "unverschämt",
+    "en": "impertinent",
+    "example": {
+      "de": "Toms Forderungen wurden immer unverschämter.",
+      "en": "Tom's demands became more and more outrageous."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "unruhig",
+      "troesten"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "unruhig",
+    "tier": 5,
+    "lemma": "unruhig",
+    "en": "noisy",
+    "example": {
+      "de": "Die Pferde sind wegen der Schüsse unruhig.",
+      "en": "The horses are unsettled about the gunshots."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "bevorzugen",
+      "unverschaemt"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "bevorzugen",
+    "tier": 5,
+    "lemma": "bevorzugen",
+    "en": "to favor, to prefer",
+    "example": {
+      "de": "Welche Farbe bevorzugst du, blau oder rot?",
+      "en": "Which colour do you prefer, blue or red?"
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "hysterisch",
+      "unruhig"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "hysterisch",
+    "tier": 5,
+    "lemma": "hysterisch",
+    "en": "hysterical",
+    "example": {
+      "de": "Es gibt keinen Grund, hysterisch zu werden.",
+      "en": "There's no need to get hysterical."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "heiter",
+      "bevorzugen"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "heiter",
+    "tier": 5,
+    "lemma": "heiter",
+    "en": "cheerful, light-hearted",
+    "example": {
+      "de": "Das kam wie ein Blitz aus heiterem Himmel.",
+      "en": "This was a bolt from the blue."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "unruhe",
+      "hysterisch"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "unruhe",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Unruhe",
+    "plural": "Unruhen",
+    "en": "turbulence, perturbation",
+    "example": {
+      "de": "Die schlimmsten Unruhen waren in Chicago.",
+      "en": "The worst riot was in Chicago."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "nachgeben",
+      "heiter"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "nachgeben",
+    "tier": 5,
+    "lemma": "nachgeben",
+    "en": "to give way",
+    "example": {
+      "de": "Du darfst der Versuchung nicht nachgeben.",
+      "en": "You must not yield to temptation."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "neid",
+      "unruhe"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "neid",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Neid",
+    "en": "envy, jealousy",
+    "example": {
+      "de": "Die Tochter des Neides ist die Verleumdung.",
+      "en": "The daughter of envy is defamation."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "nachgeben",
+      "zuversicht"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "gelassenheit",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Gelassenheit",
+    "en": "composure, calm",
+    "example": {
+      "de": "Er begegnete der Kritik mit Gelassenheit.",
+      "en": "He met the criticism with composure."
+    },
+    "family": [
+      "gelassen",
+      "lassen"
+    ],
+    "related": [
+      "neid",
       "zuversicht",
-      "wehmut"
+      "schadenfreude"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "zuversicht",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Zuversicht",
+    "en": "confidence, optimism",
+    "example": {
+      "de": "Sie blickt voller Zuversicht in die Zukunft.",
+      "en": "She looks to the future with confidence."
+    },
+    "family": [
+      "zuversichtlich",
+      "Versicht"
+    ],
+    "related": [
+      "neid",
+      "schadenfreude",
+      "gelassenheit"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7827,8 +19718,9 @@ export const GENERATED: Word[] = [
       "Schaden"
     ],
     "related": [
-      "misstrauen",
-      "wehmut"
+      "neid",
+      "wehmut",
+      "zuversicht"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7847,8 +19739,42 @@ export const GENERATED: Word[] = [
       "Weh"
     ],
     "related": [
-      "misstrauen",
+      "neid",
+      "griesgraemig",
       "schadenfreude"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "griesgraemig",
+    "tier": 6,
+    "lemma": "griesgrämig",
+    "en": "grouchy, sullen",
+    "example": {
+      "de": "Der griesgrämige Alte war Toms Großvater.",
+      "en": "That grumpy old man was Tom's grandfather."
+    },
+    "family": [],
+    "related": [
+      "neid",
+      "wertschaetzen",
+      "wehmut"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "wertschaetzen",
+    "tier": 6,
+    "lemma": "wertschätzen",
+    "en": "to value, to appreciate",
+    "example": {
+      "de": "Mütter werden oft nicht wertgeschätzt.",
+      "en": "Mothers are often unappreciated."
+    },
+    "family": [],
+    "related": [
+      "neid",
+      "griesgraemig"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -7866,9 +19792,9 @@ export const GENERATED: Word[] = [
       "sagenhaft"
     ],
     "related": [
-      "erzaehlen",
-      "fragen",
       "antworten",
+      "fragen",
+      "erzaehlen",
       "besprechung"
     ],
     "theme": "Sprechen und Mitteilen"
@@ -7887,35 +19813,15 @@ export const GENERATED: Word[] = [
       "befragen"
     ],
     "related": [
-      "erzaehlen",
       "antworten",
+      "erzaehlen",
       "sagen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
   {
-    "id": "antworten",
-    "tier": 1,
-    "lemma": "antworten",
-    "en": "to answer",
-    "example": {
-      "de": "Bitte antworte mir schnell.",
-      "en": "Please answer me quickly."
-    },
-    "family": [
-      "Antwort",
-      "beantworten"
-    ],
-    "related": [
-      "erzaehlen",
-      "fragen",
-      "erklaeren"
-    ],
-    "theme": "Sprechen und Mitteilen"
-  },
-  {
     "id": "erzaehlen",
-    "tier": 2,
+    "tier": 1,
     "lemma": "erzählen",
     "en": "to tell (a story)",
     "example": {
@@ -7927,9 +19833,200 @@ export const GENERATED: Word[] = [
       "Erzähler"
     ],
     "related": [
+      "antworten",
+      "meinen",
+      "fragen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "meinen",
+    "tier": 1,
+    "lemma": "meinen",
+    "en": "to opine, to think",
+    "example": {
+      "de": "Das sagt er nicht nur, das meint er auch.",
+      "en": "He doesn’t just say it, he means it."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "bitte",
+      "erzaehlen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "bitte",
+    "tier": 1,
+    "lemma": "bitte",
+    "en": "please, if you please",
+    "example": {
+      "de": "Wenn Sie frei haben, bitte helfen Sie mir.",
+      "en": "If you are free, give me a hand."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "warum",
+      "meinen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "warum",
+    "tier": 1,
+    "lemma": "warum",
+    "en": "why, for what reason",
+    "example": {
+      "de": "Warum kann er heute nicht Tennis spielen?",
+      "en": "Why can't he play tennis today?"
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "danken",
+      "bitte"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "danken",
+    "tier": 1,
+    "lemma": "danken",
+    "en": "to thank",
+    "example": {
+      "de": "Vielen Dank im Voraus für deine Mitarbeit.",
+      "en": "Thank you in advance for your cooperation."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "dank",
+      "warum"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "dank",
+    "tier": 1,
+    "article": "der",
+    "lemma": "Dank",
+    "en": "thanks, gratitude",
+    "example": {
+      "de": "Vielen Dank im Voraus für eure Mitarbeit.",
+      "en": "Thank you in advance for your cooperation."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "okay",
+      "danken"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "okay",
+    "tier": 1,
+    "lemma": "okay",
+    "en": "OK",
+    "example": {
+      "de": "Solange es nicht kalt wird, ist es okay.",
+      "en": "As long as it doesn't get cold, it's okay."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "reden",
+      "dank"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "reden",
+    "tier": 1,
+    "lemma": "reden",
+    "en": "to talk, to speak",
+    "example": {
+      "de": "Seit ihrer Ankunft hat sie kein Wort geredet.",
+      "en": "She hasn't said a word since she arrived."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "sprechen",
+      "okay"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "sprechen",
+    "tier": 1,
+    "lemma": "sprechen",
+    "en": "to speak",
+    "example": {
+      "de": "Sprich die Wahrheit oder bleib still.",
+      "en": "Speak the truth or remain silent."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "zeigen",
+      "reden"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "zeigen",
+    "tier": 1,
+    "lemma": "zeigen",
+    "en": "to show, make see",
+    "example": {
+      "de": "Zeig mir mal deine Briefmarkensammlung!",
+      "en": "Please show me your stamp collection!"
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "entschuldigen",
+      "sprechen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "entschuldigen",
+    "tier": 1,
+    "lemma": "entschuldigen",
+    "en": "to excuse, to apologize for",
+    "example": {
+      "de": "Was du getan hast, kann ich nicht entschuldigen.",
+      "en": "I can’t excuse what you did."
+    },
+    "family": [],
+    "related": [
+      "antworten",
+      "zeigen",
+      "erklaeren"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "antworten",
+    "tier": 2,
+    "lemma": "antworten",
+    "en": "to answer",
+    "example": {
+      "de": "Bitte antworte mir schnell.",
+      "en": "Please answer me quickly."
+    },
+    "family": [
+      "Antwort",
+      "beantworten"
+    ],
+    "related": [
       "erwaehnen",
       "erklaeren",
-      "antworten"
+      "entschuldigen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -7948,29 +20045,9 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "erwaehnen",
-      "diskutieren",
-      "erzaehlen",
-      "lehrer"
-    ],
-    "theme": "Sprechen und Mitteilen"
-  },
-  {
-    "id": "diskutieren",
-    "tier": 2,
-    "lemma": "diskutieren",
-    "en": "to discuss",
-    "example": {
-      "de": "Wir diskutieren über das Thema.",
-      "en": "We’re discussing the topic."
-    },
-    "family": [
-      "Diskussion",
-      "Diskutant"
-    ],
-    "related": [
-      "erwaehnen",
       "bitten",
-      "erklaeren"
+      "antworten",
+      "lehrer"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -7989,7 +20066,164 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "erwaehnen",
-      "diskutieren",
+      "rede",
+      "erklaeren"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "rede",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Rede",
+    "plural": "Reden",
+    "en": "speech, address",
+    "example": {
+      "de": "Sein Reden lenkte sie von ihrem Kummer ab.",
+      "en": "His talk distracted her from grief."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "willkommen",
+      "bitten"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "willkommen",
+    "tier": 2,
+    "lemma": "willkommen",
+    "en": "welcome",
+    "example": {
+      "de": "Das ist eine willkommene Gelegenheit.",
+      "en": "This is a welcome opportunity."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "rufen",
+      "rede"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "rufen",
+    "tier": 2,
+    "lemma": "rufen",
+    "en": "to call out, to shout",
+    "example": {
+      "de": "Ruf mich an, sobald du ihn getroffen hast.",
+      "en": "Call me as soon as you meet up with him."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "nennen",
+      "willkommen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "nennen",
+    "tier": 2,
+    "lemma": "nennen",
+    "en": "to name",
+    "example": {
+      "de": "Nennen Sie mir den Ort des Treffens.",
+      "en": "Tell me the location of the meeting."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "schreiben",
+      "rufen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "schreiben",
+    "tier": 2,
+    "lemma": "schreiben",
+    "en": "to write, to write out",
+    "example": {
+      "de": "Sie schreibt ihren Namen an die Tafel.",
+      "en": "She writes her name on the blackboard."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "vorstellen",
+      "nennen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "vorstellen",
+    "tier": 2,
+    "lemma": "vorstellen",
+    "en": "to introduce, to present",
+    "example": {
+      "de": "Lass mich dir meine Schwester vorstellen.",
+      "en": "Let me introduce my sister to you."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "stimme",
+      "schreiben"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "stimme",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Stimme",
+    "plural": "Stimmen",
+    "en": "voice, call of an animal",
+    "example": {
+      "de": "Die Stimme erinnerte mich an meine Mutter.",
+      "en": "The voice reminded me of my mother."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "luegen",
+      "vorstellen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "luegen",
+    "tier": 2,
+    "lemma": "lügen",
+    "en": "to tell a lie, to lie",
+    "example": {
+      "de": "Nicht jede unwahre Aussage ist eine Lüge.",
+      "en": "Not every untrue statement is a lie."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "schreien",
+      "stimme"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "schreien",
+    "tier": 2,
+    "lemma": "schreien",
+    "en": "to shout, to yell",
+    "example": {
+      "de": "Plötzlich hörte ich einen schrillen Schrei.",
+      "en": "All at once, I heard a shrill cry."
+    },
+    "family": [],
+    "related": [
+      "erwaehnen",
+      "luegen",
       "behaupten"
     ],
     "theme": "Sprechen und Mitteilen"
@@ -8008,9 +20242,9 @@ export const GENERATED: Word[] = [
       "erwähnenswert"
     ],
     "related": [
-      "sich-beschweren",
+      "diskutieren",
       "behaupten",
-      "bitten"
+      "schreien"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -8028,15 +20262,158 @@ export const GENERATED: Word[] = [
       "haupt"
     ],
     "related": [
-      "sich-beschweren",
-      "zustimmen",
+      "diskutieren",
+      "heissen",
       "erwaehnen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
   {
-    "id": "zustimmen",
+    "id": "heissen",
     "tier": 3,
+    "lemma": "heißen",
+    "en": "to have a name, to be named",
+    "example": {
+      "de": "Ich werde Lutz genannt, aber ich heiße Ludger.",
+      "en": "They call me Lutz, but my name is Ludger."
+    },
+    "family": [],
+    "related": [
+      "diskutieren",
+      "besprechen",
+      "behaupten"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "besprechen",
+    "tier": 3,
+    "lemma": "besprechen",
+    "en": "to discuss",
+    "example": {
+      "de": "Viviana hat wichtige Themen zu besprechen.",
+      "en": "Viviana has important issues to discuss."
+    },
+    "family": [],
+    "related": [
+      "diskutieren",
+      "ueberzeugen",
+      "heissen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "ueberzeugen",
+    "tier": 3,
+    "lemma": "überzeugen",
+    "en": "to convince",
+    "example": {
+      "de": "Er hat mich von seinen Fähigkeiten überzeugt.",
+      "en": "He convinced me of his abilities."
+    },
+    "family": [],
+    "related": [
+      "diskutieren",
+      "sprache",
+      "besprechen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "sprache",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Sprache",
+    "plural": "Sprachen",
+    "en": "language",
+    "example": {
+      "de": "Ist Deutsch eine schwere Sprache zu erlernen?",
+      "en": "Is German a difficult language to learn?"
+    },
+    "family": [],
+    "related": [
+      "diskutieren",
+      "erklaerung",
+      "ueberzeugen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "erklaerung",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Erklärung",
+    "plural": "Erklärungen",
+    "en": "explanation",
+    "example": {
+      "de": "Meine Erklärung klingt vielleicht seltsam.",
+      "en": "My explanation may sound strange."
+    },
+    "family": [],
+    "related": [
+      "diskutieren",
+      "raten",
+      "sprache"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "raten",
+    "tier": 3,
+    "lemma": "raten",
+    "en": "to advise, to recommend",
+    "example": {
+      "de": "Ich rate dir dazu, die Chance zu ergreifen.",
+      "en": "I advise you to take the chance."
+    },
+    "family": [],
+    "related": [
+      "diskutieren",
+      "schweigen",
+      "erklaerung"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "schweigen",
+    "tier": 3,
+    "lemma": "schweigen",
+    "en": "to be silent, to keep quiet",
+    "example": {
+      "de": "Ich verstand ihr Schweigen als Zustimmung.",
+      "en": "I interpreted their silence as consent."
+    },
+    "family": [],
+    "related": [
+      "diskutieren",
+      "raten",
+      "zustimmen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "diskutieren",
+    "tier": 4,
+    "lemma": "diskutieren",
+    "en": "to discuss",
+    "example": {
+      "de": "Wir diskutieren über das Thema.",
+      "en": "We’re discussing the topic."
+    },
+    "family": [
+      "Diskussion",
+      "Diskutant"
+    ],
+    "related": [
+      "widersprechen",
+      "zustimmen",
+      "schweigen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "zustimmen",
+    "tier": 4,
     "lemma": "zustimmen",
     "en": "to agree",
     "example": {
@@ -8048,29 +20425,9 @@ export const GENERATED: Word[] = [
       "stimmen"
     ],
     "related": [
-      "sich-beschweren",
       "widersprechen",
-      "behaupten"
-    ],
-    "theme": "Sprechen und Mitteilen"
-  },
-  {
-    "id": "widersprechen",
-    "tier": 3,
-    "lemma": "widersprechen",
-    "en": "to contradict",
-    "example": {
-      "de": "Ich muss dir leider widersprechen.",
-      "en": "Unfortunately I have to contradict you."
-    },
-    "family": [
-      "Widerspruch",
-      "sprechen"
-    ],
-    "related": [
       "sich-beschweren",
-      "zustimmen",
-      "betonen"
+      "diskutieren"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -8088,29 +20445,9 @@ export const GENERATED: Word[] = [
       "schwer"
     ],
     "related": [
-      "andeuten",
-      "betonen",
-      "widersprechen"
-    ],
-    "theme": "Sprechen und Mitteilen"
-  },
-  {
-    "id": "betonen",
-    "tier": 4,
-    "lemma": "betonen",
-    "en": "to emphasize",
-    "example": {
-      "de": "Sie betonte, wie wichtig das sei.",
-      "en": "She stressed how important it was."
-    },
-    "family": [
-      "Betonung",
-      "Ton"
-    ],
-    "related": [
-      "andeuten",
+      "widersprechen",
       "vorschlagen",
-      "sich-beschweren"
+      "zustimmen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -8128,9 +20465,9 @@ export const GENERATED: Word[] = [
       "schlagen"
     ],
     "related": [
-      "andeuten",
+      "widersprechen",
       "ablehnen",
-      "betonen"
+      "sich-beschweren"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -8148,9 +20485,155 @@ export const GENERATED: Word[] = [
       "lehnen"
     ],
     "related": [
+      "widersprechen",
+      "unterbrechen",
+      "vorschlagen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "unterbrechen",
+    "tier": 4,
+    "lemma": "unterbrechen",
+    "en": "to interrupt",
+    "example": {
+      "de": "Unterbrich mich nicht, während ich spreche.",
+      "en": "Don't interrupt me while I'm talking."
+    },
+    "family": [],
+    "related": [
+      "widersprechen",
+      "aussprechen",
+      "ablehnen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "aussprechen",
+    "tier": 4,
+    "lemma": "aussprechen",
+    "en": "to pronounce",
+    "example": {
+      "de": "Frau Ogawa spielt ausgesprochen gut Tennis.",
+      "en": "Mrs. Ogawa is really good at tennis."
+    },
+    "family": [],
+    "related": [
+      "widersprechen",
+      "bezeichnen",
+      "unterbrechen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "bezeichnen",
+    "tier": 4,
+    "lemma": "bezeichnen",
+    "en": "to name, to call",
+    "example": {
+      "de": "Ich werde dich als meinen Chef bezeichnen.",
+      "en": "I'll call you my boss."
+    },
+    "family": [],
+    "related": [
+      "widersprechen",
+      "anweisung",
+      "aussprechen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "anweisung",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Anweisung",
+    "plural": "Anweisungen",
+    "en": "directive, order",
+    "example": {
+      "de": "Meine Anweisung wirkte auf sie ermutigend.",
+      "en": "My advice acted as an encouragement to her."
+    },
+    "family": [],
+    "related": [
+      "widersprechen",
+      "fluestern",
+      "bezeichnen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "fluestern",
+    "tier": 4,
+    "lemma": "flüstern",
+    "en": "to whisper",
+    "example": {
+      "de": "Ich kann nur flüstern, mein Hals tut weh.",
+      "en": "I can only whisper, my throat hurts."
+    },
+    "family": [],
+    "related": [
+      "widersprechen",
+      "sprecher",
+      "anweisung"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "sprecher",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Sprecher",
+    "plural": "Sprecher",
+    "en": "speaker",
+    "example": {
+      "de": "Nicht-Muttersprachler sind auch Sprecher.",
+      "en": "Non-native speakers are speakers, too."
+    },
+    "family": [],
+    "related": [
+      "widersprechen",
+      "fluestern",
+      "betonen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "widersprechen",
+    "tier": 5,
+    "lemma": "widersprechen",
+    "en": "to contradict",
+    "example": {
+      "de": "Ich muss dir leider widersprechen.",
+      "en": "Unfortunately I have to contradict you."
+    },
+    "family": [
+      "Widerspruch",
+      "sprechen"
+    ],
+    "related": [
+      "beteuern",
+      "betonen",
+      "sprecher"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "betonen",
+    "tier": 5,
+    "lemma": "betonen",
+    "en": "to emphasize",
+    "example": {
+      "de": "Sie betonte, wie wichtig das sei.",
+      "en": "She stressed how important it was."
+    },
+    "family": [
+      "Betonung",
+      "Ton"
+    ],
+    "related": [
+      "beteuern",
       "andeuten",
-      "vorschlagen",
-      "einwenden"
+      "widersprechen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -8170,7 +20653,7 @@ export const GENERATED: Word[] = [
     "related": [
       "beteuern",
       "einwenden",
-      "ablehnen"
+      "betonen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -8209,33 +20692,14 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "beteuern",
-      "einwenden",
-      "unterstellen"
-    ],
-    "theme": "Sprechen und Mitteilen"
-  },
-  {
-    "id": "beteuern",
-    "tier": 6,
-    "lemma": "beteuern",
-    "en": "to assure, to protest (one’s innocence)",
-    "example": {
-      "de": "Er beteuerte, nichts davon gewusst zu haben.",
-      "en": "He protested that he had known nothing about it."
-    },
-    "family": [
-      "Beteuerung",
-      "teuer"
-    ],
-    "related": [
-      "verschweigen",
-      "unterstellen"
+      "unterstellen",
+      "einwenden"
     ],
     "theme": "Sprechen und Mitteilen"
   },
   {
     "id": "unterstellen",
-    "tier": 6,
+    "tier": 5,
     "lemma": "unterstellen",
     "en": "to insinuate, to accuse",
     "example": {
@@ -8247,8 +20711,136 @@ export const GENERATED: Word[] = [
       "stellen"
     ],
     "related": [
-      "verschweigen",
+      "beteuern",
+      "begruessung",
+      "verschweigen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "begruessung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Begrüßung",
+    "plural": "Begrüßungen",
+    "en": "greeting, salutation",
+    "example": {
+      "de": "Vielen Dank für die herzliche Begrüßung!",
+      "en": "Thanks for your warm welcome!"
+    },
+    "family": [],
+    "related": [
+      "beteuern",
+      "stellungnahme",
+      "unterstellen"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "stellungnahme",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Stellungnahme",
+    "plural": "Stellungnahmen",
+    "en": "statement, comment",
+    "example": {
+      "de": "Die Stellungnahme kam nicht rechtzeitig.",
+      "en": "The statement was not timely."
+    },
+    "family": [],
+    "related": [
+      "beteuern",
+      "gruessen",
+      "begruessung"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "gruessen",
+    "tier": 5,
+    "lemma": "grüßen",
+    "en": "to greet",
+    "example": {
+      "de": "Sie grüßte Herrn Kato mit einem Lächeln.",
+      "en": "She greeted Mr Kato with a smile."
+    },
+    "family": [],
+    "related": [
+      "beteuern",
+      "wortwoertlich",
+      "stellungnahme"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "wortwoertlich",
+    "tier": 5,
+    "lemma": "wortwörtlich",
+    "en": "word-for-word",
+    "example": {
+      "de": "Wir haben - wortwörtlich - einen Haufen zu Essen.",
+      "en": "We have, literally, a pile of food to eat."
+    },
+    "family": [],
+    "related": [
+      "beteuern",
+      "gruessen",
+      "kontext"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "beteuern",
+    "tier": 6,
+    "lemma": "beteuern",
+    "en": "to assure, to swear",
+    "example": {
+      "de": "Er beteuerte, nichts davon gewusst zu haben.",
+      "en": "He protested that he had known nothing about it."
+    },
+    "family": [
+      "Beteuerung",
+      "teuer"
+    ],
+    "related": [
+      "wortwoertlich",
+      "kontext",
+      "begruenden"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "kontext",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Kontext",
+    "plural": "Kontexte",
+    "en": "context",
+    "example": {
+      "de": "Ist dieses Wort in diesem Kontext richtig?",
+      "en": "Is this word correct in this context?"
+    },
+    "family": [],
+    "related": [
+      "wortwoertlich",
+      "begruenden",
       "beteuern"
+    ],
+    "theme": "Sprechen und Mitteilen"
+  },
+  {
+    "id": "begruenden",
+    "tier": 6,
+    "lemma": "begründen",
+    "en": "to justify, to explain",
+    "example": {
+      "de": "Seine Entscheidung begründete er wortreich.",
+      "en": "He justified his decision at length."
+    },
+    "family": [],
+    "related": [
+      "wortwoertlich",
+      "kontext"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -8266,7 +20858,7 @@ export const GENERATED: Word[] = [
       "Spaziergang"
     ],
     "related": [
-      "holen",
+      "mitnehmen",
       "kommen",
       "machen",
       "haltestelle"
@@ -8287,7 +20879,7 @@ export const GENERATED: Word[] = [
       "Kommen"
     ],
     "related": [
-      "holen",
+      "mitnehmen",
       "machen",
       "gehen"
     ],
@@ -8307,15 +20899,15 @@ export const GENERATED: Word[] = [
       "Macher"
     ],
     "related": [
+      "mitnehmen",
       "holen",
-      "kommen",
-      "bringen"
+      "kommen"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
     "id": "holen",
-    "tier": 2,
+    "tier": 1,
     "lemma": "holen",
     "en": "to fetch, to get",
     "example": {
@@ -8335,7 +20927,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "bringen",
-    "tier": 2,
+    "tier": 1,
     "lemma": "bringen",
     "en": "to bring",
     "example": {
@@ -8355,7 +20947,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "suchen",
-    "tier": 2,
+    "tier": 1,
     "lemma": "suchen",
     "en": "to look for",
     "example": {
@@ -8375,7 +20967,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "finden",
-    "tier": 2,
+    "tier": 1,
     "lemma": "finden",
     "en": "to find",
     "example": {
@@ -8388,15 +20980,491 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "mitnehmen",
+      "sein",
       "suchen",
-      "abholen",
       "erfahrung"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
+    "id": "sein",
+    "tier": 1,
+    "lemma": "sein",
+    "en": "to be",
+    "example": {
+      "de": "Manchmal kann er ein seltsamer Junge sein.",
+      "en": "Sometimes he can be a strange guy."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "haben",
+      "finden"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "haben",
+    "tier": 1,
+    "lemma": "haben",
+    "en": "to have",
+    "example": {
+      "de": "Dank dir habe ich meinen Appetit verloren.",
+      "en": "Thanks to you I've lost my appetite."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "hier",
+      "sein"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "hier",
+    "tier": 1,
+    "lemma": "hier",
+    "en": "here, in this place",
+    "example": {
+      "de": "Die Kirche ist gleich hier am Ende der Straße.",
+      "en": "The church is right there at the end of the street."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "nur",
+      "haben"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "nur",
+    "tier": 1,
+    "lemma": "nur",
+    "en": "only, just",
+    "example": {
+      "de": "Nur reife Kirschen dürfen auf den Kuchen.",
+      "en": "Only ripe cherries may go on the cake."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "koennen",
+      "hier"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "koennen",
+    "tier": 1,
+    "lemma": "können",
+    "en": "can, to be able to",
+    "example": {
+      "de": "Das kann sein, kann aber auch nicht sein.",
+      "en": "This may be and may also not be."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "auch",
+      "nur"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "auch",
+    "tier": 1,
+    "lemma": "auch",
+    "en": "also, too",
+    "example": {
+      "de": "Was auch immer er sagt, vertraue ihm nicht.",
+      "en": "No matter what he may say, don't trust him."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "schonen",
+      "koennen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "schonen",
+    "tier": 1,
+    "lemma": "schonen",
+    "en": "to spare",
+    "example": {
+      "de": "Ich habe dieses Lied schon einmal gehört.",
+      "en": "I've heard that song before."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "werden",
+      "auch"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "werden",
+    "tier": 1,
+    "lemma": "werden",
+    "en": "to become",
+    "example": {
+      "de": "Rom ist nicht an einem Tage erbaut worden.",
+      "en": "Rome wasn't built in a day."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "muessen",
+      "schonen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "muessen",
+    "tier": 1,
+    "lemma": "müssen",
+    "en": "to have to, must",
+    "example": {
+      "de": "Ich muss das Buch vor Samstag zurückgeben.",
+      "en": "I have to give back the book before Saturday."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "tun",
+      "werden"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "tun",
+    "tier": 1,
+    "lemma": "tun",
+    "en": "to do",
+    "example": {
+      "de": "Das einzige, was er je tat, war arbeiten.",
+      "en": "The only thing he ever did was work."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "sehen",
+      "muessen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "sehen",
+    "tier": 1,
+    "lemma": "sehen",
+    "en": "to see, to have sight",
+    "example": {
+      "de": "Peter sieht, dass das Garagentor offen ist.",
+      "en": "Peter sees that the garage door is open."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "sollen",
+      "tun"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "sollen",
+    "tier": 1,
+    "lemma": "sollen",
+    "en": "should, to be obligated",
+    "example": {
+      "de": "Du solltest nicht deine Zeit verschwenden.",
+      "en": "You shouldn't waste your time."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "weg",
+      "sehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "weg",
+    "tier": 1,
+    "lemma": "weg",
+    "en": "away",
+    "example": {
+      "de": "Unser Wagen ist auf dem Weg kaputtgegangen.",
+      "en": "Our car broke down on our way there."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "leben",
+      "sollen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "leben",
+    "tier": 1,
+    "lemma": "leben",
+    "en": "to live, to be alive",
+    "example": {
+      "de": "Das Leben beginnt, wenn man Steuern zahlt.",
+      "en": "Life begins when you pay taxes."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "sichern",
+      "weg"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "sichern",
+    "tier": 1,
+    "lemma": "sichern",
+    "en": "to secure",
+    "example": {
+      "de": "Ich bin mir sicher, dass er falsch liegt.",
+      "en": "I am positive that he is wrong."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "zurueck",
+      "leben"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "zurueck",
+    "tier": 1,
+    "lemma": "zurück",
+    "en": "back, backward",
+    "example": {
+      "de": "Wir kehrten am 2. April nach Osaka zurück.",
+      "en": "We returned to Osaka on April 2."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "lassen",
+      "sichern"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "lassen",
+    "tier": 1,
+    "lemma": "lassen",
+    "en": "to allow, to permit",
+    "example": {
+      "de": "Die anderen lassen mich nicht mitmachen!",
+      "en": "The others won't let me join in!"
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "geben",
+      "zurueck"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "geben",
+    "tier": 1,
+    "lemma": "geben",
+    "en": "to give",
+    "example": {
+      "de": "Meine Frau hat mir eine neue Uhr gegeben.",
+      "en": "My wife gave me a new watch."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "bleiben",
+      "lassen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "bleiben",
+    "tier": 1,
+    "lemma": "bleiben",
+    "en": "to remain",
+    "example": {
+      "de": "Ich bleibe noch ein bisschen liegen.",
+      "en": "I'll keep lying here for a bit."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "nehmen",
+      "geben"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "nehmen",
+    "tier": 1,
+    "lemma": "nehmen",
+    "en": "to take",
+    "example": {
+      "de": "Die Niederlage nahm der Mannschaft den Mut.",
+      "en": "The team's defeat robbed them of their courage."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "brauchen",
+      "bleiben"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "brauchen",
+    "tier": 1,
+    "lemma": "brauchen",
+    "en": "to need, to be in need of",
+    "example": {
+      "de": "Alle Pflanzen brauchen Wasser und Licht.",
+      "en": "All plants need water and light."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "warten",
+      "nehmen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "warten",
+    "tier": 1,
+    "lemma": "warten",
+    "en": "to wait",
+    "example": {
+      "de": "Ich werde hier warten, bis er zurückkommt.",
+      "en": "I'll wait here until he comes back."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "halten",
+      "brauchen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "halten",
+    "tier": 1,
+    "lemma": "halten",
+    "en": "to hold",
+    "example": {
+      "de": "Ich will, dass du dein Versprechen hältst.",
+      "en": "I want you to keep your promise."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "kennen",
+      "warten"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "kennen",
+    "tier": 1,
+    "lemma": "kennen",
+    "en": "to know, to be acquainted with",
+    "example": {
+      "de": "Nur wenige Studenten kannten seinen Namen.",
+      "en": "Few students knew his name."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "stehen",
+      "halten"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "stehen",
+    "tier": 1,
+    "lemma": "stehen",
+    "en": "to stand",
+    "example": {
+      "de": "Welche Zahlungsarten stehen zur Verfügung?",
+      "en": "What payment options are available?"
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "treffen",
+      "kennen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "treffen",
+    "tier": 1,
+    "lemma": "treffen",
+    "en": "to meet, to encounter",
+    "example": {
+      "de": "Es trifft sich ausgezeichnet, dass...",
+      "en": "It is entirely fitting that..."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "versuchen",
+      "stehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "versuchen",
+    "tier": 1,
+    "lemma": "versuchen",
+    "en": "to try, to attempt",
+    "example": {
+      "de": "Bitte sei still, ich versuche zu schlafen.",
+      "en": "Please be quiet, I'm trying to sleep."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "stellen",
+      "treffen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "stellen",
+    "tier": 1,
+    "lemma": "stellen",
+    "en": "to put, to place",
+    "example": {
+      "de": "Bitte stellen Sie sich in einer Reihe auf.",
+      "en": "Please line up in a row."
+    },
+    "family": [],
+    "related": [
+      "mitnehmen",
+      "versuchen",
+      "verlieren"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
     "id": "mitnehmen",
-    "tier": 3,
+    "tier": 2,
     "lemma": "mitnehmen",
     "en": "to take along",
     "example": {
@@ -8408,9 +21476,603 @@ export const GENERATED: Word[] = [
       "Mitnahme"
     ],
     "related": [
-      "verschieben",
       "abholen",
-      "finden"
+      "verlieren",
+      "stellen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "verlieren",
+    "tier": 2,
+    "lemma": "verlieren",
+    "en": "to lose",
+    "example": {
+      "de": "Ich habe meine Handschuhe verloren.",
+      "en": "I’ve lost my gloves."
+    },
+    "family": [
+      "Verlust",
+      "Verlierer"
+    ],
+    "related": [
+      "abholen",
+      "erledigen",
+      "mitnehmen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "erledigen",
+    "tier": 2,
+    "lemma": "erledigen",
+    "en": "to get done, to take care of",
+    "example": {
+      "de": "Ich muss noch ein paar Dinge erledigen.",
+      "en": "I still have to take care of a few things."
+    },
+    "family": [
+      "erledigt",
+      "Erledigung"
+    ],
+    "related": [
+      "abholen",
+      "wiedersehen",
+      "verlieren"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "wiedersehen",
+    "tier": 2,
+    "lemma": "wiedersehen",
+    "en": "to see again, to meet again",
+    "example": {
+      "de": "Ich freue mich darauf, dich wiederzusehen.",
+      "en": "I'm looking forward to seeing you again."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "reichen",
+      "erledigen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "reichen",
+    "tier": 2,
+    "lemma": "reichen",
+    "en": "to reach",
+    "example": {
+      "de": "Der Turm reicht fast bis zum Himmel.",
+      "en": "The tower almost reaches the sky."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "platzen",
+      "wiedersehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "platzen",
+    "tier": 2,
+    "lemma": "platzen",
+    "en": "to burst, to pop",
+    "example": {
+      "de": "Wer wird den Platz seiner Mutter einnehmen?",
+      "en": "Who will take the place of his mother?"
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "nummer",
+      "reichen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "nummer",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Nummer",
+    "plural": "Nummern",
+    "en": "number",
+    "example": {
+      "de": "Ich fürchte, Sie haben die falsche Nummer.",
+      "en": "I'm afraid you have the wrong number."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "setzen",
+      "platzen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "setzen",
+    "tier": 2,
+    "lemma": "setzen",
+    "en": "to sit down",
+    "example": {
+      "de": "Wir setzen das Meeting nach dem Tee fort.",
+      "en": "We'll resume the meeting after tea."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "duerfen",
+      "nummer"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "duerfen",
+    "tier": 2,
+    "lemma": "dürfen",
+    "en": "to be allowed, to be permitted",
+    "example": {
+      "de": "Du darfst dich nicht dem Trinken hingeben.",
+      "en": "You must not indulge in drinking."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "retten",
+      "setzen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "retten",
+    "tier": 2,
+    "lemma": "retten",
+    "en": "to save, to rescue",
+    "example": {
+      "de": "Sie riskierte ihr Leben, um ihn zu retten.",
+      "en": "She risked her life to save him."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "passen",
+      "duerfen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "passen",
+    "tier": 2,
+    "lemma": "passen",
+    "en": "to fit",
+    "example": {
+      "de": "Pass in vollen Zügen auf Taschendiebe auf.",
+      "en": "Look out for pickpockets on crowded trains."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "menge",
+      "retten"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "menge",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Menge",
+    "plural": "Mengen",
+    "en": "quantity",
+    "example": {
+      "de": "Sie hinterließ ihrem Sohn eine Menge Geld.",
+      "en": "She left her son a lot of money."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "schaffen",
+      "passen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "schaffen",
+    "tier": 2,
+    "lemma": "schaffen",
+    "en": "to create, to call into being",
+    "example": {
+      "de": "Warum hat Gott die Welt geschaffen?",
+      "en": "Why did God create the world?"
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "funktionieren",
+      "menge"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "funktionieren",
+    "tier": 2,
+    "lemma": "funktionieren",
+    "en": "to work, function",
+    "example": {
+      "de": "Das Problem ist, ob der Plan funktioniert.",
+      "en": "The problem is whether the plan will work."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "laufen",
+      "schaffen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "laufen",
+    "tier": 2,
+    "lemma": "laufen",
+    "en": "to walk, to jog",
+    "example": {
+      "de": "Wir können mit dem Bus fahren oder laufen.",
+      "en": "We could take the bus or walk."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "ziehen",
+      "funktionieren"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "ziehen",
+    "tier": 2,
+    "lemma": "ziehen",
+    "en": "to pull, to drag",
+    "example": {
+      "de": "Da mir kalt war, zog ich meinen Mantel an.",
+      "en": "Since I was cold, I put on my coat."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "verschwinden",
+      "laufen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "verschwinden",
+    "tier": 2,
+    "lemma": "verschwinden",
+    "en": "to disappear, to vanish",
+    "example": {
+      "de": "Die Sonne verschwindet hinter Wolken.",
+      "en": "The sun is disappearing behind clouds."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "suche",
+      "ziehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "suche",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Suche",
+    "plural": "Suchen",
+    "en": "search",
+    "example": {
+      "de": "Wir waren auf der Suche nach einer Wohnung.",
+      "en": "We went in search of an apartment."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "stueck",
+      "verschwinden"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "stueck",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Stück",
+    "plural": "Stücke",
+    "en": "one, item",
+    "example": {
+      "de": "Schneiden Sie den Lachs in kleine Stücke.",
+      "en": "Cut the salmon into small pieces."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "kuemmern",
+      "suche"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "kuemmern",
+    "tier": 2,
+    "lemma": "kümmern",
+    "en": "to take care, to look after",
+    "example": {
+      "de": "Wir müssen uns unverzüglich darum kümmern.",
+      "en": "We need to take care of this immediately."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "sitzen",
+      "stueck"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "sitzen",
+    "tier": 2,
+    "lemma": "sitzen",
+    "en": "to sit, to perch",
+    "example": {
+      "de": "Ich überließ einer alten Dame meinen Sitz.",
+      "en": "I gave up my seat to an old lady."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "rest",
+      "kuemmern"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "rest",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Rest",
+    "plural": "Reste",
+    "en": "rest, remainder",
+    "example": {
+      "de": "Da ist ein Rest vom Whisky in der Flasche.",
+      "en": "That is the rest of the whiskey in the bottle."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "passieren",
+      "sitzen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "passieren",
+    "tier": 2,
+    "lemma": "passieren",
+    "en": "to happen",
+    "example": {
+      "de": "Die Gruppe hat soeben die Grenze passiert.",
+      "en": "The group has just passed the border."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "fallen",
+      "rest"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "fallen",
+    "tier": 2,
+    "lemma": "fallen",
+    "en": "to fall, to drop",
+    "example": {
+      "de": "Die Schlagzeile fiel mir heute Morgen auf.",
+      "en": "The headline caught my eye this morning."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "schicken",
+      "passieren"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "schicken",
+    "tier": 2,
+    "lemma": "schicken",
+    "en": "to send, to dispatch",
+    "example": {
+      "de": "Sie hat mir einen Liebesbrief geschickt.",
+      "en": "She sent me a love letter."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "geschehen",
+      "fallen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "geschehen",
+    "tier": 2,
+    "lemma": "geschehen",
+    "en": "to occur, to happen",
+    "example": {
+      "de": "Niemand weiß, was demnächst geschehen wird.",
+      "en": "Nobody knows what will happen next."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "folgen",
+      "schicken"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "folgen",
+    "tier": 2,
+    "lemma": "folgen",
+    "en": "to follow",
+    "example": {
+      "de": "Der Held folgte dem Drachen zu seiner Höhle.",
+      "en": "The hero followed the dragon to its cave."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "behalten",
+      "geschehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "behalten",
+    "tier": 2,
+    "lemma": "behalten",
+    "en": "to keep, to retain",
+    "example": {
+      "de": "Ich behalte deinen Ratschlag im Hinterkopf.",
+      "en": "I'll keep your advice in mind."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "liegen",
+      "folgen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "liegen",
+    "tier": 2,
+    "lemma": "liegen",
+    "en": "to lie",
+    "example": {
+      "de": "Sie hat ihr Ticket zu Hause liegen lassen.",
+      "en": "She left her ticket at home."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "fangen",
+      "behalten"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "fangen",
+    "tier": 2,
+    "lemma": "fangen",
+    "en": "to catch",
+    "example": {
+      "de": "Die Förster fingen das entlaufene Wildschwein.",
+      "en": "The rangers caught the run-away boar."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "legen",
+      "liegen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "legen",
+    "tier": 2,
+    "lemma": "legen",
+    "en": "to lie down",
+    "example": {
+      "de": "Ich habe meinen Hengst legen lassen.",
+      "en": "I had my stallion castrated."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "ansehen",
+      "fangen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "ansehen",
+    "tier": 2,
+    "lemma": "ansehen",
+    "en": "to look at, to have a look at",
+    "example": {
+      "de": "Lass mich mal deinen Führerschein ansehen.",
+      "en": "Let me take a look at your driver's license."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "schlagen",
+      "legen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "schlagen",
+    "tier": 2,
+    "lemma": "schlagen",
+    "en": "to beat, to hit",
+    "example": {
+      "de": "Ich schlug zwei Fliegen mit einer Klappe.",
+      "en": "I killed two birds with one stone."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "werfen",
+      "ansehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "werfen",
+    "tier": 2,
+    "lemma": "werfen",
+    "en": "to throw",
+    "example": {
+      "de": "Das Flugzeug warf Bomben auf die Stadt ab.",
+      "en": "The plane dropped bombs on the city."
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "stoeren",
+      "schlagen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "stoeren",
+    "tier": 2,
+    "lemma": "stören",
+    "en": "to disturb, to interfere",
+    "example": {
+      "de": "Stört es dich, wenn ich das Fenster öffne?",
+      "en": "Do you mind if I open the window?"
+    },
+    "family": [],
+    "related": [
+      "abholen",
+      "werfen",
+      "normalerweise"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -8428,35 +22090,306 @@ export const GENERATED: Word[] = [
       "holen"
     ],
     "related": [
-      "verschieben",
-      "verlieren",
-      "mitnehmen"
+      "aufraeumen",
+      "normalerweise",
+      "stoeren"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "verlieren",
+    "id": "normalerweise",
     "tier": 3,
-    "lemma": "verlieren",
-    "en": "to lose",
+    "lemma": "normalerweise",
+    "en": "normally",
     "example": {
-      "de": "Ich habe meine Handschuhe verloren.",
-      "en": "I’ve lost my gloves."
+      "de": "Ich esse normalerweise kein rotes Fleisch.",
+      "en": "I don't usually eat red meat."
     },
-    "family": [
-      "Verlust",
-      "Verlierer"
-    ],
+    "family": [],
     "related": [
-      "verschieben",
       "aufraeumen",
+      "steigen",
       "abholen"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "aufraeumen",
+    "id": "steigen",
     "tier": 3,
+    "lemma": "steigen",
+    "en": "to ascend, to climb",
+    "example": {
+      "de": "Die Party im Club steigt heute um 19 Uhr.",
+      "en": "The party in the club is happening tonight at 7 pm."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "aufgeben",
+      "normalerweise"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "aufgeben",
+    "tier": 3,
+    "lemma": "aufgeben",
+    "en": "to give up on",
+    "example": {
+      "de": "Er ging zur Post, um den Brief aufzugeben.",
+      "en": "He went to the post office to mail the letter."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "reihe",
+      "steigen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "reihe",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Reihe",
+    "plural": "Reihen",
+    "en": "row",
+    "example": {
+      "de": "Sie warteten in einer Reihe auf den Bus.",
+      "en": "They waited in line for the bus."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "vorbereiten",
+      "aufgeben"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "vorbereiten",
+    "tier": 3,
+    "lemma": "vorbereiten",
+    "en": "to prepare",
+    "example": {
+      "de": "Ich muss mich auf die Prüfung vorbereiten.",
+      "en": "I must prepare for the exam."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "greifen",
+      "reihe"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "greifen",
+    "tier": 3,
+    "lemma": "greifen",
+    "en": "to grab, to grasp",
+    "example": {
+      "de": "Säure greift metallhaltige Gegenstände an.",
+      "en": "Acid acts on things which contain metal."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "beeilen",
+      "vorbereiten"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "beeilen",
+    "tier": 3,
+    "lemma": "beeilen",
+    "en": "to hurry, to hasten",
+    "example": {
+      "de": "Wir beeilten uns den Gipfel zu erreichen.",
+      "en": "We hurried to reach the summit."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "aufstehen",
+      "greifen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "aufstehen",
+    "tier": 3,
+    "lemma": "aufstehen",
+    "en": "to get up",
+    "example": {
+      "de": "Wir sind auf dem falschen Fuß aufgestanden.",
+      "en": "We got off on the wrong foot."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "gebrauchen",
+      "beeilen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "gebrauchen",
+    "tier": 3,
+    "lemma": "gebrauchen",
+    "en": "to use",
+    "example": {
+      "de": "Ich könnte hier mal etwas Hilfe gebrauchen.",
+      "en": "I could do with some help here."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "enden",
+      "aufstehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "enden",
+    "tier": 3,
+    "lemma": "enden",
+    "en": "to end",
+    "example": {
+      "de": "Ich habe dieses Buch schon zu Ende gelesen.",
+      "en": "I've already finished reading this book."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "umgehen",
+      "gebrauchen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "umgehen",
+    "tier": 3,
+    "lemma": "umgehen",
+    "en": "to avoid, bypass",
+    "example": {
+      "de": "Er weiß nicht, wie man mit Kindern umgeht.",
+      "en": "He doesn't know how to handle children."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "loswerden",
+      "enden"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "loswerden",
+    "tier": 3,
+    "lemma": "loswerden",
+    "en": "to get rid of",
+    "example": {
+      "de": "Ich versuche, diese Erkältung loszuwerden.",
+      "en": "I'm trying to throw this cold off."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "anfassen",
+      "umgehen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "anfassen",
+    "tier": 3,
+    "lemma": "anfassen",
+    "en": "to touch",
+    "example": {
+      "de": "Hast du schon einmal einen Igel angefasst?",
+      "en": "Have you ever touched a hedgehog?"
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "schieben",
+      "loswerden"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "schieben",
+    "tier": 3,
+    "lemma": "schieben",
+    "en": "to push, to shove",
+    "example": {
+      "de": "Ein junger Vater schob einen Kinderwagen.",
+      "en": "A young father was pushing a pram."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "weglaufen",
+      "anfassen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "weglaufen",
+    "tier": 3,
+    "lemma": "weglaufen",
+    "en": "to run away",
+    "example": {
+      "de": "Die Kinder sind vor dem Hund weggelaufen.",
+      "en": "The children ran away from the dog."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "naehern",
+      "schieben"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "naehern",
+    "tier": 3,
+    "lemma": "nähern",
+    "en": "to approach",
+    "example": {
+      "de": "Diesem Ort haben sie sich nicht genähert.",
+      "en": "They stayed away from the place."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "brennen",
+      "weglaufen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "brennen",
+    "tier": 3,
+    "lemma": "brennen",
+    "en": "to burn, to light on fire",
+    "example": {
+      "de": "Ich beobachtete, wie das Haus brannte.",
+      "en": "I watched the house burn."
+    },
+    "family": [],
+    "related": [
+      "aufraeumen",
+      "naehern",
+      "verschieben"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "aufraeumen",
+    "tier": 4,
     "lemma": "aufräumen",
     "en": "to tidy up",
     "example": {
@@ -8468,9 +22401,9 @@ export const GENERATED: Word[] = [
       "Raum"
     ],
     "related": [
+      "zerbrechen",
       "verschieben",
-      "verlieren",
-      "erledigen"
+      "brennen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -8488,29 +22421,9 @@ export const GENERATED: Word[] = [
       "schieben"
     ],
     "related": [
-      "verstauen",
-      "erledigen",
-      "aufraeumen"
-    ],
-    "theme": "Alltag und Bewegung"
-  },
-  {
-    "id": "erledigen",
-    "tier": 4,
-    "lemma": "erledigen",
-    "en": "to get done, to take care of",
-    "example": {
-      "de": "Ich muss noch ein paar Dinge erledigen.",
-      "en": "I still have to take care of a few things."
-    },
-    "family": [
-      "erledigt",
-      "Erledigung"
-    ],
-    "related": [
-      "verstauen",
+      "zerbrechen",
       "ausleihen",
-      "verschieben"
+      "aufraeumen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -8528,9 +22441,9 @@ export const GENERATED: Word[] = [
       "Leihgabe"
     ],
     "related": [
-      "verstauen",
+      "zerbrechen",
       "wegwerfen",
-      "erledigen"
+      "verschieben"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -8548,15 +22461,105 @@ export const GENERATED: Word[] = [
       "Wegwerfartikel"
     ],
     "related": [
+      "zerbrechen",
+      "aufbauen",
+      "ausleihen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "aufbauen",
+    "tier": 4,
+    "lemma": "aufbauen",
+    "en": "to build, to construct",
+    "example": {
+      "de": "Alle Organismen sind aus Zellen aufgebaut.",
+      "en": "All organisms are made of cells."
+    },
+    "family": [],
+    "related": [
+      "zerbrechen",
+      "aktivitaet",
+      "wegwerfen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "aktivitaet",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Aktivität",
+    "plural": "Aktivitäten",
+    "en": "activity",
+    "example": {
+      "de": "Damals begann eine Zeit fieberhafter Aktivität.",
+      "en": "There then began a period of feverish activity."
+    },
+    "family": [],
+    "related": [
+      "zerbrechen",
+      "aufbauen",
+      "aufsteigen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "zerbrechen",
+    "tier": 5,
+    "lemma": "zerbrechen",
+    "en": "to break (into pieces)",
+    "example": {
+      "de": "Das Glas ist auf dem Boden zerbrochen.",
+      "en": "The glass broke on the floor."
+    },
+    "family": [
+      "Bruch",
+      "brechen"
+    ],
+    "related": [
       "verstauen",
-      "ausleihen",
+      "aufsteigen",
+      "aktivitaet"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "aufsteigen",
+    "tier": 5,
+    "lemma": "aufsteigen",
+    "en": "to get on, to mount",
+    "example": {
+      "de": "Er fühlte Patriotismus in sich aufsteigen.",
+      "en": "He felt patriotism rise in his breast."
+    },
+    "family": [],
+    "related": [
+      "verstauen",
+      "verschenken",
+      "zerbrechen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "verschenken",
+    "tier": 5,
+    "lemma": "verschenken",
+    "en": "to give away, to throw away",
+    "example": {
+      "de": "Ich verschenke meine alten Schuhe.",
+      "en": "I am giving away my old shoes."
+    },
+    "family": [],
+    "related": [
+      "verstauen",
+      "aufsteigen",
       "ausrutschen"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
     "id": "verstauen",
-    "tier": 5,
+    "tier": 6,
     "lemma": "verstauen",
     "en": "to stow, to pack away",
     "example": {
@@ -8568,15 +22571,15 @@ export const GENERATED: Word[] = [
       "stauen"
     ],
     "related": [
-      "stolpern",
+      "verschenken",
       "ausrutschen",
-      "wegwerfen"
+      "wegraeumen"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
     "id": "ausrutschen",
-    "tier": 5,
+    "tier": 6,
     "lemma": "ausrutschen",
     "en": "to slip",
     "example": {
@@ -8588,7 +22591,7 @@ export const GENERATED: Word[] = [
       "Rutsche"
     ],
     "related": [
-      "stolpern",
+      "verschenken",
       "wegraeumen",
       "verstauen"
     ],
@@ -8596,7 +22599,7 @@ export const GENERATED: Word[] = [
   },
   {
     "id": "wegraeumen",
-    "tier": 5,
+    "tier": 6,
     "lemma": "wegräumen",
     "en": "to put away, to clear",
     "example": {
@@ -8608,9 +22611,9 @@ export const GENERATED: Word[] = [
       "Raum"
     ],
     "related": [
+      "verschenken",
       "stolpern",
-      "ausrutschen",
-      "zerbrechen"
+      "ausrutschen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -8628,70 +22631,10 @@ export const GENERATED: Word[] = [
       "stolpern"
     ],
     "related": [
-      "wegraeumen",
-      "zerbrechen"
+      "verschenken",
+      "wegraeumen"
     ],
     "theme": "Alltag und Bewegung"
-  },
-  {
-    "id": "zerbrechen",
-    "tier": 6,
-    "lemma": "zerbrechen",
-    "en": "to break (into pieces)",
-    "example": {
-      "de": "Das Glas ist auf dem Boden zerbrochen.",
-      "en": "The glass broke on the floor."
-    },
-    "family": [
-      "Bruch",
-      "brechen"
-    ],
-    "related": [
-      "wegraeumen",
-      "stolpern"
-    ],
-    "theme": "Alltag und Bewegung"
-  },
-  {
-    "id": "gross",
-    "tier": 1,
-    "lemma": "groß",
-    "en": "big, tall",
-    "example": {
-      "de": "Das ist ein sehr großes Haus.",
-      "en": "That’s a very big house."
-    },
-    "family": [
-      "Größe",
-      "vergrößern"
-    ],
-    "related": [
-      "schwierig",
-      "klein",
-      "gut",
-      "haus"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "klein",
-    "tier": 1,
-    "lemma": "klein",
-    "en": "small",
-    "example": {
-      "de": "Meine Wohnung ist ziemlich klein.",
-      "en": "My apartment is quite small."
-    },
-    "family": [
-      "Kleinigkeit",
-      "verkleinern"
-    ],
-    "related": [
-      "schwierig",
-      "gut",
-      "gross"
-    ],
-    "theme": "Eigenschaften"
   },
   {
     "id": "gut",
@@ -8707,9 +22650,372 @@ export const GENERATED: Word[] = [
       "Güte"
     ],
     "related": [
-      "schwierig",
       "klein",
+      "wichtig",
+      "weiss"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "wichtig",
+    "tier": 1,
+    "lemma": "wichtig",
+    "en": "important",
+    "example": {
+      "de": "Es ist wichtig, pünktlich zu sein.",
+      "en": "It’s important to be on time."
+    },
+    "family": [
+      "Wichtigkeit",
+      "unwichtig"
+    ],
+    "related": [
+      "klein",
+      "weiss",
+      "gut"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "weiss",
+    "tier": 1,
+    "lemma": "weiß",
+    "en": "white",
+    "example": {
+      "de": "Ich mag weiße Rosen lieber als rote Rosen.",
+      "en": "I like white roses more than red ones."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "viel",
       "wichtig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "viel",
+    "tier": 1,
+    "lemma": "viel",
+    "en": "much, a lot",
+    "example": {
+      "de": "Echte Freundschaft ist mehr wert als Geld.",
+      "en": "Real friendship is more valuable than money."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "mehr",
+      "weiss"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "mehr",
+    "tier": 1,
+    "lemma": "mehr",
+    "en": "more",
+    "example": {
+      "de": "Leider haben wir es nicht mehr auf Lager.",
+      "en": "I'm afraid we're out of stock."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "sehr",
+      "viel"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "sehr",
+    "tier": 1,
+    "lemma": "sehr",
+    "en": "very",
+    "example": {
+      "de": "Sie sollten die Knie nicht zu sehr beugen.",
+      "en": "But you don't want to bend the knees too much."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "wirklich",
+      "mehr"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "wirklich",
+    "tier": 1,
+    "lemma": "wirklich",
+    "en": "real",
+    "example": {
+      "de": "Dieser Badeanzug steht dir wirklich gut.",
+      "en": "That swimsuit looks really good on you."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "einfach",
+      "sehr"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "einfach",
+    "tier": 1,
+    "lemma": "einfach",
+    "en": "easy",
+    "example": {
+      "de": "Gestern ging ich einfach nicht zur Arbeit.",
+      "en": "Yesterday I simply did not go to work."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "ganz",
+      "wirklich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "ganz",
+    "tier": 1,
+    "lemma": "ganz",
+    "en": "entire, whole",
+    "example": {
+      "de": "Ich hab meine ganzen Freunde eingeladen.",
+      "en": "I’ve invited all my friends."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "sicher",
+      "einfach"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "sicher",
+    "tier": 1,
+    "lemma": "sicher",
+    "en": "safe, secure",
+    "example": {
+      "de": "Ich bin nicht sicher, ob das richtig ist.",
+      "en": "I'm not sure if this is correct."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "genau",
+      "ganz"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "genau",
+    "tier": 1,
+    "lemma": "genau",
+    "en": "exact",
+    "example": {
+      "de": "Ich kenne meinen genauen Geburtsort nicht.",
+      "en": "I don't know the exact place I was born."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "klar",
+      "sicher"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "klar",
+    "tier": 1,
+    "lemma": "klar",
+    "en": "clear, transparent",
+    "example": {
+      "de": "Es war ein heller und klarer Sonntagmorgen.",
+      "en": "It was a bright and clear Sunday morning."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "schoen",
+      "genau"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "schoen",
+    "tier": 1,
+    "lemma": "schön",
+    "en": "beautiful, lovely",
+    "example": {
+      "de": "Sie ist nicht so schön wie ihre Schwester.",
+      "en": "She's not as beautiful as her sister."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "natuerlich",
+      "klar"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "natuerlich",
+    "tier": 1,
+    "lemma": "natürlich",
+    "en": "natural, normal",
+    "example": {
+      "de": "Wasser ist im natürlichen Zustand flüssig.",
+      "en": "Water, in its natural state, is a fluid."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "richtig",
+      "schoen"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "richtig",
+    "tier": 1,
+    "lemma": "richtig",
+    "en": "correct, accurate",
+    "example": {
+      "de": "Ich denke, dass sein Verhalten richtig war.",
+      "en": "I think the actions he took were right."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "allein",
+      "natuerlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "allein",
+    "tier": 1,
+    "lemma": "allein",
+    "en": "alone",
+    "example": {
+      "de": "Sie hat ihren Sohn allein im Auto gelassen.",
+      "en": "She left her son alone in the car."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "weit",
+      "richtig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "weit",
+    "tier": 1,
+    "lemma": "weit",
+    "en": "wide",
+    "example": {
+      "de": "Der Roman spielt in der weiten Zukunft.",
+      "en": "The novel takes place in the far future."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "wenig",
+      "allein"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "wenig",
+    "tier": 1,
+    "lemma": "wenig",
+    "en": "little, few",
+    "example": {
+      "de": "Wir hatten in diesem Winter wenig Schnee.",
+      "en": "We have had little snow this winter."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "nett",
+      "weit"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "nett",
+    "tier": 1,
+    "lemma": "nett",
+    "en": "nice, friendly",
+    "example": {
+      "de": "So nette Leute wie dich trifft man selten.",
+      "en": "It's rare to meet nice people like you."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "schlecht",
+      "wenig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "schlecht",
+    "tier": 1,
+    "lemma": "schlecht",
+    "en": "bad, evil",
+    "example": {
+      "de": "Du hast ein schlechtes Beispiel abgegeben.",
+      "en": "You've set a bad example."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "alt",
+      "nett"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "alt",
+    "tier": 1,
+    "lemma": "alt",
+    "en": "old",
+    "example": {
+      "de": "Du bist alt genug, um es besser zu wissen.",
+      "en": "You're old enough to know better."
+    },
+    "family": [],
+    "related": [
+      "klein",
+      "schlecht",
+      "schwierig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "klein",
+    "tier": 2,
+    "lemma": "klein",
+    "en": "small",
+    "example": {
+      "de": "Meine Wohnung ist ziemlich klein.",
+      "en": "My apartment is quite small."
+    },
+    "family": [
+      "Kleinigkeit",
+      "verkleinern"
+    ],
+    "related": [
+      "selten",
+      "schwierig",
+      "alt"
     ],
     "theme": "Eigenschaften"
   },
@@ -8728,29 +23034,9 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "selten",
-      "wichtig",
-      "gut",
-      "aufgabe"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "wichtig",
-    "tier": 2,
-    "lemma": "wichtig",
-    "en": "important",
-    "example": {
-      "de": "Es ist wichtig, pünktlich zu sein.",
-      "en": "It’s important to be on time."
-    },
-    "family": [
-      "Wichtigkeit",
-      "unwichtig"
-    ],
-    "related": [
-      "selten",
       "sauber",
-      "schwierig"
+      "klein",
+      "aufgabe"
     ],
     "theme": "Eigenschaften"
   },
@@ -8770,7 +23056,7 @@ export const GENERATED: Word[] = [
     "related": [
       "selten",
       "leise",
-      "wichtig",
+      "schwierig",
       "geschirr"
     ],
     "theme": "Eigenschaften"
@@ -8790,8 +23076,538 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "selten",
-      "sauber",
+      "vorsichtig",
+      "sauber"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "vorsichtig",
+    "tier": 2,
+    "lemma": "vorsichtig",
+    "en": "careful, cautious",
+    "example": {
+      "de": "Fahr bitte vorsichtig!",
+      "en": "Please drive carefully!"
+    },
+    "family": [
+      "Vorsicht",
+      "Vorsichtsmaßnahme"
+    ],
+    "related": [
+      "selten",
+      "frei",
+      "leise"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "frei",
+    "tier": 2,
+    "lemma": "frei",
+    "en": "free, unenslaved",
+    "example": {
+      "de": "An welchem Tag hast du normalerweise frei?",
+      "en": "What day are you usually free?"
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "moeglich",
       "vorsichtig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "moeglich",
+    "tier": 2,
+    "lemma": "möglich",
+    "en": "possible",
+    "example": {
+      "de": "Denkst du, dass so eine Sache möglich ist?",
+      "en": "Do you think it likely?"
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "fest",
+      "frei"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "fest",
+    "tier": 2,
+    "lemma": "fest",
+    "en": "firm, compact",
+    "example": {
+      "de": "Wir planen ein kleines Fest morgen abend.",
+      "en": "We are going to give a party tomorrow evening."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "falsch",
+      "moeglich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "falsch",
+    "tier": 2,
+    "lemma": "falsch",
+    "en": "false, unfactual",
+    "example": {
+      "de": "Wer hat das gesagt? Das ist völlig falsch!",
+      "en": "Who said that? It's totally wrong!"
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "jung",
+      "fest"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "jung",
+    "tier": 2,
+    "lemma": "jung",
+    "en": "young",
+    "example": {
+      "de": "Ich konnte gut schwimmen, als ich jung war.",
+      "en": "I could swim well when I was a boy."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "nah",
+      "falsch"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "nah",
+    "tier": 2,
+    "lemma": "nah",
+    "en": "near, close",
+    "example": {
+      "de": "Nächstes Jahr werde ich nach Amerika gehen.",
+      "en": "I am going to go to America next year."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "langsam",
+      "jung"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "langsam",
+    "tier": 2,
+    "lemma": "langsam",
+    "en": "slow",
+    "example": {
+      "de": "Das Papierflugzeug glitt langsam zu Boden.",
+      "en": "The paper aeroplane slowly glided to the ground."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "lieb",
+      "nah"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "lieb",
+    "tier": 2,
+    "lemma": "lieb",
+    "en": "lovable, dear",
+    "example": {
+      "de": "Der Frühling ist meine liebste Jahreszeit.",
+      "en": "Spring is my favourite season."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "voll",
+      "langsam"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "voll",
+    "tier": 2,
+    "lemma": "voll",
+    "en": "full, filled",
+    "example": {
+      "de": "Die Aprikosenbäume stehen in voller Blüte.",
+      "en": "The apricot trees are in full blossom."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "direkt",
+      "lieb"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "direkt",
+    "tier": 2,
+    "lemma": "direkt",
+    "en": "direct, straight",
+    "example": {
+      "de": "Nach der Arbeit gehe ich direkt nach Hause.",
+      "en": "After work, I go right home."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "voellig",
+      "voll"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "voellig",
+    "tier": 2,
+    "lemma": "völlig",
+    "en": "complete, total",
+    "example": {
+      "de": "Sie hat sich völlig widerwärtig verhalten.",
+      "en": "She behaved quite abominably."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "eigen",
+      "direkt"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "eigen",
+    "tier": 2,
+    "lemma": "eigen",
+    "en": "own, idiosyncratic",
+    "example": {
+      "de": "Jeder Student hat seinen eigenen Computer.",
+      "en": "Each student has their own computer."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "super",
+      "voellig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "super",
+    "tier": 2,
+    "lemma": "super",
+    "en": "super, great",
+    "example": {
+      "de": "Fährt der Wagen mit Normal oder mit Super?",
+      "en": "Does this car use regular or premium?"
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "total",
+      "eigen"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "total",
+    "tier": 2,
+    "lemma": "total",
+    "en": "total, absolute",
+    "example": {
+      "de": "Diese Schokolade ist total süß und lecker.",
+      "en": "This chocolate is very sweet and tasty."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "leicht",
+      "super"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "leicht",
+    "tier": 2,
+    "lemma": "leicht",
+    "en": "light",
+    "example": {
+      "de": "Nur leichte Autos sollten diese Brücke befahren.",
+      "en": "Only light cars should drive on this bridge."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "weniger",
+      "total"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "weniger",
+    "tier": 2,
+    "lemma": "weniger",
+    "en": "less",
+    "example": {
+      "de": "In Ägypten regnet es weniger als in Japan.",
+      "en": "They have less rain in Egypt than in Japan."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "cool",
+      "leicht"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "cool",
+    "tier": 2,
+    "lemma": "cool",
+    "en": "cool",
+    "example": {
+      "de": "Als Trainer muss mann ziemlich cool sein.",
+      "en": "As a trainer you have to be quite easy-going."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "laut",
+      "weniger"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "laut",
+    "tier": 2,
+    "lemma": "laut",
+    "en": "loud, noisy",
+    "example": {
+      "de": "Er sieht den Wald vor lauter Bäumen nicht.",
+      "en": "He doesn't see the forest for the trees."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "boese",
+      "cool"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "boese",
+    "tier": 2,
+    "lemma": "böse",
+    "en": "evil, malicious",
+    "example": {
+      "de": "Böse Kinder kriegen nichts vom Sankt Nikolaus.",
+      "en": "Naughty children don’t get anything from St. Nicholas."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "hart",
+      "laut"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "hart",
+    "tier": 2,
+    "lemma": "hart",
+    "en": "hard",
+    "example": {
+      "de": "Sein Erfolg ist das Ergebnis harter Arbeit.",
+      "en": "His success is the result of hard work."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "stark",
+      "boese"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "stark",
+    "tier": 2,
+    "lemma": "stark",
+    "en": "strong",
+    "example": {
+      "de": "Was mich nicht umbringt, macht mich stärker.",
+      "en": "What doesn't kill you makes you stronger."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "besonders",
+      "hart"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "besonders",
+    "tier": 2,
+    "lemma": "besonders",
+    "en": "especially, particularly",
+    "example": {
+      "de": "Ich mag Musik, besonders klassische Musik.",
+      "en": "I love music, particularly classical."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "grossartig",
+      "stark"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "grossartig",
+    "tier": 2,
+    "lemma": "großartig",
+    "en": "terrific, superb",
+    "example": {
+      "de": "Sie hat eine großartige Aufgabe geleistet.",
+      "en": "She's done a terrific job."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "still",
+      "besonders"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "still",
+    "tier": 2,
+    "lemma": "still",
+    "en": "quiet, silent",
+    "example": {
+      "de": "Sie saß still da, mit Tränen in den Augen.",
+      "en": "She sat there silently with tears in her eyes."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "schlimm",
+      "grossartig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "schlimm",
+    "tier": 2,
+    "lemma": "schlimm",
+    "en": "bad, terrible",
+    "example": {
+      "de": "Das Schlimmste am Frühling ist der Matsch.",
+      "en": "The worst thing about spring is the mud."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "neu",
+      "still"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "neu",
+    "tier": 2,
+    "lemma": "neu",
+    "en": "new",
+    "example": {
+      "de": "Er ist zufrieden mit seinen neuen Schuhen.",
+      "en": "He is pleased with his new shoes."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "wach",
+      "schlimm"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "wach",
+    "tier": 2,
+    "lemma": "wach",
+    "en": "awake",
+    "example": {
+      "de": "Als du angerufen hast, war ich schon wach.",
+      "en": "I was already awake when you rang."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "seltsam",
+      "neu"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "seltsam",
+    "tier": 2,
+    "lemma": "seltsam",
+    "en": "strange, weird",
+    "example": {
+      "de": "Diese Milch hat einen seltsamen Geschmack.",
+      "en": "This milk has a peculiar taste."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "fantastisch",
+      "wach"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "fantastisch",
+    "tier": 2,
+    "lemma": "fantastisch",
+    "en": "fantastic",
+    "example": {
+      "de": "Die Landschaften sind einfach fantastisch.",
+      "en": "The landscapes are simply fantastic."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "halb",
+      "seltsam"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "halb",
+    "tier": 2,
+    "lemma": "halb",
+    "en": "half, halfway",
+    "example": {
+      "de": "Mein Hund ist fast halb so groß wie Ihrer.",
+      "en": "My dog is almost half the size of yours."
+    },
+    "family": [],
+    "related": [
+      "selten",
+      "fantastisch",
+      "bequem"
     ],
     "theme": "Eigenschaften"
   },
@@ -8809,75 +23625,15 @@ export const GENERATED: Word[] = [
       "seltsam"
     ],
     "related": [
-      "bequem",
-      "vorsichtig",
-      "leise"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "vorsichtig",
-    "tier": 3,
-    "lemma": "vorsichtig",
-    "en": "careful, cautious",
-    "example": {
-      "de": "Fahr bitte vorsichtig!",
-      "en": "Please drive carefully!"
-    },
-    "family": [
-      "Vorsicht",
-      "Vorsichtsmaßnahme"
-    ],
-    "related": [
-      "bequem",
-      "zuverlaessig",
-      "selten"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "zuverlaessig",
-    "tier": 3,
-    "lemma": "zuverlässig",
-    "en": "reliable",
-    "example": {
-      "de": "Er ist ein sehr zuverlässiger Kollege.",
-      "en": "He’s a very reliable colleague."
-    },
-    "family": [
-      "verlassen",
-      "Zuverlässigkeit"
-    ],
-    "related": [
-      "bequem",
       "gemuetlich",
-      "vorsichtig"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "gemuetlich",
-    "tier": 3,
-    "lemma": "gemütlich",
-    "en": "cosy, comfortable",
-    "example": {
-      "de": "Die Wohnung ist klein, aber gemütlich.",
-      "en": "The apartment is small but cosy."
-    },
-    "family": [
-      "Gemütlichkeit",
-      "Gemüt"
-    ],
-    "related": [
       "bequem",
-      "zuverlaessig",
-      "umstaendlich"
+      "halb"
     ],
     "theme": "Eigenschaften"
   },
   {
     "id": "bequem",
-    "tier": 4,
+    "tier": 3,
     "lemma": "bequem",
     "en": "comfortable; convenient",
     "example": {
@@ -8889,29 +23645,320 @@ export const GENERATED: Word[] = [
       "quem"
     ],
     "related": [
-      "anspruchsvoll",
-      "umstaendlich",
-      "gemuetlich"
+      "gemuetlich",
+      "einzig",
+      "selten"
     ],
     "theme": "Eigenschaften"
   },
   {
-    "id": "umstaendlich",
-    "tier": 4,
-    "lemma": "umständlich",
-    "en": "cumbersome, complicated",
+    "id": "einzig",
+    "tier": 3,
+    "lemma": "einzig",
+    "en": "only, sole",
     "example": {
-      "de": "Der Weg dorthin ist ziemlich umständlich.",
-      "en": "The way there is rather complicated."
+      "de": "Er wurde durch eine einzige Kugel getötet.",
+      "en": "He was killed by a single bullet."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "schwarz",
+      "bequem"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "schwarz",
+    "tier": 3,
+    "lemma": "schwarz",
+    "en": "black",
+    "example": {
+      "de": "Sie haben braune Haut und schwarze Haare.",
+      "en": "They have brown skin and black hair."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "vollkommen",
+      "einzig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "vollkommen",
+    "tier": 3,
+    "lemma": "vollkommen",
+    "en": "perfect",
+    "example": {
+      "de": "Die Zwillinge sehen vollkommen gleich aus.",
+      "en": "The twins look exactly alike."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "farbe",
+      "schwarz"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "farbe",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Farbe",
+    "plural": "Farben",
+    "en": "colour",
+    "example": {
+      "de": "Ich mag von allen Farben blau am liebsten.",
+      "en": "I like blue best of all colors."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "fair",
+      "vollkommen"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "fair",
+    "tier": 3,
+    "lemma": "fair",
+    "en": "fair",
+    "example": {
+      "de": "Ich glaube es ist eine faire Entscheidung.",
+      "en": "I think it's a fair decision."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "wahnsinnig",
+      "farbe"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "wahnsinnig",
+    "tier": 3,
+    "lemma": "wahnsinnig",
+    "en": "mad, insane",
+    "example": {
+      "de": "Ich werde wahnsinnig! Ich vermisse sie so!",
+      "en": "I'm going crazy! I miss her so much!"
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "aehnlich",
+      "fair"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "aehnlich",
+    "tier": 3,
+    "lemma": "ähnlich",
+    "en": "similar, alike",
+    "example": {
+      "de": "Sie ist mir ähnlich. / Sie ist ähnlich wie ich.",
+      "en": "She is similar to me."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "fern",
+      "wahnsinnig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "fern",
+    "tier": 3,
+    "lemma": "fern",
+    "en": "remote",
+    "example": {
+      "de": "Meine Mutter sieht des Abends selten fern.",
+      "en": "My mother seldom watches TV at night."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "langweilig",
+      "aehnlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "langweilig",
+    "tier": 3,
+    "lemma": "langweilig",
+    "en": "boring, dull",
+    "example": {
+      "de": "Das macht keinen Spaß; das ist langweilig.",
+      "en": "This isn't fun. This is boring."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "rot",
+      "fern"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "rot",
+    "tier": 3,
+    "lemma": "rot",
+    "en": "red",
+    "example": {
+      "de": "Gestern habe ich ein rotes T-Shirt gekauft.",
+      "en": "Yesterday, I bought a red T-shirt."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "spannend",
+      "langweilig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "spannend",
+    "tier": 3,
+    "lemma": "spannend",
+    "en": "thrilling, exciting",
+    "example": {
+      "de": "Sie haben ein spannendes Spiel verpaßt.",
+      "en": "You missed an exciting game."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "klug",
+      "rot"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "klug",
+    "tier": 3,
+    "lemma": "klug",
+    "en": "intelligent, prudent",
+    "example": {
+      "de": "Wer ist die klügste Person, die ihr kennt?",
+      "en": "Who is the wisest person you know?"
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "selbstverstaendlich",
+      "spannend"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "selbstverstaendlich",
+    "tier": 3,
+    "lemma": "selbstverständlich",
+    "en": "natural, self-evident",
+    "example": {
+      "de": "Ich bin selbstverständlich sehr enttäuscht.",
+      "en": "I'm obviously very disappointed."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "schwach",
+      "klug"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "schwach",
+    "tier": 3,
+    "lemma": "schwach",
+    "en": "weak, lacking in strength",
+    "example": {
+      "de": "Tante Yoko ist zu schwach, um zu arbeiten.",
+      "en": "Aunt Yoko is too weak to work."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "freundlich",
+      "selbstverstaendlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "freundlich",
+    "tier": 3,
+    "lemma": "freundlich",
+    "en": "friendly, benign",
+    "example": {
+      "de": "Die Sekretärin lächelte mich freundlich an.",
+      "en": "The secretary gave me an agreeable smile."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "brav",
+      "schwach"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "brav",
+    "tier": 3,
+    "lemma": "brav",
+    "en": "good, well-behaved or reliable",
+    "example": {
+      "de": "Sei ein braves Mädchen und schlaf weiter!",
+      "en": "Be a good girl and go back to sleep."
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "beeindruckend",
+      "freundlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "beeindruckend",
+    "tier": 3,
+    "lemma": "beeindruckend",
+    "en": "impressive",
+    "example": {
+      "de": "Was für ein beeindruckender Mensch er ist!",
+      "en": "What an impressive person he is!"
+    },
+    "family": [],
+    "related": [
+      "gemuetlich",
+      "brav",
+      "grosszuegig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "gemuetlich",
+    "tier": 4,
+    "lemma": "gemütlich",
+    "en": "cosy, comfortable",
+    "example": {
+      "de": "Die Wohnung ist klein, aber gemütlich.",
+      "en": "The apartment is small but cosy."
     },
     "family": [
-      "Umstand",
-      "umständlicher"
+      "Gemütlichkeit",
+      "Gemüt"
     ],
     "related": [
-      "anspruchsvoll",
+      "gross",
       "grosszuegig",
-      "bequem"
+      "beeindruckend"
     ],
     "theme": "Eigenschaften"
   },
@@ -8929,55 +23976,15 @@ export const GENERATED: Word[] = [
       "groß"
     ],
     "related": [
-      "anspruchsvoll",
-      "sparsam",
-      "umstaendlich"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "sparsam",
-    "tier": 4,
-    "lemma": "sparsam",
-    "en": "thrifty, economical",
-    "example": {
-      "de": "Mein Auto ist sehr sparsam im Verbrauch.",
-      "en": "My car is very economical."
-    },
-    "family": [
-      "sparen",
-      "Sparsamkeit"
-    ],
-    "related": [
-      "anspruchsvoll",
-      "grosszuegig",
-      "gruendlich"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "anspruchsvoll",
-    "tier": 5,
-    "lemma": "anspruchsvoll",
-    "en": "demanding, sophisticated",
-    "example": {
-      "de": "Die Arbeit ist anspruchsvoll, aber spannend.",
-      "en": "The work is demanding but exciting."
-    },
-    "family": [
-      "Anspruch",
-      "anspruchslos"
-    ],
-    "related": [
-      "gewissenhaft",
+      "gross",
       "gruendlich",
-      "sparsam"
+      "gemuetlich"
     ],
     "theme": "Eigenschaften"
   },
   {
     "id": "gruendlich",
-    "tier": 5,
+    "tier": 4,
     "lemma": "gründlich",
     "en": "thorough",
     "example": {
@@ -8989,15 +23996,439 @@ export const GENERATED: Word[] = [
       "Gründlichkeit"
     ],
     "related": [
-      "gewissenhaft",
-      "beilaeufig",
+      "gross",
+      "tapfer",
+      "grosszuegig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "tapfer",
+    "tier": 4,
+    "lemma": "tapfer",
+    "en": "brave, dauntless",
+    "example": {
+      "de": "Er war so tapfer, allein dorthin zu gehen.",
+      "en": "He was brave enough to go there alone."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "unfair",
+      "gruendlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "unfair",
+    "tier": 4,
+    "lemma": "unfair",
+    "en": "unfair",
+    "example": {
+      "de": "Ich denke, das ist eine sehr unfaire Debatte.",
+      "en": "I think this is a very unfair debate."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "friedlich",
+      "tapfer"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "friedlich",
+    "tier": 4,
+    "lemma": "friedlich",
+    "en": "peaceful, placid",
+    "example": {
+      "de": "In diesem Wald ist es ruhig und friedlich.",
+      "en": "This forest is quiet and peaceful."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "brutal",
+      "unfair"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "brutal",
+    "tier": 4,
+    "lemma": "brutal",
+    "en": "brutal",
+    "example": {
+      "de": "Der Aufstand wurde brutal niedergeschlagen.",
+      "en": "The uprising was brutally suppressed."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "menschlich",
+      "friedlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "menschlich",
+    "tier": 4,
+    "lemma": "menschlich",
+    "en": "human, manlike",
+    "example": {
+      "de": "Das menschliche Herz gleicht einer Pumpe.",
+      "en": "The human heart is analogous to a pump."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "logisch",
+      "brutal"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "logisch",
+    "tier": 4,
+    "lemma": "logisch",
+    "en": "logical",
+    "example": {
+      "de": "Esperanto ist eine völlig logische Sprache.",
+      "en": "Esperanto is a completely logical language."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "breit",
+      "menschlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "breit",
+    "tier": 4,
+    "lemma": "breit",
+    "en": "broad, wide",
+    "example": {
+      "de": "In der Stadt gibt es viele breite Straßen.",
+      "en": "The city has many broad streets."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "verschieden",
+      "logisch"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "verschieden",
+    "tier": 4,
+    "lemma": "verschieden",
+    "en": "differently",
+    "example": {
+      "de": "Sein Bruder ist letzten Monat verschieden.",
+      "en": "His brother passed away last month."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "tragisch",
+      "breit"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "tragisch",
+    "tier": 4,
+    "lemma": "tragisch",
+    "en": "tragic",
+    "example": {
+      "de": "Es wäre komisch, wäre es nicht so tragisch.",
+      "en": "It would be funny if it weren't so tragic."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "ideal",
+      "verschieden"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "ideal",
+    "tier": 4,
+    "lemma": "ideal",
+    "en": "ideal",
+    "example": {
+      "de": "Von dort aus hatte man einen idealen Blick.",
+      "en": "From there, one could see perfectly."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "urspruenglich",
+      "tragisch"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "urspruenglich",
+    "tier": 4,
+    "lemma": "ursprünglich",
+    "en": "original, initial",
+    "example": {
+      "de": "Ich bleibe bei meinem ursprünglichen Plan.",
+      "en": "I'm sticking to my original plan."
+    },
+    "family": [],
+    "related": [
+      "gross",
+      "ideal",
+      "zuverlaessig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "gross",
+    "tier": 5,
+    "lemma": "groß",
+    "en": "big, tall",
+    "example": {
+      "de": "Das ist ein sehr großes Haus.",
+      "en": "That’s a very big house."
+    },
+    "family": [
+      "Größe",
+      "vergrößern"
+    ],
+    "related": [
+      "umstaendlich",
+      "zuverlaessig",
+      "urspruenglich",
+      "haus"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "zuverlaessig",
+    "tier": 5,
+    "lemma": "zuverlässig",
+    "en": "reliable",
+    "example": {
+      "de": "Er ist ein sehr zuverlässiger Kollege.",
+      "en": "He’s a very reliable colleague."
+    },
+    "family": [
+      "verlassen",
+      "Zuverlässigkeit"
+    ],
+    "related": [
+      "umstaendlich",
+      "enorm",
+      "gross"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "enorm",
+    "tier": 5,
+    "lemma": "enorm",
+    "en": "enormous",
+    "example": {
+      "de": "Die Sonne macht einen enormen Unterschied.",
+      "en": "Sun makes all the difference."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "aussergewoehnlich",
+      "zuverlaessig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "aussergewoehnlich",
+    "tier": 5,
+    "lemma": "außergewöhnlich",
+    "en": "exceptional, extraordinary",
+    "example": {
+      "de": "Sie hatten eine außergewöhnliche Beziehung.",
+      "en": "They had an extraordinary relationship."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "komplex",
+      "enorm"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "komplex",
+    "tier": 5,
+    "lemma": "komplex",
+    "en": "complex, sophisticated",
+    "example": {
+      "de": "Menschliche Beziehungen sind sehr komplex.",
+      "en": "Human relationships are very complex."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "unzaehlig",
+      "aussergewoehnlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "unzaehlig",
+    "tier": 5,
+    "lemma": "unzählig",
+    "en": "countless, innumerable",
+    "example": {
+      "de": "Es gibt unzählig viele Sterne im Universum.",
+      "en": "There are innumerable stars in the universe."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "originell",
+      "komplex"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "originell",
+    "tier": 5,
+    "lemma": "originell",
+    "en": "original",
+    "example": {
+      "de": "Ich finde diesen Satz ziemlich originell.",
+      "en": "I find this sentence relatively original."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "pur",
+      "unzaehlig"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "pur",
+    "tier": 5,
+    "lemma": "pur",
+    "en": "pure, mere",
+    "example": {
+      "de": "Die pure Verzweiflung hat ihn dazu getrieben.",
+      "en": "It was pure despair that drove him into it."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "behutsam",
+      "originell"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "behutsam",
+    "tier": 5,
+    "lemma": "behutsam",
+    "en": "gentle, cautious",
+    "example": {
+      "de": "Seine Anweisung ist immer sehr behutsam.",
+      "en": "His advice is always very sensible."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "manuell",
+      "pur"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "manuell",
+    "tier": 5,
+    "lemma": "manuell",
+    "en": "manual",
+    "example": {
+      "de": "Leider war es nur eine manuelle Tätigkeit.",
+      "en": "Unfortunately, it was just manual work."
+    },
+    "family": [],
+    "related": [
+      "umstaendlich",
+      "behutsam",
+      "sparsam"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "umstaendlich",
+    "tier": 6,
+    "lemma": "umständlich",
+    "en": "cumbersome, complicated",
+    "example": {
+      "de": "Der Weg dorthin ist ziemlich umständlich.",
+      "en": "The way there is rather complicated."
+    },
+    "family": [
+      "Umstand",
+      "umständlicher"
+    ],
+    "related": [
+      "manuell",
+      "sparsam",
       "anspruchsvoll"
     ],
     "theme": "Eigenschaften"
   },
   {
+    "id": "sparsam",
+    "tier": 6,
+    "lemma": "sparsam",
+    "en": "thrifty, economical",
+    "example": {
+      "de": "Mein Auto ist sehr sparsam im Verbrauch.",
+      "en": "My car is very economical."
+    },
+    "family": [
+      "sparen",
+      "Sparsamkeit"
+    ],
+    "related": [
+      "manuell",
+      "anspruchsvoll",
+      "umstaendlich"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "anspruchsvoll",
+    "tier": 6,
+    "lemma": "anspruchsvoll",
+    "en": "demanding, sophisticated",
+    "example": {
+      "de": "Die Arbeit ist anspruchsvoll, aber spannend.",
+      "en": "The work is demanding but exciting."
+    },
+    "family": [
+      "Anspruch",
+      "anspruchslos"
+    ],
+    "related": [
+      "manuell",
+      "beilaeufig",
+      "sparsam"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
     "id": "beilaeufig",
-    "tier": 5,
+    "tier": 6,
     "lemma": "beiläufig",
     "en": "casual, in passing",
     "example": {
@@ -9009,9 +24440,9 @@ export const GENERATED: Word[] = [
       "Beiläufigkeit"
     ],
     "related": [
+      "manuell",
       "gewissenhaft",
-      "gruendlich",
-      "unscheinbar"
+      "anspruchsvoll"
     ],
     "theme": "Eigenschaften"
   },
@@ -9029,8 +24460,9 @@ export const GENERATED: Word[] = [
       "gewissenlos"
     ],
     "related": [
-      "beilaeufig",
-      "unscheinbar"
+      "manuell",
+      "unscheinbar",
+      "beilaeufig"
     ],
     "theme": "Eigenschaften"
   },
@@ -9048,55 +24480,95 @@ export const GENERATED: Word[] = [
       "scheinbar"
     ],
     "related": [
-      "beilaeufig",
+      "manuell",
+      "lebhaft",
       "gewissenhaft"
     ],
     "theme": "Eigenschaften"
   },
   {
-    "id": "firma",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Firma",
-    "plural": "Firmen",
-    "en": "company, firm",
+    "id": "lebhaft",
+    "tier": 6,
+    "lemma": "lebhaft",
+    "en": "lively, active",
     "example": {
-      "de": "Er arbeitet bei einer großen Firma.",
-      "en": "He works at a large company."
+      "de": "Ich habe eine lebhafte Vorstellungskraft.",
+      "en": "I have a vivid imagination."
     },
-    "family": [
-      "Firmenwagen",
-      "Firmenname"
-    ],
+    "family": [],
     "related": [
-      "beruf",
-      "chef",
-      "job"
+      "manuell",
+      "bedeutsam",
+      "unscheinbar"
     ],
-    "theme": "Beruf und Wirtschaft"
+    "theme": "Eigenschaften"
   },
   {
-    "id": "chef",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Chef",
-    "plural": "Chefs",
-    "en": "boss (male)",
+    "id": "bedeutsam",
+    "tier": 6,
+    "lemma": "bedeutsam",
+    "en": "significant, momentous",
     "example": {
-      "de": "Mein Chef ist heute nicht im Büro.",
-      "en": "My boss isn’t in the office today."
+      "de": "Er spielte im Komitee eine bedeutsame Rolle.",
+      "en": "He played an important role on the committee."
     },
-    "family": [
-      "Chefin",
-      "Küchenchef"
-    ],
+    "family": [],
     "related": [
-      "beruf",
-      "job",
-      "firma",
-      "kollege"
+      "manuell",
+      "nagelneu",
+      "lebhaft"
     ],
-    "theme": "Beruf und Wirtschaft"
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "nagelneu",
+    "tier": 6,
+    "lemma": "nagelneu",
+    "en": "brand new",
+    "example": {
+      "de": "Mein Fahrrad ist nagelneu.",
+      "en": "My bike is brand new."
+    },
+    "family": [],
+    "related": [
+      "manuell",
+      "drollig",
+      "bedeutsam"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "drollig",
+    "tier": 6,
+    "lemma": "drollig",
+    "en": "droll, endearing",
+    "example": {
+      "de": "Was für eine drollige Situation!",
+      "en": "What an amusing situation!"
+    },
+    "family": [],
+    "related": [
+      "manuell",
+      "handfest",
+      "nagelneu"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "handfest",
+    "tier": 6,
+    "lemma": "handfest",
+    "en": "tangible, solid",
+    "example": {
+      "de": "Haben Sie einen handfesten Beweis?",
+      "en": "Do you have hard evidence?"
+    },
+    "family": [],
+    "related": [
+      "manuell",
+      "drollig"
+    ],
+    "theme": "Eigenschaften"
   },
   {
     "id": "job",
@@ -9114,32 +24586,70 @@ export const GENERATED: Word[] = [
       "Nebenjob"
     ],
     "related": [
-      "beruf",
-      "chef",
-      "stelle"
+      "firma",
+      "arbeiten"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "beruf",
-    "tier": 2,
-    "article": "der",
-    "lemma": "Beruf",
-    "plural": "Berufe",
-    "en": "profession, occupation",
+    "id": "arbeiten",
+    "tier": 1,
+    "lemma": "arbeiten",
+    "en": "to work",
     "example": {
-      "de": "Was sind Sie von Beruf?",
-      "en": "What do you do for a living?"
+      "de": "Jetzt muss ich mich meiner Arbeit zuwenden.",
+      "en": "Now I must go about my work."
+    },
+    "family": [],
+    "related": [
+      "firma",
+      "job",
+      "chef"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "firma",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Firma",
+    "plural": "Firmen",
+    "en": "company, firm",
+    "example": {
+      "de": "Er arbeitet bei einer großen Firma.",
+      "en": "He works at a large company."
     },
     "family": [
-      "beruflich",
-      "Berufserfahrung"
+      "Firmenwagen",
+      "Firmenname"
     ],
     "related": [
-      "vorstellungsgespraech",
+      "beruf",
+      "chef",
+      "arbeiten"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "chef",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Chef",
+    "plural": "Chefs",
+    "en": "boss (male)",
+    "example": {
+      "de": "Mein Chef ist heute nicht im Büro.",
+      "en": "My boss isn’t in the office today."
+    },
+    "family": [
+      "Chefin",
+      "Küchenchef"
+    ],
+    "related": [
+      "beruf",
       "stelle",
-      "job",
-      "arbeit"
+      "firma",
+      "kollege"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -9159,121 +24669,128 @@ export const GENERATED: Word[] = [
       "stellen"
     ],
     "related": [
-      "vorstellungsgespraech",
-      "bewerbung",
-      "beruf"
+      "beruf",
+      "auftrag",
+      "chef"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "bewerbung",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Bewerbung",
-    "plural": "Bewerbungen",
-    "en": "job application",
-    "example": {
-      "de": "Ich schreibe heute meine Bewerbung.",
-      "en": "I’m writing my application today."
-    },
-    "family": [
-      "bewerben",
-      "Bewerber"
-    ],
-    "related": [
-      "vorstellungsgespraech",
-      "lebenslauf",
-      "stelle",
-      "studium"
-    ],
-    "theme": "Beruf und Wirtschaft"
-  },
-  {
-    "id": "lebenslauf",
+    "id": "auftrag",
     "tier": 2,
     "article": "der",
-    "lemma": "Lebenslauf",
-    "plural": "Lebensläufe",
-    "en": "CV, résumé",
+    "lemma": "Auftrag",
+    "plural": "Aufträge",
+    "en": "order, assignment",
     "example": {
-      "de": "Bitte schicken Sie uns Ihren Lebenslauf.",
-      "en": "Please send us your CV."
+      "de": "Wir haben einen neuen Auftrag bekommen.",
+      "en": "We got a new order."
     },
     "family": [
-      "Leben",
-      "Lauf"
+      "beauftragen",
+      "Auftraggeber"
     ],
     "related": [
-      "vorstellungsgespraech",
-      "bewerbung",
-      "kuendigung"
+      "beruf",
+      "leisten",
+      "stelle"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "vorstellungsgespraech",
-    "tier": 3,
+    "id": "leisten",
+    "tier": 2,
+    "lemma": "leisten",
+    "en": "to perform, to accomplish",
+    "example": {
+      "de": "Ich kann mir jetzt kein neues Auto leisten.",
+      "en": "I can't afford a new car now."
+    },
+    "family": [],
+    "related": [
+      "beruf",
+      "erfolg",
+      "auftrag"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "erfolg",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Erfolg",
+    "plural": "Erfolge",
+    "en": "success",
+    "example": {
+      "de": "Unsere Anstrengungen hatten keinen Erfolg.",
+      "en": "Our efforts did not result in success."
+    },
+    "family": [],
+    "related": [
+      "beruf",
+      "unternehmen",
+      "leisten"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "unternehmen",
+    "tier": 2,
     "article": "das",
-    "lemma": "Vorstellungsgespräch",
-    "plural": "Vorstellungsgespräche",
-    "en": "job interview",
+    "lemma": "Unternehmen",
+    "plural": "Unternehmen",
+    "en": "business, enterprise",
     "example": {
-      "de": "Morgen habe ich ein Vorstellungsgespräch.",
-      "en": "Tomorrow I have a job interview."
+      "de": "Der Sitz unseres Unternehmens ist in Tokyo.",
+      "en": "Our company's base is in Tokyo."
     },
-    "family": [
-      "vorstellen",
-      "Gespräch"
-    ],
+    "family": [],
     "related": [
-      "auftrag",
-      "kuendigung",
-      "lebenslauf"
+      "beruf",
+      "maschine",
+      "erfolg"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "kuendigung",
-    "tier": 3,
+    "id": "maschine",
+    "tier": 2,
     "article": "die",
-    "lemma": "Kündigung",
-    "plural": "Kündigungen",
-    "en": "notice, resignation",
+    "lemma": "Maschine",
+    "plural": "Maschinen",
+    "en": "machine",
     "example": {
-      "de": "Er hat gestern seine Kündigung geschrieben.",
-      "en": "He wrote his resignation yesterday."
+      "de": "Die Maschine war am Vormittag gestartet.",
+      "en": "The plane took off this morning."
     },
-    "family": [
-      "kündigen",
-      "Kündigungsfrist"
-    ],
+    "family": [],
     "related": [
-      "auftrag",
-      "praktikum",
-      "vorstellungsgespraech",
-      "vertrag"
+      "beruf",
+      "unternehmen",
+      "kunde"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "praktikum",
+    "id": "beruf",
     "tier": 3,
-    "article": "das",
-    "lemma": "Praktikum",
-    "plural": "Praktika",
-    "en": "internship",
+    "article": "der",
+    "lemma": "Beruf",
+    "plural": "Berufe",
+    "en": "profession, occupation",
     "example": {
-      "de": "Sie macht ein Praktikum bei einer Zeitung.",
-      "en": "She’s doing an internship at a newspaper."
+      "de": "Was sind Sie von Beruf?",
+      "en": "What do you do for a living?"
     },
     "family": [
-      "Praktikant",
-      "praktisch"
+      "beruflich",
+      "Berufserfahrung"
     ],
     "related": [
-      "auftrag",
+      "ausbildung",
       "kunde",
-      "kuendigung"
+      "maschine",
+      "arbeit"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -9293,37 +24810,15 @@ export const GENERATED: Word[] = [
       "Kundendienst"
     ],
     "related": [
-      "auftrag",
-      "praktikum",
-      "lieferung"
-    ],
-    "theme": "Beruf und Wirtschaft"
-  },
-  {
-    "id": "auftrag",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Auftrag",
-    "plural": "Aufträge",
-    "en": "order, assignment",
-    "example": {
-      "de": "Wir haben einen neuen Auftrag bekommen.",
-      "en": "We got a new order."
-    },
-    "family": [
-      "beauftragen",
-      "Auftraggeber"
-    ],
-    "related": [
-      "arbeitnehmer",
+      "ausbildung",
       "lieferung",
-      "kunde"
+      "beruf"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
     "id": "lieferung",
-    "tier": 4,
+    "tier": 3,
     "article": "die",
     "lemma": "Lieferung",
     "plural": "Lieferungen",
@@ -9337,37 +24832,552 @@ export const GENERATED: Word[] = [
       "Lieferant"
     ],
     "related": [
-      "arbeitnehmer",
-      "umsatz",
-      "auftrag"
+      "ausbildung",
+      "verlangen",
+      "kunde"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "umsatz",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Umsatz",
-    "plural": "Umsätze",
-    "en": "revenue, turnover",
+    "id": "verlangen",
+    "tier": 3,
+    "lemma": "verlangen",
+    "en": "to ask for, demand",
     "example": {
-      "de": "Der Umsatz ist im letzten Jahr gestiegen.",
-      "en": "Revenue rose last year."
+      "de": "Sie verlangten von dem Fahrer Schadensersatz.",
+      "en": "They demanded damages from the driver."
     },
-    "family": [
-      "umsetzen",
-      "Umsatzsteuer"
-    ],
+    "family": [],
     "related": [
-      "arbeitnehmer",
-      "arbeitgeber",
+      "ausbildung",
+      "dienen",
       "lieferung"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "arbeitgeber",
+    "id": "dienen",
+    "tier": 3,
+    "lemma": "dienen",
+    "en": "to serve",
+    "example": {
+      "de": "Polizisten dürfen im Dienst nicht trinken.",
+      "en": "Policemen aren't permitted to drink on duty."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "dienst",
+      "verlangen"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "dienst",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Dienst",
+    "plural": "Dienste",
+    "en": "service",
+    "example": {
+      "de": "Helen hat mir einen guten Dienst erwiesen.",
+      "en": "Helen did me a good turn."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "direktor",
+      "dienen"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "direktor",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Direktor",
+    "plural": "Direktoren",
+    "en": "principal",
+    "example": {
+      "de": "Der Direktor unserer Schule ist sehr alt.",
+      "en": "The head teacher of our school is very old."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "karriere",
+      "dienst"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "karriere",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Karriere",
+    "plural": "Karrieren",
+    "en": "career",
+    "example": {
+      "de": "Es war ihr nie wichtig, Karriere zu machen.",
+      "en": "It was never important to her to get a promotion."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "entlassen",
+      "direktor"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "entlassen",
+    "tier": 3,
+    "lemma": "entlassen",
+    "en": "to release",
+    "example": {
+      "de": "Er wurde aus dem Gefängnis entlassen.",
+      "en": "He was released from prison."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "handeln",
+      "karriere"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "handeln",
+    "tier": 3,
+    "lemma": "handeln",
+    "en": "to act, to take action",
+    "example": {
+      "de": "Wir müssen handeln, bevor es zu spät ist.",
+      "en": "We must take action before it is too late."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "liefern",
+      "entlassen"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "liefern",
+    "tier": 3,
+    "lemma": "liefern",
+    "en": "to supply, provide",
+    "example": {
+      "de": "Er wird Ihnen liefern, was Sie benötigen.",
+      "en": "He will provide you with what you need."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "fabrik",
+      "handeln"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "fabrik",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Fabrik",
+    "plural": "Fabriken",
+    "en": "plant",
+    "example": {
+      "de": "Sein Sohn übernahm die Leitung der Fabrik.",
+      "en": "His son took on the management of the factory."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "verkauf",
+      "liefern"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "verkauf",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Verkauf",
+    "plural": "Verkäufe",
+    "en": "sale",
+    "example": {
+      "de": "Er bietet sein Auto im Internet zum Verkauf an.",
+      "en": "He offers his car for sale on the Internet."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "bauer",
+      "fabrik"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "bauer",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Bauer",
+    "plural": "Bauern",
+    "en": "farmer",
+    "example": {
+      "de": "Die Bauern wussten nicht, was zu tun ist.",
+      "en": "The farmers didn't know what to do."
+    },
+    "family": [],
+    "related": [
+      "ausbildung",
+      "verkauf",
+      "betreiben"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "ausbildung",
     "tier": 4,
+    "article": "die",
+    "lemma": "Ausbildung",
+    "plural": "Ausbildungen",
+    "en": "training, apprenticeship",
+    "example": {
+      "de": "Er hat den Vorteil einer guten Ausbildung.",
+      "en": "He has the advantage of a good education."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "betreiben",
+      "bauer"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "betreiben",
+    "tier": 4,
+    "lemma": "betreiben",
+    "en": "to run, to operate",
+    "example": {
+      "de": "Er betreibt in der Stadt einen Supermarkt.",
+      "en": "He runs a supermarket in the town."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "betrieb",
+      "ausbildung"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "betrieb",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Betrieb",
+    "plural": "Betriebe",
+    "en": "application or process, industry",
+    "example": {
+      "de": "Dieser Dienst ist momentan außer Betrieb.",
+      "en": "This service is temporarily out of order."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "assistent",
+      "betreiben"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "assistent",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Assistent",
+    "plural": "Assistenten",
+    "en": "assistant",
+    "example": {
+      "de": "Kennen Sie den Namen von Toms Assistenten?",
+      "en": "Do you know Tom's assistant's name?"
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "produkt",
+      "betrieb"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "produkt",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Produkt",
+    "plural": "Produkte",
+    "en": "product",
+    "example": {
+      "de": "Diese Produkte sind von gleicher Qualität.",
+      "en": "These products are of the same quality."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "konferenz",
+      "assistent"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "konferenz",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Konferenz",
+    "plural": "Konferenzen",
+    "en": "conference",
+    "example": {
+      "de": "Ich besuche wissenschaftliche Konferenzen.",
+      "en": "I attend scientific conferences."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "chefin",
+      "produkt"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "chefin",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Chefin",
+    "plural": "Chefinnen",
+    "en": "female boss",
+    "example": {
+      "de": "Unsere Chefin fand Toms Spaß nicht zum Lachen.",
+      "en": "Our boss didn't find Tom's practical joke funny."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "klient",
+      "konferenz"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "klient",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Klient",
+    "plural": "Klienten",
+    "en": "client",
+    "example": {
+      "de": "Der Rechtsanwalt hat viele Klienten.",
+      "en": "The lawyer has many clients."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "produktion",
+      "chefin"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "produktion",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Produktion",
+    "plural": "Produktionen",
+    "en": "production",
+    "example": {
+      "de": "Diese Kleidung ist aus lokaler Produktion.",
+      "en": "These clothes are made locally."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "handel",
+      "klient"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "handel",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Handel",
+    "plural": "Händel",
+    "en": "deal",
+    "example": {
+      "de": "Was für einen Handel hast du geschlossen?",
+      "en": "What kind of deal did you make?"
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "angestellter",
+      "produktion"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "angestellter",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Angestellter",
+    "plural": "Angestellte",
+    "en": "employee, worker",
+    "example": {
+      "de": "Er entschuldigte sich bei dem Angestellten.",
+      "en": "He apologized to the employee."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "werkzeug",
+      "handel"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "werkzeug",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Werkzeug",
+    "plural": "Werkzeuge",
+    "en": "tool",
+    "example": {
+      "de": "Sie benutzten diese primitiven Werkzeuge.",
+      "en": "They used those primitive tools."
+    },
+    "family": [],
+    "related": [
+      "bewerbung",
+      "angestellter",
+      "lebenslauf"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "bewerbung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Bewerbung",
+    "plural": "Bewerbungen",
+    "en": "job application",
+    "example": {
+      "de": "Ich schreibe heute meine Bewerbung.",
+      "en": "I’m writing my application today."
+    },
+    "family": [
+      "bewerben",
+      "Bewerber"
+    ],
+    "related": [
+      "umsatz",
+      "lebenslauf",
+      "werkzeug",
+      "studium"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "lebenslauf",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Lebenslauf",
+    "plural": "Lebensläufe",
+    "en": "CV, résumé",
+    "example": {
+      "de": "Bitte schicken Sie uns Ihren Lebenslauf.",
+      "en": "Please send us your CV."
+    },
+    "family": [
+      "Leben",
+      "Lauf"
+    ],
+    "related": [
+      "umsatz",
+      "vorstellungsgespraech",
+      "bewerbung"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "vorstellungsgespraech",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Vorstellungsgespräch",
+    "plural": "Vorstellungsgespräche",
+    "en": "job interview",
+    "example": {
+      "de": "Morgen habe ich ein Vorstellungsgespräch.",
+      "en": "Tomorrow I have a job interview."
+    },
+    "family": [
+      "vorstellen",
+      "Gespräch"
+    ],
+    "related": [
+      "umsatz",
+      "kuendigung",
+      "lebenslauf"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "kuendigung",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Kündigung",
+    "plural": "Kündigungen",
+    "en": "notice, resignation",
+    "example": {
+      "de": "Er hat gestern seine Kündigung geschrieben.",
+      "en": "He wrote his resignation yesterday."
+    },
+    "family": [
+      "kündigen",
+      "Kündigungsfrist"
+    ],
+    "related": [
+      "umsatz",
+      "praktikum",
+      "vorstellungsgespraech",
+      "vertrag"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "praktikum",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Praktikum",
+    "plural": "Praktika",
+    "en": "internship",
+    "example": {
+      "de": "Sie macht ein Praktikum bei einer Zeitung.",
+      "en": "She’s doing an internship at a newspaper."
+    },
+    "family": [
+      "Praktikant",
+      "praktisch"
+    ],
+    "related": [
+      "umsatz",
+      "arbeitgeber",
+      "kuendigung"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "arbeitgeber",
+    "tier": 5,
     "article": "der",
     "lemma": "Arbeitgeber",
     "plural": "Arbeitgeber",
@@ -9381,9 +25391,9 @@ export const GENERATED: Word[] = [
       "Arbeit"
     ],
     "related": [
-      "arbeitnehmer",
       "umsatz",
-      "betriebsrat"
+      "arbeitnehmer",
+      "praktikum"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -9403,31 +25413,9 @@ export const GENERATED: Word[] = [
       "nehmen"
     ],
     "related": [
-      "fachkraeftemangel",
-      "betriebsrat",
-      "arbeitgeber"
-    ],
-    "theme": "Beruf und Wirtschaft"
-  },
-  {
-    "id": "betriebsrat",
-    "tier": 5,
-    "article": "der",
-    "lemma": "Betriebsrat",
-    "plural": "Betriebsräte",
-    "en": "works council",
-    "example": {
-      "de": "Der Betriebsrat vertritt die Interessen der Mitarbeiter.",
-      "en": "The works council represents the employees’ interests."
-    },
-    "family": [
-      "Betrieb",
-      "Rat"
-    ],
-    "related": [
-      "fachkraeftemangel",
+      "umsatz",
       "kuendigungsfrist",
-      "arbeitnehmer"
+      "arbeitgeber"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -9447,9 +25435,216 @@ export const GENERATED: Word[] = [
       "Frist"
     ],
     "related": [
-      "fachkraeftemangel",
+      "umsatz",
+      "architekt",
+      "arbeitnehmer"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "architekt",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Architekt",
+    "plural": "Architekten",
+    "en": "architect",
+    "example": {
+      "de": "Mein Vater ist Architekt, nicht Ingenieur.",
+      "en": "My father is an architect, not an engineer."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "spezialisieren",
+      "kuendigungsfrist"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "spezialisieren",
+    "tier": 5,
+    "lemma": "spezialisieren",
+    "en": "to specialize",
+    "example": {
+      "de": "Dieser Verlag ist auf Kinderliteratur spezialisiert.",
+      "en": "This publisher specializes in children's literature."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "beitragen",
+      "architekt"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "beitragen",
+    "tier": 5,
+    "lemma": "beitragen",
+    "en": "to contribute to",
+    "example": {
+      "de": "Er hat zum Wohl der Gesellschaft beigetragen.",
+      "en": "He contributed to the good of the community."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "ausueben",
+      "spezialisieren"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "ausueben",
+    "tier": 5,
+    "lemma": "ausüben",
+    "en": "to practice / practise, to exert",
+    "example": {
+      "de": "Tut es weh, wenn ich hier Druck ausübe?",
+      "en": "Does it hurt when I press here?"
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "bewerben",
+      "beitragen"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "bewerben",
+    "tier": 5,
+    "lemma": "bewerben",
+    "en": "to apply",
+    "example": {
+      "de": "Sie sollten sich auf diese Stelle bewerben.",
+      "en": "You should apply for that post."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "zement",
+      "ausueben"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "zement",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Zement",
+    "plural": "Zemente",
+    "en": "cement",
+    "example": {
+      "de": "Ich muss einen Sack Zement kaufen.",
+      "en": "I need to buy a bag of cement."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "streik",
+      "bewerben"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "streik",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Streik",
+    "plural": "Streiks",
+    "en": "strike",
+    "example": {
+      "de": "Dies ist der siebte Streik in diesem Jahr.",
+      "en": "This is the seventh strike of this year."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "handwerker",
+      "zement"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "handwerker",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Handwerker",
+    "plural": "Handwerker",
+    "en": "craftsman",
+    "example": {
+      "de": "Gute Handwerker sind stolz auf ihr Werk.",
+      "en": "A good craftsman takes pride in his work."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "bewerber",
+      "streik"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "bewerber",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Bewerber",
+    "plural": "Bewerber",
+    "en": "applicant",
+    "example": {
+      "de": "Einen dieser Bewerber müssen wir auswählen.",
+      "en": "We must select one from among these applicants."
+    },
+    "family": [],
+    "related": [
+      "umsatz",
+      "handwerker",
+      "betriebsrat"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "umsatz",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Umsatz",
+    "plural": "Umsätze",
+    "en": "revenue, turnover",
+    "example": {
+      "de": "Der Umsatz ist im letzten Jahr gestiegen.",
+      "en": "Revenue rose last year."
+    },
+    "family": [
+      "umsetzen",
+      "Umsatzsteuer"
+    ],
+    "related": [
+      "bewerber",
       "betriebsrat",
-      "insolvenz"
+      "fachkraeftemangel"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "betriebsrat",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Betriebsrat",
+    "plural": "Betriebsräte",
+    "en": "works council",
+    "example": {
+      "de": "Der Betriebsrat vertritt die Interessen der Mitarbeiter.",
+      "en": "The works council represents the employees’ interests."
+    },
+    "family": [
+      "Betrieb",
+      "Rat"
+    ],
+    "related": [
+      "bewerber",
+      "fachkraeftemangel",
+      "umsatz"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -9468,8 +25663,9 @@ export const GENERATED: Word[] = [
       "Mangel"
     ],
     "related": [
-      "kuendigungsfrist",
-      "insolvenz"
+      "bewerber",
+      "insolvenz",
+      "betriebsrat"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -9489,75 +25685,100 @@ export const GENERATED: Word[] = [
       "Konkurs"
     ],
     "related": [
-      "kuendigungsfrist",
+      "bewerber",
+      "freinehmen",
       "fachkraeftemangel"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "umwelt",
-    "tier": 1,
+    "id": "freinehmen",
+    "tier": 6,
+    "lemma": "freinehmen",
+    "en": "to take off",
+    "example": {
+      "de": "Warum hast du dir den Tag nicht freigenommen?",
+      "en": "Why didn't you take the day off?"
+    },
+    "family": [],
+    "related": [
+      "bewerber",
+      "fuehrungskraft",
+      "insolvenz"
+    ],
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "fuehrungskraft",
+    "tier": 6,
     "article": "die",
-    "lemma": "Umwelt",
-    "en": "environment",
+    "lemma": "Führungskraft",
+    "plural": "Führungskräfte",
+    "en": "executive",
     "example": {
-      "de": "Wir müssen die Umwelt schützen.",
-      "en": "We have to protect the environment."
+      "de": "Sie ist eine bessere Führungskraft als er.",
+      "en": "She's a better leader than he is."
     },
-    "family": [
-      "Umweltschutz",
-      "umweltfreundlich"
-    ],
+    "family": [],
     "related": [
-      "energie",
-      "muell",
-      "strom"
+      "bewerber",
+      "schweissen",
+      "freinehmen"
     ],
-    "theme": "Umwelt und Energie"
+    "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "muell",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Müll",
-    "en": "rubbish, trash",
+    "id": "schweissen",
+    "tier": 6,
+    "lemma": "schweißen",
+    "en": "to weld",
     "example": {
-      "de": "Bringst du bitte den Müll raus?",
-      "en": "Can you take out the rubbish, please?"
+      "de": "Er wischte sich den Schweiß von der Stirn.",
+      "en": "He wiped the sweat from his forehead."
     },
-    "family": [
-      "Müllabfuhr",
-      "Mülleimer"
-    ],
+    "family": [],
     "related": [
-      "energie",
-      "strom",
-      "umwelt",
-      "kueche"
+      "bewerber",
+      "mitwirkung",
+      "fuehrungskraft"
     ],
-    "theme": "Umwelt und Energie"
+    "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "strom",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Strom",
-    "en": "electricity; stream",
+    "id": "mitwirkung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Mitwirkung",
+    "plural": "Mitwirkungen",
+    "en": "participation, involvement",
     "example": {
-      "de": "Der Strom ist seit gestern ausgefallen.",
-      "en": "The power has been out since yesterday."
+      "de": "Ihre Mitwirkung ist für uns unentbehrlich.",
+      "en": "Your assistance is indispensable for us."
     },
-    "family": [
-      "Stromrechnung",
-      "Stromausfall"
-    ],
+    "family": [],
     "related": [
-      "energie",
-      "muell",
-      "verkehr",
-      "herd"
+      "bewerber",
+      "arbeitslosigkeit",
+      "schweissen"
     ],
-    "theme": "Umwelt und Energie"
+    "theme": "Beruf und Wirtschaft"
+  },
+  {
+    "id": "arbeitslosigkeit",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Arbeitslosigkeit",
+    "en": "unemployment, joblessness",
+    "example": {
+      "de": "Er wurde in die Arbeitslosigkeit gezwungen.",
+      "en": "He was forced into unemployment."
+    },
+    "family": [],
+    "related": [
+      "bewerber",
+      "mitwirkung"
+    ],
+    "theme": "Beruf und Wirtschaft"
   },
   {
     "id": "energie",
@@ -9575,15 +25796,115 @@ export const GENERATED: Word[] = [
       "Sonnenenergie"
     ],
     "related": [
-      "abfall",
-      "verkehr",
+      "muell",
       "strom"
     ],
     "theme": "Umwelt und Energie"
   },
   {
+    "id": "muell",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Müll",
+    "en": "rubbish, trash",
+    "example": {
+      "de": "Bringst du bitte den Müll raus?",
+      "en": "Can you take out the rubbish, please?"
+    },
+    "family": [
+      "Müllabfuhr",
+      "Mülleimer"
+    ],
+    "related": [
+      "verkehr",
+      "strom",
+      "energie",
+      "kueche"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "strom",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Strom",
+    "en": "electricity; stream",
+    "example": {
+      "de": "Der Strom ist seit gestern ausgefallen.",
+      "en": "The power has been out since yesterday."
+    },
+    "family": [
+      "Stromrechnung",
+      "Stromausfall"
+    ],
+    "related": [
+      "verkehr",
+      "gas",
+      "muell",
+      "herd"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "gas",
+    "tier": 3,
+    "article": "das",
+    "lemma": "Gas",
+    "plural": "Gase",
+    "en": "gas",
+    "example": {
+      "de": "Hast du daran gedacht, das Gas abzudrehen?",
+      "en": "Did you remember to turn off the gas?"
+    },
+    "family": [],
+    "related": [
+      "verkehr",
+      "kohle",
+      "strom"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "kohle",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Kohle",
+    "plural": "Kohlen",
+    "en": "coal",
+    "example": {
+      "de": "Wie gewinnen wir die Kohle aus dem Boden?",
+      "en": "How do we extract the coal from the ground?"
+    },
+    "family": [],
+    "related": [
+      "verkehr",
+      "wueste",
+      "gas"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "wueste",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Wüste",
+    "plural": "Wüsten",
+    "en": "desert",
+    "example": {
+      "de": "Lass mich nicht hier in der Wüste im Stich!",
+      "en": "Don't desert me here in the desert!"
+    },
+    "family": [],
+    "related": [
+      "verkehr",
+      "kohle",
+      "naturschutz"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
     "id": "verkehr",
-    "tier": 2,
+    "tier": 4,
     "article": "der",
     "lemma": "Verkehr",
     "en": "traffic",
@@ -9596,181 +25917,10 @@ export const GENERATED: Word[] = [
       "Straßenverkehr"
     ],
     "related": [
-      "abfall",
-      "klima",
-      "energie",
-      "zug"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "klima",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Klima",
-    "en": "climate",
-    "example": {
-      "de": "Das Klima verändert sich schnell.",
-      "en": "The climate is changing quickly."
-    },
-    "family": [
-      "klimatisch",
-      "Klimaanlage"
-    ],
-    "related": [
-      "abfall",
-      "plastik",
-      "verkehr",
-      "wetter"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "plastik",
-    "tier": 2,
-    "article": "das",
-    "lemma": "Plastik",
-    "en": "plastic",
-    "example": {
-      "de": "Wir wollen weniger Plastik benutzen.",
-      "en": "We want to use less plastic."
-    },
-    "family": [
-      "Plastiktüte",
-      "Plastikflasche"
-    ],
-    "related": [
-      "abfall",
-      "klima",
-      "verschmutzung"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "abfall",
-    "tier": 3,
-    "article": "der",
-    "lemma": "Abfall",
-    "plural": "Abfälle",
-    "en": "waste",
-    "example": {
-      "de": "Der Abfall wird getrennt gesammelt.",
-      "en": "The waste is collected separately."
-    },
-    "family": [
-      "abfallen",
-      "Abfalleimer"
-    ],
-    "related": [
-      "klimawandel",
-      "verschmutzung",
-      "plastik"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "verschmutzung",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Verschmutzung",
-    "plural": "Verschmutzungen",
-    "en": "pollution",
-    "example": {
-      "de": "Die Verschmutzung der Meere nimmt zu.",
-      "en": "The pollution of the seas is increasing."
-    },
-    "family": [
-      "verschmutzen",
-      "schmutzig"
-    ],
-    "related": [
-      "klimawandel",
-      "recycling",
-      "abfall"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "recycling",
-    "tier": 3,
-    "article": "das",
-    "lemma": "Recycling",
-    "en": "recycling",
-    "example": {
-      "de": "Recycling schont die Ressourcen.",
-      "en": "Recycling conserves resources."
-    },
-    "family": [
-      "recyceln",
-      "Zyklus"
-    ],
-    "related": [
-      "klimawandel",
-      "abgase",
-      "verschmutzung"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "abgase",
-    "tier": 3,
-    "article": "die",
-    "lemma": "Abgase",
-    "en": "exhaust fumes",
-    "example": {
-      "de": "Die Abgase belasten die Luft.",
-      "en": "The exhaust fumes pollute the air."
-    },
-    "family": [
-      "Abgasnorm",
-      "Gase"
-    ],
-    "related": [
-      "klimawandel",
-      "recycling",
-      "erderwaermung"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "klimawandel",
-    "tier": 4,
-    "article": "der",
-    "lemma": "Klimawandel",
-    "en": "climate change",
-    "example": {
-      "de": "Der Klimawandel betrifft uns alle.",
-      "en": "Climate change affects us all."
-    },
-    "family": [
-      "Klima",
-      "Wandel"
-    ],
-    "related": [
-      "nachhaltigkeit",
-      "erderwaermung",
-      "abgase"
-    ],
-    "theme": "Umwelt und Energie"
-  },
-  {
-    "id": "erderwaermung",
-    "tier": 4,
-    "article": "die",
-    "lemma": "Erderwärmung",
-    "en": "global warming",
-    "example": {
-      "de": "Die Erderwärmung lässt die Gletscher schmelzen.",
-      "en": "Global warming is melting the glaciers."
-    },
-    "family": [
-      "Erde",
-      "Wärme"
-    ],
-    "related": [
-      "nachhaltigkeit",
+      "umwelt",
       "naturschutz",
-      "klimawandel"
+      "wueste",
+      "zug"
     ],
     "theme": "Umwelt und Energie"
   },
@@ -9789,9 +25939,9 @@ export const GENERATED: Word[] = [
       "schützen"
     ],
     "related": [
-      "nachhaltigkeit",
+      "umwelt",
       "solaranlage",
-      "erderwaermung"
+      "verkehr"
     ],
     "theme": "Umwelt und Energie"
   },
@@ -9811,9 +25961,152 @@ export const GENERATED: Word[] = [
       "Anlage"
     ],
     "related": [
+      "umwelt",
+      "zerstoerung",
+      "naturschutz"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "zerstoerung",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Zerstörung",
+    "plural": "Zerstörungen",
+    "en": "destruction, demolition",
+    "example": {
+      "de": "Diese Regenzeit bringt viel Zerstörung.",
+      "en": "This rainy season brings a lot of destruction."
+    },
+    "family": [],
+    "related": [
+      "umwelt",
+      "batterie",
+      "solaranlage"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "batterie",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Batterie",
+    "plural": "Batterien",
+    "en": "battery",
+    "example": {
+      "de": "Die Batterie meines MP3-Spielers war leer.",
+      "en": "The battery of my MP3-player was empty."
+    },
+    "family": [],
+    "related": [
+      "umwelt",
+      "ernte",
+      "zerstoerung"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "ernte",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Ernte",
+    "plural": "Ernten",
+    "en": "harvest",
+    "example": {
+      "de": "Dieses Jahr wird eine gute Ernte erwartet.",
+      "en": "A good harvest is expected this year."
+    },
+    "family": [],
+    "related": [
+      "umwelt",
+      "batterie",
+      "klima"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "umwelt",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Umwelt",
+    "en": "environment",
+    "example": {
+      "de": "Wir müssen die Umwelt schützen.",
+      "en": "We have to protect the environment."
+    },
+    "family": [
+      "Umweltschutz",
+      "umweltfreundlich"
+    ],
+    "related": [
+      "verschmutzung",
+      "klima",
+      "ernte"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "klima",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Klima",
+    "en": "climate",
+    "example": {
+      "de": "Das Klima verändert sich schnell.",
+      "en": "The climate is changing quickly."
+    },
+    "family": [
+      "klimatisch",
+      "Klimaanlage"
+    ],
+    "related": [
+      "verschmutzung",
+      "plastik",
+      "umwelt",
+      "wetter"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "plastik",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Plastik",
+    "en": "plastic",
+    "example": {
+      "de": "Wir wollen weniger Plastik benutzen.",
+      "en": "We want to use less plastic."
+    },
+    "family": [
+      "Plastiktüte",
+      "Plastikflasche"
+    ],
+    "related": [
+      "verschmutzung",
+      "abfall",
+      "klima"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "abfall",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Abfall",
+    "plural": "Abfälle",
+    "en": "waste",
+    "example": {
+      "de": "Der Abfall wird getrennt gesammelt.",
+      "en": "The waste is collected separately."
+    },
+    "family": [
+      "abfallen",
+      "Abfalleimer"
+    ],
+    "related": [
+      "verschmutzung",
       "nachhaltigkeit",
-      "naturschutz",
-      "artensterben"
+      "plastik"
     ],
     "theme": "Umwelt und Energie"
   },
@@ -9832,9 +26125,9 @@ export const GENERATED: Word[] = [
       "Halt"
     ],
     "related": [
-      "treibhauseffekt",
+      "verschmutzung",
       "artensterben",
-      "solaranlage"
+      "abfall"
     ],
     "theme": "Umwelt und Energie"
   },
@@ -9853,7 +26146,7 @@ export const GENERATED: Word[] = [
       "sterben"
     ],
     "related": [
-      "treibhauseffekt",
+      "verschmutzung",
       "wegwerfgesellschaft",
       "nachhaltigkeit"
     ],
@@ -9874,9 +26167,210 @@ export const GENERATED: Word[] = [
       "Gesellschaft"
     ],
     "related": [
+      "verschmutzung",
+      "treibstoff",
+      "artensterben"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "treibstoff",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Treibstoff",
+    "plural": "Treibstoffe",
+    "en": "fuel",
+    "example": {
+      "de": "Der Wagen hat fast keinen Treibstoff mehr.",
+      "en": "The car's almost out of gas."
+    },
+    "family": [],
+    "related": [
+      "verschmutzung",
+      "stromausfall",
+      "wegwerfgesellschaft"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "stromausfall",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Stromausfall",
+    "plural": "Stromausfälle",
+    "en": "blackout, power failure",
+    "example": {
+      "de": "Das Gewitter verursachte einen Stromausfall.",
+      "en": "The storm caused a power outage."
+    },
+    "family": [],
+    "related": [
+      "verschmutzung",
+      "kraftwerk",
+      "treibstoff"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "kraftwerk",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Kraftwerk",
+    "plural": "Kraftwerke",
+    "en": "power station, power plant",
+    "example": {
+      "de": "Er arbeitet im Kraftwerk.",
+      "en": "He works at the power station."
+    },
+    "family": [],
+    "related": [
+      "verschmutzung",
+      "landwirtschaft",
+      "stromausfall"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "landwirtschaft",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Landwirtschaft",
+    "plural": "Landwirtschaften",
+    "en": "agriculture",
+    "example": {
+      "de": "Viele Länder sind von der Landwirtschaft abhängig.",
+      "en": "Many countries depend on agriculture."
+    },
+    "family": [],
+    "related": [
+      "verschmutzung",
+      "bauernhof",
+      "kraftwerk"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "bauernhof",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Bauernhof",
+    "plural": "Bauernhöfe",
+    "en": "farm",
+    "example": {
+      "de": "Sie setzten Häuser und Bauernhöfe in Brand.",
+      "en": "They set fire to houses and farm buildings."
+    },
+    "family": [],
+    "related": [
+      "verschmutzung",
+      "landwirtschaft",
+      "recycling"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "verschmutzung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Verschmutzung",
+    "plural": "Verschmutzungen",
+    "en": "pollution",
+    "example": {
+      "de": "Die Verschmutzung der Meere nimmt zu.",
+      "en": "The pollution of the seas is increasing."
+    },
+    "family": [
+      "verschmutzen",
+      "schmutzig"
+    ],
+    "related": [
+      "bauernhof",
+      "recycling",
+      "abgase"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "recycling",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Recycling",
+    "en": "recycling",
+    "example": {
+      "de": "Recycling schont die Ressourcen.",
+      "en": "Recycling conserves resources."
+    },
+    "family": [
+      "recyceln",
+      "Zyklus"
+    ],
+    "related": [
+      "bauernhof",
+      "abgase",
+      "verschmutzung"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "abgase",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Abgase",
+    "en": "exhaust fumes",
+    "example": {
+      "de": "Die Abgase belasten die Luft.",
+      "en": "The exhaust fumes pollute the air."
+    },
+    "family": [
+      "Abgasnorm",
+      "Gase"
+    ],
+    "related": [
+      "bauernhof",
+      "klimawandel",
+      "recycling"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "klimawandel",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Klimawandel",
+    "en": "climate change",
+    "example": {
+      "de": "Der Klimawandel betrifft uns alle.",
+      "en": "Climate change affects us all."
+    },
+    "family": [
+      "Klima",
+      "Wandel"
+    ],
+    "related": [
+      "bauernhof",
+      "erderwaermung",
+      "abgase"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "erderwaermung",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Erderwärmung",
+    "en": "global warming",
+    "example": {
+      "de": "Die Erderwärmung lässt die Gletscher schmelzen.",
+      "en": "Global warming is melting the glaciers."
+    },
+    "family": [
+      "Erde",
+      "Wärme"
+    ],
+    "related": [
+      "bauernhof",
       "treibhauseffekt",
-      "artensterben",
-      "emission"
+      "klimawandel"
     ],
     "theme": "Umwelt und Energie"
   },
@@ -9895,8 +26389,9 @@ export const GENERATED: Word[] = [
       "Effekt"
     ],
     "related": [
-      "wegwerfgesellschaft",
-      "emission"
+      "bauernhof",
+      "emission",
+      "erderwaermung"
     ],
     "theme": "Umwelt und Energie"
   },
@@ -9916,8 +26411,159 @@ export const GENERATED: Word[] = [
       "Kohlendioxid"
     ],
     "related": [
-      "wegwerfgesellschaft",
+      "bauernhof",
+      "diesel",
       "treibhauseffekt"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "diesel",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Diesel",
+    "plural": "Diesel",
+    "en": "diesel",
+    "example": {
+      "de": "Der Dieselmotor wurde von Rudolf Diesel erfunden.",
+      "en": "The diesel engine was invented by Rudolf Diesel."
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "waldbrand",
+      "emission"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "waldbrand",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Waldbrand",
+    "plural": "Waldbrände",
+    "en": "forest fire",
+    "example": {
+      "de": "In dieser Region brach ein Waldbrand aus.",
+      "en": "A forest fire broke out in this area."
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "treibhausgas",
+      "diesel"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "treibhausgas",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Treibhausgas",
+    "plural": "Treibhausgase",
+    "en": "greenhouse gas",
+    "example": {
+      "de": "China produziert noch zu viele Treibhausgase.",
+      "en": "China still produces too many GHG."
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "atomkraft",
+      "waldbrand"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "atomkraft",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Atomkraft",
+    "en": "nuclear power",
+    "example": {
+      "de": "Die beiden Teams haben über Atomkraft diskutiert.",
+      "en": "The two teams debated on the issue of nuclear power."
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "rohstoff",
+      "treibhausgas"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "rohstoff",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Rohstoff",
+    "plural": "Rohstoffe",
+    "en": "raw material, material",
+    "example": {
+      "de": "Fossilien sind ein nicht erneuerbarer Rohstoff.",
+      "en": "Fossils are a non-renewable resource."
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "duenger",
+      "atomkraft"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "duenger",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Dünger",
+    "plural": "Dünger",
+    "en": "fertilizer",
+    "example": {
+      "de": "Was ist der beste Dünger für Tomatenpflanzen?",
+      "en": "What is the best fertilizer for tomato plants?"
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "regenwald",
+      "rohstoff"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "regenwald",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Regenwald",
+    "plural": "Regenwälder",
+    "en": "rainforest",
+    "example": {
+      "de": "Wilde Orchideen wachsen in den Regenwäldern.",
+      "en": "Wild orchids grow in rainforests."
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "gletscher",
+      "duenger"
+    ],
+    "theme": "Umwelt und Energie"
+  },
+  {
+    "id": "gletscher",
+    "tier": 6,
+    "article": "der",
+    "lemma": "Gletscher",
+    "plural": "Gletscher",
+    "en": "glacier",
+    "example": {
+      "de": "Die Gletscher und die Schneedecke schmelzen.",
+      "en": "Glaciers and snow cover are shrinking."
+    },
+    "family": [],
+    "related": [
+      "bauernhof",
+      "regenwald"
     ],
     "theme": "Umwelt und Energie"
   },
@@ -9937,15 +26583,16 @@ export const GENERATED: Word[] = [
       "Ideenreichtum"
     ],
     "related": [
-      "grund",
       "ziel",
+      "grund",
+      "wissen",
       "entscheidung"
     ],
     "theme": "Ideen und Pläne"
   },
   {
     "id": "grund",
-    "tier": 2,
+    "tier": 1,
     "article": "der",
     "lemma": "Grund",
     "plural": "Gründe",
@@ -9959,10 +26606,114 @@ export const GENERATED: Word[] = [
       "begründen"
     ],
     "related": [
-      "vorteil",
       "ziel",
+      "wissen",
       "idee",
       "sich-entscheiden"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "wissen",
+    "tier": 1,
+    "lemma": "wissen",
+    "en": "to know, to be aware of",
+    "example": {
+      "de": "Ich weiß nicht, was dieses Wort bedeutet.",
+      "en": "I don't know what this word means."
+    },
+    "family": [],
+    "related": [
+      "ziel",
+      "vielleicht",
+      "grund"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "vielleicht",
+    "tier": 1,
+    "lemma": "vielleicht",
+    "en": "perhaps, maybe",
+    "example": {
+      "de": "Das is’ vielleicht’ne Geldverschwendung da!",
+      "en": "Now, that’s some waste of money!"
+    },
+    "family": [],
+    "related": [
+      "ziel",
+      "glauben",
+      "wissen"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "glauben",
+    "tier": 1,
+    "lemma": "glauben",
+    "en": "to believe something",
+    "example": {
+      "de": "Ich glaube nicht, dass sie glücklich ist.",
+      "en": "I don't think she is happy."
+    },
+    "family": [],
+    "related": [
+      "ziel",
+      "problem",
+      "vielleicht"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "problem",
+    "tier": 1,
+    "article": "das",
+    "lemma": "Problem",
+    "plural": "Probleme",
+    "en": "problem",
+    "example": {
+      "de": "Lass uns dieses Problem sofort besprechen.",
+      "en": "Let's discuss the matter right now."
+    },
+    "family": [],
+    "related": [
+      "ziel",
+      "denken",
+      "glauben"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "denken",
+    "tier": 1,
+    "lemma": "denken",
+    "en": "to think",
+    "example": {
+      "de": "Er denkt oft mit geschlossenen Augen nach.",
+      "en": "He often thinks with his eyes shut."
+    },
+    "family": [],
+    "related": [
+      "ziel",
+      "verstehen",
+      "problem"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "verstehen",
+    "tier": 1,
+    "lemma": "verstehen",
+    "en": "to understand",
+    "example": {
+      "de": "Ich verstehe dich nicht bei dem Lärm.",
+      "en": "I can't understand you with this noise."
+    },
+    "family": [],
+    "related": [
+      "ziel",
+      "denken",
+      "plan"
     ],
     "theme": "Ideen und Pläne"
   },
@@ -9984,7 +26735,7 @@ export const GENERATED: Word[] = [
     "related": [
       "vorteil",
       "plan",
-      "grund",
+      "verstehen",
       "zukunft"
     ],
     "theme": "Ideen und Pläne"
@@ -10006,9 +26757,229 @@ export const GENERATED: Word[] = [
     ],
     "related": [
       "vorteil",
+      "moeglichkeit",
       "ziel",
-      "nachteil",
       "termin"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "moeglichkeit",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Möglichkeit",
+    "plural": "Möglichkeiten",
+    "en": "possibility",
+    "example": {
+      "de": "Es gibt noch eine andere Möglichkeit.",
+      "en": "There’s another possibility."
+    },
+    "family": [
+      "möglich",
+      "ermöglichen"
+    ],
+    "related": [
+      "vorteil",
+      "wahrscheinlich",
+      "plan",
+      "entscheidung"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "wahrscheinlich",
+    "tier": 2,
+    "lemma": "wahrscheinlich",
+    "en": "likely, probable",
+    "example": {
+      "de": "Welches Team wird wahrscheinlich gewinnen?",
+      "en": "Which team is likely to win?"
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "fehler",
+      "moeglichkeit"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "fehler",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Fehler",
+    "plural": "Fehler",
+    "en": "fault, error",
+    "example": {
+      "de": "Sie haben zweifellos einen Fehler gemacht.",
+      "en": "They must have made a mistake."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "erinnern",
+      "wahrscheinlich"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "erinnern",
+    "tier": 2,
+    "lemma": "erinnern",
+    "en": "to remind",
+    "example": {
+      "de": "Schnee erinnert mich an meine Heimatstadt.",
+      "en": "Snow reminds me of my hometown."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "versuch",
+      "fehler"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "versuch",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Versuch",
+    "plural": "Versuche",
+    "en": "attempt",
+    "example": {
+      "de": "Versuch, schlechte Gesellschaft zu meiden.",
+      "en": "Try to avoid bad company."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "sinn",
+      "erinnern"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "sinn",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Sinn",
+    "plural": "Sinne",
+    "en": "sense",
+    "example": {
+      "de": "Traditionen ergeben gar keinen Sinn mehr.",
+      "en": "Traditions no longer make any sense."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "aendern",
+      "versuch"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "aendern",
+    "tier": 2,
+    "lemma": "ändern",
+    "en": "to change, to alter",
+    "example": {
+      "de": "Die Welt ändert sich von Minute zu Minute.",
+      "en": "The world is changing every minute."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "erfahren",
+      "sinn"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "erfahren",
+    "tier": 2,
+    "lemma": "erfahren",
+    "en": "to find out, learn",
+    "example": {
+      "de": "Er hat im Leben viel Gutes und Böses erfahren.",
+      "en": "He has experienced a lot of good and bad things in life."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "schaetzen",
+      "aendern"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "schaetzen",
+    "tier": 2,
+    "lemma": "schätzen",
+    "en": "to estimate, to guess",
+    "example": {
+      "de": "Kannst du den Wert des Diamanten schätzen?",
+      "en": "Can you guess the worth of the diamond?"
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "erwarten",
+      "erfahren"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "erwarten",
+    "tier": 2,
+    "lemma": "erwarten",
+    "en": "to expect, to consider likely",
+    "example": {
+      "de": "Kommen Sie rein, wir haben Sie erwartet.",
+      "en": "Come in, we've been expecting you."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "geheimnis",
+      "schaetzen"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "geheimnis",
+    "tier": 2,
+    "article": "das",
+    "lemma": "Geheimnis",
+    "plural": "Geheimnisse",
+    "en": "secret",
+    "example": {
+      "de": "Es ist ein Geheimnis. Erzähl es niemandem!",
+      "en": "It's a secret; don't give it away to anyone."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "system",
+      "erwarten"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "system",
+    "tier": 2,
+    "article": "das",
+    "lemma": "System",
+    "plural": "Systeme",
+    "en": "system",
+    "example": {
+      "de": "Die Probleme sind diesem System immanent.",
+      "en": "The problems are inherent in this system."
+    },
+    "family": [],
+    "related": [
+      "vorteil",
+      "geheimnis",
+      "entdecken"
     ],
     "theme": "Ideen und Pläne"
   },
@@ -10028,16 +26999,608 @@ export const GENERATED: Word[] = [
       "Teil"
     ],
     "related": [
-      "plan",
-      "nachteil",
-      "moeglichkeit",
+      "ausweg",
+      "entdecken",
+      "system",
       "erfahrung"
     ],
     "theme": "Ideen und Pläne"
   },
   {
-    "id": "nachteil",
+    "id": "entdecken",
     "tier": 3,
+    "lemma": "entdecken",
+    "en": "to discover, to spot",
+    "example": {
+      "de": "Wir haben einen Bären im Wald entdeckt.",
+      "en": "We spotted a bear in the forest."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "zustand",
+      "vorteil"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "zustand",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Zustand",
+    "plural": "Zustände",
+    "en": "condition, state",
+    "example": {
+      "de": "Ich habe das in betrunkenem Zustand getan.",
+      "en": "I did it while I was drunk."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "zufall",
+      "entdecken"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "zufall",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Zufall",
+    "plural": "Zufälle",
+    "en": "chance, coincidence",
+    "example": {
+      "de": "Das Schachspiel hängt nicht vom Zufall ab.",
+      "en": "Chess does not rely on chance."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "wirken",
+      "zustand"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "wirken",
+    "tier": 3,
+    "lemma": "wirken",
+    "en": "to function, to be effective",
+    "example": {
+      "de": "Dieser Köder wirkt wie ein Fischmagnet.",
+      "en": "This bait works like a fish magnet."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "kapieren",
+      "zufall"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "kapieren",
+    "tier": 3,
+    "lemma": "kapieren",
+    "en": "to get, to grasp",
+    "example": {
+      "de": "Dieser Idiot kapiert rein gar nichts.",
+      "en": "This idiot doesn’t understand a single thing."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "bemerken",
+      "wirken"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "bemerken",
+    "tier": 3,
+    "lemma": "bemerken",
+    "en": "to notice, to perceive",
+    "example": {
+      "de": "Niemand bemerkte das Auftauchen des Bären.",
+      "en": "No one noticed the bear's appearance."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "erinnerung",
+      "kapieren"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "erinnerung",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Erinnerung",
+    "plural": "Erinnerungen",
+    "en": "memory, remembrance",
+    "example": {
+      "de": "Wenn mich meine Erinnerung nicht trügt...",
+      "en": "If my memory doesn’t fail me..."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "loesen",
+      "bemerken"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "loesen",
+    "tier": 3,
+    "lemma": "lösen",
+    "en": "to solve, to loosen",
+    "example": {
+      "de": "Herr Thomas wird das Problem lösen können.",
+      "en": "Mr. Thomas will be able to solve the problem."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "zweifeln",
+      "erinnerung"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "zweifeln",
+    "tier": 3,
+    "lemma": "zweifeln",
+    "en": "to doubt, to be doubtful",
+    "example": {
+      "de": "Ich habe keinen Zweifel an seinem Erfolg.",
+      "en": "I have no doubt that he will succeed."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "zweifel",
+      "loesen"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "zweifel",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Zweifel",
+    "plural": "Zweifel",
+    "en": "doubt",
+    "example": {
+      "de": "Kein Zweifel, dass sie bald kommen wird.",
+      "en": "No doubt she will come soon."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "scheinen",
+      "zweifeln"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "scheinen",
+    "tier": 3,
+    "lemma": "scheinen",
+    "en": "to seem, to shine",
+    "example": {
+      "de": "Jane scheint einen neuen Freund zu haben.",
+      "en": "Jane seems to have a new boyfriend."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "verhindern",
+      "zweifel"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "verhindern",
+    "tier": 3,
+    "lemma": "verhindern",
+    "en": "to prevent, to inhibit",
+    "example": {
+      "de": "Manchmal lässt sich das nicht verhindern.",
+      "en": "Sometimes it can't be avoided."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "aufmerksamkeit",
+      "scheinen"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "aufmerksamkeit",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Aufmerksamkeit",
+    "plural": "Aufmerksamkeiten",
+    "en": "attention, mindfulness",
+    "example": {
+      "de": "Unser Erscheinen erweckte Aufmerksamkeit.",
+      "en": "Our arrival drew attention."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "form",
+      "verhindern"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "form",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Form",
+    "plural": "Formen",
+    "en": "shape",
+    "example": {
+      "de": "Ich fürchte, dass ich etwas außer Form bin.",
+      "en": "I'm afraid I'm a bit out of shape."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "merken",
+      "aufmerksamkeit"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "merken",
+    "tier": 3,
+    "lemma": "merken",
+    "en": "to notice, to sense",
+    "example": {
+      "de": "Ihm fällt es schwer, sich Namen zu merken.",
+      "en": "He has trouble remembering names."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "absicht",
+      "form"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "absicht",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Absicht",
+    "plural": "Absichten",
+    "en": "intention",
+    "example": {
+      "de": "Er hat das Fenster mit Absicht zerbrochen.",
+      "en": "He broke the window intentionally."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "riskieren",
+      "merken"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "riskieren",
+    "tier": 3,
+    "lemma": "riskieren",
+    "en": "to risk",
+    "example": {
+      "de": "Er riskierte sein Leben, um sie zu retten.",
+      "en": "He risked his life to save her."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "phase",
+      "absicht"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "phase",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Phase",
+    "plural": "Phasen",
+    "en": "phase, stage",
+    "example": {
+      "de": "Normaler Schlaf besteht aus zwei Phasen.",
+      "en": "Normal sleep is made up of two phases."
+    },
+    "family": [],
+    "related": [
+      "ausweg",
+      "riskieren",
+      "konsequenz"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "ausweg",
+    "tier": 4,
+    "article": "der",
+    "lemma": "Ausweg",
+    "plural": "Auswege",
+    "en": "way out, escape route",
+    "example": {
+      "de": "Er sah den Selbstmord als einzigen Ausweg.",
+      "en": "He saw suicide as the only way out."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "konsequenz",
+      "phase"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "konsequenz",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Konsequenz",
+    "plural": "Konsequenzen",
+    "en": "consequence",
+    "example": {
+      "de": "Sie müssen sich den Konsequenzen stellen.",
+      "en": "They need to face the consequences."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "bedenken",
+      "ausweg"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "bedenken",
+    "tier": 4,
+    "lemma": "bedenken",
+    "en": "to consider, bethink",
+    "example": {
+      "de": "Sie hatte diese Möglichkeit nicht bedacht.",
+      "en": "She hadn't considered that possibility."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "begreifen",
+      "konsequenz"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "begreifen",
+    "tier": 4,
+    "lemma": "begreifen",
+    "en": "to grasp fully, to comprehend",
+    "example": {
+      "de": "Ich begreife nicht, wie das geschehen konnte.",
+      "en": "I don’t understand how that could have happened."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "ausnahme",
+      "bedenken"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "ausnahme",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Ausnahme",
+    "plural": "Ausnahmen",
+    "en": "exception",
+    "example": {
+      "de": "Diese Regeln gelten für alle ohne Ausnahme.",
+      "en": "These rules apply to everyone without exception."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "vorhaben",
+      "begreifen"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "vorhaben",
+    "tier": 4,
+    "lemma": "vorhaben",
+    "en": "to intend, to have planned",
+    "example": {
+      "de": "Ich befürworte ein solches Vorhaben nicht.",
+      "en": "I'm not in favor of such a plan."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "beurteilen",
+      "ausnahme"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "beurteilen",
+    "tier": 4,
+    "lemma": "beurteilen",
+    "en": "to form an opinion on, to judge",
+    "example": {
+      "de": "Frauen werden anders beurteilt als Männer.",
+      "en": "Women are judged differently than men."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "anzahl",
+      "vorhaben"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "anzahl",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Anzahl",
+    "en": "number, an amount",
+    "example": {
+      "de": "Die Anzahl an Fehlern ist höchstens zehn.",
+      "en": "The number of mistakes is ten at most."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "vermuten",
+      "beurteilen"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "vermuten",
+    "tier": 4,
+    "lemma": "vermuten",
+    "en": "to assume, suppose",
+    "example": {
+      "de": "Kolumbus vermutete, dass die Erde rund sei.",
+      "en": "Columbus assumed that the earth was round."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "illusion",
+      "anzahl"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "illusion",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Illusion",
+    "plural": "Illusionen",
+    "en": "illusion",
+    "example": {
+      "de": "Demokratie ist die Illusion der Gleichheit.",
+      "en": "Democracy is the illusion of equality."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "herkunft",
+      "vermuten"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "herkunft",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Herkunft",
+    "plural": "Herkünfte",
+    "en": "origin, source",
+    "example": {
+      "de": "Meine Familie sind germanischer Herkunft.",
+      "en": "My family are of Germanic heritage."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "ueberdenken",
+      "illusion"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "ueberdenken",
+    "tier": 4,
+    "lemma": "überdenken",
+    "en": "to reconsider, to rethink",
+    "example": {
+      "de": "Ich habe Ihr Angebot noch einmal überdacht.",
+      "en": "I've reconsidered your offer."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "konzept",
+      "herkunft"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "konzept",
+    "tier": 4,
+    "article": "das",
+    "lemma": "Konzept",
+    "plural": "Konzepte",
+    "en": "blueprint, draft",
+    "example": {
+      "de": "Die Existenz ist ein unwichtiges Konzept.",
+      "en": "Existence is a meaningless concept."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "entstehen",
+      "ueberdenken"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "entstehen",
+    "tier": 4,
+    "lemma": "entstehen",
+    "en": "to come into being, to arise",
+    "example": {
+      "de": "Wir wissen nicht, wann diese Welt entstand.",
+      "en": "We don't know when this world came into being."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "philosophie",
+      "konzept"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "philosophie",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Philosophie",
+    "plural": "Philosophien",
+    "en": "philosophy",
+    "example": {
+      "de": "Der Student hat Philosophie als Hauptfach.",
+      "en": "The student majors in philosophy."
+    },
+    "family": [],
+    "related": [
+      "nachteil",
+      "entstehen",
+      "wahrscheinlichkeit"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "nachteil",
+    "tier": 5,
     "article": "der",
     "lemma": "Nachteil",
     "plural": "Nachteile",
@@ -10051,31 +27614,169 @@ export const GENERATED: Word[] = [
       "Teil"
     ],
     "related": [
-      "plan",
-      "moeglichkeit",
-      "vorteil"
+      "maximum",
+      "wahrscheinlichkeit",
+      "philosophie"
     ],
     "theme": "Ideen und Pläne"
   },
   {
-    "id": "moeglichkeit",
-    "tier": 3,
+    "id": "wahrscheinlichkeit",
+    "tier": 5,
     "article": "die",
-    "lemma": "Möglichkeit",
-    "plural": "Möglichkeiten",
-    "en": "possibility",
+    "lemma": "Wahrscheinlichkeit",
+    "plural": "Wahrscheinlichkeiten",
+    "en": "probability, likelihood",
     "example": {
-      "de": "Es gibt noch eine andere Möglichkeit.",
-      "en": "There’s another possibility."
+      "de": "Aber die Wahrscheinlichkeit ist gering.",
+      "en": "The probability is, however, low."
     },
-    "family": [
-      "möglich",
-      "ermöglichen"
-    ],
+    "family": [],
     "related": [
-      "plan",
-      "nachteil",
-      "entscheidung"
+      "maximum",
+      "ausdenken",
+      "nachteil"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "ausdenken",
+    "tier": 5,
+    "lemma": "ausdenken",
+    "en": "to come up with, to think up",
+    "example": {
+      "de": "Wer hat sich diese Regeln nur ausgedacht?",
+      "en": "Who thought up those rules?"
+    },
+    "family": [],
+    "related": [
+      "maximum",
+      "effekt",
+      "wahrscheinlichkeit"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "effekt",
+    "tier": 5,
+    "article": "der",
+    "lemma": "Effekt",
+    "plural": "Effekte",
+    "en": "effect",
+    "example": {
+      "de": "Welchen Effekt hat der Vollmond auf dich?",
+      "en": "What effect does the full moon have on you?"
+    },
+    "family": [],
+    "related": [
+      "maximum",
+      "anwenden",
+      "ausdenken"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "anwenden",
+    "tier": 5,
+    "lemma": "anwenden",
+    "en": "to use, apply",
+    "example": {
+      "de": "Niemand weiß, welche Taktik er anwenden wird.",
+      "en": "No one knows what tactics he will employ."
+    },
+    "family": [],
+    "related": [
+      "maximum",
+      "wiedererkennen",
+      "effekt"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "wiedererkennen",
+    "tier": 5,
+    "lemma": "wiedererkennen",
+    "en": "to recognize",
+    "example": {
+      "de": "Ich habe Ihre Stimme gleich wiedererkannt.",
+      "en": "I recognized your voice right away."
+    },
+    "family": [],
+    "related": [
+      "maximum",
+      "anwenden",
+      "besonderheit"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "maximum",
+    "tier": 6,
+    "article": "das",
+    "lemma": "Maximum",
+    "plural": "Maxima",
+    "en": "maximum",
+    "example": {
+      "de": "Beachte, dass das Maximum nicht immer existiert.",
+      "en": "Note that the maximum doesn't always exist."
+    },
+    "family": [],
+    "related": [
+      "wiedererkennen",
+      "besonderheit",
+      "philosophisch"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "besonderheit",
+    "tier": 6,
+    "article": "die",
+    "lemma": "Besonderheit",
+    "plural": "Besonderheiten",
+    "en": "feature",
+    "example": {
+      "de": "Jede Sprache hat ihre eigenen Besonderheiten.",
+      "en": "Every language has its own quirks."
+    },
+    "family": [],
+    "related": [
+      "wiedererkennen",
+      "philosophisch",
+      "maximum"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "philosophisch",
+    "tier": 6,
+    "lemma": "philosophisch",
+    "en": "philosophical",
+    "example": {
+      "de": "Das ist eine philosophische Frage.",
+      "en": "That is a philosophical question."
+    },
+    "family": [],
+    "related": [
+      "wiedererkennen",
+      "abaendern",
+      "besonderheit"
+    ],
+    "theme": "Ideen und Pläne"
+  },
+  {
+    "id": "abaendern",
+    "tier": 6,
+    "lemma": "abändern",
+    "en": "to change, to alter",
+    "example": {
+      "de": "Wir müssen unsere Pläne etwas abändern.",
+      "en": "We have to make some changes in our plans."
+    },
+    "family": [],
+    "related": [
+      "wiedererkennen",
+      "philosophisch"
     ],
     "theme": "Ideen und Pläne"
   }

@@ -42,3 +42,6 @@ yarn-error.*
 
 # Skia on the web: copied from node_modules by the postinstall script
 public/canvaskit.wasm
+
+# raw data used to build the word list (Wiktionary, Tatoeba, a frequency list): large, not part of the repo
+data-sources/
