@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -159,6 +159,14 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   const tiltX = useSharedValue(0); // the phone's tilt, -1..1 (see TiltSource)
   const tiltY = useSharedValue(0);
   const focused = useIsFocused();
+  // The first time the Map tab is opened a card says what it is. It stays until "got it" (or until the
+  // user leaves the tab, so it never comes back on its own).
+  const showIntro = !mapIntroSeen && focused;
+  const introShown = useRef(false);
+  useEffect(() => {
+    if (showIntro) introShown.current = true;
+    else if (!focused && introShown.current && !mapIntroSeen) setMapIntroSeen();
+  }, [showIntro, focused, mapIntroSeen, setMapIntroSeen]);
   const reduceMotion = useReducedMotion();
   // Camera mode (the LookIcon button): the phone is a camera pointed at the sky. While it is on the tilt
   // parallax is off and dragging is off, so the two do not fight.
@@ -390,6 +398,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   // Dragging looks around the sky (not while a cluster is open); a flick keeps gliding to a stop.
   const drag = Gesture.Pan()
     .enabled(!selectedId && !cameraOn)
+    .maxPointers(1) // two fingers are a pinch: if this drag took them too it would undo the pinch's own zoom point
     .minDistance(6)
     .onStart(() => {
       'worklet';
@@ -419,13 +428,17 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   const snapping = useSharedValue(false);
   const focusX = useSharedValue(0);
   const focusY = useSharedValue(0);
+  const lastFx = useSharedValue(0); // where the middle of the two fingers was a moment ago
+  const lastFy = useSharedValue(0);
   const pinch = Gesture.Pinch()
     .enabled(!selectedId)
-    .onStart(() => {
+    .onStart((e) => {
       'worklet';
       startScale.value = scale.value;
       opening.value = false;
       snapping.value = false;
+      lastFx.value = e.focalX;
+      lastFy.value = e.focalY;
     })
     .onUpdate((e) => {
       'worklet';
@@ -449,8 +462,13 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
       const before = scale.value;
       const next = Math.min(1, Math.max(lowest, startScale.value * e.scale));
       scale.value = next;
-      panX.value = clampPan(panX.value + (e.focalX - stage.w / 2) * (1 / next - 1 / before), next, stage.w, world.w);
-      panY.value = clampPan(panY.value + (e.focalY - stage.h / 2) * (1 / next - 1 / before), next, stage.h, world.h);
+      // the point of the sky that was under the fingers stays under them, even as they move
+      const nx = panX.value + (e.focalX - stage.w / 2) / next - (lastFx.value - stage.w / 2) / before;
+      const ny = panY.value + (e.focalY - stage.h / 2) / next - (lastFy.value - stage.h / 2) / before;
+      lastFx.value = e.focalX;
+      lastFy.value = e.focalY;
+      panX.value = clampPan(nx, next, stage.w, world.w);
+      panY.value = clampPan(ny, next, stage.h, world.h);
     })
     // the map only rests at two distances: when the fingers lift it snaps to the nearer, close up or the
     // whole sky, never somewhere in between
@@ -458,8 +476,8 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
       'worklet';
       const target = snapScale(scale.value, startScale.value, lowest);
       if (target !== startScale.value) scheduleOnRN(snapTick);
-      focusX.value = e.focalX;
-      focusY.value = e.focalY;
+      focusX.value = lastFx.value; // the last place the fingers were (the end event's own point can jump)
+      focusY.value = lastFy.value;
       snapping.value = true;
       scale.value = withTiming(target, { duration: 340, easing: Easing.out(Easing.cubic) }, () => {
         'worklet';
@@ -508,8 +526,6 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   }, [selectedId, cameraPaused]);
   const labelStyle = useAnimatedStyle(() => ({ opacity: Math.min(1, Math.max(0, (scale.value - 0.62) / 0.3)) }));
   const worldStyle = useAnimatedStyle(() => ({ transform: [{ translateX: panX.value }, { translateY: panY.value }] }));
-
-  const explored = WORDS.filter((w) => ratings[w.id]).length;
 
   return (
     <View style={styles.screen}>
@@ -596,9 +612,6 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
                   <LookIcon color={camera ? colors.onAccent : ON_SKY_DIM} />
                 </Pressable>
               ) : null}
-              <Text style={styles.total} accessibilityLabel={`${explored} words explored`}>
-                {explored} words
-              </Text>
             </View>
           }
         />
@@ -607,7 +620,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
 
       {cluster ? (
         <Panel cluster={cluster} bottom={bottomSpace} locked={locked} onExplore={onExplore} onStudy={onStudy} />
-      ) : !mapIntroSeen ? (
+      ) : showIntro ? (
         // the first time the Map is opened: what it is, and how to move around it
         <Animated.View entering={FadeIn.duration(400)} style={[styles.card, { bottom: bottomSpace }]}>
           <View style={styles.cardHead}>
@@ -671,7 +684,6 @@ const styles = StyleSheet.create({
   lookButton: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
   lookButtonOn: { backgroundColor: colors.accent },
   sub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
-  total: { fontFamily: fonts.medium, fontSize: 15, color: ON_SKY_DIM },
   // the sky fills the whole screen, behind the header, the card and the tab bar, so there are no bare bands
   stage: { ...StyleSheet.absoluteFill },
   card: {

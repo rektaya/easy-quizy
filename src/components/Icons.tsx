@@ -72,6 +72,24 @@ export function SwipeUpIcon({ color, size = 18 }: IconProps) {
   );
 }
 
+/** A chevron pointing left (back). */
+export function ChevronLeftIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M14.5 5.5L8 12l6.5 6.5" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** Sorting: three lines that get shorter. */
+export function SortIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4 6.5h16M4 12h11M4 17.5h6" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
 /** A magnifying glass: a lens and its handle. */
 export function SearchIcon({ color, size = 20 }: IconProps) {
   return (

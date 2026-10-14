@@ -14,6 +14,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
+import { ReminderCard } from '../components/ReminderCard';
 import { FlipReveal } from '../components/FlipReveal';
 import { Ring } from '../components/Ring';
 import { TabHeader } from '../components/TabHeader';
@@ -22,7 +23,7 @@ import { makeSession } from '../onboarding/batch';
 import type { BatchItem, SessionKind } from '../onboarding/batch';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts } from '../theme';
+import { colors, fonts, radius } from '../theme';
 
 // The circle sits where it does in Explore: a little above the middle of its area. It is placed
 // absolutely, so nothing that appears after rating (the example) can move it.
@@ -41,8 +42,6 @@ type Props = {
   kind: SessionKind;
   /** Space to leave at the bottom (the floating tab bar). */
   bottomSpace: number;
-  /** "show my map" on the closing screen. */
-  onMap: () => void;
   /** Back to the list of words in study. */
   onList: () => void;
 };
@@ -51,7 +50,7 @@ type Props = {
 // with the Circle, laid out exactly as in Explore: you see the German word, recall what it means, draw
 // how well you knew it, and the meaning appears. Each rating goes to FSRS, which decides when the word
 // comes back. (The words to study are first seen as a list; tapping one there opens its card.)
-export default function StudyScreen({ kind, bottomSpace, onMap, onList }: Props) {
+export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready: ratingsReady, ratings } = useRatings();
@@ -118,17 +117,11 @@ export default function StudyScreen({ kind, bottomSpace, onMap, onList }: Props)
   const word = batch[index]?.word;
   const size = Math.min(width - 48, 320); // the same as in Explore, so drawing feels the same
   const circleTop = Math.max(56, body.h / 2 - size / 2 - CIRCLE_LIFT); // 56: room for the undo plate above
-  const remaining = makeSession(WORDS, ratings, cards, Date.now(), kind).length;
-
-  const keepGoing = () => {
-    setBatch(null);
-    setIndex(0);
-    setValue(null);
-  };
 
   const shell = [styles.screen, { paddingTop: insets.top + 12, paddingBottom: bottomSpace }];
 
-  // The batch is done (or there was nothing to study).
+  // The batch is done (or there was nothing to study). The closing screen is just a thank-you and the
+  // reminder (the tab bar is the way on).
   if (!word) {
     const none = batch.length === 0;
     return (
@@ -138,23 +131,18 @@ export default function StudyScreen({ kind, bottomSpace, onMap, onList }: Props)
           <Text style={styles.closingBody}>
             {none
               ? 'gather a few more words in explore, then they’ll wait for you here.'
-              : 'the key is in daily practice, so come back to your words regularly! want to know how much your vocabulary has grown? let’s look at your map.'}
+              : 'the key is in daily practice, so come back to your words regularly!'}
           </Text>
         </Animated.View>
-        <View style={styles.buttons}>
-          {none ? (
+        {none ? (
+          <View style={styles.buttons}>
             <Button label="back to my words" onPress={onList} />
-          ) : (
-            <>
-              <Button label="show my map" onPress={onMap} />
-              {remaining > 0 ? (
-                <Button label="keep going" kind="ghost" onPress={keepGoing} />
-              ) : (
-                <Button label="back to my words" kind="ghost" onPress={onList} />
-              )}
-            </>
-          )}
-        </View>
+          </View>
+        ) : (
+          <Animated.View entering={FadeIn.duration(400).delay(500)} style={styles.reminder}>
+            <ReminderCard />
+          </Animated.View>
+        )}
       </View>
     );
   }
@@ -227,4 +215,5 @@ const styles = StyleSheet.create({
   closingTitle: { fontFamily: fonts.medium, fontSize: 30, color: colors.text },
   closingBody: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 23, color: colors.textSecondary, textAlign: 'center' },
   buttons: { alignSelf: 'stretch', gap: 12, marginTop: 28 },
+  reminder: { alignSelf: 'stretch', marginTop: 26 },
 });

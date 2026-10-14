@@ -8,9 +8,9 @@ import { colors, fonts, radius, shadow } from '../theme';
 // big with its article small above, the meaning, the plural, and an example at the bottom under a thin
 // line. It is the "meet a new word" card in Study, and the card that opens when a word is tapped in the
 // list of all words. It takes all the height it is given.
-export function WordCard({ word, tag }: { word: Word; tag: string }) {
+export function WordCard({ word, tag, fade = true }: { word: Word; tag: string; fade?: boolean }) {
   return (
-    <Animated.View key={word.id} entering={FadeIn.duration(320)} style={styles.card}>
+    <Animated.View key={word.id} entering={fade ? FadeIn.duration(320) : undefined} style={styles.card}>
       <Text style={styles.tag}>{tag}</Text>
 
       <View style={styles.word}>

@@ -2,8 +2,8 @@ import { Figtree_400Regular, Figtree_500Medium, useFonts } from '@expo-google-fo
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
-import React, { useRef } from 'react';
-import { Easing, StyleSheet, View } from 'react-native';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { AppState, Easing, StyleSheet, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Starry } from './src/components/StarBackground';
@@ -11,6 +11,9 @@ import { FloatingTabBar, useTabBarSpace } from './src/components/FloatingTabBar'
 import CalibrationDoneScreen from './src/screens/CalibrationDoneScreen';
 import ExploreScreen, { ExploreView } from './src/screens/ExploreScreen';
 import { KnownDust } from './src/components/KnownDust';
+import { applyReminder, setupNotifications } from './src/notifications/reminders';
+import { planReminder } from './src/notifications/schedule';
+import ProfileScreen from './src/screens/ProfileScreen';
 import IntroScreen from './src/screens/IntroScreen';
 import NameScreen from './src/screens/NameScreen';
 import PracticeScreen from './src/screens/PracticeScreen';
@@ -18,7 +21,10 @@ import QuizIntroScreen from './src/screens/QuizIntroScreen';
 import MapScreen from './src/screens/MapScreen';
 import StudyTab from './src/screens/StudyTab';
 import { ProfileProvider, useProfile } from './src/state/profile';
+import { ProfileSheetProvider, useProfileSheet } from './src/state/profileSheet';
 import { RatingsProvider, useRatings } from './src/state/ratings';
+import { WORDS } from './src/data/words';
+import { waitingWords } from './src/onboarding/batch';
 import { colors } from './src/theme';
 
 const Tab = createBottomTabNavigator();
@@ -51,7 +57,7 @@ const ExploreTabScreen = (props: React.ComponentProps<typeof ExploreScreen>) => 
 );
 const StudyTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => (
   <Starry>
-    <StudyTab onMap={() => navigation.navigate('Map')} />
+    <StudyTab />
   </Starry>
 );
 // The Map draws a night sky of its own, so it has no starry paper.
@@ -103,6 +109,44 @@ function OnboardingStep() {
   return null;
 }
 
+// Keeps the one daily reminder up to date: whenever the settings change, and whenever the app goes to the
+// background (so it reflects what is waiting at that moment).
+function ReminderSync() {
+  const { reminder, cards } = useProfile();
+  const { ratings } = useRatings();
+  const latest = useRef({ reminder, cards, ratings });
+  latest.current = { reminder, cards, ratings };
+  const run = useCallback(() => {
+    const { reminder: r, cards: c, ratings: rt } = latest.current;
+    const waiting = waitingWords(WORDS, rt, c).length;
+    const due = Object.values(c).map((card) => card.due);
+    applyReminder(r.on ? planReminder(Date.now(), r.hour, r.minute, waiting, due) : null).catch(() => {});
+  }, []);
+  useEffect(() => {
+    run();
+  }, [reminder.on, reminder.hour, reminder.minute, run]);
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (state) => {
+      if (state !== 'active') run();
+    });
+    return () => sub.remove();
+  }, [run]);
+  return null;
+}
+
+// Profile and settings, opened from the avatar in Explore, over the whole app.
+function ProfileOverlay() {
+  const { open } = useProfileSheet();
+  if (!open) return null;
+  return (
+    <View style={StyleSheet.absoluteFill}>
+      <Starry>
+        <ProfileScreen />
+      </Starry>
+    </View>
+  );
+}
+
 function Root() {
   const { ready, phase } = useProfile();
   // Straight after the first-run path the tabs open on Study (the first session), with the tab bar there
@@ -133,9 +177,13 @@ function Root() {
       </Tab.Navigator>
     </NavigationContainer>
     <KnownDust />
+    <ProfileOverlay />
+    <ReminderSync />
     </>
   );
 }
+
+setupNotifications();
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Figtree_400Regular, Figtree_500Medium });
@@ -146,7 +194,9 @@ export default function App() {
       <SafeAreaProvider>
         <RatingsProvider>
           <ProfileProvider>
-            <Root />
+            <ProfileSheetProvider>
+              <Root />
+            </ProfileSheetProvider>
           </ProfileProvider>
         </RatingsProvider>
       </SafeAreaProvider>

@@ -17,6 +17,7 @@ import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
 import { UndoToast } from '../components/UndoToast';
+import { Avatar } from '../components/Avatar';
 import { FlipReveal } from '../components/FlipReveal';
 import { WORDS } from '../data/words';
 import type { Word } from '../data/words';
@@ -30,6 +31,7 @@ import {
   pickThemeWord,
 } from '../onboarding/calibration';
 import { useProfile } from '../state/profile';
+import { useProfileSheet } from '../state/profileSheet';
 import { useRatings } from '../state/ratings';
 import { useTabBarSpace } from '../components/FloatingTabBar';
 import { colors, fonts, radius, shadow } from '../theme';
@@ -120,10 +122,11 @@ function ExploreLocked({ waiting, onStudy }: { waiting: number; onStudy: () => v
 
 export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const insets = useSafeAreaInsets();
+  const { show: showProfile } = useProfileSheet();
   const tabSpace = useTabBarSpace();
   const { width } = useWindowDimensions();
   const { ready, ratings, pileCount, rate, unrate, reset } = useRatings();
-  const { answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer } = useProfile();
+  const { name, answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer } = useProfile();
   // how many gathered words are waiting to be studied: at EXPLORE_LOCK_AT, Explore pauses
   const waiting = waitingWords(WORDS, ratings, cards).length;
   const calibrating = mode === 'calibration';
@@ -332,7 +335,10 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         { paddingTop: insets.top + 12, paddingBottom: calibrating ? insets.bottom + 12 : tabSpace },
       ]}
     >
-      <TabHeader title={calibrating ? undefined : 'explore'} right={counter} />
+      <TabHeader
+        title={calibrating ? undefined : 'explore'}
+        right={calibrating ? counter : <Avatar name={name} onPress={showProfile} />}
+      />
 
       <View
         style={styles.body}

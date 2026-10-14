@@ -10,28 +10,34 @@ import { useRatings } from '../state/ratings';
 import StudyScreen from './StudyScreen';
 import WordsScreen from './WordsScreen';
 
-// The Study tab opens on the list of the words you are learning. Below it, side by side, "quick study"
-// (up to 10 words) and, when there are more words to go through, "study all". Every time the tab is opened it
+// The Study tab opens on the list of the words you are learning. Below it one button, "study". With
+// "quick sessions" on in the settings there are two, side by side: "quick study" (up to 10 words) and, when
+// there are more words to go through, "study all". Every time the tab is opened it
 // starts on the list again.
-export default function StudyTab({ onMap }: { onMap: () => void }) {
+export default function StudyTab() {
   const space = useTabBarSpace(); // buttons stay clear of the floating tab bar
   const { ratings } = useRatings();
-  const { cards } = useProfile();
+  const { cards, quickSessions } = useProfile();
   const [session, setSession] = useState<SessionKind | null>(null);
   const focused = useIsFocused();
   useEffect(() => {
     if (focused) setSession(null);
   }, [focused]);
 
-  if (session) return <StudyScreen kind={session} bottomSpace={space} onMap={onMap} onList={() => setSession(null)} />;
+  if (session) return <StudyScreen kind={session} bottomSpace={space} onList={() => setSession(null)} />;
 
   const now = Date.now();
   const quick = makeSession(WORDS, ratings, cards, now, 'quick').length;
   const long = makeSession(WORDS, ratings, cards, now, 'long').length;
-  const sessions = [
-    ...(quick > 0 ? [{ label: 'quick study', caption: `${quick} words`, onPress: () => setSession('quick') }] : []),
-    ...(long > quick ? [{ label: 'study all', caption: `${long} words`, onPress: () => setSession('long') }] : []),
-  ];
+  // One button, "study" (everything that is ready). With "quick sessions" on in the settings there are two.
+  const sessions = quickSessions
+    ? [
+        ...(quick > 0 ? [{ label: 'quick study', caption: `${quick} words`, onPress: () => setSession('quick') }] : []),
+        ...(long > quick ? [{ label: 'study all', caption: `${long} words`, onPress: () => setSession('long') }] : []),
+      ]
+    : long > 0
+      ? [{ label: 'study', caption: `${long} words`, onPress: () => setSession('long') }]
+      : [];
   const waiting = waitingWords(WORDS, ratings, cards).length;
   const note =
     waiting > 0

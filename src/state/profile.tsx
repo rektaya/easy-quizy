@@ -10,6 +10,9 @@ import type { StoredCard } from '../srs/scheduler';
  */
 export type Phase = 'name' | 'intro' | 'practice' | 'quiz' | 'calibration' | 'message' | 'study' | 'done';
 
+/** The daily reminder to come back to the words. */
+export type Reminder = { on: boolean; hour: number; minute: number; asked: boolean };
+
 type Profile = {
   name: string;
   phase: Phase;
@@ -23,6 +26,9 @@ type Profile = {
   skySeed: number;
   /** The Map explains itself the first time it is opened. */
   mapIntroSeen: boolean;
+  reminder: Reminder;
+  /** Setting: Study also offers a "quick study" button (10 words). Off: one button, "study". */
+  quickSessions: boolean;
 };
 
 type Ctx = Profile & {
@@ -33,6 +39,10 @@ type Ctx = Profile & {
   setName: (name: string) => void;
   setPhase: (phase: Phase) => void;
   setMapIntroSeen: () => void;
+  setReminder: (patch: Partial<Reminder>) => void;
+  setQuickSessions: (on: boolean) => void;
+  /** Change the name later (the first-run path sets it with setName). */
+  rename: (name: string) => void;
   addAnswer: (answer: Answer) => void;
   removeAnswer: (wordId: string) => void;
   /**
@@ -47,7 +57,7 @@ type Ctx = Profile & {
 };
 
 const KEY = 'easyquizy.profile.v1';
-const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false };
+const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false, reminder: { on: false, hour: 19, minute: 0, asked: false }, quickSessions: false };
 const ProfileContext = createContext<Ctx | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
@@ -78,6 +88,9 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     [],
   );
   const setPhase = useCallback((phase: Phase) => setProfile((p) => ({ ...p, phase })), []);
+  const setReminder = useCallback((patch: Partial<Reminder>) => setProfile((p) => ({ ...p, reminder: { ...p.reminder, ...patch } })), []);
+  const setQuickSessions = useCallback((quickSessions: boolean) => setProfile((p) => ({ ...p, quickSessions })), []);
+  const rename = useCallback((name: string) => setProfile((p) => ({ ...p, name: name.trim() || p.name })), []);
   const setMapIntroSeen = useCallback(() => setProfile((p) => ({ ...p, mapIntroSeen: true })), []);
   const addAnswer = useCallback(
     (answer: Answer) =>
@@ -119,13 +132,16 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       setName,
       setPhase,
       setMapIntroSeen,
+      setReminder,
+      setQuickSessions,
+      rename,
       addAnswer,
       removeAnswer,
       reviewWord,
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, rename, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;
