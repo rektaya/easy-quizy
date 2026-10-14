@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Avatar } from '../components/Avatar';
-import { ChevronLeftIcon } from '../components/Icons';
+import { ChevronRightIcon } from '../components/Icons';
 import { Button } from '../components/Button';
+import { useTabBarSpace } from '../components/FloatingTabBar';
+import { TabHeader } from '../components/TabHeader';
 import { ReminderCard } from '../components/ReminderCard';
 import { SettingToggle } from '../components/SettingToggle';
 import { WORDS } from '../data/words';
 import { summarize } from '../onboarding/status';
 import { useProfile } from '../state/profile';
-import { useProfileSheet } from '../state/profileSheet';
 import { useRatings } from '../state/ratings';
+import CreditsScreen from './CreditsScreen';
+import InterestsScreen from './InterestsScreen';
 import { colors, fonts, radius } from '../theme';
 
 // Profile and settings: who you are, how far you have got, and the daily reminder. Opens over everything
 // from the avatar in Explore.
 export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
-  const { hide } = useProfileSheet();
+  const tabSpace = useTabBarSpace(); // the content scrolls clear of the floating tab bar
   const { ratings, reset } = useRatings();
-  const { name, rename, cards, quickSessions, setQuickSessions, restartOnboarding } = useProfile();
+  const { name, rename, cards, quickSessions, setQuickSessions, interests, restartOnboarding } = useProfile();
   const [draft, setDraft] = useState(name);
+  const [credits, setCredits] = useState(false); // the credits page, opened from here
+  const [interestsOpen, setInterestsOpen] = useState(false); // the page of liked themes, opened from here
 
   const summary = summarize(WORDS, ratings, cards);
   const explored = Object.keys(ratings).length;
@@ -34,25 +40,32 @@ export default function ProfileScreen() {
         text: 'start over',
         style: 'destructive',
         onPress: () => {
-          hide();
           reset();
           restartOnboarding();
         },
       },
     ]);
 
-  return (
-    <View style={[styles.screen, { paddingTop: insets.top + 12 }]}>
-      <View style={styles.header}>
-        <Pressable onPress={hide} accessibilityRole="button" accessibilityLabel="close" hitSlop={12} style={styles.back}>
-          <ChevronLeftIcon color={colors.accent} size={28} />
-        </Pressable>
-        <Text style={styles.title} accessibilityRole="header">
-          profile
-        </Text>
-      </View>
+  if (credits) {
+    return (
+      <Animated.View key="credits" entering={FadeIn.duration(240)} style={styles.fill}>
+        <CreditsScreen onBack={() => setCredits(false)} />
+      </Animated.View>
+    );
+  }
+  if (interestsOpen) {
+    return (
+      <Animated.View key="interests" entering={FadeIn.duration(240)} style={styles.fill}>
+        <InterestsScreen onBack={() => setInterestsOpen(false)} />
+      </Animated.View>
+    );
+  }
 
-      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 32 }]} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+  return (
+    <Animated.View entering={FadeIn.duration(240)} style={[styles.screen, { paddingTop: insets.top + 12, paddingHorizontal: 24 }]}>
+      <TabHeader title="profile" />
+
+      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: tabSpace + 16 }]} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         <View style={styles.me}>
           <Avatar name={name} size={76} />
           <TextInput
@@ -76,6 +89,17 @@ export default function ProfileScreen() {
           <Stat n={learned} label="learned" />
         </View>
 
+        <Text style={styles.section}>explore</Text>
+        <Pressable onPress={() => setInterestsOpen(true)} accessibilityRole="button" style={styles.rowCard}>
+          <View style={styles.rowCardText}>
+            <Text style={styles.rowCardTitle}>interests</Text>
+            <Text style={styles.rowCardSub}>
+              {interests.length === 0 ? 'choose topics you like' : `${interests.length} ${interests.length === 1 ? 'topic' : 'topics'} chosen`}
+            </Text>
+          </View>
+          <ChevronRightIcon color={colors.textTertiary} size={22} />
+        </Pressable>
+
         <Text style={styles.section}>study</Text>
         <SettingToggle
           title="quick sessions"
@@ -87,10 +111,19 @@ export default function ProfileScreen() {
         <Text style={styles.section}>reminder</Text>
         <ReminderCard />
 
+        <Text style={styles.section}>about</Text>
+        <Pressable onPress={() => setCredits(true)} accessibilityRole="button" style={styles.rowCard}>
+          <View style={styles.rowCardText}>
+            <Text style={styles.rowCardTitle}>credits</Text>
+            <Text style={styles.rowCardSub}>where the words, sentences and type come from</Text>
+          </View>
+          <ChevronRightIcon color={colors.textTertiary} size={22} />
+        </Pressable>
+
         <Text style={styles.section}>testing</Text>
         <Button label="start over" kind="ghost" onPress={startOver} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -105,14 +138,24 @@ function Stat({ n, label }: { n: number; label: string }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 24, minHeight: 32 },
-  back: { height: 32, justifyContent: 'center', marginLeft: -6 },
-  // the same title as Explore, Study and Map
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
-  content: { paddingHorizontal: 24, paddingTop: 24, gap: 14 },
+  fill: { flex: 1 },
+  content: { paddingTop: 16, gap: 14 },
   me: { alignItems: 'center', gap: 14, marginBottom: 6 },
   name: { fontFamily: fonts.medium, fontSize: 26, color: colors.text, textAlign: 'center', minWidth: 160, paddingVertical: 4 },
   stats: { flexDirection: 'row', gap: 10 },
+  rowCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    padding: 16,
+    borderRadius: radius.card,
+    backgroundColor: colors.surface,
+    borderWidth: 1.5,
+    borderColor: colors.border,
+  },
+  rowCardText: { flex: 1, gap: 2 },
+  rowCardTitle: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
+  rowCardSub: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
   stat: {
     flex: 1,
     alignItems: 'center',

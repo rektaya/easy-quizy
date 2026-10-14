@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
+import Animated, { Easing, FadeIn, FadeOut, useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
@@ -212,7 +212,7 @@ export default function WordsScreen({
 
       {sortOpen ? (
         // the ways to sort are hidden in here until the sort icon is tapped
-        <View style={[styles.menu, { top: insets.top + 12 + HEADER_HEIGHT + 6 }]}>
+        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.menu, { top: insets.top + 12 + HEADER_HEIGHT + 6 }]}>
           {SORTS.map((o) => (
             <Pressable
               key={o.key}
@@ -228,7 +228,7 @@ export default function WordsScreen({
               {sort === o.key ? <View style={styles.menuDot} /> : null}
             </Pressable>
           ))}
-        </View>
+        </Animated.View>
       ) : null}
 
       {openIndex >= 0 ? (
@@ -316,7 +316,7 @@ function CardPager({
 
   const word = words[index];
   return (
-    <View style={styles.overlay}>
+    <Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(160)} style={styles.overlay}>
       <Pressable style={StyleSheet.absoluteFill} onPress={onClose} accessibilityLabel="close the card" accessibilityRole="button" />
       <View style={[styles.cardWrap, { paddingTop: top, paddingBottom: bottom }]} pointerEvents="box-none">
         <Pressable onPress={onClose} accessibilityRole="button" accessibilityLabel="back to the list" hitSlop={12} style={styles.back}>
@@ -328,7 +328,7 @@ function CardPager({
           </Animated.View>
         </GestureDetector>
       </View>
-    </View>
+    </Animated.View>
   );
 }
 

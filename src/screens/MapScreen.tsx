@@ -5,6 +5,7 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   Easing,
   FadeIn,
+  FadeOut,
   useAnimatedReaction,
   useAnimatedStyle,
   useReducedMotion,
@@ -654,7 +655,7 @@ function Panel({
   const stats = clusterStats(cluster, ratings, cards);
   const done = stats.unexplored === 0;
   return (
-    <View style={[styles.card, { bottom }]}>
+    <Animated.View entering={FadeIn.duration(240)} exiting={FadeOut.duration(160)} style={[styles.card, { bottom }]}>
       <View style={styles.cardTop}>
         <View style={styles.cardHead}>
           <Text style={styles.cardTitle}>{cluster.en}</Text>
@@ -673,7 +674,7 @@ function Panel({
           disabled={locked}
         />
       )}
-    </View>
+    </Animated.View>
   );
 }
 

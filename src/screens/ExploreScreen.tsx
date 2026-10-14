@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -17,21 +17,21 @@ import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
 import { UndoToast } from '../components/UndoToast';
-import { Avatar } from '../components/Avatar';
+import { BY_ROW_HEIGHT, ExploreByRow, ExploreMenus, FilterButton } from '../components/ExploreControls';
+import type { Menu } from '../components/ExploreControls';
 import { FlipReveal } from '../components/FlipReveal';
 import { WORDS } from '../data/words';
 import type { Word } from '../data/words';
 import { EXPLORE_LOCK_AT, waitingWords } from '../onboarding/batch';
 import {
   CALIBRATION_WORDS,
-  exploreChips,
   isCalibrationDone,
   pickCalibrationWord,
-  pickExploreWord,
   pickThemeWord,
 } from '../onboarding/calibration';
 import { useProfile } from '../state/profile';
-import { useProfileSheet } from '../state/profileSheet';
+import { feedChips, fitsFeed, pickFeedWord } from '../onboarding/feed';
+import type { FeedOptions } from '../onboarding/feed';
 import { useRatings } from '../state/ratings';
 import { useTabBarSpace } from '../components/FloatingTabBar';
 import { colors, fonts, radius, shadow } from '../theme';
@@ -122,11 +122,16 @@ function ExploreLocked({ waiting, onStudy }: { waiting: number; onStudy: () => v
 
 export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const insets = useSafeAreaInsets();
-  const { show: showProfile } = useProfileSheet();
   const tabSpace = useTabBarSpace();
   const { width } = useWindowDimensions();
   const { ready, ratings, pileCount, rate, unrate, reset } = useRatings();
-  const { name, answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer } = useProfile();
+  const { answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer, explore, setExplore, interests } = useProfile();
+  const [menu, setMenu] = useState<Menu>(null); // which of the title, theme and filter menus is open
+  // how the next word is chosen (the settings of "explore by ..." and its filters, and the liked themes)
+  const feed = useMemo<FeedOptions>(
+    () => ({ by: explore.by, theme: explore.theme, level: explore.level, pos: explore.pos, interests }),
+    [explore.by, explore.theme, explore.level, explore.pos, interests],
+  );
   // how many gathered words are waiting to be studied: at EXPLORE_LOCK_AT, Explore pauses
   const waiting = waitingWords(WORDS, ratings, cards).length;
   const calibrating = mode === 'calibration';
@@ -162,9 +167,9 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     if (!ready || currentId !== null) return;
     const first = calibrating
       ? pickCalibrationWord(WORDS, isRated, answers, null)
-      : pickExploreWord(WORDS, isRated, answers, null);
+      : pickFeedWord(WORDS, isRated, answers, null, feed);
     setCurrentId(first?.id ?? null);
-  }, [ready, currentId, calibrating, isRated, answers]);
+  }, [ready, currentId, calibrating, isRated, answers, feed]);
 
   // When a new word lands, it rises into place.
   useEffect(() => {
@@ -217,16 +222,34 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     [arrive],
   );
 
+  // When the way of exploring or a filter changes, the word on screen follows: a word that has not been
+  // rated yet and does not suit the new settings glides away and one that does takes its place. (A word the
+  // user has just rated is left alone; the next word follows the new settings.)
+  const lastFeed = useRef(feed);
+  useEffect(() => {
+    const before = lastFeed.current;
+    lastFeed.current = feed;
+    const changed = before.by !== feed.by || before.theme !== feed.theme || before.level !== feed.level || before.pos !== feed.pos;
+    if (!changed || calibrating || !ready || !currentId) return;
+    const onScreen = WORDS.find((w) => w.id === currentId);
+    if (!onScreen || ratings[onScreen.id]) return;
+    if (fitsFeed(onScreen, WORDS, isRated, answers, feed)) return;
+    const next = pickFeedWord(WORDS, (id) => isRated(id) || id === onScreen.id, answers, onScreen, feed);
+    if (next) travel(next.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [feed]);
+
   // "Explore from here" on the Map: start on a word of that theme, near the user's level.
   useEffect(() => {
     if (!seedTheme || !ready) return;
     const start = pickThemeWord(WORDS, isRated, answers, seedTheme);
     setSeedTheme(null);
+    setExplore({ by: 'theme', theme: seedTheme }); // "explore from here" on the Map: stay in that theme
     if (start) {
       clearStatus();
       swapTo(start.id);
     }
-  }, [seedTheme, ready, isRated, answers, setSeedTheme, clearStatus, swapTo]);
+  }, [seedTheme, ready, isRated, answers, setSeedTheme, setExplore, clearStatus, swapTo]);
 
   // Swiping up: glide on to the current word's next association.
   const moveOn = useCallback(() => {
@@ -238,9 +261,9 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     }
     const next = calibrating
       ? pickCalibrationWord(WORDS, isRated, answers, word)
-      : pickExploreWord(WORDS, isRated, answers, word);
+      : pickFeedWord(WORDS, isRated, answers, word, feed);
     swapTo(next?.id ?? null);
-  }, [word, testDone, onCalibrationDone, calibrating, isRated, answers, clearStatus, swapTo]);
+  }, [word, testDone, onCalibrationDone, calibrating, isRated, answers, feed, clearStatus, swapTo]);
 
   // Tapping a similar word: the very same glide as swiping up, but to the word you chose.
   const travel = useCallback(
@@ -298,7 +321,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   // Words you have already rated are not offered again.
   // Similar words: only ones near the user's level. None during calibration, where they would keep
   // the words in one thematic zone.
-  const related = calibrating ? [] : exploreChips(word, WORDS, isRated, answers);
+  const related = calibrating ? [] : feedChips(word, WORDS, isRated, answers, feed);
 
   // Inside the circle after rating: the translation, centred exactly where the German word was; tap it
   // to flip to the German word and back.
@@ -337,8 +360,9 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     >
       <TabHeader
         title={calibrating ? undefined : 'explore'}
-        right={calibrating ? counter : <Avatar name={name} onPress={showProfile} />}
+        right={calibrating ? counter : <FilterButton settings={explore} menu={menu} onMenu={setMenu} />}
       />
+      {calibrating ? null : <ExploreByRow by={explore.by} theme={explore.theme ?? word?.theme ?? null} menu={menu} onMenu={setMenu} />}
 
       <View
         style={styles.body}
@@ -396,8 +420,19 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         )}
       </View>
 
+      {calibrating ? null : (
+        <ExploreMenus
+          menu={menu}
+          top={insets.top + 12 + HEADER_HEIGHT + 6}
+          settings={explore}
+          onMenu={setMenu}
+          onChange={setExplore}
+          onPickBy={(by) => setExplore(by === 'theme' ? { by, theme: explore.theme ?? word?.theme ?? null } : { by })}
+        />
+      )}
+
       {status ? (
-        <View pointerEvents="box-none" style={[styles.statusTop, { top: insets.top + 12 + HEADER_HEIGHT + 10 }]}>
+        <View pointerEvents="box-none" style={[styles.statusTop, { top: insets.top + 12 + HEADER_HEIGHT + (calibrating ? 0 : BY_ROW_HEIGHT) + 10 }]}>
           <UndoToast message={status} onUndo={onUndo} />
         </View>
       ) : null}

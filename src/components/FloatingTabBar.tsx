@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, radius, shadow } from '../theme';
-import { ExploreIcon, MapIcon, StudyIcon } from './Icons';
+import { ExploreIcon, MapIcon, ProfileIcon, StudyIcon } from './Icons';
 
 // Space for screens to leave at the bottom so nothing ever sits behind the floating tab bar: the bar's
 // own bottom offset and height, measured from the real safe area of the phone, plus breathing room.
@@ -17,7 +17,7 @@ export function useTabBarSpace(): number {
 
 const TILE_W = 62;
 const GAP = 6;
-const ICONS = { Explore: ExploreIcon, Study: StudyIcon, Map: MapIcon } as const;
+const ICONS = { Explore: ExploreIcon, Study: StudyIcon, Map: MapIcon, Profile: ProfileIcon } as const;
 
 // A small floating pill with icon-only tabs; the active tab is a filled tile.
 export function FloatingTabBar({ state, descriptors, navigation }: BottomTabBarProps) {

@@ -3,7 +3,7 @@ import type { Word } from './words';
 // The hand-written core: ordered as an association trail (work -> commute -> kitchen
 // -> home -> decisions), so Explore starts out like wandering. Difficulty tiers are
 // in CORE_TIERS below. The rest of the list comes from words.raw.txt (see words.ts).
-export type CoreWord = Omit<Word, 'tier'>;
+export type CoreWord = Omit<Word, 'tier' | 'rank' | 'pos'>;
 
 export const CORE: CoreWord[] = [
   {

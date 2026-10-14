@@ -1,5 +1,6 @@
 import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import { useTabBarSpace } from '../components/FloatingTabBar';
 import { WORDS } from '../data/words';
 import { makeSession, waitingWords } from '../onboarding/batch';
@@ -24,7 +25,13 @@ export default function StudyTab() {
     if (focused) setSession(null);
   }, [focused]);
 
-  if (session) return <StudyScreen kind={session} bottomSpace={space} onList={() => setSession(null)} />;
+  if (session) {
+    return (
+      <Animated.View key="session" entering={FadeIn.duration(260)} style={{ flex: 1 }}>
+        <StudyScreen kind={session} bottomSpace={space} onList={() => setSession(null)} />
+      </Animated.View>
+    );
+  }
 
   const now = Date.now();
   const quick = makeSession(WORDS, ratings, cards, now, 'quick').length;
@@ -43,5 +50,9 @@ export default function StudyTab() {
     waiting > 0
       ? `${waiting} of ${MIN_PILE_TO_STUDY} words gathered. rate a few more in explore to start a session`
       : 'nothing is due. gather new words in explore';
-  return <WordsScreen bottomSpace={space} sessions={sessions} note={note} />;
+  return (
+    <Animated.View key="list" entering={FadeIn.duration(260)} style={{ flex: 1 }}>
+      <WordsScreen bottomSpace={space} sessions={sessions} note={note} />
+    </Animated.View>
+  );
 }

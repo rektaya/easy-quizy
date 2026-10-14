@@ -51,6 +51,16 @@ export function MapIcon({ color, size = 26 }: IconProps) {
   );
 }
 
+/** Profile: a head and shoulders. */
+export function ProfileIcon({ color, size = 26 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={12} cy={8.4} r={3.6} stroke={color} {...strokeProps} />
+      <Path d="M4.8 19.6c.7-3.4 3.4-5.3 7.2-5.3s6.5 1.9 7.2 5.3" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
 /** A tap: a fingertip with two ripples around it. */
 export function TapIcon({ color, size = 18 }: IconProps) {
   return (
@@ -77,6 +87,33 @@ export function ChevronLeftIcon({ color, size = 24 }: IconProps) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24">
       <Path d="M14.5 5.5L8 12l6.5 6.5" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** A chevron pointing right (a row that opens something). */
+export function ChevronRightIcon({ color, size = 24 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M9.5 5.5L16 12l-6.5 6.5" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** A chevron pointing down (a select that opens a menu). */
+export function ChevronDownIcon({ color, size = 18 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M5.5 9.5L12 16l6.5-6.5" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** Filters: a filled funnel. */
+export function FilterIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4 5.5h16l-6.2 7.3v5.4l-3.6 1.8v-7.2L4 5.5z" fill={color} stroke={color} strokeWidth={1.6} strokeLinejoin="round" />
     </Svg>
   );
 }

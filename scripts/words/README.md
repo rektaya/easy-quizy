@@ -21,6 +21,7 @@ entry per word (from kaikki.org, cached in `data-sources/wikt/`).
    corrected meanings). Words chosen by theme already have their theme.
 5. `retier.py --apply`: gives the words that are already in the raw file their tier from the same list.
 6. `compose_raw.py`: puts the chosen words into their themes in the raw file; then `npm run build:words`.
+7. `rank_table.py`: writes `src/data/words.rank.ts` (how common each word is), used by Explore's usefulness mode.
 
 Licences: Wiktionary text is CC BY-SA, Tatoeba is CC BY 2.0 FR (some CC0), the frequency list is CC BY-SA 4.0
 (to be checked again before release). The app needs a credits screen that names all three.

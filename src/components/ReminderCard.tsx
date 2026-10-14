@@ -1,6 +1,7 @@
 import React from 'react';
 import { Alert, Linking, StyleSheet, Switch, Text, View } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
 import { askForPermission } from '../notifications/reminders';
 import { useProfile } from '../state/profile';
 import { colors, fonts, radius } from '../theme';
@@ -29,7 +30,7 @@ export function ReminderCard() {
   time.setHours(reminder.hour, reminder.minute, 0, 0);
 
   return (
-    <View style={styles.card}>
+    <Animated.View layout={LinearTransition.duration(240)} style={styles.card}>
       <View style={styles.row}>
         <View style={styles.rowText}>
           <Text style={styles.rowTitle}>daily reminder</Text>
@@ -43,7 +44,7 @@ export function ReminderCard() {
         />
       </View>
       {reminder.on ? (
-        <View style={[styles.row, styles.rowBorder]}>
+        <Animated.View entering={FadeIn.duration(240)} exiting={FadeOut.duration(160)} style={[styles.row, styles.rowBorder]}>
           <Text style={styles.rowTitle}>remind me at</Text>
           <DateTimePicker
             value={time}
@@ -54,9 +55,9 @@ export function ReminderCard() {
               if (d) setReminder({ hour: d.getHours(), minute: d.getMinutes() });
             }}
           />
-        </View>
+        </Animated.View>
       ) : null}
-    </View>
+    </Animated.View>
   );
 }
 

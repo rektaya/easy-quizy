@@ -6,12 +6,21 @@ back chevron already exists). If something is missing, say so and ask before add
 
 ## Rules (decided with the author)
 - **Going back or closing is the chevron-left icon** (`ChevronLeftIcon`, orange, size 28, in a 32 px tall row at
-  the top left). Never a "close" or "back" button, never the word "close". Used on Profile and on the word card.
-- **One title style:** `TabHeader` (22, medium, top left) for Explore, Study, Map and Profile. The top right of the
-  header holds small status or tools: the avatar (Explore), the sort and search icons (Study), the camera button
-  (Map), the counter (the first-run test only).
+  the top left). Never a "close" or "back" button, never the word "close". Used on the word card and on the pages
+  one level down from Profile (Credits, Interests); Profile itself is a tab and has no chevron.
+- **One title style:** `TabHeader` (22, medium, top left) for Explore, Study, Map and Profile. Explore's title reads as
+  a sentence over two lines: "explore" in the header row, and under it, small, "by association" (when exploring by
+  theme: "by theme in kitchen"): "by" and "in" are white, the choices after them are grey, and each part is a select (tap
+  it; no chevron; the options in its menu are white). The
+  top right of the header holds small status or tools: the filter icon, a filled funnel (Explore), the sort and search icons
+  (Study), the camera button (Map), the counter (the first-run test only).
+- **Choices that are not worth a screen are menus that open from an icon or a select** (the sort menu, the "explore
+  by" menu, the filters). They open over everything and close with a tap anywhere else.
 - **One gesture everywhere:** draw a circle to rate a word; swipe up to move on to the next word (Explore, the
   Study test) and to the next card (Study word cards; swipe down goes back). Pinch to zoom the Map.
+- **Nothing pops.** Whatever appears or disappears (a menu, an overlay card, a page, a row that opens, the next
+  onboarding step) fades in and out (about 160 to 260 ms) with `entering` and `exiting` or a layout transition. A
+  new menu, card or page gets the same.
 - **Interface text is lowercase** (German words keep their capitals). No full stops at the end of a short line.
 - **One main button per screen**, orange (`Button`, primary). A second, quieter one is `ghost`. Dismissing is not
   a button's job (see the first rule).
@@ -24,9 +33,10 @@ back chevron already exists). If something is missing, say so and ask before add
 |---|---|---|
 | `Button` | orange main button, or `ghost` | everywhere |
 | `TabHeader` | the title row (title left, status or tools right); `onTitleLongPress` is a testing hook | Explore, Study, Map, Study session |
-| `Avatar` | the user's initial in a round badge with an orange rim | Explore header, Profile |
-| `Icons` | `ExploreIcon`, `StudyIcon`, `MapIcon`, `LookIcon`, `SwipeUpIcon`, `TapIcon`, `TrashIcon`, `SortIcon`, `SearchIcon`, `ChevronLeftIcon` | tab bar and screens |
-| `FloatingTabBar` | the pill with three tabs; `useTabBarSpace()` says how much room to leave | tabs |
+| `ExploreControls` | the Explore title select ("explore by ..."), the filter icon, the theme row (only "by theme") and the menus | Explore |
+| `Avatar` | the user's initial in a round badge with an orange rim | Profile |
+| `Icons` | `ExploreIcon`, `StudyIcon`, `MapIcon`, `LookIcon`, `SwipeUpIcon`, `TapIcon`, `TrashIcon`, `SortIcon`, `SearchIcon`, `FilterIcon` (filled), `ChevronLeftIcon` (back), `ChevronRightIcon` (a row that opens a page), `ChevronDownIcon`, `ProfileIcon` | tab bar and screens |
+| `FloatingTabBar` | the pill with four tabs (Explore, Study, Map, Profile); `useTabBarSpace()` says how much room to leave | tabs |
 | `WordFace` | the German word inside the circle (article above, lemma below) | the circle |
 | `Translation` | the English meaning, sized to fit the circle | the circle |
 | `FlipReveal` | what sits in the circle after rating: the translation, tap to flip to the German word | Explore, Study, Practice |
@@ -45,8 +55,8 @@ back chevron already exists). If something is missing, say so and ask before add
 
 ## Screens (`src/screens/`)
 Name, Intro, Practice, QuizIntro, CalibrationDone (the first run); Explore (`ExploreView`), Study (`StudyTab`:
-the list in `WordsScreen` with the word-card pager, the session in `StudyScreen`), Map, Profile.
-The profile opens as an overlay over everything from the avatar (`src/state/profileSheet.tsx`, drawn in `App.tsx`).
+the list in `WordsScreen` with the word-card pager, the session in `StudyScreen`), Map, Profile (with Credits one
+level down: a row on Profile opens it, its chevron goes back to Profile).
 
 ## Patterns worth reusing
 - A menu that opens from an icon: the sort menu in `WordsScreen` (a card under the icon, a dot marks the choice).

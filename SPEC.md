@@ -55,13 +55,14 @@ A vocabulary app for German learners.
 
 ### 4.1 Explore (home)
 - An endless feed of words, one at a time, each rated with the Circle.
+- **"Explore by ..." (built, replaces the old lens idea):** the header row says "explore" with the filter icon at its end; under it a small grey line continues the sentence, "by association" ("by theme in kitchen"), and each part is a select (no chevron, white options in its menu), with three ways: **association** (follows the words linked to the one on screen), **theme** (stays in one topic; "in kitchen" on the same line picks it; "explore from here" on the Map sets it) and **usefulness** (the most common words first). **Filters** sit behind a filled funnel icon at the end of the title row: level (easier, my level, harder: moves the target tier by one) and words (all, nouns, verbs, adj & adv). **Interests** (profile): themes the user likes, which association and usefulness prefer when there are words at the right level. **Changing the way of exploring or a filter changes the word on screen too:** a word that has not been rated yet and does not suit the new settings glides away and one that does takes its place (a word that already fits stays; a word just rated is left alone, and the next one follows the new settings). All of it keeps to the user's level and has no randomness. Word families and "words that go together" are not built yet.
 - **Lens** (the user's chosen way of exploring), one selectable control:
   - **Themes**: words from the same situation (Küche → Herd, Pfanne, Spülmaschine)
   - **Word families**: fahren → Fahrer, Fahrzeug, Abfahrt
   - **Most useful**: the frequency ladder, filling the most valuable gaps first
   - **In sentences**: words that co-occur (Entscheidung + treffen)
 - **Words always fit the user.** The association trail decides *which area* to explore, and the user's estimated level decides *which words within it*: not too easy, not too hard (see "Calibration" in section 8). The estimate keeps updating from every rating: many high ratings push toward rarer words, many low ratings ease back toward common ones. **Pure Wander** (follow the trail regardless of difficulty) is an option in **Settings**, off by default.
-- **Top right is the avatar** (the user's initial in a round badge with an orange rim); tapping it opens **profile and settings** (see section 5). During the first-run test it is the counter instead (below).
+- **Top right is the filter icon** (a filled funnel; orange when a filter is on). During the first-run test it is the counter instead (below). The profile is the fourth tab (section 5).
 - **Counter.** Small, in grey: a mini ring and "n / 20", where n is the number of gathered words waiting to be studied and 20 is the point where Explore pauses. (During the first-run test it counts "n / 15" instead.) **Explore pauses when the pile gets large:** once 20 gathered words are waiting to be studied, the Explore tab shows "explore is paused" with a button to Study, and opens again as words are studied. **When the word that fills the pile is rated, Explore closes and the user is taken to Study automatically** (after about two seconds, so the rating's animation is not cut off); coming to Explore while it is already closed just shows the "paused" screen. (The threshold, 20, is a first guess to tune.) The similar-word chips only offer words within one tier of the user's level, so they are never far too easy or too hard.
 - **Word graph rule.** Semantically close pairs (opposites, near-synonyms) are not introduced back to back, to avoid interference. Theme and word-family links are preferred for new material.
 - **First word for everyone:** *Feierabend* (a delightful, very German word). After roughly ten words, the first stars appear on the Map.
@@ -90,12 +91,13 @@ A vocabulary app for German learners.
 
 ## 5. Profile and settings
 
-Opened by the **avatar in the top right of Explore**; it covers the whole app, with a chevron (back) at the top left.
+**The fourth tab** of the bottom bar (Explore, Study, Map, Profile; a head-and-shoulders icon), titled "profile" like the other tabs. Credits and Interests open one level down from it, with a chevron back.
 - **Profile:** the avatar (the initial), the name (tap to change it), and three numbers: words explored, in study, learned.
 - **Daily reminder** (built): a switch and a time (default 19:00). It is a local notification, set by the app each time it goes to the background: **one** reminder, on the first day when something is ready (reviews that are due, or at least 3 new words waiting), and none if nothing will be ready. It stays quiet while the app is open. It is offered on the "nicely done" screen after a finished session (the same switch and time as here); the phone's permission is asked when the switch is turned on.
+- **Credits** (a page one level down, opened from a row "credits" under "about"): where the words and meanings (Wiktionary, via Wiktextract and kaikki.org; CC BY-SA 4.0), the sentences (Tatoeba; CC BY 2.0 FR), the word frequencies (FrequencyWords by Hermit Dave, from OpenSubtitles; CC BY-SA 4.0), the scheduling (FSRS, ts-fsrs; MIT), the type (Figtree; SIL OFL 1.1) and the libraries come from, with a tappable link to each. A note says the word list is shared under the same share-alike terms.
 - **Quick sessions** (a switch, off by default): adds the "quick study" button to Study.
 - **Start over** (a testing aid, to remove before release).
-- **Not built yet:** what the reveal card shows (meaning, plural, example, audio, word family chips, memory hook), Wander or Guided exploring, credits and sources of the data.
+- **Not built yet:** what the reveal card shows (meaning, plural, example, audio, word family chips, memory hook), Wander or Guided exploring.
 
 ## 6. Card and content model
 

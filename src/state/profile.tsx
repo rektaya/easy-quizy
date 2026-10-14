@@ -1,6 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { Answer } from '../onboarding/calibration';
+import { DEFAULT_FEED } from '../onboarding/feed';
+import type { FeedOptions } from '../onboarding/feed';
 import { firstStudy, reviewCard } from '../srs/scheduler';
 import type { StoredCard } from '../srs/scheduler';
 
@@ -29,7 +31,13 @@ type Profile = {
   reminder: Reminder;
   /** Setting: Study also offers a "quick study" button (10 words). Off: one button, "study". */
   quickSessions: boolean;
+  /** How Explore chooses the next word ("explore by ...") and its filters. */
+  explore: ExploreSettings;
+  /** Themes the user likes: Explore brings words from them more often. */
+  interests: string[];
 };
+
+export type ExploreSettings = Omit<FeedOptions, 'interests'>;
 
 type Ctx = Profile & {
   ready: boolean;
@@ -41,6 +49,8 @@ type Ctx = Profile & {
   setMapIntroSeen: () => void;
   setReminder: (patch: Partial<Reminder>) => void;
   setQuickSessions: (on: boolean) => void;
+  setExplore: (patch: Partial<ExploreSettings>) => void;
+  setInterests: (themeIds: string[]) => void;
   /** Change the name later (the first-run path sets it with setName). */
   rename: (name: string) => void;
   addAnswer: (answer: Answer) => void;
@@ -57,7 +67,7 @@ type Ctx = Profile & {
 };
 
 const KEY = 'easyquizy.profile.v1';
-const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false, reminder: { on: false, hour: 19, minute: 0, asked: false }, quickSessions: false };
+const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false, reminder: { on: false, hour: 19, minute: 0, asked: false }, quickSessions: false, explore: { ...DEFAULT_FEED }, interests: [] };
 const ProfileContext = createContext<Ctx | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
@@ -90,6 +100,8 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const setPhase = useCallback((phase: Phase) => setProfile((p) => ({ ...p, phase })), []);
   const setReminder = useCallback((patch: Partial<Reminder>) => setProfile((p) => ({ ...p, reminder: { ...p.reminder, ...patch } })), []);
   const setQuickSessions = useCallback((quickSessions: boolean) => setProfile((p) => ({ ...p, quickSessions })), []);
+  const setExplore = useCallback((patch: Partial<ExploreSettings>) => setProfile((p) => ({ ...p, explore: { ...p.explore, ...patch } })), []);
+  const setInterests = useCallback((interests: string[]) => setProfile((p) => ({ ...p, interests })), []);
   const rename = useCallback((name: string) => setProfile((p) => ({ ...p, name: name.trim() || p.name })), []);
   const setMapIntroSeen = useCallback(() => setProfile((p) => ({ ...p, mapIntroSeen: true })), []);
   const addAnswer = useCallback(
@@ -134,6 +146,8 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       setMapIntroSeen,
       setReminder,
       setQuickSessions,
+      setExplore,
+      setInterests,
       rename,
       addAnswer,
       removeAnswer,
@@ -141,7 +155,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, rename, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, setExplore, setInterests, rename, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

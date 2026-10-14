@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { AppState, Easing, StyleSheet, View } from 'react-native';
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Starry } from './src/components/StarBackground';
@@ -21,7 +22,6 @@ import QuizIntroScreen from './src/screens/QuizIntroScreen';
 import MapScreen from './src/screens/MapScreen';
 import StudyTab from './src/screens/StudyTab';
 import { ProfileProvider, useProfile } from './src/state/profile';
-import { ProfileSheetProvider, useProfileSheet } from './src/state/profileSheet';
 import { RatingsProvider, useRatings } from './src/state/ratings';
 import { WORDS } from './src/data/words';
 import { waitingWords } from './src/onboarding/batch';
@@ -60,6 +60,11 @@ const StudyTabScreen = ({ navigation }: { navigation: { navigate: (name: string)
     <StudyTab />
   </Starry>
 );
+const ProfileTabScreen = () => (
+  <Starry>
+    <ProfileScreen />
+  </Starry>
+);
 // The Map draws a night sky of its own, so it has no starry paper.
 const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => {
   const { setSeedTheme } = useProfile();
@@ -86,7 +91,17 @@ function Onboarding() {
   );
 }
 
+// Each step fades in over the one before it (the old one fades out underneath).
 function OnboardingStep() {
+  const { phase } = useProfile();
+  return (
+    <Animated.View key={phase} entering={FadeIn.duration(380)} exiting={FadeOut.duration(220)} style={StyleSheet.absoluteFill}>
+      <OnboardingScreen />
+    </Animated.View>
+  );
+}
+
+function OnboardingScreen() {
   const { phase, setName, setPhase } = useProfile();
   const { reset } = useRatings();
   if (phase === 'name') {
@@ -134,19 +149,6 @@ function ReminderSync() {
   return null;
 }
 
-// Profile and settings, opened from the avatar in Explore, over the whole app.
-function ProfileOverlay() {
-  const { open } = useProfileSheet();
-  if (!open) return null;
-  return (
-    <View style={StyleSheet.absoluteFill}>
-      <Starry>
-        <ProfileScreen />
-      </Starry>
-    </View>
-  );
-}
-
 function Root() {
   const { ready, phase } = useProfile();
   // Straight after the first-run path the tabs open on Study (the first session), with the tab bar there
@@ -174,10 +176,10 @@ function Root() {
         <Tab.Screen name="Explore" component={ExploreTabScreen} />
         <Tab.Screen name="Study" component={StudyTabScreen} />
         <Tab.Screen name="Map" component={MapTabScreen} />
+        <Tab.Screen name="Profile" component={ProfileTabScreen} />
       </Tab.Navigator>
     </NavigationContainer>
     <KnownDust />
-    <ProfileOverlay />
     <ReminderSync />
     </>
   );
@@ -194,9 +196,7 @@ export default function App() {
       <SafeAreaProvider>
         <RatingsProvider>
           <ProfileProvider>
-            <ProfileSheetProvider>
-              <Root />
-            </ProfileSheetProvider>
+            <Root />
           </ProfileProvider>
         </RatingsProvider>
       </SafeAreaProvider>

@@ -7,6 +7,8 @@ export const HEADER_HEIGHT = 32;
 
 type Props = {
   title?: string;
+  /** Instead of a plain title: anything in the title's place (Explore's "explore by ..." select). */
+  titleNode?: React.ReactNode;
   right?: React.ReactNode;
   /** Title colour, for screens on a dark background. */
   color?: string;
@@ -16,9 +18,10 @@ type Props = {
 
 // The header of a tab's main screen: its name, always in the same place (top left), with room for a
 // small status on the right (also without a title, as in the first-run calibration).
-export function TabHeader({ title, right, color, onTitleLongPress }: Props) {
+export function TabHeader({ title, titleNode, right, color, onTitleLongPress }: Props) {
   return (
-    <View style={[styles.row, !title && styles.noTitle]}>
+    <View style={[styles.row, !title && !titleNode && styles.noTitle]}>
+      {titleNode ?? null}
       {title ? (
         <Text style={[styles.title, color ? { color } : null]} accessibilityRole="header" onLongPress={onTitleLongPress}>
           {title}

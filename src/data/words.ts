@@ -1,5 +1,6 @@
 import { CORE, CORE_THEMES, CORE_TIERS } from './words.core.ts';
 import { CORE_LINKS, GENERATED, THEMES as GENERATED_THEMES } from './words.generated.ts';
+import { RANK } from './words.rank.ts';
 
 export type Word = {
   id: string;
@@ -21,13 +22,24 @@ export type Word = {
   tier: 1 | 2 | 3 | 4 | 5 | 6;
   /** Id of the theme (a cluster on the Map) the word belongs to. */
   theme?: string;
+  /** How common the word is: its place in a frequency list (1 = the most common). */
+  rank: number;
+  /** noun (has an article), verb (the meaning starts with "to"), or other (adjectives, adverbs). */
+  pos: PartOfSpeech;
 };
+
+export type PartOfSpeech = 'noun' | 'verb' | 'other';
+
+/** A word as written in the data files: rank and part of speech are worked out when the list is assembled. */
+export type RawWord = Omit<Word, 'rank' | 'pos'>;
 
 // The hand-written core words come first, in trail order (Feierabend is the first word for
 // everyone), then the generated list. Core words also link into the generated list.
 const CORE_THEME_OF = new Map(CORE_THEMES.flatMap((t) => t.ids.map((id) => [id, t.id] as const)));
 
-export const WORDS: Word[] = [
+const partOfSpeech = (w: RawWord): PartOfSpeech => (w.article ? 'noun' : /^to\b/i.test(w.en) ? 'verb' : 'other');
+
+export const WORDS: Word[] = ([
   ...CORE.map((w) => ({
     ...w,
     tier: CORE_TIERS[w.id],
@@ -35,7 +47,7 @@ export const WORDS: Word[] = [
     related: [...w.related, ...(CORE_LINKS[w.id] ?? [])],
   })),
   ...GENERATED,
-];
+] as RawWord[]).map((w) => ({ ...w, rank: RANK[w.id] ?? 60000, pos: partOfSpeech(w) }));
 
 export type Theme = { id: string; de: string; en: string };
 
