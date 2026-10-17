@@ -8,6 +8,7 @@ import type { SessionKind } from '../onboarding/batch';
 import { MIN_PILE_TO_STUDY } from '../onboarding/calibration';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
+import AddWordScreen from './AddWordScreen';
 import StudyScreen from './StudyScreen';
 import WordsScreen from './WordsScreen';
 
@@ -20,11 +21,22 @@ export default function StudyTab() {
   const { ratings } = useRatings();
   const { cards, quickSessions } = useProfile();
   const [session, setSession] = useState<SessionKind | null>(null);
+  const [adding, setAdding] = useState(false); // the form for a word of your own
   const focused = useIsFocused();
   useEffect(() => {
-    if (focused) setSession(null);
+    if (focused) {
+      setSession(null);
+      setAdding(false);
+    }
   }, [focused]);
 
+  if (adding) {
+    return (
+      <Animated.View key="add" entering={FadeIn.duration(260)} style={{ flex: 1 }}>
+        <AddWordScreen onBack={() => setAdding(false)} />
+      </Animated.View>
+    );
+  }
   if (session) {
     return (
       <Animated.View key="session" entering={FadeIn.duration(260)} style={{ flex: 1 }}>
@@ -52,7 +64,7 @@ export default function StudyTab() {
       : 'nothing is due. gather new words in explore';
   return (
     <Animated.View key="list" entering={FadeIn.duration(260)} style={{ flex: 1 }}>
-      <WordsScreen bottomSpace={space} sessions={sessions} note={note} />
+      <WordsScreen bottomSpace={space} sessions={sessions} note={note} onAdd={() => setAdding(true)} />
     </Animated.View>
   );
 }

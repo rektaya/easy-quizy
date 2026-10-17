@@ -18,6 +18,13 @@ export const DRAW_REACH = 500;
 /** The last 10% of the arc is the "know it for sure" segment. */
 export const KNOW_THRESHOLD = 0.9;
 
+/** The value the cross under the word gives: "I don't know this word at all". Its ring is drawn by itself, in dark blue. */
+export const DONT_KNOW = 0.03;
+export function isDontKnow(value: number): boolean {
+  'worklet';
+  return Math.abs(value - DONT_KNOW) < 1e-9;
+}
+
 /** Releasing with less than this fill is treated as a tap and ignored. */
 export const MIN_COMMIT = 0.03;
 

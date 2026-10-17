@@ -45,7 +45,7 @@
 4||verderben||to spoil, to go bad|Bei dieser Hitze verdirbt das Fleisch schnell.|In this heat the meat spoils quickly.|verdorben,Verderb
 4|der|Toast|Toasts|toast|Wie viele Scheiben Toast hast du gegessen?|How many pieces of toast did you eat?|
 4|der|Reis|Reise|rice|Ihre Gespräche drehten sich um ihre Reise.|Their talks centered on their trip.|
-4||ernähren||to nourish, to feed|Ich versuche, mich ausgewogen zu ernähren.|I try to eat a balanced diet.|
+4||sich ernähren||to eat, to feed oneself|Ich versuche, mich ausgewogen zu ernähren.|I try to eat a balanced diet.|
 4||servieren||to serve, to wait|Ich aß nicht alles, was sie mir servierte.|I didn't eat everything that she served me.|
 4|der|Apfel|Äpfel|apple|Schälen Sie die Äpfel oder waschen Sie sie.|Peel or wash the apples.|
 4|die|Kartoffel|Kartoffeln|potato|Ich schäle die Sellerie und die Kartoffeln.|I'm peeling the celery and the potatoes.|
@@ -98,7 +98,7 @@
 2|der|Körper|Körper|body|Sport tut dem Körper gut.|Exercise is good for the body.|körperlich,Körperteil
 2|das|Krankenhaus|Krankenhäuser|hospital|Er liegt seit Dienstag im Krankenhaus.|He has been in the hospital since Tuesday.|krank,Haus
 2|der|Doktor|Doktoren|doctor|Der Doktor entschied, sofort zu operieren.|The doctor decided to operate at once.|
-2||verletzen||to hurt, to injure|Er hat sich bei einem Sturz verletzt.|He had a tumble and hurt himself.|
+2||sich verletzen||to get hurt, to injure oneself|Er hat sich bei einem Sturz verletzt.|He had a tumble and hurt himself.|
 2||verletzt||hurt, injured|Sie wurde bei dem Verkehrsunfall verletzt.|She was injured in the traffic accident.|
 2|der|Unfall|Unfälle|accident|Sein Sohn kam bei einem Unfall ums Leben.|His son lost his life in an accident.|
 2|die|Kraft|Kräfte|power, force|Bei der Geschwindigkeit wirken immense Kräfte.|Immense forces act at this speed.|
@@ -623,7 +623,7 @@
 3||zählen||to count|Ich wusste, dass ich auf dich zählen kann!|I knew I could rely on you!|
 3|der|Test|Tests|test|Ich wette, wir schreiben heute einen Test.|I bet we'll have a test today.|
 3|die|Übersetzung|Übersetzungen|translation|Warum ist maschinelle Übersetzung nutzlos?|Why is machine translation useless?|
-3||konzentrieren||to concentrate, to focus|Konzentrieren Sie sich auf dieses Problem.|Concentrate your attention on this problem.|
+3||sich konzentrieren||to concentrate, to focus|Konzentrieren Sie sich auf dieses Problem.|Concentrate your attention on this problem.|
 3|das|Papier|Papiere|paper|Er hatte einen guten Blick auf die Papiere.|He had a good look at the papers.|
 3|der|Satz|Sätze|sentence|Beethovens Fünfte Sinfonie hat vier Sätze.|Beethoven's Fifth Symphony has four movements.|
 3|der|Schüler|Schüler|pupil, student|Kein Schüler konnte die Frage beantworten.|None of the pupils were able to answer the question.|
@@ -999,10 +999,10 @@
 2|der|Stolz||pride|Sie sah mit Stolz auf ihre Tochter.|She looked at her daughter with pride.|stolz,stolzieren
 2|der|Mut||courage|Es braucht Mut, das zu sagen.|It takes courage to say that.|mutig,Mutprobe
 2||lieben||to love|Könntest du mir sagen, wieso du sie liebst?|Could you tell me why you love her?|
-2||fühlen||to feel|Ich fühle den Sonnenschein auf meinem Gesicht.|I feel the sunshine on my face.|
+2||sich fühlen||to feel (a certain way)|Ich fühle mich nicht gut.|I don’t feel well.|
 2||froh||glad, happy|Du wirst deines Lebens nicht mehr froh.|You will no longer be happy with your life.|
 2||vertrauen||to trust, to place confidence in|Offen gesagt kann man ihm nicht vertrauen.|Frankly speaking, he is untrustworthy.|
-2||interessieren||to interest|Sie sind nicht am Geldsparen interessiert.|They are not interested in saving money.|
+2||sich interessieren||to be interested (in)|Ich interessiere mich für Geschichte.|I’m interested in history.|
 2||interessiert||interested|Ich bin an dieser Geschichte interessiert.|I am interested in this story.|
 2||mögen||to like|Ich mag es, mit dir ins Kino zu gehen.|I like going to the movies with you.|
 2||lachen||to laugh|Sie brach in Lachen aus, als sie mich sah.|She burst out laughing when she saw me.|
@@ -1010,13 +1010,13 @@
 2||traurig||sad|Wenn er traurig ist, zieht er sich zurück.|When he's sad, he withdraws from other people.|
 3|die|Stimmung|Stimmungen|mood, atmosphere|Die Stimmung auf der Party war toll.|The atmosphere at the party was great.|stimmen,Laune
 3|die|Geduld||patience|Hab bitte etwas Geduld mit mir.|Please have a little patience with me.|geduldig,dulden
-3||beruhigen||to calm down, to quiet|Die Mutter beruhigte ihr schreiendes Kind.|The mother was quieting her crying baby.|
+3||sich beruhigen||to calm down|Die Menge beruhigte sich.|The crowd calmed down.|
 3|der|Wunsch|Wünsche|wish|Mögen all deine Wünsche in Erfüllung gehen!|May all your wishes come true!|
 3|der|Scherz|Scherze|joke|Höre nicht auf ihn! Er macht nur Scherze.|Don't listen to him. He's just kidding.|
 3||nerven||to annoy, to irritate|Toms Art zu reden geht mir auf die Nerven.|Tom's way of speaking gets on my nerves.|
 3||hassen||to hate|Die Rabenkrähen hassten auf den Waldkauz.|The carrion crows mobbed the tawny owl.|
 3||peinlich||woeful, hurtful|Mir unterlief ein peinlicher Fehler.|I made an embarrassing mistake.|
-3||benehmen||to behave, to act|Manchmal benimmt er sich echt wie ein Kind.|Sometimes he really acts like a child.|
+3||sich benehmen||to behave, to act|Manchmal benimmt er sich echt wie ein Kind.|Sometimes he really acts like a child.|
 3|die|Wut||rage, fury|Sie konnte vor lauter Wut nicht sprechen.|She was so angry that she could not speak.|
 3||mutig||courageous|Obwohl sie ein Mädchen ist, ist sie mutig.|She's a girl, but she's brave.|
 3||eifersüchtig||jealous|Du hast keinen Grund, eifersüchtig zu sein.|You've got no reason to be jealous.|
@@ -1027,7 +1027,7 @@
 4|die|Sehnsucht|Sehnsüchte|longing|Ich habe Sehnsucht nach dem Meer.|I long for the sea.|sehnen,sehnsüchtig
 4||genießen||to enjoy, to relish|Wir haben es genossen, Tennis zu spielen.|We enjoyed playing tennis.|
 4||schluchzen||to sob|Ich habe sie in ihrem Zimmer schluchzen gehört.|I heard her sobbing in her room.|
-4||ärgern||to annoy, to make angry|Ich ärgere mich über die hohen Preise.|I am angry over the high prices.|
+4||sich ärgern||to be annoyed, to get angry|Ich ärgere mich über die hohen Preise.|I am angry over the high prices.|
 4||egoistisch||egoistic|Bist du schon immer so egoistisch gewesen?|Have you always been so selfish?|
 4||verängstigt||frightened, scared|Du machtest einen verängstigten Eindruck.|You looked like you were frightened.|
 4||verknallt||infatuated, having a crush|Sie ist in den Nachbarsjungen verknallt.|She has a crush on the boy next door.|
@@ -1063,7 +1063,7 @@
 1||reden||to talk, to speak|Seit ihrer Ankunft hat sie kein Wort geredet.|She hasn't said a word since she arrived.|
 1||sprechen||to speak|Sprich die Wahrheit oder bleib still.|Speak the truth or remain silent.|
 1||zeigen||to show, make see|Zeig mir mal deine Briefmarkensammlung!|Please show me your stamp collection!|
-1||entschuldigen||to excuse, to apologize for|Was du getan hast, kann ich nicht entschuldigen.|I can’t excuse what you did.|
+1||sich entschuldigen||to apologize|Er muss sich bei ihr entschuldigen.|He’s got to apologise to her.|
 2||antworten||to answer|Bitte antworte mir schnell.|Please answer me quickly.|Antwort,beantworten
 2||erklären||to explain|Kannst du mir das bitte erklären?|Can you explain that to me, please?|Erklärung,klar
 2||bitten||to ask (for), to request|Ich bitte dich um Hilfe.|I’m asking you for help.|Bitte,Bittsteller
@@ -1072,7 +1072,7 @@
 2||rufen||to call out, to shout|Ruf mich an, sobald du ihn getroffen hast.|Call me as soon as you meet up with him.|
 2||nennen||to name|Nennen Sie mir den Ort des Treffens.|Tell me the location of the meeting.|
 2||schreiben||to write, to write out|Sie schreibt ihren Namen an die Tafel.|She writes her name on the blackboard.|
-2||vorstellen||to introduce, to present|Lass mich dir meine Schwester vorstellen.|Let me introduce my sister to you.|
+2||sich vorstellen||to imagine; to introduce oneself|Ich kann mir kein Leben ohne dich vorstellen.|I can’t imagine life without you.|
 2|die|Stimme|Stimmen|voice, call of an animal|Die Stimme erinnerte mich an meine Mutter.|The voice reminded me of my mother.|
 2||lügen||to tell a lie, to lie|Nicht jede unwahre Aussage ist eine Lüge.|Not every untrue statement is a lie.|
 2||schreien||to shout, to yell|Plötzlich hörte ich einen schrillen Schrei.|All at once, I heard a shrill cry.|
@@ -1153,7 +1153,7 @@
 2||reichen||to reach|Der Turm reicht fast bis zum Himmel.|The tower almost reaches the sky.|
 2||platzen||to burst, to pop|Wer wird den Platz seiner Mutter einnehmen?|Who will take the place of his mother?|
 2|die|Nummer|Nummern|number|Ich fürchte, Sie haben die falsche Nummer.|I'm afraid you have the wrong number.|
-2||setzen||to sit down|Wir setzen das Meeting nach dem Tee fort.|We'll resume the meeting after tea.|
+2||sich setzen||to sit down|Setzen Sie sich, bitte.|Sit down, please.|
 2||dürfen||to be allowed, to be permitted|Du darfst dich nicht dem Trinken hingeben.|You must not indulge in drinking.|
 2||retten||to save, to rescue|Sie riskierte ihr Leben, um ihn zu retten.|She risked her life to save him.|
 2||passen||to fit|Pass in vollen Zügen auf Taschendiebe auf.|Look out for pickpockets on crowded trains.|
@@ -1165,7 +1165,7 @@
 2||verschwinden||to disappear, to vanish|Die Sonne verschwindet hinter Wolken.|The sun is disappearing behind clouds.|
 2|die|Suche|Suchen|search|Wir waren auf der Suche nach einer Wohnung.|We went in search of an apartment.|
 2|das|Stück|Stücke|one, item|Schneiden Sie den Lachs in kleine Stücke.|Cut the salmon into small pieces.|
-2||kümmern||to take care, to look after|Wir müssen uns unverzüglich darum kümmern.|We need to take care of this immediately.|
+2||sich kümmern||to take care, to look after|Wir müssen uns unverzüglich darum kümmern.|We need to take care of this immediately.|
 2||sitzen||to sit, to perch|Ich überließ einer alten Dame meinen Sitz.|I gave up my seat to an old lady.|
 2|der|Rest|Reste|rest, remainder|Da ist ein Rest vom Whisky in der Flasche.|That is the rest of the whiskey in the bottle.|
 2||passieren||to happen|Die Gruppe hat soeben die Grenze passiert.|The group has just passed the border.|
@@ -1176,7 +1176,7 @@
 2||behalten||to keep, to retain|Ich behalte deinen Ratschlag im Hinterkopf.|I'll keep your advice in mind.|
 2||liegen||to lie|Sie hat ihr Ticket zu Hause liegen lassen.|She left her ticket at home.|
 2||fangen||to catch|Die Förster fingen das entlaufene Wildschwein.|The rangers caught the run-away boar.|
-2||legen||to lie down|Ich habe meinen Hengst legen lassen.|I had my stallion castrated.|
+2||sich legen||to lie down|Legen Sie sich auf dem Untersuchungstisch auf den Bauch.|Lie on your stomach on the examination table.|
 2||ansehen||to look at, to have a look at|Lass mich mal deinen Führerschein ansehen.|Let me take a look at your driver's license.|
 2||schlagen||to beat, to hit|Ich schlug zwei Fliegen mit einer Klappe.|I killed two birds with one stone.|
 2||werfen||to throw|Das Flugzeug warf Bomben auf die Stadt ab.|The plane dropped bombs on the city.|
@@ -1186,9 +1186,9 @@
 3||steigen||to ascend, to climb|Die Party im Club steigt heute um 19 Uhr.|The party in the club is happening tonight at 7 pm.|
 3||aufgeben||to give up on|Er ging zur Post, um den Brief aufzugeben.|He went to the post office to mail the letter.|
 3|die|Reihe|Reihen|row|Sie warteten in einer Reihe auf den Bus.|They waited in line for the bus.|
-3||vorbereiten||to prepare|Ich muss mich auf die Prüfung vorbereiten.|I must prepare for the exam.|
+3||sich vorbereiten||to prepare (oneself)|Ich muss mich auf die Prüfung vorbereiten.|I must prepare for the exam.|
 3||greifen||to grab, to grasp|Säure greift metallhaltige Gegenstände an.|Acid acts on things which contain metal.|
-3||beeilen||to hurry, to hasten|Wir beeilten uns den Gipfel zu erreichen.|We hurried to reach the summit.|
+3||sich beeilen||to hurry, to hasten|Wir beeilten uns den Gipfel zu erreichen.|We hurried to reach the summit.|
 3||aufstehen||to get up|Wir sind auf dem falschen Fuß aufgestanden.|We got off on the wrong foot.|
 3||gebrauchen||to use|Ich könnte hier mal etwas Hilfe gebrauchen.|I could do with some help here.|
 3||enden||to end|Ich habe dieses Buch schon zu Ende gelesen.|I've already finished reading this book.|
@@ -1197,7 +1197,7 @@
 3||anfassen||to touch|Hast du schon einmal einen Igel angefasst?|Have you ever touched a hedgehog?|
 3||schieben||to push, to shove|Ein junger Vater schob einen Kinderwagen.|A young father was pushing a pram.|
 3||weglaufen||to run away|Die Kinder sind vor dem Hund weggelaufen.|The children ran away from the dog.|
-3||nähern||to approach|Diesem Ort haben sie sich nicht genähert.|They stayed away from the place.|
+3||sich nähern||to approach|Diesem Ort haben sie sich nicht genähert.|They stayed away from the place.|
 3||brennen||to burn, to light on fire|Ich beobachtete, wie das Haus brannte.|I watched the house burn.|
 4||aufräumen||to tidy up|Du musst dein Zimmer aufräumen.|You have to tidy up your room.|räumen,Raum
 4||verschieben||to postpone, to move|Können wir den Termin verschieben?|Can we postpone the appointment?|Verschiebung,schieben
@@ -1371,10 +1371,10 @@
 5|der|Arbeitnehmer|Arbeitnehmer|employee|Arbeitnehmer haben Anspruch auf Urlaub.|Employees are entitled to holiday.|Arbeitgeber,nehmen
 5|die|Kündigungsfrist|Kündigungsfristen|notice period|Die Kündigungsfrist beträgt drei Monate.|The notice period is three months.|Kündigung,Frist
 5|der|Architekt|Architekten|architect|Mein Vater ist Architekt, nicht Ingenieur.|My father is an architect, not an engineer.|
-5||spezialisieren||to specialize|Dieser Verlag ist auf Kinderliteratur spezialisiert.|This publisher specializes in children's literature.|
+5||sich spezialisieren||to specialize|Sie wird sich auf amerikanische Geschichte spezialisieren.|She will specialize in American history.|
 5||beitragen||to contribute to|Er hat zum Wohl der Gesellschaft beigetragen.|He contributed to the good of the community.|
 5||ausüben||to practice / practise, to exert|Tut es weh, wenn ich hier Druck ausübe?|Does it hurt when I press here?|
-5||bewerben||to apply|Sie sollten sich auf diese Stelle bewerben.|You should apply for that post.|
+5||sich bewerben||to apply|Sie sollten sich auf diese Stelle bewerben.|You should apply for that post.|
 5|der|Zement|Zemente|cement|Ich muss einen Sack Zement kaufen.|I need to buy a bag of cement.|
 5|der|Streik|Streiks|strike|Dies ist der siebte Streik in diesem Jahr.|This is the seventh strike of this year.|
 5|der|Handwerker|Handwerker|craftsman|Gute Handwerker sind stolz auf ihr Werk.|A good craftsman takes pride in his work.|
@@ -1444,7 +1444,7 @@
 2|die|Möglichkeit|Möglichkeiten|possibility|Es gibt noch eine andere Möglichkeit.|There’s another possibility.|möglich,ermöglichen
 2||wahrscheinlich||likely, probable|Welches Team wird wahrscheinlich gewinnen?|Which team is likely to win?|
 2|der|Fehler|Fehler|fault, error|Sie haben zweifellos einen Fehler gemacht.|They must have made a mistake.|
-2||erinnern||to remind|Schnee erinnert mich an meine Heimatstadt.|Snow reminds me of my hometown.|
+2||sich erinnern||to remember|Ich erinnere mich an das Wort.|I remember the word.|
 2|der|Versuch|Versuche|attempt|Versuch, schlechte Gesellschaft zu meiden.|Try to avoid bad company.|
 2|der|Sinn|Sinne|sense|Traditionen ergeben gar keinen Sinn mehr.|Traditions no longer make any sense.|
 2||ändern||to change, to alter|Die Welt ändert sich von Minute zu Minute.|The world is changing every minute.|
@@ -1489,7 +1489,7 @@
 4|die|Philosophie|Philosophien|philosophy|Der Student hat Philosophie als Hauptfach.|The student majors in philosophy.|
 5|der|Nachteil|Nachteile|disadvantage|Der Nachteil ist der hohe Preis.|The disadvantage is the high price.|nachteilig,Teil
 5|die|Wahrscheinlichkeit|Wahrscheinlichkeiten|probability, likelihood|Aber die Wahrscheinlichkeit ist gering.|The probability is, however, low.|
-5||ausdenken||to come up with, to think up|Wer hat sich diese Regeln nur ausgedacht?|Who thought up those rules?|
+5||sich ausdenken||to come up with, to think up|Wer hat sich diese Regeln nur ausgedacht?|Who thought up those rules?|
 5|der|Effekt|Effekte|effect|Welchen Effekt hat der Vollmond auf dich?|What effect does the full moon have on you?|
 5||anwenden||to use, apply|Niemand weiß, welche Taktik er anwenden wird.|No one knows what tactics he will employ.|
 5||wiedererkennen||to recognize|Ich habe Ihre Stimme gleich wiedererkannt.|I recognized your voice right away.|

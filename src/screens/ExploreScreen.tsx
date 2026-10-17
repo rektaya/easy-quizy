@@ -12,17 +12,17 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
+import { DONT_KNOW, DontKnowButton, dontKnowTop } from '../components/DontKnowButton';
 import { Ring } from '../components/Ring';
 import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
 import { UndoToast } from '../components/UndoToast';
-import { BY_ROW_HEIGHT, ExploreByRow, ExploreMenus, FilterButton } from '../components/ExploreControls';
-import type { Menu } from '../components/ExploreControls';
+import { ExploreMenus, ExploreTitle } from '../components/ExploreControls';
+import type { Anchors, Menu } from '../components/ExploreControls';
 import { FlipReveal } from '../components/FlipReveal';
 import { WORDS } from '../data/words';
 import type { Word } from '../data/words';
-import { EXPLORE_LOCK_AT, waitingWords } from '../onboarding/batch';
 import {
   CALIBRATION_WORDS,
   isCalibrationDone,
@@ -72,52 +72,10 @@ type Props = {
   onCalibrationDone?: () => void;
 };
 
-// The tab. When too many gathered words are waiting, Explore pauses until some are learned.
-export default function ExploreScreen({ navigation }: { navigation: { navigate: (name: string) => void } }) {
-  const { ratings } = useRatings();
-  const { cards } = useProfile();
-  const waiting = waitingWords(WORDS, ratings, cards).length;
-  const over = waiting >= EXPLORE_LOCK_AT;
-  // When the word that fills the pile is rated, Explore closes: after a beat (so the rating's animation
-  // is not cut off) the user is taken to Study, which is what is open. Coming to Explore while it is
-  // already closed just shows the "paused" screen.
-  const [showLocked, setShowLocked] = useState(over);
-  const wasOver = useRef(over);
-  useEffect(() => {
-    if (!over) {
-      wasOver.current = false;
-      setShowLocked(false);
-      return;
-    }
-    if (wasOver.current) return;
-    wasOver.current = true;
-    const t = setTimeout(() => {
-      setShowLocked(true);
-      navigation.navigate('Study');
-    }, CLOSE_DELAY_MS);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [over]);
-  if (over && showLocked) return <ExploreLocked waiting={waiting} onStudy={() => navigation.navigate('Study')} />;
+// The tab: an endless feed. There is no limit on how many words can be explored; the gathered ones wait in
+// Study, to be studied at any time.
+export default function ExploreScreen() {
   return <ExploreView />;
-}
-
-function ExploreLocked({ waiting, onStudy }: { waiting: number; onStudy: () => void }) {
-  const insets = useSafeAreaInsets();
-  return (
-    <View style={[styles.screen, { paddingTop: insets.top + 12, paddingBottom: useTabBarSpace() }]}>
-      <TabHeader title="explore" />
-      <View style={styles.locked}>
-        <Text style={styles.emptyTitle}>explore is paused</Text>
-        <Text style={styles.emptyBody}>
-          {waiting} words are waiting for you in study. learn some of them first, then explore opens again.
-        </Text>
-        <View style={styles.lockedButton}>
-          <Button label="go to study" onPress={onStudy} />
-        </View>
-      </View>
-    </View>
-  );
 }
 
 export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
@@ -126,15 +84,16 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const { width } = useWindowDimensions();
   const { ready, ratings, pileCount, rate, unrate, reset } = useRatings();
   const { answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer, explore, setExplore, interests } = useProfile();
-  const [menu, setMenu] = useState<Menu>(null); // which of the title, theme and filter menus is open
+  const [menu, setMenu] = useState<Menu>(null); // which of the selects' and the filter menus is open
+  const [anchors, setAnchors] = useState<Anchors>({}); // where each select sits in the title (its menu opens under it)
+  const [titleH, setTitleH] = useState(HEADER_HEIGHT); // the title grows when its selects go on to a second line
   // how the next word is chosen (the settings of "explore by ..." and its filters, and the liked themes)
   const feed = useMemo<FeedOptions>(
     () => ({ by: explore.by, theme: explore.theme, level: explore.level, pos: explore.pos, interests }),
     [explore.by, explore.theme, explore.level, explore.pos, interests],
   );
-  // how many gathered words are waiting to be studied: at EXPLORE_LOCK_AT, Explore pauses
-  const waiting = waitingWords(WORDS, ratings, cards).length;
   const calibrating = mode === 'calibration';
+  const byTheme = !calibrating && explore.by === 'theme'; // the topic select gets a second row
   // words that were rated, or deleted from the pile, are never offered again
   // (the first word, Feierabend, was the practice word on its own screen, so the test starts after it)
   const isRated = useCallback(
@@ -144,6 +103,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const [currentId, setCurrentId] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null); // "added to study" / "marked as known"
   const [body, setBody] = useState({ w: 0, h: 0 });
+  const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
   const statusTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // How the current word leaves: it glides up (gy) and fades as `leave` goes 0 -> 1.
@@ -187,7 +147,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   // When the last test word has been rated, one more swipe up leads on to the "got it" screen.
   const testDone = calibrating && revealed && isCalibrationDone(answers.length, pileCount);
   const ratedCount = Object.keys(ratings).length;
-  const showSwipeTip = revealed && (ratedCount <= EARLY_WORDS || testDone);
+  const showSwipeTip = revealed && ratedCount <= EARLY_WORDS; // (not on the last test word: one more swipe still leads on)
 
   const circleTop = Math.max(56, body.h / 2 - size / 2 - CIRCLE_LIFT); // 56: room for the undo plate above
   const circleLeft = (body.w - size) / 2;
@@ -327,27 +287,11 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   // to flip to the German word and back.
   const revealInside = word ? <FlipReveal word={word} /> : null;
 
+  // the counter is only for the first-run test ("3 / 15")
   const counter = (
-    <View
-      style={styles.counterWrap}
-      accessible
-      accessibilityLabel={
-        calibrating
-          ? `word ${Math.min(answers.length + 1, CALIBRATION_WORDS)} of ${CALIBRATION_WORDS}`
-          : `${waiting} of ${EXPLORE_LOCK_AT} words waiting for study. explore pauses at ${EXPLORE_LOCK_AT}`
-      }
-    >
-      <Ring
-        size={18}
-        stroke={3}
-        segments={[{ value: calibrating ? Math.min(answers.length, CALIBRATION_WORDS) : waiting, color: colors.textSecondary }]}
-        total={calibrating ? CALIBRATION_WORDS : EXPLORE_LOCK_AT}
-      />
-      <Text style={styles.counter}>
-        {calibrating
-          ? `${Math.min(answers.length, CALIBRATION_WORDS)} / ${CALIBRATION_WORDS}`
-          : `${waiting} / ${EXPLORE_LOCK_AT}`}
-      </Text>
+    <View style={styles.counterWrap} accessible accessibilityLabel={`word ${Math.min(answers.length + 1, CALIBRATION_WORDS)} of ${CALIBRATION_WORDS}`}>
+      <Ring size={18} stroke={3} segments={[{ value: Math.min(answers.length, CALIBRATION_WORDS), color: colors.textSecondary }]} total={CALIBRATION_WORDS} />
+      <Text style={styles.counter}>{`${Math.min(answers.length, CALIBRATION_WORDS)} / ${CALIBRATION_WORDS}`}</Text>
     </View>
   );
 
@@ -358,11 +302,28 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         { paddingTop: insets.top + 12, paddingBottom: calibrating ? insets.bottom + 12 : tabSpace },
       ]}
     >
-      <TabHeader
-        title={calibrating ? undefined : 'explore'}
-        right={calibrating ? counter : <FilterButton settings={explore} menu={menu} onMenu={setMenu} />}
-      />
-      {calibrating ? null : <ExploreByRow by={explore.by} theme={explore.theme ?? word?.theme ?? null} menu={menu} onMenu={setMenu} />}
+      <View onLayout={(e) => setTitleH(e.nativeEvent.layout.height)}>
+        <TabHeader
+          titleNode={
+            calibrating ? undefined : (
+              <ExploreTitle
+                by={explore.by}
+                theme={byTheme ? (explore.theme ?? word?.theme ?? null) : undefined}
+                settings={explore}
+                menu={menu}
+                onMenu={setMenu}
+                onAnchor={(name, rect) =>
+                  setAnchors((a) => {
+                    const old = a[name];
+                    return old && old.x === rect.x && old.y === rect.y && old.w === rect.w && old.h === rect.h ? a : { ...a, [name]: rect };
+                  })
+                }
+              />
+            )
+          }
+          right={calibrating ? counter : undefined}
+        />
+      </View>
 
       <View
         style={styles.body}
@@ -387,7 +348,10 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                   showHint={false}
                   reveal={revealed ? revealInside : undefined}
                   onCommit={onCommit}
+                  onDrawing={setDrawing}
                 />
+
+                {revealed || drawing ? null : <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => onCommit(DONT_KNOW)} />}
 
                 {revealed ? (
                   <View style={[styles.details, { top: circleTop + size + 26 }]}>
@@ -398,7 +362,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                 {showSwipeTip ? (
                   <View style={styles.hintBottom}>
                     {calibrating ? (
-                      <TravelHint swipeText={testDone ? 'swipe up to continue' : 'swipe up for the next word'} />
+                      <TravelHint swipeText="swipe up for the next word" />
                     ) : (
                       <TravelHint tapText="tap a word to travel," swipeText="or swipe up" />
                     )}
@@ -423,7 +387,8 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
       {calibrating ? null : (
         <ExploreMenus
           menu={menu}
-          top={insets.top + 12 + HEADER_HEIGHT + 6}
+          origin={insets.top + 12}
+          anchors={anchors}
           settings={explore}
           onMenu={setMenu}
           onChange={setExplore}
@@ -432,7 +397,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
       )}
 
       {status ? (
-        <View pointerEvents="box-none" style={[styles.statusTop, { top: insets.top + 12 + HEADER_HEIGHT + (calibrating ? 0 : BY_ROW_HEIGHT) + 10 }]}>
+        <View pointerEvents="box-none" style={[styles.statusTop, { top: insets.top + 12 + (calibrating ? HEADER_HEIGHT : titleH) + 10 }]}>
           <UndoToast message={status} onUndo={onUndo} />
         </View>
       ) : null}

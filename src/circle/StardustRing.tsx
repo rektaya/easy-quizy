@@ -84,6 +84,10 @@ const HALO_RAMP = [
   [1, 255, 150, 55],
 ];
 
+// the ring of a word that is not known at all (the cross): a deep blue
+const DARK_CORE = 'rgba(64,104,216,1)';
+const DARK_HALO = 'rgba(36,68,186,1)';
+
 export function StardustRing({ ring }: { ring: Ring }) {
   const { c, r, size, v } = ring;
   const clock = useClock();
@@ -119,10 +123,10 @@ export function StardustRing({ ring }: { ring: Ring }) {
   // how much the stars shine: faint for a short arc, bright for a full ring, with a flare when a word is known
   const shine = useDerivedValue(() => {
     const flare = v.burst.value > 0 && v.burst.value < 1 ? Math.sin(Math.PI * Math.min(1, v.burst.value / 0.45)) * 0.45 : 0;
-    return shineOf(v.display.value) + flare;
+    return (v.dark.value ? 0.3 : shineOf(v.display.value)) + flare;
   });
-  const coreColor = useDerivedValue(() => ramp(CORE_RAMP, shine.value));
-  const haloColor = useDerivedValue(() => ramp(HALO_RAMP, shine.value));
+  const coreColor = useDerivedValue(() => (v.dark.value ? DARK_CORE : ramp(CORE_RAMP, shine.value)));
+  const haloColor = useDerivedValue(() => (v.dark.value ? DARK_HALO : ramp(HALO_RAMP, shine.value)));
   const coreBig = useDerivedValue(() => Math.min(1, (0.7 + 0.3 * shine.value) * (0.72 + 0.28 * Math.sin(clock.value / 480))));
   const coreSmall = useDerivedValue(() => Math.min(1, (0.7 + 0.3 * shine.value) * (0.72 + 0.28 * Math.sin(clock.value / 480 + 3.1))));
   const haloBig = useDerivedValue(() => Math.min(1, (0.22 + 0.55 * Math.pow(shine.value, 1.6)) * (0.75 + 0.25 * Math.sin(clock.value / 480))));
@@ -181,6 +185,7 @@ function Head({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
   const rad = useDerivedValue(() => 14 + 12 * v.speed.value + 12 * v.pulse.value);
   // the glow is the colour of the stars it runs along
   const headColors = useDerivedValue(() => {
+    if (v.dark.value) return ['rgba(160,190,255,0.9)', 'rgba(46,84,200,0.5)', 'rgba(46,84,200,0)'];
     const sh = shineOf(v.display.value);
     return ['rgba(255,255,255,0.95)', ramp(HALO_RAMP, sh, 0.5), ramp(HALO_RAMP, sh, 0)];
   });

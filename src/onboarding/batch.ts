@@ -15,8 +15,6 @@ export const SESSION_SIZE: Record<SessionKind, { total: number; fresh: number }>
   quick: { total: 10, fresh: 5 },
   long: { total: 50, fresh: 20 }, // "study all": everything that is waiting or due, up to 50 words
 };
-/** When this many gathered words are waiting to be studied, Explore pauses until some are learned. */
-export const EXPLORE_LOCK_AT = 20;
 
 type Ratings = Record<string, Rating>;
 type Cards = Record<string, StoredCard>;

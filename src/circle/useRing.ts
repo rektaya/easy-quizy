@@ -17,6 +17,7 @@ import {
   angleAround,
   angleDelta,
   canStartDraw,
+  isDontKnow,
   nextZone,
   snapValue,
 } from './geometry';
@@ -53,6 +54,8 @@ export function useRing(
   oy = 0,
   /** Called (on the JS thread) the moment a ring is drawn all the way: the word is known. */
   onKnown?: () => void,
+  /** Called (on the JS thread) when a drawing starts (true) and when it ends (false), whether it made a rating or not. */
+  onDrawing?: (drawing: boolean) => void,
 ) {
   const c = size / 2;
   const r = c - RING_STROKE;
@@ -70,6 +73,7 @@ export function useRing(
   const speed = useSharedValue(0); // how fast the finger is going round, 0..1, fading when it stops
   const pulse = useSharedValue(0); // 1 the moment a 30/60/90% line is crossed, then fading to 0
   const burst = useSharedValue(0); // 0 while idle; runs 0 -> 1 when a word is marked known
+  const dark = useSharedValue(false); // the ring of a word marked "don't know at all" (the cross): drawn in dark blue
   const finish = useSharedValue(0); // 0 while idle; runs 0 -> 1 when a ring is let go before the end: it then completes itself
 
   useFrameCallback(() => {
@@ -94,9 +98,11 @@ export function useRing(
       'worklet';
       if (!armed.value) return;
       finish.value = 0; // a drawing started during an undo takes over from it
+      dark.value = false;
       progress.value = 0;
       dragging.value = true;
       zone.value = 1;
+      if (onDrawing) scheduleOnRN(onDrawing, true);
     })
     .onUpdate((e) => {
       'worklet';
@@ -137,10 +143,12 @@ export function useRing(
           finish.value = 0;
           finish.value = withTiming(1, { duration: 1400, easing: Easing.inOut(Easing.quad) });
         }
+        if (onDrawing) scheduleOnRN(onDrawing, false);
         scheduleOnRN(onCommit, v);
       } else {
         zone.value = 1;
         progress.value = withTiming(0, { duration: 220 });
+        if (onDrawing) scheduleOnRN(onDrawing, false);
       }
     });
 
@@ -172,10 +180,19 @@ export function useRing(
     if (value === null) {
       if (locked.value) reset();
     } else if (!locked.value) {
-      progress.value = value;
       locked.value = true;
-      if (value >= 0.9) burst.value = 1;
-      else finish.value = 1;
+      if (isDontKnow(value)) {
+        // the cross: nothing was drawn, so the ring draws itself, all the way round, in dark blue
+        dark.value = true;
+        progress.value = 0;
+        finish.value = 0;
+        finish.value = withTiming(1, { duration: 1100, easing: Easing.inOut(Easing.quad) });
+      } else {
+        dark.value = false;
+        progress.value = value;
+        if (value >= 0.9) burst.value = 1;
+        else finish.value = 1;
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
@@ -183,7 +200,7 @@ export function useRing(
   // The shared values are kept together in `v`, apart from the gesture and `reset`: a worklet may only
   // capture things it can copy to the UI thread, and a gesture is not one of them. So the animations
   // capture `v`, never the whole ring.
-  const v = { progress, display, locked, dragging, startRad, direction, speed, pulse, burst, finish };
+  const v = { progress, display, locked, dragging, startRad, direction, speed, pulse, burst, finish, dark };
   return { size, c, r, v, gesture, reset };
 }
 

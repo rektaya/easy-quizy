@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Alert, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -18,20 +18,22 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import Svg, { Circle, Defs, Line, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
 import { Button } from '../components/Button';
+import { CardPager } from '../components/CardPager';
+import { WordRow } from '../components/WordRow';
 import { GlowCanvas, sphereUnits } from '../components/GlowShader';
-import { LookIcon } from '../components/Icons';
+import { ChevronLeftIcon, LookIcon } from '../components/Icons';
 import { LookSource } from '../components/LookSource';
 import { TiltSource } from '../components/TiltSource';
 import type { Glow } from '../components/GlowShader';
 import { TabHeader } from '../components/TabHeader';
 import { THEMES, WORDS } from '../data/words';
-import { EXPLORE_LOCK_AT, waitingWords } from '../onboarding/batch';
 import { THEME_LEVEL } from '../data/themeLinks';
-import { buildClusters, clusterStats, curatedLinks, levelOf, starLook, zoomWords } from '../onboarding/mapdata';
+import { buildClusters, clusterStats, curatedLinks, levelOf, orderedWords, starLook, zoomWords } from '../onboarding/mapdata';
 import type { Cluster, StarLook, StarState } from '../onboarding/mapdata';
-import { ambientStars, blob, layoutSky, shuffled } from '../onboarding/sky';
+import { LABEL_FONT, ambientStars, blob, layoutSky, placeLabels, shuffled } from '../onboarding/sky';
 import type { SkyCluster } from '../onboarding/sky';
 import { clampPan, minScale, panRange, snapScale } from '../onboarding/viewport';
+import { wordStatus } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts, radius } from '../theme';
@@ -62,7 +64,7 @@ const WORLD_Y = 1.9; // height of that area, in screens
 // never sit near its edges and there is always sky beyond the outermost one.
 const WORLD_PAD = 0.45;
 const SMALL_STAR_CELL = 38; // room for one small star per cell of this size (bigger cell, sparser sky)
-const PANEL_HEIGHT = 190; // the card at the bottom, and the tab bar under it
+const PANEL_HEIGHT = 236; // the card at the bottom of an opened theme (its name, how much is explored, the buttons)
 const MAX_ZOOM_POINTS = 60; // every word of a theme gets its own point (an even sample beyond this)
 const SPHERE_DUST = 230; // the fine dots that give the sphere its shape
 const SPHERE_SPIN = 0.32; // radians per second
@@ -97,10 +99,13 @@ function SkyDefs() {
   );
 }
 
+const DULL_STAR_R = 5; // the radius of every untouched theme's star
+
 // A theme's big star and a word's point are drawn by one shader (components/GlowShader). These turn
 // what the Map knows into what the shader needs.
 function heroGlow(x: number, y: number, baseR: number, look: StarLook, phase: number): Glow {
-  if (look.kind === 'dull') return { x, y, radius: baseR * 0.75, dull: true }; // untouched: there, but dark
+  // untouched: there, but dark. Every untouched theme looks exactly the same (one size, steady), whatever it holds
+  if (look.kind === 'dull') return { x, y, radius: DULL_STAR_R, dull: true, steady: true };
   // a little of the theme taken: the same warm point as a glowing star, with only a tiny glow and no rays
   if (look.kind === 'spark') return { x, y, radius: baseR * 0.85, lit: 0.1, haloK: 0.45, phase };
   // more of it taken: a bigger core, a wider halo and longer rays
@@ -139,7 +144,7 @@ function snapTick() {
 export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   const insets = useSafeAreaInsets();
   const { ratings, reset } = useRatings();
-  const { cards, skySeed, restartOnboarding, mapIntroSeen, setMapIntroSeen } = useProfile();
+  const { cards, skySeed, restartOnboarding, mapIntroSeen, setMapIntroSeen, ownWords } = useProfile();
   // Testing helper: hold the "map" title to wipe this phone's progress and begin from the name screen.
   const confirmStartOver = () =>
     Alert.alert('Start over?', 'Everything on this phone is erased and the app begins from the very start.', [
@@ -155,6 +160,9 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
     ]);
   const [stage, setStage] = useState({ w: 0, h: 0 });
   const [selectedId, setSelectedId] = useState<string | null>(null); // whose card is showing
+  const [listOpen, setListOpen] = useState(false); // the page with the theme's words: one level further in
+  const [openWordId, setOpenWordId] = useState<string | null>(null); // the word whose card is open over that page
+  const nudged = useRef(false);
   const [openId, setOpenId] = useState<string | null>(null); // whose cluster is drawn opened up
   const open = useSharedValue(0); // 0 = the whole sky, 1 = a cluster opened up
   const tiltX = useSharedValue(0); // the phone's tilt, -1..1 (see TiltSource)
@@ -182,7 +190,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
     }
   }, [tiltOn, tiltX, tiltY]);
 
-  const clusters = useMemo(() => buildClusters(THEMES, WORDS), []);
+  const clusters = useMemo(() => buildClusters(THEMES, WORDS), [ownWords.length]); // eslint-disable-line react-hooks/exhaustive-deps
   const pad = useMemo(() => ({ x: stage.w * WORLD_PAD, y: stage.h * WORLD_PAD }), [stage]);
   const world = useMemo(
     () => ({ w: stage.w * WORLD_X + 2 * pad.x, h: stage.h * WORLD_Y + 2 * pad.y }),
@@ -245,6 +253,14 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   );
   // how each theme's star looks, from how many of its words have been taken
   const looks = useMemo(() => clusters.map((c) => starLook(clusterStats(c, ratings, cards))), [clusters, ratings, cards]);
+  // which themes have at least one explored word: threads are drawn only between two of those
+  const touched = useMemo(
+    () => clusters.map((c) => {
+      const stats = clusterStats(c, ratings, cards);
+      return stats.total - stats.unexplored > 0;
+    }),
+    [clusters, ratings, cards],
+  );
   const bigStars = useMemo(() => {
     const glows = looks.map(levelOf);
     return (
@@ -257,13 +273,13 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
             <Circle key={`n-${c.id}`} cx={c.cx} cy={c.cy} r={c.heroR * (9 + 8 * t) * (0.9 + 1.1 * t)} fill="url(#nebula)" opacity={Math.min(1, t * 1.3)} />
           ) : null;
         })}
-        {/* the threads between related themes: none between two dark stars, faint and cool when one end is
-            lit, warm and brighter when both are */}
+        {/* the threads between related themes: only between two themes that each have an explored word; faint
+            and cool at first, warm and brighter as both shine */}
         {sky.length
           ? links.map((l) => {
               const a = sky[l.a];
               const b = sky[l.b];
-              if (glows[l.a] <= 0 && glows[l.b] <= 0) return null;
+              if (!touched[l.a] || !touched[l.b]) return null;
               const both = Math.min(glows[l.a], glows[l.b]);
               return (
                 <Line
@@ -281,23 +297,25 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
           : null}
       </Svg>
     );
-  }, [sky, links, looks, world]);
+  }, [sky, links, looks, touched, world]);
 
   // the theme names are their own layer, so they can fade away when the camera pulls back
   const labels = useMemo(() => {
     const glows = looks.map(levelOf);
+    // each name goes where it does not overlap another name or star
+    const places = placeLabels(sky.map((c, i) => ({ x: c.cx, y: c.cy, r: c.heroR, text: clusters[i].en })), world);
     return (
       <Svg width={world.w} height={world.h}>
         {sky.map((c, i) => (
           <SvgText
             key={`t-${c.id}`}
-            x={c.cx}
-            y={c.cy + c.heroR + 20}
-            fontSize={11}
-            fontFamily={fonts.regular}
+            x={places[i].x}
+            y={places[i].y}
+            fontSize={LABEL_FONT}
+            fontFamily={fonts.medium}
             fill={ON_SKY}
-            fillOpacity={0.3 + 0.65 * glows[i]}
-            textAnchor="middle"
+            fillOpacity={0.68 + 0.32 * glows[i]}
+            textAnchor={places[i].anchor}
           >
             {clusters[i].en}
           </SvgText>
@@ -315,10 +333,14 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
 
   const opened = sky.find((c) => c.id === openId);
   const cluster = clusters.find((c) => c.id === selectedId) ?? null;
-  const locked = waitingWords(WORDS, ratings, cards).length >= EXPLORE_LOCK_AT;
+  // the words of the open topic as its list shows them: the explored ones first
+  const listWords = useMemo(() => (cluster ? orderedWords(cluster, ratings) : []), [cluster, ratings]);
 
   // Where the opened cluster ends up (above the card), and the shape its points take there.
-  const target = { x: stage.w / 2, y: Math.max(150, (stage.h - PANEL_HEIGHT + 110) / 2) };
+  // The card at the bottom holds the theme's name and the buttons; the sphere floats in the space above it.
+  const panelTop = stage.h - bottomSpace - PANEL_HEIGHT;
+  const target = { x: stage.w / 2, y: Math.max(120, (110 + panelTop) / 2) };
+  const sphereR = Math.max(60, Math.min(stage.w * 0.36, 150, (panelTop - 110) / 2 - 6));
 
   const zoom = useMemo(() => {
     if (!opened || !cluster) return null;
@@ -328,7 +350,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
     const states = zw.map((z) => z.state);
     // the theme is a turning sphere of dots: one point per word, and the ones you have taken into study
     // shine. The words sit at scattered places of the sphere, so the shining ones are not clumped.
-    const R = Math.min(stage.w * 0.36, 150);
+    const R = sphereR;
     const seats = shuffled(sphereUnits(zw.length), opened.seed);
     const look = starLook(clusterStats(cluster, ratings, cards));
     const glow = look.kind === 'glow' ? look.t : 0; // the haze behind an open theme
@@ -342,7 +364,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
       nebula: blob(opened.seed + 1, 3, rx * 0.6, ry * 0.6, opened.angle, [1, 1]).map((p) => ({ x: p.x, y: p.y, r: Math.max(rx, ry) * 0.9 })),
       glow,
     };
-  }, [opened, cluster, ratings, cards, stage, target.x, target.y]);
+  }, [opened, cluster, ratings, cards, stage, target.x, target.y, sphereR]);
 
   const select = useCallback(
     (c: SkyCluster) => {
@@ -355,7 +377,10 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   const finishClose = useCallback(() => {
     setSelectedId(null);
     setOpenId(null);
+    setListOpen(false);
+    setOpenWordId(null);
   }, []);
+  const openList = useCallback(() => setListOpen(true), []);
   const close = useCallback(() => {
     open.value = withTiming(0, { duration: 340, easing: Easing.inOut(Easing.cubic) }, (finished) => {
       'worklet';
@@ -491,9 +516,14 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
       'worklet';
       open.value = Math.min(1, Math.max(0, 1 - (1 - e.scale) * 1.4));
     })
-    .onEnd(() => {
+    .onEnd((e) => {
       'worklet';
-      if (open.value < 0.62) {
+      if (e.scale > 1.35) {
+        // pinching further in on an opened theme goes inside it: the list of its words
+        scheduleOnRN(snapTick);
+        scheduleOnRN(openList);
+        open.value = withTiming(1, { duration: 260, easing: Easing.out(Easing.cubic) });
+      } else if (open.value < 0.62) {
         scheduleOnRN(snapTick);
         open.value = withTiming(0, { duration: 260, easing: Easing.out(Easing.cubic) }, (finished) => {
           'worklet';
@@ -594,6 +624,15 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
             {selectedId ? (
               <Pressable style={StyleSheet.absoluteFill} onPress={close} accessibilityLabel="close" accessibilityRole="button" />
             ) : null}
+            {/* tapping the sphere itself goes inside it: the list of its words */}
+            {selectedId && zoom ? (
+              <Pressable
+                onPress={openList}
+                accessibilityRole="button"
+                accessibilityLabel="see the words of this topic"
+                style={{ position: 'absolute', left: target.x - sphereR, top: target.y - sphereR, width: sphereR * 2, height: sphereR * 2, borderRadius: sphereR }}
+              />
+            ) : null}
           </>
         ) : null}
       </View>
@@ -619,8 +658,24 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
         {!selectedId ? <Text style={styles.sub}>every star is a topic. it lights up as you learn its words.</Text> : null}
       </View>
 
-      {cluster ? (
-        <Panel cluster={cluster} bottom={bottomSpace} locked={locked} onExplore={onExplore} onStudy={onStudy} />
+      {cluster && listOpen ? (
+        <WordListPage cluster={cluster} bottom={bottomSpace} onBack={() => setListOpen(false)} onExplore={onExplore} onStudy={onStudy} onOpenWord={setOpenWordId} />
+      ) : null}
+
+      {cluster && listOpen && openWordId ? (
+        <CardPager
+          words={listWords}
+          startIndex={Math.max(0, listWords.findIndex((w) => w.id === openWordId))}
+          onClose={() => setOpenWordId(null)}
+          statusFor={(id) => wordStatus(id, ratings, cards)}
+          top={insets.top + 12}
+          bottom={bottomSpace}
+          nudged={nudged}
+        />
+      ) : null}
+
+      {cluster && !listOpen ? (
+        <Panel cluster={cluster} bottom={bottomSpace} onExplore={onExplore} onStudy={onStudy} onSeeWords={openList} />
       ) : showIntro ? (
         // the first time the Map is opened: what it is, and how to move around it
         <Animated.View entering={FadeIn.duration(400)} style={[styles.card, { bottom: bottomSpace }]}>
@@ -637,18 +692,20 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   );
 }
 
+// The card at the bottom of an opened theme: its name, how many of its words are explored, and the actions: the
+// one main action, and a quieter one that goes inside, to the list of its words (tapping the sphere does the same).
 function Panel({
   cluster,
   bottom,
-  locked,
   onExplore,
   onStudy,
+  onSeeWords,
 }: {
   cluster: Cluster;
   bottom: number;
-  locked: boolean;
   onExplore: (id: string) => void;
   onStudy: () => void;
+  onSeeWords: () => void;
 }) {
   const { ratings } = useRatings();
   const { cards } = useProfile();
@@ -656,24 +713,65 @@ function Panel({
   const done = stats.unexplored === 0;
   return (
     <Animated.View entering={FadeIn.duration(240)} exiting={FadeOut.duration(160)} style={[styles.card, { bottom }]}>
-      <View style={styles.cardTop}>
-        <View style={styles.cardHead}>
-          <Text style={styles.cardTitle}>{cluster.en}</Text>
+      <View style={styles.cardHead}>
+        <Text style={styles.cardTitle}>{cluster.en}</Text>
+        <Text style={styles.cardSub}>
+          {cluster.de} · {stats.total - stats.unexplored} of {stats.total} words explored
+        </Text>
+        {done ? <Text style={styles.cardNote}>all the words in this cluster are already explored, so it’s time to study them</Text> : null}
+      </View>
+      <View style={styles.cardButtons}>
+        {done ? <Button label="study" onPress={onStudy} /> : <Button label="explore from here" onPress={() => onExplore(cluster.id)} />}
+        <Button label="see words" onPress={onSeeWords} kind="ghost" />
+      </View>
+    </Animated.View>
+  );
+}
+
+// One level further in: a page of its own with all the words of the topic (the same rows as in Study; tap one for its
+// card). The chevron goes back to the opened topic.
+function WordListPage({
+  cluster,
+  bottom,
+  onBack,
+  onExplore,
+  onStudy,
+  onOpenWord,
+}: {
+  cluster: Cluster;
+  bottom: number;
+  onBack: () => void;
+  onExplore: (id: string) => void;
+  onStudy: () => void;
+  onOpenWord: (id: string) => void;
+}) {
+  const insets = useSafeAreaInsets();
+  const { ratings } = useRatings();
+  const { cards } = useProfile();
+  const stats = clusterStats(cluster, ratings, cards);
+  const done = stats.unexplored === 0;
+  const words = orderedWords(cluster, ratings);
+  return (
+    <Animated.View entering={FadeIn.duration(260)} exiting={FadeOut.duration(160)} style={[styles.listPage, { paddingTop: insets.top + 12, paddingBottom: bottom }]}>
+      <View style={styles.listHeader}>
+        <Pressable onPress={onBack} accessibilityRole="button" accessibilityLabel="back" hitSlop={12} style={styles.listBack}>
+          <ChevronLeftIcon color={colors.accent} size={28} />
+        </Pressable>
+        <View style={styles.listTitles}>
+          <Text style={styles.listTitle} accessibilityRole="header">
+            {cluster.en}
+          </Text>
           <Text style={styles.cardSub}>
             {cluster.de} · {stats.total - stats.unexplored} of {stats.total} words explored
           </Text>
-          {done ? <Text style={styles.cardNote}>all the words in this cluster are already explored, so it’s time to study them</Text> : null}
         </View>
       </View>
-      {done ? (
-        <Button label="study" onPress={onStudy} />
-      ) : (
-        <Button
-          label={locked ? 'explore is paused' : 'explore from here'}
-          onPress={() => onExplore(cluster.id)}
-          disabled={locked}
-        />
-      )}
+      <ScrollView style={styles.sheetList} contentContainerStyle={styles.sheetListContent} showsVerticalScrollIndicator={false}>
+        {words.map((w) => (
+          <WordRow key={w.id} word={w} status={wordStatus(w.id, ratings, cards)} onOpen={() => onOpenWord(w.id)} />
+        ))}
+      </ScrollView>
+      {done ? <Button label="study" onPress={onStudy} /> : <Button label="explore from here" onPress={() => onExplore(cluster.id)} />}
     </Animated.View>
   );
 }
@@ -702,5 +800,14 @@ const styles = StyleSheet.create({
   cardHead: { flex: 1, gap: 2 },
   cardTitle: { fontFamily: fonts.medium, fontSize: 20, color: ON_SKY },
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
+  cardButtons: { gap: 10 },
+  // the page with a theme's words
+  listPage: { ...StyleSheet.absoluteFill, paddingHorizontal: 24, gap: 14, backgroundColor: SKY },
+  listHeader: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  listBack: { height: 32, justifyContent: 'center', marginLeft: -6 },
+  listTitles: { flex: 1, gap: 1 },
+  listTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY },
+  sheetList: { flex: 1 },
+  sheetListContent: { gap: 8, paddingBottom: 4 },
   cardNote: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: ON_SKY, marginTop: 8 },
 });

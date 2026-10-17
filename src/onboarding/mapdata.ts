@@ -27,6 +27,15 @@ export function buildClusters(themes: Theme[], words: Word[]): Cluster[] {
     .filter((c) => c.words.length > 0);
 }
 
+/**
+ * The words of a topic as the list shows them: the ones the user has explored first (the latest explored on top),
+ * then the ones not met yet, in their own order.
+ */
+export function orderedWords(cluster: Cluster, ratings: Record<string, Rating>): Word[] {
+  const explored = cluster.words.filter((w) => ratings[w.id]).sort((a, b) => ratings[b.id].at - ratings[a.id].at);
+  return [...explored, ...cluster.words.filter((w) => !ratings[w.id])];
+}
+
 export type ClusterStats = Record<StarState, number> & { total: number };
 
 export function clusterStats(

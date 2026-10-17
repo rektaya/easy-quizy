@@ -5,25 +5,17 @@ import Animated, { Easing, FadeIn, FadeOut, useAnimatedStyle, useSharedValue, wi
 import { scheduleOnRN } from 'react-native-worklets';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
-import { ChevronLeftIcon, SearchIcon, SortIcon, TrashIcon } from '../components/Icons';
+import { PlusIcon, SearchIcon, SortIcon } from '../components/Icons';
 import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
-import { WordCard } from '../components/WordCard';
+import { CardPager } from '../components/CardPager';
+import { WordRow } from '../components/WordRow';
 import { WORDS } from '../data/words';
 import type { Word } from '../data/words';
-import { RING_AMBER, RING_GREEN, RING_RED } from '../circle/color';
-import { STATUS_LABEL, STATUS_ORDER, statusOf } from '../onboarding/status';
-import type { Status } from '../onboarding/status';
+import { STATUS_ORDER, wordStatus } from '../onboarding/status';
+import type { Status, WordStatus } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts, radius, shadow } from '../theme';
-
-const STATUS_COLOR: Record<Status, string> = {
-  new: '#AEB8C3',
-  shaky: RING_RED,
-  getting: RING_AMBER,
-  solid: '#9ACD5A',
-  learned: RING_GREEN,
-};
 
 type Sort = 'status' | 'a-z' | 'newest';
 const SORTS: { key: Sort; label: string }[] = [
@@ -40,12 +32,15 @@ export default function WordsScreen({
   bottomSpace,
   sessions,
   note,
+  onAdd,
 }: {
   bottomSpace: number;
   /** The sessions that can be started now (a quick one, a longer one): a button each. */
   sessions: { label: string; caption: string; onPress: () => void }[];
   /** Said above the buttons when no session is ready. */
   note?: string;
+  /** The plus: add a word of your own. */
+  onAdd: () => void;
 }) {
   const insets = useSafeAreaInsets();
   const { ratings, unrate } = useRatings();
@@ -58,8 +53,7 @@ export default function WordsScreen({
   const [sort, setSort] = useState<Sort>('status');
 
   const q = query.trim().toLowerCase();
-  // a word marked known in Explore has no card; it counts as learned
-  const statusFor = (id: string): Status => (!cards[id] && ratings[id]?.known ? 'learned' : statusOf(cards[id]));
+  const statusFor = (id: string) => wordStatus(id, ratings, cards);
   // the words in study: gathered, and not yet learned
   const inPile = WORDS.filter((w) => ratings[w.id] && statusFor(w.id) !== 'learned');
   const shown = inPile
@@ -68,7 +62,7 @@ export default function WordsScreen({
       if (sort === 'newest') return ratings[b.id].at - ratings[a.id].at;
       if (sort === 'a-z') return a.lemma.localeCompare(b.lemma, 'de');
       return (
-        STATUS_ORDER.indexOf(statusFor(a.id)) - STATUS_ORDER.indexOf(statusFor(b.id)) ||
+        STATUS_ORDER.indexOf(statusFor(a.id) as Status) - STATUS_ORDER.indexOf(statusFor(b.id) as Status) ||
         a.lemma.localeCompare(b.lemma, 'de')
       );
     });
@@ -128,6 +122,9 @@ export default function WordsScreen({
             >
               <SearchIcon color={searching ? colors.onAccent : colors.textSecondary} />
             </Pressable>
+            <Pressable onPress={onAdd} accessibilityRole="button" accessibilityLabel="add a word of your own" hitSlop={8} style={styles.iconButton}>
+              <PlusIcon color={colors.textSecondary} />
+            </Pressable>
           </View>
         }
       />
@@ -157,44 +154,9 @@ export default function WordsScreen({
         {shown.length === 0 ? (
           <Text style={styles.empty}>{q ? 'no words match' : 'no words yet. rate some in explore'}</Text>
         ) : null}
-        {shown.map((w) => {
-          const status = statusFor(w.id);
-          return (
-            <View key={w.id} style={styles.row}>
-              <Pressable
-                style={styles.open}
-                onPress={() => {
-                  setOpenId(w.id);
-                }}
-                accessibilityRole="button"
-                accessibilityLabel={`${w.article ? w.article + ' ' : ''}${w.lemma}, ${w.en}: open the card`}
-              >
-                <View style={styles.text}>
-                  <Text style={styles.lemma}>
-                    {w.article ? <Text style={styles.article}>{w.article} </Text> : null}
-                    {w.lemma}
-                  </Text>
-                  <Text style={styles.en} numberOfLines={1}>
-                    {w.en}
-                  </Text>
-                </View>
-                <View style={styles.status}>
-                  <View style={[styles.dot, { backgroundColor: STATUS_COLOR[status] }]} />
-                  <Text style={styles.statusText}>{STATUS_LABEL[status]}</Text>
-                </View>
-              </Pressable>
-              <Pressable
-                onPress={() => remove(w.id, w.lemma)}
-                accessibilityRole="button"
-                accessibilityLabel={`delete ${w.lemma}`}
-                hitSlop={6}
-                style={styles.trash}
-              >
-                <TrashIcon color={colors.textSecondary} />
-              </Pressable>
-            </View>
-          );
-        })}
+        {shown.map((w) => (
+          <WordRow key={w.id} word={w} status={statusFor(w.id)} onOpen={() => setOpenId(w.id)} onDelete={() => remove(w.id, w.lemma)} />
+        ))}
       </ScrollView>
 
       <View style={styles.action}>
@@ -236,99 +198,13 @@ export default function WordsScreen({
           words={shown}
           startIndex={openIndex}
           onClose={() => setOpenId(null)}
-          tagFor={(id) => STATUS_LABEL[statusFor(id)]}
+          statusFor={statusFor}
           top={insets.top + 12}
           bottom={bottomSpace}
           nudged={nudged}
         />
       ) : null}
     </View>
-  );
-}
-
-// A word's card over the list. Swipe up for the next word of the list and down for the previous one, the same
-// motion as moving on in Explore and Study (the card follows the finger). The first card of a visit gives a
-// small nudge upwards, to say "swipe". The only way out is the chevron (the same back chevron as on Profile).
-function CardPager({
-  words,
-  startIndex,
-  onClose,
-  tagFor,
-  top,
-  bottom,
-  nudged,
-}: {
-  words: Word[];
-  startIndex: number;
-  onClose: () => void;
-  tagFor: (id: string) => string;
-  top: number;
-  bottom: number;
-  nudged: React.MutableRefObject<boolean>;
-}) {
-  const { height } = useWindowDimensions();
-  const dy = useSharedValue(0);
-  // the position lives here, not in the list: moving to the next word redraws only this card, so it stays smooth
-  const [index, setIndex] = useState(startIndex);
-  const hasPrev = index > 0;
-  const hasNext = index < words.length - 1;
-
-  React.useEffect(() => {
-    if (nudged.current || !hasNext) return;
-    nudged.current = true;
-    dy.value = withDelay(550, withSequence(withTiming(-26, { duration: 220 }), withTiming(0, { duration: 320 })));
-  }, [hasNext, dy, nudged]);
-
-  // dir +1: the next word (the card leaves upwards, the next one rises from below), -1: the previous one
-  const go = (dir: number) => {
-    setIndex((i) => i + dir);
-    // jump to the entry side and glide in, as one animation (so the order is certain)
-    dy.value = withSequence(
-      withTiming(dir * height * 0.3, { duration: 0 }),
-      withTiming(0, { duration: 260, easing: Easing.out(Easing.cubic) }),
-    );
-  };
-  const swipe = Gesture.Pan()
-    .activeOffsetY([-14, 14])
-    .failOffsetX([-24, 24])
-    .onUpdate((e) => {
-      'worklet';
-      const blocked = (e.translationY < 0 && !hasNext) || (e.translationY > 0 && !hasPrev);
-      dy.value = blocked ? e.translationY * 0.25 : e.translationY;
-    })
-    .onEnd((e) => {
-      'worklet';
-      const dir = e.translationY < 0 ? 1 : -1;
-      const wants = Math.abs(e.translationY) > 80 || Math.abs(e.velocityY) > 650;
-      if (wants && ((dir === 1 && hasNext) || (dir === -1 && hasPrev))) {
-        dy.value = withTiming(-dir * height * 0.6, { duration: 170, easing: Easing.in(Easing.cubic) }, (finished) => {
-          'worklet';
-          if (finished) scheduleOnRN(go, dir);
-        });
-      } else {
-        dy.value = withSpring(0, { damping: 18, stiffness: 220 });
-      }
-    });
-  const cardStyle = useAnimatedStyle(() => ({
-    opacity: 1 - 0.6 * Math.min(1, Math.abs(dy.value) / (height * 0.5)),
-    transform: [{ translateY: dy.value }],
-  }));
-
-  const word = words[index];
-  return (
-    <Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(160)} style={styles.overlay}>
-      <Pressable style={StyleSheet.absoluteFill} onPress={onClose} accessibilityLabel="close the card" accessibilityRole="button" />
-      <View style={[styles.cardWrap, { paddingTop: top, paddingBottom: bottom }]} pointerEvents="box-none">
-        <Pressable onPress={onClose} accessibilityRole="button" accessibilityLabel="back to the list" hitSlop={12} style={styles.back}>
-          <ChevronLeftIcon color={colors.accent} size={28} />
-        </Pressable>
-        <GestureDetector gesture={swipe}>
-          <Animated.View style={[styles.pagerCard, cardStyle]}>
-            <WordCard word={word} tag={tagFor(word.id)} fade={false} />
-          </Animated.View>
-        </GestureDetector>
-      </View>
-    </Animated.View>
   );
 }
 
@@ -385,13 +261,4 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: colors.border,
   },
-  open: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10 },
-  text: { flex: 1, gap: 2 },
-  lemma: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
-  article: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
-  en: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
-  status: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  dot: { width: 8, height: 8, borderRadius: 4 },
-  statusText: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary },
-  trash: { width: 36, height: 36, borderRadius: radius.tile, alignItems: 'center', justifyContent: 'center' },
 });

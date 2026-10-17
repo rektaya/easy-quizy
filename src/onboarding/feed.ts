@@ -2,10 +2,10 @@ import type { Word } from '../data/words';
 import { estimateLevel, targetTier } from './calibration.ts';
 import type { Answer } from './calibration.ts';
 
-// How Explore chooses the next word, in three ways ("explore by ..."), shaped by a few simple filters.
-// Every way keeps to the user's level (a word that is too easy or too hard is not offered), never offers
-// a word that was rated or deleted, and has no randomness: the same ratings give the same trail.
-export type FeedBy = 'association' | 'theme' | 'usefulness';
+// How Explore chooses the next word, in four ways, shaped by a few simple filters. Every way keeps to the
+// user's level (a word that is too easy or too hard is not offered) and never offers a word that was rated or
+// deleted. Three of them have no randomness (the same ratings give the same trail); "free" is the one that does.
+export type FeedBy = 'association' | 'theme' | 'usefulness' | 'free';
 export type PosFilter = 'all' | 'noun' | 'verb' | 'other';
 
 export type FeedOptions = {
@@ -38,6 +38,14 @@ function liked(list: Word[], opts: FeedOptions): Word[] {
   return inside.length > 0 ? inside : list;
 }
 
+/** `limit` words picked at random from the list (a partial shuffle). */
+function sample(list: Word[], limit: number, random: () => number): Word[] {
+  const pool = [...list];
+  const out: Word[] = [];
+  while (out.length < limit && pool.length > 0) out.push(pool.splice(Math.floor(random() * pool.length), 1)[0]);
+  return out;
+}
+
 /** The nearest to the target level first, then the more common word, then the order in the list. */
 function byFit(target: number) {
   return (a: Word, b: Word) => Math.abs(a.tier - target) - Math.abs(b.tier - target) || a.rank - b.rank;
@@ -63,6 +71,7 @@ export function fitsFeed(
   if (opts.pos !== 'all' && word.pos !== opts.pos) return false;
   if (Math.abs(word.tier - targetOf(answers, opts)) > 1) return false;
   if (opts.by === 'theme') return !opts.theme || word.theme === opts.theme;
+  if (opts.by === 'free') return true;
   if (opts.by === 'usefulness') return pickFeedWord(words, isRated, answers, null, opts)?.id === word.id;
   return true;
 }
@@ -75,10 +84,13 @@ export function feedChips(
   answers: Answer[],
   opts: FeedOptions,
   limit = 3,
+  random: () => number = Math.random,
 ): Word[] {
   if (!word) return [];
   const target = targetOf(answers, opts);
   const ok = eligible(words, isRated, opts).filter((w) => w.id !== word.id);
+
+  if (opts.by === 'free') return sample(liked(ok.filter((w) => Math.abs(w.tier - target) <= 1), opts), limit, random);
 
   if (opts.by === 'usefulness') {
     return liked(ok.filter((w) => w.tier <= target + 1), opts)
@@ -109,10 +121,16 @@ export function pickFeedWord(
   answers: Answer[],
   current: Word | null,
   opts: FeedOptions,
+  random: () => number = Math.random,
 ): Word | null {
   const ok = eligible(words, isRated, opts);
   if (ok.length === 0) return null;
   const target = targetOf(answers, opts);
+
+  if (opts.by === 'free') {
+    const pool = liked(ok.filter((w) => Math.abs(w.tier - target) <= 1 && w.id !== current?.id), opts);
+    if (pool.length > 0) return pool[Math.floor(random() * pool.length)];
+  }
 
   if (opts.by === 'usefulness') {
     const fit = liked(ok.filter((w) => w.tier <= target + 1), opts);

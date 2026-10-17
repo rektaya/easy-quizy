@@ -685,16 +685,16 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "speisekarte",
-      "ernaehren",
+      "sich-ernaehren",
       "toast"
     ],
     "theme": "Essen und Trinken"
   },
   {
-    "id": "ernaehren",
+    "id": "sich-ernaehren",
     "tier": 4,
-    "lemma": "ernähren",
-    "en": "to nourish, to feed",
+    "lemma": "sich ernähren",
+    "en": "to eat, to feed oneself",
     "example": {
       "de": "Ich versuche, mich ausgewogen zu ernähren.",
       "en": "I try to eat a balanced diet."
@@ -720,7 +720,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "speisekarte",
       "apfel",
-      "ernaehren"
+      "sich-ernaehren"
     ],
     "theme": "Essen und Trinken"
   },
@@ -1676,16 +1676,16 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "gesundheit",
-      "verletzen",
+      "sich-verletzen",
       "krankenhaus"
     ],
     "theme": "Körper und Gesundheit"
   },
   {
-    "id": "verletzen",
+    "id": "sich-verletzen",
     "tier": 2,
-    "lemma": "verletzen",
-    "en": "to hurt, to injure",
+    "lemma": "sich verletzen",
+    "en": "to get hurt, to injure oneself",
     "example": {
       "de": "Er hat sich bei einem Sturz verletzt.",
       "en": "He had a tumble and hurt himself."
@@ -1711,7 +1711,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "gesundheit",
       "unfall",
-      "verletzen"
+      "sich-verletzen"
     ],
     "theme": "Körper und Gesundheit"
   },
@@ -11726,15 +11726,15 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "studium",
-      "konzentrieren",
+      "sich-konzentrieren",
       "test"
     ],
     "theme": "Schule und Lernen"
   },
   {
-    "id": "konzentrieren",
+    "id": "sich-konzentrieren",
     "tier": 3,
-    "lemma": "konzentrieren",
+    "lemma": "sich konzentrieren",
     "en": "to concentrate, to focus",
     "example": {
       "de": "Konzentrieren Sie sich auf dieses Problem.",
@@ -11763,7 +11763,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "studium",
       "satz",
-      "konzentrieren"
+      "sich-konzentrieren"
     ],
     "theme": "Schule und Lernen"
   },
@@ -18862,19 +18862,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "stimmung",
-      "fuehlen",
+      "sich-fuehlen",
       "mut"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "fuehlen",
+    "id": "sich-fuehlen",
     "tier": 2,
-    "lemma": "fühlen",
-    "en": "to feel",
+    "lemma": "sich fühlen",
+    "en": "to feel (a certain way)",
     "example": {
-      "de": "Ich fühle den Sonnenschein auf meinem Gesicht.",
-      "en": "I feel the sunshine on my face."
+      "de": "Ich fühle mich nicht gut.",
+      "en": "I don’t feel well."
     },
     "family": [],
     "related": [
@@ -18897,7 +18897,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "stimmung",
       "vertrauen",
-      "fuehlen"
+      "sich-fuehlen"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -18913,19 +18913,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "stimmung",
-      "interessieren",
+      "sich-interessieren",
       "froh"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "interessieren",
+    "id": "sich-interessieren",
     "tier": 2,
-    "lemma": "interessieren",
-    "en": "to interest",
+    "lemma": "sich interessieren",
+    "en": "to be interested (in)",
     "example": {
-      "de": "Sie sind nicht am Geldsparen interessiert.",
-      "en": "They are not interested in saving money."
+      "de": "Ich interessiere mich für Geschichte.",
+      "en": "I’m interested in history."
     },
     "family": [],
     "related": [
@@ -18948,7 +18948,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "stimmung",
       "moegen",
-      "interessieren"
+      "sich-interessieren"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19060,19 +19060,19 @@ export const GENERATED: RawWord[] = [
     ],
     "related": [
       "enttaeuschung",
-      "beruhigen",
+      "sich-beruhigen",
       "stimmung"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "beruhigen",
+    "id": "sich-beruhigen",
     "tier": 3,
-    "lemma": "beruhigen",
-    "en": "to calm down, to quiet",
+    "lemma": "sich beruhigen",
+    "en": "to calm down",
     "example": {
-      "de": "Die Mutter beruhigte ihr schreiendes Kind.",
-      "en": "The mother was quieting her crying baby."
+      "de": "Die Menge beruhigte sich.",
+      "en": "The crowd calmed down."
     },
     "family": [],
     "related": [
@@ -19097,7 +19097,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "enttaeuschung",
       "scherz",
-      "beruhigen"
+      "sich-beruhigen"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19166,15 +19166,15 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "enttaeuschung",
-      "benehmen",
+      "sich-benehmen",
       "hassen"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "benehmen",
+    "id": "sich-benehmen",
     "tier": 3,
-    "lemma": "benehmen",
+    "lemma": "sich benehmen",
     "en": "to behave, to act",
     "example": {
       "de": "Manchmal benimmt er sich echt wie ein Kind.",
@@ -19202,7 +19202,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "enttaeuschung",
       "mutig",
-      "benehmen"
+      "sich-benehmen"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19376,16 +19376,16 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "misstrauen",
-      "aergern",
+      "sich-aergern",
       "geniessen"
     ],
     "theme": "Gefühle und Charakter"
   },
   {
-    "id": "aergern",
+    "id": "sich-aergern",
     "tier": 4,
-    "lemma": "ärgern",
-    "en": "to annoy, to make angry",
+    "lemma": "sich ärgern",
+    "en": "to be annoyed, to get angry",
     "example": {
       "de": "Ich ärgere mich über die hohen Preise.",
       "en": "I am angry over the high prices."
@@ -19411,7 +19411,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "misstrauen",
       "veraengstigt",
-      "aergern"
+      "sich-aergern"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19988,19 +19988,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "antworten",
-      "entschuldigen",
+      "sich-entschuldigen",
       "sprechen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
   {
-    "id": "entschuldigen",
+    "id": "sich-entschuldigen",
     "tier": 1,
-    "lemma": "entschuldigen",
-    "en": "to excuse, to apologize for",
+    "lemma": "sich entschuldigen",
+    "en": "to apologize",
     "example": {
-      "de": "Was du getan hast, kann ich nicht entschuldigen.",
-      "en": "I can’t excuse what you did."
+      "de": "Er muss sich bei ihr entschuldigen.",
+      "en": "He’s got to apologise to her."
     },
     "family": [],
     "related": [
@@ -20026,7 +20026,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "erwaehnen",
       "erklaeren",
-      "entschuldigen"
+      "sich-entschuldigen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -20153,19 +20153,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "erwaehnen",
-      "vorstellen",
+      "sich-vorstellen",
       "nennen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
   {
-    "id": "vorstellen",
+    "id": "sich-vorstellen",
     "tier": 2,
-    "lemma": "vorstellen",
-    "en": "to introduce, to present",
+    "lemma": "sich vorstellen",
+    "en": "to imagine; to introduce oneself",
     "example": {
-      "de": "Lass mich dir meine Schwester vorstellen.",
-      "en": "Let me introduce my sister to you."
+      "de": "Ich kann mir kein Leben ohne dich vorstellen.",
+      "en": "I can’t imagine life without you."
     },
     "family": [],
     "related": [
@@ -20190,7 +20190,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "erwaehnen",
       "luegen",
-      "vorstellen"
+      "sich-vorstellen"
     ],
     "theme": "Sprechen und Mitteilen"
   },
@@ -21587,19 +21587,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "abholen",
-      "setzen",
+      "sich-setzen",
       "platzen"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "setzen",
+    "id": "sich-setzen",
     "tier": 2,
-    "lemma": "setzen",
+    "lemma": "sich setzen",
     "en": "to sit down",
     "example": {
-      "de": "Wir setzen das Meeting nach dem Tee fort.",
-      "en": "We'll resume the meeting after tea."
+      "de": "Setzen Sie sich, bitte.",
+      "en": "Sit down, please."
     },
     "family": [],
     "related": [
@@ -21622,7 +21622,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "abholen",
       "retten",
-      "setzen"
+      "sich-setzen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21797,15 +21797,15 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "abholen",
-      "kuemmern",
+      "sich-kuemmern",
       "suche"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "kuemmern",
+    "id": "sich-kuemmern",
     "tier": 2,
-    "lemma": "kümmern",
+    "lemma": "sich kümmern",
     "en": "to take care, to look after",
     "example": {
       "de": "Wir müssen uns unverzüglich darum kümmern.",
@@ -21832,7 +21832,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "abholen",
       "rest",
-      "kuemmern"
+      "sich-kuemmern"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21986,19 +21986,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "abholen",
-      "legen",
+      "sich-legen",
       "liegen"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "legen",
+    "id": "sich-legen",
     "tier": 2,
-    "lemma": "legen",
+    "lemma": "sich legen",
     "en": "to lie down",
     "example": {
-      "de": "Ich habe meinen Hengst legen lassen.",
-      "en": "I had my stallion castrated."
+      "de": "Legen Sie sich auf dem Untersuchungstisch auf den Bauch.",
+      "en": "Lie on your stomach on the examination table."
     },
     "family": [],
     "related": [
@@ -22021,7 +22021,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "abholen",
       "schlagen",
-      "legen"
+      "sich-legen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -22161,16 +22161,16 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "aufraeumen",
-      "vorbereiten",
+      "sich-vorbereiten",
       "aufgeben"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "vorbereiten",
+    "id": "sich-vorbereiten",
     "tier": 3,
-    "lemma": "vorbereiten",
-    "en": "to prepare",
+    "lemma": "sich vorbereiten",
+    "en": "to prepare (oneself)",
     "example": {
       "de": "Ich muss mich auf die Prüfung vorbereiten.",
       "en": "I must prepare for the exam."
@@ -22195,15 +22195,15 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "aufraeumen",
-      "beeilen",
-      "vorbereiten"
+      "sich-beeilen",
+      "sich-vorbereiten"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "beeilen",
+    "id": "sich-beeilen",
     "tier": 3,
-    "lemma": "beeilen",
+    "lemma": "sich beeilen",
     "en": "to hurry, to hasten",
     "example": {
       "de": "Wir beeilten uns den Gipfel zu erreichen.",
@@ -22230,7 +22230,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "aufraeumen",
       "gebrauchen",
-      "beeilen"
+      "sich-beeilen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -22348,15 +22348,15 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "aufraeumen",
-      "naehern",
+      "sich-naehern",
       "schieben"
     ],
     "theme": "Alltag und Bewegung"
   },
   {
-    "id": "naehern",
+    "id": "sich-naehern",
     "tier": 3,
-    "lemma": "nähern",
+    "lemma": "sich nähern",
     "en": "to approach",
     "example": {
       "de": "Diesem Ort haben sie sich nicht genähert.",
@@ -22382,7 +22382,7 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "aufraeumen",
-      "naehern",
+      "sich-naehern",
       "verschieben"
     ],
     "theme": "Alltag und Bewegung"
@@ -25455,19 +25455,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "umsatz",
-      "spezialisieren",
+      "sich-spezialisieren",
       "kuendigungsfrist"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "spezialisieren",
+    "id": "sich-spezialisieren",
     "tier": 5,
-    "lemma": "spezialisieren",
+    "lemma": "sich spezialisieren",
     "en": "to specialize",
     "example": {
-      "de": "Dieser Verlag ist auf Kinderliteratur spezialisiert.",
-      "en": "This publisher specializes in children's literature."
+      "de": "Sie wird sich auf amerikanische Geschichte spezialisieren.",
+      "en": "She will specialize in American history."
     },
     "family": [],
     "related": [
@@ -25490,7 +25490,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "umsatz",
       "ausueben",
-      "spezialisieren"
+      "sich-spezialisieren"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -25506,15 +25506,15 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "umsatz",
-      "bewerben",
+      "sich-bewerben",
       "beitragen"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "bewerben",
+    "id": "sich-bewerben",
     "tier": 5,
-    "lemma": "bewerben",
+    "lemma": "sich bewerben",
     "en": "to apply",
     "example": {
       "de": "Sie sollten sich auf diese Stelle bewerben.",
@@ -25543,7 +25543,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "umsatz",
       "streik",
-      "bewerben"
+      "sich-bewerben"
     ],
     "theme": "Beruf und Wirtschaft"
   },
@@ -26817,19 +26817,19 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "vorteil",
-      "erinnern",
+      "sich-erinnern",
       "wahrscheinlich"
     ],
     "theme": "Ideen und Pläne"
   },
   {
-    "id": "erinnern",
+    "id": "sich-erinnern",
     "tier": 2,
-    "lemma": "erinnern",
-    "en": "to remind",
+    "lemma": "sich erinnern",
+    "en": "to remember",
     "example": {
-      "de": "Schnee erinnert mich an meine Heimatstadt.",
-      "en": "Snow reminds me of my hometown."
+      "de": "Ich erinnere mich an das Wort.",
+      "en": "I remember the word."
     },
     "family": [],
     "related": [
@@ -26854,7 +26854,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "vorteil",
       "sinn",
-      "erinnern"
+      "sich-erinnern"
     ],
     "theme": "Ideen und Pläne"
   },
@@ -27634,15 +27634,15 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "maximum",
-      "ausdenken",
+      "sich-ausdenken",
       "nachteil"
     ],
     "theme": "Ideen und Pläne"
   },
   {
-    "id": "ausdenken",
+    "id": "sich-ausdenken",
     "tier": 5,
-    "lemma": "ausdenken",
+    "lemma": "sich ausdenken",
     "en": "to come up with, to think up",
     "example": {
       "de": "Wer hat sich diese Regeln nur ausgedacht?",
@@ -27671,7 +27671,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "maximum",
       "anwenden",
-      "ausdenken"
+      "sich-ausdenken"
     ],
     "theme": "Ideen und Pläne"
   },

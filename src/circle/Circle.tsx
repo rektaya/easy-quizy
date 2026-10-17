@@ -39,6 +39,8 @@ type Props = {
   /** Shown inside the ring in place of the word (the reveal, after the user has rated). */
   reveal?: React.ReactNode;
   onCommit: (value: number) => void;
+  /** Told when a drawing starts (true) and when it ends (false). */
+  onDrawing?: (drawing: boolean) => void;
   /** Where the circle's box sits inside the area the Circle fills (its parent, which must be positioned and cover the screen area). */
   x: number;
   y: number;
@@ -47,13 +49,13 @@ type Props = {
 // The Circle. There is no visible ring: the user draws a circle round the word, and stars appear where
 // the finger goes (StardustRing). Only the ghost finger on the very first word shows where to draw. The
 // drawing and its haptics are in useRing; what you see is in StardustRing.
-export function Circle({ word, size, value, showHint, reveal, onCommit, x, y }: Props) {
+export function Circle({ word, size, value, showHint, reveal, onCommit, onDrawing, x, y }: Props) {
   // A known word lets stardust float up off the ring and out of the top of the screen (KnownDust, drawn
   // above the whole app). It starts from the circle's place on the screen, measured fresh.
   const onKnown = () => {
     box.current?.measureInWindow((bx, by) => emitKnown({ x: bx + size / 2, y: by + size / 2, r: size / 2 - RING_STROKE }));
   };
-  const ring = useRing(size, value, onCommit, x, y, onKnown);
+  const ring = useRing(size, value, onCommit, x, y, onKnown, onDrawing);
   const { c, r, v } = ring;
   const length = 2 * Math.PI * r;
   const ghost = useSharedValue(0);

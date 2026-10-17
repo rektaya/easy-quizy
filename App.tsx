@@ -15,7 +15,10 @@ import { KnownDust } from './src/components/KnownDust';
 import { applyReminder, setupNotifications } from './src/notifications/reminders';
 import { planReminder } from './src/notifications/schedule';
 import ProfileScreen from './src/screens/ProfileScreen';
+import { OnboardingProgress } from './src/components/OnboardingProgress';
+import InterestsStep from './src/screens/InterestsStep';
 import IntroScreen from './src/screens/IntroScreen';
+import WelcomeScreen from './src/screens/WelcomeScreen';
 import NameScreen from './src/screens/NameScreen';
 import PracticeScreen from './src/screens/PracticeScreen';
 import QuizIntroScreen from './src/screens/QuizIntroScreen';
@@ -50,12 +53,12 @@ const navTheme = {
 };
 
 // Each tab is drawn on the starry paper; the tab scenes stay opaque so they hide each other.
-const ExploreTabScreen = (props: React.ComponentProps<typeof ExploreScreen>) => (
+const ExploreTabScreen = () => (
   <Starry>
-    <ExploreScreen {...props} />
+    <ExploreScreen />
   </Starry>
 );
-const StudyTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => (
+const StudyTabScreen = () => (
   <Starry>
     <StudyTab />
   </Starry>
@@ -92,18 +95,25 @@ function Onboarding() {
 }
 
 // Each step fades in over the one before it (the old one fades out underneath).
+const BAR_STEPS: Partial<Record<string, number>> = { name: 1, interests: 2, intro: 3, practice: 4, quiz: 5 };
+
 function OnboardingStep() {
   const { phase } = useProfile();
+  const step = BAR_STEPS[phase];
   return (
+    <>
     <Animated.View key={phase} entering={FadeIn.duration(380)} exiting={FadeOut.duration(220)} style={StyleSheet.absoluteFill}>
       <OnboardingScreen />
     </Animated.View>
+    {step ? <OnboardingProgress step={step} total={5} /> : null}
+    </>
   );
 }
 
 function OnboardingScreen() {
   const { phase, setName, setPhase } = useProfile();
   const { reset } = useRatings();
+  if (phase === 'welcome') return <WelcomeScreen onBegin={() => setPhase('name')} />;
   if (phase === 'name') {
     return (
       <NameScreen
@@ -114,6 +124,7 @@ function OnboardingScreen() {
       />
     );
   }
+  if (phase === 'interests') return <InterestsStep onDone={() => setPhase('intro')} />;
   if (phase === 'intro') return <IntroScreen onDone={() => setPhase('practice')} />;
   if (phase === 'practice') return <PracticeScreen onDone={() => setPhase('quiz')} />;
   if (phase === 'quiz') return <QuizIntroScreen onStart={() => setPhase('calibration')} />;

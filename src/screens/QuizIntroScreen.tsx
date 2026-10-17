@@ -11,10 +11,10 @@ export default function QuizIntroScreen({ onStart }: { onStart: () => void }) {
   return (
     <View style={[styles.screen, { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 }]}>
       <Animated.View entering={FadeIn.duration(450)} style={styles.body}>
-        <Text style={styles.title}>here is a quick test to adjust new words you explore to your vocabulary level</Text>
-        <Text style={styles.lead}>show how well you know these 15 words</Text>
+        <Text style={styles.title}>let’s adjust words to your level</Text>
+        <Text style={styles.lead}>you will see 15 words, show us how well you know them</Text>
       </Animated.View>
-      <Button label="start" onPress={onStart} />
+      <Button label="start the test" onPress={onStart} />
     </View>
   );
 }
@@ -22,6 +22,6 @@ export default function QuizIntroScreen({ onStart }: { onStart: () => void }) {
 const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: 24 },
   body: { flex: 1, justifyContent: 'center', gap: 18 },
-  title: { fontFamily: fonts.medium, fontSize: 28, lineHeight: 36, color: colors.text },
+  title: { fontFamily: fonts.medium, fontSize: 36, lineHeight: 44, color: colors.text },
   lead: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 25, color: colors.textSecondary },
 });

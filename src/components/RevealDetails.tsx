@@ -16,10 +16,12 @@ type Props = {
 export function RevealDetails({ word, related, onTravel }: Props) {
   return (
     <Animated.View entering={FadeIn.duration(320).delay(120)} style={styles.wrap}>
-      <View style={styles.example}>
-        <Text style={styles.exampleDe}>{word.example.de}</Text>
-        <Text style={styles.exampleEn}>{word.example.en}</Text>
-      </View>
+      {word.example.de ? (
+        <View style={styles.example}>
+          <Text style={styles.exampleDe}>{word.example.de}</Text>
+          <Text style={styles.exampleEn}>{word.example.en}</Text>
+        </View>
+      ) : null}
       {related.length > 0 ? (
         <View style={styles.chips}>
           {related.map((w) => (

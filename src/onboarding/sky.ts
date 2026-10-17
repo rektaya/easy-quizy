@@ -105,21 +105,24 @@ export function layoutSky(
   let placed: { x: number; y: number }[];
   if (links.length) {
     const slope = items.map((it) => (it.level === undefined ? undefined : 0.1 + (0.8 * (it.level - 1)) / 4));
-    placed = bestRelaxed(n, links, w, h, slope);
+    // the arrangement itself keeps its stars apart (and is the same for everyone); each sky's own nudge comes after
+    placed = keepApart(bestRelaxed(n, links, w, h, slope), w, h, Math.sqrt((w * h) / n) * MIN_STAR_GAP);
     if (seed) {
       const k = Math.sqrt((w * h) / n);
       const margin = Math.min(w, h) * 0.06;
       placed = placed.map((p, i) => {
         const rnd = random(2000 + i * 6007 + seed * 17);
         return {
-          x: Math.min(w - margin, Math.max(margin, p.x + (rnd() - 0.5) * k * 0.3)),
-          y: Math.min(h - margin, Math.max(margin, p.y + (rnd() - 0.5) * k * 0.3)),
+          x: Math.min(w - margin, Math.max(margin, p.x + (rnd() - 0.5) * k * 0.16)),
+          y: Math.min(h - margin, Math.max(margin, p.y + (rnd() - 0.5) * k * 0.16)),
         };
       });
     }
   } else {
     placed = scatter(n, w, h, seed);
   }
+  // however the pulling and the nudging came out, no two stars may sit close to each other
+  placed = keepApart(placed, w, h, Math.sqrt((w * h) / n) * MIN_STAR_GAP * 0.8);
   return items.map((item, i) => {
     const rnd = random(1000 + i * 7919 + seed * 31);
     rnd();
@@ -134,6 +137,41 @@ export function layoutSky(
       seed: 5000 + i * 104729 + seed,
     };
   });
+}
+
+/** The least distance between two big stars, as a share of the space each one has (the side of its square of sky). */
+export const MIN_STAR_GAP = 0.8;
+
+/** Pushes apart any two stars that are closer than `gap`, a little at a time, keeping them inside the sky. */
+export function keepApart(pos: { x: number; y: number }[], w: number, h: number, gap: number): { x: number; y: number }[] {
+  const margin = Math.min(w, h) * 0.04;
+  const out = pos.map((p) => ({ ...p }));
+  for (let pass = 0; pass < 300; pass++) {
+    let moved = false;
+    for (let i = 0; i < out.length; i++) {
+      for (let j = i + 1; j < out.length; j++) {
+        let dx = out[j].x - out[i].x;
+        let dy = out[j].y - out[i].y;
+        let d = Math.hypot(dx, dy);
+        if (d >= gap) continue;
+        if (d < 1e-6) {
+          dx = Math.cos(i * 2.4 + j);
+          dy = Math.sin(i * 2.4 + j);
+          d = 1;
+        }
+        const push = (gap - d) / 2 + 0.01;
+        out[i].x -= (dx / d) * push;
+        out[i].y -= (dy / d) * push;
+        out[j].x += (dx / d) * push;
+        out[j].y += (dy / d) * push;
+        moved = true;
+      }
+      out[i].x = Math.min(w - margin, Math.max(margin, out[i].x));
+      out[i].y = Math.min(h - margin, Math.max(margin, out[i].y));
+    }
+    if (!moved) break;
+  }
+  return out;
 }
 
 /**
@@ -322,6 +360,102 @@ export function shuffled<T>(items: T[], seed: number): T[] {
   for (let i = out.length - 1; i > 0; i--) {
     const j = Math.floor(rnd() * (i + 1));
     [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------------------------------------
+// The names under the big stars. They must never overlap each other (or sit on another star), so each
+// name is placed where it fits: under its star if that is free, otherwise above it, then beside it, then
+// a little further away.
+
+export type LabelSpec = { x: number; y: number; r: number; text: string };
+export type LabelPlace = { x: number; y: number; anchor: 'start' | 'middle' | 'end' };
+
+export const LABEL_FONT = 13; // the size of the names (medium weight)
+const LABEL_CHAR_W = 7.6; // about the width of a character of that type
+const LABEL_ASCENT = 12;
+const LABEL_DESCENT = 5;
+const LABEL_GAP = 4; // room kept between two names
+
+type Rect = { x0: number; y0: number; x1: number; y1: number };
+
+function labelRect(p: LabelPlace, text: string): Rect {
+  const w = text.length * LABEL_CHAR_W;
+  const x0 = p.anchor === 'middle' ? p.x - w / 2 : p.anchor === 'start' ? p.x : p.x - w;
+  return { x0: x0 - LABEL_GAP, x1: x0 + w + LABEL_GAP, y0: p.y - LABEL_ASCENT - LABEL_GAP / 2, y1: p.y + LABEL_DESCENT + LABEL_GAP / 2 };
+}
+
+function overlapArea(a: Rect, b: Rect): number {
+  const w = Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0);
+  const h = Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0);
+  return w > 0 && h > 0 ? w * h : 0;
+}
+
+export function placeLabels(items: LabelSpec[], bounds?: { w: number; h: number }): LabelPlace[] {
+  // the stars themselves are in the way too (a name must not sit on another star)
+  const stars: Rect[] = items.map((s) => ({ x0: s.x - s.r - 6, x1: s.x + s.r + 6, y0: s.y - s.r - 6, y1: s.y + s.r + 6 }));
+  const placed: (Rect | null)[] = items.map(() => null);
+  const out: LabelPlace[] = items.map((s) => ({ x: s.x, y: s.y + s.r + 20, anchor: 'middle' }));
+
+  const candidatesOf = (s: LabelSpec): LabelPlace[] => {
+    const rings = (d: number): LabelPlace[] => [
+      { x: s.x, y: s.y + s.r + 20 + d, anchor: 'middle' },
+      { x: s.x, y: s.y - s.r - 12 - d, anchor: 'middle' },
+      { x: s.x + s.r + 10 + d, y: s.y + 4, anchor: 'start' },
+      { x: s.x - s.r - 10 - d, y: s.y + 4, anchor: 'end' },
+      // below or above, but leaning to one side
+      { x: s.x - 8, y: s.y + s.r + 20 + d, anchor: 'start' },
+      { x: s.x + 8, y: s.y + s.r + 20 + d, anchor: 'end' },
+      { x: s.x - 8, y: s.y - s.r - 12 - d, anchor: 'start' },
+      { x: s.x + 8, y: s.y - s.r - 12 - d, anchor: 'end' },
+    ];
+    return [...rings(0), ...rings(12), ...rings(26), ...rings(44), ...rings(64)];
+  };
+  const costOf = (i: number, c: LabelPlace): number => {
+    const r = labelRect(c, items[i].text);
+    let cost = 0;
+    placed.forEach((o, j) => {
+      if (j === i) return;
+      if (o) cost += overlapArea(r, o);
+      cost += overlapArea(r, stars[j]);
+    });
+    if (bounds && (r.x0 < 0 || r.x1 > bounds.w || r.y0 < 0 || r.y1 > bounds.h)) cost += 1000;
+    return cost;
+  };
+  const choose = (i: number): LabelPlace => {
+    let best = out[i];
+    let bestCost = placed[i] ? costOf(i, out[i]) : Infinity;
+    for (const c of candidatesOf(items[i])) {
+      if (bestCost === 0) break;
+      const cost = costOf(i, c);
+      if (cost < bestCost) {
+        bestCost = cost;
+        best = c;
+      }
+    }
+    return best;
+  };
+
+  // the most crowded names choose first, since they have the fewest places left
+  const crowd = items.map((s, i) => items.reduce((n, o, j) => n + (j !== i && Math.hypot(o.x - s.x, o.y - s.y) < 150 ? 1 : 0), 0));
+  const order = items.map((_, i) => i).sort((a, b) => crowd[b] - crowd[a] || a - b);
+  for (const i of order) {
+    out[i] = choose(i);
+    placed[i] = labelRect(out[i], items[i].text);
+  }
+  // then every name looks once more at the others, until nothing moves
+  for (let pass = 0; pass < 4; pass++) {
+    let moved = false;
+    for (const i of order) {
+      const next = choose(i);
+      if (next !== out[i]) {
+        out[i] = next;
+        placed[i] = labelRect(next, items[i].text);
+        moved = true;
+      }
+    }
+    if (!moved) break;
   }
   return out;
 }

@@ -109,11 +109,20 @@ export function ChevronDownIcon({ color, size = 18 }: IconProps) {
   );
 }
 
-/** Filters: a filled funnel. */
+/** Filters: a funnel (an outline). */
 export function FilterIcon({ color, size = 20 }: IconProps) {
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M4 5.5h16l-6.2 7.3v5.4l-3.6 1.8v-7.2L4 5.5z" fill={color} stroke={color} strokeWidth={1.6} strokeLinejoin="round" />
+      <Path d="M4 5.5h16l-6.2 7.3v5.4l-3.6 1.8v-7.2L4 5.5z" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** Add: a plus. */
+export function PlusIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M12 5v14M5 12h14" stroke={color} {...strokeProps} />
     </Svg>
   );
 }
@@ -157,6 +166,25 @@ export function LookIcon({ color, size = 20 }: IconProps) {
       <Path d="M20 15v3.4c0 .9-.7 1.6-1.6 1.6H15" stroke={color} {...strokeProps} />
       <Path d="M9 20H5.6C4.7 20 4 19.3 4 18.4V15" stroke={color} {...strokeProps} />
       <Path d="M12 8.6l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" stroke={color} {...strokeProps} strokeWidth={1.6} />
+    </Svg>
+  );
+}
+
+/** Not known at all: a small cross. */
+export function XIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M6 6l12 12M18 6L6 18" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
+/** The way of exploring: a compass. */
+export function CompassIcon({ color, size = 22 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx={12} cy={12} r={8.6} stroke={color} {...strokeProps} />
+      <Path d="M15.6 8.4l-2 5.2-5.2 2 2-5.2 5.2-2z" stroke={color} {...strokeProps} />
     </Svg>
   );
 }

@@ -13,6 +13,7 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
+import { DONT_KNOW, DontKnowButton, dontKnowTop } from '../components/DontKnowButton';
 import { Button } from '../components/Button';
 import { ReminderCard } from '../components/ReminderCard';
 import { FlipReveal } from '../components/FlipReveal';
@@ -58,6 +59,7 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
   const [batch, setBatch] = useState<BatchItem[] | null>(null);
   const [index, setIndex] = useState(0);
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
+  const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
   const [body, setBody] = useState({ w: 0, h: 0 }); // the area the circle sits in
 
   // The batch is picked once, when the saved data has loaded (and again for "keep going").
@@ -115,6 +117,14 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
   if (!loaded || batch === null) return <View style={styles.screen} />;
 
   const word = batch[index]?.word;
+  const commit = (v: number) => {
+    if (!word) return;
+    setValue(v);
+    reviewWord(word.id, v, ratings[word.id]);
+    if (v > CELEBRATE_ABOVE) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+    }
+  };
   const size = Math.min(width - 48, 320); // the same as in Explore, so drawing feels the same
   const circleTop = Math.max(56, body.h / 2 - size / 2 - CIRCLE_LIFT); // 56: room for the undo plate above
 
@@ -176,15 +186,11 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
                 value={value}
                 showHint={false}
                 reveal={value === null ? undefined : <FlipReveal word={word} />}
-                onCommit={(v) => {
-                  setValue(v);
-                  reviewWord(word.id, v, ratings[word.id]);
-                  if (v > CELEBRATE_ABOVE) {
-                    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-                  }
-                }}
+                onCommit={commit}
+                onDrawing={setDrawing}
               />
-              {value !== null ? (
+              {value === null && !drawing ? <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => commit(DONT_KNOW)} /> : null}
+              {value !== null && word.example.de ? (
                 <Animated.View
                   entering={FadeIn.duration(320).delay(120)}
                   style={[styles.example, { top: circleTop + size + 26 }]}

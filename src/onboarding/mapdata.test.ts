@@ -4,7 +4,7 @@ import { THEME_LEVEL, THEME_LINKS } from '../data/themeLinks.ts';
 import { THEMES, WORDS } from '../data/words.ts';
 import { seedCard } from '../srs/scheduler.ts';
 import { pickThemeWord } from './calibration.ts';
-import { buildClusters, clusterStats, curatedLinks, levelOf, starLook, starState, themeLinks, zoomStates } from './mapdata.ts';
+import { buildClusters, clusterStats, curatedLinks, levelOf, orderedWords, starLook, starState, themeLinks, zoomStates } from './mapdata.ts';
 import { ambientStars, blob, heroSize, layoutSky, random, shuffled } from './sky.ts';
 
 const T0 = Date.UTC(2026, 8, 26, 10);
@@ -13,7 +13,7 @@ const rating = (value: number) => ({ value, known: value >= 0.9, at: T0 });
 test('every word sits in exactly one cluster, and every theme has an English name', () => {
   const clusters = buildClusters(THEMES, WORDS);
   assert.equal(clusters.reduce((n, c) => n + c.words.length, 0), WORDS.length);
-  assert.equal(clusters.length, 29);
+  assert.equal(clusters.length, 24);
   for (const c of clusters) assert.ok(c.en.length > 2, `${c.id} has no English name`);
   assert.equal(new Set(THEMES.map((t) => t.id)).size, THEMES.length, 'theme ids are unique');
 });
@@ -27,8 +27,12 @@ test('star states follow the four states of the spec', () => {
   assert.equal(starState(rating(0.95), undefined), 'known', 'marked known in Explore');
 });
 
+// seven words that make a small topic of their own for these tests (they now belong to bigger topics on the Map)
+const WORK = ['feierabend', 'arbeit', 'buero', 'kollege', 'besprechung', 'termin', 'vereinbaren'];
+const workCluster = () => ({ id: 'test', de: 'test', en: 'test', words: WORK.map((id) => WORDS.find((w) => w.id === id)!) });
+
 test('cluster counts add up', () => {
-  const cluster = buildClusters(THEMES, WORDS).find((c) => c.id === 'Arbeit')!;
+  const cluster = workCluster();
   const ratings = { feierabend: rating(0.1), arbeit: rating(0.95), buero: rating(0.3) };
   const stats = clusterStats(cluster, ratings, { buero: seedCard(0.3, T0) });
   assert.deepEqual(stats, { unexplored: 4, gathered: 1, learning: 1, known: 1, total: 7 });
@@ -36,11 +40,11 @@ test('cluster counts add up', () => {
 
 test('"explore from here" starts on an unrated word of that theme near the level', () => {
   const rated = new Set(['feierabend']);
-  const w = pickThemeWord(WORDS, (id) => rated.has(id), [], 'Arbeit')!;
-  assert.equal(w.theme, 'Arbeit');
+  const w = pickThemeWord(WORDS, (id) => rated.has(id), [], 'Beruf und Wirtschaft')!;
+  assert.equal(w.theme, 'Beruf und Wirtschaft');
   assert.ok(!rated.has(w.id));
-  const all = new Set(WORDS.filter((x) => x.theme === 'Arbeit').map((x) => x.id));
-  assert.equal(pickThemeWord(WORDS, (id) => all.has(id), [], 'Arbeit'), null, 'a finished area has nothing left');
+  const all = new Set(WORDS.filter((x) => x.theme === 'Beruf und Wirtschaft').map((x) => x.id));
+  assert.equal(pickThemeWord(WORDS, (id) => all.has(id), [], 'Beruf und Wirtschaft'), null, 'a finished area has nothing left');
 });
 
 test('a star stays dark under 1% of its words, is a plain point up to 10%, then glows more and more', () => {
@@ -73,7 +77,7 @@ test('the sky is the same every time, and every big star sits on the stage, well
   const a = layoutSky(items, 327, 560);
   const b = layoutSky(items, 327, 560);
   assert.deepEqual(a, b);
-  assert.equal(a.length, 29);
+  assert.equal(a.length, 24);
   for (const c of a) assert.ok(c.cx > 0 && c.cx < 327 && c.cy > 0 && c.cy < 560, `${c.id} is off the stage`);
   for (let i = 0; i < a.length; i++) {
     for (let j = i + 1; j < a.length; j++) {
@@ -117,7 +121,7 @@ test('the seeded random source repeats itself and ambient stars stay on the stag
 });
 
 test('opening a cluster shows one point per word, the most learned first, sampled when there are many', () => {
-  const cluster = buildClusters(THEMES, WORDS).find((c) => c.id === 'Arbeit')!;
+  const cluster = workCluster();
   const ratings = { feierabend: rating(0.1), arbeit: rating(0.95), buero: rating(0.3) };
   const states = zoomStates(cluster, ratings, { buero: seedCard(0.3, T0) });
   assert.deepEqual(states, ['known', 'learning', 'gathered', 'unexplored', 'unexplored', 'unexplored', 'unexplored']);
@@ -206,4 +210,17 @@ test('the map has the same structure for everyone, related themes are near, and 
   const easy = mean(items.map((it, i) => (it.level === 1 ? along(i) : NaN)).filter((x) => !Number.isNaN(x)));
   const hard = mean(items.map((it, i) => (it.level === 5 ? along(i) : NaN)).filter((x) => !Number.isNaN(x)));
   assert.ok(easy < 0.4 && hard > 0.6, `easy ${easy.toFixed(2)}, hard ${hard.toFixed(2)}`);
+});
+
+test('in a topic\'s list the explored words come first, the latest explored on top', () => {
+  const cluster = workCluster();
+  const ratings = {
+    kollege: { value: 0.4, known: false, at: T0 + 10 },
+    termin: { value: 0.9, known: true, at: T0 + 50 },
+    buero: { value: 0.2, known: false, at: T0 + 30 },
+  };
+  const ids = orderedWords(cluster, ratings).map((w) => w.id);
+  assert.deepEqual(ids.slice(0, 3), ['termin', 'buero', 'kollege']);
+  assert.deepEqual(ids.slice(3), ['feierabend', 'arbeit', 'besprechung', 'vereinbaren'], 'the rest keep their own order');
+  assert.equal(ids.length, 7);
 });

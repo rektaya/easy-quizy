@@ -14,7 +14,6 @@ import { summarize } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import CreditsScreen from './CreditsScreen';
-import InterestsScreen from './InterestsScreen';
 import { colors, fonts, radius } from '../theme';
 
 // Profile and settings: who you are, how far you have got, and the daily reminder. Opens over everything
@@ -23,10 +22,9 @@ export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const tabSpace = useTabBarSpace(); // the content scrolls clear of the floating tab bar
   const { ratings, reset } = useRatings();
-  const { name, rename, cards, quickSessions, setQuickSessions, interests, restartOnboarding } = useProfile();
+  const { name, rename, cards, quickSessions, setQuickSessions, restartOnboarding } = useProfile();
   const [draft, setDraft] = useState(name);
   const [credits, setCredits] = useState(false); // the credits page, opened from here
-  const [interestsOpen, setInterestsOpen] = useState(false); // the page of liked themes, opened from here
 
   const summary = summarize(WORDS, ratings, cards);
   const explored = Object.keys(ratings).length;
@@ -53,14 +51,6 @@ export default function ProfileScreen() {
       </Animated.View>
     );
   }
-  if (interestsOpen) {
-    return (
-      <Animated.View key="interests" entering={FadeIn.duration(240)} style={styles.fill}>
-        <InterestsScreen onBack={() => setInterestsOpen(false)} />
-      </Animated.View>
-    );
-  }
-
   return (
     <Animated.View entering={FadeIn.duration(240)} style={[styles.screen, { paddingTop: insets.top + 12, paddingHorizontal: 24 }]}>
       <TabHeader title="profile" />
@@ -88,17 +78,6 @@ export default function ProfileScreen() {
           <Stat n={inStudy} label="in study" />
           <Stat n={learned} label="learned" />
         </View>
-
-        <Text style={styles.section}>explore</Text>
-        <Pressable onPress={() => setInterestsOpen(true)} accessibilityRole="button" style={styles.rowCard}>
-          <View style={styles.rowCardText}>
-            <Text style={styles.rowCardTitle}>interests</Text>
-            <Text style={styles.rowCardSub}>
-              {interests.length === 0 ? 'choose topics you like' : `${interests.length} ${interests.length === 1 ? 'topic' : 'topics'} chosen`}
-            </Text>
-          </View>
-          <ChevronRightIcon color={colors.textTertiary} size={22} />
-        </Pressable>
 
         <Text style={styles.section}>study</Text>
         <SettingToggle

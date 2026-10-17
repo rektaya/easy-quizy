@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { isKnown } from '../circle/geometry';
+import { carryOver } from '../data/renamedWords';
 
 export type Rating = {
   /** Continuous circle value, 0..1. */
@@ -32,7 +33,7 @@ export function RatingsProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     AsyncStorage.getItem(KEY)
       .then((raw) => {
-        if (raw) setRatings(JSON.parse(raw));
+        if (raw) setRatings(carryOver(JSON.parse(raw)));
       })
       .catch(() => {})
       .finally(() => setReady(true));

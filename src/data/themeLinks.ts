@@ -4,10 +4,9 @@
 // [theme, theme, strength]: 6 = the same area, 4 = clear neighbours, 3 = a looser tie.
 export const THEME_LINKS: [string, string, number][] = [
   // work, money, offices
-  ['Arbeit', 'Beruf und Wirtschaft', 6],
-  ['Arbeit', 'Ideen und Pläne', 4],
-  ['Arbeit', 'Zeit und Kalender', 3],
-  ['Arbeit', 'Computer und Internet', 3],
+  ['Beruf und Wirtschaft', 'Ideen und Pläne', 4],
+  ['Beruf und Wirtschaft', 'Zeit und Kalender', 3],
+  ['Beruf und Wirtschaft', 'Computer und Internet', 3],
   ['Beruf und Wirtschaft', 'Geld und Bank', 5],
   ['Beruf und Wirtschaft', 'Schule und Lernen', 3],
   ['Geld und Bank', 'Behörden und Recht', 3],
@@ -16,16 +15,13 @@ export const THEME_LINKS: [string, string, number][] = [
   ['Politik und Gesellschaft', 'Medien und Kultur', 3],
   ['Politik und Gesellschaft', 'Umwelt und Energie', 3],
   // home and food
-  ['Wohnen', 'Haus und Möbel', 6],
-  ['Haus und Möbel', 'Küche', 6],
-  ['Küche', 'Essen und Trinken', 6],
-  ['Wohnen', 'Familie und Beziehungen', 4],
+  ['Haus und Möbel', 'Essen und Trinken', 5],
+  ['Haus und Möbel', 'Familie und Beziehungen', 4],
   ['Essen und Trinken', 'Stadt und Einkaufen', 4],
   ['Kleidung', 'Stadt und Einkaufen', 4],
   // getting around, time, travel
-  ['Unterwegs', 'Reisen', 6],
-  ['Unterwegs', 'Stadt und Einkaufen', 4],
-  ['Unterwegs', 'Alltag und Bewegung', 4],
+  ['Reisen', 'Stadt und Einkaufen', 4],
+  ['Reisen', 'Alltag und Bewegung', 4],
   ['Zeit und Kalender', 'Alltag und Bewegung', 4],
   ['Reisen', 'Freizeit und Sport', 4],
   ['Reisen', 'Wetter und Natur', 3],
@@ -37,10 +33,9 @@ export const THEME_LINKS: [string, string, number][] = [
   ['Tiere', 'Essen und Trinken', 2],
   // people and feelings
   ['Familie und Beziehungen', 'Gefühle und Charakter', 4],
-  ['Gefühle und Charakter', 'Entscheidungen und Gefühle', 6],
   ['Gefühle und Charakter', 'Eigenschaften', 6],
   ['Eigenschaften', 'Familie und Beziehungen', 3],
-  ['Entscheidungen und Gefühle', 'Ideen und Pläne', 6],
+  ['Gefühle und Charakter', 'Ideen und Pläne', 5],
   ['Körper und Gesundheit', 'Gefühle und Charakter', 3],
   ['Körper und Gesundheit', 'Freizeit und Sport', 4],
   // speaking, learning, media
@@ -56,12 +51,9 @@ export const THEME_LINKS: [string, string, number][] = [
 // words have real frequency data to compute it from. The map puts the easy themes at the top left and the
 // hard ones at the bottom right. A theme that is missing here counts as 3.
 export const THEME_LEVEL: Record<string, number> = {
-  Unterwegs: 1,
-  Wohnen: 1,
   'Essen und Trinken': 1,
   'Familie und Beziehungen': 1,
   'Zeit und Kalender': 1,
-  Küche: 1,
   'Haus und Möbel': 2,
   Kleidung: 2,
   'Körper und Gesundheit': 2,
@@ -69,14 +61,12 @@ export const THEME_LEVEL: Record<string, number> = {
   'Alltag und Bewegung': 2,
   'Wetter und Natur': 2,
   Tiere: 2,
-  Arbeit: 2,
   Reisen: 3,
   'Freizeit und Sport': 3,
   'Schule und Lernen': 3,
   Eigenschaften: 3,
   'Gefühle und Charakter': 3,
   'Sprechen und Mitteilen': 3,
-  'Entscheidungen und Gefühle': 3,
   'Beruf und Wirtschaft': 4,
   'Geld und Bank': 4,
   'Medien und Kultur': 4,

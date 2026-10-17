@@ -1,127 +1,171 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { THEMES } from '../data/words';
 import type { FeedBy, PosFilter } from '../onboarding/feed';
 import type { ExploreSettings } from '../state/profile';
 import { colors, fonts, radius, shadow } from '../theme';
-import { FilterIcon } from './Icons';
 
-// The controls of Explore: the title "explore" with a filter icon at the end of its row, and under it a small grey
-// line that continues the sentence, "by association" ("by theme in kitchen"): both parts are selects.
-export type Menu = null | 'by' | 'theme' | 'filters';
+// The controls of Explore: the title "explore" with the filter icon (a funnel) at the end of its row, and under it
+// two selects on glass pills: the way of exploring (association by default) and, by theme, the topic.
+export type Menu = null | 'by' | 'theme' | 'level' | 'words';
 
-/** The height of the second line ("by association"), which everything below it makes room for. */
-export const BY_ROW_HEIGHT = 26;
+/** The height of a one-line title (used when a select has not been measured yet). */
+const HEADER_ROW = 32;
 
 const BY: { key: FeedBy; label: string; hint: string }[] = [
   { key: 'association', label: 'association', hint: 'follows the words that go with the one you see' },
   { key: 'theme', label: 'theme', hint: 'stays in one topic' },
   { key: 'usefulness', label: 'usefulness', hint: 'the most common words first' },
+  { key: 'free', label: 'free', hint: 'any word at your level, no connections' },
 ];
-const LEVEL: { key: -1 | 0 | 1; label: string }[] = [
-  { key: -1, label: 'easier' },
-  { key: 0, label: 'my level' },
-  { key: 1, label: 'harder' },
+// level: how hard the words are for you; words: which kinds of words
+const LEVEL: { key: -1 | 0 | 1; label: string; hint: string }[] = [
+  { key: -1, label: 'easier', hint: 'a little below your level' },
+  { key: 0, label: 'my level', hint: 'words that fit you' },
+  { key: 1, label: 'harder', hint: 'a little above your level' },
 ];
-const POS: { key: PosFilter; label: string }[] = [
-  { key: 'all', label: 'all' },
-  { key: 'noun', label: 'nouns' },
-  { key: 'verb', label: 'verbs' },
-  { key: 'other', label: 'adj & adv' },
+const POS: { key: PosFilter; label: string; pill: string }[] = [
+  { key: 'all', label: 'all words', pill: 'all words' },
+  { key: 'noun', label: 'nouns', pill: 'nouns' },
+  { key: 'verb', label: 'verbs', pill: 'verbs' },
+  { key: 'other', label: 'adjectives & adverbs', pill: 'adj & adv' },
 ];
 
 export const byLabel = (by: FeedBy) => BY.find((o) => o.key === by)?.label ?? by;
 export const themeName = (id: string | null) => THEMES.find((t) => t.id === id)?.en ?? 'a theme';
-/** The filters differ from the usual: the filter icon says so. */
-export const filtersActive = (e: ExploreSettings) => e.level !== 0 || e.pos !== 'all';
+
+export type Rect = { x: number; y: number; w: number; h: number };
+/** Where each select sits inside the title, so that its menu can open right under it. */
+export type Anchors = Partial<Record<'by' | 'theme' | 'level' | 'words', Rect>>;
+export type AnchorName = keyof Anchors;
+
+const rectOf = (e: { nativeEvent: { layout: { x: number; y: number; width: number; height: number } } }): Rect => ({
+  x: e.nativeEvent.layout.x,
+  y: e.nativeEvent.layout.y,
+  w: e.nativeEvent.layout.width,
+  h: e.nativeEvent.layout.height,
+});
 
 /**
- * The second line, small and grey, continuing the title: "by association", and when exploring by theme
- * "by theme in kitchen". "by ..." opens the ways of exploring, "in ..." opens the themes.
+ * The title of Explore: "explore" and, next to it, three selects on glass pills like the other cards: how the words are
+ * chosen ("by association", by default; the others are by theme, by usefulness, by free), only when exploring by theme the
+ * topic (\"in travel\"), the level (\"my level\", \"easier\", \"harder\") and the kind of words (\"all words\", \"nouns\", ...). When they do not fit on one line they go on to the next.
  */
-export function ExploreByRow({
+export function ExploreTitle({
   by,
   theme,
+  settings,
   menu,
   onMenu,
+  onAnchor,
 }: {
   by: FeedBy;
-  theme: string | null;
+  /** The topic, only when exploring by theme. */
+  theme?: string | null;
+  settings: ExploreSettings;
   menu: Menu;
   onMenu: (m: Menu) => void;
+  onAnchor: (name: AnchorName, rect: Rect) => void;
 }) {
+  const levelLabel = LEVEL.find((o) => o.key === settings.level)?.label ?? 'my level';
+  const posPill = POS.find((o) => o.key === settings.pos)?.pill ?? 'all words';
   return (
-    <View style={styles.byRow}>
-      <Text style={styles.byText}>
-        <Text
-          onPress={() => onMenu(menu === 'by' ? null : 'by')}
-          accessibilityRole="button"
-          accessibilityLabel={`explore by ${byLabel(by)}, change`}
-          suppressHighlighting
-        >
-          <Text style={styles.word}>by </Text>
+    <View style={styles.titleRow}>
+      <Text style={styles.title} accessibilityRole="header">
+        explore
+      </Text>
+      <Pressable
+        onPress={() => onMenu(menu === 'by' ? null : 'by')}
+        onLayout={(e) => onAnchor('by', rectOf(e))}
+        accessibilityRole="button"
+        accessibilityLabel={`way of exploring: ${byLabel(by)}, change`}
+        accessibilityState={{ expanded: menu === 'by' }}
+        hitSlop={8}
+        style={[styles.pill, styles.pillKeep]}
+      >
+        <Text style={styles.pillText} numberOfLines={1}>
+          <Text style={styles.pillPrefix}>by </Text>
           {byLabel(by)}
         </Text>
-        {by === 'theme' ? (
-          <Text
-            onPress={() => onMenu(menu === 'theme' ? null : 'theme')}
-            accessibilityRole="button"
-            accessibilityLabel={`theme: ${themeName(theme)}, change`}
-            suppressHighlighting
-          >
-            {' '}
-            <Text style={styles.word}>in </Text>
+      </Pressable>
+      {theme !== undefined ? (
+        <Pressable
+          onPress={() => onMenu(menu === 'theme' ? null : 'theme')}
+          onLayout={(e) => onAnchor('theme', rectOf(e))}
+          accessibilityRole="button"
+          accessibilityLabel={`topic: ${themeName(theme)}, change`}
+          accessibilityState={{ expanded: menu === 'theme' }}
+          hitSlop={8}
+          style={[styles.pill, styles.pillShrink]}
+        >
+          <Text style={styles.pillText} numberOfLines={1}>
+            <Text style={styles.pillPrefix}>in </Text>
             {themeName(theme)}
           </Text>
-        ) : null}
-      </Text>
+        </Pressable>
+      ) : null}
+      <Pressable
+        onPress={() => onMenu(menu === 'level' ? null : 'level')}
+        onLayout={(e) => onAnchor('level', rectOf(e))}
+        accessibilityRole="button"
+        accessibilityLabel={`level: ${levelLabel}, change`}
+        accessibilityState={{ expanded: menu === 'level' }}
+        hitSlop={8}
+        style={[styles.pill, styles.pillKeep]}
+      >
+        <Text style={styles.pillText} numberOfLines={1}>
+          {levelLabel}
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={() => onMenu(menu === 'words' ? null : 'words')}
+        onLayout={(e) => onAnchor('words', rectOf(e))}
+        accessibilityRole="button"
+        accessibilityLabel={`words: ${posPill}, change`}
+        accessibilityState={{ expanded: menu === 'words' }}
+        hitSlop={8}
+        style={[styles.pill, styles.pillKeep]}
+      >
+        <Text style={styles.pillText} numberOfLines={1}>
+          {posPill}
+        </Text>
+      </Pressable>
     </View>
-  );
-}
-
-/** The filter icon (a filled funnel), at the right end of the title row. It is orange when a filter is on. */
-export function FilterButton({ settings, menu, onMenu }: { settings: ExploreSettings; menu: Menu; onMenu: (m: Menu) => void }) {
-  const active = filtersActive(settings);
-  const open = menu === 'filters';
-  return (
-    <Pressable
-      onPress={() => onMenu(open ? null : 'filters')}
-      accessibilityRole="button"
-      accessibilityLabel={active ? 'filters (changed)' : 'filters'}
-      accessibilityState={{ expanded: open }}
-      hitSlop={8}
-      style={[styles.iconButton, open && styles.iconButtonOn]}
-    >
-      <FilterIcon color={open ? colors.onAccent : active ? colors.accent : colors.textSecondary} />
-    </Pressable>
   );
 }
 
 /** The menus: they open over everything, a tap anywhere else closes them. */
 export function ExploreMenus({
   menu,
-  top,
+  origin,
+  anchors,
   settings,
   onMenu,
   onChange,
   onPickBy,
 }: {
   menu: Menu;
-  /** Where the menus start: just under the title row. */
-  top: number;
+  /** The top of the title, on the screen. */
+  origin: number;
+  /** Where each select sits inside the title; its menu opens right under it. */
+  anchors: Anchors;
   settings: ExploreSettings;
   onMenu: (m: Menu) => void;
   onChange: (patch: Partial<ExploreSettings>) => void;
   onPickBy: (by: FeedBy) => void;
 }) {
+  const { width } = useWindowDimensions();
   if (!menu) return null;
+  const a = anchors[menu];
+  const top = origin + (a ? a.y + a.h : HEADER_ROW) + 6;
+  const fromX = 24 + (a?.x ?? 0);
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
       <Pressable style={StyleSheet.absoluteFill} onPress={() => onMenu(null)} accessibilityLabel="close the menu" accessibilityRole="button" />
 
       {menu === 'by' ? (
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, { top: top + BY_ROW_HEIGHT, left: 24 }]}>
+        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.byCard, { top, left: Math.min(fromX, width - 24 - 280) }]}>
           {BY.map((o) => (
             <Pressable
               key={o.key}
@@ -144,7 +188,7 @@ export function ExploreMenus({
       ) : null}
 
       {menu === 'theme' ? (
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.themeCard, { top: top + BY_ROW_HEIGHT, left: 24 }]}>
+        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.themeCard, { top, left: Math.min(fromX, width - 24 - 200) }]}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {THEMES.map((t) => (
               <Pressable
@@ -165,40 +209,73 @@ export function ExploreMenus({
         </Animated.View>
       ) : null}
 
-      {menu === 'filters' ? (
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.filterCard, { top, right: 24 }]}>
-          <Text style={styles.section}>level</Text>
-          <View style={styles.chips}>
-            {LEVEL.map((o) => (
-              <Chip key={o.key} label={o.label} on={settings.level === o.key} onPress={() => onChange({ level: o.key })} />
-            ))}
-          </View>
-          <Text style={styles.section}>words</Text>
-          <View style={styles.chips}>
-            {POS.map((o) => (
-              <Chip key={o.key} label={o.label} on={settings.pos === o.key} onPress={() => onChange({ pos: o.key })} />
-            ))}
-          </View>
+      {menu === 'level' ? (
+        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
+          {LEVEL.map((o) => (
+            <Pressable
+              key={o.key}
+              onPress={() => {
+                onChange({ level: o.key });
+                onMenu(null);
+              }}
+              accessibilityRole="button"
+              accessibilityState={{ selected: settings.level === o.key }}
+              style={styles.byItem}
+            >
+              <View style={styles.byItemText}>
+                <Text style={styles.byLabel}>{o.label}</Text>
+                <Text style={styles.byHint}>{o.hint}</Text>
+              </View>
+              {settings.level === o.key ? <View style={styles.selectedDot} /> : null}
+            </Pressable>
+          ))}
+        </Animated.View>
+      ) : null}
+
+      {menu === 'words' ? (
+        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
+          {POS.map((o) => (
+            <Pressable
+              key={o.key}
+              onPress={() => {
+                onChange({ pos: o.key });
+                onMenu(null);
+              }}
+              accessibilityRole="button"
+              accessibilityState={{ selected: settings.pos === o.key }}
+              style={styles.byItem}
+            >
+              <Text style={styles.byLabel}>{o.label}</Text>
+              {settings.pos === o.key ? <View style={styles.selectedDot} /> : null}
+            </Pressable>
+          ))}
         </Animated.View>
       ) : null}
     </View>
   );
 }
 
-function Chip({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) {
-  return (
-    <Pressable onPress={onPress} accessibilityRole="button" accessibilityState={{ selected: on }} style={[styles.chip, on && styles.chipOn]}>
-      <Text style={[styles.chipText, on && styles.chipTextOn]}>{label}</Text>
-    </Pressable>
-  );
-}
-
 const styles = StyleSheet.create({
-  byRow: { minHeight: BY_ROW_HEIGHT, justifyContent: 'center' },
-  byText: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
-  word: { color: colors.text }, // the little words of the sentence, "by" and "in", are white; the choices are grey
-  iconButton: { width: 34, height: 34, borderRadius: radius.chip, alignItems: 'center', justifyContent: 'center' },
-  iconButtonOn: { backgroundColor: colors.accent },
+  byCard: { minWidth: 280 },
+  // the title: "explore" and, by theme, the topic as a glass pill
+  // the title: "explore" and, next to it, the selects on glass pills (a faint light fill with a hairline edge, like the Map's card)
+  titleRow: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 8, rowGap: 8 },
+  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
+  pill: {
+    marginTop: 3, // the word "explore" sits a little low in its line (its tail letters), so the pill drops by half of this to share its middle
+    paddingHorizontal: 11,
+    paddingVertical: 6,
+    borderRadius: radius.chip,
+    backgroundColor: 'rgba(255,255,255,0.09)',
+    borderWidth: 1.5,
+    borderColor: 'rgba(255,255,255,0.14)',
+  },
+  pillShrink: { flexShrink: 1 },
+  pillKeep: { flexShrink: 0 }, // the way of exploring is never shortened; a long topic name gives way instead
+  pillText: { fontFamily: fonts.medium, fontSize: 14, color: colors.text },
+  pillPrefix: { fontFamily: fonts.regular, color: colors.textSecondary }, // the little word ("by", "in") is quieter than the choice
+  // a menu in the middle of the screen's width
+  centered: { alignSelf: 'center', left: undefined, right: undefined },
   card: {
     position: 'absolute',
     paddingVertical: 6,
@@ -209,16 +286,10 @@ const styles = StyleSheet.create({
     ...shadow,
   },
   themeCard: { maxHeight: 360, minWidth: 200 },
-  filterCard: { width: 280, paddingHorizontal: 16, paddingVertical: 14, gap: 10 },
+  levelCard: { minWidth: 240 },
   byItem: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 14, paddingHorizontal: 16, paddingVertical: 11 },
   byItemText: { gap: 1 },
   byLabel: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   byHint: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary },
   selectedDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.accent },
-  section: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  chip: { paddingHorizontal: 12, paddingVertical: 7, borderRadius: radius.chip, borderWidth: 1.5, borderColor: colors.border, backgroundColor: colors.chip },
-  chipOn: { backgroundColor: colors.accent, borderColor: colors.accent },
-  chipText: { fontFamily: fonts.medium, fontSize: 13, color: colors.text },
-  chipTextOn: { color: colors.onAccent },
 });

@@ -15,6 +15,7 @@ uniform float rays;     // 0..1, strength of the four rays
 uniform float haloK;    // scales the halo and the rays
 uniform float ring;     // 1 draws a hollow ring instead (a word that is only gathered)
 uniform float dull;     // 1 draws a dim, quiet dot (nothing lit yet)
+uniform float steady;   // 1: a dull dot does not flicker (every untouched theme looks the same)
 uniform float3 tint;    // colour of the halo
 uniform float3 coreColor; // colour of the bright core
 uniform float time;
@@ -25,7 +26,7 @@ half4 main(float2 p) {
   float dist = length(d);
 
   if (dull > 0.5) {
-    float flick = 0.7 + 0.3 * sin(time * 1.3 + phase);
+    float flick = mix(0.7 + 0.3 * sin(time * 1.3 + phase), 0.85, steady);
     float a = (1.0 - smoothstep(radius - 1.0, radius, dist)) * 0.95 * flick;
     return half4(half3(0.56, 0.64, 0.73) * half(a), half(a));
   }
@@ -67,6 +68,8 @@ export type Glow = {
   haloK?: number;
   ring?: boolean;
   dull?: boolean;
+  /** A dull dot that does not flicker. */
+  steady?: boolean;
   /** halo colour, each 0..1 */
   tint?: [number, number, number];
   /** colour of the bright core (a warm white by default) */
@@ -103,6 +106,7 @@ function GlowPoint({ g, clock, tilt }: { g: Glow; clock: SharedValue<number>; ti
     haloK,
     ring: g.ring ? 1 : 0,
     dull: g.dull ? 1 : 0,
+    steady: g.steady ? 1 : 0,
     tint: g.tint ?? [0.97, 0.35, 0.19],
     coreColor: g.core ?? [1, 0.96, 0.86],
     time: clock.value / 1000,

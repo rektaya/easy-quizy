@@ -65,3 +65,20 @@ test('a word on screen is kept when it already fits the new settings, and change
   const hard = WORDS.find((w) => w.tier === 6)!;
   assert.equal(fitsFeed(hard, WORDS, none, answers, opts({})), false, 'far above the level');
 });
+
+test('free picks any word at the user level, differently each time, and never the one on screen', () => {
+  const o = opts({ by: 'free' });
+  const seen = new Set<string>();
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  let current = pickFeedWord(WORDS, none, answers, null, o, rnd)!;
+  for (let i = 0; i < 12; i++) {
+    seen.add(current.id);
+    const next = pickFeedWord(WORDS, none, answers, current, o, rnd)!;
+    assert.notEqual(next.id, current.id);
+    assert.ok(Math.abs(next.tier - 3) <= 1, `tier ${next.tier} is far from the level`);
+    current = next;
+  }
+  assert.ok(seen.size > 6, 'the words vary');
+  assert.equal(feedChips(current, WORDS, none, answers, o, 3, rnd).length, 3);
+});

@@ -420,26 +420,32 @@ export const CORE_TIERS: Record<string, Word['tier']> = {
   gefuehl: 2, 'sich-freuen': 2, wochenende: 1,
 };
 
-/** The themes of the hand-written words, in trail order, with the English name shown on the Map. */
-export const CORE_THEMES: { id: string; de: string; en: string; ids: string[] }[] = [
-  { id: 'Arbeit', de: 'Arbeit', en: 'work', ids: ['feierabend', 'arbeit', 'buero', 'kollege', 'besprechung', 'termin', 'vereinbaren'] },
-  {
-    id: 'Unterwegs',
-    de: 'Unterwegs',
-    en: 'getting around',
-    ids: ['verspaetung', 'zug', 'abfahren', 'haltestelle', 'aussteigen', 'umsteigen', 'fahrschein', 'fahrplan'],
-  },
-  {
-    id: 'Küche',
-    de: 'Küche',
-    en: 'kitchen',
-    ids: ['kueche', 'herd', 'pfanne', 'braten', 'zwiebel', 'spuelmaschine', 'geschirr', 'kuehlschrank'],
-  },
-  { id: 'Wohnen', de: 'Wohnen', en: 'home', ids: ['nachbar', 'miete', 'wohnung', 'umziehen'] },
-  {
-    id: 'Entscheidungen und Gefühle',
-    de: 'Entscheidungen und Gefühle',
-    en: 'decisions and feelings',
-    ids: ['entscheidung', 'sich-entscheiden', 'erfahrung', 'gefuehl', 'sich-freuen', 'wochenende'],
-  },
-];
+/**
+ * The topic each hand-written word belongs to: the big topics of the generated list (the five small topics these
+ * words once made up, work, getting around, kitchen, home and decisions and feelings, were folded into them).
+ */
+export const CORE_WORD_THEME: Record<string, string> = {
+  // work -> work and business
+  feierabend: 'Beruf und Wirtschaft', arbeit: 'Beruf und Wirtschaft', buero: 'Beruf und Wirtschaft', kollege: 'Beruf und Wirtschaft',
+  besprechung: 'Beruf und Wirtschaft', termin: 'Beruf und Wirtschaft', vereinbaren: 'Beruf und Wirtschaft',
+  // getting around -> travel
+  verspaetung: 'Reisen', zug: 'Reisen', abfahren: 'Reisen', haltestelle: 'Reisen', aussteigen: 'Reisen', umsteigen: 'Reisen',
+  fahrschein: 'Reisen', fahrplan: 'Reisen',
+  // kitchen -> food and drink
+  kueche: 'Essen und Trinken', herd: 'Essen und Trinken', pfanne: 'Essen und Trinken', braten: 'Essen und Trinken',
+  zwiebel: 'Essen und Trinken', spuelmaschine: 'Essen und Trinken', geschirr: 'Essen und Trinken', kuehlschrank: 'Essen und Trinken',
+  // home -> house and furniture
+  nachbar: 'Haus und Möbel', miete: 'Haus und Möbel', wohnung: 'Haus und Möbel', umziehen: 'Haus und Möbel',
+  // decisions and feelings -> ideas and plans, feelings and character, time and calendar
+  entscheidung: 'Ideen und Pläne', 'sich-entscheiden': 'Ideen und Pläne', erfahrung: 'Ideen und Pläne',
+  gefuehl: 'Gefühle und Charakter', 'sich-freuen': 'Gefühle und Charakter', wochenende: 'Zeit und Kalender',
+};
+
+/** The old small topics and the big ones that took them over (saved choices of the old topics are carried across). */
+export const MERGED_THEMES: Record<string, string> = {
+  Arbeit: 'Beruf und Wirtschaft',
+  Unterwegs: 'Reisen',
+  Küche: 'Essen und Trinken',
+  Wohnen: 'Haus und Möbel',
+  'Entscheidungen und Gefühle': 'Ideen und Pläne',
+};

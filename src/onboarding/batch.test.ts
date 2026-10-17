@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { WORDS } from '../data/words.ts';
 import { firstStudy, reviewCard, seedCard } from '../srs/scheduler.ts';
 import { dueWords, makeBatch, makeSession, nextDue, waitingWords } from './batch.ts';
-import { statusOf, summarize } from './status.ts';
+import { statusOf, statusOfRating, summarize, wordStatus } from './status.ts';
 
 const DAY = 24 * 60 * 60 * 1000;
 const T0 = Date.UTC(2026, 8, 26, 10);
@@ -57,7 +57,8 @@ test('the dashboard counts words by how firm they are, and keeps known words out
   assert.equal(s.knownBefore, 1);
   assert.equal(statusOf(cards.arbeit), 'learned');
   assert.equal(statusOf(cards.kollege), 'shaky');
-  assert.deepEqual(s.counts, { new: 3, shaky: 1, getting: 0, solid: 0, learned: 1 });
+  // a word never studied has no card yet: how it was rated stands in (termin 0.05 is new; feierabend 0.5 and zug 0.7 are getting there)
+  assert.deepEqual(s.counts, { new: 1, shaky: 1, getting: 2, solid: 0, learned: 1 });
 });
 
 test('due words are the most overdue first', () => {
@@ -93,4 +94,16 @@ test('a quick session is at most 10 words and "study all" up to 50, with the new
   assert.equal(quick.filter((b) => b.isNew).length, 5);
   assert.equal(long.length, 40); // all 20 due reviews and all 20 new words
   assert.equal(long.filter((b) => b.isNew).length, 20);
+});
+
+test('before a word is studied its status follows how well the user said they know it', () => {
+  assert.equal(statusOfRating(0.03), 'new');
+  assert.equal(statusOfRating(0.35), 'shaky');
+  assert.equal(statusOfRating(0.65), 'getting');
+  assert.equal(statusOfRating(0.8), 'solid');
+  assert.equal(wordStatus('zug', ratings, {}), 'getting');
+  assert.equal(wordStatus('buero', ratings, {}), 'learned');
+  assert.equal(wordStatus('nie-gesehen', ratings, {}), 'unseen');
+  // once studied, the card decides
+  assert.equal(wordStatus('arbeit', ratings, { arbeit: seedCard(0.9, T0) }), statusOf(seedCard(0.9, T0)));
 });

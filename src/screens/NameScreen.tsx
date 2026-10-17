@@ -17,7 +17,7 @@ export default function NameScreen({ onSubmit }: { onSubmit: (name: string) => v
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.screen}>
       <View style={[styles.inner, { paddingTop: insets.top + 24, paddingBottom: 24 }]}>
         <View style={styles.body}>
-          <Text style={styles.title}>hi, ready to easy quizy? what’s your name?</Text>
+          <Text style={styles.title}>let’s get to know each other first</Text>
           <TextInput
             value={name}
             onChangeText={setName}

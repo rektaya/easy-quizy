@@ -1,16 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { Answer } from '../onboarding/calibration';
+import { carryOver, RENAMED_WORDS } from '../data/renamedWords';
+import { currentTheme, registerOwnWords } from '../data/words';
+import type { OwnWord } from '../data/words';
 import { DEFAULT_FEED } from '../onboarding/feed';
 import type { FeedOptions } from '../onboarding/feed';
 import { firstStudy, reviewCard } from '../srs/scheduler';
 import type { StoredCard } from '../srs/scheduler';
 
 /**
- * Where the user is in the first-run path: name, an intro, a practice word, the quick-test screen, 15 words,
- * a message. ('study' is an older value, kept so saved profiles still load; it is treated as done.)
+ * Where the user is in the first-run path: welcome, name, an intro, interests, a practice word, the quick-test
+ * screen, 15 words, a message. ('study' is an older value, kept so saved profiles still load; it is treated as done.)
  */
-export type Phase = 'name' | 'intro' | 'practice' | 'quiz' | 'calibration' | 'message' | 'study' | 'done';
+export type Phase = 'welcome' | 'name' | 'intro' | 'interests' | 'practice' | 'quiz' | 'calibration' | 'message' | 'study' | 'done';
 
 /** The daily reminder to come back to the words. */
 export type Reminder = { on: boolean; hour: number; minute: number; asked: boolean };
@@ -35,6 +38,8 @@ type Profile = {
   explore: ExploreSettings;
   /** Themes the user likes: Explore brings words from them more often. */
   interests: string[];
+  /** Words the user added themselves (the plus in Study). */
+  ownWords: OwnWord[];
 };
 
 export type ExploreSettings = Omit<FeedOptions, 'interests'>;
@@ -51,6 +56,7 @@ type Ctx = Profile & {
   setQuickSessions: (on: boolean) => void;
   setExplore: (patch: Partial<ExploreSettings>) => void;
   setInterests: (themeIds: string[]) => void;
+  addOwnWord: (word: OwnWord) => void;
   /** Change the name later (the first-run path sets it with setName). */
   rename: (name: string) => void;
   addAnswer: (answer: Answer) => void;
@@ -67,7 +73,7 @@ type Ctx = Profile & {
 };
 
 const KEY = 'easyquizy.profile.v1';
-const INITIAL: Profile = { name: '', phase: 'name', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false, reminder: { on: false, hour: 19, minute: 0, asked: false }, quickSessions: false, explore: { ...DEFAULT_FEED }, interests: [] };
+const INITIAL: Profile = { name: '', phase: 'welcome', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false, reminder: { on: false, hour: 19, minute: 0, asked: false }, quickSessions: false, explore: { ...DEFAULT_FEED }, interests: [], ownWords: [] };
 const ProfileContext = createContext<Ctx | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
@@ -78,7 +84,18 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     AsyncStorage.getItem(KEY)
       .then((raw) => {
-        if (raw) setProfile({ ...INITIAL, ...JSON.parse(raw) });
+        if (raw) {
+          const saved = { ...INITIAL, ...JSON.parse(raw) } as Profile;
+          registerOwnWords(saved.ownWords); // the words the user added join the list before anything is drawn
+          // words whose id changed (the reflexive verbs) keep their cards, deletions and answers
+          saved.cards = carryOver(saved.cards);
+          saved.removed = carryOver(saved.removed);
+          saved.answers = (saved.answers ?? []).map((a) => ({ ...a, id: RENAMED_WORDS[a.id] ?? a.id }));
+          // topics that were merged into bigger ones (work, home, kitchen, ...) are carried across
+          saved.interests = [...new Set((saved.interests ?? []).map(currentTheme).filter((t): t is string => !!t))];
+          if (saved.explore?.theme) saved.explore = { ...saved.explore, theme: currentTheme(saved.explore.theme) };
+          setProfile(saved);
+        }
       })
       .catch(() => {})
       .finally(() => setReady(true));
@@ -94,13 +111,17 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   }, [profile, ready]);
 
   const setName = useCallback(
-    (name: string) => setProfile((p) => ({ ...p, name: name.trim(), phase: 'intro' })),
+    (name: string) => setProfile((p) => ({ ...p, name: name.trim(), phase: 'interests' })),
     [],
   );
   const setPhase = useCallback((phase: Phase) => setProfile((p) => ({ ...p, phase })), []);
   const setReminder = useCallback((patch: Partial<Reminder>) => setProfile((p) => ({ ...p, reminder: { ...p.reminder, ...patch } })), []);
   const setQuickSessions = useCallback((quickSessions: boolean) => setProfile((p) => ({ ...p, quickSessions })), []);
   const setExplore = useCallback((patch: Partial<ExploreSettings>) => setProfile((p) => ({ ...p, explore: { ...p.explore, ...patch } })), []);
+  const addOwnWord = useCallback((word: OwnWord) => {
+    registerOwnWords([word]);
+    setProfile((p) => ({ ...p, ownWords: [...p.ownWords, word] }));
+  }, []);
   const setInterests = useCallback((interests: string[]) => setProfile((p) => ({ ...p, interests })), []);
   const rename = useCallback((name: string) => setProfile((p) => ({ ...p, name: name.trim() || p.name })), []);
   const setMapIntroSeen = useCallback(() => setProfile((p) => ({ ...p, mapIntroSeen: true })), []);
@@ -148,6 +169,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       setQuickSessions,
       setExplore,
       setInterests,
+      addOwnWord,
       rename,
       addAnswer,
       removeAnswer,
@@ -155,7 +177,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, setExplore, setInterests, rename, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, setExplore, setInterests, addOwnWord, rename, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;
