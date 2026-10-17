@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -19,15 +19,18 @@ import { ReminderCard } from '../components/ReminderCard';
 import { FlipReveal } from '../components/FlipReveal';
 import { Ring } from '../components/Ring';
 import { TabHeader } from '../components/TabHeader';
+import { UndoPlate } from '../components/UndoToast';
 import { WORDS } from '../data/words';
 import { makeSession } from '../onboarding/batch';
 import type { BatchItem, SessionKind } from '../onboarding/batch';
+import type { StoredCard } from '../srs/scheduler';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import { colors, fonts, radius } from '../theme';
 
 // The circle sits where it does in Explore: a little above the middle of its area. It is placed
 // absolutely, so nothing that appears after rating (the example) can move it.
+const UNDO_MS = 4000; // how long the plate with "undo" stays
 const CIRCLE_LIFT = 52;
 
 /** A word rated above this in Study is a small win: a buzz. */
@@ -55,10 +58,12 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready: ratingsReady, ratings } = useRatings();
-  const { ready: profileReady, cards, reviewWord } = useProfile();
+  const { ready: profileReady, cards, reviewWord, restoreCard } = useProfile();
   const [batch, setBatch] = useState<BatchItem[] | null>(null);
   const [index, setIndex] = useState(0);
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
+  const [undoable, setUndoable] = useState<{ id: string; before: StoredCard | undefined } | null>(null); // what the plate's undo takes back
+  const undoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
   const [body, setBody] = useState({ w: 0, h: 0 }); // the area the circle sits in
 
@@ -71,6 +76,7 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
   // Moving on after a rating is a swipe up, the same motion as in Explore: the word follows the finger,
   // glides away, and the next one rises in from below.
   const goNext = useCallback(() => {
+    setUndoable(null);
     setValue(null);
     setIndex((i) => i + 1);
   }, []);
@@ -117,9 +123,18 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
   if (!loaded || batch === null) return <View style={styles.screen} />;
 
   const word = batch[index]?.word;
+  const undo = () => {
+    if (!undoable) return;
+    restoreCard(undoable.id, undoable.before);
+    setUndoable(null);
+    setValue(null); // the ring unwinds and the word can be rated again
+  };
   const commit = (v: number) => {
     if (!word) return;
     setValue(v);
+    setUndoable({ id: word.id, before: cards[word.id] }); // so the plate can take the review back
+    if (undoTimer.current) clearTimeout(undoTimer.current);
+    undoTimer.current = setTimeout(() => setUndoable(null), UNDO_MS);
     reviewWord(word.id, v, ratings[word.id]);
     if (v > CELEBRATE_ABOVE) {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
@@ -203,6 +218,7 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
           </GestureDetector>
         ) : null}
       </View>
+      {undoable ? <UndoPlate onUndo={undo} /> : null}
     </View>
   );
 }

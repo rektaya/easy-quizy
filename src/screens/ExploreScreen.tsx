@@ -17,7 +17,7 @@ import { Ring } from '../components/Ring';
 import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
-import { UndoToast } from '../components/UndoToast';
+import { UndoPlate } from '../components/UndoToast';
 import { ExploreMenus, ExploreTitle } from '../components/ExploreControls';
 import type { Anchors, Menu } from '../components/ExploreControls';
 import { FlipReveal } from '../components/FlipReveal';
@@ -86,7 +86,6 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const { answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer, explore, setExplore, interests } = useProfile();
   const [menu, setMenu] = useState<Menu>(null); // which of the selects' and the filter menus is open
   const [anchors, setAnchors] = useState<Anchors>({}); // where each select sits in the title (its menu opens under it)
-  const [titleH, setTitleH] = useState(HEADER_HEIGHT); // the title grows when its selects go on to a second line
   // how the next word is chosen (the settings of "explore by ..." and its filters, and the liked themes)
   const feed = useMemo<FeedOptions>(
     () => ({ by: explore.by, theme: explore.theme, level: explore.level, pos: explore.pos, interests }),
@@ -302,7 +301,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         { paddingTop: insets.top + 12, paddingBottom: calibrating ? insets.bottom + 12 : tabSpace },
       ]}
     >
-      <View onLayout={(e) => setTitleH(e.nativeEvent.layout.height)}>
+      <View>
         <TabHeader
           titleNode={
             calibrating ? undefined : (
@@ -396,11 +395,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         />
       )}
 
-      {status ? (
-        <View pointerEvents="box-none" style={[styles.statusTop, { top: insets.top + 12 + (calibrating ? HEADER_HEIGHT : titleH) + 10 }]}>
-          <UndoToast message={status} onUndo={onUndo} />
-        </View>
-      ) : null}
+      {status ? <UndoPlate message={status} onUndo={onUndo} /> : null}
     </View>
   );
 }
@@ -423,7 +418,6 @@ const styles = StyleSheet.create({
   locked: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10 },
   lockedButton: { alignSelf: 'stretch', marginTop: 18 },
   // covers the whole circle; the word sits in the middle of it
-  statusTop: { position: 'absolute', left: 0, right: 0, alignItems: 'center' },
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10, paddingHorizontal: 24 },
   emptyTitle: { fontFamily: fonts.medium, fontSize: 18, color: colors.text },
   emptyBody: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, textAlign: 'center' },

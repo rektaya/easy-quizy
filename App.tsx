@@ -68,11 +68,12 @@ const ProfileTabScreen = () => (
     <ProfileScreen />
   </Starry>
 );
-// The Map draws a night sky of its own, so it has no starry paper.
+// The Map is on the same starry paper as every other screen; its own big stars (one per topic) are drawn on top.
 const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) => void } }) => {
   const { setSeedTheme } = useProfile();
   const space = useTabBarSpace();
   return (
+    <Starry>
     <MapScreen
       bottomSpace={space - 8}
       onExplore={(themeId) => {
@@ -81,6 +82,7 @@ const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) =
       }}
       onStudy={() => navigation.navigate('Study')}
     />
+    </Starry>
   );
 };
 

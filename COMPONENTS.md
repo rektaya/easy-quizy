@@ -28,7 +28,7 @@ back chevron already exists). If something is missing, say so and ask before add
 - **Interface text is lowercase** (German words keep their capitals). No full stops at the end of a short line.
 - **One main button per screen**, orange (`Button`, primary). A second, quieter one is `ghost`. Dismissing is not
   a button's job (see the first rule).
-- **Messages that can be undone** are a plate at the top, under the header (`UndoToast`), never inside the circle.
+- **Messages that can be undone** are one plate, `UndoPlate`, always in the **same place** (just under the first line of the screen, at the top of the safe area plus 54), on every screen that has one: the first-run screens, Explore and the Study test. Never inside the circle, never a second position.
 - **No tutorials.** The gesture is taught once, on the practice screen; after that only the first-visit cards.
 - The look: deep navy `#0C1927`, light ink, one orange accent, Figtree (`src/theme.ts`).
 
@@ -50,7 +50,7 @@ back chevron already exists). If something is missing, say so and ask before add
 | `WordFace` | the German word inside the circle (article above, lemma below) | the circle |
 | `Translation` | the English meaning, sized to fit the circle | the circle |
 | `FlipReveal` | what sits in the circle after rating: the translation, tap to flip to the German word | Explore, Study, Practice |
-| `UndoToast` | the plate "added to study · undo" | Explore, Practice |
+| `UndoPlate` (`UndoToast` inside it) | the plate "added to study · undo" (Study: just "undo"), in its one place | Explore, practice, Study test |
 | `WordCard` | a word's card: topic and status ring on the top row, word, meaning, plural, words it often comes with, how common, examples | `CardPager` |
 | `RevealDetails` | example and similar words under the circle after rating | Explore |
 | `Ring` | a small progress ring (the counter) | the first-run test, Study session |

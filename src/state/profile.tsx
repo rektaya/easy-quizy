@@ -66,6 +66,8 @@ type Ctx = Profile & {
    * then this rating reviews it; after that it is a plain review.
    */
   reviewWord: (wordId: string, value: number, explore: { value: number; at: number } | undefined) => void;
+  /** Takes back the last review of a word in Study: its card goes back to how it was (or is removed, when it had none). */
+  restoreCard: (wordId: string, card: StoredCard | undefined) => void;
   /** Delete a word from the pile for good (its rating is removed separately). */
   removeWord: (wordId: string) => void;
   /** Back to the very start of the first-run path (the ratings are reset separately). */
@@ -146,6 +148,15 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       }),
     [],
   );
+  const restoreCard = useCallback(
+    (wordId: string, card: StoredCard | undefined) =>
+      setProfile((p) => {
+        if (card) return { ...p, cards: { ...p.cards, [wordId]: card } };
+        const { [wordId]: _card, ...cards } = p.cards;
+        return { ...p, cards };
+      }),
+    [],
+  );
   const removeWord = useCallback(
     (wordId: string) =>
       setProfile((p) => {
@@ -174,10 +185,11 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       addAnswer,
       removeAnswer,
       reviewWord,
+      restoreCard,
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, setExplore, setInterests, addOwnWord, rename, addAnswer, removeAnswer, reviewWord, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, setExplore, setInterests, addOwnWord, rename, addAnswer, removeAnswer, reviewWord, restoreCard, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

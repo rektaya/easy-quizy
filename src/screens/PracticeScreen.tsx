@@ -6,15 +6,15 @@ import { Circle } from '../circle/Circle';
 import { Button } from '../components/Button';
 import { DONT_KNOW, DontKnowButton, dontKnowTop } from '../components/DontKnowButton';
 import { FlipReveal } from '../components/FlipReveal';
-import { UndoToast } from '../components/UndoToast';
+import { UNDO_BOTTOM, UndoPlate } from '../components/UndoToast';
 import { WORDS } from '../data/words';
 import { colors, fonts } from '../theme';
 
 // Where the circle sits: a little above the middle of the area, as in Explore, but never so high that
 // there is no room above it for the plate (undo) and the text under that.
 const CIRCLE_LIFT = 52;
-/** Room at the very top for the "added to study / undo" plate. */
-const PLATE_ZONE = 58;
+/** Room at the very top for the "added to study / undo" plate (it sits a little below the progress bar, and the text starts under it). */
+const PLATE_ZONE = UNDO_BOTTOM - 12 + 8; // the plate's bottom edge (the body starts 12 below the safe area) and a little air
 /** Room for the title and the text under it. */
 const TEXT_ZONE = 190;
 
@@ -43,7 +43,8 @@ export default function PracticeScreen({ onDone }: { onDone: () => void }) {
       <View style={styles.body} onLayout={(e) => setBody({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}>
         {body.h > 0 ? (
           <>
-            <View style={[styles.above, { top: PLATE_ZONE, height: Math.max(0, circleTop - 8 - PLATE_ZONE) }]}>
+            {/* the text sits in the middle of the space between the plate and the ring, so the two gaps are the same */}
+            <View style={[styles.above, { top: PLATE_ZONE, height: Math.max(0, circleTop + 6 - PLATE_ZONE) }]}>
               {rated ? (
                 <Animated.View key="done" entering={FadeIn.duration(400)} style={styles.aboveInner}>
                   <Text style={styles.title}>great job!</Text>
@@ -68,11 +69,7 @@ export default function PracticeScreen({ onDone }: { onDone: () => void }) {
         ) : null}
       </View>
       {rated ? <Button label="continue" onPress={onDone} /> : <View style={styles.buttonSpace} />}
-      {rated ? (
-        <View pointerEvents="box-none" style={[styles.statusTop, { top: insets.top + 12 + 4 }]}>
-          <UndoToast message={value >= 0.9 ? 'marked as known' : 'added to study'} onUndo={() => setValue(null)} />
-        </View>
-      ) : null}
+      {rated ? <UndoPlate message={value >= 0.9 ? 'marked as known' : 'added to study'} onUndo={() => setValue(null)} /> : null}
     </View>
   );
 }
@@ -80,10 +77,9 @@ export default function PracticeScreen({ onDone }: { onDone: () => void }) {
 const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: 24, userSelect: 'none' },
   body: { flex: 1, marginHorizontal: -24 }, // edge to edge, so drawing works across the whole width
-  above: { position: 'absolute', left: 0, right: 0, paddingHorizontal: 24, justifyContent: 'flex-end' },
+  above: { position: 'absolute', left: 0, right: 0, paddingHorizontal: 24, justifyContent: 'center' },
   aboveInner: { alignItems: 'center', gap: 8 },
   title: { fontFamily: fonts.medium, fontSize: 32, lineHeight: 38, color: colors.text, textAlign: 'center' },
   text: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary, textAlign: 'center', paddingHorizontal: 4 },
-  statusTop: { position: 'absolute', left: 0, right: 0, alignItems: 'center' },
   buttonSpace: { height: 54 },
 });

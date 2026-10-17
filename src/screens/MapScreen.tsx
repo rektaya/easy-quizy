@@ -18,6 +18,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import Svg, { Circle, Defs, Line, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
 import { Button } from '../components/Button';
+import { StarBackground } from '../components/StarBackground';
 import { CardPager } from '../components/CardPager';
 import { WordRow } from '../components/WordRow';
 import { GlowCanvas, sphereUnits } from '../components/GlowShader';
@@ -30,7 +31,7 @@ import { THEMES, WORDS } from '../data/words';
 import { THEME_LEVEL } from '../data/themeLinks';
 import { buildClusters, clusterStats, curatedLinks, levelOf, orderedWords, starLook, zoomWords } from '../onboarding/mapdata';
 import type { Cluster, StarLook, StarState } from '../onboarding/mapdata';
-import { LABEL_FONT, ambientStars, blob, layoutSky, placeLabels, shuffled } from '../onboarding/sky';
+import { LABEL_FONT, blob, layoutSky, placeLabels, shuffled } from '../onboarding/sky';
 import type { SkyCluster } from '../onboarding/sky';
 import { clampPan, minScale, panRange, snapScale } from '../onboarding/viewport';
 import { wordStatus } from '../onboarding/status';
@@ -63,7 +64,6 @@ const WORLD_Y = 1.9; // height of that area, in screens
 // The sky itself is wider than that area by this much (in screens) on every side, so the theme stars
 // never sit near its edges and there is always sky beyond the outermost one.
 const WORLD_PAD = 0.45;
-const SMALL_STAR_CELL = 38; // room for one small star per cell of this size (bigger cell, sparser sky)
 const PANEL_HEIGHT = 236; // the card at the bottom of an opened theme (its name, how much is explored, the buttons)
 const MAX_ZOOM_POINTS = 60; // every word of a theme gets its own point (an even sample beyond this)
 const SPHERE_DUST = 230; // the fine dots that give the sphere its shape
@@ -210,10 +210,6 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
         : [],
     [clusters, stage, world, pad, links, skySeed],
   );
-  const ambient = useMemo(
-    () => (stage.w ? ambientStars(world.w, world.h, sky.map((c) => ({ x: c.cx, y: c.cy })), SMALL_STAR_CELL, skySeed) : []),
-    [stage, world, sky, skySeed],
-  );
 
   // Where the screen looks onto the sky: it starts on the middle, and dragging moves it around.
   const panX = useSharedValue(0);
@@ -239,18 +235,8 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
     [],
   );
 
-  // The sky is drawn in two layers, once per change of data (they are not redrawn while they
-  // animate): an even field of small stars, and one big star per theme.
-  const smallStars = useMemo(
-    () => (
-      <Svg width={world.w} height={world.h}>
-        {ambient.map((s, i) => (
-          <Circle key={i} cx={s.x} cy={s.y} r={s.r} fill={CORE} opacity={s.o} />
-        ))}
-      </Svg>
-    ),
-    [ambient, world],
-  );
+  // The small stars behind everything are the app's own starry paper (the same on every screen); the Map
+  // draws only one big star per theme and the threads between them.
   // how each theme's star looks, from how many of its words have been taken
   const looks = useMemo(() => clusters.map((c) => starLook(clusterStats(c, ratings, cards))), [clusters, ratings, cards]);
   // which themes have at least one explored word: threads are drawn only between two of those
@@ -400,10 +386,6 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
     const ty = opened ? target.y - stage.h / 2 - ZOOM * (sy - stage.h / 2) : 0;
     return [{ translateX: tx * open.value }, { translateY: ty * open.value }, { scale: k }];
   };
-  const smallStyle = useAnimatedStyle(() => ({
-    opacity: 1 - 0.7 * open.value,
-    transform: [{ translateX: -tiltX.value * PARALLAX_FAR }, { translateY: -tiltY.value * PARALLAX_FAR }, ...zoomTransform(), { scale: scale.value }],
-  }));
   // the other themes' big stars fade out quickly, so only the opened cluster stays lit
   const bigStyle = useAnimatedStyle(() => ({
     opacity: Math.max(0, 1 - 1.6 * open.value),
@@ -570,9 +552,6 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
             {/* the sky is bigger than the screen; the drag moves the screen over it */}
             <GestureDetector gesture={look}>
               <View style={StyleSheet.absoluteFill}>
-                <Animated.View style={[StyleSheet.absoluteFill, smallStyle]} pointerEvents="none">
-                  <Animated.View style={[{ position: 'absolute', width: world.w, height: world.h }, worldStyle]}>{smallStars}</Animated.View>
-                </Animated.View>
                 <Animated.View style={[StyleSheet.absoluteFill, bigStyle]} pointerEvents="box-none">
                   <Animated.View
                     style={[{ position: 'absolute', width: world.w, height: world.h }, worldStyle]}
@@ -753,6 +732,7 @@ function WordListPage({
   const words = orderedWords(cluster, ratings);
   return (
     <Animated.View entering={FadeIn.duration(260)} exiting={FadeOut.duration(160)} style={[styles.listPage, { paddingTop: insets.top + 12, paddingBottom: bottom }]}>
+      <StarBackground />
       <View style={styles.listHeader}>
         <Pressable onPress={onBack} accessibilityRole="button" accessibilityLabel="back" hitSlop={12} style={styles.listBack}>
           <ChevronLeftIcon color={colors.accent} size={28} />
@@ -777,7 +757,7 @@ function WordListPage({
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: SKY },
+  screen: { flex: 1 }, // transparent: the starry paper of the app shows through, as on every other screen
   head: { position: 'absolute', top: 0, left: 0, right: 0, paddingHorizontal: 24, gap: 6 },
   headRight: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   lookButton: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
@@ -802,7 +782,7 @@ const styles = StyleSheet.create({
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
   cardButtons: { gap: 10 },
   // the page with a theme's words
-  listPage: { ...StyleSheet.absoluteFill, paddingHorizontal: 24, gap: 14, backgroundColor: SKY },
+  listPage: { ...StyleSheet.absoluteFill, paddingHorizontal: 24, gap: 14, backgroundColor: colors.bg },
   listHeader: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   listBack: { height: 32, justifyContent: 'center', marginLeft: -6 },
   listTitles: { flex: 1, gap: 1 },

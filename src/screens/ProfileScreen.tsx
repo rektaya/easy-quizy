@@ -87,7 +87,6 @@ export default function ProfileScreen() {
           onChange={setQuickSessions}
         />
 
-        <Text style={styles.section}>reminder</Text>
         <ReminderCard />
 
         <Text style={styles.section}>about</Text>
