@@ -11,13 +11,16 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
+import { adjustCeiling } from '../circle/geometry';
 import { Button } from '../components/Button';
 import { DONT_KNOW, DontKnowButton, dontKnowTop } from '../components/DontKnowButton';
+import { SpeakButton, speakTop } from '../components/SpeakButton';
 import { Ring } from '../components/Ring';
 import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
-import { UndoPlate } from '../components/UndoToast';
+import { RatingBadge } from '../components/RatingBadge';
+import { AdjustHint, HINT_GAP } from '../components/AdjustHint';
 import { ExploreMenus, ExploreTitle } from '../components/ExploreControls';
 import type { Anchors, Menu } from '../components/ExploreControls';
 import { FlipReveal } from '../components/FlipReveal';
@@ -37,7 +40,6 @@ import { useTabBarSpace } from '../components/FloatingTabBar';
 import { colors, fonts, radius, shadow } from '../theme';
 
 const CLOSE_DELAY_MS = 1800; // how long the last word of a full pile lingers before the user is taken to Study
-const STATUS_MS = 4000; // how long the "added to study" label (and its undo) stays
 /** The written tips (how to draw, how to move on) are shown for this many first words. */
 const EARLY_WORDS = 3;
 const SWIPE_DISTANCE = 90; // how far up a swipe must travel to move on
@@ -82,8 +84,8 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const insets = useSafeAreaInsets();
   const tabSpace = useTabBarSpace();
   const { width } = useWindowDimensions();
-  const { ready, ratings, pileCount, rate, unrate, reset } = useRatings();
-  const { answers, removed, cards, seedTheme, setSeedTheme, addAnswer, removeAnswer, explore, setExplore, interests } = useProfile();
+  const { ready, ratings, pileCount, rate, adjustRating, reset } = useRatings();
+  const { answers, removed, cards, seedTheme, setSeedTheme, addAnswer, explore, setExplore, interests } = useProfile();
   const [menu, setMenu] = useState<Menu>(null); // which of the selects' and the filter menus is open
   const [anchors, setAnchors] = useState<Anchors>({}); // where each select sits in the title (its menu opens under it)
   // how the next word is chosen (the settings of "explore by ..." and its filters, and the liked themes)
@@ -100,26 +102,15 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     [ratings, removed, calibrating],
   );
   const [currentId, setCurrentId] = useState<string | null>(null);
-  const [status, setStatus] = useState<string | null>(null); // "added to study" / "marked as known"
+  const [preview, setPreview] = useState<number | null>(null); // the answer while its handle is being dragged
   const [body, setBody] = useState({ w: 0, h: 0 });
   const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
-  const statusTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // How the current word leaves: it glides up (gy) and fades as `leave` goes 0 -> 1.
   const gy = useSharedValue(0);
   const leave = useSharedValue(0);
   // How the next word arrives: it rises in from below and grows into place as `arrive` goes 0 -> 1.
   const arrive = useSharedValue(0);
-
-  const clearStatus = useCallback(() => {
-    if (statusTimer.current) clearTimeout(statusTimer.current);
-    statusTimer.current = null;
-    setStatus(null);
-  }, []);
-
-  useEffect(() => () => {
-    if (statusTimer.current) clearTimeout(statusTimer.current);
-  }, []);
 
   // Pick the first word once the saved ratings are loaded (or after a reset).
   useEffect(() => {
@@ -156,21 +147,25 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
       if (!word) return;
       rate(word.id, value);
       addAnswer({ id: word.id, tier: word.tier, value }); // every rating refines the level estimate
-      const known = value >= 0.9;
-      setStatus(known ? 'marked as known' : 'added to study');
-      if (statusTimer.current) clearTimeout(statusTimer.current);
-      statusTimer.current = setTimeout(clearStatus, STATUS_MS);
     },
-    [word, rate, addAnswer, clearStatus],
+    [word, rate, addAnswer],
   );
 
-  const onUndo = useCallback(() => {
-    if (word) {
-      unrate(word.id);
-      removeAnswer(word.id);
-    }
-    clearStatus();
-  }, [word, unrate, removeAnswer, clearStatus]);
+  // After the meaning is shown the answer can be changed with the handle on the ring: the badge follows it, and when
+  // the finger lets go the new answer is the one that counts (the first one stays saved as the confidence).
+  const onAdjust = useCallback(
+    (value: number, final: boolean) => {
+      if (!word) return;
+      if (!final) {
+        setPreview(value);
+        return;
+      }
+      setPreview(null);
+      adjustRating(word.id, value);
+      addAnswer({ id: word.id, tier: word.tier, value });
+    },
+    [word, adjustRating, addAnswer],
+  );
 
   // Swap to another word: it starts hidden, below, and small, then rises into place.
   const swapTo = useCallback(
@@ -205,15 +200,14 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     setSeedTheme(null);
     setExplore({ by: 'theme', theme: seedTheme }); // "explore from here" on the Map: stay in that theme
     if (start) {
-      clearStatus();
       swapTo(start.id);
     }
-  }, [seedTheme, ready, isRated, answers, setSeedTheme, setExplore, clearStatus, swapTo]);
+  }, [seedTheme, ready, isRated, answers, setSeedTheme, setExplore, swapTo]);
 
   // Swiping up: glide on to the current word's next association.
   const moveOn = useCallback(() => {
     if (!word) return;
-    clearStatus();
+    setPreview(null);
     if (testDone) {
       onCalibrationDone?.();
       return;
@@ -222,12 +216,12 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
       ? pickCalibrationWord(WORDS, isRated, answers, word)
       : pickFeedWord(WORDS, isRated, answers, word, feed);
     swapTo(next?.id ?? null);
-  }, [word, testDone, onCalibrationDone, calibrating, isRated, answers, feed, clearStatus, swapTo]);
+  }, [word, testDone, onCalibrationDone, calibrating, isRated, answers, feed, swapTo]);
 
   // Tapping a similar word: the very same glide as swiping up, but to the word you chose.
   const travel = useCallback(
     (id: string) => {
-      clearStatus();
+      setPreview(null);
       const timing = { duration: 220, easing: Easing.in(Easing.cubic) };
       gy.value = withTiming(-GLIDE_OUT, timing);
       leave.value = withTiming(1, timing, (finished) => {
@@ -235,14 +229,13 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         if (finished) scheduleOnRN(swapTo, id);
       });
     },
-    [clearStatus, gy, leave, swapTo],
+    [gy, leave, swapTo],
   );
 
   const onReset = useCallback(() => {
-    clearStatus();
     reset();
     setCurrentId(null);
-  }, [reset, clearStatus]);
+  }, [reset]);
 
   // Swipe up to drift on: the word follows the finger, then glides away.
   const swipe = Gesture.Pan()
@@ -348,8 +341,10 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                   reveal={revealed ? revealInside : undefined}
                   onCommit={onCommit}
                   onDrawing={setDrawing}
+                  adjust={rating ? { max: adjustCeiling(rating.confidence ?? rating.value), onAdjust } : undefined}
                 />
 
+                {drawing ? null : <SpeakButton word={word} top={speakTop(circleTop, size, !!word.article, revealed)} />}
                 {revealed || drawing ? null : <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => onCommit(DONT_KNOW)} />}
 
                 {revealed ? (
@@ -357,6 +352,8 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                     <RevealDetails word={word} related={related} onTravel={travel} />
                   </View>
                 ) : null}
+
+                {revealed && ratedCount <= 1 ? <AdjustHint bottom={body.h - circleTop + HINT_GAP} delay={2300} /> : null}
 
                 {showSwipeTip ? (
                   <View style={styles.hintBottom}>
@@ -395,7 +392,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
         />
       )}
 
-      {status ? <UndoPlate message={status} onUndo={onUndo} /> : null}
+      {rating ? <RatingBadge message={(preview ?? rating.value) >= 0.9 ? 'marked as known' : 'added to study'} /> : null}
     </View>
   );
 }
@@ -411,7 +408,7 @@ const styles = StyleSheet.create({
   // the body steps out of the screen's side padding, so drawing and swiping work edge to edge
   body: { flex: 1, marginHorizontal: -24 },
   details: { position: 'absolute', left: 0, right: 0, paddingHorizontal: 24 },
-  hintBottom: { position: 'absolute', left: 28, right: 28, bottom: 48, alignItems: 'center' },
+  hintBottom: { position: 'absolute', left: 28, right: 28, bottom: 48, alignItems: 'center', gap: 10 },
   travelHint: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', columnGap: 8, rowGap: 6 },
   hintPart: { flexDirection: 'row', alignItems: 'center', gap: 5 },
   hintText: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary },

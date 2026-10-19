@@ -3,22 +3,24 @@ import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
+import { useProfile } from '../state/profile';
 import { colors, fonts } from '../theme';
 
 const STEPS: { label: string; text: string }[] = [
-  { label: 'explore', text: 'meet new words' },
-  { label: 'study', text: 'learn the ones you gathered' },
-  { label: 'map', text: 'watch your vocabulary grow on a map' },
+  { label: 'explore', text: 'meet new words through our algorithm adjusted to your level' },
+  { label: 'study', text: 'learn the ones you don’t know with acknowledged spaced repetition method' },
+  { label: 'map', text: 'watch your vocabulary grow on a night sky map' },
 ];
 
-// The screen before the practice word: how the app works, in three steps. Nothing to learn here, it only says where the user is.
+// The screen after the name: how the app works, in three steps (each number sits level with its text). Nothing to learn here, it only says where the user is.
 export default function IntroScreen({ onDone }: { onDone: () => void }) {
   const insets = useSafeAreaInsets();
+  const { name } = useProfile();
 
   return (
     <View style={[styles.screen, { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 }]}>
       <Animated.View entering={FadeIn.duration(450)} style={styles.body}>
-        <Text style={styles.title}>here is how easy quizy works</Text>
+        <Text style={styles.title}>{name ? `${name}, here is how easy quizy works` : 'here is how easy quizy works'}</Text>
         <View style={styles.steps}>
           {STEPS.map((s, i) => (
             <View key={s.label} style={styles.step}>
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
   title: { fontFamily: fonts.medium, fontSize: 36, lineHeight: 44, color: colors.text },
   lead: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 25, color: colors.textSecondary },
   steps: { gap: 18, marginTop: 6 },
-  step: { flexDirection: 'row', gap: 14, alignItems: 'flex-start' },
+  step: { flexDirection: 'row', gap: 14, alignItems: 'center' },
   // the numbers sit in circles (the app's metaphor)
   stepCircle: { width: 30, height: 30, borderRadius: 15, borderWidth: 1.5, borderColor: colors.accent, alignItems: 'center', justifyContent: 'center' },
   stepNumber: { fontFamily: fonts.medium, fontSize: 15, color: colors.accent },

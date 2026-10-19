@@ -15,11 +15,11 @@ export const MAX_CALIBRATION_WORDS = 30;
 export type Answer = { id: string; tier: number; value: number };
 
 const START_LEVEL = 3;
-const START_STEP = 1.6;
-const SHRINK = 0.82;
+const START_STEP = 1.5;
+const SHRINK = 0.8;
 // The steps stop shrinking here, so the estimate keeps adapting after calibration is over.
 const MIN_STEP = 0.3;
-const NEUTRAL = 0.45; // a rating around here says nothing about the level
+const NEUTRAL = 0.5; // a rating around here says nothing about the level
 
 const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
 
@@ -45,30 +45,58 @@ export function isCalibrationDone(answered: number, pileCount: number): boolean 
   return answered >= CALIBRATION_WORDS && pileCount >= MIN_PILE_TO_STUDY;
 }
 
+/** The middle of each tier on the frequency list (the geometric middle of its bounds: 600, 1,800, 4,000, 8,000, 16,000). */
+const TIER_RANKS = [245, 1040, 2680, 5660, 11300, 28300];
+/** Words that are not on the frequency list were given a rank beyond it: their difficulty is a guess, so the test leaves them out. */
+export const LISTED_RANK = 50000;
+
 /**
- * The next calibration word. The first is always the first in the list (Feierabend). After
- * that: the unrated word closest to the estimated level. Ties go to a theme the user has not
- * met yet, so the words are spread across topics and read the level, not one area of knowledge.
- * (Similar-word links are not used here: they would keep the words in one thematic zone.)
+ * How common a word really is, for judging how hard it is for the user: its rank on the frequency list. A word that is
+ * not on the list (its rank is a placeholder) is taken to be as common as the middle of its tier, which was chosen for it by hand.
+ */
+export function difficultyRank(word: Word): number {
+  return word.rank < LISTED_RANK ? word.rank : TIER_RANKS[clamp(word.tier, 1, 6) - 1];
+}
+
+/** Where on the frequency list a (fractional) level is: between the middles of the two tiers it lies between. */
+export function rankOfLevel(level: number): number {
+  const x = clamp(level, 1, 6) - 1;
+  const lo = Math.floor(x);
+  const hi = Math.min(5, lo + 1);
+  const k = x - lo;
+  return Math.exp(Math.log(TIER_RANKS[lo]) * (1 - k) + Math.log(TIER_RANKS[hi]) * k);
+}
+
+/**
+ * The next calibration word: the unrated word whose place on the frequency list is closest to the estimated level (the
+ * first one starts in the middle of the ladder, where the search begins). The place is the word's real rank, not
+ * its tier: a tier holds words from very different ranks, and a hard word in an easy tier showed up after the user had
+ * just said they did not know something easy. Among the words that fit about equally well, one is picked at random,
+ * and a theme the user has not met yet is preferred, so the words are spread across topics and read the level,
+ * not one area of knowledge, and a second test does not show the same words as the first. (Similar-word links are
+ * not used here: they would keep the words in one thematic zone.)
  */
 export function pickCalibrationWord(
   words: Word[],
   isRated: (id: string) => boolean,
   answers: Answer[],
   _current?: Word | null,
+  random: () => number = Math.random,
 ): Word | null {
   const unrated = words.filter((w) => !isRated(w.id));
   if (unrated.length === 0) return null;
-  if (answers.length === 0) return unrated[0];
+  const listed = unrated.filter((w) => w.rank < LISTED_RANK);
+  const from = listed.length > 0 ? listed : unrated;
 
-  const target = targetTier(estimateLevel(answers));
+  const target = Math.log(rankOfLevel(answers.length === 0 ? START_LEVEL : estimateLevel(answers)));
   const themeOf = new Map(words.map((w) => [w.id, w.theme ?? 'core']));
   const seen = new Set(answers.map((a) => themeOf.get(a.id)));
-  const score = (w: Word) => Math.abs(w.tier - target) * 2 + (seen.has(w.theme ?? 'core') ? 1 : 0);
+  const score = (w: Word) => Math.abs(Math.log(w.rank) - target) + (seen.has(w.theme ?? 'core') ? 0.15 : 0);
 
-  let best = unrated[0];
-  for (const w of unrated) if (score(w) < score(best)) best = w;
-  return best;
+  const scored = from.map((w) => ({ w, s: score(w) }));
+  const best = Math.min(...scored.map((x) => x.s));
+  const pool = scored.filter((x) => x.s <= best + 0.1).map((x) => x.w);
+  return pool[Math.floor(random() * pool.length)];
 }
 
 /**
@@ -131,11 +159,12 @@ export function pickThemeWord(
   answers: Answer[],
   themeId: string,
 ): Word | null {
-  const target = targetTier(estimateLevel(answers));
+  const target = Math.log(rankOfLevel(estimateLevel(answers)));
+  const away = (w: Word) => Math.abs(Math.log(difficultyRank(w)) - target);
   let best: Word | null = null;
   for (const w of words) {
     if (w.theme !== themeId || isRated(w.id)) continue;
-    if (!best || Math.abs(w.tier - target) < Math.abs(best.tier - target)) best = w;
+    if (!best || away(w) < away(best)) best = w;
   }
   return best;
 }

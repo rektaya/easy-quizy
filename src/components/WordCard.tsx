@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { EXTRA } from '../data/words.extra';
 import { THEMES, WORD_BY_ID, commonness } from '../data/words';
@@ -7,6 +7,9 @@ import type { Word } from '../data/words';
 import type { WordStatus } from '../onboarding/status';
 import { colors, fonts, radius, shadow } from '../theme';
 import { StatusRing } from './StatusRing';
+import { VerbForms } from './VerbForms';
+import { SpeakerIcon } from './Icons';
+import { speak } from '../audio/speak';
 
 // The card a word is shown on. Top: the theme it belongs to on the left, and its status on the right (the
 // status circle and its name). Then the word big with its article small above, the meaning and the plural; what
@@ -35,11 +38,15 @@ export function WordCard({ word, status, fade = true }: { word: Word; status: Wo
       </View>
 
       <View style={styles.word}>
+        <Pressable onPress={() => speak(word)} accessibilityRole="button" accessibilityLabel={`hear ${word.lemma}`} hitSlop={10} style={styles.speak}>
+          <SpeakerIcon color={colors.textSecondary} size={20} />
+        </Pressable>
         {word.article ? <Text style={styles.article}>{word.article}</Text> : null}
         <Text style={[styles.lemma, { fontSize: lemmaSize, lineHeight: Math.round(lemmaSize * 1.18) }]} numberOfLines={1}>
           {word.lemma}
         </Text>
         <Text style={styles.en}>{word.en}</Text>
+        <VerbForms word={word} size={16} />
         {word.plural ? <Text style={styles.plural}>plural: {word.plural}</Text> : null}
       </View>
 
@@ -50,6 +57,12 @@ export function WordCard({ word, status, fade = true }: { word: Word; status: Wo
             <Text style={styles.together}>
               {together.map((w) => `${w.article ? w.article + ' ' : ''}${w.lemma}`).join('  ·  ')}
             </Text>
+          </View>
+        ) : null}
+        {word.note ? (
+          <View style={styles.infoBlock}>
+            <Text style={styles.label}>your note</Text>
+            <Text style={styles.together}>{word.note}</Text>
           </View>
         ) : null}
         <View style={styles.infoBlock}>
@@ -92,6 +105,7 @@ const styles = StyleSheet.create({
   status: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   // the word: the article small and quiet, the lemma big, then the meaning and the plural
   word: { alignItems: 'center', gap: 6 },
+  speak: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center', marginBottom: -6 },
   article: { fontFamily: fonts.regular, fontSize: 18, color: colors.textTertiary },
   lemma: { fontFamily: fonts.medium, color: colors.text, textAlign: 'center', alignSelf: 'stretch' },
   en: { fontFamily: fonts.regular, fontSize: 22, lineHeight: 30, color: colors.textSecondary, textAlign: 'center', marginTop: 6 },

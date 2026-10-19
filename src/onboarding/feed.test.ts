@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { WORDS } from '../data/words.ts';
+import { estimateLevel, pickCalibrationWord, rankOfLevel } from './calibration.ts';
 import { DEFAULT_FEED, feedChips, fitsFeed, pickFeedWord } from './feed.ts';
 import type { FeedOptions } from './feed.ts';
 
@@ -20,11 +21,12 @@ test('by theme stays in the theme', () => {
   assert.equal(seen.size, 15, 'no word comes twice');
 });
 
-test('by usefulness offers the most common words first, but not words that are far too hard', () => {
+test('by usefulness offers the most common words first, but not words that are far too hard or hopelessly easy', () => {
   const o = opts({ by: 'usefulness' });
   const first = pickFeedWord(WORDS, none, answers, null, o)!;
-  assert.ok(first.tier <= 4);
-  const ok = WORDS.filter((w) => w.tier <= 4);
+  const target = rankOfLevel(estimateLevel(answers));
+  assert.ok(first.rank <= target * 2.8 && first.rank >= target / 7.5, `rank ${first.rank} for a target of ${Math.round(target)}`);
+  const ok = WORDS.filter((w) => w.rank <= target * 2.7 && w.rank >= target / 7.3);
   assert.equal(first.rank, Math.min(...ok.map((w) => w.rank)));
   const chips = feedChips(first, WORDS, (id) => id === first.id, answers, o);
   assert.deepEqual(chips.map((w) => w.rank), [...chips.map((w) => w.rank)].sort((a, b) => a - b));
@@ -81,4 +83,31 @@ test('free picks any word at the user level, differently each time, and never th
   }
   assert.ok(seen.size > 6, 'the words vary');
   assert.equal(feedChips(current, WORDS, none, answers, o, 3, rnd).length, 3);
+});
+
+test('after a test, every way of exploring keeps to the level: nothing far harder than what the user knows', () => {
+  for (const knowsBelow of [800, 1500, 3000]) {
+    let st = (knowsBelow * 2654435761) % 4294967296;
+    const random = () => (st = (st * 1664525 + 1013904223) % 4294967296) / 4294967296;
+    const given: { id: string; tier: number; value: number }[] = [];
+    const rated = new Set<string>([WORDS[0].id]);
+    for (let i = 0; i < 15; i++) {
+      const w = pickCalibrationWord(WORDS, (id) => rated.has(id), given, null, random)!;
+      given.push({ id: w.id, tier: w.tier, value: w.rank < knowsBelow ? 0.95 : 0.03 });
+      rated.add(w.id);
+    }
+    const target = rankOfLevel(estimateLevel(given));
+    for (const by of ['association', 'free'] as const) {
+      const o = opts({ by });
+      const seen = new Set(rated);
+      let current: (typeof WORDS)[number] | null = null;
+      for (let i = 0; i < 25; i++) {
+        const w = pickFeedWord(WORDS, (id) => seen.has(id), given, current, o, random);
+        if (!w) break;
+        assert.ok(w.rank <= target * 3.2, `${by}: rank ${w.rank} for a target of ${Math.round(target)} (knows below ${knowsBelow})`);
+        seen.add(w.id);
+        current = w;
+      }
+    }
+  }
 });

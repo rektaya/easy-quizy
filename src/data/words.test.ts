@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { THEMES, WORDS, currentTheme, findByGerman, ownToWord, parseGerman } from './words.ts';
+import { THEMES, WORDS, currentTheme, findByGerman, ownToWord, parseGerman, verbForms } from './words.ts';
 
 test('every word links to at least two other real words, never itself', () => {
   const ids = new Set(WORDS.map((w) => w.id));
@@ -104,4 +104,27 @@ test('typing a reflexive verb with or without "sich" finds it', () => {
   assert.equal(findByGerman('ernähren')[0].id, 'sich-ernaehren');
   assert.equal(findByGerman('sich ernähren')[0].id, 'sich-ernaehren');
   assert.ok(findByGerman('sich konzentr').some((w) => w.id === 'sich-konzentrieren'));
+});
+
+test('every verb of the list has its forms ("geht · ging · ist gegangen"), and no other word has any', () => {
+  for (const w of WORDS.filter((x) => !x.id.startsWith('own-'))) {
+    const forms = verbForms(w);
+    if (w.pos === 'verb') {
+      assert.ok(forms, `${w.id} has no forms`);
+      const parts = forms.split(' · ');
+      assert.equal(parts.length, 3, `${w.id}: ${forms}`);
+      assert.match(parts[2], /^(hat|ist|hat \/ ist) /, `${w.id}: ${forms}`);
+      if (w.lemma.startsWith('sich ')) assert.ok(parts.every((p) => p.includes('sich')), `${w.id} is reflexive: ${forms}`);
+    } else {
+      assert.equal(forms, null, `${w.id} is not a verb`);
+    }
+  }
+  assert.equal(verbForms(WORDS.find((w) => w.id === 'gehen')!), 'geht · ging · ist gegangen');
+});
+
+test('a note on a word of your own goes with the word, and an empty note is left out', () => {
+  const base = { id: 'own-x', german: 'der Hund', english: 'dog', exampleDe: '', exampleEn: '' };
+  assert.equal(ownToWord({ ...base, note: '  not Hand  ' }).note, 'not Hand');
+  assert.equal(ownToWord({ ...base, note: '   ' }).note, undefined);
+  assert.equal(ownToWord(base).note, undefined);
 });

@@ -15,7 +15,7 @@ import { colors, fonts, radius, shadow } from '../theme';
 
 // Adding a word of your own (our list may have it already: while the german word is typed, matching words are offered,
 // and a tap fills the whole form in; adding a word that is in the list just puts that word in your study words): its German form, its English meaning, an example in each language (optional), the
-// topic it belongs to (one of ours), and how well you know it already. The last one is what the circle says: it
+// topic it belongs to (one of ours), a note of your own (optional: what it is confused with, a sentence, how it connects to your life), and how well you know it already. The last one is what the circle says: it
 // sets where the word starts (a word you know well goes straight to "learned").
 const KNOW: { label: string; value: number; status: WordStatus }[] = [
   { label: 'not at all', value: 0.1, status: 'new' },
@@ -33,6 +33,7 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
   const [english, setEnglish] = useState('');
   const [exampleDe, setExampleDe] = useState('');
   const [exampleEn, setExampleEn] = useState('');
+  const [note, setNote] = useState('');
   const [theme, setTheme] = useState<string | undefined>(undefined);
   const [topicsOpen, setTopicsOpen] = useState(false);
   const [know, setKnow] = useState(0);
@@ -63,7 +64,7 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
     if (!ready) return;
     // a word that is already in our list is not added twice: that word goes into the words you are learning
     const id = exact ? exact.id : `own-${Date.now().toString(36)}`;
-    if (!exact) addOwnWord({ id, german, english, exampleDe, exampleEn, theme, kind: shownKind ?? undefined });
+    if (!exact) addOwnWord({ id, german, english, exampleDe, exampleEn, theme, kind: shownKind ?? undefined, note: note.trim() || undefined });
     rate(id, KNOW[know].value); // it joins the words you are learning, where you said you stand with it
     onBack();
   };
@@ -115,6 +116,14 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
           </View>
           <Field label="example in german" value={exampleDe} onChange={setExampleDe} placeholder="optional" multiline capitalize />
           <Field label="example in english" value={exampleEn} onChange={setExampleEn} placeholder="optional" multiline capitalize />
+          <Field
+            label="your note"
+            value={note}
+            onChange={setNote}
+            placeholder="optional. a word it is confused with? a sentence of your own? how does it connect to your life?"
+            multiline
+            capitalize
+          />
 
           <View style={[styles.group, styles.topicGroup]}>
             <Text style={styles.label}>topic</Text>

@@ -14,15 +14,17 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
 import { DONT_KNOW, DontKnowButton, dontKnowTop } from '../components/DontKnowButton';
+import { SpeakButton, speakTop } from '../components/SpeakButton';
+import { VerbForms } from '../components/VerbForms';
 import { Button } from '../components/Button';
 import { ReminderCard } from '../components/ReminderCard';
 import { FlipReveal } from '../components/FlipReveal';
 import { Ring } from '../components/Ring';
 import { TabHeader } from '../components/TabHeader';
-import { UndoPlate } from '../components/UndoToast';
-import { WORDS } from '../data/words';
+import { AdjustHint, HINT_GAP } from '../components/AdjustHint';
+import { WORDS, verbForms } from '../data/words';
 import { makeSession } from '../onboarding/batch';
-import type { BatchItem, SessionKind } from '../onboarding/batch';
+import type { BatchItem } from '../onboarding/batch';
 import type { StoredCard } from '../srs/scheduler';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
@@ -30,8 +32,10 @@ import { colors, fonts, radius } from '../theme';
 
 // The circle sits where it does in Explore: a little above the middle of its area. It is placed
 // absolutely, so nothing that appears after rating (the example) can move it.
-const UNDO_MS = 4000; // how long the plate with "undo" stays
 const CIRCLE_LIFT = 52;
+
+/** The hint about the dot on the ring shows once, on the first word ever studied. */
+const STUDY_HINT_WORDS = 1;
 
 /** A word rated above this in Study is a small win: a buzz. */
 const CELEBRATE_ABOVE = 0.75;
@@ -42,8 +46,8 @@ const SWIPE_VELOCITY = 700;
 const GLIDE_OUT = 260;
 
 type Props = {
-  /** The size of the session: a quick one or a longer one. */
-  kind: SessionKind;
+  /** How many words the session holds at most (the setting). */
+  size: number;
   /** Space to leave at the bottom (the floating tab bar). */
   bottomSpace: number;
   /** Back to the list of words in study. */
@@ -54,29 +58,27 @@ type Props = {
 // with the Circle, laid out exactly as in Explore: you see the German word, recall what it means, draw
 // how well you knew it, and the meaning appears. Each rating goes to FSRS, which decides when the word
 // comes back. (The words to study are first seen as a list; tapping one there opens its card.)
-export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
+export default function StudyScreen({ size: sessionSize, bottomSpace, onList }: Props) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const { ready: ratingsReady, ratings } = useRatings();
-  const { ready: profileReady, cards, reviewWord, restoreCard } = useProfile();
+  const { ready: profileReady, cards, reviewWord, adjustReview } = useProfile();
   const [batch, setBatch] = useState<BatchItem[] | null>(null);
   const [index, setIndex] = useState(0);
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
-  const [undoable, setUndoable] = useState<{ id: string; before: StoredCard | undefined } | null>(null); // what the plate's undo takes back
-  const undoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [before, setBefore] = useState<StoredCard | undefined>(undefined); // the word's card as it was before this review, so an adjusted answer can redo the review
   const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
   const [body, setBody] = useState({ w: 0, h: 0 }); // the area the circle sits in
 
   // The batch is picked once, when the saved data has loaded (and again for "keep going").
   const loaded = ratingsReady && profileReady;
   useEffect(() => {
-    if (loaded && batch === null) setBatch(makeSession(WORDS, ratings, cards, Date.now(), kind));
-  }, [loaded, batch, ratings, cards, kind]);
+    if (loaded && batch === null) setBatch(makeSession(WORDS, ratings, cards, Date.now(), sessionSize));
+  }, [loaded, batch, ratings, cards, sessionSize]);
 
   // Moving on after a rating is a swipe up, the same motion as in Explore: the word follows the finger,
   // glides away, and the next one rises in from below.
   const goNext = useCallback(() => {
-    setUndoable(null);
     setValue(null);
     setIndex((i) => i + 1);
   }, []);
@@ -123,22 +125,21 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
   if (!loaded || batch === null) return <View style={styles.screen} />;
 
   const word = batch[index]?.word;
-  const undo = () => {
-    if (!undoable) return;
-    restoreCard(undoable.id, undoable.before);
-    setUndoable(null);
-    setValue(null); // the ring unwinds and the word can be rated again
-  };
   const commit = (v: number) => {
     if (!word) return;
     setValue(v);
-    setUndoable({ id: word.id, before: cards[word.id] }); // so the plate can take the review back
-    if (undoTimer.current) clearTimeout(undoTimer.current);
-    undoTimer.current = setTimeout(() => setUndoable(null), UNDO_MS);
+    setBefore(cards[word.id]); // so an adjusted answer can redo the review from here
     reviewWord(word.id, v, ratings[word.id]);
     if (v > CELEBRATE_ABOVE) {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
     }
+  };
+  // After the meaning is shown the answer can be changed with the handle on the ring: when the finger lets go the
+  // new answer is the one the schedule uses (the first one stays saved as the confidence).
+  const onAdjust = (v: number, final: boolean) => {
+    if (!word || !final) return;
+    setValue(v);
+    adjustReview(word.id, before, v, ratings[word.id]);
   };
   const size = Math.min(width - 48, 320); // the same as in Explore, so drawing feels the same
   const circleTop = Math.max(56, body.h / 2 - size / 2 - CIRCLE_LIFT); // 56: room for the undo plate above
@@ -152,11 +153,11 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
     return (
       <View style={[...shell, styles.centered]}>
         <Animated.View entering={FadeIn.duration(400)} style={styles.closing}>
-          <Text style={styles.closingTitle}>{none ? 'nothing to study yet' : 'nicely done'}</Text>
+          <Text style={styles.closingTitle}>{none ? 'nothing to study yet' : 'nicely done!'}</Text>
           <Text style={styles.closingBody}>
             {none
               ? 'gather a few more words in explore, then they’ll wait for you here.'
-              : 'the key is in daily practice, so come back to your words regularly!'}
+              : 'the key is in daily practice, so come back to your words regularly'}
           </Text>
         </Animated.View>
         {none ? (
@@ -203,22 +204,27 @@ export default function StudyScreen({ kind, bottomSpace, onList }: Props) {
                 reveal={value === null ? undefined : <FlipReveal word={word} />}
                 onCommit={commit}
                 onDrawing={setDrawing}
+                adjust={value !== null ? { max: 1, onAdjust } : undefined}
               />
+              {drawing ? null : <SpeakButton word={word} top={speakTop(circleTop, size, !!word.article, value !== null)} />}
               {value === null && !drawing ? <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => commit(DONT_KNOW)} /> : null}
-              {value !== null && word.example.de ? (
+              {value !== null && (word.example.de || verbForms(word)) ? (
                 <Animated.View
                   entering={FadeIn.duration(320).delay(120)}
                   style={[styles.example, { top: circleTop + size + 26 }]}
                 >
+                  <VerbForms word={word} />
                   <Text style={[styles.exampleDe, styles.exampleText]}>{word.example.de}</Text>
                   <Text style={[styles.exampleEn, styles.exampleText]}>{word.example.en}</Text>
                 </Animated.View>
+              ) : null}
+              {value !== null && Object.keys(cards).length <= STUDY_HINT_WORDS ? (
+                <AdjustHint bottom={body.h - circleTop + HINT_GAP} />
               ) : null}
             </Animated.View>
           </GestureDetector>
         ) : null}
       </View>
-      {undoable ? <UndoPlate onUndo={undo} /> : null}
     </View>
   );
 }

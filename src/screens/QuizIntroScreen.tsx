@@ -11,7 +11,7 @@ export default function QuizIntroScreen({ onStart }: { onStart: () => void }) {
   return (
     <View style={[styles.screen, { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 }]}>
       <Animated.View entering={FadeIn.duration(450)} style={styles.body}>
-        <Text style={styles.title}>let’s adjust words to your level</Text>
+        <Text style={styles.title}>let us calibrate to your level</Text>
         <Text style={styles.lead}>you will see 15 words, show us how well you know them</Text>
       </Animated.View>
       <Button label="start the test" onPress={onStart} />

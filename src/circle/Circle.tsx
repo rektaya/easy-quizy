@@ -17,10 +17,11 @@ import Svg, { Circle as SvgCircle } from 'react-native-svg';
 import { WordFace } from '../components/WordFace';
 import type { Word } from '../data/words';
 import { colors } from '../theme';
-import { DEFAULT_START_DEG, pointOnRing } from './geometry';
+import { DEFAULT_START_DEG, TAU, pointOnRing } from './geometry';
 import { StardustRing } from './StardustRing';
 import { emitKnown } from './knownEvents';
-import { RING_PAD, RING_STROKE, useRing } from './useRing';
+import { HANDLE_HIT, RING_PAD, RING_STROKE, useRing } from './useRing';
+import type { AdjustOptions } from './useRing';
 
 const AnimatedSvgCircle = Animated.createAnimatedComponent(SvgCircle);
 
@@ -41,6 +42,8 @@ type Props = {
   onCommit: (value: number) => void;
   /** Told when a drawing starts (true) and when it ends (false). */
   onDrawing?: (drawing: boolean) => void;
+  /** Once rated, a handle on the ring lets the answer be changed (how far up it may go, and who is told). Left out: the rating is final. */
+  adjust?: AdjustOptions;
   /** Where the circle's box sits inside the area the Circle fills (its parent, which must be positioned and cover the screen area). */
   x: number;
   y: number;
@@ -49,13 +52,13 @@ type Props = {
 // The Circle. There is no visible ring: the user draws a circle round the word, and stars appear where
 // the finger goes (StardustRing). Only the ghost finger on the very first word shows where to draw. The
 // drawing and its haptics are in useRing; what you see is in StardustRing.
-export function Circle({ word, size, value, showHint, reveal, onCommit, onDrawing, x, y }: Props) {
+export function Circle({ word, size, value, showHint, reveal, onCommit, onDrawing, adjust, x, y }: Props) {
   // A known word lets stardust float up off the ring and out of the top of the screen (KnownDust, drawn
   // above the whole app). It starts from the circle's place on the screen, measured fresh.
   const onKnown = () => {
     box.current?.measureInWindow((bx, by) => emitKnown({ x: bx + size / 2, y: by + size / 2, r: size / 2 - RING_STROKE }));
   };
-  const ring = useRing(size, value, onCommit, x, y, onKnown, onDrawing);
+  const ring = useRing(size, value, onCommit, x, y, onKnown, onDrawing, adjust);
   const { c, r, v } = ring;
   const length = 2 * Math.PI * r;
   const ghost = useSharedValue(0);
@@ -89,6 +92,15 @@ export function Circle({ word, size, value, showHint, reveal, onCommit, onDrawin
     return {
       opacity: v.dragging.value ? 0 : fade,
       transform: [{ translateX: p.x - 18 }, { translateY: p.y - 18 }],
+    };
+  });
+
+  // where the handle's touch area sits: on the ring, at the end of the answer (it follows the handle)
+  const handleBox = useAnimatedStyle(() => {
+    const a = v.startRad.value + v.direction.value * v.progress.value * TAU;
+    return {
+      opacity: v.handle.value > 0.5 ? 1 : 0, // not there to the touch until it is there to the eye
+      transform: [{ translateX: x + c + r * Math.sin(a) - HANDLE_HIT / 2 }, { translateY: y + c - r * Math.cos(a) - HANDLE_HIT / 2 }],
     };
   });
 
@@ -133,6 +145,11 @@ export function Circle({ word, size, value, showHint, reveal, onCommit, onDrawin
           {reveal ?? <WordFace word={word} />}
         </View>
       </View>
+      {adjust && value !== null ? (
+        <GestureDetector gesture={ring.adjustGesture}>
+          <Animated.View style={[styles.handleHit, handleBox]} collapsable={false} accessibilityLabel="change your answer" />
+        </GestureDetector>
+      ) : null}
       </View>
     </GestureDetector>
   );
@@ -145,6 +162,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 34,
   },
+  handleHit: { position: 'absolute', left: 0, top: 0, width: HANDLE_HIT, height: HANDLE_HIT, borderRadius: HANDLE_HIT / 2 },
   ghostDot: {
     position: 'absolute',
     left: 0,

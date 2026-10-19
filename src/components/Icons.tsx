@@ -179,6 +179,16 @@ export function XIcon({ color, size = 20 }: IconProps) {
   );
 }
 
+/** Hear the word: a loudspeaker with two waves. */
+export function SpeakerIcon({ color, size = 20 }: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4 9.6h3.4L12 5.8v12.4l-4.6-3.8H4z" stroke={color} {...strokeProps} />
+      <Path d="M15.4 9.2a4 4 0 010 5.6M18 6.8a7.4 7.4 0 010 10.4" stroke={color} {...strokeProps} />
+    </Svg>
+  );
+}
+
 /** The way of exploring: a compass. */
 export function CompassIcon({ color, size = 22 }: IconProps) {
   return (

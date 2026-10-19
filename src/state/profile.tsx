@@ -6,14 +6,16 @@ import { currentTheme, registerOwnWords } from '../data/words';
 import type { OwnWord } from '../data/words';
 import { DEFAULT_FEED } from '../onboarding/feed';
 import type { FeedOptions } from '../onboarding/feed';
+import { DEFAULT_SESSION_WORDS } from '../onboarding/batch';
+import type { SessionWords } from '../onboarding/batch';
 import { firstStudy, reviewCard } from '../srs/scheduler';
 import type { StoredCard } from '../srs/scheduler';
 
 /**
- * Where the user is in the first-run path: welcome, name, an intro, interests, a practice word, the quick-test
+ * Where the user is in the first-run path: welcome, name, an intro, the way of exploring, the session size, a practice word, the quick-test
  * screen, 15 words, a message. ('study' is an older value, kept so saved profiles still load; it is treated as done.)
  */
-export type Phase = 'welcome' | 'name' | 'intro' | 'interests' | 'practice' | 'quiz' | 'calibration' | 'message' | 'study' | 'done';
+export type Phase = 'welcome' | 'name' | 'way' | 'intro' | 'pace' | 'practice' | 'quiz' | 'calibration' | 'message' | 'study' | 'done';
 
 /** The daily reminder to come back to the words. */
 export type Reminder = { on: boolean; hour: number; minute: number; asked: boolean };
@@ -32,15 +34,19 @@ type Profile = {
   /** The Map explains itself the first time it is opened. */
   mapIntroSeen: boolean;
   reminder: Reminder;
-  /** Setting: Study also offers a "quick study" button (10 words). Off: one button, "study". */
-  quickSessions: boolean;
+  /** Setting: how many words a Study session holds (reviews and new words together). */
+  sessionWords: SessionWords;
   /** How Explore chooses the next word ("explore by ...") and its filters. */
   explore: ExploreSettings;
   /** Themes the user likes: Explore brings words from them more often. */
   interests: string[];
   /** Words the user added themselves (the plus in Study). */
   ownWords: OwnWord[];
+  /** Every review in Study: the first answer (`confidence`, drawn before the meaning was shown) and the answer after it was adjusted (`value`, the one FSRS used). */
+  reviewLog: ReviewEntry[];
 };
+
+export type ReviewEntry = { id: string; at: number; confidence: number; value: number };
 
 export type ExploreSettings = Omit<FeedOptions, 'interests'>;
 
@@ -53,9 +59,8 @@ type Ctx = Profile & {
   setPhase: (phase: Phase) => void;
   setMapIntroSeen: () => void;
   setReminder: (patch: Partial<Reminder>) => void;
-  setQuickSessions: (on: boolean) => void;
+  setSessionWords: (words: SessionWords) => void;
   setExplore: (patch: Partial<ExploreSettings>) => void;
-  setInterests: (themeIds: string[]) => void;
   addOwnWord: (word: OwnWord) => void;
   /** Change the name later (the first-run path sets it with setName). */
   rename: (name: string) => void;
@@ -66,8 +71,11 @@ type Ctx = Profile & {
    * then this rating reviews it; after that it is a plain review.
    */
   reviewWord: (wordId: string, value: number, explore: { value: number; at: number } | undefined) => void;
-  /** Takes back the last review of a word in Study: its card goes back to how it was (or is removed, when it had none). */
-  restoreCard: (wordId: string, card: StoredCard | undefined) => void;
+  /**
+   * The answer to a word in Study was changed after its meaning was shown: the review is done again from `before`
+   * (the card as it was, or none) with the new value. The log keeps both answers.
+   */
+  adjustReview: (wordId: string, before: StoredCard | undefined, value: number, explore: { value: number; at: number } | undefined) => void;
   /** Delete a word from the pile for good (its rating is removed separately). */
   removeWord: (wordId: string) => void;
   /** Back to the very start of the first-run path (the ratings are reset separately). */
@@ -75,7 +83,7 @@ type Ctx = Profile & {
 };
 
 const KEY = 'easyquizy.profile.v1';
-const INITIAL: Profile = { name: '', phase: 'welcome', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false, reminder: { on: false, hour: 19, minute: 0, asked: false }, quickSessions: false, explore: { ...DEFAULT_FEED }, interests: [], ownWords: [] };
+const INITIAL: Profile = { name: '', phase: 'welcome', answers: [], cards: {}, removed: {}, skySeed: 0, mapIntroSeen: false, reminder: { on: false, hour: 19, minute: 0, asked: false }, sessionWords: DEFAULT_SESSION_WORDS, explore: { ...DEFAULT_FEED }, interests: [], ownWords: [], reviewLog: [] };
 const ProfileContext = createContext<Ctx | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
@@ -87,7 +95,13 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     AsyncStorage.getItem(KEY)
       .then((raw) => {
         if (raw) {
-          const saved = { ...INITIAL, ...JSON.parse(raw) } as Profile;
+          const stored = JSON.parse(raw);
+          const saved = { ...INITIAL, ...stored } as Profile & { quickSessions?: boolean };
+          // the old "quick sessions" switch became the size of a session
+          if (stored.sessionWords === undefined) saved.sessionWords = stored.quickSessions ? 10 : DEFAULT_SESSION_WORDS;
+          delete saved.quickSessions;
+          // the interests step was replaced by the way of exploring; someone who left in it goes on to the new step
+          if ((stored.phase as string) === 'interests') saved.phase = 'way';
           registerOwnWords(saved.ownWords); // the words the user added join the list before anything is drawn
           // words whose id changed (the reflexive verbs) keep their cards, deletions and answers
           saved.cards = carryOver(saved.cards);
@@ -113,18 +127,17 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   }, [profile, ready]);
 
   const setName = useCallback(
-    (name: string) => setProfile((p) => ({ ...p, name: name.trim(), phase: 'interests' })),
+    (name: string) => setProfile((p) => ({ ...p, name: name.trim(), phase: 'intro' })),
     [],
   );
   const setPhase = useCallback((phase: Phase) => setProfile((p) => ({ ...p, phase })), []);
   const setReminder = useCallback((patch: Partial<Reminder>) => setProfile((p) => ({ ...p, reminder: { ...p.reminder, ...patch } })), []);
-  const setQuickSessions = useCallback((quickSessions: boolean) => setProfile((p) => ({ ...p, quickSessions })), []);
+  const setSessionWords = useCallback((sessionWords: SessionWords) => setProfile((p) => ({ ...p, sessionWords })), []);
   const setExplore = useCallback((patch: Partial<ExploreSettings>) => setProfile((p) => ({ ...p, explore: { ...p.explore, ...patch } })), []);
   const addOwnWord = useCallback((word: OwnWord) => {
     registerOwnWords([word]);
     setProfile((p) => ({ ...p, ownWords: [...p.ownWords, word] }));
   }, []);
-  const setInterests = useCallback((interests: string[]) => setProfile((p) => ({ ...p, interests })), []);
   const rename = useCallback((name: string) => setProfile((p) => ({ ...p, name: name.trim() || p.name })), []);
   const setMapIntroSeen = useCallback(() => setProfile((p) => ({ ...p, mapIntroSeen: true })), []);
   const addAnswer = useCallback(
@@ -144,16 +157,29 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
         const card = existing
           ? reviewCard(existing, value, now)
           : firstStudy(explore?.value ?? value, explore?.at ?? now, value, now);
-        return { ...p, cards: { ...p.cards, [wordId]: card } };
+        return {
+          ...p,
+          cards: { ...p.cards, [wordId]: card },
+          reviewLog: [...p.reviewLog, { id: wordId, at: now, confidence: value, value }],
+        };
       }),
     [],
   );
-  const restoreCard = useCallback(
-    (wordId: string, card: StoredCard | undefined) =>
+  const adjustReview = useCallback(
+    (wordId: string, before: StoredCard | undefined, value: number, explore: { value: number; at: number } | undefined) =>
       setProfile((p) => {
-        if (card) return { ...p, cards: { ...p.cards, [wordId]: card } };
-        const { [wordId]: _card, ...cards } = p.cards;
-        return { ...p, cards };
+        const now = Date.now();
+        const card = before
+          ? reviewCard(before, value, now)
+          : firstStudy(explore?.value ?? value, explore?.at ?? now, value, now);
+        const log = [...p.reviewLog];
+        for (let i = log.length - 1; i >= 0; i--) {
+          if (log[i].id === wordId) {
+            log[i] = { ...log[i], value };
+            break;
+          }
+        }
+        return { ...p, cards: { ...p.cards, [wordId]: card }, reviewLog: log };
       }),
     [],
   );
@@ -177,19 +203,18 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       setPhase,
       setMapIntroSeen,
       setReminder,
-      setQuickSessions,
+      setSessionWords,
       setExplore,
-      setInterests,
       addOwnWord,
       rename,
       addAnswer,
       removeAnswer,
       reviewWord,
-      restoreCard,
+      adjustReview,
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setQuickSessions, setExplore, setInterests, addOwnWord, rename, addAnswer, removeAnswer, reviewWord, restoreCard, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setSessionWords, setExplore, addOwnWord, rename, addAnswer, removeAnswer, reviewWord, adjustReview, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

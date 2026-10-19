@@ -9,6 +9,8 @@ export type Rating = {
   /** True when the rating fell in the last ("know it for sure") segment. */
   known: boolean;
   at: number;
+  /** The first answer, drawn before the meaning was shown. `value` is the answer after it was adjusted (the same when it was not). Older saves have none. */
+  confidence?: number;
 };
 
 type Ratings = Record<string, Rating>;
@@ -19,6 +21,8 @@ type Ctx = {
   /** Words gathered for study: everything rated below the "know" segment. */
   pileCount: number;
   rate: (wordId: string, value: number) => void;
+  /** Change a word's answer after its meaning was shown: the first answer is kept as `confidence`. */
+  adjustRating: (wordId: string, value: number) => void;
   unrate: (wordId: string) => void;
   reset: () => void;
 };
@@ -44,7 +48,15 @@ export function RatingsProvider({ children }: { children: React.ReactNode }) {
   }, [ratings, ready]);
 
   const rate = useCallback((wordId: string, value: number) => {
-    setRatings((prev) => ({ ...prev, [wordId]: { value, known: isKnown(value), at: Date.now() } }));
+    setRatings((prev) => ({ ...prev, [wordId]: { value, known: isKnown(value), at: Date.now(), confidence: value } }));
+  }, []);
+
+  const adjustRating = useCallback((wordId: string, value: number) => {
+    setRatings((prev) => {
+      const was = prev[wordId];
+      if (!was) return prev;
+      return { ...prev, [wordId]: { ...was, value, known: isKnown(value), confidence: was.confidence ?? was.value } };
+    });
   }, []);
 
   const unrate = useCallback((wordId: string) => {
@@ -62,10 +74,11 @@ export function RatingsProvider({ children }: { children: React.ReactNode }) {
       ratings,
       pileCount: Object.values(ratings).filter((r) => !r.known).length,
       rate,
+      adjustRating,
       unrate,
       reset,
     }),
-    [ready, ratings, rate, unrate, reset],
+    [ready, ratings, rate, adjustRating, unrate, reset],
   );
 
   return <RatingsContext.Provider value={value}>{children}</RatingsContext.Provider>;

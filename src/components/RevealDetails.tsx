@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import type { Word } from '../data/words';
+import { VerbForms } from './VerbForms';
 import { colors, fonts, radius } from '../theme';
 
 type Props = {
@@ -16,6 +17,7 @@ type Props = {
 export function RevealDetails({ word, related, onTravel }: Props) {
   return (
     <Animated.View entering={FadeIn.duration(320).delay(120)} style={styles.wrap}>
+      <VerbForms word={word} />
       {word.example.de ? (
         <View style={styles.example}>
           <Text style={styles.exampleDe}>{word.example.de}</Text>

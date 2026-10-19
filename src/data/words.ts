@@ -1,6 +1,7 @@
 import { CORE, CORE_TIERS, CORE_WORD_THEME, MERGED_THEMES } from './words.core.ts';
 import { CORE_LINKS, GENERATED, THEMES as GENERATED_THEMES } from './words.generated.ts';
 import { RANK } from './words.rank.ts';
+import { VERBS } from './words.verbs.ts';
 
 export type Word = {
   id: string;
@@ -26,6 +27,8 @@ export type Word = {
   rank: number;
   /** noun (has an article), verb (the meaning starts with "to"), or other (adjectives, adverbs). */
   pos: PartOfSpeech;
+  /** The user's own note on a word they added (what confuses them with it, a sentence, how it relates to their life). */
+  note?: string;
 };
 
 export type PartOfSpeech = 'noun' | 'verb' | 'other';
@@ -69,6 +72,8 @@ export type OwnWord = {
   theme?: string;
   /** noun, verb, adjective, adverb or other. Left out: worked out from the article and the meaning. */
   kind?: WordKind;
+  /** A note of their own on the word (optional). */
+  note?: string;
 };
 
 /** Makes a word of the list out of one the user added. */
@@ -86,6 +91,7 @@ export function ownToWord(o: OwnWord): Word {
     related: [],
     tier: 3,
     theme: o.theme,
+    note: o.note?.trim() || undefined,
   };
   const pos: PartOfSpeech = o.kind ? (o.kind === 'noun' || o.kind === 'verb' ? o.kind : 'other') : partOfSpeech(w);
   return { ...w, rank: 30000, pos };
@@ -126,6 +132,12 @@ export function registerOwnWords(list: OwnWord[]) {
 
 /** Every word by its id (the words of the list, in the same order). */
 export const WORD_BY_ID: Map<string, Word> = new Map(WORDS.map((w) => [w.id, w]));
+
+/** The forms of a verb for its card, "geht · ging · ist gegangen" (the present and the past of "er/sie/es", and the perfect); null for any other word. */
+export function verbForms(word: Word): string | null {
+  const f = VERBS[word.id];
+  return f ? f.join(' · ') : null;
+}
 
 /** How common a word is, in plain words (from its place in the frequency list). */
 export function commonness(rank: number): string {

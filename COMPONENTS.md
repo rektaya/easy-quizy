@@ -28,7 +28,7 @@ back chevron already exists). If something is missing, say so and ask before add
 - **Interface text is lowercase** (German words keep their capitals). No full stops at the end of a short line.
 - **One main button per screen**, orange (`Button`, primary). A second, quieter one is `ghost`. Dismissing is not
   a button's job (see the first rule).
-- **Messages that can be undone** are one plate, `UndoPlate`, always in the **same place** (just under the first line of the screen, at the top of the safe area plus 54), on every screen that has one: the first-run screens, Explore and the Study test. Never inside the circle, never a second position.
+- **What a word's answer is** is said by one badge, `RatingBadge`, always in the **same place** (just under the first line of the screen, at the top of the safe area plus 54), on every screen that has one: Explore (also the first-run test); the Study test and the practice screen have none. Never inside the circle, never a second position. There is no undo: a rated word's answer is changed with the handle on its ring (dragging the dot).
 - **No tutorials.** The gesture is taught once, on the practice screen; after that only the first-visit cards.
 - The look: deep navy `#0C1927`, light ink, one orange accent, Figtree (`src/theme.ts`).
 
@@ -38,33 +38,39 @@ back chevron already exists). If something is missing, say so and ask before add
 | `Button` | orange main button, or `ghost` | everywhere |
 | `TabHeader` | the title row (title left, optional `center` select, status or tools right); `onTitleLongPress` is a testing hook | Explore, Study, Map, Study session |
 | `ExploreControls` | `ExploreTitle` ("explore" with the way of exploring, by theme the topic, the level and the kind of words, as glass pills next to it), the filter icon and the menus | Explore |
-| `OnboardingProgress` | the thin progress bar at the top of the first-run screens (animates between steps) | first run |
+| `OnboardingProgress` | a thin band of stars (two or three deep) at the top of the first-run screens: the circle's stardust laid out flat, stars up to the current step shining (animates between steps) | first run |
 | `StatusRing` | a word's state as a circle (new, shaky, getting there, learned) | word rows, word cards, "add new word" |
 | `FallingStar` | the falling star drawn on the welcome screen (drifts slowly) | welcome |
 | `DontKnowButton` | the small cross in the circle, under the word: "i don't know this word at all" | Explore, Study test, practice |
 | `WordRow` | a row of a word list: article + word, meaning, status ring, bin | Study list, the Map's sheet |
 | `CardPager` | the swipeable stack of word cards over a list (swipe up next, down back, chevron closes) | Study list, the Map's sheet |
 | `Avatar` | the user's initial in a round badge with an orange rim | Profile |
-| `Icons` | `ExploreIcon`, `StudyIcon`, `MapIcon`, `LookIcon`, `SwipeUpIcon`, `TapIcon`, `TrashIcon`, `SortIcon`, `SearchIcon`, `ChevronLeftIcon` (back), `ChevronRightIcon` (a row that opens a page), `ChevronDownIcon`, `PlusIcon`, `XIcon`, `ProfileIcon` | tab bar and screens |
+| `Icons` | `SpeakerIcon`, `ExploreIcon`, `StudyIcon`, `MapIcon`, `LookIcon`, `SwipeUpIcon`, `TapIcon`, `TrashIcon`, `SortIcon`, `SearchIcon`, `ChevronLeftIcon` (back), `ChevronRightIcon` (a row that opens a page), `ChevronDownIcon`, `PlusIcon`, `XIcon`, `ProfileIcon` | tab bar and screens |
 | `FloatingTabBar` | the pill with four tabs (Explore, Study, Map, Profile); `useTabBarSpace()` says how much room to leave | tabs |
 | `WordFace` | the German word inside the circle (article above, lemma below) | the circle |
 | `Translation` | the English meaning, sized to fit the circle | the circle |
 | `FlipReveal` | what sits in the circle after rating: the translation, tap to flip to the German word | Explore, Study, Practice |
-| `UndoPlate` (`UndoToast` inside it) | the plate "added to study · undo" (Study: just "undo"), in its one place | Explore, practice, Study test |
+| `RatingBadge` | the badge with the word's answer ("added to study", "marked as known"), in its one place, following the handle | Explore |
+| `AdjustHint` | the hint "hint: if you were wrong, drag the dot on the ring to change your initial answer" on a plate, directly above the circle (`HINT_GAP` above its box) | first test word in Explore, the first Study word (once) |
+| `SpeakButton` (`speakTop`) | the small loudspeaker in the circle above the word, in the style of the cross under it: says the German word aloud (`src/audio/speak.ts`, the voice of the phone) | Explore, Study test, first-run test, practice |
+| `VerbForms` | a verb's forms on one line, "geht · ging · ist gegangen" | word card, under the circle in Explore and Study |
+| `StreakCard` | days in a row, today against the goal, the week as seven circles | Profile |
 | `WordCard` | a word's card: topic and status ring on the top row, word, meaning, plural, words it often comes with, how common, examples | `CardPager` |
 | `RevealDetails` | example and similar words under the circle after rating | Explore |
 | `Ring` | a small progress ring (the counter) | the first-run test, Study session |
-| `SettingToggle` | a setting that is on or off, with a line that explains it | Profile |
+| `SessionSizePicker` | the size of a Study session, the chosen one orange: three tiles (10, 20, 40 words, each with about how long it takes) | first run (`PaceStep`), the panel of `SessionSizeSetting` |
+| `SessionSizeSetting` | the Profile setting: a card with a select ("20 words" and a chevron) that opens a `BottomSheet` with the picker and a "save" button | Profile |
+| `BottomSheet` | a panel that slides up from the bottom over everything, on a dimmed screen: closes with a tap outside or a drag down (nothing is saved then); a "save" button inside saves and closes | Profile |
 | `ReminderCard` | the daily reminder: a switch and the time | Profile, "nicely done" |
 | `Starry` / `StarBackground` | the night sky behind every screen, one more star per rated word | everywhere |
 | `KnownDust` | the stardust that floats out of the screen when a word is marked known | app root |
 
 ## The Circle (`src/circle/`)
-`Circle` (the touch area is the whole working area of the screen; the circle's box sits inside it at `x`, `y`),
+`Circle` (the touch area is the whole working area of the screen; the circle's box sits inside it at `x`, `y`; with the `adjust` prop a handle on the ring, with a touch area of its own, changes the answer after rating),
 `useRing` (the gesture and its shared values), `StardustRing` (what you see), `geometry` (pure maths, tested).
 
 ## Screens (`src/screens/`)
-Welcome (with `FallingStar`), Name, InterestsStep, Intro, Practice, QuizIntro, CalibrationDone (the first run, with the progress bar);
+Welcome (with `FallingStar`), Name, ExploreWayStep, PaceStep, Intro, Practice, QuizIntro, CalibrationDone (the first run, with the progress bar);
 Explore (`ExploreView`), Study (`StudyTab`: the list in `WordsScreen` with the card pager, `AddWordScreen` for a word
 of your own, the session in `StudyScreen`), Map (a topic opens as a sphere with a small card; tapping the sphere or "see words" goes one level further in, to a page with the topic's words), Profile (with
 Credits one level down: a row on Profile opens it, its chevron goes back to Profile).
@@ -72,6 +78,7 @@ Credits one level down: a row on Profile opens it, its chevron goes back to Prof
 ## Patterns worth reusing
 - A drop-down select in a form: the topic in `AddWordScreen` (a field with a chevron; its list opens over what is below,
   scrolls, a dot marks the choice).
+- A panel from the bottom for a setting with more to say than a menu: `BottomSheet` (the words per session in Profile): a select opens it, "save" applies, a tap outside or a drag down discards.
 - A menu that opens from an icon: the sort menu in `WordsScreen` (a card under the icon, a dot marks the choice).
 - A card that is swiped through: `CardPager` (used by the Study list and the Map's sheet; swipe up, swipe down; the
   position lives inside it so the list behind does not redraw).

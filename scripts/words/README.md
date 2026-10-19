@@ -22,6 +22,18 @@ entry per word (from kaikki.org, cached in `data-sources/wikt/`).
 5. `retier.py --apply`: gives the words that are already in the raw file their tier from the same list.
 6. `compose_raw.py`: puts the chosen words into their themes in the raw file; then `npm run build:words`.
 7. `rank_table.py`: writes `src/data/words.rank.ts` (how common each word is), used by Explore's usefulness mode.
+8. `extra_info.py`: writes `src/data/words.extra.ts` for the word cards: the words each word most often stands
+   with in a Tatoeba sentence ("often together with") and up to two more example sentences. It takes a few minutes.
+9. `verb_forms.py`: writes `src/data/words.verbs.ts`, the forms of every verb for its card ("geht · ging · ist gegangen"):
+   third person singular of the present and of the past, and the perfect with its auxiliary and past participle, from the
+   Wiktionary entry (fetched when a verb is not in the cache yet). A separable verb carries its prefix ("steht auf"), a
+   reflexive verb "sich" ("ärgert sich · ärgerte sich · hat sich geärgert"). Wiktionary lists both auxiliaries for verbs that
+   differ between north and south: for a few the standard one is set by hand (`STANDARD_AUX` in the script, checked by hand,
+   change it if a form looks wrong); the rest keep "hat / ist". Run it after the word list changes.
+
+Reflexive verbs are written with "sich" in the raw file (`sich ernähren`), and their example must use a reflexive
+pronoun. A word whose spelling changes also changes its id (`ernaehren` becomes `sich-ernaehren`): add the old id to
+`src/data/renamedWords.ts` so saved ratings and cards follow it.
 
 Licences: Wiktionary text is CC BY-SA, Tatoeba is CC BY 2.0 FR (some CC0), the frequency list is CC BY-SA 4.0
 (to be checked again before release). The app needs a credits screen that names all three.

@@ -26,7 +26,7 @@ const SORTS: { key: Sort; label: string }[] = [
 
 // The Study tab's home: the words you are learning (gathered, not yet learned), with where each stands:
 // searchable, sortable, and each one can be deleted. Tapping a word opens its full card. The "study"
-// buttons start a session ("quick study", or "study all"). Deleting asks first, in a window, and the word is
+// button starts a session. Deleting asks first, in a window, and the word is
 // never offered again.
 export default function WordsScreen({
   bottomSpace,
@@ -35,8 +35,8 @@ export default function WordsScreen({
   onAdd,
 }: {
   bottomSpace: number;
-  /** The sessions that can be started now (a quick one, a longer one): a button each. */
-  sessions: { label: string; caption: string; onPress: () => void }[];
+  /** The session that can be started now: a button (none when nothing is ready). */
+  sessions: { label: string; onPress: () => void }[];
   /** Said above the buttons when no session is ready. */
   note?: string;
   /** The plus: add a word of your own. */
@@ -161,12 +161,11 @@ export default function WordsScreen({
 
       <View style={styles.action}>
         {sessions.length === 0 && note ? <Text style={styles.note}>{note}</Text> : null}
-        {sessions.length === 0 ? <Button label="quick study" onPress={() => {}} disabled /> : null}
+        {sessions.length === 0 ? <Button label="study" onPress={() => {}} disabled /> : null}
         <View style={styles.buttons}>
           {sessions.map((s, i) => (
             <View key={s.label} style={styles.session}>
               <Button label={s.label} onPress={s.onPress} kind={i === 0 ? 'primary' : 'ghost'} />
-              <Text style={styles.caption}>{s.caption}</Text>
             </View>
           ))}
         </View>
@@ -247,7 +246,6 @@ const styles = StyleSheet.create({
   list: { flex: 1 },
   buttons: { flexDirection: 'row', gap: 12 },
   session: { flex: 1, gap: 6 },
-  caption: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary, textAlign: 'center' },
   action: { gap: 10, paddingTop: 4 },
   note: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center' },
   empty: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center', marginTop: 40 },

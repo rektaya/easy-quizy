@@ -4,6 +4,7 @@ import type { SharedValue } from 'react-native-reanimated';
 import { useDerivedValue } from 'react-native-reanimated';
 import { random } from '../onboarding/sky';
 import { RING_PAD } from './useRing';
+import { TAU } from './geometry';
 import type { Ring } from './useRing';
 
 const DOTS = 210;
@@ -24,13 +25,13 @@ const ease = (t: number) => {
   return k * k * (3 - 2 * k);
 };
 
-// How strongly a known word's celebration glows, 0..1, over the burst (0 -> 1): it rises at once, holds while
-// the stardust is leaving the screen, and is gone by the time the last star has left. After that the ring is
-// just a full golden ring, as it stays for as long as the word is shown.
+// How strongly a known word's celebration glows, 0..1, over the burst (0 -> 1, the time the stardust takes to leave
+// the screen): it rises at once and dies away quickly, in about a third of that time, while the stardust is still on
+// its way. After that the ring is just a full golden ring, as it stays for as long as the word is shown.
 function celebration(b: number): number {
   'worklet';
   if (b <= 0 || b >= 1) return 0;
-  return ease(b / 0.1) * (1 - ease((b - 0.78) / 0.14));
+  return ease(b / 0.05) * (1 - ease((b - 0.1) / 0.2));
 }
 
 // How much a rating shines, 0..1, by the four hidden segments: "don't know" is barely a glimmer, "know" is
@@ -122,7 +123,7 @@ export function StardustRing({ ring }: { ring: Ring }) {
 
   // how much the stars shine: faint for a short arc, bright for a full ring, with a flare when a word is known
   const shine = useDerivedValue(() => {
-    const flare = v.burst.value > 0 && v.burst.value < 1 ? Math.sin(Math.PI * Math.min(1, v.burst.value / 0.45)) * 0.45 : 0;
+    const flare = v.burst.value > 0 && v.burst.value < 1 ? Math.sin(Math.PI * Math.min(1, v.burst.value / 0.22)) * 0.45 : 0;
     return (v.dark.value ? 0.3 : shineOf(v.display.value)) + flare;
   });
   const coreColor = useDerivedValue(() => (v.dark.value ? DARK_CORE : ramp(CORE_RAMP, shine.value)));
@@ -146,6 +147,7 @@ export function StardustRing({ ring }: { ring: Ring }) {
         ))}
         <KnownGlow c={c} r={r} v={v} />
         <Head c={c} r={r} v={v} />
+        <Handle c={c} r={r} v={v} core={coreColor} halo={haloColor} />
       </Group>
     </Canvas>
   );
@@ -219,6 +221,25 @@ function KnownGlow({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
       <Circle cx={c} cy={c} r={r} style="stroke" strokeWidth={14} color="rgba(255,205,130,0.6)" opacity={opacity}>
         <BlurMask blur={9} style="normal" />
       </Circle>
+    </>
+  );
+}
+
+// The handle of a rating: a small dot on the ring where the answer ends, in the colour of the stars (so it takes the
+// colour of the rating). It is only drawn (the touch area is a view of its own, see Circle); it grows a little while
+// it is held, and pulses once when it appears.
+function Handle({ c, r, v, core, halo }: { c: number; r: number; v: Ring['v']; core: Shared<string>; halo: Shared<string> }) {
+  const angle = useDerivedValue(() => v.startRad.value + v.direction.value * v.progress.value * TAU);
+  const x = useDerivedValue(() => c + r * Math.sin(angle.value));
+  const y = useDerivedValue(() => c - r * Math.cos(angle.value));
+  const haloR = useDerivedValue(() => 21 + 10 * v.handlePulse.value + (v.adjusting.value ? 5 : 0));
+  const haloOpacity = useDerivedValue(() => v.handle.value * (0.22 + 0.3 * v.handlePulse.value + (v.adjusting.value ? 0.12 : 0)));
+  const dot = useDerivedValue(() => (v.adjusting.value ? 16 : 13.5)); // wider than the glow of the ring at its brightest, so it is never lost in it
+  return (
+    <>
+      <Circle cx={x} cy={y} r={haloR} color={halo} opacity={haloOpacity} />
+      <Circle cx={x} cy={y} r={dot} color={core} opacity={v.handle} />
+      <Circle cx={x} cy={y} r={dot} style="stroke" strokeWidth={2.5} color={halo} opacity={v.handle} />
     </>
   );
 }

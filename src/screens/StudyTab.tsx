@@ -4,7 +4,6 @@ import Animated, { FadeIn } from 'react-native-reanimated';
 import { useTabBarSpace } from '../components/FloatingTabBar';
 import { WORDS } from '../data/words';
 import { makeSession, waitingWords } from '../onboarding/batch';
-import type { SessionKind } from '../onboarding/batch';
 import { MIN_PILE_TO_STUDY } from '../onboarding/calibration';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
@@ -12,20 +11,19 @@ import AddWordScreen from './AddWordScreen';
 import StudyScreen from './StudyScreen';
 import WordsScreen from './WordsScreen';
 
-// The Study tab opens on the list of the words you are learning. Below it one button, "study". With
-// "quick sessions" on in the settings there are two, side by side: "quick study" (up to 10 words) and, when
-// there are more words to go through, "study all". Every time the tab is opened it
-// starts on the list again.
+// The Study tab opens on the list of the words you are learning. Below it one button, "study", with the number of
+// words in the session (at most the size chosen in the profile). Every time the tab is opened it starts on the
+// list again.
 export default function StudyTab() {
   const space = useTabBarSpace(); // buttons stay clear of the floating tab bar
   const { ratings } = useRatings();
-  const { cards, quickSessions } = useProfile();
-  const [session, setSession] = useState<SessionKind | null>(null);
+  const { cards, sessionWords } = useProfile();
+  const [session, setSession] = useState(false);
   const [adding, setAdding] = useState(false); // the form for a word of your own
   const focused = useIsFocused();
   useEffect(() => {
     if (focused) {
-      setSession(null);
+      setSession(false);
       setAdding(false);
     }
   }, [focused]);
@@ -40,23 +38,15 @@ export default function StudyTab() {
   if (session) {
     return (
       <Animated.View key="session" entering={FadeIn.duration(260)} style={{ flex: 1 }}>
-        <StudyScreen kind={session} bottomSpace={space} onList={() => setSession(null)} />
+        <StudyScreen size={sessionWords} bottomSpace={space} onList={() => setSession(false)} />
       </Animated.View>
     );
   }
 
   const now = Date.now();
-  const quick = makeSession(WORDS, ratings, cards, now, 'quick').length;
-  const long = makeSession(WORDS, ratings, cards, now, 'long').length;
-  // One button, "study" (everything that is ready). With "quick sessions" on in the settings there are two.
-  const sessions = quickSessions
-    ? [
-        ...(quick > 0 ? [{ label: 'quick study', caption: `${quick} words`, onPress: () => setSession('quick') }] : []),
-        ...(long > quick ? [{ label: 'study all', caption: `${long} words`, onPress: () => setSession('long') }] : []),
-      ]
-    : long > 0
-      ? [{ label: 'study', caption: `${long} words`, onPress: () => setSession('long') }]
-      : [];
+  const ready = makeSession(WORDS, ratings, cards, now, sessionWords).length;
+  // One button, "study": the words that are ready, up to the size of a session.
+  const sessions = ready > 0 ? [{ label: 'study', onPress: () => setSession(true) }] : [];
   const waiting = waitingWords(WORDS, ratings, cards).length;
   const note =
     waiting > 0

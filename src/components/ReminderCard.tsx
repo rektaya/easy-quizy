@@ -53,7 +53,7 @@ export function ReminderCard() {
         <View style={styles.rowText}>
           <Text style={styles.rowTitle}>daily reminder</Text>
           <Text style={styles.rowSub}>
-            {reminder.on ? `every day at ${pad(reminder.hour)}:${pad(reminder.minute)}, only when your words are ready` : 'a quiet nudge, only when your words are ready'}
+            {reminder.on ? `every day at ${pad(reminder.hour)}:${pad(reminder.minute)}, only when your words are ready to be practiced` : 'a quiet nudge, only when your words are ready to be practiced'}
           </Text>
         </View>
         <Switch value={on} onValueChange={toggle} trackColor={{ false: colors.border, true: colors.accent }} accessibilityLabel="daily reminder" />

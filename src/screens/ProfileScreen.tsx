@@ -8,7 +8,8 @@ import { Button } from '../components/Button';
 import { useTabBarSpace } from '../components/FloatingTabBar';
 import { TabHeader } from '../components/TabHeader';
 import { ReminderCard } from '../components/ReminderCard';
-import { SettingToggle } from '../components/SettingToggle';
+import { SessionSizeSetting } from '../components/SessionSizeSetting';
+import { StreakCard } from '../components/StreakCard';
 import { WORDS } from '../data/words';
 import { summarize } from '../onboarding/status';
 import { useProfile } from '../state/profile';
@@ -22,7 +23,7 @@ export default function ProfileScreen() {
   const insets = useSafeAreaInsets();
   const tabSpace = useTabBarSpace(); // the content scrolls clear of the floating tab bar
   const { ratings, reset } = useRatings();
-  const { name, rename, cards, quickSessions, setQuickSessions, restartOnboarding } = useProfile();
+  const { name, rename, cards, restartOnboarding } = useProfile();
   const [draft, setDraft] = useState(name);
   const [credits, setCredits] = useState(false); // the credits page, opened from here
 
@@ -79,13 +80,10 @@ export default function ProfileScreen() {
           <Stat n={learned} label="learned" />
         </View>
 
+        <StreakCard />
+
         <Text style={styles.section}>study</Text>
-        <SettingToggle
-          title="quick sessions"
-          subtitle="add a quick study button (10 words) next to study"
-          value={quickSessions}
-          onChange={setQuickSessions}
-        />
+        <SessionSizeSetting />
 
         <ReminderCard />
 

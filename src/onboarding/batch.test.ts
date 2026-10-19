@@ -82,18 +82,30 @@ test('a due review brings the session even when few new words wait', () => {
   assert.deepEqual(batch.map((b) => [b.word.id, b.isNew]), [['termin', false], ['arbeit', true]]);
 });
 
-test('a quick session is at most 10 words and "study all" up to 50, with the new words keeping their share', () => {
+test('a session has the chosen number of words at most, and the new words keep a share of 40% when many reviews are due', () => {
   const ids = WORDS.slice(0, 40).map((w) => w.id);
   const ratings40 = Object.fromEntries(ids.map((id, i) => [id, rating(0.1 + (i % 5) * 0.1)]));
   // the first 20 have been studied and are due; the other 20 are new
   const cards40 = Object.fromEntries(ids.slice(0, 20).map((id) => [id, seedCard(0.2, T0)]));
   const now = T0 + 5 * DAY;
-  const quick = makeSession(WORDS, ratings40, cards40, now, 'quick');
-  const long = makeSession(WORDS, ratings40, cards40, now, 'long');
-  assert.equal(quick.length, 10);
-  assert.equal(quick.filter((b) => b.isNew).length, 5);
-  assert.equal(long.length, 40); // all 20 due reviews and all 20 new words
-  assert.equal(long.filter((b) => b.isNew).length, 20);
+  const ten = makeSession(WORDS, ratings40, cards40, now, 10);
+  const twenty = makeSession(WORDS, ratings40, cards40, now, 20);
+  const forty = makeSession(WORDS, ratings40, cards40, now, 40);
+  assert.equal(ten.length, 10);
+  assert.equal(ten.filter((b) => b.isNew).length, 4);
+  assert.equal(twenty.length, 20);
+  assert.equal(twenty.filter((b) => b.isNew).length, 8);
+  assert.equal(forty.length, 40); // all 20 due reviews and all 20 new words
+  assert.equal(forty.filter((b) => b.isNew).length, 20);
+});
+
+test('with few reviews due, new words fill the rest of the session; with few words waiting it is shorter', () => {
+  const ids = WORDS.slice(0, 15).map((w) => w.id);
+  const waiting15 = Object.fromEntries(ids.map((id) => [id, rating(0.2)]));
+  const now = T0 + 5 * DAY;
+  assert.equal(makeSession(WORDS, waiting15, {}, now, 10).length, 10); // nothing due: all new, up to the size
+  assert.equal(makeSession(WORDS, waiting15, {}, now, 40).length, 15); // only 15 words wait
+  assert.equal(makeSession(WORDS, { zug: rating(0.2), arbeit: rating(0.2) }, {}, now, 10).length, 0); // too few to be worth a session
 });
 
 test('before a word is studied its status follows how well the user said they know it', () => {

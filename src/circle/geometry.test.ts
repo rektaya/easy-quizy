@@ -14,6 +14,8 @@ import {
   pointOnRing,
   segmentOf,
   snapValue,
+  GOOD_MAX,
+  adjustCeiling,
 } from './geometry.ts';
 
 const near = (a: number, b: number, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} vs ${b}`);
@@ -126,4 +128,11 @@ test('ring layers cross-fade red -> amber -> green', () => {
   assert.deepEqual(layerOpacities(0.75), [0, 1, 0.5]);
   assert.deepEqual(layerOpacities(1), [0, 1, 1]);
   assert.deepEqual(layerOpacities(-1), [0, 0, 0]);
+});
+
+test('after the meaning is shown, an answer can be raised to good at most, or back to where it was', () => {
+  assert.equal(segmentOf(GOOD_MAX), 3);
+  assert.equal(isKnown(snapValue(GOOD_MAX)), false);
+  assert.equal(adjustCeiling(0.2), GOOD_MAX);
+  assert.equal(adjustCeiling(0.95), 0.95); // a word first drawn as known can be put back
 });

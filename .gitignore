@@ -45,3 +45,11 @@ public/canvaskit.wasm
 
 # raw data used to build the word list (Wiktionary, Tatoeba, a frequency list): large, not part of the repo
 data-sources/
+
+# screen recordings of other apps and of this one (hundreds of MB each)
+ScreenRecording_*.MP4
+ScreenRecording_*.mov
+
+# Python caches of the word pipeline
+__pycache__/
+*.pyc

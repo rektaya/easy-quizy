@@ -18,6 +18,18 @@ export const DRAW_REACH = 500;
 /** The last 10% of the arc is the "know it for sure" segment. */
 export const KNOW_THRESHOLD = 0.9;
 
+/**
+ * The top of the "know it, still want to study" segment. After the meaning is shown, an answer in Explore can
+ * be changed down freely, but not up into "known" (seeing the meaning makes every word look familiar).
+ */
+export const GOOD_MAX = KNOW_THRESHOLD - 0.01;
+
+/** The most a first answer of `confidence` may be raised to when it is adjusted in Explore: its own height, or "good" at least. */
+export function adjustCeiling(confidence: number): number {
+  'worklet';
+  return Math.max(confidence, GOOD_MAX);
+}
+
 /** The value the cross under the word gives: "I don't know this word at all". Its ring is drawn by itself, in dark blue. */
 export const DONT_KNOW = 0.03;
 export function isDontKnow(value: number): boolean {

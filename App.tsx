@@ -16,7 +16,8 @@ import { applyReminder, setupNotifications } from './src/notifications/reminders
 import { planReminder } from './src/notifications/schedule';
 import ProfileScreen from './src/screens/ProfileScreen';
 import { OnboardingProgress } from './src/components/OnboardingProgress';
-import InterestsStep from './src/screens/InterestsStep';
+import ExploreWayStep from './src/screens/ExploreWayStep';
+import PaceStep from './src/screens/PaceStep';
 import IntroScreen from './src/screens/IntroScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import NameScreen from './src/screens/NameScreen';
@@ -86,7 +87,7 @@ const MapTabScreen = ({ navigation }: { navigation: { navigate: (name: string) =
   );
 };
 
-// The first-run path: name, an intro, a practice word, the quick-test screen, 15 adaptive words, a message.
+// The first-run path: name, an intro, the way of exploring, the session size, a practice word, the quick-test screen, 15 adaptive words, a message.
 // No tab bar until it is finished, so the first minutes are one guided road. It ends in the tabs, on Study.
 function Onboarding() {
   return (
@@ -97,7 +98,7 @@ function Onboarding() {
 }
 
 // Each step fades in over the one before it (the old one fades out underneath).
-const BAR_STEPS: Partial<Record<string, number>> = { name: 1, interests: 2, intro: 3, practice: 4, quiz: 5 };
+const BAR_STEPS: Partial<Record<string, number>> = { name: 1, intro: 2, way: 3, pace: 4, practice: 5, quiz: 6 };
 
 function OnboardingStep() {
   const { phase } = useProfile();
@@ -107,7 +108,7 @@ function OnboardingStep() {
     <Animated.View key={phase} entering={FadeIn.duration(380)} exiting={FadeOut.duration(220)} style={StyleSheet.absoluteFill}>
       <OnboardingScreen />
     </Animated.View>
-    {step ? <OnboardingProgress step={step} total={5} /> : null}
+    {step ? <OnboardingProgress step={step} total={6} /> : null}
     </>
   );
 }
@@ -126,8 +127,9 @@ function OnboardingScreen() {
       />
     );
   }
-  if (phase === 'interests') return <InterestsStep onDone={() => setPhase('intro')} />;
-  if (phase === 'intro') return <IntroScreen onDone={() => setPhase('practice')} />;
+  if (phase === 'intro') return <IntroScreen onDone={() => setPhase('way')} />;
+  if (phase === 'way') return <ExploreWayStep onDone={() => setPhase('pace')} />;
+  if (phase === 'pace') return <PaceStep onDone={() => setPhase('practice')} />;
   if (phase === 'practice') return <PracticeScreen onDone={() => setPhase('quiz')} />;
   if (phase === 'quiz') return <QuizIntroScreen onStart={() => setPhase('calibration')} />;
   if (phase === 'calibration') {

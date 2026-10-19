@@ -16,7 +16,9 @@ export default function CalibrationDoneScreen({ onContinue }: { onContinue: () =
     <View style={[styles.screen, { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 }]}>
       <Animated.View entering={FadeIn.duration(500)} style={styles.body}>
         <Text style={styles.title}>{name ? `got it, ${name}` : 'got it'}</Text>
-        <Text style={styles.lead}>we adjusted the words to match your level. now let’s study the words you just gathered.</Text>
+        <Text style={styles.lead}>
+          you will explore new words that match your level. but studying them is the key, so let’s practice a bit on the words you just gathered
+        </Text>
       </Animated.View>
       <Button label="study" onPress={onContinue} />
     </View>

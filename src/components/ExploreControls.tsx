@@ -13,7 +13,8 @@ export type Menu = null | 'by' | 'theme' | 'level' | 'words';
 /** The height of a one-line title (used when a select has not been measured yet). */
 const HEADER_ROW = 32;
 
-const BY: { key: FeedBy; label: string; hint: string }[] = [
+/** The ways of exploring, with a line that says what each does (the menu of the first select, and the first-run step). */
+export const BY: { key: FeedBy; label: string; hint: string }[] = [
   { key: 'association', label: 'association', hint: 'follows the words that go with the one you see' },
   { key: 'theme', label: 'theme', hint: 'stays in one topic' },
   { key: 'usefulness', label: 'usefulness', hint: 'the most common words first' },

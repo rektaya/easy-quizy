@@ -8,13 +8,14 @@ import { MIN_PILE_TO_STUDY } from './calibration.ts';
 export const NEW_PER_BATCH = 5;
 /** Reviews per Study batch. */
 export const REVIEWS_PER_BATCH = 10;
-/** A Study session comes in two sizes, chosen on the Study tab: a quick one and "study all". */
-export type SessionKind = 'quick' | 'long';
-/** How many words in all (reviews and new words together), and at most how many of them are new. */
-export const SESSION_SIZE: Record<SessionKind, { total: number; fresh: number }> = {
-  quick: { total: 10, fresh: 5 },
-  long: { total: 50, fresh: 20 }, // "study all": everything that is waiting or due, up to 50 words
-};
+/** The sizes of a Study session the user can choose (the words of one session: reviews and new words together). */
+export const SESSION_WORDS = [10, 20, 40] as const;
+export type SessionWords = (typeof SESSION_WORDS)[number];
+export const DEFAULT_SESSION_WORDS: SessionWords = 20;
+/** About how long a session of each size takes (a word takes five or six seconds: draw, read, swipe). */
+export const SESSION_MINUTES: Record<SessionWords, string> = { 10: 'about 1 min', 20: 'about 2 min', 40: 'about 4 min' };
+/** The share of a session that is kept for new words when many reviews are due. */
+const FRESH_SHARE = 0.4;
 
 type Ratings = Record<string, Rating>;
 type Cards = Record<string, StoredCard>;
@@ -57,13 +58,16 @@ export function makeBatch(
 }
 
 /**
- * A session of one kind: new words first reserved their share (up to `fresh`), the due reviews fill the
- * rest of the room (most overdue first). With nothing due, it waits for enough new words (see makeBatch).
+ * A session of `total` words: the due reviews first (most overdue first), but the new words keep their share (40%)
+ * when many reviews are due, and take all the room the reviews leave when few are. It is a ceiling, not a promise:
+ * with fewer words waiting the session is shorter. With nothing due, it waits for enough new words (see makeBatch).
  */
-export function makeSession(words: Word[], ratings: Ratings, cards: Cards, now: number, kind: SessionKind): BatchItem[] {
-  const { total, fresh } = SESSION_SIZE[kind];
-  const newCount = Math.min(fresh, waitingWords(words, ratings, cards).length);
-  return makeBatch(words, ratings, cards, now, { reviews: Math.max(0, total - newCount), fresh });
+export function makeSession(words: Word[], ratings: Ratings, cards: Cards, now: number, total: number): BatchItem[] {
+  const share = Math.round(total * FRESH_SHARE);
+  const waiting = waitingWords(words, ratings, cards).length;
+  const due = dueWords(words, ratings, cards, now).length;
+  const fresh = Math.min(waiting, Math.max(share, total - due));
+  return makeBatch(words, ratings, cards, now, { reviews: Math.max(0, total - fresh), fresh });
 }
 
 /** When the next review comes up, if nothing is due yet. */
