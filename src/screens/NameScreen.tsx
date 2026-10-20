@@ -24,7 +24,6 @@ export default function NameScreen({ onSubmit }: { onSubmit: (name: string) => v
             onSubmitEditing={submit}
             placeholder="your name"
             placeholderTextColor={colors.textTertiary}
-            autoFocus
             autoCorrect={false}
             returnKeyType="go"
             maxLength={30}

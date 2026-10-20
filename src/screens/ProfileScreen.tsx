@@ -9,7 +9,7 @@ import { useTabBarSpace } from '../components/FloatingTabBar';
 import { TabHeader } from '../components/TabHeader';
 import { ReminderCard } from '../components/ReminderCard';
 import { SessionSizeSetting } from '../components/SessionSizeSetting';
-import { StreakCard } from '../components/StreakCard';
+import { WeekCard } from '../components/WeekCard';
 import { WORDS } from '../data/words';
 import { summarize } from '../onboarding/status';
 import { useProfile } from '../state/profile';
@@ -53,9 +53,13 @@ export default function ProfileScreen() {
     );
   }
   return (
-    <Animated.View entering={FadeIn.duration(240)} style={[styles.screen, { paddingTop: insets.top + 12, paddingHorizontal: 24 }]}>
-      <TabHeader title="profile" />
+    <Animated.View entering={FadeIn.duration(240)} style={[styles.screen, { paddingTop: insets.top + 12 }]}>
+      <View style={styles.pad}>
+        <TabHeader title="profile" />
+      </View>
 
+      {/* The list is as wide as the screen and its side margin is inside it, so the glow of the week's stars, which reaches past
+          the card, fades out in the margin instead of being cut off at the edge of the list. */}
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: tabSpace + 16 }]} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         <View style={styles.me}>
           <Avatar name={name} size={76} />
@@ -74,13 +78,13 @@ export default function ProfileScreen() {
           />
         </View>
 
+        <WeekCard />
+
         <View style={styles.stats}>
           <Stat n={explored} label="explored" />
           <Stat n={inStudy} label="in study" />
           <Stat n={learned} label="learned" />
         </View>
-
-        <StreakCard />
 
         <Text style={styles.section}>study</Text>
         <SessionSizeSetting />
@@ -115,7 +119,8 @@ function Stat({ n, label }: { n: number; label: string }) {
 const styles = StyleSheet.create({
   screen: { flex: 1 },
   fill: { flex: 1 },
-  content: { paddingTop: 16, gap: 14 },
+  pad: { paddingHorizontal: 24 },
+  content: { paddingTop: 16, paddingHorizontal: 24, gap: 14 },
   me: { alignItems: 'center', gap: 14, marginBottom: 6 },
   name: { fontFamily: fonts.medium, fontSize: 26, color: colors.text, textAlign: 'center', minWidth: 160, paddingVertical: 4 },
   stats: { flexDirection: 'row', gap: 10 },

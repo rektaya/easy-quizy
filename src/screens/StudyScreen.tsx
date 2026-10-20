@@ -68,6 +68,7 @@ export default function StudyScreen({ size: sessionSize, bottomSpace, onList }: 
   const [value, setValue] = useState<number | null>(null); // the rating of the word being tested
   const [before, setBefore] = useState<StoredCard | undefined>(undefined); // the word's card as it was before this review, so an adjusted answer can redo the review
   const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
+  const [german, setGerman] = useState(false); // after rating: the German word is showing in the circle (the loudspeaker is only there then)
   const [body, setBody] = useState({ w: 0, h: 0 }); // the area the circle sits in
 
   // The batch is picked once, when the saved data has loaded (and again for "keep going").
@@ -85,6 +86,8 @@ export default function StudyScreen({ size: sessionSize, bottomSpace, onList }: 
   const gy = useSharedValue(0);
   const leave = useSharedValue(0);
   const arrive = useSharedValue(1);
+  // 1 while the handle on the ring is held: a drag of the handle is not a swipe to the next word
+  const handleHeld = useSharedValue(0);
   useEffect(() => {
     gy.value = 0;
     leave.value = 0;
@@ -97,11 +100,13 @@ export default function StudyScreen({ size: sessionSize, bottomSpace, onList }: 
     .failOffsetX([-40, 40])
     .onUpdate((e) => {
       'worklet';
+      if (handleHeld.value) return; // the handle is being dragged: that is not a swipe
       gy.value = Math.min(0, e.translationY);
       leave.value = Math.min(1, -gy.value / GLIDE_OUT);
     })
     .onEnd((e) => {
       'worklet';
+      if (handleHeld.value) return;
       if (e.translationY < -SWIPE_DISTANCE || e.velocityY < -SWIPE_VELOCITY) {
         const timing = { duration: 220, easing: Easing.in(Easing.cubic) };
         gy.value = withTiming(-GLIDE_OUT, timing);
@@ -201,13 +206,13 @@ export default function StudyScreen({ size: sessionSize, bottomSpace, onList }: 
                 size={size}
                 value={value}
                 showHint={false}
-                reveal={value === null ? undefined : <FlipReveal word={word} />}
+                reveal={value === null ? undefined : <FlipReveal word={word} onShowing={setGerman} />}
                 onCommit={commit}
                 onDrawing={setDrawing}
-                adjust={value !== null ? { max: 1, onAdjust } : undefined}
+                adjust={value !== null ? { max: 1, onAdjust, hold: handleHeld } : undefined}
               />
-              {drawing ? null : <SpeakButton word={word} top={speakTop(circleTop, size, !!word.article, value !== null)} />}
-              {value === null && !drawing ? <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => commit(DONT_KNOW)} /> : null}
+              <SpeakButton word={word} top={speakTop(circleTop, size)} visible={!drawing && (value === null || german)} />
+              <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => commit(DONT_KNOW)} visible={value === null && !drawing} />
               {value !== null && (word.example.de || verbForms(word)) ? (
                 <Animated.View
                   entering={FadeIn.duration(320).delay(120)}

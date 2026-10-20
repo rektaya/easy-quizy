@@ -105,12 +105,15 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
   const [preview, setPreview] = useState<number | null>(null); // the answer while its handle is being dragged
   const [body, setBody] = useState({ w: 0, h: 0 });
   const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
+  const [german, setGerman] = useState(false); // after rating: the German word is showing in the circle (the loudspeaker is only there then)
 
   // How the current word leaves: it glides up (gy) and fades as `leave` goes 0 -> 1.
   const gy = useSharedValue(0);
   const leave = useSharedValue(0);
   // How the next word arrives: it rises in from below and grows into place as `arrive` goes 0 -> 1.
   const arrive = useSharedValue(0);
+  // 1 while the handle on the ring is held: a drag of the handle is not a swipe to the next word
+  const handleHeld = useSharedValue(0);
 
   // Pick the first word once the saved ratings are loaded (or after a reset).
   useEffect(() => {
@@ -244,11 +247,13 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
     .failOffsetX([-40, 40])
     .onUpdate((e) => {
       'worklet';
+      if (handleHeld.value) return; // the handle is being dragged: that is not a swipe
       gy.value = Math.min(0, e.translationY);
       leave.value = Math.min(1, -gy.value / GLIDE_OUT);
     })
     .onEnd((e) => {
       'worklet';
+      if (handleHeld.value) return;
       if (e.translationY < -SWIPE_DISTANCE || e.velocityY < -SWIPE_VELOCITY) {
         const timing = { duration: 220, easing: Easing.in(Easing.cubic) };
         gy.value = withTiming(-GLIDE_OUT, timing);
@@ -277,7 +282,7 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
 
   // Inside the circle after rating: the translation, centred exactly where the German word was; tap it
   // to flip to the German word and back.
-  const revealInside = word ? <FlipReveal word={word} /> : null;
+  const revealInside = word ? <FlipReveal word={word} onShowing={setGerman} /> : null;
 
   // the counter is only for the first-run test ("3 / 15")
   const counter = (
@@ -341,11 +346,11 @@ export function ExploreView({ mode = 'explore', onCalibrationDone }: Props) {
                   reveal={revealed ? revealInside : undefined}
                   onCommit={onCommit}
                   onDrawing={setDrawing}
-                  adjust={rating ? { max: adjustCeiling(rating.confidence ?? rating.value), onAdjust } : undefined}
+                  adjust={rating ? { max: adjustCeiling(rating.confidence ?? rating.value), onAdjust, hold: handleHeld } : undefined}
                 />
 
-                {drawing ? null : <SpeakButton word={word} top={speakTop(circleTop, size, !!word.article, revealed)} />}
-                {revealed || drawing ? null : <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => onCommit(DONT_KNOW)} />}
+                <SpeakButton word={word} top={speakTop(circleTop, size)} visible={!drawing && (!revealed || german)} />
+                <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => onCommit(DONT_KNOW)} visible={!revealed && !drawing} />
 
                 {revealed ? (
                   <View style={[styles.details, { top: circleTop + size + 26 }]}>

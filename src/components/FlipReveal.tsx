@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import type { GestureResponderEvent } from 'react-native';
 import type { Word } from '../data/words';
@@ -9,9 +9,13 @@ import { WordFace } from './WordFace';
 // Tapping anywhere inside the circle flips to the original word and back (the tap area is round like
 // the circle, so the empty corners of its square do nothing). It starts on the translation every time
 // it appears, so a new word always starts there.
-export function FlipReveal({ word }: { word: Word }) {
+export function FlipReveal({ word, onShowing }: { word: Word; onShowing?: (german: boolean) => void }) {
   const ref = useRef<View>(null);
   const [original, setOriginal] = useState(false);
+  // tells the screen which side is showing (the loudspeaker is only there while the German word is)
+  useEffect(() => {
+    onShowing?.(original);
+  }, [original, onShowing]);
 
   const flip = (e: GestureResponderEvent) => {
     const { pageX, pageY } = e.nativeEvent;

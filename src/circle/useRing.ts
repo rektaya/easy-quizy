@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
 import { Gesture } from 'react-native-gesture-handler';
+import type { SharedValue } from 'react-native-reanimated';
 import {
   Easing,
   useDerivedValue,
@@ -36,7 +37,15 @@ export const RING_STROKE = 14;
 export const HANDLE_HIT = 56;
 
 /** Changing an answer after the meaning was shown: how far the handle may go up, and who is told (`final` is false while the finger is still moving). */
-export type AdjustOptions = { max: number; onAdjust: (value: number, final: boolean) => void };
+export type AdjustOptions = {
+  max: number;
+  onAdjust: (value: number, final: boolean) => void;
+  /**
+   * Set to 1 while the handle is held (and for a moment after it is let go): the screen's swipe up to the next word reads it
+   * and does nothing, so dragging the handle upwards round the ring does not also send the word away.
+   */
+  hold?: SharedValue<number>;
+};
 /** Room round the ring that the animation may draw in (the glow of the stars spills past the circle). */
 export const RING_PAD = 36;
 
@@ -70,6 +79,7 @@ export function useRing(
   const adjustOn = !!adjust;
   const adjustMax = adjust?.max ?? 1;
   const onAdjust = adjust?.onAdjust;
+  const hold = adjust?.hold;
   const c = size / 2;
   const r = c - RING_STROKE;
 
@@ -184,6 +194,8 @@ export function useRing(
     .minDistance(0)
     .onBegin(() => {
       'worklet';
+      if (hold) hold.value = 1;
+      adjusting.value = false; // a drag that never ended (the finger was lifted outside the window) must not hold the next one back
       const a = startRad.value + direction.value * progress.value * TAU;
       hx0.value = c + r * Math.sin(a);
       hy0.value = c - r * Math.cos(a);
@@ -218,6 +230,7 @@ export function useRing(
     })
     .onFinalize(() => {
       'worklet';
+      if (hold) hold.value = withDelay(180, withTiming(0, { duration: 0 })); // the swipe's end comes at the same moment: it must still see the hold
       if (!adjusting.value) return;
       adjusting.value = false;
       const v = snapValue(adjValue.value);
@@ -259,6 +272,7 @@ export function useRing(
   // (restored) is shown at rest, without the animation; a rating the finger has just made is left alone
   // (the ring is already locked and animating); and when the rating goes away (undo) the ring empties.
   useEffect(() => {
+    adjusting.value = false; // a new word, or a new answer: nothing is being dragged
     if (value === null) {
       if (locked.value) reset();
     } else if (!locked.value) {

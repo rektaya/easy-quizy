@@ -5,13 +5,11 @@ import Animated, { Easing, FadeIn, FadeOut, useAnimatedStyle, useSharedValue, wi
 import { scheduleOnRN } from 'react-native-worklets';
 import type { Word } from '../data/words';
 import type { WordStatus } from '../onboarding/status';
-import { colors } from '../theme';
-import { ChevronLeftIcon } from './Icons';
 import { WordCard } from './WordCard';
 
 // A word's card over the list. Swipe up for the next word of the list and down for the previous one, the same
 // motion as moving on in Explore and Study (the card follows the finger). The first card of a visit gives a
-// small nudge upwards, to say "swipe". The only way out is the chevron (the same back chevron as on Profile).
+// small nudge upwards, to say "swipe". The way out is the cross at the top right of the card (or a tap outside it).
 export function CardPager({
   words,
   startIndex,
@@ -33,6 +31,7 @@ export function CardPager({
   const dy = useSharedValue(0);
   // the position lives here, not in the list: moving to the next word redraws only this card, so it stays smooth
   const [index, setIndex] = useState(startIndex);
+  const [overflow, setOverflow] = useState(false); // the card holds more than fits: it scrolls, and a swipe does not move it
   const hasPrev = index > 0;
   const hasNext = index < words.length - 1;
 
@@ -51,7 +50,11 @@ export function CardPager({
       withTiming(0, { duration: 260, easing: Easing.out(Easing.cubic) }),
     );
   };
+  const pull = (dir: 1 | -1) => {
+    if ((dir === 1 && hasNext) || (dir === -1 && hasPrev)) go(dir);
+  };
   const swipe = Gesture.Pan()
+    .enabled(!overflow)
     .activeOffsetY([-14, 14])
     .failOffsetX([-24, 24])
     .onUpdate((e) => {
@@ -82,12 +85,9 @@ export function CardPager({
     <Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(160)} style={styles.overlay}>
       <Pressable style={StyleSheet.absoluteFill} onPress={onClose} accessibilityLabel="close the card" accessibilityRole="button" />
       <View style={[styles.cardWrap, { paddingTop: top, paddingBottom: bottom }]} pointerEvents="box-none">
-        <Pressable onPress={onClose} accessibilityRole="button" accessibilityLabel="back to the list" hitSlop={12} style={styles.back}>
-          <ChevronLeftIcon color={colors.accent} size={28} />
-        </Pressable>
         <GestureDetector gesture={swipe}>
           <Animated.View style={[styles.pagerCard, cardStyle]}>
-            <WordCard word={word} status={statusFor(word.id)} fade={false} />
+            <WordCard word={word} status={statusFor(word.id)} fade={false} onOverflow={setOverflow} onPull={pull} onClose={onClose} />
           </Animated.View>
         </GestureDetector>
       </View>
@@ -97,8 +97,7 @@ export function CardPager({
 
 
 const styles = StyleSheet.create({
-  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: 'rgba(8,16,26,0.95)' },
+  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: '#08101A' }, // solid: the list under the card must not show through
   cardWrap: { flex: 1, paddingHorizontal: 24, gap: 12 },
   pagerCard: { flex: 1 },
-  back: { height: 32, justifyContent: 'center', marginLeft: -6, alignSelf: 'flex-start' },
 });

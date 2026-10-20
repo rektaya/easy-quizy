@@ -4,7 +4,8 @@
 // its color is the rating signal itself.
 export const colors = {
   bg: '#0C1927',
-  surface: 'rgba(255,255,255,0.07)', // frosted cards, fields, ghost buttons, the tab bar
+  surface: 'rgba(255,255,255,0.07)', // frosted cards, fields, ghost buttons
+  surfaceSolid: '#1D2936', // the same look, but opaque: for what floats over scrolling content (the tab bar), so nothing shows through it
   border: 'rgba(255,255,255,0.12)',
   card: '#15263A', // a solid card that must hide what is behind it
   chip: 'rgba(255,255,255,0.1)', // small pills: similar words, sort options

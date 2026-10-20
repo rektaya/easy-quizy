@@ -1,9 +1,10 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import type { Word } from '../data/words';
 import { VerbForms } from './VerbForms';
-import { colors, fonts, radius } from '../theme';
+import { colors, fonts } from '../theme';
+import { WordChip } from './WordChip';
 
 type Props = {
   word: Word;
@@ -27,15 +28,7 @@ export function RevealDetails({ word, related, onTravel }: Props) {
       {related.length > 0 ? (
         <View style={styles.chips}>
           {related.map((w) => (
-            <Pressable
-              key={w.id}
-              onPress={() => onTravel(w.id)}
-              accessibilityRole="button"
-              accessibilityLabel={`travel to ${w.lemma}`}
-              style={({ pressed }) => [styles.chip, pressed && styles.chipPressed]}
-            >
-              <Text style={styles.chipText}>{w.lemma}</Text>
-            </Pressable>
+            <WordChip key={w.id} label={w.lemma} onPress={() => onTravel(w.id)} accessibilityLabel={`travel to ${w.lemma}`} />
           ))}
         </View>
       ) : null}
@@ -61,14 +54,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   chips: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 10 },
-  chip: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: radius.chip,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    backgroundColor: colors.chip,
-  },
-  chipPressed: { backgroundColor: colors.accent },
-  chipText: { fontFamily: fonts.medium, fontSize: 13, color: colors.text },
 });

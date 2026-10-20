@@ -27,7 +27,7 @@ import { LookSource } from '../components/LookSource';
 import { TiltSource } from '../components/TiltSource';
 import type { Glow } from '../components/GlowShader';
 import { TabHeader } from '../components/TabHeader';
-import { THEMES, WORDS } from '../data/words';
+import { THEMES, WORDS, WORD_BY_ID } from '../data/words';
 import { THEME_LEVEL } from '../data/themeLinks';
 import { buildClusters, clusterStats, curatedLinks, levelOf, orderedWords, starLook, zoomWords } from '../onboarding/mapdata';
 import type { Cluster, StarLook, StarState } from '../onboarding/mapdata';
@@ -144,7 +144,7 @@ function snapTick() {
 export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
   const insets = useSafeAreaInsets();
   const { ratings, reset } = useRatings();
-  const { cards, skySeed, restartOnboarding, mapIntroSeen, setMapIntroSeen, ownWords } = useProfile();
+  const { cards, skySeed, restartOnboarding, mapIntroSeen, setMapIntroSeen, ownWords, wordRequest, setWordRequest } = useProfile();
   // Testing helper: hold the "map" title to wipe this phone's progress and begin from the name screen.
   const confirmStartOver = () =>
     Alert.alert('Start over?', 'Everything on this phone is erased and the app begins from the very start.', [
@@ -367,6 +367,18 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
     setOpenWordId(null);
   }, []);
   const openList = useCallback(() => setListOpen(true), []);
+  // A word asked for from a card (a chip "often together with"): its topic opens, then the page with the topic's words, and
+  // on it the word's own card.
+  useEffect(() => {
+    if (!wordRequest || sky.length === 0) return;
+    const w = WORD_BY_ID.get(wordRequest);
+    const target = w?.theme ? sky.find((c) => c.id === w.theme) : undefined;
+    setWordRequest(null);
+    if (!w || !target) return;
+    if (selectedId !== target.id) select(target);
+    setListOpen(true);
+    setOpenWordId(w.id);
+  }, [wordRequest, sky, selectedId, select, setWordRequest]);
   const close = useCallback(() => {
     open.value = withTiming(0, { duration: 340, easing: Easing.inOut(Easing.cubic) }, (finished) => {
       'worklet';
@@ -643,6 +655,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
 
       {cluster && listOpen && openWordId ? (
         <CardPager
+          key={openWordId}
           words={listWords}
           startIndex={Math.max(0, listWords.findIndex((w) => w.id === openWordId))}
           onClose={() => setOpenWordId(null)}
@@ -655,7 +668,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
 
       {cluster && !listOpen ? (
         <Panel cluster={cluster} bottom={bottomSpace} onExplore={onExplore} onStudy={onStudy} onSeeWords={openList} />
-      ) : showIntro ? (
+      ) : showIntro && !cluster ? (
         // the first time the Map is opened: what it is, and how to move around it
         <Animated.View entering={FadeIn.duration(400)} style={[styles.card, { bottom: bottomSpace }]}>
           <View style={styles.cardHead}>
@@ -695,7 +708,7 @@ function Panel({
       <View style={styles.cardHead}>
         <Text style={styles.cardTitle}>{cluster.en}</Text>
         <Text style={styles.cardSub}>
-          {cluster.de} · {stats.total - stats.unexplored} of {stats.total} words explored
+          {stats.total - stats.unexplored} of {stats.total} words explored
         </Text>
         {done ? <Text style={styles.cardNote}>all the words in this cluster are already explored, so it’s time to study them</Text> : null}
       </View>
@@ -741,8 +754,8 @@ function WordListPage({
           <Text style={styles.listTitle} accessibilityRole="header">
             {cluster.en}
           </Text>
-          <Text style={styles.cardSub}>
-            {cluster.de} · {stats.total - stats.unexplored} of {stats.total} words explored
+          <Text style={styles.listSub}>
+            {stats.total - stats.unexplored} of {stats.total} words explored
           </Text>
         </View>
       </View>
@@ -780,13 +793,15 @@ const styles = StyleSheet.create({
   cardHead: { flex: 1, gap: 2 },
   cardTitle: { fontFamily: fonts.medium, fontSize: 20, color: ON_SKY },
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
+  listSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM, textAlign: 'center' },
   cardButtons: { gap: 10 },
   // the page with a theme's words
   listPage: { ...StyleSheet.absoluteFill, paddingHorizontal: 24, gap: 14, backgroundColor: colors.bg },
-  listHeader: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  listBack: { height: 32, justifyContent: 'center', marginLeft: -6 },
-  listTitles: { flex: 1, gap: 1 },
-  listTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY },
+  // the title (and under it the line about the topic) is in the middle of the row, the chevron at its left edge
+  listHeader: { alignItems: 'center', justifyContent: 'center', minHeight: 32 },
+  listBack: { position: 'absolute', left: -6, top: 0, height: 32, justifyContent: 'center', zIndex: 1 },
+  listTitles: { alignItems: 'center', gap: 1, paddingHorizontal: 34 },
+  listTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY, textAlign: 'center' },
   sheetList: { flex: 1 },
   sheetListContent: { gap: 8, paddingBottom: 4 },
   cardNote: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: ON_SKY, marginTop: 8 },

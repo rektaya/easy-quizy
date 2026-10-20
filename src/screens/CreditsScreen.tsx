@@ -93,9 +93,10 @@ export default function CreditsScreen({ onBack }: { onBack: () => void }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 24, minHeight: 32 },
-  back: { height: 32, justifyContent: 'center', marginLeft: -6 },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
+  // the title is in the middle of the row, the chevron at its left edge
+  header: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, minHeight: 32 },
+  back: { position: 'absolute', left: 18, top: 0, height: 32, justifyContent: 'center' },
+  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text, textAlign: 'center', paddingHorizontal: 34 },
   content: { paddingHorizontal: 24, paddingTop: 20, gap: 12 },
   intro: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 23, color: colors.textSecondary, marginBottom: 4 },
   card: {

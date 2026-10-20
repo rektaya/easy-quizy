@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -39,6 +39,16 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
   const [know, setKnow] = useState(0);
 
   const scroller = useRef<ScrollView>(null);
+  // the keyboard covers the tab bar, so the button needs no room for it then (the form was cropped to a few lines)
+  const [keyboard, setKeyboard] = useState(false);
+  useEffect(() => {
+    const show = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow', () => setKeyboard(true));
+    const hide = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide', () => setKeyboard(false));
+    return () => {
+      show.remove();
+      hide.remove();
+    };
+  }, []);
   const [kind, setKind] = useState<WordKind | null>(null); // chosen by the user; until then it is worked out from what was typed
   const guessedKind: WordKind | null = parseGerman(german).article ? 'noun' : /^to\s/i.test(english.trim()) ? 'verb' : null;
   const shownKind = kind ?? guessedKind;
@@ -82,7 +92,7 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
         </View>
 
         <ScrollView ref={scroller} style={styles.fill} contentContainerStyle={[styles.content, { paddingBottom: topicsOpen ? 220 : 16 }]} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-          <Field label="german word" value={german} onChange={(v) => { setGerman(v); setFilledId(null); }} placeholder="e.g. das Fahrrad" autoFocus>
+          <Field label="german word" value={german} onChange={(v) => { setGerman(v); setFilledId(null); }} placeholder="e.g. das Fahrrad">
             {suggestions.length > 0 ? (
               <Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(120)} style={styles.suggest}>
                 <Text style={styles.suggestHead}>{exact ? 'this word is already in our list. tap it to fill in the rest' : 'already in our list? tap to fill in the rest'}</Text>
@@ -183,7 +193,7 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
           </View>
         </ScrollView>
 
-        <View style={{ paddingBottom: tabSpace - 8, paddingTop: 8 }}>
+        <View style={{ paddingBottom: keyboard ? 8 : tabSpace - 8, paddingTop: 8 }}>
           <Button label="add word" onPress={save} disabled={!ready} />
         </View>
       </View>
@@ -197,7 +207,6 @@ function Field({
   onChange,
   placeholder,
   multiline,
-  autoFocus,
   capitalize,
   children,
 }: {
@@ -206,7 +215,6 @@ function Field({
   onChange: (v: string) => void;
   placeholder: string;
   multiline?: boolean;
-  autoFocus?: boolean;
   /** Sentences start with a capital; the words themselves are typed as they are ("das Fahrrad"). */
   capitalize?: boolean;
   children?: React.ReactNode;
@@ -221,7 +229,6 @@ function Field({
         placeholderTextColor={colors.textTertiary}
         autoCorrect={false}
         autoCapitalize={capitalize ? 'sentences' : 'none'}
-        autoFocus={autoFocus}
         multiline={multiline}
         style={[styles.input, multiline && styles.inputMulti]}
         accessibilityLabel={label}
@@ -234,9 +241,10 @@ function Field({
 const styles = StyleSheet.create({
   fill: { flex: 1 },
   screen: { flex: 1, paddingHorizontal: 24 },
-  header: { flexDirection: 'row', alignItems: 'center', gap: 4, minHeight: 32 },
-  back: { height: 32, justifyContent: 'center', marginLeft: -6 },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
+  // the title is in the middle of the row, the chevron at its left edge
+  header: { alignItems: 'center', justifyContent: 'center', minHeight: 32 },
+  back: { position: 'absolute', left: -6, top: 0, height: 32, justifyContent: 'center' },
+  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text, textAlign: 'center', paddingHorizontal: 34 },
   content: { paddingTop: 14, gap: 14 },
   group: { gap: 8 },
   label: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },

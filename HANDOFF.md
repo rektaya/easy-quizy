@@ -36,18 +36,23 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
   reproduced anywhere in the repo. Credentials (the App Store Connect API key) live on EAS, not here.
 - Keep `SPEC.md` and `COMPONENTS.md` updated in the same change as the code (she expects it).
 
-## 3. State of the project (2026-10-19)
+## 3. State of the project (2026-10-20)
 
-- **Code:** branch `master`, last code commit `3c51484` (the documentation written on 2026-10-19 may sit in a later
-  commit). No remote.
-  `npm run typecheck` is clean and `npm test` passes (93 tests).
-- **TestFlight:** **build 5** (version 1.0.0) is uploaded to App Store Connect and available to internal testers. It
-  contains everything up to commit `4d8df4e`. It does **not** contain the last commit `3c51484` (one undo plate in
-  one place, undo in the Study test, the first-word spacing, the Map on the shared starry background, the settings
-  headline removed). **A new build (6) is waiting for her go.**
+- **Code:** branch `master`, last code commit is the one made on 2026-10-20 (`git log -1`); No remote.
+  `npm run typecheck` is clean and `npm test` passes (106 tests).
+- **TestFlight, build 7 (2026-10-20):** built from that commit. On top of build 6 it has the week-of-stars card in Profile
+  (replaces the streak card), the redesigned word card (status top left, cross top right, chips for "often together with"
+  that open the Map, topic last), the Profile scroll fix, the keyboard fixes in the add-word form, the handle/swipe fix,
+  and the onboarding text changes. Not yet checked on a real phone: audio, verb forms, the daily reminder (Taya thinks it
+  did not arrive in build 6: see the reasons in the chat of 2026-10-20: it is only set when something is ready, after "save", and
+  it stays quiet while the app is open).
+- **TestFlight, build 6** (version 1.0.0, built 2026-10-19 from commit `98dcb70`) was uploaded to App Store Connect
+  (EAS build `c857722a`); Apple processes it for 5-10 minutes and sends an email. It has everything of the 2026-10-19
+  session: the handle on the ring, words per session, the new first run, rank-based calibration, verb forms, audio
+  (expo-speech, new in this build: not yet heard on a real phone), the streak card (build 6 only: replaced after by the week card), the note field. Builds 1-5 are older.
 - **External testing:** the external group "easy quizy explorers" has a public link, but Apple must approve a build
   in a short Beta App Review before outsiders can join ("Testers cannot join public link until this group has an
-  approved build"). Whether build 5 was submitted for that review was not confirmed. Drafts of the "What to test" and
+  approved build"). Whether any build was submitted for that review was not confirmed. Drafts of the "What to test" and
   "Beta app description" texts were written in the chat (short, lowercase, plain); rewrite them if asked.
 - **The simulator and the dev server were stopped** at the end of the session.
 
@@ -77,7 +82,7 @@ Screenshots and taps go through the iOS-simulator control tool (coordinates are 
 
 - Expo account **rektaya**, project `easy-quizy`, bundle id `com.tayarekhova.easyquizy`, App Store Connect app id
   `6823929317` (set in `eas.json`, so EAS Submit needs no Apple login). `appVersionSource` is remote and the build
-  number auto-increments (build 5 is the latest).
+  number auto-increments (build 7 is the latest).
 - The Apple Developer account belongs to a **friend (a friend), a personal account**. Taya has the **App Manager** role.
   The App Store Connect API key was created for EAS and is stored on EAS's servers. Certificates are managed by EAS.
 - Build and send to TestFlight in one go: `npx eas-cli build --platform ios --profile production --non-interactive
@@ -164,7 +169,7 @@ add it there. Topic ids that were merged are handled by `currentTheme()` in `wor
 - **Interests are no longer asked** (the step was replaced on 2026-10-19 by "how would you want to explore new
   words?"). The field `interests` and the preference in `feed.ts` stay (people who chose some keep them), but nothing
   sets them now: delete them if the idea is dropped for good.
-- **Two answers per word (since 2026-10-19, not in build 5 or 6):** the first, drawn before the meaning is seen (`confidence`), and the one after it was changed with the handle (`value`, what the app uses). Undo is gone. Explore: `ratings[id].confidence`; Study: `reviewLog` in the profile. Idea behind it: the first answer is "how sure was I", the second "was I right", so overconfidence can be measured later. The badge replaces the undo plate; where the Explore selects wrap to a second line, the badge covers them (accepted for consistency).
+- **Two answers per word (since 2026-10-19, in build 6):** the first, drawn before the meaning is seen (`confidence`), and the one after it was changed with the handle (`value`, what the app uses). Undo is gone. Explore: `ratings[id].confidence`; Study: `reviewLog` in the profile. Idea behind it: the first answer is "how sure was I", the second "was I right", so overconfidence can be measured later. The badge replaces the undo plate; where the Explore selects wrap to a second line, the badge covers them (accepted for consistency).
 - **Things tried and removed for good:** the red-to-green arc, fireworks, a pale light fill that hid the word, comet and
   liquid circle looks, a visible ring at the start, a Study dashboard with a donut, the filter funnel icon, the compass
   icon, the interests row in settings.
@@ -174,7 +179,7 @@ add it there. Topic ids that were merged are handled by `currentTheme()` in `wor
 
 - **Release prep:** a **privacy policy** text (offered, not requested); the **credits licence sentence** (the word list
   is shared under the same share-alike terms) needs her or a lawyer's check; **remove "start over"** and the hidden
-  map-title gesture; Beta App Review for the public link; "What to test" text for build 6.
+  map-title gesture; Beta App Review for the public link; "What to test" text for build 6 (what is new: the handle on the ring, audio, verb forms, the week of study).
 - **Postponed on purpose:** a **widget** (needs a native build and a call with a friend about his account), **Storybook**
   (maybe web only, later), **Reduce Motion** support for the newer animations.
 - **Product ideas:** what to do with the unused interests in `feed.ts`; a better "known word" moment (testers did not read the first

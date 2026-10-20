@@ -54,6 +54,9 @@ type Ctx = Profile & {
   ready: boolean;
   /** The theme "explore from here" was tapped on in the Map; Explore takes it and clears it. */
   seedTheme: string | null;
+  /** A word whose card was asked for from another card (a chip "often together with"): the Map opens it, and clears this. */
+  wordRequest: string | null;
+  setWordRequest: (wordId: string | null) => void;
   setSeedTheme: (themeId: string | null) => void;
   setName: (name: string) => void;
   setPhase: (phase: Phase) => void;
@@ -90,6 +93,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [profile, setProfile] = useState<Profile>(INITIAL);
   const [seedTheme, setSeedTheme] = useState<string | null>(null); // not saved: it only bridges Map -> Explore
+  const [wordRequest, setWordRequest] = useState<string | null>(null); // not saved: it only bridges a word card -> the Map
 
   useEffect(() => {
     AsyncStorage.getItem(KEY)
@@ -198,6 +202,8 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       ...profile,
       ready,
       seedTheme,
+      wordRequest,
+      setWordRequest,
       setSeedTheme,
       setName,
       setPhase,
@@ -214,7 +220,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       removeWord,
       restartOnboarding,
     }),
-    [profile, ready, seedTheme, setName, setPhase, setMapIntroSeen, setReminder, setSessionWords, setExplore, addOwnWord, rename, addAnswer, removeAnswer, reviewWord, adjustReview, removeWord, restartOnboarding],
+    [profile, ready, seedTheme, wordRequest, setName, setPhase, setMapIntroSeen, setReminder, setSessionWords, setExplore, addOwnWord, rename, addAnswer, removeAnswer, reviewWord, adjustReview, removeWord, restartOnboarding],
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

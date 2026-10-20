@@ -6,8 +6,11 @@ back chevron already exists). If something is missing, say so and ask before add
 
 ## Rules (decided with the author)
 - **Going back or closing is the chevron-left icon** (`ChevronLeftIcon`, orange, size 28, in a 32 px tall row at
-  the top left). Never a "close" or "back" button, never the word "close". Used on the word card, on "add new word"
-  (Study), on the Map's word list and on the page one level down from Profile (Credits); Profile itself is a tab and has no chevron.
+  the top left, **with the screen's title in the middle of that row**: "add new word", the name of a topic on the Map's word list, "credits"). Never a "close" or "back" button, never the word "close". Used on "add new word" (Study), on the Map's
+  word list and on the page one level down from Profile (Credits); Profile itself is a tab and has no chevron.
+  **The one exception is the word card**, which is a card laid over a page, not a page: it closes with a **cross in a
+  small round button at the top right of the card** (`XIcon`, in the card's top row, opposite the status circle at the left), or with a
+  tap outside the card. (Decided with the author on 2026-10-20.)
 - **One title style:** `TabHeader` (22, medium, top left) for Explore, Study, Map and Profile. The top right of the
   header holds small status or tools, as icons: in Explore none (its level and words are selects, below); Study: the sort, search
   and plus icons (the plus adds a word of your own); Map: the camera button; the first-run test: the counter. Explore's title also
@@ -22,6 +25,8 @@ back chevron already exists). If something is missing, say so and ask before add
   only while the word is still to be rated and no circle is being drawn. It rates the word at the lowest value and the ring then draws itself, in dark blue.
 - **A word's state is a circle** (`StatusRing`), never a word plus a dot: empty = new, a little filled = shaky,
   more = getting there, full = learned. It is on the right of a word row and of an open card (no name beside it).
+- **Small things in the circle (the cross, the loudspeaker) stay mounted and fade with a `visible` prop**, they are never taken away while fading: Reanimated can move a view that is leaving to another place for a moment (they used to slip down when a drawing began).
+- **Nothing shows through what floats over content.** The tab bar is opaque (`colors.surfaceSolid`, the look of a frosted card on the navy night, but solid): a screen that scrolls under it never shows its text behind the icons. Any new floating thing (a bar, a plate over a list) gets a solid background too.
 - **Nothing pops.** Whatever appears or disappears (a menu, an overlay card, a page, a row that opens, the next
   onboarding step) fades in and out (about 160 to 260 ms) with `entering` and `exiting` or a layout transition. A
   new menu, card or page gets the same.
@@ -43,19 +48,20 @@ back chevron already exists). If something is missing, say so and ask before add
 | `FallingStar` | the falling star drawn on the welcome screen (drifts slowly) | welcome |
 | `DontKnowButton` | the small cross in the circle, under the word: "i don't know this word at all" | Explore, Study test, practice |
 | `WordRow` | a row of a word list: article + word, meaning, status ring, bin | Study list, the Map's sheet |
-| `CardPager` | the swipeable stack of word cards over a list (swipe up next, down back, chevron closes) | Study list, the Map's sheet |
+| `CardPager` | the swipeable stack of word cards over a list (swipe up next, down back, the cross on the card or a tap outside closes) | Study list, the Map's sheet |
 | `Avatar` | the user's initial in a round badge with an orange rim | Profile |
 | `Icons` | `SpeakerIcon`, `ExploreIcon`, `StudyIcon`, `MapIcon`, `LookIcon`, `SwipeUpIcon`, `TapIcon`, `TrashIcon`, `SortIcon`, `SearchIcon`, `ChevronLeftIcon` (back), `ChevronRightIcon` (a row that opens a page), `ChevronDownIcon`, `PlusIcon`, `XIcon`, `ProfileIcon` | tab bar and screens |
 | `FloatingTabBar` | the pill with four tabs (Explore, Study, Map, Profile); `useTabBarSpace()` says how much room to leave | tabs |
-| `WordFace` | the German word inside the circle (article above, lemma below) | the circle |
+| `WordFace` | the German word inside the circle (article above, lemma below). (Long words step down just enough to fit the ring.) On the word card the word is **32 when it fits and 24 when it does not**, and only a very long word goes below that | the circle |
 | `Translation` | the English meaning, sized to fit the circle | the circle |
+| `WordChip` | a word as a small pill (the similar words in Explore, the words a word often comes with on its card); tapping goes to the word | Explore, word card |
 | `FlipReveal` | what sits in the circle after rating: the translation, tap to flip to the German word | Explore, Study, Practice |
 | `RatingBadge` | the badge with the word's answer ("added to study", "marked as known"), in its one place, following the handle | Explore |
 | `AdjustHint` | the hint "hint: if you were wrong, drag the dot on the ring to change your initial answer" on a plate, directly above the circle (`HINT_GAP` above its box) | first test word in Explore, the first Study word (once) |
 | `SpeakButton` (`speakTop`) | the small loudspeaker in the circle above the word, in the style of the cross under it: says the German word aloud (`src/audio/speak.ts`, the voice of the phone) | Explore, Study test, first-run test, practice |
-| `VerbForms` | a verb's forms on one line, "geht · ging · ist gegangen" | word card, under the circle in Explore and Study |
-| `StreakCard` | days in a row, today against the goal, the week as seven circles | Profile |
-| `WordCard` | a word's card: topic and status ring on the top row, word, meaning, plural, words it often comes with, how common, examples | `CardPager` |
+| `VerbForms` | a verb's forms on one line, "geht · ging · ist gegangen" | under the circle in Explore and Study  |
+| `WeekCard` | the week as seven glowing round stars (dark blue for a day without study up to a golden star when the day's goal, the words of a session, is done), with the letters m t w t f s s; no text. The shine is the circle's (`src/circle/shine.ts`) | Profile |
+| `WordCard` | a word's card: the status ring at the top left, the cross at the top right; the loudspeaker, the word and the meaning above one line; under it the verb's forms, plural, the words it often comes with (as `WordChip`s that open the word in the Map tab), your note, two examples and, last, the topic. Scrolls when it holds more than fits | `CardPager` |
 | `RevealDetails` | example and similar words under the circle after rating | Explore |
 | `Ring` | a small progress ring (the counter) | the first-run test, Study session |
 | `SessionSizePicker` | the size of a Study session, the chosen one orange: three tiles (10, 20, 40 words, each with about how long it takes) | first run (`PaceStep`), the panel of `SessionSizeSetting` |

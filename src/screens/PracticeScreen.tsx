@@ -37,6 +37,7 @@ export default function PracticeScreen({ onDone }: { onDone: () => void }) {
   const [adjusted, setAdjusted] = useState(false); // the handle has been used: on to the last moment
   const [body, setBody] = useState({ w: 0, h: 0 });
   const [drawing, setDrawing] = useState(false); // the cross goes away while a circle is being drawn
+  const [german, setGerman] = useState(false); // after rating: the German word is showing in the circle (the loudspeaker is only there then)
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => () => {
     if (timer.current) clearTimeout(timer.current);
@@ -50,7 +51,7 @@ export default function PracticeScreen({ onDone }: { onDone: () => void }) {
   const circleLeft = (body.w - size) / 2;
   const rated = value !== null;
 
-  const inside = rated ? <FlipReveal word={word} /> : undefined;
+  const inside = rated ? <FlipReveal word={word} onShowing={setGerman} /> : undefined;
 
   const onAdjust = (v: number, final: boolean) => {
     if (!final) return;
@@ -106,11 +107,15 @@ export default function PracticeScreen({ onDone }: { onDone: () => void }) {
                   onDrawing={setDrawing}
                   adjust={rated ? { max: 1, onAdjust } : undefined}
                 />
-                {drawing ? null : <SpeakButton word={word} top={speakTop(circleTop, size, !!word.article, rated)} />}
-                {rated || drawing ? null : <DontKnowButton top={dontKnowTop(circleTop, size, !!word.article)} onPress={() => {
-                  setFirst(DONT_KNOW);
-                  setValue(DONT_KNOW);
-                }} />}
+                <SpeakButton word={word} top={speakTop(circleTop, size)} visible={!drawing && (!rated || german)} />
+                <DontKnowButton
+                  top={dontKnowTop(circleTop, size, !!word.article)}
+                  visible={!rated && !drawing}
+                  onPress={() => {
+                    setFirst(DONT_KNOW);
+                    setValue(DONT_KNOW);
+                  }}
+                />
               </Animated.View>
             </>
           )
