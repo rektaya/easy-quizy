@@ -27,7 +27,7 @@ export function OnboardingProgress({ step, total }: { step: number; total: numbe
     const rnd = random(31);
     return Array.from({ length: DOTS }, (_, i) => ({
       s: (i + 0.5) / DOTS,
-      dy: (rnd() + rnd() + rnd() - 1.5) * 5, // clustered round the middle, a few stars further out (a thin band, two or three stars deep)
+      dy: (rnd() + rnd() + rnd() - 1.5) * 3.2, // clustered round the middle, a few stars further out (a thin band, two or three stars deep)
       big: rnd() < 0.35,
       phase: rnd() * 6.283,
     }));
@@ -63,15 +63,15 @@ export function OnboardingProgress({ step, total }: { step: number; total: numbe
     >
       {w > 0 ? (
         <Canvas style={{ width: w + 2 * PAD, height: HEIGHT }}>
-          <Points points={dim} mode="points" style="stroke" strokeCap="round" strokeWidth={1.8} color="rgba(255,255,255,0.2)" />
-          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={8} color="rgb(255,150,55)" opacity={glow}>
+          <Points points={dim} mode="points" style="stroke" strokeCap="round" strokeWidth={2.3} color="rgba(255,255,255,0.2)" />
+          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={9.5} color="rgb(255,150,55)" opacity={glow}>
             <BlurMask blur={4.5} style="normal" />
           </Points>
-          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={6.5} color="rgb(255,150,55)" opacity={glow}>
+          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={8} color="rgb(255,150,55)" opacity={glow}>
             <BlurMask blur={4} style="normal" />
           </Points>
-          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={3.2} color="rgb(255,240,214)" opacity={twinkleA} />
-          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={2.4} color="rgb(255,238,208)" opacity={twinkleB} />
+          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={3.9} color="rgb(255,240,214)" opacity={twinkleA} />
+          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={3} color="rgb(255,238,208)" opacity={twinkleB} />
           <Circle c={headC} r={14}>
             <RadialGradient c={headC} r={14} colors={['rgba(255,255,255,0.9)', 'rgba(255,150,55,0.45)', 'rgba(255,150,55,0)']} positions={[0, 0.3, 1]} />
           </Circle>
