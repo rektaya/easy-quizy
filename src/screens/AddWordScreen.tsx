@@ -151,7 +151,7 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
               <Text style={[styles.selectText, !theme && styles.placeholder]}>
                 {theme ? THEMES.find((t) => t.id === theme)?.en : 'choose a topic'}
               </Text>
-              <ChevronDownIcon color={colors.text} size={20} />
+              <ChevronDownIcon color={colors.accent} size={20} />
             </Pressable>
             {topicsOpen ? (
               <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={styles.dropdown}>

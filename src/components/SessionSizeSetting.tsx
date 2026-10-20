@@ -35,7 +35,7 @@ export function SessionSizeSetting() {
         </View>
         <View style={styles.pill}>
           <Text style={styles.pillText}>{sessionWords} words</Text>
-          <ChevronDownIcon color={colors.text} size={16} />
+          <ChevronDownIcon color={colors.textSecondary} size={16} />
         </View>
       </Pressable>
 

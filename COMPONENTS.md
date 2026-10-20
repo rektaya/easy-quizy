@@ -5,7 +5,7 @@ screen.** If a pattern is here, use it; do not invent a second one (for example 
 back chevron already exists). If something is missing, say so and ask before adding a new pattern.
 
 ## Rules (decided with the author)
-- **Going back or closing is the chevron-left icon** (`ChevronLeftIcon`, white (`colors.text`, like every chevron: the one that opens a page, the ones on selects), size 28, in a 32 px tall row at
+- **Going back or closing is the chevron-left icon** (`ChevronLeftIcon`, white (`colors.text`), size 28, in a 32 px tall row at
   the top left, **with the screen's title in the middle of that row**: "add new word", the name of a topic on the Map's word list, "credits"). Never a "close" or "back" button, never the word "close". Used on "add new word" (Study), on the Map's
   word list and on the page one level down from Profile (Credits); Profile itself is a tab and has no chevron.
   **The one exception is the word card**, which is a card laid over a page, not a page: it closes with a **cross in a
