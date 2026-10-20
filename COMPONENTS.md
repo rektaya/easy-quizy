@@ -51,7 +51,7 @@ back chevron already exists). If something is missing, say so and ask before add
 | `CardPager` | the swipeable stack of word cards over a list (swipe up next, down back, the cross on the card or a tap outside closes) | Study list, the Map's sheet |
 | `Avatar` | the user's initial in a round badge with an orange rim | Profile |
 | `Icons` | `SpeakerIcon`, `ExploreIcon`, `StudyIcon`, `MapIcon`, `LookIcon`, `SwipeUpIcon`, `TapIcon`, `TrashIcon`, `SortIcon`, `SearchIcon`, `ChevronLeftIcon` (back), `ChevronRightIcon` (a row that opens a page), `ChevronDownIcon`, `PlusIcon`, `XIcon`, `ProfileIcon` | tab bar and screens |
-| `FloatingTabBar` | the pill with four tabs (Explore, Study, Map, Profile); `useTabBarSpace()` says how much room to leave | tabs |
+| `FloatingTabBar` | the pill with four tabs (Explore, Study, Map, Profile); `useTabBarSpace()` says how much room to leave; `useTabRepress(fn)` runs `fn` when the tab you are already on is pressed again (every tab with a deeper level uses it to go back to its first level: Study to the list, Map out to the whole sky, Profile out of the credits) | tabs |
 | `WordFace` | the German word inside the circle (article above, lemma below). (Long words step down just enough to fit the ring.) On the word card the word is **32 when it fits and 24 when it does not**, and only a very long word goes below that | the circle |
 | `Translation` | the English meaning, sized to fit the circle | the circle |
 | `WordChip` | a word as a small pill (the similar words in Explore, the words a word often comes with on its card); tapping goes to the word | Explore, word card |

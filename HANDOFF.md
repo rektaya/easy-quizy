@@ -43,7 +43,7 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
 - **TestFlight, build 7 (2026-10-20):** built from that commit. On top of build 6 it has the week-of-stars card in Profile
   (replaces the streak card), the redesigned word card (status top left, cross top right, chips for "often together with"
   that open the Map, topic last), the Profile scroll fix, the keyboard fixes in the add-word form, the handle/swipe fix,
-  and the onboarding text changes. Not yet checked on a real phone: audio, verb forms, the daily reminder (Taya thinks it
+  and the onboarding text changes, and pressing the tab you are on takes you back to its first level. Not yet checked on a real phone: audio, verb forms, the daily reminder (Taya thinks it
   did not arrive in build 6: see the reasons in the chat of 2026-10-20: it is only set when something is ready, after "save", and
   it stays quiet while the app is open).
 - **TestFlight, build 6** (version 1.0.0, built 2026-10-19 from commit `98dcb70`) was uploaded to App Store Connect

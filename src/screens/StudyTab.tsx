@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import Animated, { FadeIn } from 'react-native-reanimated';
-import { useTabBarSpace } from '../components/FloatingTabBar';
+import { useTabBarSpace, useTabRepress } from '../components/FloatingTabBar';
 import { WORDS } from '../data/words';
 import { makeSession, waitingWords } from '../onboarding/batch';
 import { MIN_PILE_TO_STUDY } from '../onboarding/calibration';
@@ -20,6 +20,7 @@ export default function StudyTab() {
   const { cards, sessionWords } = useProfile();
   const [session, setSession] = useState(false);
   const [adding, setAdding] = useState(false); // the form for a word of your own
+  const [round, setRound] = useState(0); // counts up to start the list afresh (closing a word's card that is open over it)
   const focused = useIsFocused();
   useEffect(() => {
     if (focused) {
@@ -27,6 +28,12 @@ export default function StudyTab() {
       setAdding(false);
     }
   }, [focused]);
+  // pressing the tab you are already on brings you back to the list
+  useTabRepress(() => {
+    setSession(false);
+    setAdding(false);
+    setRound((r) => r + 1);
+  });
 
   if (adding) {
     return (
@@ -53,7 +60,7 @@ export default function StudyTab() {
       ? `${waiting} of ${MIN_PILE_TO_STUDY} words gathered. rate a few more in explore to start a session`
       : 'nothing is due. gather new words in explore';
   return (
-    <Animated.View key="list" entering={FadeIn.duration(260)} style={{ flex: 1 }}>
+    <Animated.View key={`list-${round}`} entering={FadeIn.duration(260)} style={{ flex: 1 }}>
       <WordsScreen bottomSpace={space} sessions={sessions} note={note} onAdd={() => setAdding(true)} />
     </Animated.View>
   );

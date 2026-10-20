@@ -14,6 +14,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { useIsFocused } from '@react-navigation/native';
+import { useTabRepress } from '../components/FloatingTabBar';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import Svg, { Circle, Defs, Line, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
@@ -385,6 +386,10 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
       if (finished) scheduleOnRN(finishClose);
     });
   }, [open, finishClose]);
+  // pressing the Map tab while on it brings you back out to the whole sky
+  useTabRepress(() => {
+    if (selectedId) close();
+  });
 
   // Opening a star zooms the sky in on it: the sky grows and dims, with the star sliding to the
   // middle, while its cluster (drawn at full size there) grows out of the star.

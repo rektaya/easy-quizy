@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Avatar } from '../components/Avatar';
 import { ChevronRightIcon } from '../components/Icons';
 import { Button } from '../components/Button';
-import { useTabBarSpace } from '../components/FloatingTabBar';
+import { useTabBarSpace, useTabRepress } from '../components/FloatingTabBar';
 import { TabHeader } from '../components/TabHeader';
 import { ReminderCard } from '../components/ReminderCard';
 import { SessionSizeSetting } from '../components/SessionSizeSetting';
@@ -26,6 +26,8 @@ export default function ProfileScreen() {
   const { name, rename, cards, restartOnboarding } = useProfile();
   const [draft, setDraft] = useState(name);
   const [credits, setCredits] = useState(false); // the credits page, opened from here
+  // pressing the Profile tab while on it brings you back from the credits
+  useTabRepress(() => setCredits(false));
 
   const summary = summarize(WORDS, ratings, cards);
   const explored = Object.keys(ratings).length;

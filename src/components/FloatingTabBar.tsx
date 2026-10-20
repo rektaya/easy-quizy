@@ -1,4 +1,5 @@
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
@@ -13,6 +14,20 @@ const AIR = 28;
 export function useTabBarSpace(): number {
   const insets = useSafeAreaInsets();
   return Math.max(insets.bottom, 12) + 4 + BAR_HEIGHT + AIR;
+}
+
+/** Runs `onRepress` when the tab you are already on is pressed again: the way back out of whatever is deep in it. */
+export function useTabRepress(onRepress: () => void) {
+  const navigation = useNavigation<{ addListener: (event: 'tabPress', cb: () => void) => () => void; isFocused: () => boolean }>();
+  const latest = React.useRef(onRepress);
+  latest.current = onRepress;
+  React.useEffect(
+    () =>
+      navigation.addListener('tabPress', () => {
+        if (navigation.isFocused()) latest.current();
+      }),
+    [navigation],
+  );
 }
 
 const TILE_W = 62;
