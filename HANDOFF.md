@@ -40,7 +40,7 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
 
 - **Code:** branch `master`, last code commit is the one made on 2026-10-20 (`git log -1`); No remote.
   `npm run typecheck` is clean and `npm test` passes (106 tests).
-- **TestFlight, build 7 (2026-10-20):** built from that commit. On top of build 6 it has the week-of-stars card in Profile
+- **TestFlight, build 7 (2026-10-20):** built from commit `f32708e` (EAS build `3ac05935`, started 2026-10-20, sent to TestFlight automatically). On top of build 6 it has the week-of-stars card in Profile
   (replaces the streak card), the redesigned word card (status top left, cross top right, chips for "often together with"
   that open the Map, topic last), the Profile scroll fix, the keyboard fixes in the add-word form, the handle/swipe fix,
   and the onboarding text changes, and pressing the tab you are on takes you back to its first level. Not yet checked on a real phone: audio, verb forms, the daily reminder (Taya thinks it
