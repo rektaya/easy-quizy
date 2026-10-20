@@ -60,7 +60,7 @@ export default function CreditsScreen({ onBack }: { onBack: () => void }) {
     <View style={[styles.screen, { paddingTop: insets.top + 12 }]}>
       <View style={styles.header}>
         <Pressable onPress={onBack} accessibilityRole="button" accessibilityLabel="back" hitSlop={12} style={styles.back}>
-          <ChevronLeftIcon color={colors.accent} size={28} />
+          <ChevronLeftIcon color={colors.text} size={28} />
         </Pressable>
         <Text style={styles.title} accessibilityRole="header">
           credits

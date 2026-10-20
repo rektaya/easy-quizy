@@ -99,7 +99,7 @@ export default function ProfileScreen() {
             <Text style={styles.rowCardTitle}>credits</Text>
             <Text style={styles.rowCardSub}>where the words, sentences and type come from</Text>
           </View>
-          <ChevronRightIcon color={colors.textTertiary} size={22} />
+          <ChevronRightIcon color={colors.text} size={22} />
         </Pressable>
 
         <Text style={styles.section}>testing</Text>

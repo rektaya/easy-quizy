@@ -753,7 +753,7 @@ function WordListPage({
       <StarBackground />
       <View style={styles.listHeader}>
         <Pressable onPress={onBack} accessibilityRole="button" accessibilityLabel="back" hitSlop={12} style={styles.listBack}>
-          <ChevronLeftIcon color={colors.accent} size={28} />
+          <ChevronLeftIcon color={colors.text} size={28} />
         </Pressable>
         <View style={styles.listTitles}>
           <Text style={styles.listTitle} accessibilityRole="header">
