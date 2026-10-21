@@ -2,8 +2,9 @@ import React from 'react';
 import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTabBarSpace } from '../components/FloatingTabBar';
-import { ChevronLeftIcon } from '../components/Icons';
-import { colors, fonts, radius } from '../theme';
+import { Card } from '../components/Card';
+import { PageHeader } from '../components/PageHeader';
+import { colors, fonts } from '../theme';
 
 // Where the words, the sentences and the type come from, and under which licence. Reached from the profile.
 type Source = { title: string; what: string; licence: string; links: { label: string; url: string }[] };
@@ -58,19 +59,14 @@ export default function CreditsScreen({ onBack }: { onBack: () => void }) {
   const tabSpace = useTabBarSpace(); // scroll clear of the floating tab bar
   return (
     <View style={[styles.screen, { paddingTop: insets.top + 12 }]}>
-      <View style={styles.header}>
-        <Pressable onPress={onBack} accessibilityRole="button" accessibilityLabel="back" hitSlop={12} style={styles.back}>
-          <ChevronLeftIcon color={colors.text} size={28} />
-        </Pressable>
-        <Text style={styles.title} accessibilityRole="header">
-          credits
-        </Text>
+      <View style={styles.headerWrap}>
+        <PageHeader title="credits" onBack={onBack} />
       </View>
 
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: tabSpace + 16 }]} showsVerticalScrollIndicator={false}>
         <Text style={styles.intro}>easy quizy is made from the work of many people. thank you.</Text>
         {SOURCES.map((s) => (
-          <View key={s.title} style={styles.card}>
+          <Card key={s.title} style={styles.card}>
             <Text style={styles.cardTitle}>{s.title}</Text>
             <Text style={styles.what}>{s.what}</Text>
             <Text style={styles.licence}>licence: {s.licence}</Text>
@@ -81,7 +77,7 @@ export default function CreditsScreen({ onBack }: { onBack: () => void }) {
                 </Pressable>
               ))}
             </View>
-          </View>
+          </Card>
         ))}
         <Text style={styles.note}>
           the word list in this app is made from the sources above. where their licence says share-alike (CC BY-SA), the list is shared under the same terms.
@@ -94,19 +90,10 @@ export default function CreditsScreen({ onBack }: { onBack: () => void }) {
 const styles = StyleSheet.create({
   screen: { flex: 1 },
   // the title is in the middle of the row, the chevron at its left edge
-  header: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24, minHeight: 32 },
-  back: { position: 'absolute', left: 18, top: 0, height: 32, justifyContent: 'center' },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text, textAlign: 'center', paddingHorizontal: 34 },
+  headerWrap: { paddingHorizontal: 24 },
   content: { paddingHorizontal: 24, paddingTop: 20, gap: 12 },
   intro: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 23, color: colors.textSecondary, marginBottom: 4 },
-  card: {
-    gap: 6,
-    padding: 16,
-    borderRadius: radius.card,
-    backgroundColor: colors.surface,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
+  card: { gap: 6, padding: 16 },
   cardTitle: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   what: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary },
   licence: { fontFamily: fonts.regular, fontSize: 13, color: colors.textTertiary, marginTop: 2 },

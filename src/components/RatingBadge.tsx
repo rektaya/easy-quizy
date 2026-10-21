@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown, FadeOut } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, fonts, radius, shadow } from '../theme';
+import { colors, fonts } from '../theme';
+import { Plate } from './Plate';
 import { HEADER_HEIGHT } from './TabHeader';
 
 /** Where the badge sits, measured from the top of the screen's safe area: the same on every screen that has one. */
@@ -29,9 +30,9 @@ export function RatingBadge({ message }: { message: string }) {
   return (
     <View pointerEvents="none" style={[styles.slot, { top: insets.top + BADGE_TOP }]}>
       {shown ? (
-        <Animated.View entering={FadeInDown.duration(180)} exiting={FadeOut.duration(260)} style={styles.plate}>
+        <Plate round="chip" entering={FadeInDown.duration(180)} exiting={FadeOut.duration(260)} style={styles.plate}>
           <Text style={styles.message}>{message}</Text>
-        </Animated.View>
+        </Plate>
       ) : null}
     </View>
   );
@@ -39,14 +40,6 @@ export function RatingBadge({ message }: { message: string }) {
 
 const styles = StyleSheet.create({
   slot: { position: 'absolute', left: 0, right: 0, alignItems: 'center' },
-  plate: {
-    paddingHorizontal: 18,
-    paddingVertical: 11,
-    borderRadius: radius.chip,
-    backgroundColor: colors.card,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    ...shadow,
-  },
+  plate: { paddingHorizontal: 18, paddingVertical: 12 },
   message: { fontFamily: fonts.regular, color: colors.text, fontSize: 15 },
 });

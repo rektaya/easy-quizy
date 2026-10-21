@@ -12,11 +12,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import { Circle } from '../circle/Circle';
 import { adjustCeiling } from '../circle/geometry';
-import { Button } from '../components/Button';
 import { DONT_KNOW, DontKnowButton, dontKnowTop } from '../components/DontKnowButton';
 import { SpeakButton, speakTop } from '../components/SpeakButton';
 import { Ring } from '../components/Ring';
-import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
+import { TabHeader } from '../components/TabHeader';
 import { SwipeUpIcon, TapIcon } from '../components/Icons';
 import { RevealDetails } from '../components/RevealDetails';
 import { RatingBadge } from '../components/RatingBadge';
@@ -25,13 +24,7 @@ import { ExploreMenus, ExploreTitle } from '../components/ExploreControls';
 import type { Anchors, Menu } from '../components/ExploreControls';
 import { FlipReveal } from '../components/FlipReveal';
 import { WORDS } from '../data/words';
-import type { Word } from '../data/words';
-import {
-  CALIBRATION_WORDS,
-  isCalibrationDone,
-  pickCalibrationWord,
-  pickThemeWord,
-} from '../onboarding/calibration';
+import { CALIBRATION_WORDS, isCalibrationDone, pickCalibrationWord, pickThemeWord } from '../onboarding/calibration';
 import { useProfile } from '../state/profile';
 import { feedChips, fitsFeed, pickFeedWord } from '../onboarding/feed';
 import type { FeedOptions } from '../onboarding/feed';

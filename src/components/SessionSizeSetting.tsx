@@ -3,9 +3,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SESSION_MINUTES } from '../onboarding/batch';
 import type { SessionWords } from '../onboarding/batch';
 import { useProfile } from '../state/profile';
-import { colors, fonts, radius } from '../theme';
+import { colors, fonts } from '../theme';
 import { BottomSheet } from './BottomSheet';
 import { Button } from './Button';
+import { Card } from './Card';
+import { Pill } from './Choice';
 import { ChevronDownIcon } from './Icons';
 import { SessionSizePicker } from './SessionSizePicker';
 
@@ -28,15 +30,14 @@ export function SessionSizeSetting() {
 
   return (
     <>
-      <Pressable onPress={show} accessibilityRole="button" accessibilityLabel={`words per session: ${sessionWords}, change`} style={styles.card}>
-        <View style={styles.text}>
-          <Text style={styles.title}>words per session</Text>
-          <Text style={styles.sub}>{SESSION_MINUTES[sessionWords]}</Text>
-        </View>
-        <View style={styles.pill}>
-          <Text style={styles.pillText}>{sessionWords} words</Text>
-          <ChevronDownIcon color={colors.textSecondary} size={16} />
-        </View>
+      <Pressable onPress={show} accessibilityRole="button" accessibilityLabel={`words per session: ${sessionWords}, change`}>
+        <Card style={styles.card}>
+          <View style={styles.text}>
+            <Text style={styles.title}>words per session</Text>
+            <Text style={styles.sub}>{SESSION_MINUTES[sessionWords]}</Text>
+          </View>
+          <Pill label={`${sessionWords} words`} size="m" right={<ChevronDownIcon color={colors.textSecondary} size={16} />} />
+        </Card>
       </Pressable>
 
       <BottomSheet visible={open} onClose={() => setOpen(false)}>
@@ -52,33 +53,10 @@ export function SessionSizeSetting() {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    alignSelf: 'stretch',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 12,
-    padding: 16,
-    borderRadius: radius.card,
-    backgroundColor: colors.surface,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
+  card: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: 16 },
   text: { flex: 1, gap: 2 },
   title: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   sub: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
-  pill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 14,
-    paddingVertical: 9,
-    borderRadius: radius.chip,
-    backgroundColor: colors.chip,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
-  pillText: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   head: { gap: 6 },
   sheetTitle: { fontFamily: fonts.medium, fontSize: 24, color: colors.text },
   sheetLead: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary },

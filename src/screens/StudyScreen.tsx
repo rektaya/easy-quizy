@@ -28,7 +28,7 @@ import type { BatchItem } from '../onboarding/batch';
 import type { StoredCard } from '../srs/scheduler';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts, radius } from '../theme';
+import { colors, fonts } from '../theme';
 
 // The circle sits where it does in Explore: a little above the middle of its area. It is placed
 // absolutely, so nothing that appears after rating (the example) can move it.

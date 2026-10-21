@@ -4,7 +4,7 @@ import Animated, { FadeIn } from 'react-native-reanimated';
 import type { Word } from '../data/words';
 import { VerbForms } from './VerbForms';
 import { colors, fonts } from '../theme';
-import { WordChip } from './WordChip';
+import { Pill } from './Choice';
 
 type Props = {
   word: Word;
@@ -28,7 +28,7 @@ export function RevealDetails({ word, related, onTravel }: Props) {
       {related.length > 0 ? (
         <View style={styles.chips}>
           {related.map((w) => (
-            <WordChip key={w.id} label={w.lemma} onPress={() => onTravel(w.id)} accessibilityLabel={`travel to ${w.lemma}`} />
+            <Pill key={w.id} label={w.lemma} onPress={() => onTravel(w.id)} accessibilityLabel={`travel to ${w.lemma}`} />
           ))}
         </View>
       ) : null}

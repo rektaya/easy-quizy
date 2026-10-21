@@ -4,8 +4,9 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
 import { askForPermission } from '../notifications/reminders';
 import { useProfile } from '../state/profile';
-import { colors, fonts, radius } from '../theme';
+import { colors, fonts } from '../theme';
 import { Button } from './Button';
+import { Card } from './Card';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -48,7 +49,7 @@ export function ReminderCard() {
   time.setHours(hour, minute, 0, 0);
 
   return (
-    <Animated.View layout={LinearTransition.duration(240)} style={styles.card}>
+    <Card layout={LinearTransition.duration(240)} style={styles.card}>
       <View style={styles.row}>
         <View style={styles.rowText}>
           <Text style={styles.rowTitle}>daily reminder</Text>
@@ -80,12 +81,12 @@ export function ReminderCard() {
           <Button label="save" onPress={() => setReminder({ on: true, hour, minute, asked: true })} />
         </Animated.View>
       ) : null}
-    </Animated.View>
+    </Card>
   );
 }
 
 const styles = StyleSheet.create({
-  card: { alignSelf: 'stretch', borderRadius: radius.card, backgroundColor: colors.surface, borderWidth: 1.5, borderColor: colors.border, overflow: 'hidden' },
+  card: { overflow: 'hidden' },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: 16 },
   rowBorder: { borderTopWidth: 1.5, borderTopColor: colors.border },
   rowText: { flex: 1, gap: 2 },

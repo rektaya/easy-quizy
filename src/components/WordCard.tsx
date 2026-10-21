@@ -6,12 +6,13 @@ import { EXTRA } from '../data/words.extra';
 import { THEMES, WORD_BY_ID } from '../data/words';
 import type { Word } from '../data/words';
 import type { WordStatus } from '../onboarding/status';
-import { colors, fonts, radius, shadow } from '../theme';
+import { colors, fonts } from '../theme';
 import { StatusRing } from './StatusRing';
 import { VerbForms } from './VerbForms';
 import { SpeakerIcon, XIcon } from './Icons';
 import { speak } from '../audio/speak';
-import { WordChip } from './WordChip';
+import { Pill } from './Choice';
+import { Plate } from './Plate';
 import { useProfile } from '../state/profile';
 import { useNavigation } from '@react-navigation/native';
 
@@ -73,7 +74,7 @@ export function WordCard({
   const theme = THEMES.find((t) => t.id === word.theme)?.en;
 
   return (
-    <Animated.View key={word.id} entering={fade ? FadeIn.duration(320) : undefined} style={styles.card}>
+    <Plate round="card" key={word.id} entering={fade ? FadeIn.duration(320) : undefined} style={styles.card}>
       <ScrollView
         style={styles.fill}
         contentContainerStyle={styles.content}
@@ -117,7 +118,7 @@ export function WordCard({
               <Text style={styles.label}>often together with</Text>
               <View style={styles.chips}>
                 {together.map((w) => (
-                  <WordChip
+                  <Pill
                     key={w.id}
                     label={`${w.article ? w.article + ' ' : ''}${w.lemma}`}
                     onPress={w.theme ? () => openInMap(w) : undefined}
@@ -152,7 +153,7 @@ export function WordCard({
           ) : null}
         </View>
       </ScrollView>
-    </Animated.View>
+    </Plate>
   );
 }
 
@@ -160,16 +161,7 @@ const styles = StyleSheet.create({
   fill: { flex: 1 },
   // what is inside the card: it fills the card (and spreads out) when it all fits, and is taller than the card when it does not
   content: { flexGrow: 1, justifyContent: 'space-between', gap: 12, padding: 24 },
-  card: {
-    flex: 1,
-    marginBottom: 8,
-    borderRadius: radius.card,
-    backgroundColor: colors.card,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    overflow: 'hidden',
-    ...shadow,
-  },
+  card: { flex: 1, marginBottom: 8, overflow: 'hidden' },
   top: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   close: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.chip, borderWidth: 1.5, borderColor: colors.border },
   // the word: the loudspeaker, the article small and close above the word, the lemma big, then the meaning

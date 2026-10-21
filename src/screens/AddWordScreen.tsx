@@ -4,14 +4,18 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { useTabBarSpace } from '../components/FloatingTabBar';
-import { ChevronDownIcon, ChevronLeftIcon } from '../components/Icons';
+import { Choice, ChoiceText, Pill } from '../components/Choice';
+import { ChevronDownIcon } from '../components/Icons';
+import { Menu, MenuItem } from '../components/Menu';
+import { PageHeader } from '../components/PageHeader';
+import { Plate } from '../components/Plate';
 import { StatusRing } from '../components/StatusRing';
 import { THEMES, WORD_KINDS, findByGerman, parseGerman } from '../data/words';
 import type { Word, WordKind } from '../data/words';
 import type { WordStatus } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts, radius, shadow } from '../theme';
+import { colors, fonts, radius } from '../theme';
 
 // Adding a word of your own (our list may have it already: while the german word is typed, matching words are offered,
 // and a tap fills the whole form in; adding a word that is in the list just puts that word in your study words): its German form, its English meaning, an example in each language (optional), the
@@ -82,19 +86,12 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.fill}>
       <View style={[styles.screen, { paddingTop: insets.top + 12 }]}>
-        <View style={styles.header}>
-          <Pressable onPress={onBack} accessibilityRole="button" accessibilityLabel="back" hitSlop={12} style={styles.back}>
-            <ChevronLeftIcon color={colors.text} size={28} />
-          </Pressable>
-          <Text style={styles.title} accessibilityRole="header">
-            add new word
-          </Text>
-        </View>
+        <PageHeader title="add new word" onBack={onBack} />
 
         <ScrollView ref={scroller} style={styles.fill} contentContainerStyle={[styles.content, { paddingBottom: topicsOpen ? 220 : 16 }]} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <Field label="german word" value={german} onChange={(v) => { setGerman(v); setFilledId(null); }} placeholder="e.g. das Fahrrad">
             {suggestions.length > 0 ? (
-              <Animated.View entering={FadeIn.duration(200)} exiting={FadeOut.duration(120)} style={styles.suggest}>
+              <Plate entering={FadeIn.duration(200)} exiting={FadeOut.duration(120)} style={styles.suggest}>
                 <Text style={styles.suggestHead}>{exact ? 'this word is already in our list. tap it to fill in the rest' : 'already in our list? tap to fill in the rest'}</Text>
                 {suggestions.map((w) => (
                   <Pressable key={w.id} onPress={() => { Keyboard.dismiss(); fillIn(w); }} accessibilityRole="button" accessibilityLabel={`fill in ${w.lemma}`} style={styles.suggestRow}>
@@ -107,7 +104,7 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
                     </Text>
                   </Pressable>
                 ))}
-              </Animated.View>
+              </Plate>
             ) : null}
           </Field>
           <Field label="english translation" value={english} onChange={setEnglish} placeholder="e.g. bicycle" />
@@ -116,11 +113,7 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
             <View style={styles.kinds}>
               {WORD_KINDS.map((k) => {
                 const on = shownKind === k.key;
-                return (
-                  <Pressable key={k.key} onPress={() => setKind(on && kind === k.key ? null : k.key)} accessibilityRole="button" accessibilityState={{ selected: on }} style={[styles.kind, on && styles.kindOn]}>
-                    <Text style={[styles.kindText, on && styles.kindTextOn]}>{k.label}</Text>
-                  </Pressable>
-                );
+                return <Pill key={k.key} label={k.label} size="m" selected={on} onPress={() => setKind(on && kind === k.key ? null : k.key)} />;
               })}
             </View>
           </View>
@@ -154,28 +147,21 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
               <ChevronDownIcon color={colors.accent} size={20} />
             </Pressable>
             {topicsOpen ? (
-              <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={styles.dropdown}>
+              <Menu style={styles.dropdown}>
                 <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
-                  {THEMES.map((t) => {
-                    const on = theme === t.id;
-                    return (
-                      <Pressable
-                        key={t.id}
-                        onPress={() => {
-                          setTheme(t.id);
-                          setTopicsOpen(false);
-                        }}
-                        accessibilityRole="button"
-                        accessibilityState={{ selected: on }}
-                        style={styles.option}
-                      >
-                        <Text style={[styles.optionText, on && styles.optionTextOn]}>{t.en}</Text>
-                        {on ? <View style={styles.dot} /> : null}
-                      </Pressable>
-                    );
-                  })}
+                  {THEMES.map((t) => (
+                    <MenuItem
+                      key={t.id}
+                      label={t.en}
+                      selected={theme === t.id}
+                      onPress={() => {
+                        setTheme(t.id);
+                        setTopicsOpen(false);
+                      }}
+                    />
+                  ))}
                 </ScrollView>
-              </Animated.View>
+              </Menu>
             ) : null}
             </View>
           </View>
@@ -184,10 +170,10 @@ export default function AddWordScreen({ onBack }: { onBack: () => void }) {
             <Text style={styles.label}>how well do you know it already?</Text>
             <View style={styles.know}>
               {KNOW.map((k, i) => (
-                <Pressable key={k.label} onPress={() => setKnow(i)} accessibilityRole="button" accessibilityState={{ selected: know === i }} style={[styles.knowItem, know === i && styles.knowItemOn]}>
+                <Choice key={k.label} selected={know === i} onPress={() => setKnow(i)} style={styles.knowItem}>
                   <StatusRing status={k.status} size={22} />
-                  <Text style={[styles.knowText, know === i && styles.knowTextOn]}>{k.label}</Text>
-                </Pressable>
+                  <ChoiceText style={styles.knowText}>{k.label}</ChoiceText>
+                </Choice>
               ))}
             </View>
           </View>
@@ -242,9 +228,6 @@ const styles = StyleSheet.create({
   fill: { flex: 1 },
   screen: { flex: 1, paddingHorizontal: 24 },
   // the title is in the middle of the row, the chevron at its left edge
-  header: { alignItems: 'center', justifyContent: 'center', minHeight: 32 },
-  back: { position: 'absolute', left: -6, top: 0, height: 32, justifyContent: 'center' },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text, textAlign: 'center', paddingHorizontal: 34 },
   content: { paddingTop: 14, gap: 12 },
   group: { gap: 8 },
   label: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
@@ -274,40 +257,17 @@ const styles = StyleSheet.create({
   selectText: { fontFamily: fonts.regular, fontSize: 16, color: colors.text },
   placeholder: { color: colors.textTertiary },
   kinds: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  kind: { paddingHorizontal: 14, paddingVertical: 9, borderRadius: radius.chip, borderWidth: 1.5, borderColor: colors.border, backgroundColor: colors.chip },
-  kindOn: { backgroundColor: colors.accent, borderColor: colors.accent },
-  kindText: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
-  kindTextOn: { color: colors.onAccent },
   selectOpen: { borderColor: colors.accent },
   // the drop-down list of topics, over what is below it
   topicGroup: { zIndex: 10 },
-  dropdown: {
-    position: 'absolute',
-    top: '100%',
-    left: 0,
-    right: 0,
-    marginTop: 6,
-    maxHeight: 260,
-    paddingVertical: 6,
-    borderRadius: radius.tile,
-    backgroundColor: colors.card,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    ...shadow,
-  },
-  option: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 12 },
-  optionText: { fontFamily: fonts.regular, fontSize: 16, color: colors.textSecondary },
-  optionTextOn: { fontFamily: fonts.medium, color: colors.text },
-  dot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.accent },
-  suggest: { borderRadius: radius.tile, backgroundColor: colors.card, borderWidth: 1.5, borderColor: colors.border, paddingVertical: 6 },
+  dropdown: { position: 'absolute', top: '100%', left: 0, right: 0, marginTop: 6, maxHeight: 260 },
+  suggest: { paddingVertical: 6 },
   suggestHead: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary, paddingHorizontal: 14, paddingVertical: 6 },
   suggestRow: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, paddingHorizontal: 14, paddingVertical: 9 },
   suggestDe: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   suggestArticle: { fontFamily: fonts.regular, color: colors.textSecondary },
   suggestEn: { flexShrink: 1, fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
   know: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  knowItem: { width: '48.5%', flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, paddingVertical: 9, borderRadius: radius.chip, borderWidth: 1.5, borderColor: colors.border, backgroundColor: colors.chip },
-  knowItemOn: { borderColor: colors.accent, backgroundColor: 'rgba(247,88,49,0.12)' },
-  knowText: { fontFamily: fonts.medium, fontSize: 13, color: colors.textSecondary },
-  knowTextOn: { color: colors.text },
+  knowItem: { width: '48.5%', flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, paddingVertical: 9 },
+  knowText: { fontFamily: fonts.medium, fontSize: 13 },
 });

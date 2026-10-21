@@ -1,21 +1,19 @@
 import React, { useRef, useState } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, { Easing, FadeIn, FadeOut, useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
-import { scheduleOnRN } from 'react-native-worklets';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
+import { Menu, MenuItem } from '../components/Menu';
 import { PlusIcon, SearchIcon, SortIcon } from '../components/Icons';
 import { HEADER_HEIGHT, TabHeader } from '../components/TabHeader';
 import { CardPager } from '../components/CardPager';
 import { WordRow } from '../components/WordRow';
 import { WORDS } from '../data/words';
-import type { Word } from '../data/words';
 import { STATUS_ORDER, wordStatus } from '../onboarding/status';
-import type { Status, WordStatus } from '../onboarding/status';
+import type { Status } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts, radius, shadow } from '../theme';
+import { colors, fonts, radius } from '../theme';
 
 type Sort = 'status' | 'a-z' | 'newest';
 const SORTS: { key: Sort; label: string }[] = [
@@ -173,23 +171,19 @@ export default function WordsScreen({
 
       {sortOpen ? (
         // the ways to sort are hidden in here until the sort icon is tapped
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.menu, { top: insets.top + 12 + HEADER_HEIGHT + 6 }]}>
+        <Menu style={[styles.menu, { top: insets.top + 12 + HEADER_HEIGHT + 6 }]}>
           {SORTS.map((o) => (
-            <Pressable
+            <MenuItem
               key={o.key}
+              label={o.label}
+              selected={sort === o.key}
               onPress={() => {
                 setSort(o.key);
                 setSortOpen(false);
               }}
-              accessibilityRole="button"
-              accessibilityState={{ selected: sort === o.key }}
-              style={styles.menuItem}
-            >
-              <Text style={[styles.menuText, sort === o.key && styles.menuTextOn]}>{o.label}</Text>
-              {sort === o.key ? <View style={styles.menuDot} /> : null}
-            </Pressable>
+            />
           ))}
-        </Animated.View>
+        </Menu>
       ) : null}
 
       {openIndex >= 0 ? (
@@ -208,11 +202,6 @@ export default function WordsScreen({
 }
 
 const styles = StyleSheet.create({
-  // the card of a tapped word, over the list (tap outside it to close)
-  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: colors.backdrop },
-  cardWrap: { flex: 1, paddingHorizontal: 24, gap: 12 },
-  pagerCard: { flex: 1 },
-  back: { height: 32, justifyContent: 'center', marginLeft: -6, alignSelf: 'flex-start' },
   screen: { flex: 1, paddingHorizontal: 24, gap: 12 },
   search: {
     paddingHorizontal: 16,
@@ -228,35 +217,11 @@ const styles = StyleSheet.create({
   headerIcons: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   iconButton: { width: 34, height: 34, borderRadius: radius.chip, alignItems: 'center', justifyContent: 'center' },
   iconButtonOn: { backgroundColor: colors.accent },
-  menu: {
-    position: 'absolute',
-    right: 24,
-    minWidth: 150,
-    paddingVertical: 6,
-    borderRadius: radius.tile,
-    backgroundColor: colors.card,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    ...shadow,
-  },
-  menuItem: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 11 },
-  menuText: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
-  menuTextOn: { fontFamily: fonts.medium, color: colors.text },
-  menuDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.accent },
+  menu: { position: 'absolute', right: 24, minWidth: 150 },
   list: { flex: 1 },
   buttons: { flexDirection: 'row', gap: 12 },
   session: { flex: 1, gap: 6 },
   action: { gap: 12, paddingTop: 4 },
   note: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary, textAlign: 'center' },
   empty: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary, textAlign: 'center', marginTop: 40 },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    padding: 14,
-    borderRadius: radius.tile,
-    backgroundColor: colors.surface,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
 });

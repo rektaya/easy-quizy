@@ -15,6 +15,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useIsFocused } from '@react-navigation/native';
 import { useTabRepress } from '../components/FloatingTabBar';
+import { Card } from '../components/Card';
+import { PageHeader } from '../components/PageHeader';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 import Svg, { Circle, Defs, Line, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
@@ -23,7 +25,7 @@ import { StarBackground } from '../components/StarBackground';
 import { CardPager } from '../components/CardPager';
 import { WordRow } from '../components/WordRow';
 import { GlowCanvas, sphereUnits } from '../components/GlowShader';
-import { ChevronLeftIcon, LookIcon } from '../components/Icons';
+import { LookIcon } from '../components/Icons';
 import { LookSource } from '../components/LookSource';
 import { TiltSource } from '../components/TiltSource';
 import type { Glow } from '../components/GlowShader';
@@ -675,7 +677,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
         <Panel cluster={cluster} bottom={bottomSpace} onExplore={onExplore} onStudy={onStudy} onSeeWords={openList} />
       ) : showIntro && !cluster ? (
         // the first time the Map is opened: what it is, and how to move around it
-        <Animated.View entering={FadeIn.duration(400)} style={[styles.card, { bottom: bottomSpace }]}>
+        <Card strong entering={FadeIn.duration(400)} style={[styles.card, { bottom: bottomSpace }]}>
           <View style={styles.cardHead}>
             <Text style={styles.cardTitle}>your map</Text>
             <Text style={styles.cardSub}>
@@ -683,7 +685,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
             </Text>
           </View>
           <Button label="got it" onPress={setMapIntroSeen} />
-        </Animated.View>
+        </Card>
       ) : null}
     </View>
   );
@@ -709,7 +711,7 @@ function Panel({
   const stats = clusterStats(cluster, ratings, cards);
   const done = stats.unexplored === 0;
   return (
-    <Animated.View entering={FadeIn.duration(240)} exiting={FadeOut.duration(160)} style={[styles.card, { bottom }]}>
+    <Card strong entering={FadeIn.duration(240)} exiting={FadeOut.duration(160)} style={[styles.card, { bottom }]}>
       <View style={styles.cardHead}>
         <Text style={styles.cardTitle}>{cluster.en}</Text>
         <Text style={styles.cardSub}>
@@ -721,7 +723,7 @@ function Panel({
         {done ? <Button label="study" onPress={onStudy} /> : <Button label="explore from here" onPress={() => onExplore(cluster.id)} />}
         <Button label="see words" onPress={onSeeWords} kind="ghost" />
       </View>
-    </Animated.View>
+    </Card>
   );
 }
 
@@ -751,19 +753,7 @@ function WordListPage({
   return (
     <Animated.View entering={FadeIn.duration(260)} exiting={FadeOut.duration(160)} style={[styles.listPage, { paddingTop: insets.top + 12, paddingBottom: bottom }]}>
       <StarBackground />
-      <View style={styles.listHeader}>
-        <Pressable onPress={onBack} accessibilityRole="button" accessibilityLabel="back" hitSlop={12} style={styles.listBack}>
-          <ChevronLeftIcon color={colors.text} size={28} />
-        </Pressable>
-        <View style={styles.listTitles}>
-          <Text style={styles.listTitle} accessibilityRole="header">
-            {cluster.en}
-          </Text>
-          <Text style={styles.listSub}>
-            {stats.total - stats.unexplored} of {stats.total} words explored
-          </Text>
-        </View>
-      </View>
+      <PageHeader title={cluster.en} sub={`${stats.total - stats.unexplored} of ${stats.total} words explored`} onBack={onBack} />
       <ScrollView style={styles.sheetList} contentContainerStyle={styles.sheetListContent} showsVerticalScrollIndicator={false}>
         {words.map((w) => (
           <WordRow key={w.id} word={w} status={wordStatus(w.id, ratings, cards)} onOpen={() => onOpenWord(w.id)} />
@@ -783,30 +773,14 @@ const styles = StyleSheet.create({
   sub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
   // the sky fills the whole screen, behind the header, the card and the tab bar, so there are no bare bands
   stage: { ...StyleSheet.absoluteFill },
-  card: {
-    position: 'absolute',
-    left: 20,
-    right: 20,
-    gap: 12,
-    padding: 18,
-    borderRadius: radius.card,
-    backgroundColor: colors.chip,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
+  card: { position: 'absolute', left: 20, right: 20, gap: 12, padding: 18 },
   cardTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 },
   cardHead: { flex: 1, gap: 2 },
   cardTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY },
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
-  listSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM, textAlign: 'center' },
   cardButtons: { gap: 12 },
   // the page with a theme's words
   listPage: { ...StyleSheet.absoluteFill, paddingHorizontal: 24, gap: 12, backgroundColor: colors.bg },
-  // the title (and under it the line about the topic) is in the middle of the row, the chevron at its left edge
-  listHeader: { alignItems: 'center', justifyContent: 'center', minHeight: 32 },
-  listBack: { position: 'absolute', left: -6, top: 0, height: 32, justifyContent: 'center', zIndex: 1 },
-  listTitles: { alignItems: 'center', gap: 2, paddingHorizontal: 34 },
-  listTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY, textAlign: 'center' },
   sheetList: { flex: 1 },
   sheetListContent: { gap: 8, paddingBottom: 4 },
   cardNote: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: ON_SKY, marginTop: 8 },

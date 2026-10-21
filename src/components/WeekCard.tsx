@@ -6,6 +6,7 @@ import { CORE_RAMP, HALO_RAMP, ramp, shineOf } from '../circle/shine';
 import { dayProgress, exploreByDay, studyByDay, weekOf } from '../onboarding/streak';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
+import { Card } from './Card';
 import { alpha, colors, fonts, radius, stars } from '../theme';
 
 /** The radius of a star's core: the same for every day (only the shine changes). */
@@ -31,7 +32,7 @@ export function WeekCard() {
   // Seven columns spread across the plate with equal gaps (space between). Each column is a star and, right under it, the letter of its day,
   // so they are always in line. A star's drawing area is larger than its column (room for the glow) and laid back over it.
   return (
-    <View style={styles.card} accessible accessibilityLabel={`this week: ${week.filter((d) => d.done).length} days of study`}>
+    <Card style={styles.card} accessible accessibilityLabel={`this week: ${week.filter((d) => d.done).length} days of study`}>
       <View style={styles.row}>
         {week.map((d, i) => {
           const progress = dayProgress(byDay[d.key] ?? 0, sessionWords, metByDay[d.key] ?? 0);
@@ -49,7 +50,7 @@ export function WeekCard() {
           );
         })}
       </View>
-    </View>
+    </Card>
   );
 }
 
@@ -85,7 +86,7 @@ function DayStar({ cx, cy, shine, progress, future, phase }: { cx: number; cy: n
 
 const styles = StyleSheet.create({
   // a plate like the other cards of the profile; the glow of the stars may reach past it (it is not clipped)
-  card: { alignSelf: 'stretch', paddingTop: 20, paddingBottom: 14, paddingHorizontal: 16, borderRadius: radius.card, backgroundColor: colors.surface, borderWidth: 1.5, borderColor: colors.border },
+  card: { paddingTop: 20, paddingBottom: 14, paddingHorizontal: 16 },
   row: { flexDirection: 'row', justifyContent: 'space-between' },
   column: { width: 2 * EDGE, alignItems: 'center', gap: 6 },
   starBox: { width: 2 * EDGE, height: 2 * EDGE },

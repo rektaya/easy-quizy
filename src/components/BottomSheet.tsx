@@ -4,7 +4,8 @@ import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-g
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
-import { colors, radius, shadow } from '../theme';
+import { colors } from '../theme';
+import { Plate } from './Plate';
 
 const CLOSE_DISTANCE = 90; // how far down a drag must go to close the sheet
 const CLOSE_VELOCITY = 700;
@@ -63,10 +64,10 @@ export function BottomSheet({ visible, onClose, children }: { visible: boolean; 
           <Pressable style={StyleSheet.absoluteFill} onPress={onClose} accessibilityRole="button" accessibilityLabel="close" />
         </Animated.View>
         <GestureDetector gesture={pull}>
-          <Animated.View style={[styles.sheet, { paddingBottom: insets.bottom + 16 }, sheetStyle]}>
+          <Plate round="card" style={[styles.sheet, { paddingBottom: insets.bottom + 16 }, sheetStyle]}>
             <View style={styles.grabber} />
             {children}
-          </Animated.View>
+          </Plate>
         </GestureDetector>
       </GestureHandlerRootView>
     </Modal>
@@ -76,17 +77,6 @@ export function BottomSheet({ visible, onClose, children }: { visible: boolean; 
 const styles = StyleSheet.create({
   root: { flex: 1, justifyContent: 'flex-end' },
   scrim: { backgroundColor: colors.scrim },
-  sheet: {
-    paddingTop: 10,
-    paddingHorizontal: 24,
-    gap: 16,
-    borderTopLeftRadius: radius.card,
-    borderTopRightRadius: radius.card,
-    borderWidth: 1.5,
-    borderBottomWidth: 0,
-    borderColor: colors.border,
-    backgroundColor: colors.card,
-    ...shadow,
-  },
+  sheet: { paddingTop: 10, paddingHorizontal: 24, gap: 16, borderBottomLeftRadius: 0, borderBottomRightRadius: 0, borderBottomWidth: 0 },
   grabber: { alignSelf: 'center', width: 38, height: 4, borderRadius: 2, backgroundColor: colors.border, marginBottom: 6 },
 });

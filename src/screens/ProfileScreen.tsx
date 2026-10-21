@@ -7,6 +7,7 @@ import { ChevronRightIcon } from '../components/Icons';
 import { Button } from '../components/Button';
 import { useTabBarSpace, useTabRepress } from '../components/FloatingTabBar';
 import { TabHeader } from '../components/TabHeader';
+import { Card } from '../components/Card';
 import { ReminderCard } from '../components/ReminderCard';
 import { SessionSizeSetting } from '../components/SessionSizeSetting';
 import { WeekCard } from '../components/WeekCard';
@@ -15,7 +16,7 @@ import { summarize } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
 import CreditsScreen from './CreditsScreen';
-import { colors, fonts, radius } from '../theme';
+import { colors, fonts } from '../theme';
 
 // Profile and settings: who you are, how far you have got, and the daily reminder. Opens over everything
 // from the avatar in Explore.
@@ -94,12 +95,14 @@ export default function ProfileScreen() {
         <ReminderCard />
 
         <Text style={styles.section}>about</Text>
-        <Pressable onPress={() => setCredits(true)} accessibilityRole="button" style={styles.rowCard}>
-          <View style={styles.rowCardText}>
-            <Text style={styles.rowCardTitle}>credits</Text>
-            <Text style={styles.rowCardSub}>where the words, sentences and type come from</Text>
-          </View>
-          <ChevronRightIcon color={colors.textTertiary} size={22} />
+        <Pressable onPress={() => setCredits(true)} accessibilityRole="button">
+          <Card style={styles.rowCard}>
+            <View style={styles.rowCardText}>
+              <Text style={styles.rowCardTitle}>credits</Text>
+              <Text style={styles.rowCardSub}>where the words, sentences and type come from</Text>
+            </View>
+            <ChevronRightIcon color={colors.textTertiary} size={22} />
+          </Card>
         </Pressable>
 
         <Text style={styles.section}>testing</Text>
@@ -111,10 +114,10 @@ export default function ProfileScreen() {
 
 function Stat({ n, label }: { n: number; label: string }) {
   return (
-    <View style={styles.stat}>
+    <Card round="tile" style={styles.stat}>
       <Text style={styles.statN}>{n}</Text>
       <Text style={styles.statLabel}>{label}</Text>
-    </View>
+    </Card>
   );
 }
 
@@ -126,28 +129,11 @@ const styles = StyleSheet.create({
   me: { alignItems: 'center', gap: 12, marginBottom: 6 },
   name: { fontFamily: fonts.medium, fontSize: 24, color: colors.text, textAlign: 'center', minWidth: 160, paddingVertical: 4 },
   stats: { flexDirection: 'row', gap: 12 },
-  rowCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    padding: 16,
-    borderRadius: radius.card,
-    backgroundColor: colors.surface,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
+  rowCard: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16 },
   rowCardText: { flex: 1, gap: 2 },
   rowCardTitle: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   rowCardSub: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
-  stat: {
-    flex: 1,
-    alignItems: 'center',
-    paddingVertical: 14,
-    borderRadius: radius.tile,
-    backgroundColor: colors.surface,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-  },
+  stat: { flex: 1, alignItems: 'center', paddingVertical: 14 },
   statN: { fontFamily: fonts.medium, fontSize: 24, color: colors.text },
   statLabel: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, marginTop: 2 },
   section: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, marginTop: 14, marginLeft: 4 },

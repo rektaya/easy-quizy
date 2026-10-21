@@ -1,10 +1,10 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { THEMES } from '../data/words';
 import type { FeedBy, PosFilter } from '../onboarding/feed';
 import type { ExploreSettings } from '../state/profile';
-import { colors, fonts, radius, shadow } from '../theme';
+import { colors, fonts, radius } from '../theme';
+import { Menu, MenuItem } from './Menu';
 
 // The controls of Explore: the title "explore" with the filter icon (a funnel) at the end of its row, and under it
 // two selects on glass pills: the way of exploring (association by default) and, by theme, the topic.
@@ -166,98 +166,78 @@ export function ExploreMenus({
       <Pressable style={StyleSheet.absoluteFill} onPress={() => onMenu(null)} accessibilityLabel="close the menu" accessibilityRole="button" />
 
       {menu === 'by' ? (
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.byCard, { top, left: Math.min(fromX, width - 24 - 280) }]}>
+        <Menu style={[styles.byCard, { top, left: Math.min(fromX, width - 24 - 280) }]}>
           {BY.map((o) => (
-            <Pressable
+            <MenuItem
               key={o.key}
+              label={o.label}
+              hint={o.hint}
+              selected={settings.by === o.key}
               onPress={() => {
                 onPickBy(o.key);
                 onMenu(o.key === 'theme' ? 'theme' : null);
               }}
-              accessibilityRole="button"
-              accessibilityState={{ selected: settings.by === o.key }}
-              style={styles.byItem}
-            >
-              <View style={styles.byItemText}>
-                <Text style={styles.byLabel}>{o.label}</Text>
-                <Text style={styles.byHint}>{o.hint}</Text>
-              </View>
-              {settings.by === o.key ? <View style={styles.selectedDot} /> : null}
-            </Pressable>
+            />
           ))}
-        </Animated.View>
+        </Menu>
       ) : null}
 
       {menu === 'theme' ? (
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.themeCard, { top, left: Math.min(fromX, width - 24 - 200) }]}>
+        <Menu style={[styles.themeCard, { top, left: Math.min(fromX, width - 24 - 200) }]}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {THEMES.map((t) => (
-              <Pressable
+              <MenuItem
                 key={t.id}
+                label={t.en}
+                selected={settings.theme === t.id}
                 onPress={() => {
                   onChange({ theme: t.id });
                   onMenu(null);
                 }}
-                accessibilityRole="button"
-                accessibilityState={{ selected: settings.theme === t.id }}
-                style={styles.byItem}
-              >
-                <Text style={styles.byLabel}>{t.en}</Text>
-                {settings.theme === t.id ? <View style={styles.selectedDot} /> : null}
-              </Pressable>
+              />
             ))}
           </ScrollView>
-        </Animated.View>
+        </Menu>
       ) : null}
 
       {menu === 'level' ? (
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
+        <Menu style={[styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
           {LEVEL.map((o) => (
-            <Pressable
+            <MenuItem
               key={o.key}
+              label={o.label}
+              hint={o.hint}
+              selected={settings.level === o.key}
               onPress={() => {
                 onChange({ level: o.key });
                 onMenu(null);
               }}
-              accessibilityRole="button"
-              accessibilityState={{ selected: settings.level === o.key }}
-              style={styles.byItem}
-            >
-              <View style={styles.byItemText}>
-                <Text style={styles.byLabel}>{o.label}</Text>
-                <Text style={styles.byHint}>{o.hint}</Text>
-              </View>
-              {settings.level === o.key ? <View style={styles.selectedDot} /> : null}
-            </Pressable>
+            />
           ))}
-        </Animated.View>
+        </Menu>
       ) : null}
 
       {menu === 'words' ? (
-        <Animated.View entering={FadeIn.duration(160)} exiting={FadeOut.duration(120)} style={[styles.card, styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
+        <Menu style={[styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
           {POS.map((o) => (
-            <Pressable
+            <MenuItem
               key={o.key}
+              label={o.label}
+              selected={settings.pos === o.key}
               onPress={() => {
                 onChange({ pos: o.key });
                 onMenu(null);
               }}
-              accessibilityRole="button"
-              accessibilityState={{ selected: settings.pos === o.key }}
-              style={styles.byItem}
-            >
-              <Text style={styles.byLabel}>{o.label}</Text>
-              {settings.pos === o.key ? <View style={styles.selectedDot} /> : null}
-            </Pressable>
+            />
           ))}
-        </Animated.View>
+        </Menu>
       ) : null}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  byCard: { minWidth: 280 },
+  byCard: { position: 'absolute', minWidth: 280 },
   // the title: "explore" and, by theme, the topic as a glass pill
   // the title: "explore" and, next to it, the selects on glass pills (a faint light fill with a hairline edge, like the Map's card)
   titleRow: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 8, rowGap: 8 },
@@ -275,22 +255,7 @@ const styles = StyleSheet.create({
   pillKeep: { flexShrink: 0 }, // the way of exploring is never shortened; a long topic name gives way instead
   pillText: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   pillPrefix: { fontFamily: fonts.regular, color: colors.textSecondary }, // the little word ("by", "in") is quieter than the choice
-  // a menu in the middle of the screen's width
-  centered: { alignSelf: 'center', left: undefined, right: undefined },
-  card: {
-    position: 'absolute',
-    paddingVertical: 6,
-    borderRadius: radius.tile,
-    backgroundColor: colors.card,
-    borderWidth: 1.5,
-    borderColor: colors.border,
-    ...shadow,
-  },
-  themeCard: { maxHeight: 360, minWidth: 200 },
-  levelCard: { minWidth: 240 },
-  byItem: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, paddingHorizontal: 16, paddingVertical: 11 },
-  byItemText: { gap: 2 },
-  byLabel: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
-  byHint: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary },
-  selectedDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.accent },
+  // where each menu sits (the look of a menu is `Menu`)
+  themeCard: { position: 'absolute', maxHeight: 360, minWidth: 200 },
+  levelCard: { position: 'absolute', minWidth: 240 },
 });
