@@ -88,6 +88,12 @@ Screenshots and taps go through the iOS-simulator control tool (coordinates are 
 - Build and send to TestFlight in one go: `npx eas-cli build --platform ios --profile production --non-interactive
   --auto-submit` (about 15-25 minutes, then Apple processes it for 5-10 minutes and sends an email).
   If it ever asks to log in to Apple, answer **n** (the stored key is used).
+- **Android (since 2026-10-21):** a file friends install themselves, no store. `npx eas-cli build --platform android --profile android-apk --non-interactive --no-wait`
+  builds an `.apk` (profile `android-apk` in `eas.json`, package `com.tayarekhova.easyquizy`, icon = the star icon on navy). The first build is
+  `9a474384`. The build page on expo.dev gives the install link / file to send. Friends must allow "install from unknown sources" and may see a
+  Play Protect warning. Every new version is a new build and a new link (installs over the old one, data stays: EAS keeps one keystore).
+  **Never run on an Android phone yet**: unchecked are the time picker of the reminder (a dialog on Android), keyboard in the add-word form,
+  the German voice (depends on the phone), the notification permission on Android 13+.
 - The build prints "Detected that your app uses Expo Go for development". It is a harmless warning (set
   `EAS_BUILD_NO_EXPO_GO_WARNING=true` to silence it). Build 5 worked.
 - Things never verified on a real phone since the first build: the daily reminder notification arriving, and the time
