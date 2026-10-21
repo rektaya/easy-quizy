@@ -88,8 +88,12 @@ Screenshots and taps go through the iOS-simulator control tool (coordinates are 
 - Build and send to TestFlight in one go: `npx eas-cli build --platform ios --profile production --non-interactive
   --auto-submit` (about 15-25 minutes, then Apple processes it for 5-10 minutes and sends an email).
   If it ever asks to log in to Apple, answer **n** (the stored key is used).
+- **App icon (changed 2026-10-21):** an orange four-pointed star with three small tan stars on navy. `assets/icon-source.png` is Taya's original (rounded corners,
+  transparent corners); `assets/icon.png` is the same picture as an opaque full-bleed square (the App Store refuses transparency and the phone rounds the
+  corners itself); `assets/android-icon-foreground.png` is the shapes alone on transparency, 84% size, over the navy `#0D1C2C` (Android crops the icon to a circle or
+  squircle); `assets/favicon.png` is 48 px for the web. The icon changes in the next build only (TestFlight build 7 and the first APK have the old one).
 - **Android (since 2026-10-21):** a file friends install themselves, no store. `npx eas-cli build --platform android --profile android-apk --non-interactive --no-wait`
-  builds an `.apk` (profile `android-apk` in `eas.json`, package `com.tayarekhova.easyquizy`, icon = the star icon on navy). The first build is
+  builds an `.apk` (profile `android-apk` in `eas.json`, package `com.tayarekhova.easyquizy`, icon = the orange four-pointed star on navy, see `assets/icon.png`). The first build is
   `9a474384`. The build page on expo.dev gives the install link / file to send. Friends must allow "install from unknown sources" and may see a
   Play Protect warning. Every new version is a new build and a new link (installs over the old one, data stays: EAS keeps one keystore).
   **Never run on an Android phone yet**: unchecked are the time picker of the reminder (a dialog on Android), keyboard in the add-word form,

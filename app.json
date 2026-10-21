@@ -16,8 +16,8 @@
     "android": {
       "package": "com.tayarekhova.easyquizy",
       "adaptiveIcon": {
-        "backgroundColor": "#0D0F2D",
-        "foregroundImage": "./assets/icon.png"
+        "backgroundColor": "#0D1C2C",
+        "foregroundImage": "./assets/android-icon-foreground.png"
       },
       "predictiveBackGestureEnabled": false
     },
