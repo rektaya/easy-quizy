@@ -161,12 +161,17 @@ export function ExploreMenus({
   const a = anchors[menu];
   const top = origin + (a ? a.y + a.h : HEADER_ROW) + 6;
   const fromX = 24 + (a?.x ?? 0);
+  // a menu has a width of its own (its lines wrap inside it) and starts under its select, but never runs past the 24 px margin of the screen
+  const place = (wanted: number) => {
+    const w = Math.min(wanted, width - 48);
+    return { width: w, left: Math.max(24, Math.min(fromX, width - 24 - w)) };
+  };
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
       <Pressable style={StyleSheet.absoluteFill} onPress={() => onMenu(null)} accessibilityLabel="close the menu" accessibilityRole="button" />
 
       {menu === 'by' ? (
-        <Menu style={[styles.byCard, { top, left: Math.min(fromX, width - 24 - 280) }]}>
+        <Menu style={[styles.byCard, { top, ...place(300) }]}>
           {BY.map((o) => (
             <MenuItem
               key={o.key}
@@ -183,7 +188,7 @@ export function ExploreMenus({
       ) : null}
 
       {menu === 'theme' ? (
-        <Menu style={[styles.themeCard, { top, left: Math.min(fromX, width - 24 - 200) }]}>
+        <Menu style={[styles.themeCard, { top, ...place(220) }]}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {THEMES.map((t) => (
               <MenuItem
@@ -201,7 +206,7 @@ export function ExploreMenus({
       ) : null}
 
       {menu === 'level' ? (
-        <Menu style={[styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
+        <Menu style={[styles.levelCard, { top, ...place(260) }]}>
           {LEVEL.map((o) => (
             <MenuItem
               key={o.key}
@@ -218,7 +223,7 @@ export function ExploreMenus({
       ) : null}
 
       {menu === 'words' ? (
-        <Menu style={[styles.levelCard, { top, left: Math.min(fromX, width - 24 - 240) }]}>
+        <Menu style={[styles.levelCard, { top, ...place(260) }]}>
           {POS.map((o) => (
             <MenuItem
               key={o.key}
@@ -237,7 +242,7 @@ export function ExploreMenus({
 }
 
 const styles = StyleSheet.create({
-  byCard: { position: 'absolute', minWidth: 280 },
+  byCard: { position: 'absolute' },
   // the title: "explore" and, by theme, the topic as a glass pill
   // the title: "explore" and, next to it, the selects on glass pills (a faint light fill with a hairline edge, like the Map's card)
   titleRow: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 8, rowGap: 8 },
@@ -256,6 +261,6 @@ const styles = StyleSheet.create({
   pillText: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   pillPrefix: { fontFamily: fonts.regular, color: colors.textSecondary }, // the little word ("by", "in") is quieter than the choice
   // where each menu sits (the look of a menu is `Menu`)
-  themeCard: { position: 'absolute', maxHeight: 360, minWidth: 200 },
-  levelCard: { position: 'absolute', minWidth: 240 },
+  themeCard: { position: 'absolute', maxHeight: 360 },
+  levelCard: { position: 'absolute' },
 });

@@ -29,7 +29,7 @@ export function MenuItem({ label, hint, selected, onPress }: { label: string; hi
 const styles = StyleSheet.create({
   menu: { paddingVertical: 6 },
   item: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, paddingHorizontal: 16, paddingVertical: 12 },
-  text: { gap: 2 },
+  text: { flexShrink: 1, gap: 2 },
   label: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   hint: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
   dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: colors.accent },
