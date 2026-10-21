@@ -32,12 +32,14 @@ export const stars = {
 
 /** A colour of the theme as rgba(), with the given opacity (also for the Skia drawings, which take strings). */
 export function alpha(hex: string, a: number): string {
+  'worklet'; // some drawings (the glow at the end of the ring) take their colours in animated values, which run on the UI thread
   const n = parseInt(hex.slice(1), 16);
   return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
 }
 
 /** A colour of the theme as [r, g, b], for the shine ramps. */
 export function rgbOf(hex: string): [number, number, number] {
+  'worklet';
   const n = parseInt(hex.slice(1), 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
