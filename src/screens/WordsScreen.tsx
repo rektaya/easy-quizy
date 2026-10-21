@@ -209,7 +209,7 @@ export default function WordsScreen({
 
 const styles = StyleSheet.create({
   // the card of a tapped word, over the list (tap outside it to close)
-  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: 'rgba(8,16,26,0.95)' },
+  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: colors.backdrop },
   cardWrap: { flex: 1, paddingHorizontal: 24, gap: 12 },
   pagerCard: { flex: 1 },
   back: { height: 32, justifyContent: 'center', marginLeft: -6, alignSelf: 'flex-start' },

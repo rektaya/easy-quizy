@@ -2,6 +2,7 @@ import React from 'react';
 import { Canvas, Group, Points, Rect, Shader, Skia, useClock } from '@shopify/react-native-skia';
 import type { SharedValue } from 'react-native-reanimated';
 import { useDerivedValue } from 'react-native-reanimated';
+import { alpha, stars } from '../theme';
 
 // One shader draws every star and every word point on the Map. It runs on the GPU (Metal on an
 // iPhone), so each point can twinkle and breathe for free. The shader only knows how to draw one
@@ -181,8 +182,8 @@ function SphereDust({ spec, units, clock, tilt }: { spec: { cx: number; cy: numb
   const far = useDerivedValue(() => project(false));
   return (
     <>
-      <Points points={far} mode="points" color="rgba(191,212,255,0.4)" style="stroke" strokeWidth={1.5} strokeCap="round" />
-      <Points points={near} mode="points" color="rgba(232,240,255,0.92)" style="stroke" strokeWidth={2.3} strokeCap="round" />
+      <Points points={far} mode="points" color={alpha(stars.ice, 0.4)} style="stroke" strokeWidth={1.5} strokeCap="round" />
+      <Points points={near} mode="points" color={alpha(stars.ice, 0.92)} style="stroke" strokeWidth={2.3} strokeCap="round" />
     </>
   );
 }

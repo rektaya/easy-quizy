@@ -7,6 +7,7 @@ import { scheduleOnRN } from 'react-native-worklets';
 import { KNOWN_MS, onKnownWord } from '../circle/knownEvents';
 import type { KnownPoint } from '../circle/knownEvents';
 import { random } from '../onboarding/sky';
+import { alpha, stars } from '../theme';
 
 // What a known word does: stars come loose from its ring in waves and drift up like fireflies, all the way
 // out of the top of the screen. It is drawn above the whole app, on a canvas that exists only while the
@@ -96,10 +97,10 @@ function DustWave({ t, from, wave }: { t: SharedValue<number>; from: Burst; wave
   const opacity = useDerivedValue(() => ease(life.value / 0.1)); // they appear at once and are never faded: they leave the screen
   return (
     <>
-      <Points points={points} mode="points" style="stroke" strokeCap="round" strokeWidth={wave.size * 3.4} color="rgba(255,160,70,0.55)" opacity={opacity}>
+      <Points points={points} mode="points" style="stroke" strokeCap="round" strokeWidth={wave.size * 3.4} color={alpha(stars.ember, 0.55)} opacity={opacity}>
         <BlurMask blur={7} style="normal" />
       </Points>
-      <Points points={points} mode="points" style="stroke" strokeCap="round" strokeWidth={wave.size} color="rgb(255,241,210)" opacity={opacity} />
+      <Points points={points} mode="points" style="stroke" strokeCap="round" strokeWidth={wave.size} color={stars.cream} opacity={opacity} />
     </>
   );
 }

@@ -16,7 +16,7 @@ import Animated, {
 import Svg, { Circle as SvgCircle } from 'react-native-svg';
 import { WordFace } from '../components/WordFace';
 import type { Word } from '../data/words';
-import { colors } from '../theme';
+import { colors, stars } from '../theme';
 import { DEFAULT_START_DEG, TAU, pointOnRing } from './geometry';
 import { StardustRing } from './StardustRing';
 import { emitKnown } from './knownEvents';
@@ -130,7 +130,7 @@ export function Circle({ word, size, value, showHint, reveal, onCommit, onDrawin
             strokeLinecap="round"
             fill="none"
             strokeDasharray={`${length} ${length}`}
-            stroke="#9BC0FF"
+            stroke={stars.blue}
             strokeDashoffset={length} // hidden until the animation runs: no full ring flashes on the first frame
             opacity={0}
             animatedProps={ghostArcProps}

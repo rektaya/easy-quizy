@@ -5,6 +5,7 @@ import Animated, { Easing, FadeIn, FadeOut, useAnimatedStyle, useSharedValue, wi
 import { scheduleOnRN } from 'react-native-worklets';
 import type { Word } from '../data/words';
 import type { WordStatus } from '../onboarding/status';
+import { colors } from '../theme';
 import { WordCard } from './WordCard';
 
 // A word's card over the list. Swipe up for the next word of the list and down for the previous one, the same
@@ -97,7 +98,7 @@ export function CardPager({
 
 
 const styles = StyleSheet.create({
-  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: '#08101A' }, // solid: the list under the card must not show through
+  overlay: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: colors.backdrop }, // solid: the list under the card must not show through
   cardWrap: { flex: 1, paddingHorizontal: 24, gap: 12 },
   pagerCard: { flex: 1 },
 });

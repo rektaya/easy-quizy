@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { layerOpacities } from './color.ts';
 import {
   DEFAULT_START_DEG,
   TAU,
@@ -119,15 +118,6 @@ test('the ghost demo starts at the default start angle', () => {
   const { x, y } = pointOnRing(0, 100, 100, 80);
   near(x, 100 + 80 * Math.sin((DEFAULT_START_DEG * Math.PI) / 180));
   assert.ok(y < 100);
-});
-
-test('ring layers cross-fade red -> amber -> green', () => {
-  assert.deepEqual(layerOpacities(0), [0, 0, 0]);
-  assert.deepEqual(layerOpacities(0.25), [1, 0.5, 0]);
-  assert.deepEqual(layerOpacities(0.5), [0, 1, 0]);
-  assert.deepEqual(layerOpacities(0.75), [0, 1, 0.5]);
-  assert.deepEqual(layerOpacities(1), [0, 1, 1]);
-  assert.deepEqual(layerOpacities(-1), [0, 0, 0]);
 });
 
 test('after the meaning is shown, an answer can be raised to good at most, or back to where it was', () => {

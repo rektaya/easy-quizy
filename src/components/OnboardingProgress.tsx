@@ -4,6 +4,7 @@ import { BlurMask, Canvas, Circle, Points, RadialGradient, useClock, vec } from 
 import { Easing, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { random } from '../onboarding/sky';
+import { alpha, stars } from '../theme';
 
 const DOTS = 240;
 const HEIGHT = 30;
@@ -64,16 +65,16 @@ export function OnboardingProgress({ step, total }: { step: number; total: numbe
       {w > 0 ? (
         <Canvas style={{ width: w + 2 * PAD, height: HEIGHT }}>
           <Points points={dim} mode="points" style="stroke" strokeCap="round" strokeWidth={2.3} color="rgba(255,255,255,0.2)" />
-          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={9.5} color="rgb(255,150,55)" opacity={glow}>
+          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={9.5} color={stars.ember} opacity={glow}>
             <BlurMask blur={4.5} style="normal" />
           </Points>
-          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={8} color="rgb(255,150,55)" opacity={glow}>
+          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={8} color={stars.ember} opacity={glow}>
             <BlurMask blur={4} style="normal" />
           </Points>
-          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={3.9} color="rgb(255,240,214)" opacity={twinkleA} />
-          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={3} color="rgb(255,238,208)" opacity={twinkleB} />
+          <Points points={litBig} mode="points" style="stroke" strokeCap="round" strokeWidth={3.9} color={stars.cream} opacity={twinkleA} />
+          <Points points={litSmall} mode="points" style="stroke" strokeCap="round" strokeWidth={3} color={stars.cream} opacity={twinkleB} />
           <Circle c={headC} r={14}>
-            <RadialGradient c={headC} r={14} colors={['rgba(255,255,255,0.9)', 'rgba(255,150,55,0.45)', 'rgba(255,150,55,0)']} positions={[0, 0.3, 1]} />
+            <RadialGradient c={headC} r={14} colors={['rgba(255,255,255,0.9)', alpha(stars.ember, 0.45), alpha(stars.ember, 0)]} positions={[0, 0.3, 1]} />
           </Circle>
         </Canvas>
       ) : null}

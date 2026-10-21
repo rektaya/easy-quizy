@@ -267,9 +267,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 11,
     paddingVertical: 6,
     borderRadius: radius.chip,
-    backgroundColor: 'rgba(255,255,255,0.09)',
+    backgroundColor: colors.chip,
     borderWidth: 1.5,
-    borderColor: 'rgba(255,255,255,0.14)',
+    borderColor: colors.border,
   },
   pillShrink: { flexShrink: 1 },
   pillKeep: { flexShrink: 0 }, // the way of exploring is never shortened; a long topic name gives way instead

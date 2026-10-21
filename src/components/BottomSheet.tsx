@@ -75,7 +75,7 @@ export function BottomSheet({ visible, onClose, children }: { visible: boolean; 
 
 const styles = StyleSheet.create({
   root: { flex: 1, justifyContent: 'flex-end' },
-  scrim: { backgroundColor: 'rgba(4,9,16,0.62)' },
+  scrim: { backgroundColor: colors.scrim },
   sheet: {
     paddingTop: 10,
     paddingHorizontal: 24,

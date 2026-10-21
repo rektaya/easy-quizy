@@ -38,7 +38,7 @@ import { clampPan, minScale, panRange, snapScale } from '../onboarding/viewport'
 import { wordStatus } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts, radius } from '../theme';
+import { colors, fonts, radius, stars } from '../theme';
 
 // The Map is a night sky, and it now matches the rest of the app, which is the same deep navy. It looks like a plain, evenly starred sky, with no visible clusters: each
 // theme is just one bigger star among many small ones, and the more of a theme you have learned, the
@@ -49,9 +49,9 @@ import { colors, fonts, radius } from '../theme';
 const SKY = colors.bg;
 const ON_SKY = colors.text;
 const ON_SKY_DIM = colors.textSecondary;
-const CORE = '#FFF4DC'; // the bright heart of a lit point
-const WARM = '#FFC857'; // known words glow a warmer, brighter yellow
-const DIM = '#6F8095'; // a point still to discover
+const CORE: string = stars.cream; // the bright heart of a lit point
+const WARM: string = stars.gold; // known words glow a warmer, brighter yellow
+const DIM: string = colors.textTertiary; // a point still to discover
 
 // Tilting the phone nudges the layers of the sky by different amounts, which gives it depth: the small
 // far stars move least, the big stars most. Pixels at a full tilt.
@@ -70,7 +70,7 @@ const MAX_ZOOM_POINTS = 60; // every word of a theme gets its own point (an even
 const SPHERE_DUST = 230; // the fine dots that give the sphere its shape
 const SPHERE_SPIN = 0.32; // radians per second
 const SPHERE_TILT = 0.38;
-const COOL = '#BFD4FF'; // the halo of a star that is not lit yet
+const COOL: string = stars.ice; // the halo of a star that is not lit yet
 
 // Soft glows: radial gradients that fade to nothing at the edge. Every Svg that draws them
 // includes these definitions (the ids are the same everywhere).
@@ -790,9 +790,9 @@ const styles = StyleSheet.create({
     gap: 14,
     padding: 18,
     borderRadius: radius.card,
-    backgroundColor: 'rgba(255,255,255,0.09)',
+    backgroundColor: colors.chip,
     borderWidth: 1.5,
-    borderColor: 'rgba(255,255,255,0.14)',
+    borderColor: colors.border,
   },
   cardTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 },
   cardHead: { flex: 1, gap: 2 },

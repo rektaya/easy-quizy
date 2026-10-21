@@ -6,15 +6,14 @@ import { CORE_RAMP, HALO_RAMP, ramp, shineOf } from '../circle/shine';
 import { dayProgress, exploreByDay, studyByDay, weekOf } from '../onboarding/streak';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts, radius } from '../theme';
+import { alpha, colors, fonts, radius, stars } from '../theme';
 
 /** The radius of a star's core: the same for every day (only the shine changes). */
 const EDGE = 11;
 /** Room for the glow round a star, so that it fades out completely and never ends in a visible edge of its drawing area. */
 const GLOW = 40;
 // a day without study: the deep, dark blue of the ring of a word that is not known at all
-const NONE_CORE = 'rgba(64,104,216,1)';
-const NONE_HALO = 'rgba(36,68,186,1)';
+const NONE = alpha(stars.deep, 1);
 
 // Your week in Profile: seven glowing stars (round, soft, shining, as the circle's stardust does), one for each day, Monday first. A day without study is a dim blue star; the more of the
 // day's goal is done (the goal is the number of words in a session, the setting under it) the more it shines, from icy
@@ -62,8 +61,8 @@ function DayStar({ cx, cy, shine, progress, future, phase }: { cx: number; cy: n
   const lit = progress > 0;
   const pulse = useDerivedValue(() => (lit ? 0.82 + 0.18 * Math.sin(clock.value / 520 + phase) : 1));
   const dim = future ? 0.3 : 1;
-  const core = lit ? ramp(CORE_RAMP, shine, 1) : 'rgba(64,104,216,1)';
-  const halo = lit ? ramp(HALO_RAMP, shine, 1) : 'rgba(36,68,186,1)';
+  const core = lit ? ramp(CORE_RAMP, shine, 1) : NONE;
+  const halo = lit ? ramp(HALO_RAMP, shine, 1) : NONE;
   const coreR = EDGE; // every day has a core of the same size
   const haloR = coreR + 4 + 9 * shine;
   const c = vec(cx, cy);

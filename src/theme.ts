@@ -1,7 +1,5 @@
 // Look: a deep navy night (#0C1927) with a sparse field of small, dim stars (components/StarBackground), light
 // ink, one orange accent, lowercase Figtree, frosted cards, chunky buttons.
-// The circle's red-to-green arc is the one functional exception (see circle/color.ts):
-// its color is the rating signal itself.
 export const colors = {
   bg: '#0C1927',
   surface: 'rgba(255,255,255,0.07)', // frosted cards, fields, ghost buttons
@@ -17,7 +15,32 @@ export const colors = {
   onAccent: '#FFFFFF',
   toast: '#EFF2F5',
   onToast: '#0C1927',
+  backdrop: '#08101A', // solid, under a card laid over a list: nothing of the list shows through
+  scrim: 'rgba(4,9,16,0.62)', // the dimmed screen behind a bottom sheet
 } as const;
+
+// The light of the app: every star, glow and status ring is drawn from these six colours (the shine of a rating and of
+// the stars of the week run from `blue` to `cream`, see circle/shine.ts). `deep` is the one dark blue: a star that is not lit.
+export const stars = {
+  deep: '#4068D8', // not lit: the ring of a word you do not know at all, a day without study
+  blue: '#6EA5FF', // the weakest shine: shaky
+  ice: '#C9DDFF', // the cool white-blue middle: getting there, the far stars
+  cream: '#FFF4DC', // the bright heart of a lit star
+  gold: '#FFB45E', // learned: a warm gold
+  ember: '#FF9637', // the orange glow round a star that shines strongly
+} as const;
+
+/** A colour of the theme as rgba(), with the given opacity (also for the Skia drawings, which take strings). */
+export function alpha(hex: string, a: number): string {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+}
+
+/** A colour of the theme as [r, g, b], for the shine ramps. */
+export function rgbOf(hex: string): [number, number, number] {
+  const n = parseInt(hex.slice(1), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
 
 export const fonts = {
   regular: 'Figtree_400Regular',

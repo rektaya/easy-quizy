@@ -3,6 +3,7 @@ import { BlurMask, Canvas, Circle, Group, Points, RadialGradient, useClock, vec 
 import type { SharedValue } from 'react-native-reanimated';
 import { useDerivedValue } from 'react-native-reanimated';
 import { random } from '../onboarding/sky';
+import { alpha, stars } from '../theme';
 import { RING_PAD } from './useRing';
 import { TAU } from './geometry';
 import type { Ring } from './useRing';
@@ -36,8 +37,7 @@ function celebration(b: number): number {
 }
 
 // the ring of a word that is not known at all (the cross): a deep blue
-const DARK_CORE = 'rgba(64,104,216,1)';
-const DARK_HALO = 'rgba(36,68,186,1)';
+const DARK = alpha(stars.deep, 1);
 
 export function StardustRing({ ring }: { ring: Ring }) {
   const { c, r, size, v } = ring;
@@ -76,8 +76,8 @@ export function StardustRing({ ring }: { ring: Ring }) {
     const flare = v.burst.value > 0 && v.burst.value < 1 ? Math.sin(Math.PI * Math.min(1, v.burst.value / 0.22)) * 0.45 : 0;
     return (v.dark.value ? 0.3 : shineOf(v.display.value)) + flare;
   });
-  const coreColor = useDerivedValue(() => (v.dark.value ? DARK_CORE : ramp(CORE_RAMP, shine.value)));
-  const haloColor = useDerivedValue(() => (v.dark.value ? DARK_HALO : ramp(HALO_RAMP, shine.value)));
+  const coreColor = useDerivedValue(() => (v.dark.value ? DARK : ramp(CORE_RAMP, shine.value)));
+  const haloColor = useDerivedValue(() => (v.dark.value ? DARK : ramp(HALO_RAMP, shine.value)));
   const coreBig = useDerivedValue(() => Math.min(1, (0.7 + 0.3 * shine.value) * (0.72 + 0.28 * Math.sin(clock.value / 480))));
   const coreSmall = useDerivedValue(() => Math.min(1, (0.7 + 0.3 * shine.value) * (0.72 + 0.28 * Math.sin(clock.value / 480 + 3.1))));
   const haloBig = useDerivedValue(() => Math.min(1, (0.22 + 0.55 * Math.pow(shine.value, 1.6)) * (0.75 + 0.25 * Math.sin(clock.value / 480))));
@@ -137,7 +137,7 @@ function Head({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
   const rad = useDerivedValue(() => 14 + 12 * v.speed.value + 12 * v.pulse.value);
   // the glow is the colour of the stars it runs along
   const headColors = useDerivedValue(() => {
-    if (v.dark.value) return ['rgba(160,190,255,0.9)', 'rgba(46,84,200,0.5)', 'rgba(46,84,200,0)'];
+    if (v.dark.value) return [alpha(stars.ice, 0.9), alpha(stars.deep, 0.5), alpha(stars.deep, 0)];
     const sh = shineOf(v.display.value);
     return ['rgba(255,255,255,0.95)', ramp(HALO_RAMP, sh, 0.5), ramp(HALO_RAMP, sh, 0)];
   });
@@ -165,10 +165,10 @@ function KnownGlow({ c, r, v }: { c: number; r: number; v: Ring['v'] }) {
   const opacity = useDerivedValue(() => (v.display.value < 1 ? 0 : celebration(v.burst.value)));
   return (
     <>
-      <Circle cx={c} cy={c} r={r} style="stroke" strokeWidth={34} color="rgba(255,140,50,0.55)" opacity={opacity}>
+      <Circle cx={c} cy={c} r={r} style="stroke" strokeWidth={34} color={alpha(stars.ember, 0.55)} opacity={opacity}>
         <BlurMask blur={20} style="normal" />
       </Circle>
-      <Circle cx={c} cy={c} r={r} style="stroke" strokeWidth={14} color="rgba(255,205,130,0.6)" opacity={opacity}>
+      <Circle cx={c} cy={c} r={r} style="stroke" strokeWidth={14} color={alpha(stars.gold, 0.6)} opacity={opacity}>
         <BlurMask blur={9} style="normal" />
       </Circle>
     </>

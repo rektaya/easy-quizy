@@ -2,19 +2,19 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
 import type { WordStatus } from '../onboarding/status';
-import { colors } from '../theme';
+import { colors, stars } from '../theme';
 
 // A word's status as a small circle, the app's own metaphor: the more of the ring is drawn, and the warmer
 // and brighter it is, the better the word is known. A word never explored is a faint dotted ring, a word
 // gathered but not studied yet is an empty ring, and a learned word is a full golden one.
 const FILL: Record<WordStatus, number> = { unseen: 0, new: 0, shaky: 0.3, getting: 0.6, solid: 0.9, learned: 1 };
 const COLOR: Record<WordStatus, string> = {
-  unseen: '#4A5F7A',
-  new: '#6E86A6',
-  shaky: '#6EA5FF',
-  getting: '#C9DDFF',
-  solid: '#FFE7C2',
-  learned: '#FFB45E',
+  unseen: colors.textTertiary,
+  new: colors.textTertiary,
+  shaky: stars.blue,
+  getting: stars.ice,
+  solid: stars.cream,
+  learned: stars.gold,
 };
 
 export function StatusRing({ status, size = 22 }: { status: WordStatus; size?: number }) {

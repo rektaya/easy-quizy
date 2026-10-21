@@ -1,3 +1,5 @@
+import { rgbOf, stars } from '../theme';
+
 // The shine of a rating (and of the stars of the week in Profile): how much it shines, and the colours of the star and
 // of its glow along the way, from a clear blue for "nothing" to a golden blaze.
 
@@ -38,17 +40,16 @@ export function ramp(stops: number[][], t: number, alpha = 1): string {
 // the stars go from a clear blue (don't know), through an icy blue-white (hard), to a warm cream (good),
 // to a golden white (know); the glow from a soft blue to orange-gold
 export const CORE_RAMP = [
-  [0, 110, 165, 255],
+  [0, ...rgbOf(stars.blue)],
   [0.24, 150, 195, 255],
-  [0.5, 205, 225, 255],
+  [0.5, ...rgbOf(stars.ice)],
   [0.7, 255, 236, 205],
-  [1, 255, 244, 220],
+  [1, ...rgbOf(stars.cream)],
 ];
 export const HALO_RAMP = [
   [0, 70, 130, 255],
   [0.3, 90, 150, 255],
   [0.55, 230, 140, 80],
-  [0.8, 255, 150, 55],
-  [1, 255, 150, 55],
+  [0.8, ...rgbOf(stars.ember)],
+  [1, ...rgbOf(stars.ember)],
 ];
-
