@@ -30,6 +30,8 @@ back chevron already exists). If something is missing, say so and ask before add
 - **Nothing pops.** Whatever appears or disappears (a menu, an overlay card, a page, a row that opens, the next
   onboarding step) fades in and out (about 160 to 260 ms) with `entering` and `exiting` or a layout transition. A
   new menu, card or page gets the same.
+- **One scale for sizes and spacing** (`src/scale.test.ts` fails when a screen invents its own): type 12, 13, 15, 16, 18, 22, 24, 28, 32, 36; gaps 2, 4, 6, 8, 12, 16, 24; corners `radius.chip` (pills), `radius.tile`, `radius.button`, `radius.card` (four, nothing else; a round thing is half its size). Colours come from `theme.ts` only: the ink and plate colours in `colors`, every star, glow and status ring from the six colours of `stars` (`deep` is the one dark blue). No hex or rgba value written inside a component (the white heart of a star is the one allowed `rgba(255,255,255,…)`).
+- **A choice is shown in one way:** among a few options (a session size, a part of speech, how you know a word, how to explore) **the chosen one is filled orange** with white text (`Choice`, `Pill`); in a menu the current item has a small orange dot (`MenuItem`). No radio buttons, no tinted borders.
 - **Interface text is lowercase** (German words keep their capitals). No full stops at the end of a short line.
 - **One main button per screen**, orange (`Button`, primary). A second, quieter one is `ghost`. Dismissing is not
   a button's job (see the first rule).
@@ -46,6 +48,7 @@ back chevron already exists). If something is missing, say so and ask before add
 | `OnboardingProgress` | a thin band of stars (two or three deep) at the top of the first-run screens: the circle's stardust laid out flat, stars up to the current step shining (animates between steps) | first run |
 | `StatusRing` | a word's state as a circle (new, shaky, getting there, learned) | word rows, word cards, "add new word" |
 | `FallingStar` | the falling star drawn on the welcome screen (drifts slowly) | welcome |
+| `CircleAction` | the quiet 20 px icon in the circle in a 40 px touch area, always mounted and faded with `visible`; `SpeakButton` and `DontKnowButton` are this with their icon and job | the circle |
 | `DontKnowButton` | the small cross in the circle, under the word: "i don't know this word at all" | Explore, Study test, practice |
 | `WordRow` | a row of a word list: article + word, meaning, status ring, bin | Study list, the Map's sheet |
 | `CardPager` | the swipeable stack of word cards over a list (swipe up next, down back, the cross on the card or a tap outside closes) | Study list, the Map's sheet |
@@ -54,18 +57,22 @@ back chevron already exists). If something is missing, say so and ask before add
 | `FloatingTabBar` | the pill with four tabs (Explore, Study, Map, Profile); `useTabBarSpace()` says how much room to leave; `useTabRepress(fn)` runs `fn` when the tab you are already on is pressed again (every tab with a deeper level uses it to go back to its first level: Study to the list, Map out to the whole sky, Profile out of the credits) | tabs |
 | `WordFace` | the German word inside the circle (article above, lemma below). (Long words step down just enough to fit the ring.) On the word card the word is **32 when it fits and 24 when it does not**, and only a very long word goes below that | the circle |
 | `Translation` | the English meaning, sized to fit the circle | the circle |
-| `WordChip` | a word as a small pill (the similar words in Explore, the words a word often comes with on its card); tapping goes to the word | Explore, word card |
+| `Pill` / `Choice` | `Choice` is anything you pick one of (a tile, a row, a pill): a frosted `chip`, the chosen one filled orange; text inside it is a `ChoiceText`. `Pill` is a small `Choice` with a label (`s` for words under a card, `m` for a choice in a form or a select, with a `right` icon): the similar words in Explore, the words a word often comes with, the kinds of word, the select of a setting | Explore, word card, add word, Profile, first run |
 | `FlipReveal` | what sits in the circle after rating: the translation, tap to flip to the German word | Explore, Study, Practice |
 | `RatingBadge` | the badge with the word's answer ("added to study", "marked as known"), in its one place, following the handle | Explore |
 | `AdjustHint` | the hint "hint: if you were wrong, drag the dot on the ring to change your initial answer" on a plate, directly above the circle (`HINT_GAP` above its box) | first test word in Explore, the first Study word (once) |
-| `SpeakButton` (`speakTop`) | the small loudspeaker in the circle above the word, in the style of the cross under it: says the German word aloud (`src/audio/speak.ts`, the voice of the phone) | Explore, Study test, first-run test, practice |
+| `SpeakButton` (`speakTop`) | the small loudspeaker in the circle above the word: says the German word aloud (`src/audio/speak.ts`, the voice of the phone) | Explore, Study test, first-run test, practice |
 | `VerbForms` | a verb's forms on one line, "geht · ging · ist gegangen" | under the circle in Explore and Study  |
 | `WeekCard` | the week as seven glowing round stars (dark blue for a day without study up to a golden star when the day's goal, the words of a session, is done), with the letters m t w t f s s; no text. The shine is the circle's (`src/circle/shine.ts`) | Profile |
-| `WordCard` | a word's card: the status ring at the top left, the cross at the top right; the loudspeaker, the word and the meaning above one line; under it the verb's forms, plural, the words it often comes with (as `WordChip`s that open the word in the Map tab), your note, two examples and, last, the topic. Scrolls when it holds more than fits | `CardPager` |
+| `WordCard` | a word's card: the status ring at the top left, the cross at the top right; the loudspeaker, the word and the meaning above one line; under it the verb's forms, plural, the words it often comes with (as `Pill`s that open the word in the Map tab), your note, two examples and, last, the topic. Scrolls when it holds more than fits | `CardPager` |
 | `RevealDetails` | example and similar words under the circle after rating | Explore |
 | `Ring` | a small progress ring (the counter) | the first-run test, Study session |
 | `SessionSizePicker` | the size of a Study session, the chosen one orange: three tiles (10, 20, 40 words, each with about how long it takes) | first run (`PaceStep`), the panel of `SessionSizeSetting` |
 | `SessionSizeSetting` | the Profile setting: a card with a select ("20 words" and a chevron) that opens a `BottomSheet` with the picker and a "save" button | Profile |
+| `Card` | the frosted plate (`surface`, hairline, `radius.card`; `round="tile"` for a small one, `strong` over the Map's sky): setting cards, the week, credits, the Map's topic card, the numbers in Profile | Profile, Map, Credits |
+| `Plate` | the solid plate that floats over the screen (`card` colour, hairline, shadow; `round` chip, button, tile or card): the rating badge, the hint, menus, the word card, the bottom sheet | many |
+| `Menu` / `MenuItem` | a menu that opens from a select or icon and fades in and out; an item is a name, a hint line when needed and an orange dot when it is the current one | Explore selects, sort, topic |
+| `PageHeader` | the header of a page one level down: chevron left at the left edge, the title (and a quiet line under it) in the middle | add new word, a topic's words, credits |
 | `BottomSheet` | a panel that slides up from the bottom over everything, on a dimmed screen: closes with a tap outside or a drag down (nothing is saved then); a "save" button inside saves and closes | Profile |
 | `ReminderCard` | the daily reminder: a switch and the time | Profile, "nicely done" |
 | `Starry` / `StarBackground` | the night sky behind every screen, one more star per rated word | everywhere |
@@ -82,10 +89,10 @@ of your own, the session in `StudyScreen`), Map (a topic opens as a sphere with 
 Credits one level down: a row on Profile opens it, its chevron goes back to Profile).
 
 ## Patterns worth reusing
-- A drop-down select in a form: the topic in `AddWordScreen` (a field with a chevron; its list opens over what is below,
+- A drop-down select in a form: the topic in `AddWordScreen` (a field with a chevron; its list is a `Menu` that opens over what is below,
   scrolls, a dot marks the choice).
 - A panel from the bottom for a setting with more to say than a menu: `BottomSheet` (the words per session in Profile): a select opens it, "save" applies, a tap outside or a drag down discards.
-- A menu that opens from an icon: the sort menu in `WordsScreen` (a card under the icon, a dot marks the choice).
+- A menu that opens from an icon: the sort menu in `WordsScreen` (a `Menu` under the icon, a dot marks the choice).
 - A card that is swiped through: `CardPager` (used by the Study list and the Map's sheet; swipe up, swipe down; the
   position lives inside it so the list behind does not redraw).
 - A confirmation before something is lost: `Alert.alert` with cancel and a destructive action (delete a word,
