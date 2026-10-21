@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
   plate: {
     paddingHorizontal: 16,
     paddingVertical: 10,
-    borderRadius: 18,
+    borderRadius: radius.button,
     backgroundColor: colors.card,
     borderWidth: 1.5,
     borderColor: colors.border,
     ...shadow,
   },
-  text: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: colors.textSecondary, textAlign: 'center' },
+  text: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary, textAlign: 'center' },
 });

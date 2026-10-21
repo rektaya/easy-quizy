@@ -42,11 +42,11 @@ export default function IntroScreen({ onDone }: { onDone: () => void }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: 24 },
-  body: { flex: 1, justifyContent: 'center', gap: 18 },
+  body: { flex: 1, justifyContent: 'center', gap: 16 },
   title: { fontFamily: fonts.medium, fontSize: 36, lineHeight: 44, color: colors.text },
-  lead: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 25, color: colors.textSecondary },
-  steps: { gap: 18, marginTop: 6 },
-  step: { flexDirection: 'row', gap: 14, alignItems: 'center' },
+  lead: { fontFamily: fonts.regular, fontSize: 18, lineHeight: 26, color: colors.textSecondary },
+  steps: { gap: 16, marginTop: 6 },
+  step: { flexDirection: 'row', gap: 12, alignItems: 'center' },
   // the numbers sit in circles (the app's metaphor)
   stepCircle: { width: 30, height: 30, borderRadius: 15, borderWidth: 1.5, borderColor: colors.accent, alignItems: 'center', justifyContent: 'center' },
   stepNumber: { fontFamily: fonts.medium, fontSize: 15, color: colors.accent },

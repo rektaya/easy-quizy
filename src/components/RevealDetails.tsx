@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
   },
   exampleEn: {
     fontFamily: fonts.regular,
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 19,
     color: colors.textSecondary,
     textAlign: 'center',
   },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 10 },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 12 },
 });

@@ -146,7 +146,7 @@ export default function WordsScreen({
       ) : null}
 
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 8, gap: 10 }}
+        contentContainerStyle={{ paddingBottom: 8, gap: 12 }}
         style={styles.list}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
@@ -246,13 +246,13 @@ const styles = StyleSheet.create({
   list: { flex: 1 },
   buttons: { flexDirection: 'row', gap: 12 },
   session: { flex: 1, gap: 6 },
-  action: { gap: 10, paddingTop: 4 },
-  note: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center' },
-  empty: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary, textAlign: 'center', marginTop: 40 },
+  action: { gap: 12, paddingTop: 4 },
+  note: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary, textAlign: 'center' },
+  empty: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary, textAlign: 'center', marginTop: 40 },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: 12,
     padding: 14,
     borderRadius: radius.tile,
     backgroundColor: colors.surface,

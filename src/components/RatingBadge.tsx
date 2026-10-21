@@ -48,5 +48,5 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     ...shadow,
   },
-  message: { fontFamily: fonts.regular, color: colors.text, fontSize: 14 },
+  message: { fontFamily: fonts.regular, color: colors.text, fontSize: 15 },
 });

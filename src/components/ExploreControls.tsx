@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   },
   pillShrink: { flexShrink: 1 },
   pillKeep: { flexShrink: 0 }, // the way of exploring is never shortened; a long topic name gives way instead
-  pillText: { fontFamily: fonts.medium, fontSize: 14, color: colors.text },
+  pillText: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   pillPrefix: { fontFamily: fonts.regular, color: colors.textSecondary }, // the little word ("by", "in") is quieter than the choice
   // a menu in the middle of the screen's width
   centered: { alignSelf: 'center', left: undefined, right: undefined },
@@ -288,8 +288,8 @@ const styles = StyleSheet.create({
   },
   themeCard: { maxHeight: 360, minWidth: 200 },
   levelCard: { minWidth: 240 },
-  byItem: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 14, paddingHorizontal: 16, paddingVertical: 11 },
-  byItemText: { gap: 1 },
+  byItem: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, paddingHorizontal: 16, paddingVertical: 11 },
+  byItemText: { gap: 2 },
   byLabel: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   byHint: { fontFamily: fonts.regular, fontSize: 12, color: colors.textSecondary },
   selectedDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.accent },

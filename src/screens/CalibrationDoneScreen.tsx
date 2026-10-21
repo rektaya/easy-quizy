@@ -29,5 +29,5 @@ const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: 24 },
   body: { flex: 1, justifyContent: 'center', gap: 16 },
   title: { fontFamily: fonts.medium, fontSize: 36, lineHeight: 44, color: colors.text },
-  lead: { fontFamily: fonts.regular, fontSize: 17, lineHeight: 25, color: colors.textSecondary },
+  lead: { fontFamily: fonts.regular, fontSize: 18, lineHeight: 26, color: colors.textSecondary },
 });

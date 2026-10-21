@@ -408,19 +408,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     userSelect: 'none',
   },
-  counterWrap: { flexDirection: 'row', alignItems: 'center', gap: 7 },
+  counterWrap: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   counter: { fontFamily: fonts.medium, fontSize: 15, color: colors.textSecondary },
   // the body steps out of the screen's side padding, so drawing and swiping work edge to edge
   body: { flex: 1, marginHorizontal: -24 },
   details: { position: 'absolute', left: 0, right: 0, paddingHorizontal: 24 },
-  hintBottom: { position: 'absolute', left: 28, right: 28, bottom: 48, alignItems: 'center', gap: 10 },
+  hintBottom: { position: 'absolute', left: 28, right: 28, bottom: 48, alignItems: 'center', gap: 12 },
   travelHint: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', columnGap: 8, rowGap: 6 },
-  hintPart: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  hintText: { fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary },
-  locked: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10 },
+  hintPart: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  hintText: { fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
+  locked: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12 },
   lockedButton: { alignSelf: 'stretch', marginTop: 18 },
   // covers the whole circle; the word sits in the middle of it
-  empty: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10, paddingHorizontal: 24 },
+  empty: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, paddingHorizontal: 24 },
   emptyTitle: { fontFamily: fonts.medium, fontSize: 18, color: colors.text },
   emptyBody: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, textAlign: 'center' },
   ghostButton: {
@@ -433,5 +433,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     ...shadow,
   },
-  ghostButtonText: { fontFamily: fonts.medium, fontSize: 14, color: colors.text },
+  ghostButtonText: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
 });

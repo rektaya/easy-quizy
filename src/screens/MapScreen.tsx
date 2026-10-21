@@ -777,7 +777,7 @@ function WordListPage({
 const styles = StyleSheet.create({
   screen: { flex: 1 }, // transparent: the starry paper of the app shows through, as on every other screen
   head: { position: 'absolute', top: 0, left: 0, right: 0, paddingHorizontal: 24, gap: 6 },
-  headRight: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  headRight: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   lookButton: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
   lookButtonOn: { backgroundColor: colors.accent },
   sub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
@@ -787,7 +787,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 20,
     right: 20,
-    gap: 14,
+    gap: 12,
     padding: 18,
     borderRadius: radius.card,
     backgroundColor: colors.chip,
@@ -796,18 +796,18 @@ const styles = StyleSheet.create({
   },
   cardTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 },
   cardHead: { flex: 1, gap: 2 },
-  cardTitle: { fontFamily: fonts.medium, fontSize: 20, color: ON_SKY },
+  cardTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY },
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
   listSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM, textAlign: 'center' },
-  cardButtons: { gap: 10 },
+  cardButtons: { gap: 12 },
   // the page with a theme's words
-  listPage: { ...StyleSheet.absoluteFill, paddingHorizontal: 24, gap: 14, backgroundColor: colors.bg },
+  listPage: { ...StyleSheet.absoluteFill, paddingHorizontal: 24, gap: 12, backgroundColor: colors.bg },
   // the title (and under it the line about the topic) is in the middle of the row, the chevron at its left edge
   listHeader: { alignItems: 'center', justifyContent: 'center', minHeight: 32 },
   listBack: { position: 'absolute', left: -6, top: 0, height: 32, justifyContent: 'center', zIndex: 1 },
-  listTitles: { alignItems: 'center', gap: 1, paddingHorizontal: 34 },
+  listTitles: { alignItems: 'center', gap: 2, paddingHorizontal: 34 },
   listTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY, textAlign: 'center' },
   sheetList: { flex: 1 },
   sheetListContent: { gap: 8, paddingBottom: 4 },
-  cardNote: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: ON_SKY, marginTop: 8 },
+  cardNote: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: ON_SKY, marginTop: 8 },
 });

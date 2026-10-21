@@ -108,9 +108,9 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   cardTitle: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
-  what: { fontFamily: fonts.regular, fontSize: 14, lineHeight: 20, color: colors.textSecondary },
+  what: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary },
   licence: { fontFamily: fonts.regular, fontSize: 13, color: colors.textTertiary, marginTop: 2 },
   links: { flexDirection: 'row', flexWrap: 'wrap', gap: 16, marginTop: 4 },
-  link: { fontFamily: fonts.medium, fontSize: 14, color: colors.accent },
+  link: { fontFamily: fonts.medium, fontSize: 15, color: colors.accent },
   note: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 19, color: colors.textTertiary, marginTop: 8 },
 });

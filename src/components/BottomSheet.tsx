@@ -4,7 +4,7 @@ import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-g
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
-import { colors, shadow } from '../theme';
+import { colors, radius, shadow } from '../theme';
 
 const CLOSE_DISTANCE = 90; // how far down a drag must go to close the sheet
 const CLOSE_VELOCITY = 700;
@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingHorizontal: 24,
     gap: 16,
-    borderTopLeftRadius: 28,
-    borderTopRightRadius: 28,
+    borderTopLeftRadius: radius.card,
+    borderTopRightRadius: radius.card,
     borderWidth: 1.5,
     borderBottomWidth: 0,
     borderColor: colors.border,

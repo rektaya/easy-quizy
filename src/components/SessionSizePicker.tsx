@@ -32,7 +32,7 @@ export function SessionSizePicker({ value, onChange }: { value: SessionWords; on
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: 'row', gap: 10, alignSelf: 'stretch' },
+  row: { flexDirection: 'row', gap: 12, alignSelf: 'stretch' },
   tile: {
     flex: 1,
     alignItems: 'center',
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   tileOn: { backgroundColor: colors.accent, borderColor: colors.accent },
-  number: { fontFamily: fonts.medium, fontSize: 30, lineHeight: 36, color: colors.text },
-  words: { fontFamily: fonts.regular, fontSize: 14, color: colors.text },
+  number: { fontFamily: fonts.medium, fontSize: 28, lineHeight: 34, color: colors.text },
+  words: { fontFamily: fonts.regular, fontSize: 15, color: colors.text },
   minutes: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 17, color: colors.textSecondary, textAlign: 'center', marginTop: 6 },
   onAccent: { color: colors.onAccent },
 });

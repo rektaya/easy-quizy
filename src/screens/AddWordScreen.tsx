@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
   header: { alignItems: 'center', justifyContent: 'center', minHeight: 32 },
   back: { position: 'absolute', left: -6, top: 0, height: 32, justifyContent: 'center' },
   title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text, textAlign: 'center', paddingHorizontal: 34 },
-  content: { paddingTop: 14, gap: 14 },
+  content: { paddingTop: 14, gap: 12 },
   group: { gap: 8 },
   label: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
   input: {
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
   kinds: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   kind: { paddingHorizontal: 14, paddingVertical: 9, borderRadius: radius.chip, borderWidth: 1.5, borderColor: colors.border, backgroundColor: colors.chip },
   kindOn: { backgroundColor: colors.accent, borderColor: colors.accent },
-  kindText: { fontFamily: fonts.medium, fontSize: 14, color: colors.text },
+  kindText: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   kindTextOn: { color: colors.onAccent },
   selectOpen: { borderColor: colors.accent },
   // the drop-down list of topics, over what is below it
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
   suggestRow: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, paddingHorizontal: 14, paddingVertical: 9 },
   suggestDe: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   suggestArticle: { fontFamily: fonts.regular, color: colors.textSecondary },
-  suggestEn: { flexShrink: 1, fontFamily: fonts.regular, fontSize: 14, color: colors.textSecondary },
+  suggestEn: { flexShrink: 1, fontFamily: fonts.regular, fontSize: 15, color: colors.textSecondary },
   know: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   knowItem: { width: '48.5%', flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, paddingVertical: 9, borderRadius: radius.chip, borderWidth: 1.5, borderColor: colors.border, backgroundColor: colors.chip },
   knowItemOn: { borderColor: colors.accent, backgroundColor: 'rgba(247,88,49,0.12)' },

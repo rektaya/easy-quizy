@@ -20,6 +20,6 @@ export function WordFace({ word, fade = false }: { word: Word; fade?: boolean })
 
 const styles = StyleSheet.create({
   wrap: { alignItems: 'center' },
-  article: { fontFamily: fonts.regular, fontSize: 20, color: colors.textSecondary, marginBottom: 4 },
+  article: { fontFamily: fonts.regular, fontSize: 18, color: colors.textSecondary, marginBottom: 4 },
   lemma: { fontFamily: fonts.medium, color: colors.text },
 });

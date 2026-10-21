@@ -159,7 +159,7 @@ export function WordCard({
 const styles = StyleSheet.create({
   fill: { flex: 1 },
   // what is inside the card: it fills the card (and spreads out) when it all fits, and is taller than the card when it does not
-  content: { flexGrow: 1, justifyContent: 'space-between', gap: 14, padding: 24 },
+  content: { flexGrow: 1, justifyContent: 'space-between', gap: 12, padding: 24 },
   card: {
     flex: 1,
     marginBottom: 8,
@@ -179,13 +179,13 @@ const styles = StyleSheet.create({
   lemma: { fontFamily: fonts.medium, color: colors.text, textAlign: 'center', alignSelf: 'stretch' },
   en: { fontFamily: fonts.regular, fontSize: 18, lineHeight: 25, color: colors.textSecondary, textAlign: 'center', marginTop: 6 },
   // everything but the word and its meaning sits under one thin line
-  below: { gap: 14, paddingTop: 16, borderTopWidth: 1.5, borderTopColor: colors.border },
-  infoBlock: { gap: 3 },
+  below: { gap: 12, paddingTop: 16, borderTopWidth: 1.5, borderTopColor: colors.border },
+  infoBlock: { gap: 4 },
   label: { fontFamily: fonts.medium, fontSize: 12, color: colors.textTertiary },
   together: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 22, color: colors.text },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   examples: { gap: 8 },
-  example: { gap: 1 },
+  example: { gap: 2 },
   exampleDe: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.text },
   exampleEn: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 18, color: colors.textSecondary },
 });
