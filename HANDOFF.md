@@ -40,6 +40,7 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
 
 - **Code:** branch `master`, last code commit is the one made on 2026-10-20 (`git log -1`); No remote.
   `npm run typecheck` is clean and `npm test` passes (106 tests).
+- **TestFlight builds 8 and 9 (2026-10-21):** build 9 (EAS `f083f15f`, commit `7dde4ff`) has the whole design-system tidy-up, the new app icon and the menu fix. Build 8 (`bc684ef1`, commit `87ebcc7`) was started by mistake (a build command that looked rejected had run) and is the same without the menu fix: ignore it. Android APK versionCode 3 (EAS `1e249bf3`, same commit as build 9, new icon); the first APK (versionCode 2, `9a474384`) has the old icon and the old design.
 - **TestFlight, build 7 (2026-10-20):** built from commit `f32708e` (EAS build `3ac05935`, started 2026-10-20, sent to TestFlight automatically). On top of build 6 it has the week-of-stars card in Profile
   (replaces the streak card), the redesigned word card (status top left, cross top right, chips for "often together with"
   that open the Map, topic last), the Profile scroll fix, the keyboard fixes in the add-word form, the handle/swipe fix,
@@ -82,7 +83,7 @@ Screenshots and taps go through the iOS-simulator control tool (coordinates are 
 
 - Expo account **rektaya**, project `easy-quizy`, bundle id `com.tayarekhova.easyquizy`, App Store Connect app id
   `6823929317` (set in `eas.json`, so EAS Submit needs no Apple login). `appVersionSource` is remote and the build
-  number auto-increments (build 7 is the latest).
+  number auto-increments (build 9 is the latest).
 - The Apple Developer account belongs to a **friend (a friend), a personal account**. Taya has the **App Manager** role.
   The App Store Connect API key was created for EAS and is stored on EAS's servers. Certificates are managed by EAS.
 - Build and send to TestFlight in one go: `npx eas-cli build --platform ios --profile production --non-interactive
@@ -92,7 +93,7 @@ Screenshots and taps go through the iOS-simulator control tool (coordinates are 
 - **App icon (changed 2026-10-21):** an orange four-pointed star with three small tan stars on navy. `assets/icon-source.png` is Taya's original (rounded corners,
   transparent corners); `assets/icon.png` is the same picture as an opaque full-bleed square (the App Store refuses transparency and the phone rounds the
   corners itself); `assets/android-icon-foreground.png` is the shapes alone on transparency, 84% size, over the navy `#0D1C2C` (Android crops the icon to a circle or
-  squircle); `assets/favicon.png` is 48 px for the web. The icon changes in the next build only (TestFlight build 7 and the first APK have the old one).
+  squircle); `assets/favicon.png` is 48 px for the web. The new icon is in TestFlight build 9 and in the Android APK versionCode 3 (build 7 and the first APK have the old one).
 - **Android (since 2026-10-21):** a file friends install themselves, no store. `npx eas-cli build --platform android --profile android-apk --non-interactive --no-wait`
   builds an `.apk` (profile `android-apk` in `eas.json`, package `com.tayarekhova.easyquizy`, icon = the orange four-pointed star on navy, see `assets/icon.png`). The first build is
   `9a474384`. The build page on expo.dev gives the install link / file to send. Friends must allow "install from unknown sources" and may see a
