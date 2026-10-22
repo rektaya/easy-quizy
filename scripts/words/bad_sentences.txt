@@ -1,0 +1,18 @@
+# Tatoeba sentences with a typo or an error: extra_info.py never uses them as examples. One sentence per line.
+Er ist nicht zur mutig, sondern auch weise.
+Stimmt es, dass du heute eine Pizza bukst?
+Blei und Eisen muss den Kupferschmied speisen.
+Er hat zu viel Heu auf die Gabel genommen.
+Das hier ist ein nettes Plätzchen für ein Picknick.
+Wir schlugen die Zeit mit Kartenspielen tot.
+Was ist der Unterschied zwischen einer Taube?
+Was ist der Unterschied zwischen einer Ente?
+Taube Menschen können Gebärdensprache sprechen.
+Rock spricht junge Männer und Frauen an.
+Hallo, Frau Schneider! Wie geht es Ihnen?
+Sie sind noch nicht aus dem Schneider.
+City hat gegen United unentschieden gespielt.
+Hast du die Kartoffeln mit Schale gekocht?
+Ich werde ihre Brunnen vertiefen.
+Bitte bestätige die Stornierung per Netzpost.
+Wenn man en gros kauft, bekommt man Kredit.

@@ -95,8 +95,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Biere",
     "en": "beer",
     "example": {
-      "de": "Wir reisten nach Belgien des Bieres wegen.",
-      "en": "We went to Belgium for the beer."
+      "de": "Ich trinke gern ein Bier nach der Arbeit.",
+      "en": "I like to have a beer after work."
     },
     "family": [],
     "related": [
@@ -151,8 +151,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "Hunger",
     "en": "hunger",
     "example": {
-      "de": "Die Flüchtlinge kämpften gegen den Hunger.",
-      "en": "The refugees struggled against hunger."
+      "de": "Ich habe großen Hunger.",
+      "en": "I am very hungry."
     },
     "family": [],
     "related": [
@@ -251,7 +251,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Kuchen",
     "plural": "Kuchen",
-    "en": "pie, cake",
+    "en": "cake",
     "example": {
       "de": "Kuchen? Ich bin plötzlich wieder hungrig!!",
       "en": "Cake? I'm suddenly hungry again."
@@ -286,7 +286,6 @@ export const GENERATED: RawWord[] = [
     "tier": 3,
     "article": "die",
     "lemma": "Milch",
-    "plural": "Milchen",
     "en": "milk",
     "example": {
       "de": "Milch wird zu Butter und Käse verarbeitet.",
@@ -676,11 +675,10 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "der",
     "lemma": "Reis",
-    "plural": "Reise",
     "en": "rice",
     "example": {
-      "de": "Ihre Gespräche drehten sich um ihre Reise.",
-      "en": "Their talks centered on their trip."
+      "de": "Zum Mittagessen gibt es oft Reis oder Nudeln.",
+      "en": "We often have rice or noodles for lunch."
     },
     "family": [],
     "related": [
@@ -711,7 +709,7 @@ export const GENERATED: RawWord[] = [
     "id": "servieren",
     "tier": 4,
     "lemma": "servieren",
-    "en": "to serve, to wait",
+    "en": "to serve",
     "example": {
       "de": "Ich aß nicht alles, was sie mir servierte.",
       "en": "I didn't eat everything that she served me."
@@ -898,11 +896,10 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "der",
     "lemma": "Honig",
-    "plural": "Honige",
     "en": "honey",
     "example": {
-      "de": "Er schmiert seinem Chef Honig um den Bart.",
-      "en": "He's buttering up his boss."
+      "de": "Ich nehme Honig statt Zucker im Tee.",
+      "en": "I take honey instead of sugar in my tea."
     },
     "family": [],
     "related": [
@@ -1079,8 +1076,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Schnitten",
     "en": "slice",
     "example": {
-      "de": "Wie tief sind die Schnitte?",
-      "en": "How deep are the cuts?"
+      "de": "Sie isst eine Schnitte Brot mit Käse.",
+      "en": "She is eating a slice of bread with cheese."
     },
     "family": [],
     "related": [
@@ -1097,8 +1094,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "Koffein",
     "en": "caffeine",
     "example": {
-      "de": "Warum hilft Coffein gegen Kopfschmerzen?",
-      "en": "Why does caffeine help headaches?"
+      "de": "Kaffee enthält viel Koffein.",
+      "en": "Coffee contains a lot of caffeine."
     },
     "family": [],
     "related": [
@@ -1388,8 +1385,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Pfirsiche",
     "en": "peach",
     "example": {
-      "de": "Die Haut eines Pfirsichs ist verletztlich.",
-      "en": "The skin of peaches bruises easily."
+      "de": "Die Haut eines Pfirsichs ist sehr empfindlich.",
+      "en": "The skin of a peach is very delicate."
     },
     "family": [],
     "related": [
@@ -1448,8 +1445,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "tot",
     "en": "dead, deceased",
     "example": {
-      "de": "Zehn Jahre sind seit seinem Tod vergangen.",
-      "en": "Ten years have gone by since his death."
+      "de": "Der Vogel ist tot.",
+      "en": "The bird is dead."
     },
     "family": [],
     "related": [
@@ -1467,8 +1464,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Herzen",
     "en": "heart",
     "example": {
-      "de": "Sie schüttete ihren Freunden ihr Herz aus.",
-      "en": "She unburdened her heart to her friends."
+      "de": "Mein Herz schlägt sehr schnell.",
+      "en": "My heart is beating very fast."
     },
     "family": [],
     "related": [
@@ -1502,7 +1499,6 @@ export const GENERATED: RawWord[] = [
     "tier": 1,
     "article": "das",
     "lemma": "Blut",
-    "plural": "Blute",
     "en": "blood",
     "example": {
       "de": "Das ist kein Blut. Es ist bloß rote Farbe.",
@@ -1541,8 +1537,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Gesichter",
     "en": "face",
     "example": {
-      "de": "Deinetwegen habe ich das Gesicht verloren.",
-      "en": "You really made me lose face."
+      "de": "Sie wäscht sich das Gesicht.",
+      "en": "She is washing her face."
     },
     "family": [],
     "related": [
@@ -1558,7 +1554,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Arzt",
     "plural": "Ärzte",
-    "en": "doctor (male)",
+    "en": "doctor",
     "example": {
       "de": "Ich muss morgen zum Arzt.",
       "en": "I have to see the doctor tomorrow."
@@ -1759,8 +1755,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "schmerzen",
     "en": "to hurt, to ache",
     "example": {
-      "de": "Der Schmerz ist größtenteils verschwunden.",
-      "en": "The pain has mostly gone away."
+      "de": "Mein Rücken schmerzt.",
+      "en": "My back hurts."
     },
     "family": [],
     "related": [
@@ -1835,8 +1831,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Nasen",
     "en": "nose",
     "example": {
-      "de": "Er hat die Nase voll von meinen Problemen.",
-      "en": "He is fed up with my problems."
+      "de": "Meine Nase ist verstopft.",
+      "en": "My nose is blocked."
     },
     "family": [],
     "related": [
@@ -1852,7 +1848,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Mund",
     "plural": "Münder",
-    "en": "mouth of a person",
+    "en": "mouth",
     "example": {
       "de": "Du sollst nicht mit vollem Mund sprechen.",
       "en": "You must not speak with your mouth full."
@@ -1871,10 +1867,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Haut",
     "plural": "Häute",
-    "en": "skin, hide of a person",
+    "en": "skin",
     "example": {
-      "de": "Ich würde nicht gern in Toms Haut stecken.",
-      "en": "I wouldn't like to be in Tom's shoes."
+      "de": "Meine Haut ist sehr trocken.",
+      "en": "My skin is very dry."
     },
     "family": [],
     "related": [
@@ -1889,7 +1885,6 @@ export const GENERATED: RawWord[] = [
     "tier": 2,
     "article": "der",
     "lemma": "Schlaf",
-    "plural": "Schläfe",
     "en": "sleep",
     "example": {
       "de": "Der Tod wird oft mit dem Schlaf verglichen.",
@@ -1945,8 +1940,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Finger",
     "en": "finger",
     "example": {
-      "de": "Das hat mir mein kleiner Finger erzählt.",
-      "en": "A little bird told me."
+      "de": "Ich habe mir den Finger verletzt.",
+      "en": "I hurt my finger."
     },
     "family": [],
     "related": [
@@ -1962,7 +1957,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Bein",
     "plural": "Beine",
-    "en": "leg of a person, animal",
+    "en": "leg",
     "example": {
       "de": "Ich wurde von einem Hund ins Bein gebissen.",
       "en": "I was bitten on the leg by a dog."
@@ -2047,8 +2042,7 @@ export const GENERATED: RawWord[] = [
       "en": "The examination only takes ten minutes."
     },
     "family": [
-      "untersuchen",
-      "Suche"
+      "untersuchen"
     ],
     "related": [
       "medikament",
@@ -2118,8 +2112,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Nerven",
     "en": "nerve",
     "example": {
-      "de": "Mir geht Toms Art zu reden auf die Nerven.",
-      "en": "Tom's way of talking gets on my nerves."
+      "de": "Der Zahnarzt behandelt den Nerv.",
+      "en": "The dentist is treating the nerve."
     },
     "family": [],
     "related": [
@@ -2427,8 +2421,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "vertragen",
     "en": "to tolerate, bear",
     "example": {
-      "de": "Ich könnte jetzt ein kühles Bier vertragen.",
-      "en": "I could do with a cold beer."
+      "de": "Ich vertrage keine Milch.",
+      "en": "I cannot tolerate milk."
     },
     "family": [],
     "related": [
@@ -2463,8 +2457,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "niesen",
     "en": "to sneeze",
     "example": {
-      "de": "Ich habe es genossen, mit ihm zu sprechen.",
-      "en": "I enjoyed talking with him."
+      "de": "Ich muss niesen.",
+      "en": "I have to sneeze."
     },
     "family": [],
     "related": [
@@ -2609,7 +2603,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Tablette",
     "plural": "Tabletten",
-    "en": "tablet",
+    "en": "pill, tablet",
     "example": {
       "de": "Vergiss nicht, deine Tabletten zu nehmen!",
       "en": "Don't forget to take your pills."
@@ -2827,8 +2821,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Tätowierungen",
     "en": "tattoo",
     "example": {
-      "de": "Was hältst du von Toms neuer Tätowierung?",
-      "en": "What do you think of Tom's new tattoo?"
+      "de": "Sie hat eine Tätowierung am Arm.",
+      "en": "She has a tattoo on her arm."
     },
     "family": [],
     "related": [
@@ -2859,7 +2853,7 @@ export const GENERATED: RawWord[] = [
     "id": "blinzeln",
     "tier": 5,
     "lemma": "blinzeln",
-    "en": "to squint",
+    "en": "to blink",
     "example": {
       "de": "Sie trat blinzelnd hinaus ins Sonnenlicht.",
       "en": "She emerged blinking into the sunlight."
@@ -2941,8 +2935,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "klinisch",
     "en": "clinical",
     "example": {
-      "de": "Quantitative klinische Daten folgen einem breiten Spektrum an Verteilungen.",
-      "en": "Quantitative clinical data follow a wide range of distributions."
+      "de": "Die Ärzte machen eine klinische Studie.",
+      "en": "The doctors are running a clinical study."
     },
     "family": [],
     "related": [
@@ -3066,8 +3060,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Himmel",
     "en": "sky",
     "example": {
-      "de": "Es kam wie ein Blitz aus heiterem Himmel.",
-      "en": "It was like a bolt out of the blue."
+      "de": "Der Himmel ist heute blau.",
+      "en": "The sky is blue today."
     },
     "family": [],
     "related": [
@@ -3082,7 +3076,6 @@ export const GENERATED: RawWord[] = [
     "tier": 2,
     "article": "die",
     "lemma": "Erde",
-    "plural": "Erden",
     "en": "earth",
     "example": {
       "de": "Wale sind die größten Tiere auf der Erde.",
@@ -3102,8 +3095,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "heiß",
     "en": "hot",
     "example": {
-      "de": "Was ich nicht weiß, macht mich nicht heiß.",
-      "en": "Ignorance is bliss."
+      "de": "Das Wasser ist sehr heiß.",
+      "en": "The water is very hot."
     },
     "family": [],
     "related": [
@@ -3119,7 +3112,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Eis",
     "plural": "Eis",
-    "en": "ice",
+    "en": "ice, ice cream",
     "example": {
       "de": "Das Eis wird unter deinem Gewicht brechen.",
       "en": "The ice will give under your weight."
@@ -3140,8 +3133,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Seen",
     "en": "lake",
     "example": {
-      "de": "Auf Ihrer rechten Seite sehen Sie die See.",
-      "en": "You can see the sea on your right."
+      "de": "Wir schwimmen gern im See.",
+      "en": "We like swimming in the lake."
     },
     "family": [],
     "related": [
@@ -3216,8 +3209,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Steine",
     "en": "stone, rock",
     "example": {
-      "de": "Wer ohne Sünde ist, werfe den ersten Stein.",
-      "en": "Let him who is without sin cast the first stone."
+      "de": "Er wirft einen Stein ins Wasser.",
+      "en": "He throws a stone into the water."
     },
     "family": [],
     "related": [
@@ -3336,7 +3329,6 @@ export const GENERATED: RawWord[] = [
     "tier": 3,
     "article": "die",
     "lemma": "Natur",
-    "plural": "Naturen",
     "en": "nature",
     "example": {
       "de": "Wissenschaft ist das Studium der Natur.",
@@ -3377,8 +3369,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Monde",
     "en": "moon",
     "example": {
-      "de": "Ganymed ist der größte Mond des Sonnensystems.",
-      "en": "Ganymede is the biggest moon of the Solar System."
+      "de": "Der Mond scheint hell.",
+      "en": "The moon is shining brightly."
     },
     "family": [],
     "related": [
@@ -3394,8 +3386,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "warm",
     "en": "warm, mildly hot",
     "example": {
-      "de": "Ich zahle 800 € warm für meine Wohnung.",
-      "en": "I pay €800 for my apartment, including utilities."
+      "de": "Im Sommer ist es hier sehr warm.",
+      "en": "It is very warm here in summer."
     },
     "family": [],
     "related": [
@@ -3451,8 +3443,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Gräser",
     "en": "grass",
     "example": {
-      "de": "Beim Nachbarn ist das Gras immer grüner.",
-      "en": "The grass is always greener on the other side."
+      "de": "Die Kinder spielen im Gras.",
+      "en": "The children are playing in the grass."
     },
     "family": [],
     "related": [
@@ -3934,8 +3926,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "duften",
     "en": "to smell very pleasantly",
     "example": {
-      "de": "Dieser Blume entströmt ein starker Duft.",
-      "en": "This flower gives off a strong fragrance."
+      "de": "Die Rosen duften wunderbar.",
+      "en": "The roses smell wonderful."
     },
     "family": [],
     "related": [
@@ -3991,8 +3983,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Wasserfälle",
     "en": "waterfall",
     "example": {
-      "de": "Fyodor hat den schönen Wasserfall gesehen.",
-      "en": "Fyodor saw the beautiful waterfall."
+      "de": "Wir haben einen großen Wasserfall gesehen.",
+      "en": "We saw a big waterfall."
     },
     "family": [],
     "related": [
@@ -4074,8 +4066,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "fruchtbar",
     "en": "fertile",
     "example": {
-      "de": "Unsere Zusammenarbeit ist fruchtbar gewesen.",
-      "en": "Our collaboration was fruitful."
+      "de": "Der Boden hier ist sehr fruchtbar.",
+      "en": "The soil here is very fertile."
     },
     "family": [],
     "related": [
@@ -4093,8 +4085,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Windmühlen",
     "en": "windmill",
     "example": {
-      "de": "Ich weiß, dass ich gegen Windmühlen kämpfe.",
-      "en": "I know I'm fighting against windmills."
+      "de": "Die alte Windmühle steht auf dem Hügel.",
+      "en": "The old windmill stands on the hill."
     },
     "family": [],
     "related": [
@@ -4208,28 +4200,9 @@ export const GENERATED: RawWord[] = [
     ],
     "related": [
       "vogel",
-      "fliege",
       "tier",
+      "fisch",
       "fleisch"
-    ],
-    "theme": "Tiere"
-  },
-  {
-    "id": "fliege",
-    "tier": 2,
-    "article": "die",
-    "lemma": "Fliege",
-    "plural": "Fliegen",
-    "en": "fly",
-    "example": {
-      "de": "Ich wünschte, ich hätte Flügel zum Fliegen.",
-      "en": "I wish I had wings to fly."
-    },
-    "family": [],
-    "related": [
-      "vogel",
-      "schwein",
-      "fisch"
     ],
     "theme": "Tiere"
   },
@@ -4249,9 +4222,9 @@ export const GENERATED: RawWord[] = [
       "Vogelhaus"
     ],
     "related": [
-      "ente",
-      "fisch",
       "fliege",
+      "fisch",
+      "schwein",
       "wald"
     ],
     "theme": "Tiere"
@@ -4272,7 +4245,7 @@ export const GENERATED: RawWord[] = [
       "fischen"
     ],
     "related": [
-      "ente",
+      "fliege",
       "kuh",
       "vogel"
     ],
@@ -4294,7 +4267,7 @@ export const GENERATED: RawWord[] = [
       "Kuhmilch"
     ],
     "related": [
-      "ente",
+      "fliege",
       "wolf",
       "fisch"
     ],
@@ -4308,12 +4281,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Wölfe",
     "en": "wolf",
     "example": {
-      "de": "Zwei Schafe wurden von einem Wolf getötet.",
-      "en": "Two sheep were killed by a wolf."
+      "de": "Der Wolf heult nachts im Wald.",
+      "en": "The wolf howls in the forest at night."
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "fressen",
       "kuh"
     ],
@@ -4325,12 +4298,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "fressen",
     "en": "to eat, to feed on",
     "example": {
-      "de": "Erst kommt das Fressen, dann kommt die Moral.",
-      "en": "First comes the stomach, then comes ethics."
+      "de": "Der Hund frisst sein Futter.",
+      "en": "The dog is eating its food."
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "baer",
       "wolf"
     ],
@@ -4349,7 +4322,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "maus",
       "fressen"
     ],
@@ -4363,12 +4336,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Mäuse",
     "en": "mouse",
     "example": {
-      "de": "Diese Maus wurde von meiner Katze getötet.",
-      "en": "This mouse was killed by my cat."
+      "de": "Eine kleine Maus sitzt im Garten.",
+      "en": "A little mouse is sitting in the garden."
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "affe",
       "baer"
     ],
@@ -4380,14 +4353,14 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Affe",
     "plural": "Affen",
-    "en": "monkey or ape",
+    "en": "monkey, ape",
     "example": {
       "de": "Die Affen pflegen sich gegenseitig das Fell.",
       "en": "The apes groom each other."
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "schlange",
       "maus"
     ],
@@ -4406,7 +4379,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "tiger",
       "affe"
     ],
@@ -4425,7 +4398,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "ratte",
       "schlange"
     ],
@@ -4444,9 +4417,28 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "ente",
+      "fliege",
       "tiger",
-      "hase"
+      "ente"
+    ],
+    "theme": "Tiere"
+  },
+  {
+    "id": "fliege",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Fliege",
+    "plural": "Fliegen",
+    "en": "fly",
+    "example": {
+      "de": "Eine Fliege sitzt an der Wand.",
+      "en": "A fly is sitting on the wall."
+    },
+    "family": [],
+    "related": [
+      "haustier",
+      "ente",
+      "ratte"
     ],
     "theme": "Tiere"
   },
@@ -4468,7 +4460,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "haustier",
       "hase",
-      "ratte"
+      "fliege"
     ],
     "theme": "Tiere"
   },
@@ -4574,8 +4566,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Hühner",
     "en": "chicken",
     "example": {
-      "de": "Auch ein blindes Huhn findet mal ein Korn.",
-      "en": "Even a broken clock is right twice a day."
+      "de": "Das Huhn legt jeden Tag ein Ei.",
+      "en": "The hen lays an egg every day."
     },
     "family": [],
     "related": [
@@ -4593,8 +4585,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Füchse",
     "en": "fox",
     "example": {
-      "de": "Unser Paul ist ja ein kleiner Fuchs.",
-      "en": "Our Paul is a little redhead."
+      "de": "Der Fuchs läuft durch den Wald.",
+      "en": "The fox is running through the forest."
     },
     "family": [],
     "related": [
@@ -4631,8 +4623,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Elefanten",
     "en": "elephant",
     "example": {
-      "de": "Er macht aus einer Mücke einen Elefanten.",
-      "en": "He makes a mountain out of a molehill."
+      "de": "Der Elefant ist das größte Landtier.",
+      "en": "The elephant is the largest land animal."
     },
     "family": [],
     "related": [
@@ -4724,7 +4716,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Esel",
     "plural": "Esel",
-    "en": "ass, donkey",
+    "en": "donkey",
     "example": {
       "de": "Ich habe noch nie einen Esel schreien gehört.",
       "en": "I've never heard a donkey braying."
@@ -4745,8 +4737,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Käfer",
     "en": "beetle",
     "example": {
-      "de": "Mein Vater hat früher einen Käfer gefahren.",
-      "en": "My dad used to drive a Beetle."
+      "de": "Ein Käfer sitzt auf dem Blatt.",
+      "en": "A beetle is sitting on the leaf."
     },
     "family": [],
     "related": [
@@ -4938,7 +4930,7 @@ export const GENERATED: RawWord[] = [
       "en": "We found pests in the cellar."
     },
     "family": [
-      "Zieferbekämpfung",
+      "Ungezieferbekämpfung",
       "Schädling"
     ],
     "related": [
@@ -5051,8 +5043,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Wale",
     "en": "whale",
     "example": {
-      "de": "Wirf eine Sprotte, um einen Wal zu fangen.",
-      "en": "Throw a sprat to catch a whale."
+      "de": "Der Wal ist das größte Tier der Welt.",
+      "en": "The whale is the largest animal in the world."
     },
     "family": [],
     "related": [
@@ -5070,8 +5062,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Mücken",
     "en": "mosquito, gnat",
     "example": {
-      "de": "Du machst aus einer Mücke einen Elefanten.",
-      "en": "You're making a big fuss about nothing."
+      "de": "Eine Mücke hat mich gestochen.",
+      "en": "A mosquito bit me."
     },
     "family": [],
     "related": [
@@ -5172,7 +5164,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Rotkehlchen",
     "plural": "Rotkehlchen",
-    "en": "European robin",
+    "en": "robin",
     "example": {
       "de": "Ein Rotkehlchen flog in den Busch hinein.",
       "en": "A robin flew into the bush."
@@ -5204,24 +5196,6 @@ export const GENERATED: RawWord[] = [
     "theme": "Tiere"
   },
   {
-    "id": "wolle",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Wolle",
-    "plural": "Wollen",
-    "en": "wool",
-    "example": {
-      "de": "Wollen Sie auch an diesem Kurs teilnehmen?",
-      "en": "Do you also want to take part in this course?"
-    },
-    "family": [],
-    "related": [
-      "hose",
-      "kleid"
-    ],
-    "theme": "Kleidung"
-  },
-  {
     "id": "hose",
     "tier": 2,
     "article": "die",
@@ -5239,7 +5213,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "jacke",
       "kleid",
-      "wolle",
+      "tragen",
       "geschaeft"
     ],
     "theme": "Kleidung"
@@ -5270,7 +5244,7 @@ export const GENERATED: RawWord[] = [
     "id": "tragen",
     "tier": 2,
     "lemma": "tragen",
-    "en": "to wear; to carry",
+    "en": "to wear, to carry",
     "example": {
       "de": "Sie trägt heute eine blaue Bluse.",
       "en": "She’s wearing a blue blouse today."
@@ -5281,25 +5255,8 @@ export const GENERATED: RawWord[] = [
     ],
     "related": [
       "jacke",
-      "schick",
-      "kleid"
-    ],
-    "theme": "Kleidung"
-  },
-  {
-    "id": "schick",
-    "tier": 2,
-    "lemma": "schick",
-    "en": "elegant, dressy",
-    "example": {
-      "de": "Ich möchte diese hier nach Japan schicken.",
-      "en": "I'd like to send these to Japan."
-    },
-    "family": [],
-    "related": [
-      "jacke",
       "tasche",
-      "tragen"
+      "kleid"
     ],
     "theme": "Kleidung"
   },
@@ -5318,7 +5275,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "jacke",
       "ring",
-      "schick"
+      "tragen"
     ],
     "theme": "Kleidung"
   },
@@ -5376,7 +5333,7 @@ export const GENERATED: RawWord[] = [
       "Jackentasche"
     ],
     "related": [
-      "schuh",
+      "wolle",
       "hemd",
       "hut"
     ],
@@ -5398,7 +5355,7 @@ export const GENERATED: RawWord[] = [
       "Oberhemd"
     ],
     "related": [
-      "schuh",
+      "wolle",
       "mantel",
       "jacke"
     ],
@@ -5420,7 +5377,7 @@ export const GENERATED: RawWord[] = [
       "Regenmantel"
     ],
     "related": [
-      "schuh",
+      "wolle",
       "anziehen",
       "hemd",
       "wetter"
@@ -5441,7 +5398,7 @@ export const GENERATED: RawWord[] = [
       "ausziehen"
     ],
     "related": [
-      "schuh",
+      "wolle",
       "stoff",
       "mantel"
     ],
@@ -5463,7 +5420,7 @@ export const GENERATED: RawWord[] = [
       "stofflich"
     ],
     "related": [
-      "schuh",
+      "wolle",
       "knopf",
       "anziehen"
     ],
@@ -5485,7 +5442,7 @@ export const GENERATED: RawWord[] = [
       "Knopfloch"
     ],
     "related": [
-      "schuh",
+      "wolle",
       "rock",
       "stoff"
     ],
@@ -5504,7 +5461,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "schuh",
+      "wolle",
       "anzug",
       "knopf"
     ],
@@ -5518,12 +5475,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Anzüge",
     "en": "suit, outfit",
     "example": {
-      "de": "Die feindlichen Truppen sind im Anzug.",
-      "en": "The enemy troops are approaching."
+      "de": "Er trägt einen dunklen Anzug.",
+      "en": "He is wearing a dark suit."
     },
     "family": [],
     "related": [
-      "schuh",
+      "wolle",
       "brille",
       "rock"
     ],
@@ -5542,7 +5499,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "schuh",
+      "wolle",
       "ausziehen",
       "anzug"
     ],
@@ -5552,16 +5509,70 @@ export const GENERATED: RawWord[] = [
     "id": "ausziehen",
     "tier": 3,
     "lemma": "ausziehen",
-    "en": "to move out, to vacate",
+    "en": "to take off (clothes); to move out",
     "example": {
-      "de": "Herr Müller ist vor einer Woche ausgezogen.",
-      "en": "Mr. Müller moved out a week ago."
+      "de": "Zieh bitte deine Schuhe aus.",
+      "en": "Please take off your shoes."
     },
     "family": [],
     "related": [
+      "wolle",
+      "groesse",
+      "brille"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "groesse",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Größe",
+    "plural": "Größen",
+    "en": "size, height",
+    "example": {
+      "de": "Wir haben die Bücher nach Größe geordnet.",
+      "en": "We arranged the books according to size."
+    },
+    "family": [],
+    "related": [
+      "wolle",
+      "ausziehen",
+      "schick"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "wolle",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Wolle",
+    "en": "wool",
+    "example": {
+      "de": "Der Pullover ist aus Wolle.",
+      "en": "The sweater is made of wool."
+    },
+    "family": [],
+    "related": [
+      "pullover",
+      "schick",
+      "groesse"
+    ],
+    "theme": "Kleidung"
+  },
+  {
+    "id": "schick",
+    "tier": 4,
+    "lemma": "schick",
+    "en": "elegant, dressy",
+    "example": {
+      "de": "Das Kleid ist sehr schick.",
+      "en": "The dress is very smart."
+    },
+    "family": [],
+    "related": [
+      "pullover",
       "schuh",
-      "brille",
-      "muetze"
+      "wolle"
     ],
     "theme": "Kleidung"
   },
@@ -5583,7 +5594,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "pullover",
       "muetze",
-      "ausziehen"
+      "schick"
     ],
     "theme": "Kleidung"
   },
@@ -5740,7 +5751,6 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "die",
     "lemma": "Unterwäsche",
-    "plural": "Unterwäschen",
     "en": "underwear",
     "example": {
       "de": "Bitte bis auf die Unterwäsche entkleiden!",
@@ -5846,7 +5856,7 @@ export const GENERATED: RawWord[] = [
     "id": "anhaben",
     "tier": 5,
     "lemma": "anhaben",
-    "en": "to wear",
+    "en": "to have on, to wear",
     "example": {
       "de": "Du hast gestern dasselbe T-Shirt angehabt.",
       "en": "You had the same T-shirt on yesterday."
@@ -5924,8 +5934,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Kragen",
     "en": "collar",
     "example": {
-      "de": "Die bringen sich noch um Kopf und Kragen!",
-      "en": "They're going to get themselves killed."
+      "de": "Sein Kragen ist zu eng.",
+      "en": "His collar is too tight."
     },
     "family": [],
     "related": [
@@ -5964,8 +5974,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Hausschuhe",
     "en": "slipper",
     "example": {
-      "de": "Er schlug mich sogar mit einem Hausschuh.",
-      "en": "He even hit me with a slipper."
+      "de": "Zu Hause trage ich Hausschuhe.",
+      "en": "At home I wear slippers."
     },
     "family": [],
     "related": [
@@ -5999,7 +6009,6 @@ export const GENERATED: RawWord[] = [
     "tier": 6,
     "article": "die",
     "lemma": "Baumwolle",
-    "plural": "Baumwollen",
     "en": "cotton",
     "example": {
       "de": "Wir haben Erdnüsse statt Baumwolle gepflanzt.",
@@ -6008,27 +6017,8 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "kragen",
-      "groesse",
-      "sandale"
-    ],
-    "theme": "Kleidung"
-  },
-  {
-    "id": "groesse",
-    "tier": 6,
-    "article": "die",
-    "lemma": "Größe",
-    "plural": "Größen",
-    "en": "size, height",
-    "example": {
-      "de": "Wir haben die Bücher nach Größe geordnet.",
-      "en": "We arranged the books according to size."
-    },
-    "family": [],
-    "related": [
-      "kragen",
       "regenschirm",
-      "baumwolle"
+      "sandale"
     ],
     "theme": "Kleidung"
   },
@@ -6046,7 +6036,7 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "kragen",
-      "groesse"
+      "baumwolle"
     ],
     "theme": "Kleidung"
   },
@@ -6145,7 +6135,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Freund",
     "plural": "Freunde",
-    "en": "friend; boyfriend",
+    "en": "friend, boyfriend",
     "example": {
       "de": "Ein guter Freund hilft immer.",
       "en": "A good friend always helps."
@@ -6193,8 +6183,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Männer",
     "en": "man, male human being",
     "example": {
-      "de": "Man muss den Worten Taten folgen lassen.",
-      "en": "You have to turn words into deeds."
+      "de": "Der Mann liest die Zeitung.",
+      "en": "The man is reading the newspaper."
     },
     "family": [],
     "related": [
@@ -6212,8 +6202,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Frauen",
     "en": "woman",
     "example": {
-      "de": "Ich habe letztes Jahr meine Frau verloren.",
-      "en": "I lost my wife last year."
+      "de": "Meine Frau arbeitet im Krankenhaus.",
+      "en": "My wife works in a hospital."
     },
     "family": [],
     "related": [
@@ -6447,7 +6437,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Kumpel",
     "plural": "Kumpel",
-    "en": "miner",
+    "en": "buddy, mate",
     "example": {
       "de": "Was man haben sollte, sind Freunde, Kumpel!",
       "en": "Something you should have is friends, buddy!"
@@ -6468,8 +6458,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Heiraten",
     "en": "marrying, marriage",
     "example": {
-      "de": "Ich habe nie auf eine Heirat hingedeutet.",
-      "en": "I have never alluded to marriage."
+      "de": "Die Heirat findet im Mai statt.",
+      "en": "The wedding takes place in May."
     },
     "family": [],
     "related": [
@@ -6580,10 +6570,10 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Ehemann",
     "plural": "Ehemänner",
-    "en": "married man, husband",
+    "en": "husband",
     "example": {
-      "de": "Sie war verzweifelt, als ihr Ehemann starb.",
-      "en": "She was in despair when her husband died."
+      "de": "Ihr Ehemann arbeitet als Arzt.",
+      "en": "Her husband works as a doctor."
     },
     "family": [],
     "related": [
@@ -6685,8 +6675,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Mamis",
     "en": "mom, mum",
     "example": {
-      "de": "Sie ist nicht meine Oma, sondern meine Mami.",
-      "en": "She's not my grandma; she's my mom."
+      "de": "Meine Mami kocht heute das Essen.",
+      "en": "My mom is cooking dinner today."
     },
     "family": [],
     "related": [
@@ -6701,7 +6691,6 @@ export const GENERATED: RawWord[] = [
     "tier": 3,
     "article": "der",
     "lemma": "Streit",
-    "plural": "Streite",
     "en": "quarrel, dispute",
     "example": {
       "de": "An einem Streit sind immer zwei beteiligt.",
@@ -6867,7 +6856,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Ehefrau",
     "plural": "Ehefrauen",
-    "en": "married woman, wife",
+    "en": "wife",
     "example": {
       "de": "Er hat sich eine gute Ehefrau ausgesucht.",
       "en": "He chose a good wife."
@@ -6956,16 +6945,16 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "schwiegermutter",
-      "erwachsener",
+      "erwachsene",
       "vorfahren"
     ],
     "theme": "Familie und Beziehungen"
   },
   {
-    "id": "erwachsener",
+    "id": "erwachsene",
     "tier": 4,
     "article": "der",
-    "lemma": "Erwachsener",
+    "lemma": "Erwachsene",
     "plural": "Erwachsene",
     "en": "adult, grown-up",
     "example": {
@@ -6995,7 +6984,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "schwiegermutter",
       "zwilling",
-      "erwachsener"
+      "erwachsene"
     ],
     "theme": "Familie und Beziehungen"
   },
@@ -7282,8 +7271,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "feiern",
     "en": "to celebrate, to party",
     "example": {
-      "de": "Ich traf einen Herrn Kimura auf der Feier.",
-      "en": "I met a Mr Kimura at the party."
+      "de": "Wir feiern heute meinen Geburtstag.",
+      "en": "We are celebrating my birthday today."
     },
     "family": [],
     "related": [
@@ -7318,15 +7307,36 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Tor",
     "plural": "Tore",
-    "en": "gate, archway",
+    "en": "gate, goal",
     "example": {
-      "de": "Dieses Tor erlaubt einen Zugang zum Garten.",
-      "en": "This gate allows access to the garden."
+      "de": "Der Spieler schießt ein Tor.",
+      "en": "The player scores a goal."
     },
     "family": [],
     "related": [
       "sport",
-      "ball",
+      "fussball",
+      "ball"
+    ],
+    "theme": "Freizeit und Sport"
+  },
+  {
+    "id": "fussball",
+    "tier": 2,
+    "article": "der",
+    "lemma": "Fußball",
+    "en": "football, soccer",
+    "example": {
+      "de": "Am Samstag spielen wir Fußball.",
+      "en": "On Saturday we’re playing football."
+    },
+    "family": [
+      "Fußballspiel",
+      "Fußballer"
+    ],
+    "related": [
+      "sport",
+      "tor",
       "schwimmen"
     ],
     "theme": "Freizeit und Sport"
@@ -7348,7 +7358,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "freizeit",
       "schwimmen",
-      "tor",
+      "fussball",
       "koerper"
     ],
     "theme": "Freizeit und Sport"
@@ -7470,7 +7480,7 @@ export const GENERATED: RawWord[] = [
     "id": "angeln",
     "tier": 3,
     "lemma": "angeln",
-    "en": "to angle, to fish",
+    "en": "to fish (with a rod)",
     "example": {
       "de": "Wenn du morgen angeln gehst, gehe ich auch.",
       "en": "If you go fishing tomorrow, I'll go, too."
@@ -7675,8 +7685,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "wandern",
     "en": "to hike, to go trekking",
     "example": {
-      "de": "Lassen Sie Ihren Gedanken einfach wandern.",
-      "en": "Just let your thoughts wander."
+      "de": "Am Sonntag wandern wir im Wald.",
+      "en": "On Sunday we are going hiking in the forest."
     },
     "family": [],
     "related": [
@@ -7694,8 +7704,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Spaziergänge",
     "en": "walk",
     "example": {
-      "de": "Dieser Kampf wird für ihn kein Spaziergang.",
-      "en": "This fight won’t be a walk in the park for him."
+      "de": "Wir machen einen Spaziergang im Park.",
+      "en": "We are taking a walk in the park."
     },
     "family": [],
     "related": [
@@ -7710,7 +7720,6 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "das",
     "lemma": "Schach",
-    "plural": "Schachs",
     "en": "chess",
     "example": {
       "de": "Greifen die Türme beim Schach vorwärts an?",
@@ -7740,7 +7749,7 @@ export const GENERATED: RawWord[] = [
       "Mitglied"
     ],
     "related": [
-      "fussball",
+      "wanderung",
       "wettkampf",
       "schach",
       "hochzeit"
@@ -7763,7 +7772,7 @@ export const GENERATED: RawWord[] = [
       "Wettkämpfer"
     ],
     "related": [
-      "fussball",
+      "wanderung",
       "turnier",
       "verein"
     ],
@@ -7785,7 +7794,7 @@ export const GENERATED: RawWord[] = [
       "Schachturnier"
     ],
     "related": [
-      "fussball",
+      "wanderung",
       "schiedsrichter",
       "wettkampf"
     ],
@@ -7803,11 +7812,10 @@ export const GENERATED: RawWord[] = [
       "en": "The referee didn’t award the goal."
     },
     "family": [
-      "schiedlich",
       "Richter"
     ],
     "related": [
-      "fussball",
+      "wanderung",
       "ausdauer",
       "turnier"
     ],
@@ -7828,7 +7836,7 @@ export const GENERATED: RawWord[] = [
       "dauern"
     ],
     "related": [
-      "fussball",
+      "wanderung",
       "pokal",
       "schiedsrichter"
     ],
@@ -7850,7 +7858,7 @@ export const GENERATED: RawWord[] = [
       "Pokalsieger"
     ],
     "related": [
-      "fussball",
+      "wanderung",
       "amateur",
       "ausdauer"
     ],
@@ -7872,7 +7880,7 @@ export const GENERATED: RawWord[] = [
       "Amateurfußball"
     ],
     "related": [
-      "fussball",
+      "wanderung",
       "veranstalten",
       "pokal"
     ],
@@ -7889,7 +7897,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "fussball",
+      "wanderung",
       "tennis",
       "amateur"
     ],
@@ -7907,7 +7915,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "fussball",
+      "wanderung",
       "partie",
       "veranstalten"
     ],
@@ -7926,7 +7934,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "fussball",
+      "wanderung",
       "herausfordern",
       "tennis"
     ],
@@ -7938,12 +7946,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "herausfordern",
     "en": "to challenge",
     "example": {
-      "de": "Ich will nicht das Schicksal herausfordern.",
-      "en": "I don't want to tempt fate."
+      "de": "Er fordert mich zu einem Spiel heraus.",
+      "en": "He challenges me to a game."
     },
     "family": [],
     "related": [
-      "fussball",
+      "wanderung",
       "stadion",
       "partie"
     ],
@@ -7962,7 +7970,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "fussball",
+      "wanderung",
       "fitnessstudio",
       "herausfordern"
     ],
@@ -7981,7 +7989,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "fussball",
+      "wanderung",
       "joggen",
       "stadion"
     ],
@@ -7993,34 +8001,13 @@ export const GENERATED: RawWord[] = [
     "lemma": "joggen",
     "en": "to jog",
     "example": {
-      "de": "Sie hat sich wieder in Form gejoggt.",
-      "en": "She jogged herself back into shape."
+      "de": "Ich jogge jeden Morgen im Park.",
+      "en": "I jog in the park every morning."
     },
     "family": [],
     "related": [
-      "fussball",
-      "fitnessstudio",
-      "wanderung"
-    ],
-    "theme": "Freizeit und Sport"
-  },
-  {
-    "id": "fussball",
-    "tier": 6,
-    "article": "der",
-    "lemma": "Fußball",
-    "en": "football, soccer",
-    "example": {
-      "de": "Am Samstag spielen wir Fußball.",
-      "en": "On Saturday we’re playing football."
-    },
-    "family": [
-      "Fußballspiel",
-      "Fußballer"
-    ],
-    "related": [
-      "joggen",
       "wanderung",
+      "fitnessstudio",
       "rekordhalter"
     ],
     "theme": "Freizeit und Sport"
@@ -8043,7 +8030,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "joggen",
       "rekordhalter",
-      "fussball",
+      "turnen",
       "ausflug"
     ],
     "theme": "Freizeit und Sport"
@@ -8076,22 +8063,22 @@ export const GENERATED: RawWord[] = [
     "lemma": "turnen",
     "en": "to do gymnastics",
     "example": {
-      "de": "Sie vollzog einen U-Turn.",
-      "en": "She performed a U-turn."
+      "de": "Die Kinder turnen in der Turnhalle.",
+      "en": "The children do gymnastics in the gym."
     },
     "family": [],
     "related": [
       "joggen",
-      "nachtklub",
+      "nachtclub",
       "rekordhalter"
     ],
     "theme": "Freizeit und Sport"
   },
   {
-    "id": "nachtklub",
+    "id": "nachtclub",
     "tier": 6,
     "article": "der",
-    "lemma": "Nachtklub",
+    "lemma": "Nachtclub",
     "plural": "Nachtklubs",
     "en": "nightclub",
     "example": {
@@ -8121,7 +8108,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "joggen",
       "baseballspiel",
-      "nachtklub"
+      "nachtclub"
     ],
     "theme": "Freizeit und Sport"
   },
@@ -8428,8 +8415,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Flüge",
     "en": "flight",
     "example": {
-      "de": "Toms Flug wurde um drei Stunden verschoben.",
-      "en": "Tom's flight was postponed for three hours."
+      "de": "Mein Flug geht um acht Uhr.",
+      "en": "My flight leaves at eight o'clock."
     },
     "family": [],
     "related": [
@@ -8502,8 +8489,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Kapitäne",
     "en": "captain",
     "example": {
-      "de": "Yoko ist Kapitän der Volleyballmannschaft.",
-      "en": "Yoko is the captain of the volleyball team."
+      "de": "Der Kapitän steht auf der Brücke.",
+      "en": "The captain is standing on the bridge."
     },
     "family": [],
     "related": [
@@ -8601,8 +8588,7 @@ export const GENERATED: RawWord[] = [
       "en": "We’re still looking for cheap accommodation."
     },
     "family": [
-      "unterkommen",
-      "Kunft"
+      "unterkommen"
     ],
     "related": [
       "reservierung",
@@ -8616,7 +8602,7 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "der",
     "lemma": "Zoll",
-    "en": "customs",
+    "en": "customs, duty",
     "example": {
       "de": "Am Zoll wurde mein Koffer kontrolliert.",
       "en": "At customs my suitcase was checked."
@@ -8639,7 +8625,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Strecke",
     "plural": "Strecken",
-    "en": "stretch",
+    "en": "route, distance",
     "example": {
       "de": "Heute fahren statt Zügen Busse die Strecke.",
       "en": "Buses are running instead of trains on the route today."
@@ -8815,7 +8801,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Gleis",
     "plural": "Gleise",
-    "en": "railway",
+    "en": "platform, track",
     "example": {
       "de": "Der Zug nach Cambridge fährt auf Gleis 5 ab.",
       "en": "The train to Cambridge departs from Platform 5."
@@ -8872,7 +8858,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Auskunft",
     "plural": "Auskünfte",
-    "en": "enquiry",
+    "en": "information, inquiry",
     "example": {
       "de": "Können Sie mir bitte eine Auskunft geben?",
       "en": "Could you please give me some information?"
@@ -8936,7 +8922,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Reiseführer",
     "plural": "Reiseführer",
-    "en": "guidebook; tour guide",
+    "en": "guidebook, tour guide",
     "example": {
       "de": "Im Reiseführer steht ein guter Tipp.",
       "en": "There’s a good tip in the guidebook."
@@ -9045,8 +9031,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Ausstiege",
     "en": "exit",
     "example": {
-      "de": "Einstieg und Ausstieg aus einem Flugzeug.",
-      "en": "Embarkation and disembarkation from an airplane."
+      "de": "Der Ausstieg ist hinten rechts.",
+      "en": "The exit is at the back on the right."
     },
     "family": [],
     "related": [
@@ -9129,27 +9115,8 @@ export const GENERATED: RawWord[] = [
     ],
     "related": [
       "geschaeft",
-      "ware",
-      "auto"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "ware",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Ware",
-    "plural": "Waren",
-    "en": "goods, merchandise",
-    "example": {
-      "de": "Waren Sie das gestern Abend im Fernsehen?",
-      "en": "Was that you on TV last night?"
-    },
-    "family": [],
-    "related": [
-      "geschaeft",
       "auto",
-      "stadt"
+      "ort"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -9168,7 +9135,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "geschaeft",
       "ort",
-      "ware"
+      "stadt"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -9197,7 +9164,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Geschäft",
     "plural": "Geschäfte",
-    "en": "shop; business",
+    "en": "shop, business",
     "example": {
       "de": "Das Geschäft öffnet um neun Uhr.",
       "en": "The shop opens at nine o’clock."
@@ -9240,7 +9207,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Preis",
     "plural": "Preise",
-    "en": "price; prize",
+    "en": "price, prize",
     "example": {
       "de": "Der Preis ist mir zu hoch.",
       "en": "The price is too high for me."
@@ -9284,7 +9251,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Platz",
     "plural": "Plätze",
-    "en": "square, plaza",
+    "en": "place, seat, square",
     "example": {
       "de": "Gibt es reservierte Plätze für diesen Film?",
       "en": "Are there reserved seats for this film?"
@@ -9340,8 +9307,8 @@ export const GENERATED: RawWord[] = [
     "tier": 2,
     "article": "die",
     "lemma": "Bank",
-    "plural": "Bänke",
-    "en": "bench, pew",
+    "plural": "Banken",
+    "en": "bank; bench",
     "example": {
       "de": "Wir müssen die Bank um ein Darlehen bitten.",
       "en": "We must ask the bank for the loan."
@@ -9387,8 +9354,31 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "markt",
-      "park",
-      "city"
+      "strasse",
+      "park"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "strasse",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Straße",
+    "plural": "Straßen",
+    "en": "street, road",
+    "example": {
+      "de": "Die Straße ist wegen einer Baustelle gesperrt.",
+      "en": "The street is closed because of roadworks."
+    },
+    "family": [
+      "Straßenbahn",
+      "Straßenschild"
+    ],
+    "related": [
+      "markt",
+      "laden",
+      "city",
+      "haltestelle"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -9408,9 +9398,9 @@ export const GENERATED: RawWord[] = [
       "Wochenmarkt"
     ],
     "related": [
-      "supermarkt",
+      "ware",
       "city",
-      "laden"
+      "strasse"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -9427,7 +9417,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "supermarkt",
+      "ware",
       "gast",
       "markt"
     ],
@@ -9446,7 +9436,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "supermarkt",
+      "ware",
       "post",
       "city"
     ],
@@ -9457,7 +9447,6 @@ export const GENERATED: RawWord[] = [
     "tier": 3,
     "article": "die",
     "lemma": "Post",
-    "plural": "Posten",
     "en": "mail, post",
     "example": {
       "de": "Ich bin gerade von der Post zurückgekommen.",
@@ -9465,7 +9454,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "supermarkt",
+      "ware",
       "fahrrad",
       "gast"
     ],
@@ -9484,7 +9473,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "supermarkt",
+      "ware",
       "bibliothek",
       "post"
     ],
@@ -9503,9 +9492,28 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "supermarkt",
+      "ware",
       "fahrrad",
-      "kasse"
+      "supermarkt"
+    ],
+    "theme": "Stadt und Einkaufen"
+  },
+  {
+    "id": "ware",
+    "tier": 4,
+    "article": "die",
+    "lemma": "Ware",
+    "plural": "Waren",
+    "en": "goods, merchandise",
+    "example": {
+      "de": "Die Ware ist im Angebot.",
+      "en": "The goods are on sale."
+    },
+    "family": [],
+    "related": [
+      "kreuzung",
+      "supermarkt",
+      "bibliothek"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -9525,9 +9533,9 @@ export const GENERATED: RawWord[] = [
       "super"
     ],
     "related": [
-      "strasse",
+      "kreuzung",
       "kasse",
-      "bibliothek",
+      "ware",
       "gemuese"
     ],
     "theme": "Stadt und Einkaufen"
@@ -9548,7 +9556,7 @@ export const GENERATED: RawWord[] = [
       "Kassierer"
     ],
     "related": [
-      "strasse",
+      "kreuzung",
       "fussgaenger",
       "supermarkt",
       "einkauf"
@@ -9571,7 +9579,7 @@ export const GENERATED: RawWord[] = [
       "Fuß"
     ],
     "related": [
-      "strasse",
+      "kreuzung",
       "umtausch",
       "kasse"
     ],
@@ -9592,7 +9600,7 @@ export const GENERATED: RawWord[] = [
       "tauschen"
     ],
     "related": [
-      "strasse",
+      "kreuzung",
       "friedhof",
       "fussgaenger"
     ],
@@ -9611,7 +9619,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "zurueckgeben",
       "umtausch"
     ],
@@ -9628,7 +9636,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "aussuchen",
       "friedhof"
     ],
@@ -9645,7 +9653,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "kloster",
       "zurueckgeben"
     ],
@@ -9664,7 +9672,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "tankstelle",
       "aussuchen"
     ],
@@ -9683,7 +9691,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "kennzeichen",
       "kloster"
     ],
@@ -9695,14 +9703,14 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Kennzeichen",
     "plural": "Kennzeichen",
-    "en": "characteristic, mark",
+    "en": "license plate, distinguishing mark",
     "example": {
-      "de": "Haben Sie besondere Kennzeichen?",
-      "en": "Do you have special licence plates?"
+      "de": "Das Auto hat ein deutsches Kennzeichen.",
+      "en": "The car has a German license plate."
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "gasse",
       "tankstelle"
     ],
@@ -9721,7 +9729,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "einkaufszentrum",
       "kennzeichen"
     ],
@@ -9735,12 +9743,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Einkaufszentren",
     "en": "shopping center, shopping mall",
     "example": {
-      "de": "Layla und Sami fahren zum Einkaufszentrum.",
-      "en": "Layla and Sami are going to the mall."
+      "de": "Wir fahren zum Einkaufszentrum.",
+      "en": "We are going to the shopping center."
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "parkplatz",
       "gasse"
     ],
@@ -9752,14 +9760,14 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Parkplatz",
     "plural": "Parkplätze",
-    "en": "parking lot, outdoor car park",
+    "en": "parking space, car park",
     "example": {
-      "de": "Wir fanden keinen Parkplatz auf dem Parkplatz.",
-      "en": "We couldn’t find a parking space in the car park."
+      "de": "Hier gibt es keinen freien Parkplatz.",
+      "en": "There is no free parking space here."
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "motorrad",
       "einkaufszentrum"
     ],
@@ -9773,12 +9781,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Motorräder",
     "en": "motorcycle",
     "example": {
-      "de": "Tims Motorrad ist weitaus teurer als meins.",
-      "en": "Tim's motorbike is far more expensive than mine is."
+      "de": "Mein Motorrad ist sehr schnell.",
+      "en": "My motorcycle is very fast."
     },
     "family": [],
     "related": [
-      "strasse",
+      "kreuzung",
       "brunnen",
       "parkplatz"
     ],
@@ -9792,37 +9800,14 @@ export const GENERATED: RawWord[] = [
     "plural": "Brunnen",
     "en": "well, fountain",
     "example": {
-      "de": "Er ist wie ein Frosch in einem Brunnen.",
-      "en": "He is like a frog in a well."
+      "de": "Im Park gibt es einen Brunnen.",
+      "en": "There is a fountain in the park."
     },
     "family": [],
     "related": [
-      "strasse",
-      "motorrad",
-      "kreuzung"
-    ],
-    "theme": "Stadt und Einkaufen"
-  },
-  {
-    "id": "strasse",
-    "tier": 5,
-    "article": "die",
-    "lemma": "Straße",
-    "plural": "Straßen",
-    "en": "street, road",
-    "example": {
-      "de": "Die Straße ist wegen einer Baustelle gesperrt.",
-      "en": "The street is closed because of roadworks."
-    },
-    "family": [
-      "Straßenbahn",
-      "Straßenschild"
-    ],
-    "related": [
-      "einkauf",
       "kreuzung",
-      "brunnen",
-      "haltestelle"
+      "motorrad",
+      "buergersteig"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -9844,7 +9829,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "einkauf",
       "buergersteig",
-      "strasse"
+      "brunnen"
     ],
     "theme": "Stadt und Einkaufen"
   },
@@ -10495,8 +10480,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Lichter",
     "en": "light",
     "example": {
-      "de": "Kelly brachte Licht in die Angelegenheit.",
-      "en": "Kelly brought the matter to light."
+      "de": "Mach bitte das Licht an.",
+      "en": "Please turn on the light."
     },
     "family": [],
     "related": [
@@ -10514,8 +10499,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Sitze",
     "en": "seat",
     "example": {
-      "de": "Die Firma hat ihren Sitz an der Westküste.",
-      "en": "The company is located on the West Coast."
+      "de": "Der Sitz im Zug ist bequem.",
+      "en": "The seat on the train is comfortable."
     },
     "family": [],
     "related": [
@@ -10531,7 +10516,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Boden",
     "plural": "Böden",
-    "en": "ground, soil",
+    "en": "floor, ground",
     "example": {
       "de": "Die heiße Sonne brannte den Boden trocken.",
       "en": "The hot sun baked the ground dry."
@@ -10552,8 +10537,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Wände",
     "en": "wall, partition",
     "example": {
-      "de": "Dort ist ein Portrait von Bob an der Wand.",
-      "en": "There is a portrait of Bob on the wall."
+      "de": "An der Wand hängt ein Bild.",
+      "en": "A picture is hanging on the wall."
     },
     "family": [],
     "related": [
@@ -10571,8 +10556,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Dächer",
     "en": "roof",
     "example": {
-      "de": "Das mit dem roten Dach dort ist Toms Haus.",
-      "en": "That's Tom's house with the red roof."
+      "de": "Das Haus hat ein rotes Dach.",
+      "en": "The house has a red roof."
     },
     "family": [],
     "related": [
@@ -10634,8 +10619,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Kissen",
     "en": "cushion, pillow",
     "example": {
-      "de": "Ich habe zwei Mädchen beim Küssen gesehen.",
-      "en": "I saw two girls kissing."
+      "de": "Ich lege ein Kissen unter den Kopf.",
+      "en": "I put a cushion under my head."
     },
     "family": [],
     "related": [
@@ -10668,7 +10653,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Bad",
     "plural": "Bäder",
-    "en": "bath",
+    "en": "bath, bathroom",
     "example": {
       "de": "In unserem Bad gibt es nur ein Handtuch.",
       "en": "There's only one bath towel in our bathroom."
@@ -10706,7 +10691,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Schlafzimmer",
     "plural": "Schlafzimmer",
-    "en": "bedroom, bedchamber",
+    "en": "bedroom",
     "example": {
       "de": "Lass das Fenster im Schlafzimmer nicht auf!",
       "en": "Don't leave the bedroom window open."
@@ -10727,8 +10712,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Wohnzimmer",
     "en": "living room",
     "example": {
-      "de": "Miho war im Wohnzimmer, als ich sie besuchte.",
-      "en": "Miho was in the living room when I visited her."
+      "de": "Wir sitzen im Wohnzimmer.",
+      "en": "We are sitting in the living room."
     },
     "family": [],
     "related": [
@@ -10763,7 +10748,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Schrank",
     "plural": "Schränke",
-    "en": "cabinet, or:",
+    "en": "cupboard, closet",
     "example": {
       "de": "Öffne den Schrank mit diesem Schlüssel hier.",
       "en": "Unlock the cabinet with this key."
@@ -10782,7 +10767,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Regal",
     "plural": "Regale",
-    "en": "shelf, shelves",
+    "en": "shelf",
     "example": {
       "de": "Ich komme an nichts im oberen Regal heran.",
       "en": "I can't reach anything on the top shelf."
@@ -10980,7 +10965,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Dose",
     "plural": "Dosen",
-    "en": "box",
+    "en": "can, tin",
     "example": {
       "de": "Könnte ich noch eine Dose Bier bekommen?",
       "en": "Could I please have one more can of beer?"
@@ -10997,7 +10982,7 @@ export const GENERATED: RawWord[] = [
     "id": "einrichten",
     "tier": 4,
     "lemma": "einrichten",
-    "en": "to establish",
+    "en": "to furnish, to set up",
     "example": {
       "de": "Dieses Büro ist sehr modern eingerichtet.",
       "en": "This office has very modern furniture."
@@ -11258,8 +11243,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Penthouses",
     "en": "penthouse",
     "example": {
-      "de": "Tom wohnt in einem Penthouse im dreißigsten Stock.",
-      "en": "Tom lives in a penthouse on the 30th floor."
+      "de": "Sie wohnt in einem Penthouse mit Dachterrasse.",
+      "en": "She lives in a penthouse with a roof terrace."
     },
     "family": [],
     "related": [
@@ -11375,8 +11360,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "aufwischen",
     "en": "to wipe something up",
     "example": {
-      "de": "Schnapp dir einen Fetzen und hilf mir, diesen Saustall aufzuwischen!",
-      "en": "Grab a rag and help me clean up this mess."
+      "de": "Ich wische den Boden auf.",
+      "en": "I am wiping the floor."
     },
     "family": [],
     "related": [
@@ -11432,7 +11417,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Lehrer",
     "plural": "Lehrer",
-    "en": "teacher (male)",
+    "en": "teacher",
     "example": {
       "de": "Unser Lehrer erklärt alles sehr gut.",
       "en": "Our teacher explains everything very well."
@@ -11539,13 +11524,35 @@ export const GENERATED: RawWord[] = [
     "lemma": "lesen",
     "en": "to read",
     "example": {
-      "de": "Das liest sich fast wie ein Abenteuerroman.",
-      "en": "This almost reads like an adventure novel."
+      "de": "Ich lese jeden Abend ein Buch.",
+      "en": "I read a book every evening."
     },
     "family": [],
     "related": [
       "kurs",
-      "klasse",
+      "hausaufgabe",
+      "klasse"
+    ],
+    "theme": "Schule und Lernen"
+  },
+  {
+    "id": "hausaufgabe",
+    "tier": 2,
+    "article": "die",
+    "lemma": "Hausaufgabe",
+    "plural": "Hausaufgaben",
+    "en": "homework",
+    "example": {
+      "de": "Hast du deine Hausaufgaben schon gemacht?",
+      "en": "Have you done your homework yet?"
+    },
+    "family": [
+      "Haus",
+      "Aufgabe"
+    ],
+    "related": [
+      "kurs",
+      "lesen",
       "pruefung"
     ],
     "theme": "Schule und Lernen"
@@ -11568,7 +11575,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "studium",
       "pruefung",
-      "lesen"
+      "hausaufgabe"
     ],
     "theme": "Schule und Lernen"
   },
@@ -11682,8 +11689,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "zählen",
     "en": "to count",
     "example": {
-      "de": "Ich wusste, dass ich auf dich zählen kann!",
-      "en": "I knew I could rely on you!"
+      "de": "Ich zähle bis zehn.",
+      "en": "I count to ten."
     },
     "family": [],
     "related": [
@@ -11756,8 +11763,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Papiere",
     "en": "paper",
     "example": {
-      "de": "Er hatte einen guten Blick auf die Papiere.",
-      "en": "He had a good look at the papers."
+      "de": "Ich brauche ein Blatt Papier.",
+      "en": "I need a sheet of paper."
     },
     "family": [],
     "related": [
@@ -11775,8 +11782,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Sätze",
     "en": "sentence",
     "example": {
-      "de": "Beethovens Fünfte Sinfonie hat vier Sätze.",
-      "en": "Beethoven's Fifth Symphony has four movements."
+      "de": "Dieser Satz ist sehr lang.",
+      "en": "This sentence is very long."
     },
     "family": [],
     "related": [
@@ -11829,7 +11836,6 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "das",
     "lemma": "Studium",
-    "plural": "Studien",
     "en": "university studies",
     "example": {
       "de": "Nach dem Studium will sie im Ausland arbeiten.",
@@ -11928,7 +11934,7 @@ export const GENERATED: RawWord[] = [
     "id": "vorlesen",
     "tier": 4,
     "lemma": "vorlesen",
-    "en": "to read",
+    "en": "to read aloud",
     "example": {
       "de": "Die Lehrerin lässt den Text laut vorlesen.",
       "en": "The teacher has the text read aloud."
@@ -11966,7 +11972,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Stift",
     "plural": "Stifte",
-    "en": "pin",
+    "en": "pen, pencil",
     "example": {
       "de": "Mit diesem Stift will ich nicht schreiben.",
       "en": "I don't want to write with this pen."
@@ -11985,10 +11991,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Tafel",
     "plural": "Tafeln",
-    "en": "panel, board",
+    "en": "blackboard, board",
     "example": {
-      "de": "Anne hat etwas auf die Tafel geschrieben.",
-      "en": "Ann wrote something on the blackboard."
+      "de": "Der Lehrer schreibt etwas an die Tafel.",
+      "en": "The teacher is writing something on the blackboard."
     },
     "family": [],
     "related": [
@@ -12014,7 +12020,7 @@ export const GENERATED: RawWord[] = [
       "Notenspiegel"
     ],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "vorlesung",
       "tafel",
       "pruefung"
@@ -12037,7 +12043,7 @@ export const GENERATED: RawWord[] = [
       "Vorlesungsverzeichnis"
     ],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "wiederholung",
       "note"
     ],
@@ -12059,7 +12065,7 @@ export const GENERATED: RawWord[] = [
       "wieder"
     ],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "zeugnis",
       "vorlesung"
     ],
@@ -12071,7 +12077,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Zeugnis",
     "plural": "Zeugnisse",
-    "en": "report card; certificate",
+    "en": "report card, certificate",
     "example": {
       "de": "Am Freitag gibt es Zeugnisse.",
       "en": "On Friday the report cards are handed out."
@@ -12081,7 +12087,7 @@ export const GENERATED: RawWord[] = [
       "Arbeitszeugnis"
     ],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "nachhilfe",
       "wiederholung"
     ],
@@ -12102,7 +12108,7 @@ export const GENERATED: RawWord[] = [
       "helfen"
     ],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "bueffeln",
       "zeugnis"
     ],
@@ -12119,7 +12125,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "nachsitzen",
       "nachhilfe"
     ],
@@ -12136,7 +12142,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "durchfallen",
       "bueffeln"
     ],
@@ -12146,14 +12152,14 @@ export const GENERATED: RawWord[] = [
     "id": "durchfallen",
     "tier": 5,
     "lemma": "durchfallen",
-    "en": "to fall through",
+    "en": "to fail (an exam)",
     "example": {
       "de": "Ich bin bei / in der Prüfung durchgefallen.",
       "en": "I failed the exam."
     },
     "family": [],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "these",
       "nachsitzen"
     ],
@@ -12172,7 +12178,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "heft",
       "durchfallen"
     ],
@@ -12191,7 +12197,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "fach",
       "these"
     ],
@@ -12203,14 +12209,14 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Fach",
     "plural": "Fächer",
-    "en": "compartment",
+    "en": "school subject, compartment",
     "example": {
       "de": "Wir lernen in der Oberschule viele Fächer.",
       "en": "We study many subjects in high school."
     },
     "family": [],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "klassenzimmer",
       "heft"
     ],
@@ -12229,7 +12235,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "hausaufgabe",
+      "lehrplan",
       "kindergarten",
       "fach"
     ],
@@ -12248,30 +12254,8 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "hausaufgabe",
-      "klassenzimmer",
-      "lehrplan"
-    ],
-    "theme": "Schule und Lernen"
-  },
-  {
-    "id": "hausaufgabe",
-    "tier": 6,
-    "article": "die",
-    "lemma": "Hausaufgabe",
-    "plural": "Hausaufgaben",
-    "en": "homework",
-    "example": {
-      "de": "Hast du deine Hausaufgaben schon gemacht?",
-      "en": "Have you done your homework yet?"
-    },
-    "family": [
-      "Haus",
-      "Aufgabe"
-    ],
-    "related": [
-      "kindergarten",
       "lehrplan",
+      "klassenzimmer",
       "dissertation"
     ],
     "theme": "Schule und Lernen"
@@ -12294,7 +12278,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "kindergarten",
       "dissertation",
-      "hausaufgabe"
+      "seminararbeit"
     ],
     "theme": "Schule und Lernen"
   },
@@ -12444,10 +12428,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Schuld",
     "plural": "Schulden",
-    "en": "debt",
+    "en": "guilt, fault; debt",
     "example": {
-      "de": "Wer wird für diese Schulden aufkommen?",
-      "en": "Who will pay for these debts?"
+      "de": "Es ist nicht meine Schuld.",
+      "en": "It is not my fault."
     },
     "family": [],
     "related": [
@@ -12524,7 +12508,7 @@ export const GENERATED: RawWord[] = [
     "tier": 2,
     "article": "der",
     "lemma": "Dollar",
-    "plural": "Dollars",
+    "plural": "Dollar",
     "en": "dollar",
     "example": {
       "de": "Wir teilten zehn Dollar unter uns fünf auf.",
@@ -12544,8 +12528,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "wert",
     "en": "worth, worthy of",
     "example": {
-      "de": "Könnt ihr den Wert des Diamanten schätzen?",
-      "en": "Can you guess the worth of the diamond?"
+      "de": "Das Buch ist viel Geld wert.",
+      "en": "The book is worth a lot of money."
     },
     "family": [],
     "related": [
@@ -12746,7 +12730,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Pfund",
     "plural": "Pfunde",
-    "en": "pound",
+    "en": "pound (money, weight)",
     "example": {
       "de": "Wo kann ich meine Dollar in Pfund tauschen?",
       "en": "Where can I exchange my dollars for pounds?"
@@ -12765,10 +12749,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Rate",
     "plural": "Raten",
-    "en": "rate",
+    "en": "instalment, rate",
     "example": {
-      "de": "Raten Sie mal, was ich gerne machen möchte!",
-      "en": "Guess what I want to do."
+      "de": "Ich zahle das Auto in Raten.",
+      "en": "I am paying for the car in instalments."
     },
     "family": [],
     "related": [
@@ -12949,10 +12933,10 @@ export const GENERATED: RawWord[] = [
     "id": "rechnen",
     "tier": 4,
     "lemma": "rechnen",
-    "en": "to count, reckon",
+    "en": "to calculate, to count on",
     "example": {
-      "de": "Damit haben die Fans nicht gerechnet.",
-      "en": "Here's something fans never thought they'd see."
+      "de": "Ich rechne die Kosten aus.",
+      "en": "I am calculating the costs."
     },
     "family": [],
     "related": [
@@ -12968,8 +12952,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "ausgeben",
     "en": "to spend, to expend",
     "example": {
-      "de": "Zehntausend Yen decken nicht die Ausgaben.",
-      "en": "Ten thousand yen will not cover the expenses."
+      "de": "Ich gebe zu viel Geld aus.",
+      "en": "I spend too much money."
     },
     "family": [],
     "related": [
@@ -13019,7 +13003,7 @@ export const GENERATED: RawWord[] = [
     "id": "ersparen",
     "tier": 4,
     "lemma": "ersparen",
-    "en": "to save, save up",
+    "en": "to spare (someone something)",
     "example": {
       "de": "Ich möchte dir diese Frustration ersparen!",
       "en": "I want to spare you this frustration!"
@@ -13074,7 +13058,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Münze",
     "plural": "Münzen",
-    "en": "money, in its senses as",
+    "en": "coin",
     "example": {
       "de": "Ich habe viele Münzen in dieser Schachtel.",
       "en": "I have many coins in this box."
@@ -13278,10 +13262,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Erbschaft",
     "plural": "Erbschaften",
-    "en": "estate",
+    "en": "inheritance",
     "example": {
-      "de": "Tom hat seine ganze Erbschaft vergeudet.",
-      "en": "Tom squandered his entire inheritance."
+      "de": "Sie hat eine Erbschaft bekommen.",
+      "en": "She received an inheritance."
     },
     "family": [],
     "related": [
@@ -13443,10 +13427,10 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Opfer",
     "plural": "Opfer",
-    "en": "sacrifice",
+    "en": "victim; sacrifice",
     "example": {
-      "de": "Ich will, dass du unter mir stehst, du Opfer.",
-      "en": "I want you to be beneath me, you wimp."
+      "de": "Das Opfer wurde ins Krankenhaus gebracht.",
+      "en": "The victim was taken to the hospital."
     },
     "family": [],
     "related": [
@@ -13481,10 +13465,10 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Gericht",
     "plural": "Gerichte",
-    "en": "court",
+    "en": "court; dish (food)",
     "example": {
-      "de": "Ich bereite gerne traditionelle Gerichte zu.",
-      "en": "I like to cook traditional dishes."
+      "de": "Er steht vor Gericht.",
+      "en": "He is on trial."
     },
     "family": [],
     "related": [
@@ -13502,8 +13486,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Richter",
     "en": "judge",
     "example": {
-      "de": "Die Öffentlichkeit ist der beste Richter.",
-      "en": "The public is the best judge."
+      "de": "Der Richter spricht das Urteil.",
+      "en": "The judge pronounces the verdict."
     },
     "family": [],
     "related": [
@@ -13557,7 +13541,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Zeuge",
     "plural": "Zeugen",
-    "en": "witness, wit",
+    "en": "witness",
     "example": {
       "de": "Rufen Sie bitte Ihren ersten Zeugen auf!",
       "en": "Please call your first witness."
@@ -13719,8 +13703,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "stehlen",
     "en": "to steal",
     "example": {
-      "de": "Sogar eine Nadel zu stehlen ist eine Sünde.",
-      "en": "It is a sin to steal even a pin."
+      "de": "Er hat mein Fahrrad gestohlen.",
+      "en": "He stole my bicycle."
     },
     "family": [],
     "related": [
@@ -13790,7 +13774,6 @@ export const GENERATED: RawWord[] = [
     "tier": 3,
     "article": "der",
     "lemma": "Schutz",
-    "plural": "Schutze",
     "en": "protection",
     "example": {
       "de": "Er ist im Schutz der Dunkelheit entwischt.",
@@ -13829,8 +13812,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Strafen",
     "en": "punishment",
     "example": {
-      "de": "Teenager sind Gottes Strafe fürs Sexhaben.",
-      "en": "Teenagers are God's punishment for having sex."
+      "de": "Die Strafe war sehr hoch.",
+      "en": "The punishment was very high."
     },
     "family": [],
     "related": [
@@ -14007,8 +13990,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "verdächtig",
     "en": "suspicious, suspect",
     "example": {
-      "de": "Die Verdächtige ist eine hellhäutige Frau.",
-      "en": "The suspect is a caucasian female."
+      "de": "Der Mann sieht verdächtig aus.",
+      "en": "The man looks suspicious."
     },
     "family": [],
     "related": [
@@ -14049,16 +14032,16 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "formular",
-      "verdaechtiger",
+      "verdaechtige",
       "zeugin"
     ],
     "theme": "Behörden und Recht"
   },
   {
-    "id": "verdaechtiger",
+    "id": "verdaechtige",
     "tier": 4,
     "article": "der",
-    "lemma": "Verdächtiger",
+    "lemma": "Verdächtige",
     "plural": "Verdächtige",
     "en": "suspect",
     "example": {
@@ -14086,7 +14069,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "formular",
       "lizenz",
-      "verdaechtiger"
+      "verdaechtige"
     ],
     "theme": "Behörden und Recht"
   },
@@ -14132,7 +14115,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Amt",
     "plural": "Ämter",
-    "en": "agency, department",
+    "en": "(public) office",
     "example": {
       "de": "Der Politiker wurde seines Amtes enthoben.",
       "en": "The politician was removed from office."
@@ -14151,7 +14134,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Klage",
     "plural": "Klagen",
-    "en": "complaint",
+    "en": "lawsuit, complaint",
     "example": {
       "de": "Ich möchte keinerlei Klagen von dir hören!",
       "en": "I don't want to hear any of your complaints."
@@ -14170,7 +14153,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Verfahren",
     "plural": "Verfahren",
-    "en": "procedure, process",
+    "en": "proceedings, procedure",
     "example": {
       "de": "Die Polizei eröffnete ein Verfahren.",
       "en": "The police opened an investigation."
@@ -14386,8 +14369,7 @@ export const GENERATED: RawWord[] = [
       "en": "That isn’t within my remit."
     },
     "family": [
-      "zuständig",
-      "Zustand"
+      "zuständig"
     ],
     "related": [
       "befugnis",
@@ -14501,7 +14483,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Nachricht",
     "plural": "Nachrichten",
-    "en": "message; news item",
+    "en": "message, news",
     "example": {
       "de": "Ich habe dir eine Nachricht geschickt.",
       "en": "I sent you a message."
@@ -14583,8 +14565,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Verbindungen",
     "en": "connection",
     "example": {
-      "de": "Freundschaft ist die Verbindung der Seelen.",
-      "en": "Friendship is the connection of souls."
+      "de": "Die Verbindung ist schlecht.",
+      "en": "The connection is bad."
     },
     "family": [],
     "related": [
@@ -14758,8 +14740,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "programmieren",
     "en": "to program",
     "example": {
-      "de": "Leon war darauf programmiert, das zu sagen.",
-      "en": "Leon was programmed to say that."
+      "de": "Er programmiert eine neue App.",
+      "en": "He is programming a new app."
     },
     "family": [],
     "related": [
@@ -15087,7 +15069,6 @@ export const GENERATED: RawWord[] = [
     "tier": 5,
     "article": "die",
     "lemma": "Software",
-    "plural": "Softwares",
     "en": "software",
     "example": {
       "de": "Können Sie unsere Software aktualisieren?",
@@ -15128,8 +15109,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Drohnen",
     "en": "drone",
     "example": {
-      "de": "Skura kaufte eine Drohne.",
-      "en": "Skura bought a drone."
+      "de": "Die Drohne fliegt über dem Park.",
+      "en": "The drone is flying over the park."
     },
     "family": [],
     "related": [
@@ -15313,8 +15294,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "blocken",
     "en": "to block",
     "example": {
-      "de": "Sie wohnen im gleichen Block wie wir.",
-      "en": "They live in our block."
+      "de": "Ich blocke diese Nummer.",
+      "en": "I am blocking this number."
     },
     "family": [],
     "related": [
@@ -15400,30 +15381,12 @@ export const GENERATED: RawWord[] = [
     "theme": "Computer und Internet"
   },
   {
-    "id": "sage",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Sage",
-    "plural": "Sagen",
-    "en": "saga, legend",
-    "example": {
-      "de": "Sage ihr, sie solle nicht nach mir suchen.",
-      "en": "Tell her to not look for me."
-    },
-    "family": [],
-    "related": [
-      "film",
-      "geschichte"
-    ],
-    "theme": "Medien und Kultur"
-  },
-  {
     "id": "geschichte",
     "tier": 1,
     "article": "die",
     "lemma": "Geschichte",
     "plural": "Geschichten",
-    "en": "history",
+    "en": "story, history",
     "example": {
       "de": "Der Anfang der Geschichte war interessant.",
       "en": "The beginning of the story was interesting."
@@ -15431,7 +15394,6 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "film",
-      "sage",
       "zeitung"
     ],
     "theme": "Medien und Kultur"
@@ -15506,7 +15468,7 @@ export const GENERATED: RawWord[] = [
     "id": "klingen",
     "tier": 2,
     "lemma": "klingen",
-    "en": "to ring, to clink",
+    "en": "to sound, to ring",
     "example": {
       "de": "Alle Glocken klingen unterschiedlich.",
       "en": "All bells sound differently."
@@ -15525,8 +15487,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "filmen",
     "en": "to film, to shoot",
     "example": {
-      "de": "Der Film war so traurig, dass alle weinten.",
-      "en": "The movie was so sad that everybody cried."
+      "de": "Er filmt den Sonnenuntergang.",
+      "en": "He is filming the sunset."
     },
     "family": [],
     "related": [
@@ -15647,7 +15609,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Programm",
     "plural": "Programme",
-    "en": "programme; program",
+    "en": "program",
     "example": {
       "de": "Was läuft heute im Fernsehprogramm?",
       "en": "What’s on TV today?"
@@ -15911,11 +15873,10 @@ export const GENERATED: RawWord[] = [
       "en": "The exhibition runs until Sunday."
     },
     "family": [
-      "ausstellen",
-      "Stellung"
+      "ausstellen"
     ],
     "related": [
-      "veranstaltung",
+      "sage",
       "kritik",
       "buehne"
     ],
@@ -15927,7 +15888,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Kritik",
     "plural": "Kritiken",
-    "en": "criticism; review",
+    "en": "criticism, review",
     "example": {
       "de": "Der Film bekam sehr gute Kritiken.",
       "en": "The film received very good reviews."
@@ -15937,7 +15898,7 @@ export const GENERATED: RawWord[] = [
       "Kritiker"
     ],
     "related": [
-      "veranstaltung",
+      "sage",
       "werbung",
       "ausstellung"
     ],
@@ -15959,7 +15920,7 @@ export const GENERATED: RawWord[] = [
       "Werbespot"
     ],
     "related": [
-      "veranstaltung",
+      "sage",
       "uebertragung",
       "kritik"
     ],
@@ -15981,7 +15942,7 @@ export const GENERATED: RawWord[] = [
       "tragen"
     ],
     "related": [
-      "veranstaltung",
+      "sage",
       "malen",
       "werbung"
     ],
@@ -15993,12 +15954,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "malen",
     "en": "to paint",
     "example": {
-      "de": "Wie viele Male hast du den Film gesehen?",
-      "en": "How many times did you see the movie?"
+      "de": "Sie malt ein Bild.",
+      "en": "She is painting a picture."
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "symbol",
       "uebertragung"
     ],
@@ -16017,7 +15978,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "staffel",
       "malen"
     ],
@@ -16036,7 +15997,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "oper",
       "symbol"
     ],
@@ -16055,7 +16016,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "fotografieren",
       "staffel"
     ],
@@ -16067,12 +16028,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "fotografieren",
     "en": "to photograph",
     "example": {
-      "de": "Sara hat den Berg im Sommer fotografiert.",
-      "en": "Sara took pictures of that mountain in summer."
+      "de": "Ich fotografiere gern Blumen.",
+      "en": "I like photographing flowers."
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "gedicht",
       "oper"
     ],
@@ -16091,7 +16052,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "gemaelde",
       "fotografieren"
     ],
@@ -16110,7 +16071,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "interview",
       "gedicht"
     ],
@@ -16129,7 +16090,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "kanal",
       "gemaelde"
     ],
@@ -16141,14 +16102,14 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Kanal",
     "plural": "Kanäle",
-    "en": "canal",
+    "en": "channel; canal",
     "example": {
       "de": "Welcher Horrorfilm läuft auf diesem Kanal?",
       "en": "Which horror film is on this channel?"
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "journalist",
       "interview"
     ],
@@ -16167,7 +16128,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "autor",
       "kanal"
     ],
@@ -16186,9 +16147,28 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "veranstaltung",
+      "sage",
       "journalist",
-      "schlagzeile"
+      "veranstaltung"
+    ],
+    "theme": "Medien und Kultur"
+  },
+  {
+    "id": "sage",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Sage",
+    "plural": "Sagen",
+    "en": "saga, legend",
+    "example": {
+      "de": "Das ist nur eine alte Sage.",
+      "en": "That is just an old legend."
+    },
+    "family": [],
+    "related": [
+      "berichterstattung",
+      "veranstaltung",
+      "autor"
     ],
     "theme": "Medien und Kultur"
   },
@@ -16210,7 +16190,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "berichterstattung",
       "schlagzeile",
-      "autor"
+      "sage"
     ],
     "theme": "Medien und Kultur"
   },
@@ -16262,7 +16242,7 @@ export const GENERATED: RawWord[] = [
     "id": "vorspielen",
     "tier": 5,
     "lemma": "vorspielen",
-    "en": "to perform something for",
+    "en": "to play for someone, to audition; to pretend",
     "example": {
       "de": "Ich habe für die Hauptrolle vorgespielt.",
       "en": "I auditioned for the lead role."
@@ -16338,7 +16318,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Sänger",
     "plural": "Sänger",
-    "en": "agent noun of singen, singer",
+    "en": "singer",
     "example": {
       "de": "Viele junge Mädchen lieben diesen Sänger.",
       "en": "Many young girls like that singer."
@@ -16359,8 +16339,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Zeitschriften",
     "en": "magazine",
     "example": {
-      "de": "Sie leihen sich Zeitschriften von Taninna.",
-      "en": "They borrow magazines from Taninna."
+      "de": "Ich lese jede Woche eine Zeitschrift.",
+      "en": "I read a magazine every week."
     },
     "family": [],
     "related": [
@@ -16460,8 +16440,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "poetisch",
     "en": "poetic",
     "example": {
-      "de": "Berberisch ist eine sehr poetische Sprache.",
-      "en": "Berber is a pretty poetic language."
+      "de": "Das Gedicht klingt sehr poetisch.",
+      "en": "The poem sounds very poetic."
     },
     "family": [],
     "related": [
@@ -16477,7 +16457,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Akustik",
     "plural": "Akustiken",
-    "en": "acoustic, acoustics",
+    "en": "acoustics",
     "example": {
       "de": "Die Akustik in diesem Raum ist ausgezeichnet.",
       "en": "The acoustics in this space are excellent."
@@ -16512,7 +16492,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Land",
     "plural": "Länder",
-    "en": "country; countryside",
+    "en": "country, countryside",
     "example": {
       "de": "In welchem Land bist du geboren?",
       "en": "Which country were you born in?"
@@ -16524,7 +16504,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "frieden",
       "krieg",
-      "macht"
+      "gott"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -16545,27 +16525,8 @@ export const GENERATED: RawWord[] = [
     ],
     "related": [
       "frieden",
-      "macht",
-      "land"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "macht",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Macht",
-    "plural": "Mächte",
-    "en": "power, authority",
-    "example": {
-      "de": "Die Kanzlerin übernahm die Macht im Jahr 2005.",
-      "en": "The Chancellor took power in 2005."
-    },
-    "family": [],
-    "related": [
-      "frieden",
       "gott",
-      "krieg"
+      "land"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -16583,26 +16544,7 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "frieden",
-      "glaube",
-      "macht"
-    ],
-    "theme": "Politik und Gesellschaft"
-  },
-  {
-    "id": "glaube",
-    "tier": 1,
-    "article": "der",
-    "lemma": "Glaube",
-    "plural": "Glauben",
-    "en": "belief, faith",
-    "example": {
-      "de": "Glauben Sie, ihre Geschichte stimmt nicht?",
-      "en": "Do you think her story is false?"
-    },
-    "family": [],
-    "related": [
-      "frieden",
-      "gott",
+      "krieg",
       "regierung"
     ],
     "theme": "Politik und Gesellschaft"
@@ -16622,9 +16564,9 @@ export const GENERATED: RawWord[] = [
       "Friedensvertrag"
     ],
     "related": [
-      "buerger",
+      "macht",
       "regierung",
-      "glaube"
+      "gott"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -16644,7 +16586,7 @@ export const GENERATED: RawWord[] = [
       "Regierungschef"
     ],
     "related": [
-      "buerger",
+      "macht",
       "wahl",
       "frieden",
       "gesellschaft"
@@ -16657,7 +16599,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Wahl",
     "plural": "Wahlen",
-    "en": "election; choice",
+    "en": "election, choice",
     "example": {
       "de": "Die Wahl findet im September statt.",
       "en": "The election takes place in September."
@@ -16667,7 +16609,7 @@ export const GENERATED: RawWord[] = [
       "Wähler"
     ],
     "related": [
-      "buerger",
+      "macht",
       "gesellschaft",
       "regierung",
       "entscheidung"
@@ -16680,7 +16622,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Gesellschaft",
     "plural": "Gesellschaften",
-    "en": "society; company",
+    "en": "society, company",
     "example": {
       "de": "Die Gesellschaft verändert sich schnell.",
       "en": "Society is changing quickly."
@@ -16690,7 +16632,7 @@ export const GENERATED: RawWord[] = [
       "Gesellschafter"
     ],
     "related": [
-      "buerger",
+      "macht",
       "meinung",
       "wahl",
       "regierung"
@@ -16713,7 +16655,7 @@ export const GENERATED: RawWord[] = [
       "Meinungsfreiheit"
     ],
     "related": [
-      "buerger",
+      "macht",
       "waffe",
       "gesellschaft"
     ],
@@ -16727,12 +16669,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Waffen",
     "en": "weapon, arm",
     "example": {
-      "de": "Er wurde mit einer stumpfen Waffe getötet.",
-      "en": "He was killed by a blunt weapon."
+      "de": "Er trägt keine Waffe.",
+      "en": "He is not carrying a weapon."
     },
     "family": [],
     "related": [
-      "buerger",
+      "macht",
       "koenig",
       "meinung"
     ],
@@ -16751,7 +16693,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "buerger",
+      "macht",
       "praesident",
       "waffe"
     ],
@@ -16770,7 +16712,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "buerger",
+      "macht",
       "freiheit",
       "koenig"
     ],
@@ -16784,12 +16726,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Freiheiten",
     "en": "freedom",
     "example": {
-      "de": "Keine Freiheit für die Feinde der Freiheit.",
-      "en": "No liberty for the enemies of liberty."
+      "de": "Freiheit ist wichtig für mich.",
+      "en": "Freedom is important to me."
     },
     "family": [],
     "related": [
-      "buerger",
+      "macht",
       "armee",
       "praesident"
     ],
@@ -16808,9 +16750,47 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "buerger",
+      "macht",
       "freiheit",
-      "gerechtigkeit"
+      "glaube"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "macht",
+    "tier": 3,
+    "article": "die",
+    "lemma": "Macht",
+    "plural": "Mächte",
+    "en": "power, authority",
+    "example": {
+      "de": "Die Kanzlerin übernahm die Macht im Jahr 2005.",
+      "en": "The Chancellor took power in 2005."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "glaube",
+      "armee"
+    ],
+    "theme": "Politik und Gesellschaft"
+  },
+  {
+    "id": "glaube",
+    "tier": 3,
+    "article": "der",
+    "lemma": "Glaube",
+    "plural": "Glauben",
+    "en": "belief, faith",
+    "example": {
+      "de": "Ihr Glaube an Gott ist stark.",
+      "en": "Her faith in God is strong."
+    },
+    "family": [],
+    "related": [
+      "partei",
+      "buerger",
+      "macht"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -16832,7 +16812,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "partei",
       "gerechtigkeit",
-      "armee"
+      "glaube"
     ],
     "theme": "Politik und Gesellschaft"
   },
@@ -16918,7 +16898,7 @@ export const GENERATED: RawWord[] = [
     "id": "waehlen",
     "tier": 3,
     "lemma": "wählen",
-    "en": "to choose, to select",
+    "en": "to vote, to choose, to dial",
     "example": {
       "de": "Welche Partei wählst du dieses Jahr?",
       "en": "What party are you voting for this year?"
@@ -16974,7 +16954,6 @@ export const GENERATED: RawWord[] = [
     "tier": 3,
     "article": "die",
     "lemma": "Politik",
-    "plural": "Politiken",
     "en": "politics",
     "example": {
       "de": "In der Politik muss man schlagfertig sein.",
@@ -17073,10 +17052,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Verfassung",
     "plural": "Verfassungen",
-    "en": "constitution",
+    "en": "constitution; condition",
     "example": {
-      "de": "Sie ist in guter körperlicher Verfassung.",
-      "en": "She's in good physical condition."
+      "de": "Die Verfassung schützt die Rechte der Bürger.",
+      "en": "The constitution protects the rights of citizens."
     },
     "family": [],
     "related": [
@@ -17180,8 +17159,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Abstimmungen",
     "en": "vote",
     "example": {
-      "de": "Die Abstimmung hat mal wieder nicht geklappt.",
-      "en": "Again, co-ordination didn’t work."
+      "de": "Die Abstimmung ist morgen.",
+      "en": "The vote is tomorrow."
     },
     "family": [],
     "related": [
@@ -17279,21 +17258,21 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "umfrage",
-      "abgeordneter",
+      "abgeordnete",
       "parlament"
     ],
     "theme": "Politik und Gesellschaft"
   },
   {
-    "id": "abgeordneter",
+    "id": "abgeordnete",
     "tier": 5,
     "article": "der",
-    "lemma": "Abgeordneter",
+    "lemma": "Abgeordnete",
     "plural": "Abgeordnete",
     "en": "delegate, assemblyman",
     "example": {
-      "de": "Es ist ein Ausschuss Abgeordneter angekommen.",
-      "en": "A committee of congressmen has arrived."
+      "de": "Die Abgeordneten stimmen im Parlament ab.",
+      "en": "The members of parliament are voting in parliament."
     },
     "family": [],
     "related": [
@@ -17319,7 +17298,7 @@ export const GENERATED: RawWord[] = [
       "Frage"
     ],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "einwanderung",
       "gleichberechtigung"
     ],
@@ -17340,7 +17319,7 @@ export const GENERATED: RawWord[] = [
       "Einwanderer"
     ],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "gleichberechtigung",
       "umfrage"
     ],
@@ -17361,7 +17340,7 @@ export const GENERATED: RawWord[] = [
       "Recht"
     ],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "koalition",
       "einwanderung"
     ],
@@ -17383,7 +17362,7 @@ export const GENERATED: RawWord[] = [
       "koalieren"
     ],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "gesetzgebung",
       "gleichberechtigung"
     ],
@@ -17404,7 +17383,7 @@ export const GENERATED: RawWord[] = [
       "Geber"
     ],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "wahlbeteiligung",
       "koalition"
     ],
@@ -17426,7 +17405,7 @@ export const GENERATED: RawWord[] = [
       "beteiligen"
     ],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "britisch",
       "gesetzgebung"
     ],
@@ -17443,7 +17422,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "reform",
       "wahlbeteiligung"
     ],
@@ -17457,12 +17436,12 @@ export const GENERATED: RawWord[] = [
     "plural": "Reformen",
     "en": "reform",
     "example": {
-      "de": "Ich protestiere gegen diese dumme Reform!",
-      "en": "I protest against this stupid reform!"
+      "de": "Die Reform kommt nächstes Jahr.",
+      "en": "The reform is coming next year."
     },
     "family": [],
     "related": [
-      "abgeordneter",
+      "abgeordnete",
       "britisch"
     ],
     "theme": "Politik und Gesellschaft"
@@ -17564,7 +17543,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Uhr",
     "plural": "Uhren",
-    "en": "clock; o’clock",
+    "en": "clock, o'clock",
     "example": {
       "de": "Wie viel Uhr ist es?",
       "en": "What time is it?"
@@ -17588,8 +17567,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "noch",
     "en": "still, yet",
     "example": {
-      "de": "Nur noch ein Wunder kann sie jetzt retten.",
-      "en": "Nothing but a miracle can save her now."
+      "de": "Ich habe noch Hunger.",
+      "en": "I am still hungry."
     },
     "family": [],
     "related": [
@@ -17641,8 +17620,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "jetzt",
     "en": "now",
     "example": {
-      "de": "Ihr Bruder Kensaku ist jetzt in Brasilien.",
-      "en": "Her brother Kensaku is now in Brazil."
+      "de": "Ich bin jetzt zu Hause.",
+      "en": "I am at home now."
     },
     "family": [],
     "related": [
@@ -17745,8 +17724,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Morgen",
     "en": "morning",
     "example": {
-      "de": "Morgen werde ich in der Bibliothek lernen.",
-      "en": "Tomorrow, I'm going to study at the library."
+      "de": "Am Morgen trinke ich Kaffee.",
+      "en": "In the morning I drink coffee."
     },
     "family": [],
     "related": [
@@ -17996,7 +17975,7 @@ export const GENERATED: RawWord[] = [
     "id": "frueher",
     "tier": 2,
     "lemma": "früher",
-    "en": "former, erstwhile",
+    "en": "earlier, in the past",
     "example": {
       "de": "Früher bin ich hier jeden Tag geschwommen.",
       "en": "I used to swim here every day."
@@ -18049,8 +18028,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "danach",
     "en": "after it, after that",
     "example": {
-      "de": "Ich habe den ganzen Morgen danach gesucht.",
-      "en": "I've been looking for it all morning."
+      "de": "Zuerst esse ich, danach gehe ich spazieren.",
+      "en": "First I eat, afterwards I go for a walk."
     },
     "family": [],
     "related": [
@@ -18085,8 +18064,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Sekunden",
     "en": "second (of time)",
     "example": {
-      "de": "Es bleiben dir nur zehn Sekunden zu leben.",
-      "en": "You have only ten seconds left to live."
+      "de": "Eine Minute hat sechzig Sekunden.",
+      "en": "A minute has sixty seconds."
     },
     "family": [],
     "related": [
@@ -18313,10 +18292,10 @@ export const GENERATED: RawWord[] = [
     "id": "allmaehlich",
     "tier": 4,
     "lemma": "allmählich",
-    "en": "gradual",
+    "en": "gradually",
     "example": {
-      "de": "Toms Japanisch verbessert sich allmählich.",
-      "en": "Tom's Japanese is improving little by little."
+      "de": "Mein Deutsch wird allmählich besser.",
+      "en": "My German is gradually getting better."
     },
     "family": [],
     "related": [
@@ -18367,7 +18346,6 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "der",
     "lemma": "Januar",
-    "plural": "Januare",
     "en": "January",
     "example": {
       "de": "Gestern war Dienstag, der 26. Januar 2010.",
@@ -18534,7 +18512,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Vormittag",
     "plural": "Vormittage",
-    "en": "mid-morning, late morning",
+    "en": "morning (before noon)",
     "example": {
       "de": "Ich komme gewöhnlich am Vormittag hierher.",
       "en": "I usually come here in the morning."
@@ -18594,8 +18572,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Ortszeiten",
     "en": "local time",
     "example": {
-      "de": "Der Unterricht beginnt um 16 Uhr Ortszeit Rio de Janeiro (GMT −3).",
-      "en": "The classes will start at 4:00 PM Rio de Janeiro Time (GMT -3)."
+      "de": "Wir landen um 18 Uhr Ortszeit.",
+      "en": "We land at 6 p.m. local time."
     },
     "family": [],
     "related": [
@@ -18620,7 +18598,7 @@ export const GENERATED: RawWord[] = [
       "angstvoll"
     ],
     "related": [
-      "freude",
+      "gefallen",
       "liebe",
       "glueck",
       "gefuehl"
@@ -18642,7 +18620,7 @@ export const GENERATED: RawWord[] = [
       "lieb"
     ],
     "related": [
-      "freude",
+      "gefallen",
       "glueck",
       "angst",
       "beziehung"
@@ -18654,7 +18632,7 @@ export const GENERATED: RawWord[] = [
     "tier": 1,
     "article": "das",
     "lemma": "Glück",
-    "en": "luck; happiness",
+    "en": "luck, happiness",
     "example": {
       "de": "Viel Glück bei der Prüfung!",
       "en": "Good luck with the exam!"
@@ -18664,7 +18642,7 @@ export const GENERATED: RawWord[] = [
       "Glückwunsch"
     ],
     "related": [
-      "freude",
+      "gefallen",
       "sorge",
       "liebe"
     ],
@@ -18686,64 +18664,10 @@ export const GENERATED: RawWord[] = [
       "besorgt"
     ],
     "related": [
-      "freude",
-      "wuerde",
+      "gefallen",
+      "gluecklich",
       "glueck",
       "gesundheit"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "wuerde",
-    "tier": 1,
-    "article": "die",
-    "lemma": "Würde",
-    "plural": "Würden",
-    "en": "dignity",
-    "example": {
-      "de": "Würden Sie mir bitte den Pfeffer reichen?",
-      "en": "Could you please pass me the pepper?"
-    },
-    "family": [],
-    "related": [
-      "freude",
-      "leid",
-      "sorge"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "leid",
-    "tier": 1,
-    "article": "das",
-    "lemma": "Leid",
-    "en": "woe, grief",
-    "example": {
-      "de": "Tut mir Leid, ich kann dir nicht folgen.",
-      "en": "I'm sorry, I don't follow."
-    },
-    "family": [],
-    "related": [
-      "freude",
-      "gefallen",
-      "wuerde"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "gefallen",
-    "tier": 1,
-    "lemma": "gefallen",
-    "en": "to please",
-    "example": {
-      "de": "Sie haben alle abgestorbenen Bäume gefällt.",
-      "en": "They chopped down all the withered trees."
-    },
-    "family": [],
-    "related": [
-      "freude",
-      "gluecklich",
-      "leid"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -18758,9 +18682,26 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "freude",
       "gefallen",
-      "nervoes"
+      "sorge",
+      "freude"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "gefallen",
+    "tier": 2,
+    "lemma": "gefallen",
+    "en": "to please",
+    "example": {
+      "de": "Das Kleid gefällt mir.",
+      "en": "I like the dress."
+    },
+    "family": [],
+    "related": [
+      "stimmung",
+      "freude",
+      "gluecklich"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -18782,7 +18723,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "stimmung",
       "nervoes",
-      "gluecklich",
+      "gefallen",
       "sich-freuen"
     ],
     "theme": "Gefühle und Charakter"
@@ -18890,8 +18831,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "froh",
     "en": "glad, happy",
     "example": {
-      "de": "Du wirst deines Lebens nicht mehr froh.",
-      "en": "You will no longer be happy with your life."
+      "de": "Ich bin froh, dass du da bist.",
+      "en": "I am glad you are here."
     },
     "family": [],
     "related": [
@@ -19126,8 +19067,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "nerven",
     "en": "to annoy, to irritate",
     "example": {
-      "de": "Toms Art zu reden geht mir auf die Nerven.",
-      "en": "Tom's way of speaking gets on my nerves."
+      "de": "Das Kind nervt mich.",
+      "en": "The child is annoying me."
     },
     "family": [],
     "related": [
@@ -19143,8 +19084,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "hassen",
     "en": "to hate",
     "example": {
-      "de": "Die Rabenkrähen hassten auf den Waldkauz.",
-      "en": "The carrion crows mobbed the tawny owl."
+      "de": "Ich hasse es, früh aufzustehen.",
+      "en": "I hate getting up early."
     },
     "family": [],
     "related": [
@@ -19158,7 +19099,7 @@ export const GENERATED: RawWord[] = [
     "id": "peinlich",
     "tier": 3,
     "lemma": "peinlich",
-    "en": "woeful, hurtful",
+    "en": "embarrassing",
     "example": {
       "de": "Mir unterlief ein peinlicher Fehler.",
       "en": "I made an embarrassing mistake."
@@ -19212,8 +19153,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "mutig",
     "en": "courageous",
     "example": {
-      "de": "Obwohl sie ein Mädchen ist, ist sie mutig.",
-      "en": "She's a girl, but she's brave."
+      "de": "Das war eine mutige Entscheidung.",
+      "en": "That was a brave decision."
     },
     "family": [],
     "related": [
@@ -19235,7 +19176,24 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "enttaeuschung",
-      "mutig",
+      "geniessen",
+      "mutig"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "geniessen",
+    "tier": 3,
+    "lemma": "genießen",
+    "en": "to enjoy, to relish",
+    "example": {
+      "de": "Wir haben es genossen, Tennis zu spielen.",
+      "en": "We enjoyed playing tennis."
+    },
+    "family": [],
+    "related": [
+      "enttaeuschung",
+      "eifersuechtig",
       "eifersucht"
     ],
     "theme": "Gefühle und Charakter"
@@ -19256,9 +19214,9 @@ export const GENERATED: RawWord[] = [
       "enttäuscht"
     ],
     "related": [
-      "misstrauen",
+      "wuerde",
       "eifersucht",
-      "eifersuechtig"
+      "geniessen"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19277,7 +19235,7 @@ export const GENERATED: RawWord[] = [
       "Eifer"
     ],
     "related": [
-      "misstrauen",
+      "wuerde",
       "neugier",
       "enttaeuschung"
     ],
@@ -19294,11 +19252,10 @@ export const GENERATED: RawWord[] = [
       "en": "Out of curiosity I looked in the box."
     },
     "family": [
-      "neugierig",
-      "Gier"
+      "neugierig"
     ],
     "related": [
-      "misstrauen",
+      "wuerde",
       "verzweiflung",
       "eifersucht"
     ],
@@ -19319,7 +19276,7 @@ export const GENERATED: RawWord[] = [
       "Zweifel"
     ],
     "related": [
-      "misstrauen",
+      "wuerde",
       "sehnsucht",
       "neugier"
     ],
@@ -19341,26 +19298,9 @@ export const GENERATED: RawWord[] = [
       "sehnsüchtig"
     ],
     "related": [
-      "misstrauen",
-      "geniessen",
-      "verzweiflung"
-    ],
-    "theme": "Gefühle und Charakter"
-  },
-  {
-    "id": "geniessen",
-    "tier": 4,
-    "lemma": "genießen",
-    "en": "to enjoy, to relish",
-    "example": {
-      "de": "Wir haben es genossen, Tennis zu spielen.",
-      "en": "We enjoyed playing tennis."
-    },
-    "family": [],
-    "related": [
-      "misstrauen",
+      "wuerde",
       "schluchzen",
-      "sehnsucht"
+      "verzweiflung"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19375,9 +19315,9 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "misstrauen",
+      "wuerde",
       "sich-aergern",
-      "geniessen"
+      "sehnsucht"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19392,7 +19332,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "misstrauen",
+      "wuerde",
       "egoistisch",
       "schluchzen"
     ],
@@ -19409,7 +19349,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "misstrauen",
+      "wuerde",
       "veraengstigt",
       "sich-aergern"
     ],
@@ -19426,7 +19366,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "misstrauen",
+      "wuerde",
       "verknallt",
       "egoistisch"
     ],
@@ -19443,7 +19383,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "misstrauen",
+      "wuerde",
       "trauer",
       "veraengstigt"
     ],
@@ -19456,12 +19396,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "Trauer",
     "en": "grief, sorrow",
     "example": {
-      "de": "Krieg wird von Elend und Trauer begleitet.",
-      "en": "Misery and sorrow accompany war."
+      "de": "In ihrer Trauer brach sie in Tränen aus.",
+      "en": "In her grief she burst into tears."
     },
     "family": [],
     "related": [
-      "misstrauen",
+      "wuerde",
       "schuechtern",
       "verknallt"
     ],
@@ -19478,9 +19418,45 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "misstrauen",
+      "wuerde",
       "trauer",
-      "troesten"
+      "leid"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "wuerde",
+    "tier": 5,
+    "article": "die",
+    "lemma": "Würde",
+    "en": "dignity",
+    "example": {
+      "de": "Er behandelt alle mit Würde.",
+      "en": "He treats everyone with dignity."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "leid",
+      "schuechtern"
+    ],
+    "theme": "Gefühle und Charakter"
+  },
+  {
+    "id": "leid",
+    "tier": 5,
+    "article": "das",
+    "lemma": "Leid",
+    "en": "suffering, grief",
+    "example": {
+      "de": "Er hat viel Leid erlebt.",
+      "en": "He has experienced a lot of suffering."
+    },
+    "family": [],
+    "related": [
+      "gelassenheit",
+      "misstrauen",
+      "wuerde"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19501,7 +19477,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "gelassenheit",
       "troesten",
-      "schuechtern"
+      "leid"
     ],
     "theme": "Gefühle und Charakter"
   },
@@ -19528,8 +19504,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "unverschämt",
     "en": "impertinent",
     "example": {
-      "de": "Toms Forderungen wurden immer unverschämter.",
-      "en": "Tom's demands became more and more outrageous."
+      "de": "Die Preise sind unverschämt.",
+      "en": "The prices are outrageous."
     },
     "family": [],
     "related": [
@@ -19543,7 +19519,7 @@ export const GENERATED: RawWord[] = [
     "id": "unruhig",
     "tier": 5,
     "lemma": "unruhig",
-    "en": "noisy",
+    "en": "restless, uneasy",
     "example": {
       "de": "Die Pferde sind wegen der Schüsse unruhig.",
       "en": "The horses are unsettled about the gunshots."
@@ -19596,8 +19572,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "heiter",
     "en": "cheerful, light-hearted",
     "example": {
-      "de": "Das kam wie ein Blitz aus heiterem Himmel.",
-      "en": "This was a bolt from the blue."
+      "de": "Der Tag ist heiter und hell.",
+      "en": "The day is cheerful and bright."
     },
     "family": [],
     "related": [
@@ -19613,7 +19589,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Unruhe",
     "plural": "Unruhen",
-    "en": "turbulence, perturbation",
+    "en": "unrest, restlessness",
     "example": {
       "de": "Die schlimmsten Unruhen waren in Chicago.",
       "en": "The worst riot was in Chicago."
@@ -19630,7 +19606,7 @@ export const GENERATED: RawWord[] = [
     "id": "nachgeben",
     "tier": 5,
     "lemma": "nachgeben",
-    "en": "to give way",
+    "en": "to give in, to yield",
     "example": {
       "de": "Du darfst der Versuchung nicht nachgeben.",
       "en": "You must not yield to temptation."
@@ -19650,8 +19626,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "Neid",
     "en": "envy, jealousy",
     "example": {
-      "de": "Die Tochter des Neides ist die Verleumdung.",
-      "en": "The daughter of envy is defamation."
+      "de": "Er spürt Neid auf seinen Bruder.",
+      "en": "He feels envy of his brother."
     },
     "family": [],
     "related": [
@@ -19693,8 +19669,7 @@ export const GENERATED: RawWord[] = [
       "en": "She looks to the future with confidence."
     },
     "family": [
-      "zuversichtlich",
-      "Versicht"
+      "zuversichtlich"
     ],
     "related": [
       "neid",
@@ -19751,8 +19726,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "griesgrämig",
     "en": "grouchy, sullen",
     "example": {
-      "de": "Der griesgrämige Alte war Toms Großvater.",
-      "en": "That grumpy old man was Tom's grandfather."
+      "de": "Er ist heute griesgrämig.",
+      "en": "He is grumpy today."
     },
     "family": [],
     "related": [
@@ -19862,8 +19837,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "bitte",
     "en": "please, if you please",
     "example": {
-      "de": "Wenn Sie frei haben, bitte helfen Sie mir.",
-      "en": "If you are free, give me a hand."
+      "de": "Kannst du mir bitte helfen?",
+      "en": "Can you please help me?"
     },
     "family": [],
     "related": [
@@ -19896,8 +19871,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "danken",
     "en": "to thank",
     "example": {
-      "de": "Vielen Dank im Voraus für deine Mitarbeit.",
-      "en": "Thank you in advance for your cooperation."
+      "de": "Ich danke dir für deine Hilfe.",
+      "en": "I thank you for your help."
     },
     "family": [],
     "related": [
@@ -19914,8 +19889,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "Dank",
     "en": "thanks, gratitude",
     "example": {
-      "de": "Vielen Dank im Voraus für eure Mitarbeit.",
-      "en": "Thank you in advance for your cooperation."
+      "de": "Vielen Dank für deine Hilfe!",
+      "en": "Thank you very much for your help!"
     },
     "family": [],
     "related": [
@@ -19980,7 +19955,7 @@ export const GENERATED: RawWord[] = [
     "id": "zeigen",
     "tier": 1,
     "lemma": "zeigen",
-    "en": "to show, make see",
+    "en": "to show",
     "example": {
       "de": "Zeig mir mal deine Briefmarkensammlung!",
       "en": "Please show me your stamp collection!"
@@ -20079,8 +20054,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Reden",
     "en": "speech, address",
     "example": {
-      "de": "Sein Reden lenkte sie von ihrem Kummer ab.",
-      "en": "His talk distracted her from grief."
+      "de": "Die Rede dauerte zehn Minuten.",
+      "en": "The speech lasted ten minutes."
     },
     "family": [],
     "related": [
@@ -20181,7 +20156,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Stimme",
     "plural": "Stimmen",
-    "en": "voice, call of an animal",
+    "en": "voice, vote",
     "example": {
       "de": "Die Stimme erinnerte mich an meine Mutter.",
       "en": "The voice reminded me of my mother."
@@ -20200,8 +20175,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "lügen",
     "en": "to tell a lie, to lie",
     "example": {
-      "de": "Nicht jede unwahre Aussage ist eine Lüge.",
-      "en": "Not every untrue statement is a lie."
+      "de": "Ich lüge nie.",
+      "en": "I never lie."
     },
     "family": [],
     "related": [
@@ -20217,8 +20192,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "schreien",
     "en": "to shout, to yell",
     "example": {
-      "de": "Plötzlich hörte ich einen schrillen Schrei.",
-      "en": "All at once, I heard a shrill cry."
+      "de": "Das Baby schreit laut.",
+      "en": "The baby is screaming loudly."
     },
     "family": [],
     "related": [
@@ -20258,8 +20233,7 @@ export const GENERATED: RawWord[] = [
       "en": "He claims to have known everything."
     },
     "family": [
-      "Behauptung",
-      "haupt"
+      "Behauptung"
     ],
     "related": [
       "diskutieren",
@@ -20272,7 +20246,7 @@ export const GENERATED: RawWord[] = [
     "id": "heissen",
     "tier": 3,
     "lemma": "heißen",
-    "en": "to have a name, to be named",
+    "en": "to be called",
     "example": {
       "de": "Ich werde Lutz genannt, aber ich heiße Ludger.",
       "en": "They call me Lutz, but my name is Ludger."
@@ -20291,8 +20265,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "besprechen",
     "en": "to discuss",
     "example": {
-      "de": "Viviana hat wichtige Themen zu besprechen.",
-      "en": "Viviana has important issues to discuss."
+      "de": "Wir besprechen den Plan.",
+      "en": "We are discussing the plan."
     },
     "family": [],
     "related": [
@@ -20361,7 +20335,7 @@ export const GENERATED: RawWord[] = [
     "id": "raten",
     "tier": 3,
     "lemma": "raten",
-    "en": "to advise, to recommend",
+    "en": "to advise; to guess",
     "example": {
       "de": "Ich rate dir dazu, die Chance zu ergreifen.",
       "en": "I advise you to take the chance."
@@ -20514,8 +20488,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "aussprechen",
     "en": "to pronounce",
     "example": {
-      "de": "Frau Ogawa spielt ausgesprochen gut Tennis.",
-      "en": "Mrs. Ogawa is really good at tennis."
+      "de": "Wie spricht man dieses Wort aus?",
+      "en": "How do you pronounce this word?"
     },
     "family": [],
     "related": [
@@ -20548,10 +20522,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Anweisung",
     "plural": "Anweisungen",
-    "en": "directive, order",
+    "en": "instruction",
     "example": {
-      "de": "Meine Anweisung wirkte auf sie ermutigend.",
-      "en": "My advice acted as an encouragement to her."
+      "de": "Bitte befolgen Sie die Anweisungen.",
+      "en": "Please follow the instructions."
     },
     "family": [],
     "related": [
@@ -20586,8 +20560,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Sprecher",
     "en": "speaker",
     "example": {
-      "de": "Nicht-Muttersprachler sind auch Sprecher.",
-      "en": "Non-native speakers are speakers, too."
+      "de": "Der Sprecher beginnt gleich.",
+      "en": "The speaker is about to begin."
     },
     "family": [],
     "related": [
@@ -20895,7 +20869,7 @@ export const GENERATED: RawWord[] = [
       "en": "What are you doing at the weekend?"
     },
     "family": [
-      "Machbar",
+      "machbar",
       "Macher"
     ],
     "related": [
@@ -20915,8 +20889,7 @@ export const GENERATED: RawWord[] = [
       "en": "I’m quickly going to pick up the children."
     },
     "family": [
-      "abholen",
-      "Holz"
+      "abholen"
     ],
     "related": [
       "mitnehmen",
@@ -20955,8 +20928,7 @@ export const GENERATED: RawWord[] = [
       "en": "I’m looking for my glasses."
     },
     "family": [
-      "Suche",
-      "besuchen"
+      "Suche"
     ],
     "related": [
       "mitnehmen",
@@ -21024,7 +20996,7 @@ export const GENERATED: RawWord[] = [
     "id": "hier",
     "tier": 1,
     "lemma": "hier",
-    "en": "here, in this place",
+    "en": "here",
     "example": {
       "de": "Die Kirche ist gleich hier am Ende der Straße.",
       "en": "The church is right there at the end of the street."
@@ -21058,7 +21030,7 @@ export const GENERATED: RawWord[] = [
     "id": "koennen",
     "tier": 1,
     "lemma": "können",
-    "en": "can, to be able to",
+    "en": "to be able to, can",
     "example": {
       "de": "Das kann sein, kann aber auch nicht sein.",
       "en": "This may be and may also not be."
@@ -21083,25 +21055,8 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "mitnehmen",
-      "schonen",
-      "koennen"
-    ],
-    "theme": "Alltag und Bewegung"
-  },
-  {
-    "id": "schonen",
-    "tier": 1,
-    "lemma": "schonen",
-    "en": "to spare",
-    "example": {
-      "de": "Ich habe dieses Lied schon einmal gehört.",
-      "en": "I've heard that song before."
-    },
-    "family": [],
-    "related": [
-      "mitnehmen",
       "werden",
-      "auch"
+      "koennen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21109,16 +21064,16 @@ export const GENERATED: RawWord[] = [
     "id": "werden",
     "tier": 1,
     "lemma": "werden",
-    "en": "to become",
+    "en": "to become; will (future)",
     "example": {
-      "de": "Rom ist nicht an einem Tage erbaut worden.",
-      "en": "Rome wasn't built in a day."
+      "de": "Es wird dunkel.",
+      "en": "It is getting dark."
     },
     "family": [],
     "related": [
       "mitnehmen",
       "muessen",
-      "schonen"
+      "auch"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21160,10 +21115,10 @@ export const GENERATED: RawWord[] = [
     "id": "sehen",
     "tier": 1,
     "lemma": "sehen",
-    "en": "to see, to have sight",
+    "en": "to see",
     "example": {
-      "de": "Peter sieht, dass das Garagentor offen ist.",
-      "en": "Peter sees that the garage door is open."
+      "de": "Ich sehe einen Vogel.",
+      "en": "I see a bird."
     },
     "family": [],
     "related": [
@@ -21177,7 +21132,7 @@ export const GENERATED: RawWord[] = [
     "id": "sollen",
     "tier": 1,
     "lemma": "sollen",
-    "en": "should, to be obligated",
+    "en": "to be supposed to, should",
     "example": {
       "de": "Du solltest nicht deine Zeit verschwenden.",
       "en": "You shouldn't waste your time."
@@ -21196,8 +21151,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "weg",
     "en": "away",
     "example": {
-      "de": "Unser Wagen ist auf dem Weg kaputtgegangen.",
-      "en": "Our car broke down on our way there."
+      "de": "Er ist schon weg.",
+      "en": "He has already left."
     },
     "family": [],
     "related": [
@@ -21213,31 +21168,14 @@ export const GENERATED: RawWord[] = [
     "lemma": "leben",
     "en": "to live, to be alive",
     "example": {
-      "de": "Das Leben beginnt, wenn man Steuern zahlt.",
-      "en": "Life begins when you pay taxes."
-    },
-    "family": [],
-    "related": [
-      "mitnehmen",
-      "sichern",
-      "weg"
-    ],
-    "theme": "Alltag und Bewegung"
-  },
-  {
-    "id": "sichern",
-    "tier": 1,
-    "lemma": "sichern",
-    "en": "to secure",
-    "example": {
-      "de": "Ich bin mir sicher, dass er falsch liegt.",
-      "en": "I am positive that he is wrong."
+      "de": "Wir leben in Berlin.",
+      "en": "We live in Berlin."
     },
     "family": [],
     "related": [
       "mitnehmen",
       "zurueck",
-      "leben"
+      "weg"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21254,7 +21192,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "mitnehmen",
       "lassen",
-      "sichern"
+      "leben"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21262,7 +21200,7 @@ export const GENERATED: RawWord[] = [
     "id": "lassen",
     "tier": 1,
     "lemma": "lassen",
-    "en": "to allow, to permit",
+    "en": "to let, to leave",
     "example": {
       "de": "Die anderen lassen mich nicht mitmachen!",
       "en": "The others won't let me join in!"
@@ -21315,8 +21253,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "nehmen",
     "en": "to take",
     "example": {
-      "de": "Die Niederlage nahm der Mannschaft den Mut.",
-      "en": "The team's defeat robbed them of their courage."
+      "de": "Ich nehme den Bus.",
+      "en": "I take the bus."
     },
     "family": [],
     "related": [
@@ -21400,8 +21338,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "stehen",
     "en": "to stand",
     "example": {
-      "de": "Welche Zahlungsarten stehen zur Verfügung?",
-      "en": "What payment options are available?"
+      "de": "Das Auto steht vor dem Haus.",
+      "en": "The car is standing in front of the house."
     },
     "family": [],
     "related": [
@@ -21417,8 +21355,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "treffen",
     "en": "to meet, to encounter",
     "example": {
-      "de": "Es trifft sich ausgezeichnet, dass...",
-      "en": "It is entirely fitting that..."
+      "de": "Ich treffe meine Freunde am Samstag.",
+      "en": "I am meeting my friends on Saturday."
     },
     "family": [],
     "related": [
@@ -21543,7 +21481,7 @@ export const GENERATED: RawWord[] = [
     "id": "reichen",
     "tier": 2,
     "lemma": "reichen",
-    "en": "to reach",
+    "en": "to reach, to be enough",
     "example": {
       "de": "Der Turm reicht fast bis zum Himmel.",
       "en": "The tower almost reaches the sky."
@@ -21551,25 +21489,8 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "abholen",
-      "platzen",
-      "wiedersehen"
-    ],
-    "theme": "Alltag und Bewegung"
-  },
-  {
-    "id": "platzen",
-    "tier": 2,
-    "lemma": "platzen",
-    "en": "to burst, to pop",
-    "example": {
-      "de": "Wer wird den Platz seiner Mutter einnehmen?",
-      "en": "Who will take the place of his mother?"
-    },
-    "family": [],
-    "related": [
-      "abholen",
       "nummer",
-      "reichen"
+      "wiedersehen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21588,7 +21509,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "abholen",
       "sich-setzen",
-      "platzen"
+      "reichen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -21649,8 +21570,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "passen",
     "en": "to fit",
     "example": {
-      "de": "Pass in vollen Zügen auf Taschendiebe auf.",
-      "en": "Look out for pickpockets on crowded trains."
+      "de": "Die Schuhe passen mir gut.",
+      "en": "The shoes fit me well."
     },
     "family": [],
     "related": [
@@ -21683,10 +21604,10 @@ export const GENERATED: RawWord[] = [
     "id": "schaffen",
     "tier": 2,
     "lemma": "schaffen",
-    "en": "to create, to call into being",
+    "en": "to manage, to create",
     "example": {
-      "de": "Warum hat Gott die Welt geschaffen?",
-      "en": "Why did God create the world?"
+      "de": "Ich schaffe das!",
+      "en": "I can do it!"
     },
     "family": [],
     "related": [
@@ -21717,7 +21638,7 @@ export const GENERATED: RawWord[] = [
     "id": "laufen",
     "tier": 2,
     "lemma": "laufen",
-    "en": "to walk, to jog",
+    "en": "to run, to walk",
     "example": {
       "de": "Wir können mit dem Bus fahren oder laufen.",
       "en": "We could take the bus or walk."
@@ -21734,10 +21655,10 @@ export const GENERATED: RawWord[] = [
     "id": "ziehen",
     "tier": 2,
     "lemma": "ziehen",
-    "en": "to pull, to drag",
+    "en": "to pull; to move (house)",
     "example": {
-      "de": "Da mir kalt war, zog ich meinen Mantel an.",
-      "en": "Since I was cold, I put on my coat."
+      "de": "Er zieht den Wagen.",
+      "en": "He is pulling the cart."
     },
     "family": [],
     "related": [
@@ -21789,7 +21710,7 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Stück",
     "plural": "Stücke",
-    "en": "one, item",
+    "en": "piece",
     "example": {
       "de": "Schneiden Sie den Lachs in kleine Stücke.",
       "en": "Cut the salmon into small pieces."
@@ -21825,8 +21746,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "sitzen",
     "en": "to sit, to perch",
     "example": {
-      "de": "Ich überließ einer alten Dame meinen Sitz.",
-      "en": "I gave up my seat to an old lady."
+      "de": "Ich sitze am Tisch.",
+      "en": "I am sitting at the table."
     },
     "family": [],
     "related": [
@@ -21859,10 +21780,10 @@ export const GENERATED: RawWord[] = [
     "id": "passieren",
     "tier": 2,
     "lemma": "passieren",
-    "en": "to happen",
+    "en": "to happen; to pass",
     "example": {
-      "de": "Die Gruppe hat soeben die Grenze passiert.",
-      "en": "The group has just passed the border."
+      "de": "Was ist passiert?",
+      "en": "What happened?"
     },
     "family": [],
     "related": [
@@ -21878,8 +21799,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "fallen",
     "en": "to fall, to drop",
     "example": {
-      "de": "Die Schlagzeile fiel mir heute Morgen auf.",
-      "en": "The headline caught my eye this morning."
+      "de": "Das Kind fällt hin.",
+      "en": "The child falls down."
     },
     "family": [],
     "related": [
@@ -22031,8 +21952,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "schlagen",
     "en": "to beat, to hit",
     "example": {
-      "de": "Ich schlug zwei Fliegen mit einer Klappe.",
-      "en": "I killed two birds with one stone."
+      "de": "Er schlägt den Ball.",
+      "en": "He hits the ball."
     },
     "family": [],
     "related": [
@@ -22048,8 +21969,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "werfen",
     "en": "to throw",
     "example": {
-      "de": "Das Flugzeug warf Bomben auf die Stadt ab.",
-      "en": "The plane dropped bombs on the city."
+      "de": "Er wirft den Ball.",
+      "en": "He throws the ball."
     },
     "family": [],
     "related": [
@@ -22090,7 +22011,7 @@ export const GENERATED: RawWord[] = [
       "holen"
     ],
     "related": [
-      "aufraeumen",
+      "schonen",
       "normalerweise",
       "stoeren"
     ],
@@ -22107,7 +22028,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "steigen",
       "abholen"
     ],
@@ -22119,12 +22040,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "steigen",
     "en": "to ascend, to climb",
     "example": {
-      "de": "Die Party im Club steigt heute um 19 Uhr.",
-      "en": "The party in the club is happening tonight at 7 pm."
+      "de": "Die Temperatur steigt.",
+      "en": "The temperature is rising."
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "aufgeben",
       "normalerweise"
     ],
@@ -22136,12 +22057,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "aufgeben",
     "en": "to give up on",
     "example": {
-      "de": "Er ging zur Post, um den Brief aufzugeben.",
-      "en": "He went to the post office to mail the letter."
+      "de": "Ich gebe nie auf.",
+      "en": "I never give up."
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "reihe",
       "steigen"
     ],
@@ -22160,7 +22081,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "sich-vorbereiten",
       "aufgeben"
     ],
@@ -22177,7 +22098,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "greifen",
       "reihe"
     ],
@@ -22194,7 +22115,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "sich-beeilen",
       "sich-vorbereiten"
     ],
@@ -22211,7 +22132,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "aufstehen",
       "greifen"
     ],
@@ -22223,12 +22144,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "aufstehen",
     "en": "to get up",
     "example": {
-      "de": "Wir sind auf dem falschen Fuß aufgestanden.",
-      "en": "We got off on the wrong foot."
+      "de": "Ich stehe um sieben Uhr auf.",
+      "en": "I get up at seven o'clock."
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "gebrauchen",
       "sich-beeilen"
     ],
@@ -22245,7 +22166,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "enden",
       "aufstehen"
     ],
@@ -22262,7 +22183,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "umgehen",
       "gebrauchen"
     ],
@@ -22272,14 +22193,14 @@ export const GENERATED: RawWord[] = [
     "id": "umgehen",
     "tier": 3,
     "lemma": "umgehen",
-    "en": "to avoid, bypass",
+    "en": "to deal with, to bypass",
     "example": {
       "de": "Er weiß nicht, wie man mit Kindern umgeht.",
       "en": "He doesn't know how to handle children."
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "loswerden",
       "enden"
     ],
@@ -22296,7 +22217,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "anfassen",
       "umgehen"
     ],
@@ -22313,7 +22234,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "schieben",
       "loswerden"
     ],
@@ -22330,7 +22251,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "weglaufen",
       "anfassen"
     ],
@@ -22347,7 +22268,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "sich-naehern",
       "schieben"
     ],
@@ -22364,7 +22285,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "brennen",
       "weglaufen"
     ],
@@ -22381,9 +22302,43 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "aufraeumen",
+      "schonen",
       "sich-naehern",
-      "verschieben"
+      "platzen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "schonen",
+    "tier": 4,
+    "lemma": "schonen",
+    "en": "to spare",
+    "example": {
+      "de": "Wir müssen die Umwelt schonen.",
+      "en": "We must protect the environment."
+    },
+    "family": [],
+    "related": [
+      "sichern",
+      "platzen",
+      "brennen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "platzen",
+    "tier": 4,
+    "lemma": "platzen",
+    "en": "to burst, to pop",
+    "example": {
+      "de": "Der Ballon platzt gleich.",
+      "en": "The balloon is about to burst."
+    },
+    "family": [],
+    "related": [
+      "sichern",
+      "aufraeumen",
+      "schonen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -22401,9 +22356,9 @@ export const GENERATED: RawWord[] = [
       "Raum"
     ],
     "related": [
-      "zerbrechen",
+      "sichern",
       "verschieben",
-      "brennen"
+      "platzen"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -22421,7 +22376,7 @@ export const GENERATED: RawWord[] = [
       "schieben"
     ],
     "related": [
-      "zerbrechen",
+      "sichern",
       "ausleihen",
       "aufraeumen"
     ],
@@ -22441,7 +22396,7 @@ export const GENERATED: RawWord[] = [
       "Leihgabe"
     ],
     "related": [
-      "zerbrechen",
+      "sichern",
       "wegwerfen",
       "verschieben"
     ],
@@ -22461,7 +22416,7 @@ export const GENERATED: RawWord[] = [
       "Wegwerfartikel"
     ],
     "related": [
-      "zerbrechen",
+      "sichern",
       "aufbauen",
       "ausleihen"
     ],
@@ -22478,7 +22433,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "zerbrechen",
+      "sichern",
       "aktivitaet",
       "wegwerfen"
     ],
@@ -22497,9 +22452,26 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "zerbrechen",
+      "sichern",
       "aufbauen",
-      "aufsteigen"
+      "zerbrechen"
+    ],
+    "theme": "Alltag und Bewegung"
+  },
+  {
+    "id": "sichern",
+    "tier": 5,
+    "lemma": "sichern",
+    "en": "to secure",
+    "example": {
+      "de": "Wir sichern die Daten.",
+      "en": "We are backing up the data."
+    },
+    "family": [],
+    "related": [
+      "verstauen",
+      "zerbrechen",
+      "aktivitaet"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -22519,7 +22491,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "verstauen",
       "aufsteigen",
-      "aktivitaet"
+      "sichern"
     ],
     "theme": "Alltag und Bewegung"
   },
@@ -22527,7 +22499,7 @@ export const GENERATED: RawWord[] = [
     "id": "aufsteigen",
     "tier": 5,
     "lemma": "aufsteigen",
-    "en": "to get on, to mount",
+    "en": "to rise, to climb",
     "example": {
       "de": "Er fühlte Patriotismus in sich aufsteigen.",
       "en": "He felt patriotism rise in his breast."
@@ -22699,8 +22671,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "viel",
     "en": "much, a lot",
     "example": {
-      "de": "Echte Freundschaft ist mehr wert als Geld.",
-      "en": "Real friendship is more valuable than money."
+      "de": "Ich habe viel zu tun.",
+      "en": "I have a lot to do."
     },
     "family": [],
     "related": [
@@ -22748,7 +22720,7 @@ export const GENERATED: RawWord[] = [
     "id": "wirklich",
     "tier": 1,
     "lemma": "wirklich",
-    "en": "real",
+    "en": "really, real",
     "example": {
       "de": "Dieser Badeanzug steht dir wirklich gut.",
       "en": "That swimsuit looks really good on you."
@@ -22765,7 +22737,7 @@ export const GENERATED: RawWord[] = [
     "id": "einfach",
     "tier": 1,
     "lemma": "einfach",
-    "en": "easy",
+    "en": "simple, easy; simply",
     "example": {
       "de": "Gestern ging ich einfach nicht zur Arbeit.",
       "en": "Yesterday I simply did not go to work."
@@ -22799,7 +22771,7 @@ export const GENERATED: RawWord[] = [
     "id": "sicher",
     "tier": 1,
     "lemma": "sicher",
-    "en": "safe, secure",
+    "en": "sure, safe",
     "example": {
       "de": "Ich bin nicht sicher, ob das richtig ist.",
       "en": "I'm not sure if this is correct."
@@ -22867,7 +22839,7 @@ export const GENERATED: RawWord[] = [
     "id": "natuerlich",
     "tier": 1,
     "lemma": "natürlich",
-    "en": "natural, normal",
+    "en": "natural; of course",
     "example": {
       "de": "Wasser ist im natürlichen Zustand flüssig.",
       "en": "Water, in its natural state, is a fluid."
@@ -22918,7 +22890,7 @@ export const GENERATED: RawWord[] = [
     "id": "weit",
     "tier": 1,
     "lemma": "weit",
-    "en": "wide",
+    "en": "far, wide",
     "example": {
       "de": "Der Roman spielt in der weiten Zukunft.",
       "en": "The novel takes place in the far future."
@@ -22969,7 +22941,7 @@ export const GENERATED: RawWord[] = [
     "id": "schlecht",
     "tier": 1,
     "lemma": "schlecht",
-    "en": "bad, evil",
+    "en": "bad",
     "example": {
       "de": "Du hast ein schlechtes Beispiel abgegeben.",
       "en": "You've set a bad example."
@@ -22994,8 +22966,29 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "klein",
-      "schlecht",
-      "schwierig"
+      "gross",
+      "schlecht"
+    ],
+    "theme": "Eigenschaften"
+  },
+  {
+    "id": "gross",
+    "tier": 1,
+    "lemma": "groß",
+    "en": "big, tall",
+    "example": {
+      "de": "Das ist ein sehr großes Haus.",
+      "en": "That’s a very big house."
+    },
+    "family": [
+      "Größe",
+      "vergrößern"
+    ],
+    "related": [
+      "klein",
+      "alt",
+      "schwierig",
+      "haus"
     ],
     "theme": "Eigenschaften"
   },
@@ -23015,7 +23008,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "selten",
       "schwierig",
-      "alt"
+      "gross"
     ],
     "theme": "Eigenschaften"
   },
@@ -23105,7 +23098,7 @@ export const GENERATED: RawWord[] = [
     "id": "frei",
     "tier": 2,
     "lemma": "frei",
-    "en": "free, unenslaved",
+    "en": "free",
     "example": {
       "de": "An welchem Tag hast du normalerweise frei?",
       "en": "What day are you usually free?"
@@ -23141,8 +23134,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "fest",
     "en": "firm, compact",
     "example": {
-      "de": "Wir planen ein kleines Fest morgen abend.",
-      "en": "We are going to give a party tomorrow evening."
+      "de": "Das Brett ist fest.",
+      "en": "The board is firm."
     },
     "family": [],
     "related": [
@@ -23192,8 +23185,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "nah",
     "en": "near, close",
     "example": {
-      "de": "Nächstes Jahr werde ich nach Amerika gehen.",
-      "en": "I am going to go to America next year."
+      "de": "Der Bahnhof ist ganz nah.",
+      "en": "The station is very close."
     },
     "family": [],
     "related": [
@@ -23226,8 +23219,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "lieb",
     "en": "lovable, dear",
     "example": {
-      "de": "Der Frühling ist meine liebste Jahreszeit.",
-      "en": "Spring is my favourite season."
+      "de": "Das ist sehr lieb von dir.",
+      "en": "That is very kind of you."
     },
     "family": [],
     "related": [
@@ -23311,8 +23304,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "super",
     "en": "super, great",
     "example": {
-      "de": "Fährt der Wagen mit Normal oder mit Super?",
-      "en": "Does this car use regular or premium?"
+      "de": "Das Essen war super.",
+      "en": "The food was great."
     },
     "family": [],
     "related": [
@@ -23379,8 +23372,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "cool",
     "en": "cool",
     "example": {
-      "de": "Als Trainer muss mann ziemlich cool sein.",
-      "en": "As a trainer you have to be quite easy-going."
+      "de": "Das ist ein cooles Auto.",
+      "en": "That is a cool car."
     },
     "family": [],
     "related": [
@@ -23396,8 +23389,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "laut",
     "en": "loud, noisy",
     "example": {
-      "de": "Er sieht den Wald vor lauter Bäumen nicht.",
-      "en": "He doesn't see the forest for the trees."
+      "de": "Die Musik ist zu laut.",
+      "en": "The music is too loud."
     },
     "family": [],
     "related": [
@@ -23413,8 +23406,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "böse",
     "en": "evil, malicious",
     "example": {
-      "de": "Böse Kinder kriegen nichts vom Sankt Nikolaus.",
-      "en": "Naughty children don’t get anything from St. Nicholas."
+      "de": "Der Hund ist nicht böse.",
+      "en": "The dog is not mean."
     },
     "family": [],
     "related": [
@@ -23447,8 +23440,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "stark",
     "en": "strong",
     "example": {
-      "de": "Was mich nicht umbringt, macht mich stärker.",
-      "en": "What doesn't kill you makes you stronger."
+      "de": "Er ist sehr stark.",
+      "en": "He is very strong."
     },
     "family": [],
     "related": [
@@ -23621,8 +23614,7 @@ export const GENERATED: RawWord[] = [
       "en": "Such mistakes only rarely happen."
     },
     "family": [
-      "Seltenheit",
-      "seltsam"
+      "Seltenheit"
     ],
     "related": [
       "gemuetlich",
@@ -23635,14 +23627,13 @@ export const GENERATED: RawWord[] = [
     "id": "bequem",
     "tier": 3,
     "lemma": "bequem",
-    "en": "comfortable; convenient",
+    "en": "comfortable, convenient",
     "example": {
       "de": "Das Sofa ist wirklich bequem.",
       "en": "The sofa is really comfortable."
     },
     "family": [
-      "Bequemlichkeit",
-      "quem"
+      "Bequemlichkeit"
     ],
     "related": [
       "gemuetlich",
@@ -23657,8 +23648,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "einzig",
     "en": "only, sole",
     "example": {
-      "de": "Er wurde durch eine einzige Kugel getötet.",
-      "en": "He was killed by a single bullet."
+      "de": "Das ist die einzige Lösung.",
+      "en": "That is the only solution."
     },
     "family": [],
     "related": [
@@ -23689,7 +23680,7 @@ export const GENERATED: RawWord[] = [
     "id": "vollkommen",
     "tier": 3,
     "lemma": "vollkommen",
-    "en": "perfect",
+    "en": "complete, perfect",
     "example": {
       "de": "Die Zwillinge sehen vollkommen gleich aus.",
       "en": "The twins look exactly alike."
@@ -23761,31 +23752,14 @@ export const GENERATED: RawWord[] = [
     "lemma": "ähnlich",
     "en": "similar, alike",
     "example": {
-      "de": "Sie ist mir ähnlich. / Sie ist ähnlich wie ich.",
-      "en": "She is similar to me."
-    },
-    "family": [],
-    "related": [
-      "gemuetlich",
-      "fern",
-      "wahnsinnig"
-    ],
-    "theme": "Eigenschaften"
-  },
-  {
-    "id": "fern",
-    "tier": 3,
-    "lemma": "fern",
-    "en": "remote",
-    "example": {
-      "de": "Meine Mutter sieht des Abends selten fern.",
-      "en": "My mother seldom watches TV at night."
+      "de": "Die Brüder sind sich sehr ähnlich.",
+      "en": "The brothers are very similar."
     },
     "family": [],
     "related": [
       "gemuetlich",
       "langweilig",
-      "aehnlich"
+      "wahnsinnig"
     ],
     "theme": "Eigenschaften"
   },
@@ -23802,7 +23776,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "gemuetlich",
       "rot",
-      "fern"
+      "aehnlich"
     ],
     "theme": "Eigenschaften"
   },
@@ -23880,8 +23854,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "schwach",
     "en": "weak, lacking in strength",
     "example": {
-      "de": "Tante Yoko ist zu schwach, um zu arbeiten.",
-      "en": "Aunt Yoko is too weak to work."
+      "de": "Ich fühle mich heute schwach.",
+      "en": "I feel weak today."
     },
     "family": [],
     "related": [
@@ -23912,7 +23886,7 @@ export const GENERATED: RawWord[] = [
     "id": "brav",
     "tier": 3,
     "lemma": "brav",
-    "en": "good, well-behaved or reliable",
+    "en": "well-behaved, good",
     "example": {
       "de": "Sei ein braves Mädchen und schlaf weiter!",
       "en": "Be a good girl and go back to sleep."
@@ -23956,7 +23930,7 @@ export const GENERATED: RawWord[] = [
       "Gemüt"
     ],
     "related": [
-      "gross",
+      "fern",
       "grosszuegig",
       "beeindruckend"
     ],
@@ -23976,7 +23950,7 @@ export const GENERATED: RawWord[] = [
       "groß"
     ],
     "related": [
-      "gross",
+      "fern",
       "gruendlich",
       "gemuetlich"
     ],
@@ -23996,7 +23970,7 @@ export const GENERATED: RawWord[] = [
       "Gründlichkeit"
     ],
     "related": [
-      "gross",
+      "fern",
       "tapfer",
       "grosszuegig"
     ],
@@ -24013,7 +23987,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "unfair",
       "gruendlich"
     ],
@@ -24030,7 +24004,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "friedlich",
       "tapfer"
     ],
@@ -24047,7 +24021,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "brutal",
       "unfair"
     ],
@@ -24059,12 +24033,12 @@ export const GENERATED: RawWord[] = [
     "lemma": "brutal",
     "en": "brutal",
     "example": {
-      "de": "Der Aufstand wurde brutal niedergeschlagen.",
-      "en": "The uprising was brutally suppressed."
+      "de": "Der Film war sehr brutal.",
+      "en": "The film was very brutal."
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "menschlich",
       "friedlich"
     ],
@@ -24081,7 +24055,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "logisch",
       "brutal"
     ],
@@ -24098,7 +24072,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "breit",
       "menschlich"
     ],
@@ -24115,7 +24089,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "verschieden",
       "logisch"
     ],
@@ -24125,14 +24099,14 @@ export const GENERATED: RawWord[] = [
     "id": "verschieden",
     "tier": 4,
     "lemma": "verschieden",
-    "en": "differently",
+    "en": "different, various",
     "example": {
-      "de": "Sein Bruder ist letzten Monat verschieden.",
-      "en": "His brother passed away last month."
+      "de": "Wir haben verschiedene Meinungen.",
+      "en": "We have different opinions."
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "tragisch",
       "breit"
     ],
@@ -24149,7 +24123,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "ideal",
       "verschieden"
     ],
@@ -24166,7 +24140,7 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "urspruenglich",
       "tragisch"
     ],
@@ -24183,30 +24157,26 @@ export const GENERATED: RawWord[] = [
     },
     "family": [],
     "related": [
-      "gross",
+      "fern",
       "ideal",
       "zuverlaessig"
     ],
     "theme": "Eigenschaften"
   },
   {
-    "id": "gross",
+    "id": "fern",
     "tier": 5,
-    "lemma": "groß",
-    "en": "big, tall",
+    "lemma": "fern",
+    "en": "far, distant",
     "example": {
-      "de": "Das ist ein sehr großes Haus.",
-      "en": "That’s a very big house."
+      "de": "Das Dorf liegt fern von der Stadt.",
+      "en": "The village is far from the city."
     },
-    "family": [
-      "Größe",
-      "vergrößern"
-    ],
+    "family": [],
     "related": [
       "umstaendlich",
       "zuverlaessig",
-      "urspruenglich",
-      "haus"
+      "urspruenglich"
     ],
     "theme": "Eigenschaften"
   },
@@ -24226,7 +24196,7 @@ export const GENERATED: RawWord[] = [
     "related": [
       "umstaendlich",
       "enorm",
-      "gross"
+      "fern"
     ],
     "theme": "Eigenschaften"
   },
@@ -24338,8 +24308,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "behutsam",
     "en": "gentle, cautious",
     "example": {
-      "de": "Seine Anweisung ist immer sehr behutsam.",
-      "en": "His advice is always very sensible."
+      "de": "Wir gehen behutsam vor.",
+      "en": "We proceed carefully."
     },
     "family": [],
     "related": [
@@ -24436,7 +24406,6 @@ export const GENERATED: RawWord[] = [
       "en": "She mentioned it quite casually."
     },
     "family": [
-      "beilaufen",
       "Beiläufigkeit"
     ],
     "related": [
@@ -24597,8 +24566,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "arbeiten",
     "en": "to work",
     "example": {
-      "de": "Jetzt muss ich mich meiner Arbeit zuwenden.",
-      "en": "Now I must go about my work."
+      "de": "Ich arbeite im Büro.",
+      "en": "I work in the office."
     },
     "family": [],
     "related": [
@@ -24636,7 +24605,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Chef",
     "plural": "Chefs",
-    "en": "boss (male)",
+    "en": "boss",
     "example": {
       "de": "Mein Chef ist heute nicht im Büro.",
       "en": "My boss isn’t in the office today."
@@ -24701,7 +24670,7 @@ export const GENERATED: RawWord[] = [
     "id": "leisten",
     "tier": 2,
     "lemma": "leisten",
-    "en": "to perform, to accomplish",
+    "en": "to afford; to accomplish",
     "example": {
       "de": "Ich kann mir jetzt kein neues Auto leisten.",
       "en": "I can't afford a new car now."
@@ -24760,8 +24729,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Maschinen",
     "en": "machine",
     "example": {
-      "de": "Die Maschine war am Vormittag gestartet.",
-      "en": "The plane took off this morning."
+      "de": "Die Maschine ist kaputt.",
+      "en": "The machine is broken."
     },
     "family": [],
     "related": [
@@ -24880,8 +24849,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Dienste",
     "en": "service",
     "example": {
-      "de": "Helen hat mir einen guten Dienst erwiesen.",
-      "en": "Helen did me a good turn."
+      "de": "Der Dienst beginnt um sieben Uhr.",
+      "en": "The shift begins at seven o'clock."
     },
     "family": [],
     "related": [
@@ -24897,7 +24866,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Direktor",
     "plural": "Direktoren",
-    "en": "principal",
+    "en": "director, principal",
     "example": {
       "de": "Der Direktor unserer Schule ist sehr alt.",
       "en": "The head teacher of our school is very old."
@@ -24919,7 +24888,7 @@ export const GENERATED: RawWord[] = [
     "en": "career",
     "example": {
       "de": "Es war ihr nie wichtig, Karriere zu machen.",
-      "en": "It was never important to her to get a promotion."
+      "en": "Making a career was never important to her."
     },
     "family": [],
     "related": [
@@ -24933,10 +24902,10 @@ export const GENERATED: RawWord[] = [
     "id": "entlassen",
     "tier": 3,
     "lemma": "entlassen",
-    "en": "to release",
+    "en": "to dismiss, to fire; to release",
     "example": {
-      "de": "Er wurde aus dem Gefängnis entlassen.",
-      "en": "He was released from prison."
+      "de": "Die Firma entlässt zehn Mitarbeiter.",
+      "en": "The company is laying off ten employees."
     },
     "family": [],
     "related": [
@@ -24986,7 +24955,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Fabrik",
     "plural": "Fabriken",
-    "en": "plant",
+    "en": "factory",
     "example": {
       "de": "Sein Sohn übernahm die Leitung der Fabrik.",
       "en": "His son took on the management of the factory."
@@ -25079,7 +25048,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Betrieb",
     "plural": "Betriebe",
-    "en": "application or process, industry",
+    "en": "business, operation",
     "example": {
       "de": "Dieser Dienst ist momentan außer Betrieb.",
       "en": "This service is temporarily out of order."
@@ -25100,8 +25069,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Assistenten",
     "en": "assistant",
     "example": {
-      "de": "Kennen Sie den Namen von Toms Assistenten?",
-      "en": "Do you know Tom's assistant's name?"
+      "de": "Mein Assistent arbeitet heute von zu Hause.",
+      "en": "My assistant is working from home today."
     },
     "family": [],
     "related": [
@@ -25155,10 +25124,10 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Chefin",
     "plural": "Chefinnen",
-    "en": "female boss",
+    "en": "boss (female)",
     "example": {
-      "de": "Unsere Chefin fand Toms Spaß nicht zum Lachen.",
-      "en": "Our boss didn't find Tom's practical joke funny."
+      "de": "Unsere Chefin ist sehr freundlich.",
+      "en": "Our boss is very friendly."
     },
     "family": [],
     "related": [
@@ -25211,8 +25180,7 @@ export const GENERATED: RawWord[] = [
     "tier": 4,
     "article": "der",
     "lemma": "Handel",
-    "plural": "Händel",
-    "en": "deal",
+    "en": "trade, commerce",
     "example": {
       "de": "Was für einen Handel hast du geschlossen?",
       "en": "What kind of deal did you make?"
@@ -25220,16 +25188,16 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "bewerbung",
-      "angestellter",
+      "angestellte",
       "produktion"
     ],
     "theme": "Beruf und Wirtschaft"
   },
   {
-    "id": "angestellter",
+    "id": "angestellte",
     "tier": 4,
     "article": "der",
-    "lemma": "Angestellter",
+    "lemma": "Angestellte",
     "plural": "Angestellte",
     "en": "employee, worker",
     "example": {
@@ -25258,7 +25226,7 @@ export const GENERATED: RawWord[] = [
     "family": [],
     "related": [
       "bewerbung",
-      "angestellter",
+      "angestellte",
       "lebenslauf"
     ],
     "theme": "Beruf und Wirtschaft"
@@ -25336,7 +25304,7 @@ export const GENERATED: RawWord[] = [
     "article": "die",
     "lemma": "Kündigung",
     "plural": "Kündigungen",
-    "en": "notice, resignation",
+    "en": "notice (of termination), resignation",
     "example": {
       "de": "Er hat gestern seine Kündigung geschrieben.",
       "en": "He wrote his resignation yesterday."
@@ -25733,8 +25701,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "schweißen",
     "en": "to weld",
     "example": {
-      "de": "Er wischte sich den Schweiß von der Stirn.",
-      "en": "He wiped the sweat from his forehead."
+      "de": "Er schweißt zwei Metallteile zusammen.",
+      "en": "He is welding two pieces of metal together."
     },
     "family": [],
     "related": [
@@ -25891,8 +25859,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Wüsten",
     "en": "desert",
     "example": {
-      "de": "Lass mich nicht hier in der Wüste im Stich!",
-      "en": "Don't desert me here in the desert!"
+      "de": "Die Sahara ist die größte Wüste der Welt.",
+      "en": "The Sahara is the biggest desert in the world."
     },
     "family": [],
     "related": [
@@ -26235,7 +26203,6 @@ export const GENERATED: RawWord[] = [
     "tier": 5,
     "article": "die",
     "lemma": "Landwirtschaft",
-    "plural": "Landwirtschaften",
     "en": "agriculture",
     "example": {
       "de": "Viele Länder sind von der Landwirtschaft abhängig.",
@@ -26257,8 +26224,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Bauernhöfe",
     "en": "farm",
     "example": {
-      "de": "Sie setzten Häuser und Bauernhöfe in Brand.",
-      "en": "They set fire to houses and farm buildings."
+      "de": "Der Bauernhof liegt am Dorfrand.",
+      "en": "The farm is on the edge of the village."
     },
     "family": [],
     "related": [
@@ -26301,8 +26268,7 @@ export const GENERATED: RawWord[] = [
       "en": "Recycling conserves resources."
     },
     "family": [
-      "recyceln",
-      "Zyklus"
+      "recyceln"
     ],
     "related": [
       "bauernhof",
@@ -26463,8 +26429,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Treibhausgase",
     "en": "greenhouse gas",
     "example": {
-      "de": "China produziert noch zu viele Treibhausgase.",
-      "en": "China still produces too many GHG."
+      "de": "Methan ist ein Treibhausgas.",
+      "en": "Methane is a greenhouse gas."
     },
     "family": [],
     "related": [
@@ -26636,8 +26602,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "vielleicht",
     "en": "perhaps, maybe",
     "example": {
-      "de": "Das is’ vielleicht’ne Geldverschwendung da!",
-      "en": "Now, that’s some waste of money!"
+      "de": "Vielleicht komme ich morgen.",
+      "en": "Maybe I will come tomorrow."
     },
     "family": [],
     "related": [
@@ -26651,7 +26617,7 @@ export const GENERATED: RawWord[] = [
     "id": "glauben",
     "tier": 1,
     "lemma": "glauben",
-    "en": "to believe something",
+    "en": "to believe, to think",
     "example": {
       "de": "Ich glaube nicht, dass sie glücklich ist.",
       "en": "I don't think she is happy."
@@ -26809,7 +26775,7 @@ export const GENERATED: RawWord[] = [
     "article": "der",
     "lemma": "Fehler",
     "plural": "Fehler",
-    "en": "fault, error",
+    "en": "mistake, error",
     "example": {
       "de": "Sie haben zweifellos einen Fehler gemacht.",
       "en": "They must have made a mistake."
@@ -26847,8 +26813,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Versuche",
     "en": "attempt",
     "example": {
-      "de": "Versuch, schlechte Gesellschaft zu meiden.",
-      "en": "Try to avoid bad company."
+      "de": "Der Versuch war erfolgreich.",
+      "en": "The attempt was successful."
     },
     "family": [],
     "related": [
@@ -26915,10 +26881,10 @@ export const GENERATED: RawWord[] = [
     "id": "schaetzen",
     "tier": 2,
     "lemma": "schätzen",
-    "en": "to estimate, to guess",
+    "en": "to estimate; to appreciate",
     "example": {
-      "de": "Kannst du den Wert des Diamanten schätzen?",
-      "en": "Can you guess the worth of the diamond?"
+      "de": "Ich schätze deine Hilfe.",
+      "en": "I appreciate your help."
     },
     "family": [],
     "related": [
@@ -27031,8 +26997,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Zustände",
     "en": "condition, state",
     "example": {
-      "de": "Ich habe das in betrunkenem Zustand getan.",
-      "en": "I did it while I was drunk."
+      "de": "Das Haus ist in gutem Zustand.",
+      "en": "The house is in good condition."
     },
     "family": [],
     "related": [
@@ -27084,8 +27050,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "kapieren",
     "en": "to get, to grasp",
     "example": {
-      "de": "Dieser Idiot kapiert rein gar nichts.",
-      "en": "This idiot doesn’t understand a single thing."
+      "de": "Ich kapiere das nicht.",
+      "en": "I do not get it."
     },
     "family": [],
     "related": [
@@ -27120,8 +27086,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Erinnerungen",
     "en": "memory, remembrance",
     "example": {
-      "de": "Wenn mich meine Erinnerung nicht trügt...",
-      "en": "If my memory doesn’t fail me..."
+      "de": "Ich habe schöne Erinnerungen an den Urlaub.",
+      "en": "I have fond memories of the vacation."
     },
     "family": [],
     "related": [
@@ -27137,8 +27103,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "lösen",
     "en": "to solve, to loosen",
     "example": {
-      "de": "Herr Thomas wird das Problem lösen können.",
-      "en": "Mr. Thomas will be able to solve the problem."
+      "de": "Ich löse das Problem morgen.",
+      "en": "I will solve the problem tomorrow."
     },
     "family": [],
     "related": [
@@ -27154,8 +27120,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "zweifeln",
     "en": "to doubt, to be doubtful",
     "example": {
-      "de": "Ich habe keinen Zweifel an seinem Erfolg.",
-      "en": "I have no doubt that he will succeed."
+      "de": "Ich zweifle an dieser Idee.",
+      "en": "I doubt this idea."
     },
     "family": [],
     "related": [
@@ -27190,8 +27156,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "scheinen",
     "en": "to seem, to shine",
     "example": {
-      "de": "Jane scheint einen neuen Freund zu haben.",
-      "en": "Jane seems to have a new boyfriend."
+      "de": "Die Sonne scheint.",
+      "en": "The sun is shining."
     },
     "family": [],
     "related": [
@@ -27245,8 +27211,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Formen",
     "en": "shape",
     "example": {
-      "de": "Ich fürchte, dass ich etwas außer Form bin.",
-      "en": "I'm afraid I'm a bit out of shape."
+      "de": "Der Tisch hat eine runde Form.",
+      "en": "The table has a round shape."
     },
     "family": [],
     "related": [
@@ -27336,8 +27302,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Auswege",
     "en": "way out, escape route",
     "example": {
-      "de": "Er sah den Selbstmord als einzigen Ausweg.",
-      "en": "He saw suicide as the only way out."
+      "de": "Es gibt noch einen anderen Ausweg.",
+      "en": "There is another way out."
     },
     "family": [],
     "related": [
@@ -27425,8 +27391,8 @@ export const GENERATED: RawWord[] = [
     "lemma": "vorhaben",
     "en": "to intend, to have planned",
     "example": {
-      "de": "Ich befürworte ein solches Vorhaben nicht.",
-      "en": "I'm not in favor of such a plan."
+      "de": "Was hast du am Wochenende vor?",
+      "en": "What are you planning for the weekend?"
     },
     "family": [],
     "related": [
@@ -27515,8 +27481,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Herkünfte",
     "en": "origin, source",
     "example": {
-      "de": "Meine Familie sind germanischer Herkunft.",
-      "en": "My family are of Germanic heritage."
+      "de": "Ihre Herkunft ist unbekannt.",
+      "en": "Her origin is unknown."
     },
     "family": [],
     "related": [
@@ -27549,10 +27515,10 @@ export const GENERATED: RawWord[] = [
     "article": "das",
     "lemma": "Konzept",
     "plural": "Konzepte",
-    "en": "blueprint, draft",
+    "en": "concept, draft",
     "example": {
-      "de": "Die Existenz ist ein unwichtiges Konzept.",
-      "en": "Existence is a meaningless concept."
+      "de": "Das Konzept ist gut durchdacht.",
+      "en": "The concept is well thought out."
     },
     "family": [],
     "related": [
@@ -27717,8 +27683,8 @@ export const GENERATED: RawWord[] = [
     "plural": "Maxima",
     "en": "maximum",
     "example": {
-      "de": "Beachte, dass das Maximum nicht immer existiert.",
-      "en": "Note that the maximum doesn't always exist."
+      "de": "Das Maximum liegt bei hundert.",
+      "en": "The maximum is one hundred."
     },
     "family": [],
     "related": [

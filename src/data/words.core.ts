@@ -46,7 +46,7 @@ export const CORE: CoreWord[] = [
     lemma: 'Kollege',
     article: 'der',
     plural: 'Kollegen',
-    en: 'colleague (male)',
+    en: 'colleague',
     example: {
       de: 'Meine Kollegen sind sehr nett.',
       en: 'My colleagues are very nice.',
@@ -292,7 +292,7 @@ export const CORE: CoreWord[] = [
     lemma: 'Nachbar',
     article: 'der',
     plural: 'Nachbarn',
-    en: 'neighbor (male)',
+    en: 'neighbor',
     example: {
       de: 'Unser Nachbar ist sehr hilfsbereit.',
       en: 'Our neighbor is very helpful.',
@@ -414,7 +414,7 @@ export const CORE: CoreWord[] = [
 export const CORE_TIERS: Record<string, Word['tier']> = {
   feierabend: 3, arbeit: 1, buero: 2, kollege: 2, besprechung: 3, termin: 2,
   vereinbaren: 3, verspaetung: 3, zug: 1, abfahren: 2, haltestelle: 3, aussteigen: 2,
-  umsteigen: 3, fahrschein: 3, fahrplan: 4, kueche: 1, herd: 3, pfanne: 3, braten: 3,
+  umsteigen: 3, fahrschein: 3, fahrplan: 4, kueche: 1, herd: 5, pfanne: 3, braten: 3,
   zwiebel: 2, spuelmaschine: 4, geschirr: 3, kuehlschrank: 3, nachbar: 2, miete: 2,
   wohnung: 1, umziehen: 2, entscheidung: 2, 'sich-entscheiden': 2, erfahrung: 2,
   gefuehl: 2, 'sich-freuen': 2, wochenende: 1,

@@ -1,0 +1,427 @@
+# Proposed fixes from the review of 2026-10-22 (all 1,474 words read). One change per line:
+#   GROUP | lemma | field | new value [| new English example]
+# GROUP: A wrong word in the example, B wrong or broken meaning, C meaning wording, D main example replaced (names, idioms, sad, odd),
+#        E tier, F plural, G family word, H lemma form, I remove the word, K translation of the example
+# fields: en (meaning), ex (German example | English example), exen (English translation only), plural (empty = no plural),
+#         tier, family- (remove a family word), family> (old>new), lemma (new lemma), remove
+# Applied by scripts/words/apply_review.py after the author has approved the groups.
+
+# ---- A: the example is about another word -------------------------------------------------------------------------------
+A | Reis | ex | Zum Mittagessen gibt es oft Reis oder Nudeln. | We often have rice or noodles for lunch.
+A | Schnitte | ex | Sie isst eine Schnitte Brot mit Käse. | She is eating a slice of bread with cheese.
+A | Wolle | ex | Der Pullover ist aus Wolle. | The sweater is made of wool.
+A | schick | ex | Das Kleid ist sehr schick. | The dress is very smart.
+A | Sage | ex | Das ist nur eine alte Sage. | That is just an old legend.
+A | Kissen | ex | Ich lege ein Kissen unter den Kopf. | I put a cushion under my head.
+A | See | ex | Wir schwimmen gern im See. | We like swimming in the lake.
+A | niesen | ex | Ich muss niesen. | I have to sneeze.
+A | tot | ex | Der Vogel ist tot. | The bird is dead.
+A | schmerzen | ex | Mein Rücken schmerzt. | My back hurts.
+A | duften | ex | Die Rosen duften wunderbar. | The roses smell wonderful.
+A | Fliege | ex | Eine Fliege sitzt an der Wand. | A fly is sitting on the wall.
+A | fressen | ex | Der Hund frisst sein Futter. | The dog is eating its food.
+A | Käfer | ex | Ein Käfer sitzt auf dem Blatt. | A beetle is sitting on the leaf.
+A | Mann | ex | Der Mann liest die Zeitung. | The man is reading the newspaper.
+A | feiern | ex | Wir feiern heute meinen Geburtstag. | We are celebrating my birthday today.
+A | turnen | ex | Die Kinder turnen in der Turnhalle. | The children do gymnastics in the gym.
+A | Ware | ex | Die Ware ist im Angebot. | The goods are on sale.
+A | wert | ex | Das Buch ist viel Geld wert. | The book is worth a lot of money.
+A | ausgeben | ex | Ich gebe zu viel Geld aus. | I spend too much money.
+A | Rate | ex | Ich zahle das Auto in Raten. | I am paying for the car in instalments.
+A | blocken | ex | Ich blocke diese Nummer. | I am blocking this number.
+A | malen | ex | Sie malt ein Bild. | She is painting a picture.
+A | filmen | ex | Er filmt den Sonnenuntergang. | He is filming the sunset.
+A | Würde | ex | Er behandelt alle mit Würde. | He treats everyone with dignity.
+A | Leid | ex | Er hat viel Leid erlebt. | He has experienced a lot of suffering.
+A | gefallen | ex | Das Kleid gefällt mir. | I like the dress.
+A | Glaube | ex | Ihr Glaube an Gott ist stark. | Her faith in God is strong.
+A | lügen | ex | Ich lüge nie. | I never lie.
+A | schreien | ex | Das Baby schreit laut. | The baby is screaming loudly.
+A | aussprechen | ex | Wie spricht man dieses Wort aus? | How do you pronounce this word?
+A | danken | ex | Ich danke dir für deine Hilfe. | I thank you for your help.
+A | Dank | ex | Vielen Dank für deine Hilfe! | Thank you very much for your help!
+A | schonen | ex | Wir müssen die Umwelt schonen. | We must protect the environment.
+A | sichern | ex | Wir sichern die Daten. | We are backing up the data.
+A | leben | ex | Wir leben in Berlin. | We live in Berlin.
+A | sitzen | ex | Ich sitze am Tisch. | I am sitting at the table.
+A | platzen | ex | Der Ballon platzt gleich. | The balloon is about to burst.
+A | weg | ex | Er ist schon weg. | He has already left.
+A | fallen | ex | Das Kind fällt hin. | The child falls down.
+A | ziehen | ex | Er zieht den Wagen. | He is pulling the cart.
+A | passen | ex | Die Schuhe passen mir gut. | The shoes fit me well.
+A | fest | ex | Das Brett ist fest. | The board is firm.
+A | nah | ex | Der Bahnhof ist ganz nah. | The station is very close.
+A | laut | ex | Die Musik ist zu laut. | The music is too loud.
+A | viel | ex | Ich habe viel zu tun. | I have a lot to do.
+A | super | ex | Das Essen war super. | The food was great.
+A | lieb | ex | Das ist sehr lieb von dir. | That is very kind of you.
+A | fern | ex | Das Dorf liegt fern von der Stadt. | The village is far from the city.
+A | verschieden | ex | Wir haben verschiedene Meinungen. | We have different opinions.
+A | Morgen | ex | Am Morgen trinke ich Kaffee. | In the morning I drink coffee.
+A | danach | ex | Zuerst esse ich, danach gehe ich spazieren. | First I eat, afterwards I go for a walk.
+A | arbeiten | ex | Ich arbeite im Büro. | I work in the office.
+A | schweißen | ex | Er schweißt zwei Metallteile zusammen. | He is welding two pieces of metal together.
+A | Versuch | ex | Der Versuch war erfolgreich. | The attempt was successful.
+A | zweifeln | ex | Ich zweifle an dieser Idee. | I doubt this idea.
+A | vorhaben | ex | Was hast du am Wochenende vor? | What are you planning for the weekend?
+A | Satz | ex | Dieser Satz ist sehr lang. | This sentence is very long.
+A | zählen | ex | Ich zähle bis zehn. | I count to ten.
+A | Papier | ex | Ich brauche ein Blatt Papier. | I need a sheet of paper.
+A | treffen | ex | Ich treffe meine Freunde am Samstag. | I am meeting my friends on Saturday.
+A | Abstimmung | ex | Die Abstimmung ist morgen. | The vote is tomorrow.
+A | hassen | ex | Ich hasse es, früh aufzustehen. | I hate getting up early.
+A | Kennzeichen | ex | Das Auto hat ein deutsches Kennzeichen. | The car has a German license plate.
+A | Gericht | ex | Er steht vor Gericht. | He is on trial.
+A | Opfer | ex | Das Opfer wurde ins Krankenhaus gebracht. | The victim was taken to the hospital.
+A | Sitz | ex | Der Sitz im Zug ist bequem. | The seat on the train is comfortable.
+A | Maschine | ex | Die Maschine ist kaputt. | The machine is broken.
+A | Verfassung | ex | Die Verfassung schützt die Rechte der Bürger. | The constitution protects the rights of citizens.
+
+# ---- B: wrong or broken meaning ----------------------------------------------------------------------------------------------
+B | Kumpel | en | buddy, mate
+B | Schrank | en | cupboard, closet
+B | Münze | en | coin
+B | Sänger | en | singer
+B | Dose | en | can, tin
+B | einrichten | en | to furnish, to set up
+B | Stift | en | pen, pencil
+B | durchfallen | en | to fail (an exam)
+B | Fach | en | school subject, compartment
+B | peinlich | en | embarrassing
+B | unruhig | en | restless, uneasy
+B | Erbschaft | en | inheritance
+B | ersparen | en | to spare (someone something)
+B | Opfer | en | victim; sacrifice
+B | Bank | en | bank; bench
+B | Bank | plural | Banken
+B | Kennzeichen | en | license plate, distinguishing mark
+B | Betrieb | en | business, operation
+B | verschieden | en | different, various
+B | Platz | en | place, seat, square
+B | Gericht | en | court; dish (food)
+B | Schuld | en | guilt, fault; debt
+B | ausziehen | en | to take off (clothes); to move out
+B | Zoll | en | customs, duty
+B | Tor | en | gate, goal
+B | Gleis | en | platform, track
+B | Rate | en | instalment, rate
+B | umgehen | en | to deal with, to bypass
+B | schaffen | en | to manage, to create
+B | passieren | en | to happen; to pass
+B | entlassen | en | to dismiss, to fire; to release
+B | leisten | en | to afford; to accomplish
+B | aufsteigen | en | to rise, to climb
+B | Leid | en | suffering, grief
+B | Eis | en | ice, ice cream
+B | wählen | en | to vote, to choose, to dial
+B | Verfassung | en | constitution; condition
+B | fern | en | far, distant
+B | weit | en | far, wide
+
+B | können | en | to be able to, can
+B | sollen | en | to be supposed to, should
+
+# ---- C: meaning wording ---------------------------------------------------------------------------------------------------------
+C | Kuchen | en | cake
+C | servieren | en | to serve
+C | blinzeln | en | to blink
+C | Haut | en | skin
+C | Mund | en | mouth
+C | Bein | en | leg
+C | Arzt | en | doctor
+C | Tablette | en | pill, tablet
+C | Esel | en | donkey
+C | Affe | en | monkey, ape
+C | Rotkehlchen | en | robin
+C | tragen | en | to wear, to carry
+C | anhaben | en | to have on, to wear
+C | Freund | en | friend, boyfriend
+C | Ehefrau | en | wife
+C | Ehemann | en | husband
+C | Nachbar | en | neighbor
+C | Schlafzimmer | en | bedroom
+C | Regal | en | shelf
+C | Boden | en | floor, ground
+C | Bad | en | bath, bathroom
+C | Lehrer | en | teacher
+C | Zeugnis | en | report card, certificate
+C | Preis | en | price, prize
+C | Geschäft | en | shop, business
+C | Parkplatz | en | parking space, car park
+C | Strecke | en | route, distance
+C | Auskunft | en | information, inquiry
+C | Reiseführer | en | guidebook, tour guide
+C | Nachricht | en | message, news
+C | Geschichte | en | story, history
+C | klingen | en | to sound, to ring
+C | Kanal | en | channel; canal
+C | Programm | en | program
+C | Akustik | en | acoustics
+C | vorspielen | en | to play for someone, to audition; to pretend
+C | Kritik | en | criticism, review
+C | Land | en | country, countryside
+C | Wahl | en | election, choice
+C | Gesellschaft | en | society, company
+C | früher | en | earlier, in the past
+C | allmählich | en | gradually
+C | Vormittag | en | morning (before noon)
+C | Uhr | en | clock, o'clock
+C | zeigen | en | to show
+C | heißen | en | to be called
+C | Anweisung | en | instruction
+C | raten | en | to advise; to guess
+C | Stimme | en | voice, vote
+C | lassen | en | to let, to leave
+C | Stück | en | piece
+C | reichen | en | to reach, to be enough
+C | laufen | en | to run, to walk
+C | sehen | en | to see
+C | ziehen | en | to pull; to move (house)
+C | angeln | en | to fish (with a rod)
+C | natürlich | en | natural; of course
+C | sicher | en | sure, safe
+C | einfach | en | simple, easy; simply
+C | schlecht | en | bad
+C | frei | en | free
+C | wirklich | en | really, real
+C | bequem | en | comfortable, convenient
+C | vollkommen | en | complete, perfect
+C | brav | en | well-behaved, good
+C | Fabrik | en | factory
+C | Handel | en | trade, commerce
+C | Kollege | en | colleague
+C | Chef | en | boss
+C | Chefin | en | boss (female)
+C | Direktor | en | director, principal
+C | Kündigung | en | notice (of termination), resignation
+C | glauben | en | to believe, to think
+C | Fehler | en | mistake, error
+C | Konzept | en | concept, draft
+C | Unruhe | en | unrest, restlessness
+C | nachgeben | en | to give in, to yield
+C | Glück | en | luck, happiness
+C | rechnen | en | to calculate, to count on
+C | Pfund | en | pound (money, weight)
+C | Zeuge | en | witness
+C | Klage | en | lawsuit, complaint
+C | Verfahren | en | proceedings, procedure
+C | Amt | en | (public) office
+C | vorlesen | en | to read aloud
+C | Tafel | en | blackboard, board
+C | schätzen | en | to estimate; to appreciate
+C | werden | en | to become; will (future)
+
+# ---- D: main example replaced (names, idioms, sad or odd sentences) ------------------------------------------------------
+D | Penthouse | ex | Sie wohnt in einem Penthouse mit Dachterrasse. | She lives in a penthouse with a roof terrace.
+D | Erbschaft | ex | Sie hat eine Erbschaft bekommen. | She received an inheritance.
+D | Honig | ex | Ich nehme Honig statt Zucker im Tee. | I take honey instead of sugar in my tea.
+D | Bier | ex | Ich trinke gern ein Bier nach der Arbeit. | I like to have a beer after work.
+D | Hunger | ex | Ich habe großen Hunger. | I am very hungry.
+D | Koffein | ex | Kaffee enthält viel Koffein. | Coffee contains a lot of caffeine.
+D | Pfirsich | ex | Die Haut eines Pfirsichs ist sehr empfindlich. | The skin of a peach is very delicate.
+D | Haut | ex | Meine Haut ist sehr trocken. | My skin is very dry.
+D | Nerv | ex | Der Zahnarzt behandelt den Nerv. | The dentist is treating the nerve.
+D | Tätowierung | ex | Sie hat eine Tätowierung am Arm. | She has a tattoo on her arm.
+D | Finger | ex | Ich habe mir den Finger verletzt. | I hurt my finger.
+D | Nase | ex | Meine Nase ist verstopft. | My nose is blocked.
+D | Gesicht | ex | Sie wäscht sich das Gesicht. | She is washing her face.
+D | Herz | ex | Mein Herz schlägt sehr schnell. | My heart is beating very fast.
+D | vertragen | ex | Ich vertrage keine Milch. | I cannot tolerate milk.
+D | klinisch | ex | Die Ärzte machen eine klinische Studie. | The doctors are running a clinical study.
+D | warm | ex | Im Sommer ist es hier sehr warm. | It is very warm here in summer.
+D | heiß | ex | Das Wasser ist sehr heiß. | The water is very hot.
+D | Himmel | ex | Der Himmel ist heute blau. | The sky is blue today.
+D | Gras | ex | Die Kinder spielen im Gras. | The children are playing in the grass.
+D | Stein | ex | Er wirft einen Stein ins Wasser. | He throws a stone into the water.
+D | Windmühle | ex | Die alte Windmühle steht auf dem Hügel. | The old windmill stands on the hill.
+D | fruchtbar | ex | Der Boden hier ist sehr fruchtbar. | The soil here is very fertile.
+D | Wasserfall | ex | Wir haben einen großen Wasserfall gesehen. | We saw a big waterfall.
+D | Mond | ex | Der Mond scheint hell. | The moon is shining brightly.
+D | Wolf | ex | Der Wolf heult nachts im Wald. | The wolf howls in the forest at night.
+D | Maus | ex | Eine kleine Maus sitzt im Garten. | A little mouse is sitting in the garden.
+D | Huhn | ex | Das Huhn legt jeden Tag ein Ei. | The hen lays an egg every day.
+D | Fuchs | ex | Der Fuchs läuft durch den Wald. | The fox is running through the forest.
+D | Elefant | ex | Der Elefant ist das größte Landtier. | The elephant is the largest land animal.
+D | Mücke | ex | Eine Mücke hat mich gestochen. | A mosquito bit me.
+D | Wal | ex | Der Wal ist das größte Tier der Welt. | The whale is the largest animal in the world.
+D | Anzug | ex | Er trägt einen dunklen Anzug. | He is wearing a dark suit.
+D | Kragen | ex | Sein Kragen ist zu eng. | His collar is too tight.
+D | Hausschuh | ex | Zu Hause trage ich Hausschuhe. | At home I wear slippers.
+D | ausziehen | ex | Zieh bitte deine Schuhe aus. | Please take off your shoes.
+D | Frau | ex | Meine Frau arbeitet im Krankenhaus. | My wife works in a hospital.
+D | Ehemann | ex | Ihr Ehemann arbeitet als Arzt. | Her husband works as a doctor.
+D | Mami | ex | Meine Mami kocht heute das Essen. | My mom is cooking dinner today.
+D | Heirat | ex | Die Heirat findet im Mai statt. | The wedding takes place in May.
+D | wandern | ex | Am Sonntag wandern wir im Wald. | On Sunday we are going hiking in the forest.
+D | Spaziergang | ex | Wir machen einen Spaziergang im Park. | We are taking a walk in the park.
+D | herausfordern | ex | Er fordert mich zu einem Spiel heraus. | He challenges me to a game.
+D | joggen | ex | Ich jogge jeden Morgen im Park. | I jog in the park every morning.
+D | Tor | ex | Der Spieler schießt ein Tor. | The player scores a goal.
+D | Flug | ex | Mein Flug geht um acht Uhr. | My flight leaves at eight o'clock.
+D | Kapitän | ex | Der Kapitän steht auf der Brücke. | The captain is standing on the bridge.
+D | Ausstieg | ex | Der Ausstieg ist hinten rechts. | The exit is at the back on the right.
+D | Parkplatz | ex | Hier gibt es keinen freien Parkplatz. | There is no free parking space here.
+D | Einkaufszentrum | ex | Wir fahren zum Einkaufszentrum. | We are going to the shopping center.
+D | Motorrad | ex | Mein Motorrad ist sehr schnell. | My motorcycle is very fast.
+D | Brunnen | ex | Im Park gibt es einen Brunnen. | There is a fountain in the park.
+D | Licht | ex | Mach bitte das Licht an. | Please turn on the light.
+D | Wand | ex | An der Wand hängt ein Bild. | A picture is hanging on the wall.
+D | Dach | ex | Das Haus hat ein rotes Dach. | The house has a red roof.
+D | Wohnzimmer | ex | Wir sitzen im Wohnzimmer. | We are sitting in the living room.
+D | aufwischen | ex | Ich wische den Boden auf. | I am wiping the floor.
+D | Tafel | ex | Der Lehrer schreibt etwas an die Tafel. | The teacher is writing something on the blackboard.
+D | lesen | ex | Ich lese jeden Abend ein Buch. | I read a book every evening.
+D | Schuld | ex | Es ist nicht meine Schuld. | It is not my fault.
+D | rechnen | ex | Ich rechne die Kosten aus. | I am calculating the costs.
+D | Strafe | ex | Die Strafe war sehr hoch. | The punishment was very high.
+D | Richter | ex | Der Richter spricht das Urteil. | The judge pronounces the verdict.
+D | stehlen | ex | Er hat mein Fahrrad gestohlen. | He stole my bicycle.
+D | verdächtig | ex | Der Mann sieht verdächtig aus. | The man looks suspicious.
+D | Verbindung | ex | Die Verbindung ist schlecht. | The connection is bad.
+D | programmieren | ex | Er programmiert eine neue App. | He is programming a new app.
+D | Drohne | ex | Die Drohne fliegt über dem Park. | The drone is flying over the park.
+D | fotografieren | ex | Ich fotografiere gern Blumen. | I like photographing flowers.
+D | Zeitschrift | ex | Ich lese jede Woche eine Zeitschrift. | I read a magazine every week.
+D | poetisch | ex | Das Gedicht klingt sehr poetisch. | The poem sounds very poetic.
+D | Waffe | ex | Er trägt keine Waffe. | He is not carrying a weapon.
+D | Freiheit | ex | Freiheit ist wichtig für mich. | Freedom is important to me.
+D | Reform | ex | Die Reform kommt nächstes Jahr. | The reform is coming next year.
+D | jetzt | ex | Ich bin jetzt zu Hause. | I am at home now.
+D | noch | ex | Ich habe noch Hunger. | I am still hungry.
+D | allmählich | ex | Mein Deutsch wird allmählich besser. | My German is gradually getting better.
+D | Sekunde | ex | Eine Minute hat sechzig Sekunden. | A minute has sixty seconds.
+D | Ortszeit | ex | Wir landen um 18 Uhr Ortszeit. | We land at 6 p.m. local time.
+D | nerven | ex | Das Kind nervt mich. | The child is annoying me.
+D | unverschämt | ex | Die Preise sind unverschämt. | The prices are outrageous.
+D | griesgrämig | ex | Er ist heute griesgrämig. | He is grumpy today.
+D | froh | ex | Ich bin froh, dass du da bist. | I am glad you are here.
+D | heiter | ex | Der Tag ist heiter und hell. | The day is cheerful and bright.
+D | Neid | ex | Er spürt Neid auf seinen Bruder. | He feels envy of his brother.
+D | mutig | ex | Das war eine mutige Entscheidung. | That was a brave decision.
+D | Trauer | ex | In ihrer Trauer brach sie in Tränen aus. | In her grief she burst into tears.
+D | besprechen | ex | Wir besprechen den Plan. | We are discussing the plan.
+D | Rede | ex | Die Rede dauerte zehn Minuten. | The speech lasted ten minutes.
+D | Sprecher | ex | Der Sprecher beginnt gleich. | The speaker is about to begin.
+D | bitte | ex | Kannst du mir bitte helfen? | Can you please help me?
+D | Anweisung | ex | Bitte befolgen Sie die Anweisungen. | Please follow the instructions.
+D | sehen | ex | Ich sehe einen Vogel. | I see a bird.
+D | schlagen | ex | Er schlägt den Ball. | He hits the ball.
+D | aufstehen | ex | Ich stehe um sieben Uhr auf. | I get up at seven o'clock.
+D | stehen | ex | Das Auto steht vor dem Haus. | The car is standing in front of the house.
+D | nehmen | ex | Ich nehme den Bus. | I take the bus.
+D | werfen | ex | Er wirft den Ball. | He throws the ball.
+D | aufgeben | ex | Ich gebe nie auf. | I never give up.
+D | steigen | ex | Die Temperatur steigt. | The temperature is rising.
+D | passieren | ex | Was ist passiert? | What happened?
+D | schaffen | ex | Ich schaffe das! | I can do it!
+D | cool | ex | Das ist ein cooles Auto. | That is a cool car.
+D | einzig | ex | Das ist die einzige Lösung. | That is the only solution.
+D | stark | ex | Er ist sehr stark. | He is very strong.
+D | böse | ex | Der Hund ist nicht böse. | The dog is not mean.
+D | schwach | ex | Ich fühle mich heute schwach. | I feel weak today.
+D | ähnlich | ex | Die Brüder sind sich sehr ähnlich. | The brothers are very similar.
+D | behutsam | ex | Wir gehen behutsam vor. | We proceed carefully.
+D | brutal | ex | Der Film war sehr brutal. | The film was very brutal.
+D | Dienst | ex | Der Dienst beginnt um sieben Uhr. | The shift begins at seven o'clock.
+D | Assistent | ex | Mein Assistent arbeitet heute von zu Hause. | My assistant is working from home today.
+D | Chefin | ex | Unsere Chefin ist sehr freundlich. | Our boss is very friendly.
+D | entlassen | ex | Die Firma entlässt zehn Mitarbeiter. | The company is laying off ten employees.
+D | Wüste | ex | Die Sahara ist die größte Wüste der Welt. | The Sahara is the biggest desert in the world.
+D | Bauernhof | ex | Der Bauernhof liegt am Dorfrand. | The farm is on the edge of the village.
+D | Treibhausgas | ex | Methan ist ein Treibhausgas. | Methane is a greenhouse gas.
+D | Erinnerung | ex | Ich habe schöne Erinnerungen an den Urlaub. | I have fond memories of the vacation.
+D | schätzen | ex | Ich schätze deine Hilfe. | I appreciate your help.
+D | Herkunft | ex | Ihre Herkunft ist unbekannt. | Her origin is unknown.
+D | Konzept | ex | Das Konzept ist gut durchdacht. | The concept is well thought out.
+D | lösen | ex | Ich löse das Problem morgen. | I will solve the problem tomorrow.
+D | scheinen | ex | Die Sonne scheint. | The sun is shining.
+D | Zustand | ex | Das Haus ist in gutem Zustand. | The house is in good condition.
+D | Form | ex | Der Tisch hat eine runde Form. | The table has a round shape.
+D | vielleicht | ex | Vielleicht komme ich morgen. | Maybe I will come tomorrow.
+D | kapieren | ex | Ich kapiere das nicht. | I do not get it.
+D | Ausweg | ex | Es gibt noch einen anderen Ausweg. | There is another way out.
+D | Maximum | ex | Das Maximum liegt bei hundert. | The maximum is one hundred.
+D | werden | ex | Es wird dunkel. | It is getting dark.
+D | Abgeordneter | ex | Die Abgeordneten stimmen im Parlament ab. | The members of parliament are voting in parliament.
+
+# ---- K: only the English translation of the example is wrong ----------------------------------------------------------
+K | Karriere | exen | Making a career was never important to her.
+
+# ---- E: tier (difficulty ladder 1-6) --------------------------------------------------------------------------------------------
+E | Wolle | tier | 4
+E | schick | tier | 4
+E | Sage | tier | 5
+E | Würde | tier | 5
+E | Leid | tier | 5
+E | gefallen | tier | 2
+E | Glaube | tier | 3
+E | Macht | tier | 3
+E | schonen | tier | 4
+E | sichern | tier | 5
+E | platzen | tier | 4
+E | fern | tier | 5
+E | Ware | tier | 4
+E | Straße | tier | 2
+E | Fußball | tier | 2
+E | Hausaufgabe | tier | 2
+E | Größe | tier | 3
+E | groß | tier | 1
+E | Fliege | tier | 4
+E | Herd | tier | 5
+E | genießen | tier | 3
+
+# ---- F: plural (the word has no plural, or a different word) --------------------------------------------------------------------
+F | Reis | plural |
+F | Milch | plural |
+F | Honig | plural |
+F | Blut | plural |
+F | Schlaf | plural |
+F | Erde | plural |
+F | Natur | plural |
+F | Wolle | plural |
+F | Unterwäsche | plural |
+F | Baumwolle | plural |
+F | Schach | plural |
+F | Post | plural |
+F | Streit | plural |
+F | Studium | plural |
+F | Schutz | plural |
+F | Würde | plural |
+F | Landwirtschaft | plural |
+F | Software | plural |
+F | Politik | plural |
+F | Januar | plural |
+F | Handel | plural |
+F | Dollar | plural | Dollar
+
+# ---- G: family words that are not family ------------------------------------------------------------------------------------------
+G | Untersuchung | family- | Suche
+G | Unterkunft | family- | Kunft
+G | Ausstellung | family- | Stellung
+G | Zuständigkeit | family- | Zustand
+G | Neugier | family- | Gier
+G | Zuversicht | family- | Versicht
+G | behaupten | family- | haupt
+G | holen | family- | Holz
+G | suchen | family- | besuchen
+G | selten | family- | seltsam
+G | bequem | family- | quem
+G | beiläufig | family- | beilaufen
+G | Recycling | family- | Zyklus
+G | Schiedsrichter | family- | schiedlich
+G | Ungeziefer | family> | Zieferbekämpfung>Ungezieferbekämpfung
+
+# ---- H: lemma form (adjective nouns) ------------------------------------------------------------------------------------------------
+H | Erwachsener | lemma | Erwachsene
+H | Angestellter | lemma | Angestellte
+H | Verdächtiger | lemma | Verdächtige
+H | Abgeordneter | lemma | Abgeordnete
+H | Nachtklub | lemma | Nachtclub
+
+# ---- I: remove the word (niche, duplicate or dark) ----------------------------------------------------------------------------------
+I | Gym | remove |
+I | Baseballspiel | remove |
+I | Grabstein | remove |
+I | Zement | remove |
+I | garen | remove |
+I | Rekordhalter | remove |

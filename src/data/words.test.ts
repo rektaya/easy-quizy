@@ -88,11 +88,13 @@ test('the five small topics are folded into the big ones: every word has a topic
   assert.equal(currentTheme(null), null);
 });
 
-test('reflexive verbs are always shown with "sich", their example uses a reflexive pronoun, and saved ids are carried over', async () => {
+test('reflexive verbs are always shown with "sich", their example uses a reflexive pronoun, and saved ids are carried over (also after a spelling fix)', async () => {
   const { RENAMED_WORDS, carryOver } = await import('./renamedWords.ts');
   for (const [old, now] of Object.entries(RENAMED_WORDS)) {
     const w = WORDS.find((x) => x.id === now)!;
     assert.ok(w, `${now} is missing`);
+    assert.ok(!WORDS.some((x) => x.id === old), `${old} still exists`);
+    if (!now.startsWith('sich-')) continue; // a spelling fix (Erwachsener -> Erwachsene), not a reflexive verb
     assert.ok(w.lemma.startsWith('sich '), `${now} is not shown with "sich"`);
     assert.ok(/\b(sich|mich|dich|uns|euch)\b/i.test(w.example.de), `${now}: the example does not use the reflexive verb: ${w.example.de}`);
     assert.ok(!WORDS.some((x) => x.id === old), `${old} still exists`);

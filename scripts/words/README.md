@@ -37,3 +37,12 @@ pronoun. A word whose spelling changes also changes its id (`ernaehren` becomes 
 
 Licences: Wiktionary text is CC BY-SA, Tatoeba is CC BY 2.0 FR (some CC0), the frequency list is CC BY-SA 4.0
 (to be checked again before release). The app needs a credits screen that names all three.
+
+## Checks and fixes added in the review of 2026-10-22
+
+- `extra_info.py` now also: leaves out sentences with names, vulgar/sad/violent words or a cut-off translation; counts a possessive (meine, meinen,
+  seine) never for the verb; does not take a capitalised first word of a sentence ("Würden Sie...") for a noun; counts a sentence for a reflexive verb only
+  when it has a reflexive pronoun; drops generic partners and needs 5 shared sentences for "often together with".
+  `extras_blocklist.txt` (per word id) and `bad_sentences.txt` (per sentence) are read by it.
+- `review_patch.txt` + `apply_review.py`: the proposed per-word fixes, shown grouped as a report and applied by group after approval.
+- `fix_family_case.py`: a dry-run helper for the capital letters of family words (it is not exact: check what it prints).

@@ -21,6 +21,11 @@ export const RENAMED_WORDS: Record<string, string> = {
   ausdenken: 'sich-ausdenken',
   'vorstellen': 'sich-vorstellen',
   'erinnern': 'sich-erinnern',
+  erwachsener: 'erwachsene',
+  angestellter: 'angestellte',
+  verdaechtiger: 'verdaechtige',
+  abgeordneter: 'abgeordnete',
+  nachtklub: 'nachtclub',
 };
 
 /** The same record with every renamed id replaced by its new one (anything else is left as it is). */

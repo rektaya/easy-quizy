@@ -22,8 +22,19 @@ def main():
     tiers = dict(re.findall(r"^\s*([a-z0-9-]+):\s*([1-6])\b", core.split('CORE_TIERS')[-1], re.M)) if 'CORE_TIERS' in core else {}
     for m in re.finditer(r"id:\s*'([^']+)',\s*lemma:\s*'([^']+)'", core):
         entries.append((m.group(1), m.group(2), int(tiers.get(m.group(1), 3))))
+    # words that share their spelling with a more common word (Wolle / wollen) get their rank by hand: rank_overrides.txt, "lemma rank"
+    overrides = {}
+    path = os.path.join(os.path.dirname(__file__), 'rank_overrides.txt')
+    if os.path.exists(path):
+        for l in open(path, encoding='utf8'):
+            if l.strip():
+                lemma, _, n = l.strip().rpartition(' ')
+                overrides[slug(lemma)] = int(n)
     out = {}
     for wid, lemma, tier in entries:
+        if wid in overrides:
+            out[wid] = overrides[wid]
+            continue
         r = rank.get(lemma.casefold())
         if r is None and lemma.startswith('sich '):
             r = rank.get(lemma[5:].casefold())

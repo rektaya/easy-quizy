@@ -1,0 +1,37 @@
+# Words whose Tatoeba sentences are about ANOTHER word (same spelling, or a form that looks alike). Read by extra_info.py.
+# `both` = no extra examples and no "often together with"; `extras` = no extra examples; `together` = no "often together with".
+# Found in the review of 2026-10-22.
+herd both        # Herde (herd), not the stove
+dosis both       # Dose (can), not the dose
+reis both        # Reise (trip), not rice
+fliege both      # fliegen (to fly), not the insect
+niesen both      # genossen (genießen), not sneezing
+wolle both       # wollen (to want), not wool
+schick both      # schicken (to send), not smart
+see both         # die See (sea), not the lake
+kissen both      # Küssen (kisses), not the cushion
+sage both        # sage! (sagen), not the legend
+rate both        # raten / Rat, not the instalment
+zoll both        # Zoll = inch
+eis extras       # Eisen (iron), not ice
+schal extras     # Schale (peel), not the scarf
+fressen extras
+mann extras      # "man" (the pronoun), not the man
+danach extras    # "danach suchen" = look for it
+nah both         # nächste (next), not near
+super extras     # Super Mario, petrol Super
+lieb extras      # lieben, lieber
+weiss extras     # weiß = wissen
+schimmel extras  # Schimmel = white horse
+leid extras      # "tut mir leid"
+gefallen extras  # gefällt / gefallen (fallen)
+meinen extras    # meine / mein (my)
+aussprechen extras  # ausgesprochen (really)
+schlagen extras
+sich-setzen extras  # fortsetzen
+fangen extras    # anfangen
+werfen extras    # bombs
+nehmen extras
+sollen extras
+fern extras      # fernsehen
+wuerde both      # Würde er..., Würden Sie... (werden), not dignity
