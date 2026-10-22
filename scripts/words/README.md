@@ -44,5 +44,6 @@ Licences: Wiktionary text is CC BY-SA, Tatoeba is CC BY 2.0 FR (some CC0), the f
   seine) never for the verb; does not take a capitalised first word of a sentence ("Würden Sie...") for a noun; counts a sentence for a reflexive verb only
   when it has a reflexive pronoun; drops generic partners and needs 5 shared sentences for "often together with".
   `extras_blocklist.txt` (per word id) and `bad_sentences.txt` (per sentence) are read by it.
+- `pilot_pick.py`, `pilot_compose.py`, `review_patch_pilot.txt`: the 839-word pilot (pick, add to the raw file, fixes after reading them).
 - `review_patch.txt` + `apply_review.py`: the proposed per-word fixes, shown grouped as a report and applied by group after approval.
 - `fix_family_case.py`: a dry-run helper for the capital letters of family words (it is not exact: check what it prints).

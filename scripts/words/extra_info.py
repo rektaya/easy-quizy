@@ -192,6 +192,8 @@ def main():
         return s
 
     used = set(main_example.values())
+    core_text = open(os.path.join(ROOT, 'src/data/words.core.ts'), encoding='utf8').read()
+    used |= set(m.replace("\\'", "'") for m in re.findall(r"\bde: '((?:[^'\\]|\\.)*)'", core_text))  # the hand-written core examples too
     examples = {}
     for wid, _, _, _, _ in words:
         cands = []

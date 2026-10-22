@@ -30,8 +30,17 @@ def main():
             if l.strip():
                 lemma, _, n = l.strip().rpartition(' ')
                 overrides[slug(lemma)] = int(n)
+    # the words of the pilot (pilot_pick.py) come with the rank worked out from all their forms and their example: use it
+    pilot_path = os.path.join(DATA, 'pilot.json')
+    pilot = {}
+    if os.path.exists(pilot_path):
+        import json
+        pilot = {slug(w['lemma']): w['rank'] for w in json.load(open(pilot_path, encoding='utf8'))}
     out = {}
     for wid, lemma, tier in entries:
+        if wid in pilot and wid not in overrides:
+            out[wid] = pilot[wid]
+            continue
         if wid in overrides:
             out[wid] = overrides[wid]
             continue

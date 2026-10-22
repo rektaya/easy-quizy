@@ -11,6 +11,8 @@
 
 ## Essen und Trinken | food and drink
 1|das|Wasser||water|Kann ich bitte ein Glas Wasser haben?|Can I have a glass of water, please?|Mineralwasser,Wasserflasche
+1||essen||to eat|Er isst selten mit seiner Familie zusammen.|He rarely eats with his family.|
+1||trinken||to drink|Morgens trinke ich immer eine Tasse Kaffee.|I always drink a cup of coffee in the morning.|
 2|der|Kaffee||coffee|Möchtest du einen Kaffee?|Would you like a coffee?|Kaffeetasse,Kaffeemaschine
 2|das|Frühstück|Frühstücke|breakfast|Zum Frühstück esse ich Müsli.|For breakfast I eat muesli.|frühstücken,Frühstückstisch
 2|das|Fleisch||meat|Sie isst kein Fleisch.|She doesn’t eat meat.|Rindfleisch,Fleischer
@@ -19,6 +21,10 @@
 2|der|Tee|Tees|tea|Lassen Sie den Tee zehn Minuten lang ziehen.|Let the tea sit for ten minutes.|
 2|der|Hunger||hunger|Ich habe großen Hunger.|I am very hungry.|
 2|das|Abendessen|Abendessen|dinner, supper|Vor dem Abendessen übt sie immer Klavier.|She always practices the piano before dinner.|
+2||hungern||to hunger, to starve|Zu der Zeit hungerte die ganze Welt.|At that time, the whole world was hungry.|
+2|das|Glas|Gläser|glass|Ich hätte sehr gerne ein kaltes Glas Bier.|I'd really appreciate a glass of cold beer.|
+2|der|Drink|Drinks|drink (alcoholic)|Ich nehme einen Drink an der Bar.|I'll have a drink at the bar.|
+2|die|Flasche|Flaschen|bottle, flask|Es ist noch ein wenig Milch in der Flasche.|There is a little milk left in the bottle.|
 3|das|Brot|Brote|bread|Ich kaufe frisches Brot beim Bäcker.|I buy fresh bread at the baker’s.|Brötchen,backen
 3|die|Rechnung|Rechnungen|bill, invoice|Die Rechnung, bitte!|The bill, please!|rechnen,Rechnungsnummer
 3|das|Restaurant|Restaurants|restaurant|Wir haben im Restaurant zu Abend gegessen.|We had dinner at a restaurant.|
@@ -36,6 +42,16 @@
 3|das|Mittagessen|Mittagessen|lunch|Ein Butterbrot war mein einziges Mittagessen.|A single sandwich was my whole lunch.|
 3|der|Teller|Teller|plate, dish|Hast du einen tiefen Teller für die Suppe?|Do you have a bowl for soup?|
 3|die|Schokolade|Schokoladen|chocolate|Schokolade enthält mehr Eisen als Spinat.|Chocolate has more iron than spinach.|
+3|der|Alkohol|Alkohole|alcohol, ethanol|In diesem Laden wird Alkohol nicht verkauft.|Liquor is not sold at this store.|
+3|der|Kohl||cabbage|Ich koche Kohl mit Kartoffeln.|I am cooking cabbage with potatoes.|
+3||bestellen||to order|Es ist billiger, dutzendweise zu bestellen.|It's cheaper to order by the dozen.|
+3|der|Champagner|Champagner|champagne|Champagner wird aus Frankreich importiert.|Champagne is imported from France.|
+3|der|Geschmack|Geschmäcker|taste|Ich liebe den Geschmack von Wassermelonen.|I love the taste of watermelon.|
+3||hungrig||hungry|Das Baby weint, weil es jetzt hungrig ist.|The baby is crying because it is hungry now.|
+3|die|Pizza|Pizzen|pizza|Pizza ist das Lieblingsgericht der Kinder.|Pizza is the kids' favourite meal.|
+3|die|Tasse|Tassen|cup, mug|Möchtest du noch eine Tasse Kaffee trinken?|Will you drink another cup of coffee?|
+3|der|Appetit||appetite|Ich scheine den Appetit verloren zu haben.|I seem to have lost my appetite.|
+3||köstlich||delicious|Diese Zitronen-Mandel-Törtchen sind köstlich.|These lemon and almond tarts are scrumptious.|
 4|das|Gemüse||vegetables|Ich esse jeden Tag viel Gemüse.|I eat a lot of vegetables every day.|Gemüsesuppe,Gemüsehändler
 4|das|Obst||fruit|Auf dem Markt gibt es frisches Obst.|There’s fresh fruit at the market.|Obstsalat,Obstkorb
 4|das|Rezept|Rezepte|recipe|Hast du ein gutes Rezept für Suppe?|Do you have a good recipe for soup?|Kochrezept,Rezeptbuch
@@ -92,6 +108,9 @@
 1|das|Blut||blood|Das ist kein Blut. Es ist bloß rote Farbe.|This isn't blood. It's just red paint.|
 1||schlafen||to sleep|Ich werde eine Nacht darüber schlafen.|I'll sleep on it tonight.|
 1|das|Gesicht|Gesichter|face|Sie wäscht sich das Gesicht.|She is washing her face.|
+1||sterben||to die|Früher oder später müssen wir alle sterben.|Sooner or later, we all are going to die.|
+1||ruhen||to rest, to sleep|Wir arbeiten am Tag und ruhen in der Nacht.|We work by day and rest by night.|
+1|der|Tod|Tode|death|Zehn Jahre sind seit seinem Tod vergangen.|Ten years have gone by since his death.|
 2|der|Arzt|Ärzte|doctor|Ich muss morgen zum Arzt.|I have to see the doctor tomorrow.|Ärztin,Hausarzt
 2|der|Schmerz|Schmerzen|pain|Der Schmerz im Rücken wird stärker.|The pain in my back is getting worse.|Schmerzmittel,schmerzhaft
 2||krank||sick, ill|Meine Tochter ist seit Montag krank.|My daughter has been sick since Monday.|Krankheit,Krankenhaus
@@ -116,6 +135,12 @@
 2|das|Bein|Beine|leg|Ich wurde von einem Hund ins Bein gebissen.|I was bitten on the leg by a dog.|
 2|der|Arm|Arme|arm|Er brach sich beim Fußballspielen den Arm.|He broke his arm playing soccer.|
 2|das|Haar|Haare|hair|Lange Haare sind gegenwärtig aus der Mode.|Long hair is out of fashion now.|
+2||gebären||to give birth|Die Frau gebiert ein Kind.|The woman gives birth to a child.|
+2||schwanger||pregnant|Meine Schwester ist schwanger.|My sister is pregnant.|
+2|der|Patient|Patienten|patient|Jemand muss sich um den Patienten kümmern.|Somebody must care for the patient.|
+2|die|Operation|Operationen|operation|Sie halfen ihm, die Operation durchzuführen.|They assisted him in performing the operation.|
+2|das|Gehirn|Gehirne|brain|Das Gehirn ist nur eine komplizierte Maschine.|The brain is just a complicated machine.|
+2||atmen||to breathe|Atme tief ein und aus.|Breathe in and out deeply.|
 3|die|Gesundheit||health|Gesundheit ist wichtiger als Geld.|Health is more important than money.|gesund,gesundheitlich
 3|die|Untersuchung|Untersuchungen|examination, check-up|Die Untersuchung dauert nur zehn Minuten.|The examination only takes ten minutes.|untersuchen
 3||behandeln||to treat|Behandle mich nicht, als sei ich ein Kind.|Don't treat me as if I were a child.|
@@ -131,6 +156,29 @@
 3|das|Fieber|Fieber|fever|Ich hatte heute Morgen ein wenig Fieber.|I had a little fever this morning.|
 3|der|Knochen|Knochen|bone|Unser Hund vergräbt seine Knochen im Garten.|Our dog buries its bones in the garden.|
 3|der|Magen|Mägen|stomach, maw|Mein Magen zieht sich vor Hunger zusammen.|My stomach is clenched with hunger.|
+3|die|Medizin||medicine|Diese Medizin wird deine Erkältung heilen.|This medicine will cure your cold.|
+3|die|Brust|Brüste|chest|Er hat Schmerzen in der Brust.|He has a pain in his chest.|
+3|die|Geburt|Geburten|birth|Ich hatte letztes Mal eine schwere Geburt.|I had a difficult delivery last time.|
+3|die|Zunge|Zungen|tongue|Das Kind hat mir die Zunge herausgestreckt.|That child stuck out his tongue at me.|
+3|der|Notfall|Notfälle|emergency, distress|Ich werde dieses Geld für Notfälle sparen.|I'm going to lay aside that money for emergencies.|
+3|das|Virus|Viren|virus|Es gibt keine Medikamente gegen das Virus.|There's no medication against the virus.|
+3|die|Klinik|Kliniken|clinic|Wo befindet sich die nächstgelegene Klinik?|Where is the nearest clinic?|
+3|der|Krankenwagen|Krankenwagen|ambulance, ambulance car|Es ist sofort ein Krankenwagen gekommen.|An ambulance arrived immediately.|
+3|der|Bart|Bärte|beard|Er hat einen langen Bart.|He has a long beard.|
+3||heilen||to heal|Es kann nicht vollständig geheilt werden.|It cannot be completely cured.|
+3|die|Lippe|Lippen|lip|Da war viel Lippenstift auf ihren Lippen.|There was much lipstick on her lips.|
+3|die|Behandlung|Behandlungen|treatment|Ich bin so eine Behandlung nicht gewohnt.|I'm not accustomed to such treatment.|
+3|die|Zigarette|Zigaretten|cigarette|Würdest du mir bitte eine Zigarette geben?|Would you give me a cigarette?|
+3|die|Wunde|Wunden|wound|Mutter klebte ein Pflaster auf die Wunde.|Mom applied the plaster to the cut.|
+3|der|Geruch|Gerüche|smell, odour|Diese Milch hat einen eigenartigen Geruch.|This milk has a peculiar smell.|
+3|die|Pille|Pillen|pill, tablet|Er nimmt jeden Tag eine Pille.|He takes a pill every day.|
+3||schlucken||to swallow|Ich kann die Tablette nicht schlucken.|I can't swallow the tablet.|
+3||taub||deaf|Er ist infolge eines Unfalls taub geworden.|He went deaf as a result of an accident.|
+3|der|Atem||breath|Ich halte den Atem an.|I am holding my breath.|
+3|die|Ärztin|Ärztinnen|doctor (female)|Sie hat sich entschieden, Ärztin zu werden.|She decided to be a doctor.|
+3|die|Kopfschmerzen||headache|Ich habe schon seit gestern Kopfschmerzen.|I've had a headache since yesterday.|
+3|die|Therapie|Therapien|therapy|Ich bin in Therapie, seit ich dreizehn war.|I've been in therapy since I was thirteen.|
+3|die|Kehle|Kehlen|throat|Ich habe Schmerzen in der Kehle.|I have a pain in my throat.|
 4|das|Medikament|Medikamente|medication|Nehmen Sie das Medikament dreimal täglich.|Take the medication three times a day.|Medizin,Arzneimittel
 4|die|Verletzung|Verletzungen|injury|Er hat sich beim Fußball eine Verletzung zugezogen.|He got an injury playing football.|verletzen,verletzt
 4|der|Blutdruck||blood pressure|Mein Blutdruck ist ein bisschen zu hoch.|My blood pressure is a bit too high.|Blut,Druck
@@ -152,6 +200,7 @@
 4|die|Spritze|Spritzen|syringe|Die Krankenschwester gab mir eine Spritze.|The nurse gave me a shot.|
 4|der|Muskel|Muskeln|muscle|Sie massierte seine verspannten Muskeln.|She massaged his stiff muscles.|
 4|die|Lunge|Lungen|lung, lungs|Der Smog ist der Feind gesunder Lungen.|Smog is the enemy of healthy lungs.|
+4|der|Puls|Pulse|pulse|Wenn man läuft, geht der Puls in die Höhe.|When you run, your heart rate increases.|
 5|die|Erkältung|Erkältungen|cold (illness)|Ich habe eine leichte Erkältung.|I have a mild cold.|erkältet,kalt
 5|die|Allergie|Allergien|allergy|Ich habe eine Allergie gegen Nüsse.|I have an allergy to nuts.|allergisch,Allergiker
 5||ansteckend||contagious|Die Grippe ist sehr ansteckend.|The flu is very contagious.|Ansteckung,anstecken
@@ -183,6 +232,8 @@
 2|der|Stein|Steine|stone, rock|Er wirft einen Stein ins Wasser.|He throws a stone into the water.|
 2|die|Insel|Inseln|island|Napoleon lebte auf der Insel Elba im Exil.|Napoleon lived in exile on the island of Elba.|
 2|der|Sommer|Sommer|summer|Im Sommer trage ich kurzärmelige Hemden.|In the summer, I wear short-sleeve shirts.|
+2|der|Hang|Hänge|slope, hill|Wir stiegen einen steilen Hang hinauf.|We climbed a sharp slope.|
+2|die|Rose|Rosen|rose|Er schenkt ihr eine rote Rose.|He gives her a red rose.|
 3|das|Wetter||weather|Das Wetter ist heute schön.|The weather is nice today.|Wetterbericht,Wettervorhersage
 3|der|Regen||rain|Bei Regen bleibe ich zu Hause.|When it rains I stay at home.|regnen,Regenschirm
 3|der|Schnee||snow|Im Winter liegt hier viel Schnee.|There’s a lot of snow here in winter.|schneien,Schneemann
@@ -195,6 +246,19 @@
 3|das|Gras|Gräser|grass|Die Kinder spielen im Gras.|The children are playing in the grass.|
 3|der|Sand|Sande|sand|Wir haben die Fußspuren im Sand gefunden.|We found the footprints in the sand.|
 3|der|Winter|Winter|winter|Wir haben dieses Jahr einen milden Winter.|We're having a mild winter.|
+3|der|Schatten|Schatten|shade, shadow|Wo viel Licht ist, ist auch viel Schatten.|There is strong shadow where there is much light.|
+3|der|Norden||north|Der Wind kommt aus dem Norden.|The wind is coming from the north.|
+3|der|Süden||south|Im Süden ist das Wetter wärmer.|The weather is warmer in the south.|
+3|die|Dunkelheit|Dunkelheiten|darkness|In der Dunkelheit sieht man nichts.|You can't see anything in the dark.|
+3|das|Feld|Felder|field|Hunderte von Jungs spielen auf dem Feld.|Hundreds of boys are playing in the ground.|
+3|der|Planet|Planeten|planet|Planeten bewegen sich um einen Fixstern.|Planets move around a fixed star.|
+3|das|Holz|Hölzer|wood|Holz schwimmt, aber Eisen sinkt nach unten.|Wood floats, but iron sinks.|
+3|der|Stern|Sterne|star|Am Himmel funkeln viele Sterne.|Many stars are twinkling in the sky.|
+3||wachsen||to grow|Die Blumen wachsen schnell.|The flowers are growing fast.|
+3|das|Universum|Universen|universe|Das Universum ist sehr groß.|The universe is very big.|
+3|der|Osten||east|Die Sonne geht im Osten auf.|The sun rises in the east.|
+3|die|Katastrophe|Katastrophen|catastrophe, disaster|Das Erdbeben verursachte eine Katastrophe.|The earthquake brought about disaster.|
+3|die|Umgebung|Umgebungen|environment, vicinity|Leider befand sich niemand in der Umgebung.|Unfortunately, there was no one around.|
 4|die|Pflanze|Pflanzen|plant|Diese Pflanze braucht viel Licht.|This plant needs a lot of light.|pflanzen,Zimmerpflanze
 4|die|Temperatur|Temperaturen|temperature|Die Temperatur fällt unter null Grad.|The temperature is dropping below zero.|Höchsttemperatur,Körpertemperatur
 4|der|Nebel|Nebel|fog, mist|Im Herbst gibt es oft Nebel.|In autumn there is often fog.|neblig,Nebelscheinwerfer
@@ -211,6 +275,7 @@
 4|der|Herbst|Herbste|autumn, fall|Im Herbst ziehen viele Vögel in den Süden.|Many birds head south in autumn.|
 4|der|Donner|Donner|thunder|Donner kündigt an, dass ein Gewitter naht.|Thunder indicates that a storm is near.|
 4|der|Gipfel|Gipfel|peak, pinnacle|Wir sind auf den Gipfel des Fuji gestiegen.|We climbed to the top of Mt. Fuji.|
+4|die|Hitze||heat|Wegen der Hitze konnte ich nicht schlafen.|I couldn't sleep because of the heat.|
 5|das|Gewitter|Gewitter|thunderstorm|Am Abend kommt ein Gewitter.|A thunderstorm is coming this evening.|Wetter,gewittrig
 5|die|Landschaft|Landschaften|landscape, scenery|Die Landschaft hier ist wunderschön.|The scenery here is beautiful.|Land,landschaftlich
 5|die|Dürre|Dürren|drought|Die Dürre hat die Ernte zerstört.|The drought destroyed the harvest.|dürr,trocken
@@ -243,6 +308,9 @@
 3|die|Schlange|Schlangen|snake|Ich habe schreckliche Angst vor Schlangen.|I have a horror of snakes.|
 3|der|Tiger|Tiger|tiger|Wo kann ich einen lebendigen Tiger kaufen?|Where can I buy a live tiger?|
 3|die|Ratte|Ratten|rat|Hier ist die Ratte! Holt schnell die Katze!|The rat's here! Go call the cat!|
+3||grasen||to graze|Wir haben Kühe auf der Weide grasen sehen.|We saw cows grazing in the meadow.|
+3|der|Flügel|Flügel|wing|Ich wünschte, ich hätte Flügel zum Fliegen.|I wish I had wings to fly.|
+3|der|Käfig|Käfige|cage|Der Vogel sitzt im Käfig.|The bird is sitting in the cage.|
 4|die|Fliege|Fliegen|fly|Eine Fliege sitzt an der Wand.|A fly is sitting on the wall.|
 4|die|Ente|Enten|duck|Wir füttern die Enten am Teich.|We’re feeding the ducks at the pond.|Entenei,Entenbraten
 4|der|Hase|Hasen|hare, rabbit|Ein Hase lief über das Feld.|A hare ran across the field.|Osterhase,Häschen
@@ -290,6 +358,7 @@
 2|die|Tasche|Taschen|bag|Willst du, dass ich dir deine Tasche trage?|Shall I carry your bag?|
 2|der|Ring|Ringe|ring|Er schenkte ihr einen Ring mit Diamanten.|He gave her a diamond ring.|
 2|der|Hut|Hüte|hat|Bitte höre auf, mit deinem Hut zu spielen!|Please stop playing with your hat.|
+2||nähen||to sew|Können Sie nähen, ohne eine Nadel zu verwenden?|Can you sew without using a needle?|
 3|die|Jacke|Jacken|jacket|Nimm eine Jacke mit, es wird kühl.|Take a jacket, it’s getting cool.|Winterjacke,Jackentasche
 3|das|Hemd|Hemden|shirt|Er trägt zur Arbeit ein weißes Hemd.|He wears a white shirt to work.|Hemdkragen,Oberhemd
 3|der|Mantel|Mäntel|coat|Im Winter trage ich einen warmen Mantel.|In winter I wear a warm coat.|Wintermantel,Regenmantel
@@ -301,6 +370,12 @@
 3|die|Brille|Brillen|glasses, spectacles|Meine Mutter kann ohne Brille nicht lesen.|My mother can't read without glasses.|
 3||ausziehen||to take off (clothes); to move out|Zieh bitte deine Schuhe aus.|Please take off your shoes.|
 3|die|Größe|Größen|size, height|Wir haben die Bücher nach Größe geordnet.|We arranged the books according to size.|
+3|die|Kleidung||clothing, apparel|Sie legt nicht viel Wert auf ihre Kleidung.|She doesn't pay much attention to how she dresses.|
+3|die|Weste|Westen|waistcoat, vest|Er trägt eine warme Weste.|He is wearing a warm vest.|
+3|die|Uniform|Uniformen|uniform|Warum trägst du noch immer deine Uniform?|Why are you still wearing your uniform?|
+3|die|Maske|Masken|mask|Niemand wird sie mit dieser Maske erkennen.|No one will recognize her in this mask.|
+3|die|Klamotte|Klamotten|clothes, outfit|Wieviel Geld gibst du für Klamotten aus?|How much money do you spend on clothes?|
+3|die|Kette|Ketten|chain|Wenn du zu stark ziehst, reißt die Kette.|If you pull too hard, the chain will break.|
 4|die|Wolle||wool|Der Pullover ist aus Wolle.|The sweater is made of wool.|
 4||schick||elegant, dressy|Das Kleid ist sehr schick.|The dress is very smart.|
 4|der|Schuh|Schuhe|shoe|Ich brauche neue Schuhe.|I need new shoes.|Schuhgeschäft,Turnschuh
@@ -343,6 +418,10 @@
 1|der|Sohn|Söhne|son|Er ermutigte seinen Sohn, mehr zu lernen.|He encouraged his son to study harder.|
 1|die|Tochter|Töchter|daughter|Ich bin die Tochter von Helen Cartwright.|I'm Helen Cartwright's daughter.|
 1|das|Baby|Babys|baby|Ein Baby kann sich nicht selbst versorgen.|A baby can't look after itself.|
+1|das|Mädchen|Mädchen|girl|Das Mädchen liest ein Buch.|The girl is reading a book.|
+1|der|Herr|Herren|Mr., gentleman|Der Herr dort wartet auf Sie.|The gentleman over there is waiting for you.|
+1|der|Kerl|Kerle|fellow, guy|Soweit ich es weiß, ist er ein netter Kerl.|As far as I know, he's a nice guy.|
+1|die|Mama|Mamas|mum, mummy|Mama bereitet ein Essen in der Küche vor.|Mom is preparing a meal in the kitchen.|
 2|die|Hochzeit|Hochzeiten|wedding|Die Hochzeit findet im Juni statt.|The wedding takes place in June.|Hochzeitstag,heiraten
 2|die|Beziehung|Beziehungen|relationship|Sie sind seit drei Jahren in einer Beziehung.|They’ve been in a relationship for three years.|beziehen,Beziehungsstatus
 2||heiraten||to marry|Im Sommer wollen wir heiraten.|We want to get married in the summer.|Heirat,verheiratet
@@ -356,6 +435,11 @@
 2|der|Geburtstag|Geburtstage|birthday|Ich habe heute zufälligerweise Geburtstag.|It so happens that today is my birthday.|
 2|der|Ehemann|Ehemänner|husband|Ihr Ehemann arbeitet als Arzt.|Her husband works as a doctor.|
 2|der|Partner|Partner|partner, associate|Hast du inzwischen einen Partner gefunden?|Have you found a partner by now?|
+2|der|Liebling|Lieblinge|darling, dear|Hallo, mein Liebling!|Hello, my darling!|
+2||verheiraten||to wed, to marry|Er verheiratete seine Tochter mit einem Banker.|He married his daughter to a bank clerk.|
+2|das|Geschenk|Geschenke|present, gift|Diese Puppe ist ein Geschenk meiner Tante.|This doll is a gift from my aunt.|
+2|die|Tante|Tanten|aunt|Mein Onkel und meine Tante leben in London.|My aunt and uncle live in London.|
+2|der|Großvater|Großväter|grandfather|Mein Großvater ist fünfmal so alt wie ich.|My grandfather is five times as old as I am.|
 3|die|Freundschaft|Freundschaften|friendship|Unsere Freundschaft besteht seit der Schulzeit.|Our friendship has lasted since school.|befreundet,Freund
 3|die|Scheidung|Scheidungen|divorce|Nach der Scheidung zog sie um.|After the divorce she moved.|scheiden,geschieden
 3||sich trennen||to break up, to separate|Sie haben sich letztes Jahr getrennt.|They broke up last year.|Trennung,getrennt
@@ -370,6 +454,14 @@
 3||kennenlernen||to get to know|Ich habe sie in Frankreich kennengelernt.|I met her in France.|
 3|der|Cousin|Cousins|male cousin|Mein Cousin ist etwas älter als ich es bin.|My cousin is a little older than I am.|
 3|die|Ehefrau|Ehefrauen|wife|Er hat sich eine gute Ehefrau ausgesucht.|He chose a good wife.|
+3||schenken||to give as a present, to gift|Sie schenkte mir ein Buch zu Weihnachten.|She gave me a book for Christmas.|
+3|der|Besuch|Besuche|visit, call|Was ist der Zweck deines Besuches?|What is the purpose of your visit?|
+3|die|Kindheit|Kindheiten|childhood|Ich kenne sie schon seit meiner Kindheit.|I've known her since I was little.|
+3|die|Jugend||youth|In meiner Jugend habe ich viel Sport getrieben.|In my youth I did a lot of sport.|
+3||aufwachsen||to grow up|Sie ist in einem kleinen Dorf aufgewachsen.|She grew up in a small village.|
+3|der|Teddybär|Teddybären|teddybear|Das kleine Mädchen schrie nach dem Teddybären.|The little girl was crying for the teddy bear.|
+3|die|Puppe|Puppen|doll|Jedes der Mädchen hat eine Puppe im Arm.|Each of the girls has a doll in her arms.|
+3|die|Cousine|Cousinen|female cousin|Meine Cousine wohnt in München.|My cousin lives in Munich.|
 4|die|Geschwister||siblings|Ich habe zwei Geschwister.|I have two siblings.|Bruder,Schwester
 4|der|Enkel|Enkel|grandson, grandchild|Der Opa spielt mit seinem Enkel.|Grandpa is playing with his grandson.|Enkelin,Enkelkind
 4|die|Vorfahren||ancestors|Meine Vorfahren stammen aus Polen.|My ancestors come from Poland.|Vorfahr,Ahnen
@@ -396,6 +488,9 @@
 2|der|Ball|Bälle|ball|Können wir uns deinen Ball ausleihen?|Can we borrow your ball?|
 2|das|Tor|Tore|gate, goal|Der Spieler schießt ein Tor.|The player scores a goal.|
 2|der|Fußball||football, soccer|Am Samstag spielen wir Fußball.|On Saturday we’re playing football.|Fußballspiel,Fußballer
+2|das|Team|Teams|team|Unser Team trainiert dreimal pro Woche.|Our team trains three times a week.|
+2||rennen||to run, to race|Der Hund rannte hinter dem Kaninchen her.|The dog ran after the rabbit.|
+2|der|Club|Clubs|club|Ich bin Mitglied in einem Club.|I am a member of a club.|
 3|der|Sport||sport|Ich mache zweimal pro Woche Sport.|I do sport twice a week.|Sportler,sportlich
 3||schwimmen||to swim|Im Sommer schwimmen wir jeden Tag im See.|In summer we swim in the lake every day.|Schwimmbad,Schwimmer
 3|der|Sieg|Siege|victory|Wir haben diesmal den Sieg davongetragen.|We won this time.|
@@ -404,6 +499,13 @@
 3|das|Theater|Theater|theater|Möchtet ihr heute Abend ins Theater gehen?|Would you like to go to the theater this evening?|
 3|das|Museum|Museen|museum|Wird das Museum von vielen Leuten besucht?|Is the museum visited by many people?|
 3||angeln||to fish (with a rod)|Wenn du morgen angeln gehst, gehe ich auch.|If you go fishing tomorrow, I'll go, too.|
+3||springen||to spring, to leap|Er wagte nicht über den Bach zu springen.|He didn't dare to jump the brook.|
+3||treiben||to do (sports), to drive|Er treibt viel Sport.|He does a lot of sport.|
+3||reiten||to ride, to do horseriding|Auf einem Pferd zu reiten macht viel Spaß.|Riding a horse is a lot of fun.|
+3||spazieren||to take a walk, to stroll|Ich liebe es, im Regen spazieren zu gehen.|I like to walk in the rain.|
+3||besiegen||to defeat|Wenn du sie nicht besiegen kannst, schließe dich ihnen an.|If you can't beat them, join them.|
+3|der|Gegner|Gegner|adversary, opponent|Unser Gegner ist sehr stark.|Our opponent is very strong.|
+3||fischen||to fish|Ich kann dir beibringen, wie man fischt.|I can teach you how to fish.|
 4|die|Freizeit||free time|In meiner Freizeit lese ich viel.|In my free time I read a lot.|Freizeitpark,Zeit
 4|das|Hobby|Hobbys|hobby|Mein Hobby ist Fotografieren.|My hobby is photography.|Hobbykoch,Hobbyraum
 4|die|Mannschaft|Mannschaften|team|Unsere Mannschaft hat gewonnen.|Our team won.|Mann,Fußballmannschaft
@@ -416,6 +518,8 @@
 4||wandern||to hike, to go trekking|Am Sonntag wandern wir im Wald.|On Sunday we are going hiking in the forest.|
 4|der|Spaziergang|Spaziergänge|walk|Wir machen einen Spaziergang im Park.|We are taking a walk in the park.|
 4|das|Schach||chess|Greifen die Türme beim Schach vorwärts an?|Can a rook in chess attack in a forward direction?|
+4||campen||to camp|Wie oft waren Sie schon campen?|How many times have you gone camping?|
+4|das|Spielzeug|Spielzeuge|toy|Sie mag nicht mit ihrem Spielzeug spielen.|She doesn't want to play with her toys.|
 5|der|Verein|Vereine|club, association|Ich bin Mitglied in einem Sportverein.|I’m a member of a sports club.|vereinen,Mitglied
 5|der|Wettkampf|Wettkämpfe|competition|Der Wettkampf beginnt am Vormittag.|The competition starts in the morning.|Kampf,Wettkämpfer
 5|das|Turnier|Turniere|tournament|Sie hat ein Tennisturnier gewonnen.|She won a tennis tournament.|Tennisturnier,Schachturnier
@@ -440,12 +544,16 @@
 6|das|Camping||camping|Viele Leute interessieren sich für Camping.|A lot of people are interested in camping.|
 
 ## Reisen | travel
+1||fahren||to drive, to go (by vehicle)|Im Winter bin ich oft Ski fahren gegangen.|I often went skiing in the winter.|
 2|der|Urlaub|Urlaube|holiday, vacation|Im Urlaub fahren wir ans Meer.|On holiday we’re going to the seaside.|Urlaubstag,Urlauber
 2|die|Reise|Reisen|trip, journey|Die Reise nach Italien war wunderbar.|The trip to Italy was wonderful.|reisen,Reisepass
 2|das|Hotel|Hotels|hotel|Wir haben ein Hotel am Strand gebucht.|We booked a hotel on the beach.|Hotelzimmer,Hotelrezeption
 2|das|Flugzeug|Flugzeuge|airplane|Das Flugzeug landet in einer Stunde.|The plane lands in an hour.|fliegen,Flug
 2|das|Schiff|Schiffe|ship|Die Länge dieses Schiffs beträgt 30 Meter.|The length of this ship is 30 meters.|
 2|der|Bus|Busse|bus|Der Bus wird Sie zum Stadtzentrum bringen.|The bus will take you to the center of the city.|
+2||fliegen||to fly, to travel by air|Das Flugzeug fliegt nach Rom.|The plane is flying to Rome.|
+2||unterwegs||on one’s way, underway|Seid ihr gerade zum Tennisplatz unterwegs?|Are you on your way to the tennis court?|
+2|das|Boot|Boote|boat|Das kleine Boot war dem Wind ausgeliefert.|The small boat was at the mercy of the wind.|
 3|der|Koffer|Koffer|suitcase|Ich habe meinen Koffer noch nicht gepackt.|I haven’t packed my suitcase yet.|Kofferraum,kofferlos
 3|der|Bahnhof|Bahnhöfe|train station|Ich hole dich am Bahnhof ab.|I’ll pick you up at the station.|Bahn,Hauptbahnhof
 3|der|Flughafen|Flughäfen|airport|Der Flughafen ist eine Stunde entfernt.|The airport is an hour away.|Flug,Hafen
@@ -459,6 +567,15 @@
 3||landen||to land|Das Flugzeug landet auf der Landebahn.|The plane lands on the runway.|
 3|die|Ankunft|Ankünfte|arrival|Sie ging lange vor deiner Ankunft hier weg.|She left here long before you arrived.|
 3|der|Hafen|Häfen|harbour/harbor, port|Wir haben viele Schiffe im Hafen gesehen.|We saw many ships in the harbour.|
+3||packen||to pack|Er packte sein Mittagessen in eine Papiertüte.|He packed his lunch in a paper bag.|
+3|der|Motor|Motoren|engine|Ich hatte gestern Probleme mit dem Motor.|I had some engine trouble yesterday.|
+3|die|Station|Stationen|station, stop|Es ist eine Stunde Fußweg bis zur Station.|It's an hour's walk to the station.|
+3|der|Tunnel|Tunnel|tunnel|Unser Zug durchquerte einen langen Tunnel.|Our train went through a long tunnel.|
+3|die|Tour|Touren|tour, journey|Wie viel kostet die Tour für eine Person?|How much is the tour per person?|
+3|die|Rückkehr||return|Ich freue mich auf deine Rückkehr.|I am looking forward to your return.|
+3|der|Hubschrauber|Hubschrauber|helicopter|Er weiß, wie man einen Hubschrauber fliegt.|He knows how to fly a helicopter.|
+3|der|Besucher|Besucher|visitor|Besucher der Schweiz bewundern die Alpen.|Visitors to Switzerland admire the Alps.|
+3|das|Rad|Räder|wheel|Er fährt jeden Tag mit dem Rad zur Arbeit.|He rides his bike to work every day.|
 4|das|Ausland||abroad|Sie hat ein Jahr im Ausland gelebt.|She lived abroad for a year.|Ausländer,ausländisch
 4|die|Unterkunft|Unterkünfte|accommodation|Wir suchen noch eine günstige Unterkunft.|We’re still looking for cheap accommodation.|unterkommen
 4|der|Zoll||customs, duty|Am Zoll wurde mein Koffer kontrolliert.|At customs my suitcase was checked.|Zollkontrolle,zollfrei
@@ -467,6 +584,7 @@
 4|das|Ticket|Tickets|ticket|Er hat sein Ticket zu Hause liegen lassen.|He left his ticket at home.|
 4|der|Rucksack|Rucksäcke|backpack|Er schnappte sich seinen Rucksack und ging.|He grabbed his backpack and left.|
 4|der|Tourist|Touristen|tourist|In Venedig sind immer so viele Touristen.|There are always so many tourists in Venice.|
+4|der|Ausgang|Ausgänge|exit|Wo ist der Ausgang?|Where is the exit?|
 5|die|Reservierung|Reservierungen|reservation|Haben Sie eine Reservierung?|Do you have a reservation?|reservieren,reserviert
 5|der|Gastgeber|Gastgeber|host|Unsere Gastgeber waren sehr herzlich.|Our hosts were very warm.|Gast,Gastfreundschaft
 5|der|Kontinent|Kontinente|continent|Europa wird als Kontinent betrachtet.|Europe is regarded as a continent.|
@@ -502,12 +620,21 @@
 2|der|Park|Parks|park|Wir sind zum Spielen in den Park gegangen.|We went to the park to play.|
 2|der|Laden|Läden|shop, store|Was kostet denn das Bier hier in dem Laden?|So how much is a beer in this place?|
 2|die|Straße|Straßen|street, road|Die Straße ist wegen einer Baustelle gesperrt.|The street is closed because of roadworks.|Straßenbahn,Straßenschild
+2|das|Gebäude|Gebäude|building, edifice|Welches ist das höchste Gebäude in Japan?|What is the tallest building in Japan?|
+2|die|Gegend|Gegenden|area, region|Pass auf die Diebe hier in der Gegend auf.|Watch out for thieves around here.|
+2|das|Dorf|Dörfer|village|Es war einmal ein alter Mann in diesem Dorf.|Once upon a time, there was an old man in this village.|
+2||parken||to park|Ich parke das Auto vor dem Haus.|I am parking the car in front of the house.|
+2|die|Ecke|Ecken|corner, edge|Gehen Sie an der nächsten Ecke nach rechts.|Turn right at the next corner.|
 3|der|Markt|Märkte|market|Am Samstag gehen wir auf den Markt.|On Saturday we go to the market.|Marktplatz,Wochenmarkt
 3|die|City|Citys|city center, downtown|Wir fahren heute Nachmittag in die City.|We’re going downtown this afternoon.|
 3|der|Gast|Gäste|guest|Weißt du nicht, dass Gäste kommen werden?|Don't you know that guests will be coming?|
 3|die|Post||mail, post|Ich bin gerade von der Post zurückgekommen.|I have just returned from the post office.|
 3|das|Fahrrad|Fahrräder|bicycle|Der Junge ist verrückt nach einem Fahrrad.|The boy is mad for a bicycle.|
 3|die|Bibliothek|Bibliotheken|library|In dieser Bibliothek gibt es viele Bücher.|The library has many books.|
+3|der|Hof|Höfe|yard, court|Die Fenster unserer Wohnung schauen auf den Hof.|The windows of our flat look out on to the courtyard.|
+3||einkaufen||to shop|Mama lässt mich oft im Supermarkt einkaufen.|Mother often makes me go shopping at the supermarket.|
+3|die|Gemeinde|Gemeinden|municipality|Hemmingen ist eine Gemeinde in Deutschland.|Hemmingen is a municipality in Germany.|
+3|der|Lärm||noise, din|Wir können wegen des Lärms nicht schlafen.|We can't sleep because of the noise.|
 4|die|Ware|Waren|goods, merchandise|Die Ware ist im Angebot.|The goods are on sale.|
 4|der|Supermarkt|Supermärkte|supermarket|Ich gehe schnell zum Supermarkt.|I’m quickly popping to the supermarket.|Markt,super
 4|die|Kasse|Kassen|checkout, till|Bitte zahlen Sie an der Kasse.|Please pay at the checkout.|Kassenbon,Kassierer
@@ -524,6 +651,7 @@
 4|der|Parkplatz|Parkplätze|parking space, car park|Hier gibt es keinen freien Parkplatz.|There is no free parking space here.|
 4|das|Motorrad|Motorräder|motorcycle|Mein Motorrad ist sehr schnell.|My motorcycle is very fast.|
 4|der|Brunnen|Brunnen|well, fountain|Im Park gibt es einen Brunnen.|There is a fountain in the park.|
+4|das|Paket|Pakete|packet, package|Ich will ihm beim Tragen der Pakete helfen.|I want to help him carry the parcels.|
 5|die|Kreuzung|Kreuzungen|intersection|An der Kreuzung müssen Sie links abbiegen.|At the intersection you have to turn left.|kreuzen,Kreuz
 5|der|Bürgersteig|Bürgersteige|pavement, sidewalk|Bitte parken Sie nicht auf dem Bürgersteig.|Please don’t park on the pavement.|Bürger,Steig
 5|die|Innenstadt|Innenstädte|city centre|In der Innenstadt gibt es kaum Parkplätze.|There are hardly any parking spots in the city centre.|Stadt,innen
@@ -563,6 +691,7 @@
 2|der|Boden|Böden|floor, ground|Die heiße Sonne brannte den Boden trocken.|The hot sun baked the ground dry.|
 2|die|Wand|Wände|wall, partition|An der Wand hängt ein Bild.|A picture is hanging on the wall.|
 2|das|Dach|Dächer|roof|Das Haus hat ein rotes Dach.|The house has a red roof.|
+2|das|Versteck|Verstecke|hiding place, stash|Sie machten den Keller zu ihrem Versteck.|They made the basement their hide-out.|
 3|der|Stuhl|Stühle|chair|Ich brauche einen bequemen Stuhl.|I need a comfortable chair.|Stuhlbein,Klappstuhl
 3|die|Treppe|Treppen|stairs|Nimm bitte die Treppe, der Aufzug ist kaputt.|Please take the stairs, the lift is broken.|Treppenhaus,Treppenstufe
 3|das|Kissen|Kissen|cushion, pillow|Ich lege ein Kissen unter den Kopf.|I put a cushion under my head.|
@@ -577,6 +706,20 @@
 3|der|Spiegel|Spiegel|mirror|Seine Oberfläche war glatt wie ein Spiegel.|Its surface was as flat as a mirror.|
 3|die|Dusche|Duschen|shower|Sie nimmt lieber ein Bad als eine Dusche.|She prefers baths rather than showers.|
 3|die|Decke|Decken|blanket, ceiling|Wir versorgten die Flüchtlinge mit Decken.|We furnished the refugees with blankets.|
+3|der|Stock|Stöcke|stick|Der alte Mann lehnte sich auf seinen Stock.|The old man leaned on his staff.|
+3|der|Dreck||dirt|Er kratzte den Dreck von seinen Stiefeln.|He scraped the mud off his boots.|
+3|die|Toilette|Toiletten|toilet|Er sitzt den ganzen Tag auf der Toilette.|He's on the loo all day.|
+3||reparieren||to repair|Ich habe meinen Computer reparieren lassen.|I had my personal computer repaired.|
+3|die|Kiste|Kisten|chest, box|Ich habe die Kiste geöffnet. Sie war leer.|I opened the box. It was empty.|
+3||decken||to cover|Mutter deckte den Tisch für das Abendbrot.|Mother set the table for dinner.|
+3|die|Hütte|Hütten|hut, cabin|Wir brauchen Holz, um eine Hütte zu bauen.|We need wood to build a hut.|
+3|der|Sack|Säcke|sack|Er trägt einen Sack Kartoffeln.|He is carrying a sack of potatoes.|
+3|der|Schreibtisch|Schreibtische|desk|Auf dem Schreibtisch sind ein paar Bücher.|There are some books on the desk.|
+3||mieten||to rent|Dieses Haus kann gemietet werden.|This house is to let.|
+3|der|Staub||dust|Die Leiter war mit Staub und Rost bedeckt.|The ladder was covered with dust and rust.|
+3|die|Garage|Garagen|garage|Er fuhr sein Auto rückwärts in die Garage.|He reversed his car into the garage.|
+3|die|Wäsche||wash, washing|Die Wäsche trocknet im Garten.|The laundry is drying in the garden.|
+3|die|Couch|Couchen|sofa, couch|Unter der Couch liegt eine Fernbedienung.|There is a TV remote control under the couch.|
 4|der|Balkon|Balkone|balcony|Im Sommer frühstücken wir auf dem Balkon.|In summer we have breakfast on the balcony.|Balkontür,Balkonpflanze
 4|der|Hausmeister|Hausmeister|caretaker, janitor|Der Hausmeister repariert den Aufzug.|The caretaker is repairing the lift.|Haus,Meister
 4|die|Kaution|Kautionen|deposit (for a rental)|Die Kaution beträgt drei Monatsmieten.|The deposit is three months’ rent.|Kautionsrückzahlung,Miete
@@ -615,6 +758,12 @@
 2|die|Klasse|Klassen|class|Die ganze Klasse lachte über seinen Witz.|The whole class laughed at his joke.|
 2||lesen||to read|Ich lese jeden Abend ein Buch.|I read a book every evening.|
 2|die|Hausaufgabe|Hausaufgaben|homework|Hast du deine Hausaufgaben schon gemacht?|Have you done your homework yet?|Haus,Aufgabe
+2|das|Beispiel|Beispiele|example|Das ist ein gutes Beispiel.|That is a good example.|
+2|die|Liste|Listen|list|Ihre Namen waren von der Liste gestrichen.|Your names were crossed off the list.|
+2|der|Professor|Professoren|professor|Kennen Sie zufällig einen Professor Braun?|Do you happen to know any Professor Braun?|
+2||bestehen||to pass (an exam); to consist of|Er hat die Prüfung bestanden.|He passed the exam.|
+2|das|Thema|Themen|topic, subject|Das Gespräch wandte sich anderen Themen zu.|The conversation moved on to other topics.|
+2||lehren||to teach, to be a teacher|Mein Onkel lehrt Englisch an der Universität.|My uncle teaches English at the university.|
 3|der|Kurs|Kurse|course, class|Ich besuche einen Kurs an der Volkshochschule.|I’m taking a course at the adult education centre.|Sprachkurs,Kurszeit
 3|die|Prüfung|Prüfungen|exam, test|Die Prüfung findet nächste Woche statt.|The exam takes place next week.|prüfen,Prüfer
 3|der|Unterricht||lessons, teaching|Der Unterricht fällt heute aus.|Today’s lesson is cancelled.|unterrichten,Deutschunterricht
@@ -629,6 +778,19 @@
 3|der|Satz|Sätze|sentence|Dieser Satz ist sehr lang.|This sentence is very long.|
 3|der|Schüler|Schüler|pupil, student|Kein Schüler konnte die Frage beantworten.|None of the pupils were able to answer the question.|
 3|die|Universität|Universitäten|university|Ich studiere an der Universität von Hyogo.|I study at the University of Hyogo.|
+3||übersetzen||to translate, to interpret|Ich übersetze den Text ins Deutsche.|I am translating the text into German.|
+3|die|Theorie|Theorien|theory|Seine Theorie stützt sich auf Tatsachen.|His theory is based on fact.|
+3||beibringen||to teach|Er bringt mir Gitarre bei.|He is teaching me the guitar.|
+3||wiederholen||to repeat|Kannst du wiederholen, was du gesagt hast?|Can you repeat what you said?|
+3|die|Wissenschaft|Wissenschaften|science|Psychologie ist die Wissenschaft der Seele.|Psychology is the science of the mind.|
+3||prüfen||to check, test|Der Lehrer prüft die Hausaufgaben.|The teacher is checking the homework.|
+3|der|Wissenschaftler|Wissenschaftler|scientist|Der Wissenschaftler arbeitet im Labor.|The scientist works in the lab.|
+3||studieren||to study (at university)|Meine Schwester studiert Medizin.|My sister studies medicine.|
+3|die|Lektion|Lektionen|lesson|Die erste Lektion ist leicht.|The first lesson is easy.|
+3||testen||to test|Wurden Sie mal auf Tuberkulose getestet?|Have you ever been tested for tuberculosis?|
+3|die|Korrektur|Korrekturen|correction|Er hat mein Manuskript Korrektur gelesen.|He proofread my manuscript.|
+3|die|Übung|Übungen|practice|Wir brauchen einfach nur etwas mehr Übung.|All we need is a little more practice.|
+3|das|Kapitel|Kapitel|chapter|Ich lese das erste Kapitel.|I am reading the first chapter.|
 4|das|Studium||university studies|Nach dem Studium will sie im Ausland arbeiten.|After her studies she wants to work abroad.|Student,studieren
 4|das|Stipendium|Stipendien|scholarship|Sie bekommt ein Stipendium für das Studium.|She gets a scholarship for her studies.|Stipendiat,Stipendiengeber
 4|die|Forschung|Forschungen|research|Letzten Endes trug seine Forschung Früchte.|His research bore fruit in the end.|
@@ -670,6 +832,9 @@
 2|die|Million|Millionen|million|Belgrad hat etwa zwei Millionen Einwohner.|Belgrade has about 2 million inhabitants.|
 2|der|Gewinn|Gewinne|profit, gain|Wir teilen die Gewinne unter uns allen auf.|We'll divide the profits among all of us.|
 2||reich||rich, wealthy|China ist reich an natürlichen Ressourcen.|China is rich in natural resources.|
+2||verdienen||to make money, to earn|Ich muss mir selbst mein Brot verdienen.|I've got to earn my own living.|
+2||zahlen||to pay|Das Leben beginnt, wenn man Steuern zahlt.|Life begins when you pay taxes.|
+2|das|Gold||gold|Alle Anwesenden hielten es für echtes Gold.|Those present took it for genuine gold.|
 3|der|Euro|Euro|euro|Das kostet zehn Euro.|That costs ten euros.|Eurostück,Eurozone
 3|das|Konto|Konten|bank account|Ich habe ein Konto bei der Sparkasse.|I have an account at the savings bank.|Kontonummer,Girokonto
 3||sparen||to save (money)|Wir sparen für ein neues Auto.|We’re saving for a new car.|Sparbuch,sparsam
@@ -681,6 +846,13 @@
 3||teuer||expensive, dear|Biolebensmittel sind üblicherweise teurer.|Organic food is usually more expensive.|
 3|der|Cent|Cents|cent|Sie waren ungefähr 25 Cent pro Pfund billiger.|They were about 25 cents a pound cheaper.|
 3|der|Verlust|Verluste|loss|Wir müssen ihn nach seinem Verlust trösten.|We've got to comfort him after his loss.|
+3|das|Prozent|Prozente|percent|Sein Gehalt wurde um zehn Prozent erhöht.|His salary was increased by ten percent.|
+3|der|Scheck|Schecks|check, cheque|Haben Sie den Scheck schon ausgestellt?|Have you written the cheque yet?|
+3|das|Kilo|Kilos|kilo|Diesen Sommer habe ich zwei Kilo zugenommen.|I have put on two kilograms this summer.|
+3||verschwenden||to waste, to squander|Ich will kein Geld verschwenden.|I don't want to waste money.|
+3|die|Belohnung|Belohnungen|reward, bounty|Dieses Tier arbeitet nur gegen Belohnung.|This animal is just working for rewards.|
+3||leihen||to borrow|Du bist doch verrückt, ihm Geld zu leihen.|You are crazy to lend money to him.|
+3|die|Milliarde|Milliarden|billion|Eine Milliarde Menschen sprechen Englisch.|One billion people speak English.|
 4|der|Kredit|Kredite|loan|Sie hat einen Kredit für die Wohnung aufgenommen.|She took out a loan for the apartment.|Kreditkarte,Kreditgeber
 4|das|Gehalt|Gehälter|salary|Mein Gehalt wird am Monatsende überwiesen.|My salary is transferred at the end of the month.|Gehaltserhöhung,Gehaltsabrechnung
 4|das|Bargeld||cash|Hier zahlt man nur mit Bargeld.|Here you can only pay in cash.|bar,Geld
@@ -709,6 +881,7 @@
 1|die|Polizei||police|Rufen Sie bitte die Polizei!|Please call the police!|Polizist,Polizeiauto
 1|der|Name|Namen|name|Wie ist Ihr Name, bitte?|What is your name, please?|nennen,Nachname
 1|das|Recht|Rechte|right, privilege|Jeder hat das Recht auf eine eigene Meinung.|Everyone has the right to their own opinion.|
+1||töten||to kill|Man darf niemanden töten.|You must not kill anyone.|
 2|die|Adresse|Adressen|address|Können Sie mir Ihre Adresse geben?|Can you give me your address?|Adressbuch,E-Mail-Adresse
 2|das|Gesetz|Gesetze|law|Das neue Gesetz tritt im Januar in Kraft.|The new law comes into force in January.|gesetzlich,Gesetzgeber
 2|der|Bescheid|Bescheide|notice, decision (official)|Den Bescheid erhalten Sie per Post.|You will receive the notice by post.|bescheiden,Steuerbescheid
@@ -721,6 +894,11 @@
 2|das|Verbrechen|Verbrechen|crime|Was ist der Hauptgrund für das Verbrechen?|What is the main cause of the crime?|
 2|der|Zeuge|Zeugen|witness|Rufen Sie bitte Ihren ersten Zeugen auf!|Please call your first witness.|
 2|der|Beweis|Beweise|proof|Ich habe keinen Beweis für das Gegenteil.|I have no proof to the contrary.|
+2|der|Mörder|Mörder|murderer, assassin|Der Mörder versteckte sich in den Bergen.|The murderer hid in the mountains.|
+2|die|Kontrolle|Kontrollen|inspection|Was geschah, war außerhalb meiner Kontrolle.|What happened was out of my control.|
+2||ermorden||to murder, to assassinate|Sie haben versucht, den Präsidenten zu ermorden.|They attempted to assassinate the president.|
+2||verhaften||to arrest|Die Polizei hat den Mann verhaftet.|The police arrested the man.|
+2|die|Gewalt|Gewalten|violence, force|In dieser Stadt gibt es beinah keine Gewalt.|There is almost no violence in that city.|
 3|der|Ausweis|Ausweise|ID card|Bitte zeigen Sie Ihren Ausweis.|Please show your ID.|ausweisen,Personalausweis
 3|die|Erlaubnis||permission|Ohne Erlaubnis darf man hier nicht parken.|You may not park here without permission.|erlauben,Parkerlaubnis
 3|der|Antrag|Anträge|application, request|Den Antrag können Sie online stellen.|You can submit the application online.|beantragen,Antragsteller
@@ -738,6 +916,33 @@
 3|das|Urteil|Urteile|judgment, verdict|Wir können uns auf sein Urteil verlassen.|We can rely on his judgement.|
 3|das|Verbot|Verbote|prohibition, ban|Das Verbot wird von keinem mehr ernst genommen.|The ban is no longer taken seriously by anyone.|
 3|der|Staatsanwalt|Staatsanwälte|public prosecutor, district attorney|Wer war der ehemalige Staatsanwalt?|Who was the former prosecutor?|
+3||verbieten||to forbid, prohibit|Das Gesetz verbietet das Rauchen hier.|The law forbids smoking here.|
+3||kontrollieren||to check|Ich muss meinen Posteingang kontrollieren.|I've got to check my inbox.|
+3||aussagen||to state|Unser einziger Zeuge weigert sich auszusagen.|Our only witness is refusing to testify.|
+3||klauen||to steal|Was versichert mir, dass du es nicht klaust?|How do I know you won't steal it?|
+3||unterschreiben||to sign|Sie brauchen nur hier zu unterschreiben.|You have only to sign your name here.|
+3|der|Prozess|Prozesse|trial; process|Der ganze Prozess dauert mehrere Monate.|The whole process takes several months.|
+3||strafen||to punish|Du strafst dich nur selbst.|You're only punishing yourself.|
+3|der|Tatort|Tatorte|crime scene|Die Polizei sperrt den Tatort ab.|The police are cordoning off the crime scene.|
+3|der|Täter|Täter|perpetrator, delinquent|Wir sollten wohl den Täter ausfindig machen.|Maybe we ought to find who did this.|
+3|der|Inspektor|Inspektoren|inspector|Der Verdächtige belog den Inspektor.|The suspect told a lie to the inspector.|
+3||verdächtigen||to suspect|Er war niemand, den man verdächtigt hätte.|He wasn't someone you'd suspect.|
+3||einsperren||to lock up, to imprison|Die Polizei sperrt den Dieb ein.|The police lock up the thief.|
+3||verurteilen||to convict, condemn|Der Richter verurteilt den Mann.|The judge sentences the man.|
+3|die|Verfügung|Verfügungen|disposal, disposition|Welche Zahlungsarten stehen zur Verfügung?|What payment options are available?|
+3|der|Verbrecher|Verbrecher|criminal|Der Verbrecher wurde ins Ausland verbannt.|The criminal was sent into exile.|
+3|der|Verdacht|Verdachte|suspicion|Glaubst du, sie haben mich im Verdacht?|Do you think they suspect me?|
+3|die|Verteidigung|Verteidigungen|defence|Die Verteidigung will das Urteil anfechten.|The defence wants to challenge the verdict.|
+3|der|Fingerabdruck|Fingerabdrücke|fingerprint|Die Polizei nimmt Fingerabdrücke.|The police are taking fingerprints.|
+3||bestrafen||to punish|Wie kann man am besten einen Hund bestrafen?|What's the best way to punish a dog?|
+3|die|Bedrohung|Bedrohungen|threat|Diese Leute betrachten uns als Bedrohung.|These people view us as a threat.|
+3||begehen||to commit, perpetrate|Er gab zu, das Verbrechen begangen zu haben.|He admitted that he had committed the crime.|
+3||identifizieren||to identify|Die Polizei identifiziert den Täter.|The police identify the culprit.|
+3|der|Kommissar|Kommissare|detective inspector|Der Kommissar leitet die Ermittlungen.|The detective inspector is leading the investigation.|
+3|die|Ermittlung|Ermittlungen|investigation, inquiry|Die polizeilichen Ermittlungen dauern an.|A police investigation is in progress.|
+3|das|Motiv|Motive|motive|Ich werd mir über deine Motive nicht klar.|I can't figure out your motives.|
+3||durchsuchen||to search|Die Zollbeamten durchsuchten das ganze Schiff.|The customs officials searched the whole ship.|
+3|das|Alibi|Alibis|alibi|Alle Verdächtigen haben stichfeste Alibis.|All of the suspects have solid alibis.|
 4|die|Unterschrift|Unterschriften|signature|Hier fehlt noch Ihre Unterschrift.|Your signature is still missing here.|unterschreiben,Schrift
 4|die|Genehmigung|Genehmigungen|permit, approval|Für den Umbau brauchen wir eine Genehmigung.|We need a permit for the renovation.|genehmigen,Baugenehmigung
 4|der|Einspruch|Einsprüche|objection, appeal|Gegen den Bescheid legte sie Einspruch ein.|She lodged an objection against the decision.|einsprechen,Spruch
@@ -752,6 +957,8 @@
 4|das|Amt|Ämter|(public) office|Der Politiker wurde seines Amtes enthoben.|The politician was removed from office.|
 4|die|Klage|Klagen|lawsuit, complaint|Ich möchte keinerlei Klagen von dir hören!|I don't want to hear any of your complaints.|
 4|das|Verfahren|Verfahren|proceedings, procedure|Die Polizei eröffnete ein Verfahren.|The police opened an investigation.|
+4||illegal||illegal|Illegal ist es nur, wenn du erwischt wirst.|It's only illegal if you get caught.|
+4|das|Protokoll|Protokolle|record, minutes|Der Zeuge gab seinen Namen zu Protokoll.|The witness stated his name.|
 5|das|Formular|Formulare|form (document)|Füllen Sie bitte dieses Formular aus.|Please fill out this form.|Antragsformular,Form
 5|die|Behörde|Behörden|authority, government office|Die Behörde ist nur vormittags geöffnet.|The office is only open in the mornings.|Behördengang,Beamter
 5|die|Frist|Fristen|deadline, time limit|Die Frist endet am Freitag.|The deadline ends on Friday.|fristgerecht,Anmeldefrist
@@ -777,6 +984,20 @@
 2|die|Kamera|Kameras|camera|Wo hast du deine Kamera reparieren lassen?|Where did you get your camera repaired?|
 2|das|Foto|Fotos|photograph|Wir gingen in den Park, um Fotos zu machen.|We went to the park to take pictures.|
 3|das|Internet||internet|Das Internet ist heute ausgefallen.|The internet is down today.|Internetseite,Internetzugang
+3|der|Code|Codes|code|Es gibt bereits ein Produkt mit diesem Code.|There's already a product with this code.|
+3|das|Signal|Signale|signal|Er gab uns das Signal anzufangen.|He gave us the signal to begin.|
+3|der|Zugang|Zugänge|access|Sie gab mir Zugang zu ihren Aufzeichnungen.|She gave me access to her records.|
+3|die|Leitung|Leitungen|line, management|Die Leitung ist besetzt.|The line is busy.|
+3|die|Information|Informationen|a piece of information, information|Bitte fragen Sie an der Information nach.|Please ask at the information desk.|
+3|die|Störung|Störungen|disturbance, disruption|Es handelt sich um eine kleine Störung.|It's a minor glitch.|
+3||telefonieren||to have a telephone call|Sie telefonierten jede Nacht miteinander.|They talked on the telephone every night.|
+3|die|Technik|Techniken|technology, technique|Die Jugend ist ganz versessen auf Technik.|The youth is in love with technology.|
+3|der|Roboter|Roboter|robot|Ein Oberschüler hat diesen Roboter gebaut.|A secondary school pupil made this robot.|
+3|die|Kopie|Kopien|a copy, a duplicate|Die Kopie stimmt mit dem Original überein.|The copy agrees with the original.|
+3||tippen||to tap, to strike lightly|Er tippt sehr schnell.|He types very fast.|
+3|die|Technologie|Technologien|technology|Er versteht die moderne Technologie nicht.|He does not understand modern technology.|
+3||senden||to broadcast, to transmit|Ich möchte diesen Brief nach Japan senden.|I want to send this letter to Japan.|
+3|das|Netz|Netze|net, web|Ich fing Schmetterlinge mit einem Netz.|I captured butterflies with a net.|
 4|das|Passwort|Passwörter|password|Ich habe mein Passwort vergessen.|I’ve forgotten my password.|Kennwort,Passwortmanager
 4|das|Netzwerk|Netzwerke|network|Das Netzwerk ist heute sehr langsam.|The network is very slow today.|Netz,Netzwerkkabel
 4|der|Datenschutz||data protection, privacy|Der Datenschutz ist uns sehr wichtig.|Data protection is very important to us.|Daten,Schutz
@@ -785,6 +1006,7 @@
 4||programmieren||to program|Er programmiert eine neue App.|He is programming a new app.|
 4||automatisch||automatic|Die Drohne fliegt automatisch weiter.|The drone continued to fly automatically.|
 4|der|Laptop|Laptops|laptop computer|Sie verbringt ihre Abende vor ihrem Laptop.|She spends her evenings in front of her laptop.|
+4|die|Version|Versionen|version|Willst du die lange oder die kurze Version?|Do you want the long version or the short version?|
 5|die|Datei|Dateien|file|Speichere die Datei auf dem Desktop.|Save the file on the desktop.|Daten,Dateiname
 5|der|Bildschirm|Bildschirme|screen, monitor|Der Bildschirm ist zu hell eingestellt.|The screen is set too bright.|Bild,Schirm
 5|der|Speicher|Speicher|memory, storage|Auf meinem Handy ist der Speicher voll.|The storage on my phone is full.|speichern,Speicherplatz
@@ -825,6 +1047,13 @@
 2||filmen||to film, to shoot|Er filmt den Sonnenuntergang.|He is filming the sunset.|
 2|das|Fernsehen||television|Wir kommen ohne Fernsehen aus, nicht wahr.|We can do without a television, can't we?|
 2|das|Lied|Lieder|song|Lasst uns zusammen englische Lieder singen.|Let's sing some English songs together.|
+2|der|Brief|Briefe|letter|Ich habe deinen Brief vorgestern bekommen.|I received your letter the day before yesterday.|
+2||singen||to sing|Ich singe nicht gerne in der Öffentlichkeit.|I don't like to sing in public.|
+2|die|Show|Shows|show, spectacle|Sie haben eine großartige Show geboten.|They put on a great show.|
+2|der|Untertitel|Untertitel|subtitle|Hat dieser Film französische Untertitel?|Does this movie have French subtitles?|
+2|das|Monster|Monster|monster|Das Monster hat drei Köpfe.|The monster has three heads.|
+2|die|Neuigkeit|Neuigkeiten|news|Ich bin glücklich, die Neuigkeit zu hören.|I am happy to hear the news.|
+2|der|Bericht|Berichte|report, account|Bist du der Schreiber dieses Berichts?|Are you the writer of that report?|
 3|der|Fernseher|Fernseher|television set|Der Fernseher läuft den ganzen Tag.|The TV is on all day.|fernsehen,Fernsehprogramm
 3|das|Kino|Kinos|cinema|Wir gehen heute Abend ins Kino.|We’re going to the cinema tonight.|Kinokarte,Kinofilm
 3|das|Konzert|Konzerte|concert|Das Konzert war komplett ausverkauft.|The concert was completely sold out.|Konzertkarte,konzertieren
@@ -841,6 +1070,20 @@
 3|der|Künstler|Künstler|artist|Viele berühmte Künstler leben in New York.|Many famous artists live in New York.|
 3|die|Serie|Serien|series|Ich habe eine amerikanische Serie gesehen.|I watched an American drama.|
 3|die|Bühne|Bühnen|stage|Sind berühmte Musikerinnen auf der Bühne?|Are there any famous musicians on the stage?|
+3|die|Magie||magic|So etwas wie schwarze Magie gibt es nicht.|There's no such thing as black magic.|
+3|der|Artikel|Artikel|article|Mit dem Computer schreibt er seine Artikel.|That's the computer on which he writes his articles.|
+3|das|Werk|Werke|work, achievement|Seine Werke werden Jahrhunderte überdauern.|His works will endure for centuries.|
+3|das|Abenteuer|Abenteuer|adventure|Unsere Beziehung gleicht einem Abenteuer.|Our relationship is like an adventure.|
+3|der|Applaus||applause|Die Aufführung wurde mit Applaus bedacht.|The performance was received with applause.|
+3|der|Stil|Stile|style|Die Kirche wurde im gotischen Stil erbaut.|The church is built in Gothic style.|
+3|der|Text|Texte|text|Diesen schweren Text kann ich nicht lesen.|This difficult text is one I can't read.|
+3||zaubern||to conjure, to perform magic|Du zauberst mir ein Lächeln ins Gesicht.|You make me smile.|
+3|der|Fan|Fans|fan, devotee|Ich bin ein großer Fan dieser Band.|I am a big fan of this band.|
+3|die|Aufnahme|Aufnahmen|recording, photo|Weißt du, von wem diese Aufnahme stammt?|Do you know who took this picture?|
+3|das|Studio|Studios|studio|Wir können nicht ins Studio gehen.|We cannot go into the studio.|
+3|das|Rätsel|Rätsel|riddle, puzzle|Ich löse das Rätsel nicht.|I can't solve the riddle.|
+3|der|Reporter|Reporter|reporter|Der Reporter hat eine Nase für Neuigkeiten.|The newsman has a nose for news.|
+3|der|Weihnachtsmann|Weihnachtsmänner|Santa Claus|Morgen kommt der Weihnachtsmann. Tschüss!|Father Christmas is coming tomorrow. Bye!|
 4|die|Ausstellung|Ausstellungen|exhibition|Die Ausstellung läuft noch bis Sonntag.|The exhibition runs until Sunday.|ausstellen
 4|die|Kritik|Kritiken|criticism, review|Der Film bekam sehr gute Kritiken.|The film received very good reviews.|kritisieren,Kritiker
 4|die|Werbung|Werbungen|advertising|Im Fernsehen läuft zu viel Werbung.|There’s too much advertising on TV.|werben,Werbespot
@@ -856,6 +1099,9 @@
 4|der|Kanal|Kanäle|channel; canal|Welcher Horrorfilm läuft auf diesem Kanal?|Which horror film is on this channel?|
 4|der|Journalist|Journalisten|journalist|Die Journalisten sprechen bereits darüber.|The journalists are already talking about it.|
 4|der|Autor|Autoren|author|Ich verstehe nicht, was der Autor hier meint.|I don't understand what the author's saying here.|
+4|das|Raumschiff|Raumschiffe|spaceship, spacecraft|Das Raumschiff wird den Mond bald erreichen.|The space ship will get to the moon soon.|
+4|das|Klavier|Klaviere|piano|Ich kann nicht Klavier spielen, sie schon.|I can't play the piano, but she can.|
+4|die|Schauspielerin|Schauspielerinnen|actress|Sie kleidete sich wie eine Schauspielerin.|She dressed like an actress.|
 5|die|Sage|Sagen|saga, legend|Das ist nur eine alte Sage.|That is just an old legend.|
 5|die|Veranstaltung|Veranstaltungen|event|Die Veranstaltung beginnt um 19 Uhr.|The event begins at 7 p.m.|veranstalten,Veranstalter
 5|die|Schlagzeile|Schlagzeilen|headline|Die Schlagzeile stand auf der ersten Seite.|The headline was on the front page.|Schlag,Zeile
@@ -878,6 +1124,7 @@
 1|das|Land|Länder|country, countryside|In welchem Land bist du geboren?|Which country were you born in?|ländlich,Landkarte
 1|der|Krieg|Kriege|war|Der Krieg hat viele Menschen vertrieben.|The war has displaced many people.|Kriegsende,kriegerisch
 1|der|Gott|Götter|god|Gott schuf das Land, der Mensch die Stadt.|God made the country and man made the town.|
+1|die|Welt|Welten|world|Die Welt ist groß.|The world is big.|
 2|der|Frieden||peace|Alle wünschen sich Frieden.|Everyone wishes for peace.|friedlich,Friedensvertrag
 2|die|Regierung|Regierungen|government|Die Regierung hat neue Regeln beschlossen.|The government has decided on new rules.|regieren,Regierungschef
 2|die|Wahl|Wahlen|election, choice|Die Wahl findet im September statt.|The election takes place in September.|wählen,Wähler
@@ -888,6 +1135,19 @@
 2|der|Präsident|Präsidenten|president, chairman|Lincoln wurde 1860 zum Präsidenten gewählt.|Lincoln was elected President in 1860.|
 2|die|Freiheit|Freiheiten|freedom|Freiheit ist wichtig für mich.|Freedom is important to me.|
 2|die|Armee|Armeen|army|Napoleons Armee rückte bis nach Moskau vor.|Napoleon's army advanced up to Moscow.|
+2|die|Sicherheit|Sicherheiten|safety, security|Sie versuchten, in Sicherheit zu schwimmen.|They tried to swim to safety.|
+2||kämpfen||to fight, to struggle|Die Flüchtlinge kämpften gegen den Hunger.|The refugees struggled against hunger.|
+2|der|Kampf|Kämpfe|struggle, battle|Wir hatten das Glück, den Kampf zu gewinnen.|We were lucky to win the battle.|
+2|der|General|Generäle|general|Er erreichte den Dienstgrad eines Generals.|He reached the rank of general.|
+2|der|Agent|Agenten|agent|Die FBI-Agenten nahmen den Bankräuber fest.|The FBI agents arrested the bank robber.|
+2||beschützen||to protect, to guard|Die Katzenmutter beschützte ihre Kätzchen.|The mother cat protected her kittens.|
+2||schützen||to defend, to protect|Mein Regenschirm schützt mich vor dem Regen.|My umbrella protects me from the rain.|
+2|das|Volk|Völker|people, nation|Das Volk lehnte sich gegen den König auf.|The people rebelled against the king.|
+2|die|Königin|Königinnen|queen|Elisabeth II. ist die Königin von England.|Elizabeth II is the Queen of England.|
+2|die|Mission|Missionen|mission|Ihm wurde eine wichtige Mission anvertraut.|He was given an important mission.|
+2|die|Gruppe|Gruppen|group|Richte die Videokamera auf die Gruppe da!|Aim the video camera at that group.|
+2|die|Prinzessin|Prinzessinnen|princess|Sie träumte davon, eine Prinzessin zu sein.|She dreamt of being a princess.|
+2|der|Held|Helden|hero|Jeder kleine Junge braucht einen Helden.|Every little boy needs a hero.|
 3|die|Macht|Mächte|power, authority|Die Kanzlerin übernahm die Macht im Jahr 2005.|The Chancellor took power in 2005.|
 3|der|Glaube|Glauben|belief, faith|Ihr Glaube an Gott ist stark.|Her faith in God is strong.|
 3|der|Bürger|Bürger|citizen|Alle Bürger dürfen an der Wahl teilnehmen.|All citizens may take part in the election.|Bürgerin,bürgerlich
@@ -899,6 +1159,24 @@
 3|der|Minister|Minister|minister|Mein Vater ist Abgeordneter, kein Minister.|My father is a deputy, not a minister.|
 3|der|Staat|Staaten|country, state|Ich bin nicht aus den Vereinigten Staaten.|No, I'm not from the United States.|
 3|die|Politik||politics|In der Politik muss man schlagfertig sein.|You have to have a ready tongue in politics.|
+3|der|Anführer|Anführer|leader, head|Wir haben ihn zu unserem Anführer erkoren.|We chose him to be our leader.|
+3|die|Menschheit||humanity, mankind|Ich fürchte um die Zukunft der Menschheit.|I fear for the future of mankind.|
+3|das|Mitglied|Mitglieder|member|Das Komitee besteht aus zwölf Mitgliedern.|The committee consists of twelve members.|
+3|die|Schlacht|Schlachten|battle|Die Schlacht war in wenigen Minuten vorüber.|The battle was over in minutes.|
+3|der|Offizier|Offiziere|commissioned officer|Sie verliebte sich in einen jungen Offizier.|She fell in love with a young officer.|
+3|der|Kaiser|Kaiser|emperor|Der Kaiser lebte in einem Palast.|The emperor lived in a palace.|
+3|die|Öffentlichkeit||public|Sie spricht nicht gern in der Öffentlichkeit.|She doesn't like to speak in public.|
+3|der|Senator|Senatoren|senator|Die Angelegenheit spaltete die Senatoren.|The issue divided the senators.|
+3|der|Pfarrer|Pfarrer|pastor|Der Pfarrer spricht in der Kirche.|The pastor is speaking in the church.|
+3|der|Palast|Paläste|palace|Sie hat mir den Weg zum Palast gezeigt.|She showed me the way to the palace.|
+3||bekämpfen||to fight, to combat|Wir müssen die Armut bekämpfen.|We must fight poverty.|
+3|die|Organisation|Organisationen|organisation, organization|Im Leben ist alles eine Frage der Organisation.|Everything in life is a question of organization.|
+3|die|Revolution|Revolutionen|revolution|Der Keim der Revolution ist Unterdrückung.|The seed of revolution is repression.|
+3|der|Franzose|Franzosen|Frenchman|Der Franzose spricht gut Deutsch.|The Frenchman speaks German well.|
+3||herrschen||to rule, to reign|Der König herrscht über das Land.|The king rules over the country.|
+3|der|Botschafter|Botschafter|ambassador, emissary|Ich sprach mit dem polnischen Botschafter.|I talked with the Polish ambassador.|
+3|die|Nation|Nationen|nation|Die ganze Nation feiert.|The whole nation is celebrating.|
+3|die|Krone|Kronen|crown|Der König trägt eine goldene Krone.|The king is wearing a golden crown.|
 4|die|Partei|Parteien|political party|Welche Partei hast du gewählt?|Which party did you vote for?|parteiisch,Parteitag
 4|die|Generation|Generationen|generation|Er ist der Führer der nächsten Generation.|He's the leader of the next generation.|
 4|der|Ausländer|Ausländer|foreigner, foreign national|Viele Ausländer besuchen jedes Jahr Japan.|A lot of foreigners visit Japan every year.|
@@ -946,6 +1224,13 @@
 1||gestern||yesterday|Sie hat gestern Nacht ein Kochbuch gelesen.|She read a cookbook last night.|
 1||spät||late|Sie kommt montags oft zu spät zur Schule.|She is often late for school on Mondays.|
 1||bald||soon|Ich hoffe, es wird Ihnen bald besser gehen.|I hope you'll soon get well.|
+1||erst||first, at first|Mir ist, als wäre es erst gestern gewesen.|I remember it as if it were yesterday.|
+1||sofort||immediately, at once|Komm bitte sofort her!|Please come here at once!|
+1||einmal||once, one time|Ich war einmal in Wien.|I was in Vienna once.|
+1||endlich||finally|Gegen Mittag kam endlich die Sonne durch.|The sun at last broke through at about noon.|
+1||niemals||never|Das werde ich niemals vergessen.|I will never forget that.|
+1||manchmal||sometimes|Manchmal gehe ich ins Kino.|Sometimes I go to the cinema.|
+1||oft||often|Wir gehen oft spazieren.|We often go for walks.|
 2|der|Monat|Monate|month|Im nächsten Monat habe ich Urlaub.|Next month I’m on holiday.|monatlich,Monatsende
 2|die|Stunde|Stunden|hour|Der Film dauert zwei Stunden.|The film lasts two hours.|stündlich,Stundenplan
 2|die|Vergangenheit||past|Das gehört jetzt der Vergangenheit an.|That belongs to the past now.|vergangen,Vergangenheitsform
@@ -958,6 +1243,19 @@
 2||danach||after it, after that|Zuerst esse ich, danach gehe ich spazieren.|First I eat, afterwards I go for a walk.|
 2||damals||at that time, at the time|Stimmt es, dass du damals schwanger warst?|Is it true that you were pregnant then?|
 2|die|Sekunde|Sekunden|second (of time)|Eine Minute hat sechzig Sekunden.|A minute has sixty seconds.|
+2||vorher||beforehand, previously|In diesem Zimmer gab es vorher keine Möbel.|The room originally had no furniture.|
+2|der|Schluss|Schlüsse|end, ending|Am Schluss fand er die Wahrheit heraus.|At last he found out the truth.|
+2||plötzlich||suddenly, abruptly|Plötzlich fing es an zu regnen.|Suddenly it started to rain.|
+2||jemals||ever|Hast du jemals eine so gute Suppe gekostet?|Have you ever tasted a soup so good?|
+2|der|Anfang|Anfänge|start, beginning|Ich bin Anfang Juni in Toronto angekommen.|I came to Toronto at the beginning of June.|
+2||irgendwann||sometime, somewhen|Irgendwann werde ich wie der Wind rennen.|Someday I'll run like the wind.|
+2||bisher||so far, until now|Mir gefällt, was ich bisher gesehen habe.|I like what I've seen so far.|
+2||dauern||to last, to continue|Wie lange dauert es, um dort hinzukommen?|How long will it take to get there?|
+2||diesmal||this time|Ich hätte deine Hand diesmal fast berührt.|I almost touched your hand this time.|
+2||zuvor||before, previously|Jetzt verstehe ich noch weniger als zuvor.|Now I understand even less than before.|
+2||nachts||at night, nights|Sie sollte nachts nicht allein fortgehen.|She shouldn't go out by herself at night.|
+2|die|Pause|Pausen|pause|Lass uns eine zehnminütige Pause machen.|Let's take a ten-minute break.|
+2||vorhin||earlier|Vorhin hat hier eine Frau nach dir gesucht.|There was a woman here earlier looking for you.|
 3|das|Jahrhundert|Jahrhunderte|century|Das Haus stammt aus dem 18. Jahrhundert.|The house dates from the 18th century.|Jahr,hundert
 3||morgens||in the morning, a.m|Wir sind morgens um vier Uhr aufgestanden.|We got up at four in the morning.|
 3||neulich||recently|Ich möchte mich für neulich entschuldigen.|I want to apologize for the other day.|
@@ -965,6 +1263,32 @@
 3|der|Mittag|Mittage|noon, midday|Sie isst hier von Zeit zu Zeit zu Mittag.|She eats lunch here from time to time.|
 3|der|Montag|Montage|Monday|Die Sommerferien beginnen nächsten Montag.|Summer vacation begins next Monday.|
 3|der|Sonntag|Sonntage|Sunday|Ich bin letzten Sonntag nicht ausgegangen.|I didn't go out last Sunday.|
+3|der|Freitag|Freitage|Friday|Ich muss deine Antwort bis Freitag wissen.|I need to know your answer by Friday.|
+3||weiterhin||still|Sie wird das Projekt weiterhin unterstützen.|She continues to support the project.|
+3||zuletzt||finally, lastly|Wann haben Sie zuletzt das Auto gewaschen?|When was the last time you washed the car?|
+3||jederzeit||anytime|Sie können sich jederzeit an mich wenden.|Feel free to contact me.|
+3||inzwischen||since then, now|Inzwischen ist es dunkel geworden.|In the meantime it has got dark.|
+3|der|Samstag|Samstage|Saturday|Am Samstag fahren wir ans Meer.|On Saturday we are going to the sea.|
+3||öfter||ofttimes, from time to time|Ihr müsst öfter an die frische Luft gehen.|You need to get out of the house more.|
+3||gleichzeitig||simultaneous, concurrent|Sie versuchten alle gleichzeitig zu reden.|They all tried to talk at one time.|
+3||rechtzeitig||in time|Werden wir rechtzeitig zum Konzert kommen?|Will we be in time for the concert?|
+3||heutzutage||nowadays, these days|Geduld ist eine seltene Tugend heutzutage.|Patience is a rare virtue these days.|
+3||momentan||at the moment|Welcher Film ist momentan am beliebtesten?|What is the most popular movie now?|
+3||meistens||mostly|Meistens geht er um fünf Uhr nach Hause.|He usually goes home at five.|
+3||täglich||daily|Wir füttern unseren Hund dreimal täglich.|We feed our dog three times a day.|
+3|der|April|Aprile|April|Der April ist der vierte Monat des Jahres.|April is the fourth month of the year.|
+3||einst||once, formerly|In jenem Lande lebte einst ein weiser König.|In that country there once lived a wise king.|
+3||stets||always, constantly|Er ist stets freundlich.|He is always friendly.|
+3||pünktlich||punctual, on time|In Zukunft hast du pünktlich hier zu sein.|In the future, you have to get here on time.|
+3|der|Dienstag|Dienstage|Tuesday|Ich erwarte, am Dienstag von dir zu hören.|I'll expect to hear from you by Tuesday.|
+3|der|Donnerstag|Donnerstage|Thursday|Ich habe den Saal für Donnerstag reserviert.|I've booked the hall for Thursday.|
+3|die|Verabredung|Verabredungen|appointment|Sie verspätet sich kaum bei Verabredungen.|She is rarely late for appointments.|
+3||kürzlich||recently, lately|Ich habe ihn kürzlich in Kyoto getroffen.|The other day, I met him in Kyoto.|
+3||erstmal||for now, first|Sie können erstmal diesen Stift benutzen.|You can use this pen for the time being.|
+3||zunächst||first, first of all|Zunächst möchte ich mich vorstellen.|First, I would like to introduce myself.|
+3|der|Mai|Maie|May|In der Schweiz kommt der Frühling im Mai.|In Switzerland, spring comes in May.|
+3||dreimal||thrice, three times|Ich habe ihn dreimal angerufen.|I called him three times.|
+3|der|August|Auguste|August|Nach England ist er Anfang August abgereist.|He left for England at the beginning of August.|
 4|die|Gegenwart||present|In der Gegenwart zählt nur der Moment.|In the present only the moment counts.|gegenwärtig,Gegenwartsform
 4|das|Datum|Daten|date|Welches Datum haben wir heute?|What’s the date today?|datieren,Geburtsdatum
 4|die|Zwischenzeit||meantime|In der Zwischenzeit können Sie warten.|In the meantime you can wait.|zwischen,Zeit
@@ -974,6 +1298,9 @@
 4|der|Kalender|Kalender|calendar|Ich habe den Kalender an die Wand gehängt.|I've hung the calendar on the wall.|
 4|der|Januar||January|Gestern war Dienstag, der 26. Januar 2010.|Yesterday was Tuesday, January 26, 2010.|
 4|der|Dezember|Dezember|December|Die Wintersonnenwende ist am 21. Dezember.|Winter Solstice is 21st December.|
+4|der|Juli|Julis|July|Es ist im Juni nicht so heiß wie im Juli.|It's not as hot in June as it is in July.|
+4||jahrelang||for years|Jahrelange Anstrengung hat nichts gebracht.|Years of effort have come to nothing.|
+4|der|Mittwoch|Mittwoche|Wednesday|Wir treffen uns nächste Woche am Mittwoch.|We're meeting on Wednesday next week.|
 5|die|Jahreszeit|Jahreszeiten|season|Der Herbst ist meine liebste Jahreszeit.|Autumn is my favourite season.|Jahr,Zeit
 5|der|Zeitraum|Zeiträume|period of time|Im Zeitraum von drei Monaten ändert sich viel.|A lot changes over a period of three months.|Zeit,Raum
 5|die|Dauer||duration|Die Dauer des Kurses beträgt vier Wochen.|The duration of the course is four weeks.|dauern,dauerhaft
@@ -991,6 +1318,9 @@
 1|das|Glück||luck, happiness|Viel Glück bei der Prüfung!|Good luck with the exam!|glücklich,Glückwunsch
 1|die|Sorge|Sorgen|worry|Ich mache mir Sorgen um dich.|I’m worried about you.|sorgen,besorgt
 1||glücklich||happy|Ungeachtet seiner Armut war er glücklich.|Even though he was poor, he was happy.|
+1||ruhig||quiet|Nach dem Sturm wurde das Meer wieder ruhig.|After the storm, the sea was quiet again.|
+1||hoffen||to hope|Ich hoffe, dass wir Kontakt halten können.|I hope we'll be able to stay in touch.|
+1||ernst||serious, severe|Heiraten ist eine ernste Angelegenheit.|Marriage is a serious matter.|
 2||gefallen||to please|Das Kleid gefällt mir.|I like the dress.|
 2|die|Freude|Freuden|joy, pleasure|Das Kind hüpfte vor Freude.|The child jumped for joy.|freuen,fröhlich
 2||nervös||nervous|Vor dem Vortrag war ich sehr nervös.|Before the presentation I was very nervous.|Nerv,Nervosität
@@ -1006,6 +1336,32 @@
 2||lachen||to laugh|Sie brach in Lachen aus, als sie mich sah.|She burst out laughing when she saw me.|
 2|die|Hoffnung|Hoffnungen|hope|Im Laufe der Zeit schwand unsere Hoffnung.|As time went on, our hopes sank.|
 2||traurig||sad|Wenn er traurig ist, zieht er sich zurück.|When he's sad, he withdraws from other people.|
+2||lustig||funny, humorous|Der Film ist sehr lustig.|The film is very funny.|
+2||komisch||funny, strange|Hörst du auch dieses komische Geräusch?|Do you hear that strange noise, too?|
+2|der|Traum|Träume|dream|Ich hatte letzte Nacht einen schönen Traum.|I had a good dream last night.|
+2||hoffentlich||hopefully|Hoffentlich scheint morgen die Sonne.|I hope the sun shines tomorrow.|
+2|die|Seele|Seelen|soul|Öffne ein Buch, und es öffnet deine Seele.|Open a book and it will open your soul.|
+2||vermissen||to miss|Ich vermisse dich sehr.|I miss you very much.|
+2|der|Spaß|Späße|fun|Das Spiel macht viel Spaß.|The game is a lot of fun.|
+2|der|Witz|Witze|joke|Er erzählt einen guten Witz.|He tells a good joke.|
+2||schrecklich||awful, terrible|Das Wetter ist heute schrecklich.|The weather is terrible today.|
+2|die|Furcht||fear, fright|Lasse dich nicht von deiner Furcht beherrschen!|Don't be controlled by your fear.|
+2|die|Güte||kindness, clemency|Vielen Dank für Ihre Güte.|Thank you for your kindness.|
+2|die|Überraschung|Überraschungen|surprise|Sie wollte, dass es eine Überraschung sei.|She wanted it to be a surprise.|
+2||weinen||to weep, cry|Sie weinte, als sie die Geschichte hörte.|She shed tears while listening to the story.|
+2|die|Lust|Lüste|desire, fancy|Hättest du nicht Lust, mit mir zu tanzen?|Why don't you come dancing with me?|
+2||witzig||funny, humorous|Er ist charmant, witzig und intelligent.|He's charming, funny and intelligent.|
+2|der|Wille|Willen|will|Wo ein Wille ist, ist auch ein Weg.|Where there's a will, there's a way.|
+2||überraschen||to surprise|Er überraschte die Öffentlichkeit.|He took the public by surprise.|
+2||stöhnen||to moan, to groan|Sie stöhnte, dass sie wieder zur Arbeit musste.|She was moaning about having to go back to work.|
+2||furchtbar||terrible|Nichts ist so furchtbar wie ein Erdbeben.|Nothing is so terrible as an earthquake.|
+2||verzeihen||to forgive, to pardon|Bitte verzeih mir.|Please forgive me.|
+2||zufrieden||satisfied, content|Mein Vater war mit dem Ergebnis zufrieden.|My father was satisfied with the result.|
+2||träumen||to dream|In meinem Traum träumte ich, dass ich träumte.|In my dream I dreamt that I was dreaming.|
+2||seufzen||to sigh|Sie seufzt tief.|She sighs deeply.|
+2||lächeln||to smile|Er lächelte, als wäre ihm nichts passiert.|He was smiling as if nothing had happened to him.|
+2||dankbar||grateful, thankful|Wir sind dankbar für Ihre Freundlichkeit.|We're thankful for your kindness.|
+2|das|Gewissen|Gewissen|conscience|Erwirb keinen Reichtum auf Kosten deines Gewissens.|Don't obtain wealth at the expense of your conscience.|
 3|die|Stimmung|Stimmungen|mood, atmosphere|Die Stimmung auf der Party war toll.|The atmosphere at the party was great.|stimmen,Laune
 3|die|Geduld||patience|Hab bitte etwas Geduld mit mir.|Please have a little patience with me.|geduldig,dulden
 3||sich beruhigen||to calm down|Die Menge beruhigte sich.|The crowd calmed down.|
@@ -1019,6 +1375,31 @@
 3||mutig||courageous|Das war eine mutige Entscheidung.|That was a brave decision.|
 3||eifersüchtig||jealous|Du hast keinen Grund, eifersüchtig zu sein.|You've got no reason to be jealous.|
 3||genießen||to enjoy, to relish|Wir haben es genossen, Tennis zu spielen.|We enjoyed playing tennis.|
+3||enttäuschen||to disappoint|Ich hatte nicht vor, sie zu enttäuschen.|I did not mean to disappoint her.|
+3||herzlich||warm, warmhearted|Diese Familie hat mich herzlich aufgenommen.|This family gave me a warm welcome.|
+3|die|Panik|Paniken|panic|Er bekam Panik.|He panicked.|
+3||trauen||to trust|Ich traue ihm nicht.|I don't trust him.|
+3||einsam||lonely, lone|Diese Stadt ist kalt und einsam ohne dich.|This city is cold and lonely without you.|
+3||spüren||to sense, to detect|Er spürte, wie etwas sein Bein hinaufkroch.|He felt something crawl up his leg.|
+3|der|Lügner|Lügner|liar|Lügner müssen ein gutes Gedächtnis haben.|Liars must have a good memory.|
+3||verwirren||to confuse|Das Problem verwirrte die Öffentlichkeit.|The problem puzzled the public.|
+3|das|Pech|Peche|bad luck|Ich hatte heute Pech.|I had bad luck today.|
+3||neugierig||nosy, curious|Sie ist immer neugierig, was ich mache.|She is always curious about what I am doing.|
+3||beeindrucken||to impress, to impose|Ich bin von deiner Arbeit sehr beeindruckt.|I'm very impressed by your work.|
+3|der|Stress||stress|Wie kommst du nur mit all dem Stress klar?|How are you dealing with all the stress?|
+3|der|Feigling|Feiglinge|coward, chicken|Er ist ein Feigling.|He is a coward.|
+3|der|Hass||hatred, hate|Sie fühlte etwas zwischen Liebe und Hass.|She felt something between love and hatred.|
+3||verzweifeln||to despair|Sie begann am Erfolg völlig zu verzweifeln.|She began to despair of success.|
+3|das|Unglück|Unglücke|unhappiness, sorrow|Ein zerbrochener Spiegel bringt Unglück.|A broken mirror brings bad luck.|
+3|das|Mitleid||pity, compassion|Sie braucht kein Mitleid, sondern Unterstützung.|She doesn't need sympathy, but support.|
+3|die|Leidenschaft|Leidenschaften|passion|Kochen ist meine verschwiegene Leidenschaft.|Cooking is my secret passion.|
+3||bereuen||to regret, to rue|Ich bereue es, dass ich es dir gesagt habe.|I regret telling you.|
+3||unglücklich||unhappy, unjoyous|Wegen ihres ganzen Erfolgs war sie unglücklich.|She was unhappy for all her success.|
+3|der|Humor||humor|Er scheint keinen Sinn für Humor zu haben.|He seems to have no sense of humour.|
+3||widerstehen||to withstand, to resist|Er konnte der Versuchung nicht widerstehen.|He couldn't resist the temptation.|
+3|die|Laune|Launen|mood, humor|Der Regen passt heute gut zu meiner Laune.|The rain today matches my mood well.|
+3||verärgern||to annoy, to anger|Er sagte nichts, das sie verärgern würde.|He said nothing that would make her angry.|
+3|der|Albtraum|Albträume|nightmare|Das wird mir heute Nacht Albträume bescheren.|That's going to give me nightmares tonight.|
 4|die|Enttäuschung|Enttäuschungen|disappointment|Das Ergebnis war eine große Enttäuschung.|The result was a big disappointment.|enttäuschen,enttäuscht
 4|die|Eifersucht||jealousy|Seine Eifersucht zerstörte die Beziehung.|His jealousy destroyed the relationship.|eifersüchtig,Eifer
 4|die|Neugier||curiosity|Aus Neugier habe ich in die Kiste geschaut.|Out of curiosity I looked in the box.|neugierig
@@ -1064,6 +1445,11 @@
 1||sprechen||to speak|Sprich die Wahrheit oder bleib still.|Speak the truth or remain silent.|
 1||zeigen||to show|Zeig mir mal deine Briefmarkensammlung!|Please show me your stamp collection!|
 1||sich entschuldigen||to apologize|Er muss sich bei ihr entschuldigen.|He’s got to apologise to her.|
+1||wieso||why|Wieso können wir uns nicht selber kitzeln?|Why can't we tickle ourselves?|
+1||woher||where from, whence|Woher kommst du?|Where do you come from?|
+1||bedeuten||to imply, to mean|Geld bedeutet in politischen Kreisen viel.|Money counts for much in political circles.|
+1|die|Wahrheit|Wahrheiten|truth|In Wahrheit waren die Eltern daran schuld.|The truth is that the parents were to blame.|
+1|das|Wort|Wörter|word|Dieses Wort ist schwer auszusprechen.|This word is hard to pronounce.|
 2||antworten||to answer|Bitte antworte mir schnell.|Please answer me quickly.|Antwort,beantworten
 2||erklären||to explain|Kannst du mir das bitte erklären?|Can you explain that to me, please?|Erklärung,klar
 2||bitten||to ask (for), to request|Ich bitte dich um Hilfe.|I’m asking you for help.|Bitte,Bittsteller
@@ -1076,6 +1462,17 @@
 2|die|Stimme|Stimmen|voice, vote|Die Stimme erinnerte mich an meine Mutter.|The voice reminded me of my mother.|
 2||lügen||to tell a lie, to lie|Ich lüge nie.|I never lie.|
 2||schreien||to shout, to yell|Das Baby schreit laut.|The baby is screaming loudly.|
+2|die|Antwort|Antworten|answer|Ich warte auf deine Antwort.|I am waiting for your answer.|
+2||schwören||to swear, to take an oath|Ich schwöre, dass ich nichts gesehen habe.|I swear I didn't see anything.|
+2||nämlich||namely, specifically|Die Kinder sind vor allem eines, nämlich laut.|Children are one thing above all else, and that is loud.|
+2|der|Kontakt|Kontakte|contact|Wir halten Kontakt.|We stay in touch.|
+2||nicken||to nod|Ich nickte zum Zeichen, dass ich zustimmte.|I nodded to show that I agreed.|
+2||allerdings||but, however|Die Gewinner hatten allerdings auch Glück.|The winners were admittedly also lucky.|
+2|der|Glückwunsch|Glückwünsche|congratulation|Herzlichen Glückwunsch zum Geburtstag, Opa!|Happy birthday, Grandpa.|
+2||melden||to report; to raise one's hand|Er meldete sich, um eine Frage zu stellen.|He raised his hand to ask a question.|
+2||berichten||to relate, to tell|Er berichtet über seine Reise.|He reports on his trip.|
+2||einladen||to invite|Wenn du ihn einlädst, kommt er vielleicht.|If you invite him, he may come.|
+2|das|Gespräch|Gespräche|conversation, chat|Ihre Gespräche drehten sich um ihre Reise.|Their talks centered on their trip.|
 3||erwähnen||to mention|Er hat das Problem nie erwähnt.|He never mentioned the problem.|Erwähnung,erwähnenswert
 3||behaupten||to claim, to assert|Er behauptet, alles gewusst zu haben.|He claims to have known everything.|Behauptung
 3||heißen||to be called|Ich werde Lutz genannt, aber ich heiße Ludger.|They call me Lutz, but my name is Ludger.|
@@ -1085,6 +1482,27 @@
 3|die|Erklärung|Erklärungen|explanation|Meine Erklärung klingt vielleicht seltsam.|My explanation may sound strange.|
 3||raten||to advise; to guess|Ich rate dir dazu, die Chance zu ergreifen.|I advise you to take the chance.|
 3||schweigen||to be silent, to keep quiet|Ich verstand ihr Schweigen als Zustimmung.|I interpreted their silence as consent.|
+3|die|Botschaft|Botschaften|message; embassy|Ich habe eine Botschaft für dich.|I have a message for you.|
+3||zuhören||to listen|Wollen Sie mir ein paar Minuten zuhören?|Will you listen to me for a few minutes?|
+3||beantworten||to answer|Bitte beantworten Sie die Frage.|Please answer the question.|
+3||bestätigen||to confirm, to corroborate|Wir bestätigen den Empfang Ihres Briefes.|We acknowledge receipt of your letter.|
+3||warnen||to warn, to caution|Er warnte uns, nicht den Raum zu betreten.|He warned us not to enter the room.|
+3|die|Unterhaltung|Unterhaltungen|conversation|Ich hatte eine nette Unterhaltung mit ihr.|I had a pleasant conversation with her.|
+3||zugeben||to admit, confess|Ich muss zugeben, dass ich schnarche.|I must admit that I snore.|
+3|die|Einladung|Einladungen|invitation|Danke für die Einladung!|Thank you for the invitation!|
+3||abmachen||to agree on, to settle on|Das haben wir so abgemacht.|We agreed on that.|
+3||gratulieren||to congratulate|Ich bin gekommen, um Ihnen zu gratulieren.|I came to congratulate you.|
+3||äußern||to utter, to say|Jeder Schüler äußerte seine Meinung.|Every pupil expressed their opinion.|
+3||anlügen||to lie to, to tell someone a lie|Er bezichtigte sie, ihn angelogen zu haben.|He accused her of having lied to him.|
+3||erstens||first, firstly|Erstens habe ich kein Geld. Zweitens habe ich keine Zeit.|First, I don't have any money. Second, I don't have the time.|
+3|die|Abmachung|Abmachungen|deal, bargain|Sie müssen sich an die Abmachung halten.|You need to stick to the deal.|
+3|das|Gerücht|Gerüchte|rumor|Es ist denkbar, dass er das Gerücht kennt.|It is conceivable that he knows the rumor.|
+3|die|Warnung|Warnungen|warning|Das ist keine Drohung, das ist eine Warnung.|That's not a threat, that is a warning.|
+3||begrüßen||to welcome|Er begrüßt die Gäste an der Tür.|He is welcoming the guests at the door.|
+3||gestehen||to confess, to admit|Er gestand, sich in mich verliebt zu haben.|He confessed that he had fallen in love with me.|
+3||beschreiben||to describe|Der Pilot beschrieb die Szene detailliert.|The pilot described the scene in detail.|
+3||zweitens||secondly|Erstens bin ich beschäftigt und zweitens hab ich kein Interesse.|Firstly, I'm busy, and secondly, I'm not interested.|
+3||beleidigen||to offend, to insult|Beleidige mich nicht vor anderen Leuten.|Don't insult me in company.|
 4||diskutieren||to discuss|Wir diskutieren über das Thema.|We’re discussing the topic.|Diskussion,Diskutant
 4||zustimmen||to agree|Ich stimme dir völlig zu.|I completely agree with you.|Zustimmung,stimmen
 4||sich beschweren||to complain|Ich möchte mich über den Lärm beschweren.|I’d like to complain about the noise.|Beschwerde,schwer
@@ -1096,6 +1514,8 @@
 4|die|Anweisung|Anweisungen|instruction|Bitte befolgen Sie die Anweisungen.|Please follow the instructions.|
 4||flüstern||to whisper|Ich kann nur flüstern, mein Hals tut weh.|I can only whisper, my throat hurts.|
 4|der|Sprecher|Sprecher|speaker|Der Sprecher beginnt gleich.|The speaker is about to begin.|
+4|der|Gruß|Grüße|greeting|Bestelle deinen Eltern einen schönen Gruß.|Say hello to your parents for me.|
+4||sozusagen||so to speak, in a manner of speaking|Und das ist sozusagen ein Begrüßungssatz.|And that's a welcoming sentence, so to speak.|
 5||widersprechen||to contradict|Ich muss dir leider widersprechen.|Unfortunately I have to contradict you.|Widerspruch,sprechen
 5||betonen||to emphasize|Sie betonte, wie wichtig das sei.|She stressed how important it was.|Betonung,Ton
 5||andeuten||to hint, to imply|Sie hat angedeutet, dass sie kündigen will.|She hinted that she wants to quit.|Andeutung,deuten
@@ -1144,6 +1564,24 @@
 1||treffen||to meet, to encounter|Ich treffe meine Freunde am Samstag.|I am meeting my friends on Saturday.|
 1||versuchen||to try, to attempt|Bitte sei still, ich versuche zu schlafen.|Please be quiet, I'm trying to sleep.|
 1||stellen||to put, to place|Bitte stellen Sie sich in einer Reihe auf.|Please line up in a row.|
+1||bessern||to improve|Das Wetter bessert sich.|The weather is getting better.|
+1||hören||to hear, to listen|Ich höre gern Musik.|I like listening to music.|
+1||gehören||to belong to|Das Heft gehört dir nicht, es gehört ihm.|The notebook is not yours. It's his.|
+1||her||here, toward me|Komm her, ich zeige es dir!|Come here, I'll show it to you!|
+1||helfen||to help|Wenn Sie frei haben, bitte helfen Sie mir.|If you are free, give me a hand.|
+1||dort||there|Wir sind drei Monate lang dort geblieben.|We're staying there for three months.|
+1||zusammen||together, jointly|Wir kochen heute zusammen.|We are cooking together today.|
+1||bekommen||to receive, to get|Je mehr ich bekomme, desto mehr will ich.|The more I get, the more I want.|
+1||draußen||outside|Es ist kalt draußen, zieh deinen Mantel an!|It is cold outdoors. Put on your coat.|
+1||runter||down|Er kam auf seinem Fahrrad den Berg runter.|He came down the hill on his bicycle.|
+1||vorbei||over, past|Unser langer Urlaub war zu schnell vorbei.|Our long vacation has passed all too soon.|
+1||sorgen||to care for, to provide|Eltern sorgen für ihre Kinder.|Parents take care of their children.|
+1||drin||inside|Dieses Haus ist zu klein, um drin zu wohnen.|This house is too small to live in.|
+1||oben||above|Das Buch liegt oben im Regal.|The book is on the shelf up there.|
+1||schauen||to look|Schau mal, wie schön das ist!|Look how beautiful that is!|
+1||kriegen||to get|Ich kriege morgen Besuch.|I'm getting visitors tomorrow.|
+1||unten||below|Die Küche ist unten.|The kitchen is downstairs.|
+1||teilen||to share, to divide|Wir teilen uns die Pizza.|We are sharing the pizza.|
 2||mitnehmen||to take along|Vergiss nicht, den Regenschirm mitzunehmen.|Don’t forget to take the umbrella along.|nehmen,Mitnahme
 2||verlieren||to lose|Ich habe meine Handschuhe verloren.|I’ve lost my gloves.|Verlust,Verlierer
 2||erledigen||to get done, to take care of|Ich muss noch ein paar Dinge erledigen.|I still have to take care of a few things.|erledigt,Erledigung
@@ -1178,6 +1616,60 @@
 2||schlagen||to beat, to hit|Er schlägt den Ball.|He hits the ball.|
 2||werfen||to throw|Er wirft den Ball.|He throws the ball.|
 2||stören||to disturb, to interfere|Stört es dich, wenn ich das Fenster öffne?|Do you mind if I open the window?|
+2|das|Zeug||stuff, gear|Ich kann solches süßes Zeug nicht trinken.|I can't drink such sweet stuff.|
+2||hinten||behind, in the back|Sie schlich sich von hinten an mich heran.|She sneaked up behind me.|
+2||heraus||out|Er nahm den Schlüssel heraus.|He took the key out.|
+2||anfangen||to begin|Du solltest so bald wie möglich anfangen.|You should start out as soon as you can.|
+2||gewinnen||to win, to be victorious|Er gewann die Wahl mit einer großen Mehrheit.|He won the election by a large majority.|
+2||regeln||to arrange, to settle|Das regeln wir später.|We'll sort that out later.|
+2||herum||about, around|Wir gehen um den See herum.|We walk around the lake.|
+2||benutzen||to use|Darf ich dein Handy benutzen?|May I use your phone?|
+2||rollen||to roll|Die Kinder rollten einen großen Schneeball.|The children were rolling a big snowball.|
+2||stecken||to put, to stick|Sie steckte den Schlüssel in ihre Tasche.|She put the key in her pocket.|
+2||fehlen||to be missing, to lack|Dem jungen Ingenieur fehlte die Erfahrung.|The young engineer lacked experience.|
+2||öffnen||to open|Mit klopfendem Herzen öffnete sie die Tür.|With her heart pounding, she opened the door.|
+2||erwischen||to catch|Ich habe den Bus gerade noch erwischt.|I just managed to catch the bus.|
+2||aussehen||to look, to appear|Sie ist nicht so jung, wie sie aussieht.|She isn't as young as she looks.|
+2||erreichen||to reach|Er arbeitete hart, um sein Ziel zu erreichen.|He worked hard to obtain his objective.|
+2||schaden||to hurt, to be harmful|Rauchen schadet Ihrer Gesundheit.|Smoking is bad for your health.|
+2||zerstören||to destroy, demolish|Der Sturm zerstörte das Dach.|The storm destroyed the roof.|
+2||blicken||to look|Plötzlich blieb er stehen und blickte sich um.|Suddenly he stopped and looked around.|
+2||besuchen||to visit, to see|Mein Onkel besucht mich von Zeit zu Zeit.|My uncle comes to see me from time to time.|
+2||wohnen||to live|Ich mag das Haus, in dem er wohnt, nicht.|I don't like the house he lives in.|
+2||aufhalten||to hold up, to stop|Der Stau hat uns aufgehalten.|The traffic jam held us up.|
+2||besorgen||to get, to obtain|Besorgen Sie sich einen anständigen Anzug.|Get yourself a decent suit.|
+2||herausfinden||to find out|Ruf mich an, wenn du etwas herausfindest.|Give me a ring if you find out anything.|
+2||erkennen||to recognize, perceive|Man erkennt einen Baum an seinen Früchten.|A tree is known by its fruits.|
+2||gucken||to look|Ich habe keine Lust, Fernsehen zu gucken.|I don't feel like watching TV.|
+2||beginnen||to begin|Als es mich sah, begann das Baby zu weinen.|Seeing me, the baby began to cry.|
+2||binden||to bind, to tie|Er bindet sich jeden Tag eine Fliege um.|He wears a bow tie every day.|
+2||drinnen||inside|Es ist zu sonnig um drinnen zu bleiben.|It's too sunny to stay inside.|
+2||hängen||to hang|Das Bild hängt an der Wand.|The picture hangs on the wall.|
+2||vorne||at the front|Lassen Sie uns noch mal von vorne anfangen!|Let's start over again.|
+2||schließen||to shut, to close|Öffne deinen Mund und schließ die Augen.|Open your mouth and close your eyes.|
+2||daher||that is why, from there|Wir sind in Eile. Nehmen wir daher ein Taxi!|We're in a hurry, so let's take a taxi.|
+2|die|Mitte||middle|Sie schnitt den Apfel in der Mitte durch.|She cut the apple in two.|
+2||bauen||to build, to construct|Sie bauen ein neues Haus.|They are building a new house.|
+2||verpassen||to miss|Wir hatten Angst, unseren Zug zu verpassen.|We were worried we might miss the train.|
+2||unterhalten||to entertain; to talk|Wir unterhalten uns gern.|We like to talk.|
+2||beenden||to finish, to complete|Wie lange dauert es, die Arbeit zu beenden?|How long will it take to finish the work?|
+2||nachdenken||to think, to reflect|Geben Sie mir Zeit, darüber nachzudenken.|Give me some time to think it over.|
+2||leiden||to suffer, to experience pain|Mein Opa leidet an Rückenschmerzen.|My grandpa suffers from back pain.|
+2||treten||to step, to kick|Er trat ins Zimmer.|He stepped into the room.|
+2||verbringen||to spend, to pass|Ich will mein Leben mit Ihnen verbringen.|I want to spend my life with you.|
+2||aufpassen||to watch out, to be alert|Kannst du bitte auf meine Tasche aufpassen?|Can you please watch my bag?|
+2||brechen||to break|Wir dürfen unser Versprechen nicht brechen.|We must not break our promise.|
+2||drucken||to print|Mein Laserdrucker druckt nur schwarz-weiß.|My laser printer can only handle black and white.|
+2||mitbringen||to bring along|Es hat keinen Sinn, eine Kamera mitzubringen.|There's no point in taking a camera.|
+2|der|Haufen|Haufen|pile, heap|Auf dem Tisch liegt ein Haufen Papier.|There is a pile of paper on the table.|
+2||entkommen||to escape|Wie wir entkommen sind grenzt an ein Wunder.|How we escaped was nothing short of a miracle.|
+2||nutzen||to use|Sie nutzte das gute Wetter und strich die Wand.|She took advantage of the fine weather to paint the wall.|
+2||hinaus||out|Sie gingen zur Tür hinaus.|They went out the door.|
+2||mitkommen||to come with|Willst du mitkommen?|Do you want to come along?|
+2||vorwärts||forwards, forward|Wir kommen nur langsam vorwärts.|We are only moving forward slowly.|
+2||überprüfen||to check, to verify|Überprüfen Sie Ihre Antworten noch einmal.|Double-check your answers.|
+2||gelten||to be valid, to count|Das Ticket gilt bis einschließlich Montag.|The ticket is good through Monday.|
+2||hinterlassen||to leave, to leave behind|Sie hinterließ eine Nachricht auf dem Tisch.|She left a message on the table.|
 3||abholen||to pick up, to collect|Ich hole dich um sechs Uhr ab.|I’ll pick you up at six o’clock.|Abholung,holen
 3||normalerweise||normally|Ich esse normalerweise kein rotes Fleisch.|I don't usually eat red meat.|
 3||steigen||to ascend, to climb|Die Temperatur steigt.|The temperature is rising.|
@@ -1196,6 +1688,83 @@
 3||weglaufen||to run away|Die Kinder sind vor dem Hund weggelaufen.|The children ran away from the dog.|
 3||sich nähern||to approach|Diesem Ort haben sie sich nicht genähert.|They stayed away from the place.|
 3||brennen||to burn, to light on fire|Ich beobachtete, wie das Haus brannte.|I watched the house burn.|
+3||hingehen||to go there|Weißt du, wo dein Vater hingegangen ist?|Do you know where your father went?|
+3||klopfen||to knock, to rap|Jemand klopft an die Tür.|Someone is knocking at the door.|
+3||bieten||to offer, to present|Wir bieten billige, vorgefertigte Häuser.|We offer low-cost prefabricated houses.|
+3||annehmen||to accept, to assume|Ich kann dieses Geschenk nicht annehmen.|I cannot accept this gift.|
+3||beobachten||to watch, to observe|Sie beobachtete, wie Schmetterlinge fliegen.|She observed how butterflies fly.|
+3||zulassen||to allow|Wenn das Wetter es zulässt, machen wir morgen ein Picknick.|We'll have a picnic tomorrow, weather permitting.|
+3||begleiten||to accompany|Ich begleite dich zum Bahnhof.|I'll accompany you to the station.|
+3||erleben||to experience|Der Detektiv erlebt eine Menge Abenteuer.|The detective has a lot of adventures.|
+3||angehen||to concern, regard|Das geht dich nichts an.|That is none of your business.|
+3||weitermachen||to continue|Ich hätte mit Ballett weitermachen sollen.|I should have continued ballet.|
+3||zurückkommen||to return|Er will bald zurückkommen.|He wants to come back soon.|
+3||lockern||to loosen, to ease|Sein Scherz lockerte die Spannung im Raum.|His joke eased the tension in the room.|
+3||stechen||to sting, to stab|Die Biene hat mich gestochen.|The bee stung me.|
+3||probieren||to try|Probier mal den Kuchen!|Try the cake!|
+3||stoppen||to stop|Sie hob ihre Hand, um den Bus zu stoppen.|She raised her hand for the bus to stop.|
+3||aufmachen||to open|Ich habe vergeblich versucht, es aufzumachen.|I tried in vain to open it.|
+3||drücken||to press, to push|Er drückte seine Nase gegen das Fenster.|He pushed his nose against the window.|
+3||anhalten||to stop|Der Bus hält an der Ecke an.|The bus stops at the corner.|
+3||ertragen||to bear, to stand|Sie konnte die Beleidigung nicht ertragen.|She could not put up with the insult.|
+3||aufnehmen||to record, to pick up|Kann ich jetzt Ihre Bestellung aufnehmen?|Can I take your order now?|
+3||zwingen||to force, to compel|Er wurde gezwungen, Überstunden zu machen.|He was forced to work overtime.|
+3||fliehen||to flee, to escape|Sie gaben ihm eine Chance zu fliehen.|They gave him a chance to escape.|
+3||abschließen||to lock; to finish|Sie haben vergessen, die Tür abzuschließen.|They forgot to lock the door.|
+3||verbinden||to join, to combine|Wir verbinden Schnee immer mit Skifahren.|We always associate snow with skiing.|
+3||herkommen||to come over, come here|Kommst du bitte her?|Can you come here, please?|
+3||ruinieren||to ruin|Der Regen hat den Urlaub ruiniert.|The rain ruined the vacation.|
+3||hinterher||afterwards, behind|Wir essen und gehen hinterher ins Kino.|We eat and go to the cinema afterwards.|
+3||wechseln||to change, to exchange|Wie wechsele ich die Sprache eines Satzes?|How do I change the language of a sentence?|
+3||begegnen||to meet, to encounter|Ich begegnete auf dem Heimweg niemandem.|I met nobody on my way home.|
+3||starten||to start|Das Flugzeug war gerade dabei zu starten.|The aeroplane was just taking off.|
+3||auseinander||apart|Wir gingen als beste Freunde auseinander.|We parted the best of friends.|
+3||stammen||to come from|Er stammt aus einer musikalischen Familie.|He is descended from a musical family.|
+3||zurückkehren||to return|Lasst uns zur Arbeit zurückkehren.|Let's get back to business.|
+3||besitzen||to own, to possess|Er besitzt eine sehr wertvolle Armbanduhr.|He owns a very valuable wristwatch.|
+3||richten||to point, to direct|Er richtet die Kamera auf mich.|He points the camera at me.|
+3||empfangen||to receive|Sie empfing mich mit einem Lächeln.|She greeted me with a smile.|
+3||verwenden||to use, to employ|Verstehst du es, einen Computer zu verwenden?|Do you know how to use a computer?|
+3||aufwachen||to awake, to wake up|Ich wache jeden Morgen um sieben auf.|I wake up at seven every morning.|
+3||zusehen||to watch|Die Kinder sehen dem Spiel zu.|The children are watching the game.|
+3||durchmachen||to go through, to endure|Ich weiß, dass ihr viel durchgemacht habt.|I know you've been through a lot.|
+3||versagen||to fail, to give out|Du warst erfolgreich, wo andere versagten.|You've succeeded where others have failed.|
+3||loslassen||to let go|Pass bitte auf, dass du den Hund nicht loslässt!|Please be careful not to let the dog loose.|
+3||stinken||to stink|Der Müll stinkt.|The garbage stinks.|
+3||bewahren||to keep, to preserve|In einer Krise musst du die Ruhe bewahren.|In a crisis you must keep your head.|
+3||bereiten||to prepare, to cause|Es bereitet mir Freude, dir zu helfen.|It gives me pleasure to help you.|
+3||erscheinen||to appear|Sein neuer Roman erscheint nächsten Monat.|His new novel is out next month.|
+3||auftauchen||to show up, to surface|Plötzlich tauchte ein Boot auf.|Suddenly a boat appeared.|
+3||rauskommen||to come out|Komm raus, die Sonne scheint!|Come out, the sun is shining!|
+3||berühren||to touch|Seine Rede berührte das Publikum zutiefst.|His speech deeply affected the audience.|
+3||reagieren||to react, to respond|Unser Körper reagiert auf unsere Gefühle.|Our bodies respond to our feelings.|
+3||nebenan||next door|Im Zimmer nebenan findet eine Sitzung statt.|There's a meeting going on in the next room.|
+3||auftreten||to occur, appear|Wenn Schwierigkeiten auftreten, ruf mich an!|If there are difficulties give me a call!|
+3||nachsehen||to check, to look into|Ich weiß nicht, Lass mich mal nachsehen!|I don't know. Let me check.|
+3||steuern||to steer|Er lehrte sie, wie man Schiffe steuert.|He taught them how to sail ships.|
+3||vermeiden||to avoid|Vermeiden Sie für eine Weile gebratene Nahrung.|Avoid fried foods for a while.|
+3||daheim||home, at home|Weißt du, ob Grace daheim ist oder nicht?|Do you know whether or not Grace is at home?|
+3||verbergen||to hide, conceal from view|Ich denke, dass er etwas vor uns verbirgt.|I think he's hiding something from us.|
+3||reingehen||to go in, to get inside|Laßt uns hier reingehen und uns aufwärmen!|Let's go in here and get warm.|
+3||hierbleiben||to stay here|Ich glaube, ich sollte lieber hierbleiben.|I think I'd better stay here.|
+3||weitergehen||to proceed, progress|Ich kann nicht einen Schritt weitergehen.|I cannot walk any farther.|
+3||innen||within|Es ist von innen abgeschlossen worden.|It's been locked from the inside.|
+3|das|Seil|Seile|rope, line|Das Seil riss, als wir den Berg bestiegen.|The rope broke when we were climbing the mountain.|
+3||anschauen||to look at|Ich kann nicht aufhören, sie anzuschauen.|I can't take my eyes off her.|
+3||betrachten||to look at, to consider|Du musst das Problem als Ganzes betrachten.|You must consider this problem as a whole.|
+3||weggehen||to go away, leave|Ich muss jetzt weggehen.|I have to leave now.|
+3||ignorieren||to ignore|Wir können dieses Problem nicht ignorieren.|We can't ignore this problem.|
+3||übersehen||to overlook|Fehler dieser Art sind leicht zu übersehen.|It's very easy to miss this kind of mistake.|
+3||außen||outside|Von außen war das Haus sehr heruntergekommen.|The outside of the house was very run down.|
+3||heben||to lift, to raise|Er hob die Hand, um eine Frage zu stellen.|He raised his hand to ask a question.|
+3||tauschen||to trade, to exchange|Wir tauschten unsere Telefonnummern aus.|We exchanged phone numbers.|
+3||abgeben||to hand in, to give|Bitte gib den Schlüssel an der Rezeption ab.|Please hand in the key at the reception.|
+3||genügen||to suffice, to be enough|Es genügt ihm Essen und Ruhe um zu leben.|He only needs food and rest to live.|
+3||räumen||to clear|Er räumt den Schnee von der Straße.|He clears the snow from the street.|
+3||wecken||to wake, to wake up|Ein lautes Klopfen an der Tür weckte ihn auf.|A loud knocking at the door woke him up.|
+3||abnehmen||to lose weight; to remove|Es ist schade, dass ich nicht abnehmen muss.|It's too bad that I don't need to lose weight.|
+3||nirgends||nowhere|Ich kann nirgends meinen roten Hut finden.|I can't find my red hat anywhere.|
+3||ersetzen||to replace|Ich muss diese Leuchtstoffröhre ersetzen.|I must replace that fluorescent lamp.|
 4||schonen||to spare|Wir müssen die Umwelt schonen.|We must protect the environment.|
 4||platzen||to burst, to pop|Der Ballon platzt gleich.|The balloon is about to burst.|
 4||aufräumen||to tidy up|Du musst dein Zimmer aufräumen.|You have to tidy up your room.|räumen,Raum
@@ -1204,6 +1773,8 @@
 4||wegwerfen||to throw away|Diese alten Zeitungen kannst du wegwerfen.|You can throw away these old newspapers.|werfen,Wegwerfartikel
 4||aufbauen||to build, to construct|Alle Organismen sind aus Zellen aufgebaut.|All organisms are made of cells.|
 4|die|Aktivität|Aktivitäten|activity|Damals begann eine Zeit fieberhafter Aktivität.|There then began a period of feverish activity.|
+4||abwarten||to await, to wait for|Wir müssen noch abwarten.|We still have to wait and see.|
+4||zurückbringen||to bring back|Vergesst nicht, das Buch zurückzubringen!|Don't forget to bring back this book.|
 5||sichern||to secure|Wir sichern die Daten.|We are backing up the data.|
 5||zerbrechen||to break (into pieces)|Das Glas ist auf dem Boden zerbrochen.|The glass broke on the floor.|Bruch,brechen
 5||aufsteigen||to rise, to climb|Er fühlte Patriotismus in sich aufsteigen.|He felt patriotism rise in his breast.|
@@ -1236,6 +1807,26 @@
 1||schlecht||bad|Du hast ein schlechtes Beispiel abgegeben.|You've set a bad example.|
 1||alt||old|Du bist alt genug, um es besser zu wissen.|You're old enough to know better.|
 1||groß||big, tall|Das ist ein sehr großes Haus.|That’s a very big house.|Größe,vergrößern
+1||gleich||same, right away|Du kannst genauso gut jetzt gleich anfangen.|You may as well start at once.|
+1||schnell||quick, fast|Ich kann nicht so schnell laufen wie Jim.|I cannot run as fast as Jim.|
+1||rein||pure; in|Ohne Krawatte kommen Sie hier nicht rein!|Without wearing a tie, you won't get in here!|
+1||sonst||otherwise|Stehe zeitig auf, sonst kommst du zu spät.|Get up early, or you'll be late.|
+1||fertig||finished, ready|Bist du schon fertig?|Are you finished already?|
+1||gern||willingly, gladly|Sie hört klassische Musik gern.|She enjoys listening to classical music.|
+1||wahr||true, real|Und doch, auch das Gegenteil ist immer wahr.|And yet, the contrary is always true as well.|
+1||eigentlich||actually, really|Von wem stammt dieser Einfall eigentlich?|Who came up with that idea in the first place?|
+1||letzte||last|Ich habe letztes Jahr meine Frau verloren.|I lost my wife last year.|
+1||toll||great, nice|Da ist ein toller Park mitten in der Stadt.|There's a splendid park in the centre of the town.|
+1||bereit||ready|Er war bereit, ihr beim Abwasch zu helfen.|He was willing to help her wash up.|
+1||ziemlich||pretty, quite|Es ist heute ziemlich kalt.|It is quite cold today.|
+1||sogar||even, actually|Sogar mein Hund mag Schnee.|Even my dog likes snow.|
+1||kurz||short, quick|Er hat sich die Haare kurz schneiden lassen.|He had his hair cut short.|
+1||überhaupt||at all, in general|Ich habe überhaupt keine Zeit.|I have no time at all.|
+1||etwa||approximately|Wir gingen etwa sechs Kilometer zu Fuß.|We walked about six kilometres.|
+1||schwer||heavy, difficult|Ist das Lernen in der Mittelschule schwer?|Is learning in middle school hard?|
+1||anders||different, differently|Niemand anders könnte meine Arbeit machen.|No one else could do my work.|
+1||hoch||high, tall|Es gibt zahlreiche hohe Gebäude in New York.|There are a lot of tall buildings in New York.|
+1||bloß||mere, bare|Atome kann man nicht mit bloßem Auge sehen.|Atoms cannot be seen with your own eye.|
 2||klein||small|Meine Wohnung ist ziemlich klein.|My apartment is quite small.|Kleinigkeit,verkleinern
 2||schwierig||difficult|Die Prüfung war sehr schwierig.|The exam was very difficult.|Schwierigkeit,schwer
 2||sauber||clean|Die Küche ist immer sauber.|The kitchen is always clean.|Sauberkeit,säubern
@@ -1271,6 +1862,44 @@
 2||seltsam||strange, weird|Diese Milch hat einen seltsamen Geschmack.|This milk has a peculiar taste.|
 2||fantastisch||fantastic|Die Landschaften sind einfach fantastisch.|The landscapes are simply fantastic.|
 2||halb||half, halfway|Mein Hund ist fast halb so groß wie Ihrer.|My dog is almost half the size of yours.|
+2||unglaublich||unbelievable, incredible|In diesem Sommer ist es unglaublich heiß.|This summer is incredibly hot.|
+2||perfekt||perfect|Er ist ein perfekter Gentleman.|He is a perfect gentleman.|
+2||nötig||necessary|Ich verstehe nicht warum all das nötig ist.|I don't understand why all this is necessary.|
+2||unmöglich||impossible|Es ist unmöglich, seine Schrift zu lesen.|It's impossible to read his handwriting.|
+2||gefährlich||dangerous, hazardous|Kreditkarten sind nützlich aber gefährlich.|Credit cards are useful but dangerous.|
+2||dumm||dumb, stupid|Er ist nicht dümmer als du.|He's not stupider than you.|
+2||arg||bad, terrible|Das tut mir arg leid.|I'm terribly sorry.|
+2||offen||open|Das Fenster ist offen.|The window is open.|
+2||süß||sweet|Der Kuchen ist sehr süß.|The cake is very sweet.|
+2||wunderbar||wonderful|Diese Woche war eine wunderbare Erfahrung.|This week has been an amazing experience.|
+2||jedenfalls||in any case|Jedenfalls können Sie ganz beruhigt sein.|In any case, you don't need to worry.|
+2||kalt||cold, chilly|Hier ist es das ganze Jahr über sehr kalt.|It is very cold here all the year round.|
+2||unbedingt||absolutely, at all costs|Wir müssen diesen Plan unbedingt ausführen.|We must carry out this plan by all means.|
+2||zumindest||at least|Zumindest entschuldigen könnte er sich.|He might at least apologize.|
+2||hübsch||pretty|Das Mädchen von nebenan ist sehr hübsch.|The girl who lives next door is very pretty.|
+2||tief||deep|Die ganze Stadt lag in tiefem Schlaf.|The whole town lay sleeping.|
+2||sauer||sour, acid|Saurer Regen ist kein natürliches Phänomen.|Acid rain is not a natural phenomenon.|
+2||vermutlich||probably|Vermutlich ging das bei der Übersetzung verloren.|Presumably it was lost in translation.|
+2||persönlich||personal|Dir hab' ich das schon persönlich gesagt.|I already told you that myself.|
+2||ewig||eternal, endless|Nichts ist ewig.|Nothing is eternal.|
+2||offensichtlich||obvious|Das Gerücht ist offensichtlich nicht wahr.|Clearly, the rumor is not true.|
+2||wunderschön||gorgeous, very beautiful|Man sagt, meine Schwester sei wunderschön.|They say my sister is a beauty.|
+2||interessant||interesting|Das Buch ist sehr interessant.|The book is very interesting.|
+2||kaputt||broken|Mein Vater reparierte einen kaputten Stuhl.|My father fixed a broken chair.|
+2||zweite||second|Frau Smith brachte ihr zweites Kind zur Welt.|Mrs. Smith gave birth to her second child.|
+2||verantwortlich||responsible|Wir sind teilweise dafür verantwortlich.|We're partly responsible.|
+2||gemeinsam||together, shared|In der Regel haben Zwillinge viel gemeinsam.|As a rule, twins have a lot in common.|
+2||ungefähr||approximately, roughly|Es ist ungefähr zehn Uhr.|It is about ten o'clock.|
+2||übrig||left over|Ist noch Kuchen übrig?|Is there any cake left?|
+2||übel||bad, nasty|Mir ist übel.|I feel sick.|
+2||zufällig||by chance|Ich habe ihn zufällig am Bahnhof getroffen.|I bumped into him at the station.|
+2||einverstanden||in agreement, agreeing|Lasst uns ein Taxi nehmen, einverstanden?|Let's go by taxi, OK?|
+2||lächerlich||ridiculous, risible|Hören Sie auf! Sie machen sich lächerlich.|Stop it. You're being ridiculous.|
+2||offenbar||apparently, obviously|Frau Brown ist offenbar Schauspielerin.|Ms. Brown seems to be an actress.|
+2||ernsthaft||serious|Wir begannen eine ernsthafte Unterhaltung.|We entered into a serious conversation.|
+2||heilig||holy|Für viele Leute in Indien sind Kühe heilig.|For many people in India, cows are sacred.|
+2||anscheinend||apparently|Ich kann anscheinend nichts richtig machen.|I can't seem to do anything right.|
+2||gewiss||certain, certainly|Das ist gewiss richtig.|That is certainly right.|
 3||selten||rare, seldom|Solche Fehler passieren nur selten.|Such mistakes only rarely happen.|Seltenheit
 3||bequem||comfortable, convenient|Das Sofa ist wirklich bequem.|The sofa is really comfortable.|Bequemlichkeit
 3||einzig||only, sole|Das ist die einzige Lösung.|That is the only solution.|
@@ -1289,6 +1918,90 @@
 3||freundlich||friendly, benign|Die Sekretärin lächelte mich freundlich an.|The secretary gave me an agreeable smile.|
 3||brav||well-behaved, good|Sei ein braves Mädchen und schlaf weiter!|Be a good girl and go back to sleep.|
 3||beeindruckend||impressive|Was für ein beeindruckender Mensch er ist!|What an impressive person he is!|
+3||dennoch||nevertheless|Dennoch wählen viele die Frühpensionierung.|Nevertheless, many are choosing early retirement.|
+3||dick||thick|Das Buch ist sehr dick.|The book is very thick.|
+3||scharf||sharp; spicy|Das Messer ist sehr scharf.|The knife is very sharp.|
+3||immerhin||after all|Immerhin spricht sie wieder mit mir.|At least she's speaking to me again.|
+3||blind||blind|Ohne Brille bin ich fast blind.|Without glasses I'm almost blind.|
+3||schlau||smart, clever|Schlaue Leute lernen aus ihren Fehlern.|Smart people learn from their mistakes.|
+3||merkwürdig||strange, odd|Sein Verhalten ist heute sehr merkwürdig.|His behaviour is very strange today.|
+3||möglicherweise||possibly, potentially|Möglicherweise haben wir den Bus versäumt.|We might've missed the bus.|
+3||definitiv||definitely|Ich stehe definitiv nicht auf eurer Seite.|I'm definitely not on your side.|
+3||frisch||fresh|Das Brot ist ganz frisch.|The bread is very fresh.|
+3||lebendig||living, alive|Der Fisch ist noch lebendig.|The fish is still alive.|
+3||knapp||tight, scarce, barely|Es schien, als ob er knapp bei Kasse wäre.|It seemed that he was short of money.|
+3||ebenfalls||also, likewise|Ich hoffe, dass du ebenfalls glücklich bist.|I hope you're happy, too.|
+3||wundervoll||wonderful|Das Zimmer hat einen wundervollen Ausblick.|The view from this room is wonderful.|
+3||dritte||third|Das ist mein dritter Versuch.|This is my third attempt.|
+3|die|Schönheit|Schönheiten|beauty, beautifulness|Schönheit liegt im Auge des Betrachters.|Beauty is in the eye of the beholder.|
+3||beinahe||almost, nearly|Sie ignorierte ihn beinahe den ganzen Tag.|She ignored him almost all day.|
+3||fremd||foreign, unfamiliar|Ich bin hier fremd.|I'm a stranger here.|
+3||gesamt||total, whole|Die gesamte Regierung ist zurückgetreten.|The whole government has resigned.|
+3||extra||extra, separately|Die Lautsprecher werden extra verkauft.|The speakers are sold separately.|
+3||nackt||naked|Sie lief mit nackten Füßen durch das Gras.|She walked through the grass in bare feet.|
+3||wild||wild|Wilde Tiere liefen auf dem Grasland umher.|Wild animals roamed across the plains.|
+3||deutlich||clear, clearly|Deutlicher hätte er es nicht sagen können.|He couldn't have put it more plainly.|
+3||praktisch||practical|Nichts wäre praktischer als ein Kopiergerät.|Nothing could be more useful than a copying machine.|
+3||schief||crooked|Das Bild hängt schief.|The picture is crooked.|
+3||bestens||very well, perfectly|Mach dir keine Gedanken. Alles ist bestens.|Don't worry. Everything's OK.|
+3||unrecht||wrong|Es war unrecht von mir, das zu sagen.|It was wrong of me to say that.|
+3||gemein||mean, nasty|Warum ist meine Schwester so gemein zu mir?|Why is my sister so mean to me?|
+3||offiziell||official|Ich muss einen offiziellen Bericht schreiben.|I'll need to make a formal report.|
+3||gegenseitig||mutual, reciprocal|Die drei Nachbarn halfen sich gegenseitig.|The three neighbours helped each other.|
+3||geheim||secret, clandestine|Das Passwort ist geheim.|The password is secret.|
+3||streng||strict, rigorous|Der Lehrer ist streng mit seinen Schülern.|The teacher is strict with his students.|
+3||angeblich||supposedly|Angeblich ist er der reichste Mann der Welt.|It is said that he is the richest man in the world.|
+3||eindeutig||clear, unambiguous|Die Antwort ist eindeutig.|The answer is clear.|
+3||eilig||speedy, hasty|Sie hatten es eilig, nach Hause zu kommen.|They were in a hurry to get home.|
+3||vernünftig||reasonable, sensible|Das ist eine vernünftige Idee.|That is a sensible idea.|
+3||fein||fine|Er hat einen äußerst feinen Geruchssinn.|He has an extremely keen sense of smell.|
+3||stattdessen||instead, in lieu|Stattdessen habe ich ein Fahrrad gekauft.|I bought a bicycle instead.|
+3||freiwillig||voluntary|Er hat freiwillig geholfen.|He helped voluntarily.|
+3||fähig||capable|Sie ist eine fähige Ärztin.|She is a capable doctor.|
+3||albern||goofy, silly|Jetzt wird das langsam ein bisschen albern.|This is getting a little silly, now.|
+3||sicherlich||certainly|Es ist sicherlich eine Zeitverschwendung.|It's certainly a waste of time.|
+3||korrekt||correct|Die Antwort ist korrekt.|The answer is correct.|
+3||clever||clever|Er ist clever genug, das Problem zu lösen.|He is clever enough to solve the problem.|
+3||erstaunlich||amazing, impressive|Ist das nicht ein erstaunlicher Zufall?|Isn't that an amazing coincidence?|
+3||amerikanisch||American|Er hat Zugang zur amerikanischen Botschaft.|He has access to the American Embassy.|
+3||französisch||French|Ich liebe die französische Küche ungemein.|I really like French cooking.|
+3||hässlich||ugly|Das Haus ist hässlich.|The house is ugly.|
+3||eng||narrow, tight|Die Straße ist sehr eng.|The street is very narrow.|
+3||unheimlich||uncanny, creepy|Die Rakete bewegt sich unheimlich schnell.|The rocket travels at a tremendous speed.|
+3||extrem||extreme|Im Sommer ist es hier extrem heiß.|It is extremely hot here in summer.|
+3||negativ||negative|Der Test war negativ.|The test was negative.|
+3||zentral||central|Können Sie mir ein zentral gelegenes Hotel nennen?|Can you give me the name of a centrally located hotel?|
+3||angenehm||pleasant, pleasing|Die meiste Arbeit ist nicht sehr angenehm.|Most work is not very pleasant.|
+3||ungern||reluctantly|Die Mutter ließ ihre Kinder nur ungern allein.|The mother was reluctant to leave her children alone.|
+3||scheinbar||seemingly|Scheinbar Unmögliches geschieht bisweilen.|Seemingly impossible things sometimes happen.|
+3||nützlich||useful, helpful|Dieses Buch ist viel nützlicher als jenes.|This book is much more useful than that one.|
+3||gewöhnlich||usual, usually|Vögel wachen gewöhnlich früh morgens auf.|Birds usually wake up early in the morning.|
+3||nass||wet|Er hat seine nassen Kleider am Feuer getrocknet.|He dried his wet clothes by the fire.|
+3||womöglich||possibly|Womöglich sollte ich dir zur Hand gehen.|Maybe I should give you a hand.|
+3||original||original|Das Bild ist nicht original.|The painting is not original.|
+3||ungewöhnlich||uncommon, unusual|Dies ist ein ungewöhnlich langer Satz.|This is an unusually long sentence.|
+3||notwendig||necessary, essential|Ist es notwendig, dass ich dort hingehe?|Do I need to go there?|
+3||höchstens||at most|Es ist höchstens ein zweitklassiges Hotel.|It is at best a second-rate hotel.|
+3||rau||rough|Seine Hände sind rau.|His hands are rough.|
+3||genial||brilliant, ingenious|Schließlich hatte ich eine geniale Idee.|In the end I had an ingenious idea.|
+3||keinerlei||no … whatsoever, no … at all|Sie konnten keinerlei Geheimnis entdecken.|They weren't able to discover any secrets.|
+3||typisch||typical|Es war typisch für ihn, zu spät zu kommen.|It was typical of him to arrive late.|
+3||unhöflich||rude|Mit vollem Mund zu sprechen ist unhöflich.|It is rude to speak with your mouth full.|
+3||weich||soft|Ich kaufe nur ganz weiches Toilettenpapier.|I only buy super soft toilet paper.|
+3||spanisch||Spanish|Wir essen spanischen Käse.|We eat Spanish cheese.|
+3||unwichtig||unimportant|Du hältst dich mit unwichtigen Details auf.|You're getting hung up on unimportant details.|
+3||dramatisch||dramatic|Die Situation hat sich dramatisch geändert.|The situation has changed dramatically.|
+3||heutig||today's|Hast du schon die heutige Zeitung gelesen?|Have you read today's newspaper yet?|
+3||heimlich||secret, clandestine|Er musste seine Reise heimlich fortsetzen.|He had to continue his trip in secret.|
+3||mächtig||powerful, mighty|Die Feder ist mächtiger als das Schwert.|The pen is mightier than the sword.|
+3||sinnlos||meaningless, pointless|Manchmal scheint die Welt sinnlos zu sein.|The world sometimes seems meaningless.|
+3||romantisch||romantic|Welches ist die romantischste Stadt der Welt?|What is the most romantic city in the world?|
+3||treu||loyal, faithful|Hunde sind treue Tiere.|Dogs are loyal animals.|
+3||positiv||positive|Positives Denken ist eine Lebensweise.|Positive thinking is a way of living.|
+3||ordentlich||tidy; decent|Dein Zimmer ist sehr ordentlich.|Your room is very tidy.|
+3||unangenehm||unpleasant|Er hatte eine unangenehm kreischende Stimme.|He had an unpleasant screechy voice.|
+3||hell||clear, bright|Das Zimmer ist hell und freundlich.|The room is bright and friendly.|
+3||schmutzig||dirty, filthy|Diese Häuser waren dunkel und schmutzig.|These houses were dark and dirty.|
 4||gemütlich||cosy, comfortable|Die Wohnung ist klein, aber gemütlich.|The apartment is small but cosy.|Gemütlichkeit,Gemüt
 4||großzügig||generous|Sie ist sehr großzügig mit Trinkgeld.|She is very generous with tips.|Großzügigkeit,groß
 4||gründlich||thorough|Er bereitet sich immer sehr gründlich vor.|He always prepares very thoroughly.|Grund,Gründlichkeit
@@ -1303,6 +2016,10 @@
 4||tragisch||tragic|Es wäre komisch, wäre es nicht so tragisch.|It would be funny if it weren't so tragic.|
 4||ideal||ideal|Von dort aus hatte man einen idealen Blick.|From there, one could see perfectly.|
 4||ursprünglich||original, initial|Ich bleibe bei meinem ursprünglichen Plan.|I'm sticking to my original plan.|
+4||allzu||all too|Ich kenne diese Umgebung nicht allzu gut.|I don't know this neighborhood too well.|
+4||trocken||dry|Die Wäsche ist schon trocken.|The laundry is already dry.|
+4||hilfreich||useful, helpful|Eine zweite Meinung wäre sehr hilfreich.|A second opinion would be very helpful.|
+4||durchaus||quite, perfectly|Es ist durchaus möglich, dass er recht hat.|He may well be right.|
 5||fern||far, distant|Das Dorf liegt fern von der Stadt.|The village is far from the city.|
 5||zuverlässig||reliable|Er ist ein sehr zuverlässiger Kollege.|He’s a very reliable colleague.|verlassen,Zuverlässigkeit
 5||enorm||enormous|Die Sonne macht einen enormen Unterschied.|Sun makes all the difference.|
@@ -1350,6 +2067,26 @@
 3|die|Fabrik|Fabriken|factory|Sein Sohn übernahm die Leitung der Fabrik.|His son took on the management of the factory.|
 3|der|Verkauf|Verkäufe|sale|Er bietet sein Auto im Internet zum Verkauf an.|He offers his car for sale on the Internet.|
 3|der|Bauer|Bauern|farmer|Die Bauern wussten nicht, was zu tun ist.|The farmers didn't know what to do.|
+3|das|Projekt|Projekte|project|Wir haben das Projekt erfolgreich beendet.|We succeeded in finishing the project.|
+3|die|Unterstützung|Unterstützungen|support, assistance|Danke für deine Unterstützung!|Thank you for your support!|
+3|die|Abteilung|Abteilungen|department|Er arbeitet in der Abteilung für Marketing.|He works in the marketing department.|
+3||unterstützen||to support, to assist|Mein Vater unterstützt mich finanziell.|My father will support me financially.|
+3||erfolgreich||successful|Ich war erfolgreich, weil ich Glück hatte.|The reason I succeeded was because I was lucky.|
+3||anbieten||to offer, to provide|Kann ich Ihnen etwas zu trinken anbieten?|Would you like anything to drink?|
+3|der|Mitarbeiter|Mitarbeiter|employee, colleague|Herr Norton ist ein angenehmer Mitarbeiter.|Mr. Norton is pleasant to work with.|
+3||leiten||to lead, to run|Sie leitet die Firma.|She runs the company.|
+3|der|Manager|Manager|manager|Der Manager ist heute nicht im Büro.|The manager is not in the office today.|
+3|die|Stellung|Stellungen|position, job|Er sucht eine neue Stellung.|He is looking for a new job.|
+3||einstellen||to hire; to adjust|Ich will jemanden einstellen, der Englisch kann.|I plan to hire someone who can speak English.|
+3||verhandeln||to negotiate, to debate|Wir können mit der Besitzerin verhandeln.|We can negotiate with the owner.|
+3|das|Material|Materialien|material|Wir kaufen das Material in Malaysia ein.|We get the materials from Malaysia.|
+3|die|Führung|Führungen|leadership; guided tour|Wir machen eine Führung durch das Museum.|We are taking a guided tour of the museum.|
+3|das|Meeting|Meetings|meeting|Wir werden hier morgen ein Meeting haben.|We are going to have a meeting here tomorrow.|
+3|der|Pilot|Piloten|pilot|Ich möchte Pilot werden, wenn ich groß bin.|I want to be a pilot when I grow up.|
+3|die|Sekretärin|Sekretärinnen|secretary|Sie arbeitet als Sekretärin in einem Büro.|She works as a secretary in an office.|
+3|die|Ausrüstung|Ausrüstungen|equipment, gear|Ihre Ausrüstung ist extrem fortschrittlich.|Their equipment is extremely advanced.|
+3||garantieren||to guarantee|Ich garantiere, dass es funktioniert.|I guarantee that it works.|
+3|die|Ladung|Ladungen|cargo, freight|Die Ladung des LKWs überstieg drei Tonnen.|The load of the truck was in excess of three tons.|
 4|die|Ausbildung|Ausbildungen|training, apprenticeship|Er hat den Vorteil einer guten Ausbildung.|He has the advantage of a good education.|
 4||betreiben||to run, to operate|Er betreibt in der Stadt einen Supermarkt.|He runs a supermarket in the town.|
 4|der|Betrieb|Betriebe|business, operation|Dieser Dienst ist momentan außer Betrieb.|This service is temporarily out of order.|
@@ -1396,6 +2133,8 @@
 3|das|Gas|Gase|gas|Hast du daran gedacht, das Gas abzudrehen?|Did you remember to turn off the gas?|
 3|die|Kohle|Kohlen|coal|Wie gewinnen wir die Kohle aus dem Boden?|How do we extract the coal from the ground?|
 3|die|Wüste|Wüsten|desert|Die Sahara ist die größte Wüste der Welt.|The Sahara is the biggest desert in the world.|
+3|die|Explosion|Explosionen|explosion|Die Röhre zersprang infolge der Explosion.|The tube was shattered by the explosion.|
+3|das|Benzin|Benzine|gasoline|Uns ging mitten in der Wüste das Benzin aus.|We ran out of gas in the middle of the desert.|
 4|der|Verkehr||traffic|Der Verkehr in der Stadt ist stark.|The traffic in the city is heavy.|verkehren,Straßenverkehr
 4|der|Naturschutz||nature conservation|Der Naturschutz ist ein wichtiges Thema.|Nature conservation is an important topic.|Natur,schützen
 4|die|Solaranlage|Solaranlagen|solar panel system|Auf dem Dach haben wir eine Solaranlage.|We have a solar system on the roof.|Solarenergie,Anlage
@@ -1439,6 +2178,19 @@
 1|das|Problem|Probleme|problem|Lass uns dieses Problem sofort besprechen.|Let's discuss the matter right now.|
 1||denken||to think|Er denkt oft mit geschlossenen Augen nach.|He often thinks with his eyes shut.|
 1||verstehen||to understand|Ich verstehe dich nicht bei dem Lärm.|I can't understand you with this noise.|
+1|die|Ordnung|Ordnungen|order, tidiness|Ist alles in Ordnung?|Is everything okay?|
+1|die|Sache|Sachen|thing, matter|Stell deine Sachen nicht in den Durchgang.|Don't put your things in the passage.|
+1|die|Hilfe|Hilfen|help, aid|Ich bin mehr als dankbar für deine Hilfe.|I am more than grateful to you for your help.|
+1|das|Ding|Dinge|thing|Edison hat viele nützliche Dinge erfunden.|Edison invented many useful things.|
+1|die|Ahnung|Ahnungen|idea, clue|Ich habe eine ungefähre Ahnung, wo es ist.|I've got a rough idea where it is.|
+1|der|Teufel|Teufel|the Devil, Satan|Der Teufel hat Hörner.|The devil has horns.|
+1|die|Art|Arten|kind, sort|Welche Art von Musik magst du?|What kind of music do you like?|
+1|der|Schatz|Schätze|treasure; darling|Er gab zu, den Schatz gestohlen zu haben.|He admitted that he had stolen the treasure.|
+1||messen||to measure|Die Lufttemperatur misst man im Schatten.|Air temperature is measured in the shade.|
+1||deshalb||therefore, for that|Deshalb wollte sie ihn nicht mehr treffen.|That's why she didn't want to see him any more.|
+1||bestimmen||to determine|Kann man aus dem Kreisumfang den Durchmesser bestimmen?|Is it possible to determine the diameter from the circumference?|
+1|die|Seite|Seiten|side|Er lebt auf der anderen Seite des Flusses.|He lives on the other side of the river.|
+1|die|Chance|Chancen|chance|Er hat keine Chance, ihr Herz zu gewinnen.|He will have no chance of winning her heart.|
 2|das|Ziel|Ziele|goal, destination|Mein Ziel ist es, fließend Deutsch zu sprechen.|My goal is to speak German fluently.|zielen,Zielgruppe
 2|der|Plan|Pläne|plan|Hast du schon einen Plan für den Sommer?|Do you already have a plan for the summer?|planen,Planung
 2|die|Möglichkeit|Möglichkeiten|possibility|Es gibt noch eine andere Möglichkeit.|There’s another possibility.|möglich,ermöglichen
@@ -1453,6 +2205,28 @@
 2||erwarten||to expect, to consider likely|Kommen Sie rein, wir haben Sie erwartet.|Come in, we've been expecting you.|
 2|das|Geheimnis|Geheimnisse|secret|Es ist ein Geheimnis. Erzähl es niemandem!|It's a secret; don't give it away to anyone.|
 2|das|System|Systeme|system|Die Probleme sind diesem System immanent.|The problems are inherent in this system.|
+2|die|Gefahr|Gefahren|danger, hazard|Ich glaube, dass sein Leben in Gefahr ist.|I think his life is in danger.|
+2|der|Gedanke|Gedanken|thought, idea|Schon der Gedanke daran machte mir Angst.|I was scared at the mere thought of it.|
+2||zielen||to aim|Sie zielt mit dem Ball auf das Tor.|She aims the ball at the goal.|
+2||beweisen||to prove|Das beweist, dass er recht hat.|That proves that he is right.|
+2|die|Lage|Lagen|situation, location|Reg dich nicht auf. Die Lage bessert sich.|Take it easy. Things are looking up.|
+2|der|Geist|Geister|spirit, ghost|Sie war überrascht, als sie den Geist sah.|She was surprised when she saw the ghost.|
+2|der|Punkt|Punkte|point, dot|Ich stimme Ihnen in diesem Punkt nicht zu.|I don't agree with you on this point.|
+2|das|Schicksal|Schicksale|destiny, fate|Das war Schicksal.|That was fate.|
+2|das|Zeichen|Zeichen|sign, token|Das ist ein gutes Zeichen.|That is a good sign.|
+2|die|Situation|Situationen|situation, circumstances|Ihre Analyse der Situation ist zutreffend.|Your analysis of the situation is accurate.|
+2|die|Spur|Spuren|trace, track|Der Hund folgt einer Spur.|The dog follows a trail.|
+2|der|Unsinn||nonsense|Nach einer Weile fing er an, Unsinn zu reden.|He began to talk nonsense after a while.|
+2|die|Schwierigkeit|Schwierigkeiten|difficulty, problem|Wir müssen diese Schwierigkeit überwinden.|We must get over this difficulty.|
+2|die|Hälfte|Hälften|half|Die Hälfte der Melonen wurde aufgegessen.|Half of the melons were eaten.|
+2|die|Position|Positionen|position, location|Ich habe meine Position deutlich gemacht.|I've made my position clear.|
+2|das|Interesse|Interessen|interest|Ich habe Interesse an Geschichte.|I am interested in history.|
+2|der|Engel|Engel|angel|Ein Kind, das schläft, ist wie ein Engel.|A sleeping child is like an angel.|
+2|die|Gelegenheit|Gelegenheiten|opportunity, chance|Lass dir diese Gelegenheit nicht entgehen.|Don't let this chance slip by.|
+2|die|Lösung|Lösungen|solution|Hat er irgendwelche Lösungen vorgeschlagen?|Did he propose any solutions?|
+2|die|Verantwortung||responsibility|Er übernahm die volle Verantwortung dafür.|He assumed full responsibility for it.|
+2|das|Risiko|Risiken|risk|Um das zu tun, musst du Risiken eingehen.|In order to do that, you have to take risks.|
+2||planen||to plan|Wir planen eine Reise nach Italien.|We are planning a trip to Italy.|
 3|der|Vorteil|Vorteile|advantage|Ein Vorteil ist die zentrale Lage.|One advantage is the central location.|vorteilhaft,Teil
 3||entdecken||to discover, to spot|Wir haben einen Bären im Wald entdeckt.|We spotted a bear in the forest.|
 3|der|Zustand|Zustände|condition, state|Das Haus ist in gutem Zustand.|The house is in good condition.|
@@ -1472,6 +2246,65 @@
 3|die|Absicht|Absichten|intention|Er hat das Fenster mit Absicht zerbrochen.|He broke the window intentionally.|
 3||riskieren||to risk|Er riskierte sein Leben, um sie zu retten.|He risked his life to save her.|
 3|die|Phase|Phasen|phase, stage|Normaler Schlaf besteht aus zwei Phasen.|Normal sleep is made up of two phases.|
+3|die|Mühe|Mühen|effort, difficulty|Trotz aller Mühe hatte sie keinen Erfolg.|For all her efforts, she didn't succeed.|
+3|das|Gegenteil|Gegenteile|opposite|Seine Bemerkungen bewirkten das Gegenteil.|His remarks had the opposite effect.|
+3||betreffen||to concern|Was mich betrifft, bin ich ganz zufrieden.|As for me, I am quite happy.|
+3|der|Trick|Tricks|trick|Dieser alte Trick funktioniert noch immer.|This old trick still works.|
+3|die|Vorstellung|Vorstellungen|idea; performance|Die Vorstellung endete um zehn Uhr abends.|The performance ended at ten in the evening.|
+3|das|Chaos||chaos|In der Küche herrscht Chaos.|There is chaos in the kitchen.|
+3||akzeptieren||to accept, to approve|Wir akzeptieren keine Kreditkarten.|We don't accept credit cards.|
+3|der|Eindruck|Eindrücke|impression|Er hat einen guten Eindruck gemacht.|He made a good impression.|
+3||existieren||to exist|Wir können ohne Wasser nicht existieren.|We cannot exist without water.|
+3|der|Vorschlag|Vorschläge|suggestion, proposal|Warum haben sie deinen Vorschlag abgelehnt?|Why did they turn down your proposal?|
+3|die|Einheit|Einheiten|unity, unit|Dieser Organisation mangelt es an Einheit.|This organization lacks unity.|
+3||klären||to clarify, to clear up|Wir müssen die Frage klären.|We have to clear up the question.|
+3||entwickeln||to develop, to gain|Die Menschen entwickelten ihre Intelligenz.|Human beings evolved their intelligence.|
+3|die|Bedeutung|Bedeutungen|meaning, sense|Dieser Satz hat verschiedene Bedeutungen.|This sentence has various meanings.|
+3|das|Talent|Talente|talent|Sie hat ein gewisses literarisches Talent.|She has some literary talent.|
+3|das|Detail|Details|detail|Die Details besprechen wir später.|We'll discuss the details later.|
+3|das|Genie|Genies|genius|Er ist ein Genie in Mathe.|He is a genius at math.|
+3|die|Fähigkeit|Fähigkeiten|ability, capability|Wir haben die Fähigkeit, uns zu erinnern.|We have the ability to remember.|
+3||erschaffen||to create, to produce|Sie erschuf ein Kunstwerk aus Holz.|She created a work of art from wood.|
+3||verursachen||to cause, to induce|Unvorsichtiges Fahren verursacht Unfälle.|Careless driving causes accidents.|
+3|der|Verstand||mind, reason|Psychologie ist die Wissenschaft des Verstandes.|Psychology is the science of the mind.|
+3|das|Mittel|Mittel|means; remedy|Dieses Mittel hilft gegen Husten.|This remedy helps against coughs.|
+3||erfinden||to invent|Er erfand eine Ausrede für sein Zuspätkommen.|He invented an excuse for being late.|
+3|die|Heimat||home, home town|Der Exilant sehnte sich nach seiner Heimat.|The exile yearned for his home.|
+3|der|Zweck|Zwecke|purpose|Zu welchem Zweck ist er hierher gekommen?|What is the reason why he came here?|
+3||beschließen||to decide|Du beschließt, noch eine Stunde zu bleiben.|You decide to stay an extra hour.|
+3|das|Geräusch|Geräusche|noise, sound|Mach keine Geräusche, wenn du Suppe isst.|Don't make noises when you eat soup.|
+3|die|Realität|Realitäten|reality|In der Realität sieht es ganz anders aus.|In reality it looks completely different.|
+3|der|Hinweis|Hinweise|hint, clue|Du hast einen wichtigen Hinweis übersehen.|You've missed an important clue.|
+3|die|Ursache|Ursachen|cause|Kleine Ursachen haben oft große Wirkungen.|Little things often have big consequences.|
+3|der|Bereich|Bereiche|area, realm|Wer ist verantwortlich für diesen Bereich?|Who's in charge of this section?|
+3|die|Basis|Basen|basis|Das ist die Basis unserer Arbeit.|That is the basis of our work.|
+3|der|Einfluss|Einflüsse|influence|Er hat großen Einfluss auf mich.|He has a great influence on me.|
+3|der|Umstand|Umstände|circumstance|Unter diesen Umständen bleibe ich.|Under these circumstances I'll stay.|
+3|die|Angelegenheit|Angelegenheiten|matter, issue|Er hat etwas mit der Angelegenheit zu tun.|He has something to do with the matter.|
+3|das|Gedächtnis|Gedächtnisse|memory|Er hat von Natur aus ein gutes Gedächtnis.|He has a naturally good memory.|
+3|die|Wirklichkeit||reality|Er hat den Bezug zur Wirklichkeit verloren.|He's out of touch with reality.|
+3|der|Kreis|Kreise|circle|Wir bildeten einen Kreis um die Lehrerin.|We formed a circle around the teacher.|
+3|die|Ewigkeit|Ewigkeiten|eternity|Jede Minute schien eine Ewigkeit zu dauern.|Every minute seemed to last an eternity.|
+3|die|Reaktion|Reaktionen|reaction|Seine Reaktion ist völlig unvorhersehbar.|His reaction is impossible to predict.|
+3|die|Identität|Identitäten|identity|Danach nahm er eine neue Identität an.|Afterwards, he assumed a new identity.|
+3|die|Sicht||view, visibility|Bei Nebel ist die Sicht schlecht.|Visibility is poor in fog.|
+3|die|Linie|Linien|line|Unterschreiben Sie oberhalb dieser Linie!|Sign above this line.|
+3||bezweifeln||to doubt, to question|Ich bezweifel alles, selbst meine Zweifel.|I doubt everything, even my own doubts.|
+3|das|Ergebnis|Ergebnisse|result, outcome|Das Ergebnis des Tests war gut.|The test result was good.|
+3|die|Bedingung|Bedingungen|requirement, prerequisite|Sie konnten die Bedingungen nicht erfüllen.|They failed to fulfill the conditions.|
+3|die|Figur|Figuren|figure; character|Alle Figuren dieses Buches sind erfunden.|All the characters in this book are imaginary.|
+3||einfallen||to come to mind|Mir fällt der Name nicht ein.|I can't think of the name.|
+3|die|Fantasie|Fantasien|imagination|Das spielt sich nur in deiner Fantasie ab.|It is just your imagination.|
+3|die|Höhe|Höhen|height, altitude|Das Flugzeug fliegt in großer Höhe.|The plane flies at a great height.|
+3|das|Anzeichen|Anzeichen|sign, indication|Das ist ein Anzeichen für Müdigkeit.|That is a sign of tiredness.|
+3|der|Hintergrund|Hintergründe|background|Das zeigt seinen theoretischen Hintergrund.|That shows his theoretical background.|
+3|das|Gewicht|Gewichte|weight|Ich habe in letzter Zeit Gewicht verloren.|I've lost weight recently.|
+3||vergleichen||to compare|Man kann die beiden nicht vergleichen.|You can't compare the two.|
+3|die|Einstellung|Einstellungen|attitude, mindset|Er hat zu allem eine negative Einstellung.|He has a negative attitude to everything.|
+3|der|Ausdruck|Ausdrücke|expression, term|Er brachte seine Bewunderung zum Ausdruck.|He expressed his admiration.|
+3|die|Wirkung|Wirkungen|effect|Die Wirkung der Medizin nahm allmählich ab.|The effects of the medicine were wearing off.|
+3|der|Abstand|Abstände|distance, gap|Bitte halte Abstand!|Please keep your distance!|
+3|das|Bewusstsein||consciousness, awareness|Das Bewusstsein für die Umwelt wächst.|Awareness of the environment is growing.|
 4|der|Ausweg|Auswege|way out, escape route|Es gibt noch einen anderen Ausweg.|There is another way out.|
 4|die|Konsequenz|Konsequenzen|consequence|Sie müssen sich den Konsequenzen stellen.|They need to face the consequences.|
 4||bedenken||to consider, bethink|Sie hatte diese Möglichkeit nicht bedacht.|She hadn't considered that possibility.|
@@ -1487,6 +2320,10 @@
 4|das|Konzept|Konzepte|concept, draft|Das Konzept ist gut durchdacht.|The concept is well thought out.|
 4||entstehen||to come into being, to arise|Wir wissen nicht, wann diese Welt entstand.|We don't know when this world came into being.|
 4|die|Philosophie|Philosophien|philosophy|Der Student hat Philosophie als Hauptfach.|The student majors in philosophy.|
+4|die|Zone|Zonen|zone|Diese Zone leidet an Wasserknappheit.|This region suffers from a scarcity of water.|
+4|die|Rettung|Rettungen|rescue|Sie eilten flugs zu unserer Rettung heran.|They came presently to our rescue.|
+4|die|Vision|Visionen|vision|Vision ist die Kunst, Unsichtbares zu sehen.|Vision is the art of seeing the invisible.|
+4|der|Irrtum|Irrtümer|error, mistake|Das war ein Irrtum.|That was a mistake.|
 5|der|Nachteil|Nachteile|disadvantage|Der Nachteil ist der hohe Preis.|The disadvantage is the high price.|nachteilig,Teil
 5|die|Wahrscheinlichkeit|Wahrscheinlichkeiten|probability, likelihood|Aber die Wahrscheinlichkeit ist gering.|The probability is, however, low.|
 5||sich ausdenken||to come up with, to think up|Wer hat sich diese Regeln nur ausgedacht?|Who thought up those rules?|

@@ -26,7 +26,7 @@ test('by usefulness offers the most common words first, but not words that are f
   const first = pickFeedWord(WORDS, none, answers, null, o)!;
   const target = rankOfLevel(estimateLevel(answers));
   assert.ok(first.rank <= target * 2.8 && first.rank >= target / 7.5, `rank ${first.rank} for a target of ${Math.round(target)}`);
-  const ok = WORDS.filter((w) => w.rank <= target * 2.7 && w.rank >= target / 7.3);
+  const ok = WORDS.filter((w) => w.rank <= target * Math.E && w.rank >= target / Math.E ** 2); // the window of feed.ts exactly (FIT = 1 on the log scale)
   assert.equal(first.rank, Math.min(...ok.map((w) => w.rank)));
   const chips = feedChips(first, WORDS, (id) => id === first.id, answers, o);
   assert.deepEqual(chips.map((w) => w.rank), [...chips.map((w) => w.rank)].sort((a, b) => a - b));

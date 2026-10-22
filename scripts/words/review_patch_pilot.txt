@@ -1,0 +1,434 @@
+# Fixes found in the review of the 839 pilot words (2026-10-22). Same format as review_patch.txt (+ field `article`).
+# ---- topics 1-7
+A | Kohl | ex | Ich koche Kohl mit Kartoffeln. | I am cooking cabbage with potatoes.
+A | Weste | ex | Er trägt eine warme Weste. | He is wearing a warm vest.
+B | köstlich | en | delicious
+B | trinken | en | to drink
+B | gebären | en | to give birth
+D | gebären | ex | Die Frau gebiert ein Kind. | The woman gives birth to a child.
+C | Drink | en | drink (alcoholic)
+D | Drink | ex | Ich nehme einen Drink an der Bar. | I'll have a drink at the bar.
+F | Kohl | plural |
+F | Medizin | plural |
+F | Hitze | plural |
+F | Kleidung | plural |
+D | atmen | ex | Atme tief ein und aus. | Breathe in and out deeply.
+D | Brust | ex | Er hat Schmerzen in der Brust. | He has a pain in his chest.
+H | Virus | article | das
+D | Bart | ex | Er hat einen langen Bart. | He has a long beard.
+I | Schädel | remove |
+C | Wunde | en | wound
+D | Pille | ex | Er nimmt jeden Tag eine Pille. | He takes a pill every day.
+D | schlucken | ex | Ich kann die Tablette nicht schlucken. | I can't swallow the tablet.
+D | Atem | ex | Ich halte den Atem an. | I am holding my breath.
+C | Ärztin | en | doctor (female)
+H | Kopfschmerzen | article | die
+D | Kehle | ex | Ich habe Schmerzen in der Kehle. | I have a pain in my throat.
+D | Norden | ex | Der Wind kommt aus dem Norden. | The wind is coming from the north.
+D | Dunkelheit | ex | In der Dunkelheit sieht man nichts. | You can't see anything in the dark.
+C | Stern | en | star
+D | Stern | ex | Am Himmel funkeln viele Sterne. | Many stars are twinkling in the sky.
+D | wachsen | ex | Die Blumen wachsen schnell. | The flowers are growing fast.
+D | Universum | ex | Das Universum ist sehr groß. | The universe is very big.
+D | Osten | ex | Die Sonne geht im Osten auf. | The sun rises in the east.
+D | Käfig | ex | Der Vogel sitzt im Käfig. | The bird is sitting in the cage.
+C | Herr | en | Mr., gentleman
+D | Herr | ex | Der Herr dort wartet auf Sie. | The gentleman over there is waiting for you.
+D | Liebling | ex | Hallo, mein Liebling! | Hello, my darling!
+D | Jugend | ex | In meiner Jugend habe ich viel Sport getrieben. | In my youth I did a lot of sport.
+D | aufwachsen | ex | Sie ist in einem kleinen Dorf aufgewachsen. | She grew up in a small village.
+D | Cousine | ex | Meine Cousine wohnt in München. | My cousin lives in Munich.
+D | Club | ex | Ich bin Mitglied in einem Club. | I am a member of a club.
+C | treiben | en | to do (sports), to drive
+D | treiben | ex | Er treibt viel Sport. | He does a lot of sport.
+D | Gegner | ex | Unser Gegner ist sehr stark. | Our opponent is very strong.
+# ---- topics 8-13
+C | fahren | en | to drive, to go (by vehicle)
+D | fliegen | ex | Das Flugzeug fliegt nach Rom. | The plane is flying to Rome.
+C | packen | en | to pack
+C | Station | en | station, stop
+D | Rückkehr | ex | Ich freue mich auf deine Rückkehr. | I am looking forward to your return.
+D | Ausgang | ex | Wo ist der Ausgang? | Where is the exit?
+D | parken | ex | Ich parke das Auto vor dem Haus. | I am parking the car in front of the house.
+K | Hütte | exen | We need wood to build a hut.
+D | Sack | ex | Er trägt einen Sack Kartoffeln. | He is carrying a sack of potatoes.
+C | Schreibtisch | en | desk
+C | mieten | en | to rent
+F | Staub | plural |
+F | Wäsche | plural |
+D | Wäsche | ex | Die Wäsche trocknet im Garten. | The laundry is drying in the garden.
+D | Beispiel | ex | Das ist ein gutes Beispiel. | That is a good example.
+B | bestehen | en | to pass (an exam); to consist of
+D | bestehen | ex | Er hat die Prüfung bestanden. | He passed the exam.
+D | übersetzen | ex | Ich übersetze den Text ins Deutsche. | I am translating the text into German.
+D | beibringen | ex | Er bringt mir Gitarre bei. | He is teaching me the guitar.
+D | prüfen | ex | Der Lehrer prüft die Hausaufgaben. | The teacher is checking the homework.
+D | Wissenschaftler | ex | Der Wissenschaftler arbeitet im Labor. | The scientist works in the lab.
+C | studieren | en | to study (at university)
+D | studieren | ex | Meine Schwester studiert Medizin. | My sister studies medicine.
+D | Lektion | ex | Die erste Lektion ist leicht. | The first lesson is easy.
+D | Kapitel | ex | Ich lese das erste Kapitel. | I am reading the first chapter.
+D | verschwenden | ex | Ich will kein Geld verschwenden. | I don't want to waste money.
+D | töten | ex | Man darf niemanden töten. | You must not kill anyone.
+B | verhaften | en | to arrest
+D | verhaften | ex | Die Polizei hat den Mann verhaftet. | The police arrested the man.
+C | Gewalt | en | violence, force
+D | verbieten | ex | Das Gesetz verbietet das Rauchen hier. | The law forbids smoking here.
+C | Prozess | en | trial; process
+D | Tatort | ex | Die Polizei sperrt den Tatort ab. | The police are cordoning off the crime scene.
+D | einsperren | ex | Die Polizei sperrt den Dieb ein. | The police lock up the thief.
+D | verurteilen | ex | Der Richter verurteilt den Mann. | The judge sentences the man.
+D | Fingerabdruck | ex | Die Polizei nimmt Fingerabdrücke. | The police are taking fingerprints.
+D | identifizieren | ex | Die Polizei identifiziert den Täter. | The police identify the culprit.
+C | Kommissar | en | detective inspector
+D | Kommissar | ex | Der Kommissar leitet die Ermittlungen. | The detective inspector is leading the investigation.
+C | Protokoll | en | record, minutes
+# ---- topics 14-17
+C | Leitung | en | line, management
+D | Leitung | ex | Die Leitung ist besetzt. | The line is busy.
+C | Technik | en | technology, technique
+D | tippen | ex | Er tippt sehr schnell. | He types very fast.
+B | Untertitel | en | subtitle
+D | Monster | ex | Das Monster hat drei Köpfe. | The monster has three heads.
+F | Magie | plural |
+F | Applaus | plural |
+D | Fan | ex | Ich bin ein großer Fan dieser Band. | I am a big fan of this band.
+C | Aufnahme | en | recording, photo
+D | Rätsel | ex | Ich löse das Rätsel nicht. | I can't solve the riddle.
+C | Weihnachtsmann | en | Santa Claus
+C | Schauspielerin | en | actress
+D | Welt | ex | Die Welt ist groß. | The world is big.
+C | Sicherheit | en | safety, security
+I | Priester | remove |
+D | Pfarrer | ex | Der Pfarrer spricht in der Kirche. | The pastor is speaking in the church.
+D | Kaiser | ex | Der Kaiser lebte in einem Palast. | The emperor lived in a palace.
+D | bekämpfen | ex | Wir müssen die Armut bekämpfen. | We must fight poverty.
+D | Franzose | ex | Der Franzose spricht gut Deutsch. | The Frenchman speaks German well.
+C | Franzose | en | Frenchman
+D | herrschen | ex | Der König herrscht über das Land. | The king rules over the country.
+D | Nation | ex | Die ganze Nation feiert. | The whole nation is celebrating.
+D | Krone | ex | Der König trägt eine goldene Krone. | The king is wearing a golden crown.
+D | sofort | ex | Komm bitte sofort her! | Please come here at once!
+D | einmal | ex | Ich war einmal in Wien. | I was in Vienna once.
+B | endlich | en | finally
+D | niemals | ex | Das werde ich niemals vergessen. | I will never forget that.
+D | manchmal | ex | Manchmal gehe ich ins Kino. | Sometimes I go to the cinema.
+D | oft | ex | Wir gehen oft spazieren. | We often go for walks.
+D | plötzlich | ex | Plötzlich fing es an zu regnen. | Suddenly it started to rain.
+D | inzwischen | ex | Inzwischen ist es dunkel geworden. | In the meantime it has got dark.
+D | Samstag | ex | Am Samstag fahren wir ans Meer. | On Saturday we are going to the sea.
+C | rechtzeitig | en | in time
+C | momentan | en | at the moment
+D | stets | ex | Er ist stets freundlich. | He is always friendly.
+C | erstmal | en | for now, first
+D | zunächst | ex | Zunächst möchte ich mich vorstellen. | First, I would like to introduce myself.
+D | dreimal | ex | Ich habe ihn dreimal angerufen. | I called him three times.
+C | jahrelang | en | for years
+C | Freitag | en | Friday
+C | Samstag | en | Saturday
+C | Dienstag | en | Tuesday
+C | Mittwoch | en | Wednesday
+C | Donnerstag | en | Thursday
+C | April | en | April
+C | Mai | en | May
+C | Juli | en | July
+C | August | en | August
+C | amerikanisch | en | American
+C | französisch | en | French
+C | spanisch | en | Spanish
+# ---- topics 18-19
+D | lustig | ex | Der Film ist sehr lustig. | The film is very funny.
+C | komisch | en | funny, strange
+D | hoffentlich | ex | Hoffentlich scheint morgen die Sonne. | I hope the sun shines tomorrow.
+D | vermissen | ex | Ich vermisse dich sehr. | I miss you very much.
+D | Spaß | ex | Das Spiel macht viel Spaß. | The game is a lot of fun.
+D | Witz | ex | Er erzählt einen guten Witz. | He tells a good joke.
+D | schrecklich | ex | Das Wetter ist heute schrecklich. | The weather is terrible today.
+F | Furcht | plural |
+D | Güte | ex | Vielen Dank für Ihre Güte. | Thank you for your kindness.
+C | Lust | en | desire, fancy
+A | verzeihen | ex | Bitte verzeih mir. | Please forgive me.
+D | seufzen | ex | Sie seufzt tief. | She sighs deeply.
+D | Panik | ex | Er bekam Panik. | He panicked.
+D | trauen | ex | Ich traue ihm nicht. | I don't trust him.
+B | Pech | en | bad luck
+D | Pech | ex | Ich hatte heute Pech. | I had bad luck today.
+F | Stress | plural |
+D | Feigling | ex | Er ist ein Feigling. | He is a coward.
+F | Humor | plural |
+D | woher | ex | Woher kommst du? | Where do you come from?
+C | Wort | en | word
+D | Wort | ex | Dieses Wort ist schwer auszusprechen. | This word is hard to pronounce.
+D | Antwort | ex | Ich warte auf deine Antwort. | I am waiting for your answer.
+D | Kontakt | ex | Wir halten Kontakt. | We stay in touch.
+C | melden | en | to report; to raise one's hand
+D | berichten | ex | Er berichtet über seine Reise. | He reports on his trip.
+C | Botschaft | en | message; embassy
+D | Botschaft | ex | Ich habe eine Botschaft für dich. | I have a message for you.
+D | beantworten | ex | Bitte beantworten Sie die Frage. | Please answer the question.
+D | Einladung | ex | Danke für die Einladung! | Thank you for the invitation!
+A | abmachen | ex | Das haben wir so abgemacht. | We agreed on that.
+C | Gerücht | en | rumor
+D | begrüßen | ex | Er begrüßt die Gäste an der Tür. | He is welcoming the guests at the door.
+# ---- topic 20
+C | bessern | en | to improve
+D | bessern | ex | Das Wetter bessert sich. | The weather is getting better.
+C | hören | en | to hear, to listen
+D | hören | ex | Ich höre gern Musik. | I like listening to music.
+C | gehören | en | to belong to
+C | her | en | here, toward me
+D | her | ex | Komm her, ich zeige es dir! | Come here, I'll show it to you!
+C | helfen | en | to help
+C | dort | en | there
+C | runter | en | down
+D | sorgen | ex | Eltern sorgen für ihre Kinder. | Parents take care of their children.
+C | sorgen | en | to care for, to provide
+D | oben | ex | Das Buch liegt oben im Regal. | The book is on the shelf up there.
+C | schauen | en | to look
+D | schauen | ex | Schau mal, wie schön das ist! | Look how beautiful that is!
+D | kriegen | ex | Ich kriege morgen Besuch. | I'm getting visitors tomorrow.
+D | unten | ex | Die Küche ist unten. | The kitchen is downstairs.
+C | teilen | en | to share, to divide
+D | teilen | ex | Wir teilen uns die Pizza. | We are sharing the pizza.
+F | Zeug | plural |
+C | heraus | en | out
+D | heraus | ex | Er nahm den Schlüssel heraus. | He took the key out.
+C | anfangen | en | to begin
+C | regeln | en | to arrange, to settle
+D | regeln | ex | Das regeln wir später. | We'll sort that out later.
+D | herum | ex | Wir gehen um den See herum. | We walk around the lake.
+C | benutzen | en | to use
+C | stecken | en | to put, to stick
+C | fehlen | en | to be missing, to lack
+D | erwischen | ex | Ich habe den Bus gerade noch erwischt. | I just managed to catch the bus.
+C | aussehen | en | to look, to appear
+D | zerstören | ex | Der Sturm zerstörte das Dach. | The storm destroyed the roof.
+C | wohnen | en | to live
+D | aufhalten | ex | Der Stau hat uns aufgehalten. | The traffic jam held us up.
+C | aufhalten | en | to hold up, to stop
+C | besorgen | en | to get, to obtain
+C | beginnen | en | to begin
+C | hängen | en | to hang
+D | hängen | ex | Das Bild hängt an der Wand. | The picture hangs on the wall.
+C | daher | en | that is why, from there
+F | Mitte | plural |
+C | Mitte | en | middle
+D | bauen | ex | Sie bauen ein neues Haus. | They are building a new house.
+C | unterhalten | en | to entertain; to talk
+D | unterhalten | ex | Wir unterhalten uns gern. | We like to talk.
+C | treten | en | to step, to kick
+D | treten | ex | Er trat ins Zimmer. | He stepped into the room.
+D | aufpassen | ex | Kannst du bitte auf meine Tasche aufpassen? | Can you please watch my bag?
+C | mitbringen | en | to bring along
+C | Haufen | en | pile, heap
+D | Haufen | ex | Auf dem Tisch liegt ein Haufen Papier. | There is a pile of paper on the table.
+C | nutzen | en | to use
+D | hinaus | ex | Sie gingen zur Tür hinaus. | They went out the door.
+D | mitkommen | ex | Willst du mitkommen? | Do you want to come along?
+D | vorwärts | ex | Wir kommen nur langsam vorwärts. | We are only moving forward slowly.
+C | hingehen | en | to go there
+C | annehmen | en | to accept, to assume
+D | klopfen | ex | Jemand klopft an die Tür. | Someone is knocking at the door.
+D | begleiten | ex | Ich begleite dich zum Bahnhof. | I'll accompany you to the station.
+D | angehen | ex | Das geht dich nichts an. | That is none of your business.
+C | weitermachen | en | to continue
+C | stechen | en | to sting, to stab
+D | stechen | ex | Die Biene hat mich gestochen. | The bee stung me.
+D | probieren | ex | Probier mal den Kuchen! | Try the cake!
+D | anhalten | ex | Der Bus hält an der Ecke an. | The bus stops at the corner.
+C | aufnehmen | en | to record, to pick up
+C | abschließen | en | to lock; to finish
+D | herkommen | ex | Kommst du bitte her? | Can you come here, please?
+D | ruinieren | ex | Der Regen hat den Urlaub ruiniert. | The rain ruined the vacation.
+C | hinterher | en | afterwards, behind
+D | hinterher | ex | Wir essen und gehen hinterher ins Kino. | We eat and go to the cinema afterwards.
+C | begegnen | en | to meet, to encounter
+C | stammen | en | to come from
+C | richten | en | to point, to direct
+D | richten | ex | Er richtet die Kamera auf mich. | He points the camera at me.
+D | aufwachen | ex | Ich wache jeden Morgen um sieben auf. | I wake up at seven every morning.
+D | zusehen | ex | Die Kinder sehen dem Spiel zu. | The children are watching the game.
+C | loslassen | en | to let go
+D | stinken | ex | Der Müll stinkt. | The garbage stinks.
+C | bereiten | en | to prepare, to cause
+D | bereiten | ex | Es bereitet mir Freude, dir zu helfen. | It gives me pleasure to help you.
+C | auftauchen | en | to show up, to surface
+D | auftauchen | ex | Plötzlich tauchte ein Boot auf. | Suddenly a boat appeared.
+D | rauskommen | ex | Komm raus, die Sonne scheint! | Come out, the sun is shining!
+C | steuern | en | to steer
+C | anschauen | en | to look at
+D | weggehen | ex | Ich muss jetzt weggehen. | I have to leave now.
+C | übersehen | en | to overlook
+C | abgeben | en | to hand in, to give
+D | abgeben | ex | Bitte gib den Schlüssel an der Rezeption ab. | Please hand in the key at the reception.
+C | räumen | en | to clear
+D | räumen | ex | Er räumt den Schnee von der Straße. | He clears the snow from the street.
+C | abnehmen | en | to lose weight; to remove
+D | abwarten | ex | Wir müssen noch abwarten. | We still have to wait and see.
+C | zurückbringen | en | to bring back
+# ---- topic 21
+C | gleich | en | same, right away
+C | rein | en | pure; in
+C | fertig | en | finished, ready
+D | fertig | ex | Bist du schon fertig? | Are you finished already?
+C | eigentlich | en | actually, really
+D | sogar | ex | Sogar mein Hund mag Schnee. | Even my dog likes snow.
+C | überhaupt | en | at all, in general
+D | überhaupt | ex | Ich habe überhaupt keine Zeit. | I have no time at all.
+C | schwer | en | heavy, difficult
+C | bloß | en | mere, bare
+C | arg | en | bad, terrible
+D | arg | ex | Das tut mir arg leid. | I'm terribly sorry.
+C | unbedingt | en | absolutely, at all costs
+C | hübsch | en | pretty
+C | vermutlich | en | probably
+C | ewig | en | eternal, endless
+D | ewig | ex | Nichts ist ewig. | Nothing is eternal.
+C | kaputt | en | broken
+C | gemeinsam | en | together, shared
+C | ungefähr | en | approximately, roughly
+D | ungefähr | ex | Es ist ungefähr zehn Uhr. | It is about ten o'clock.
+C | übrig | en | left over
+D | übrig | ex | Ist noch Kuchen übrig? | Is there any cake left?
+C | übel | en | bad, nasty
+D | übel | ex | Mir ist übel. | I feel sick.
+C | zufällig | en | by chance
+C | offenbar | en | apparently, obviously
+C | gewiss | en | certain, certainly
+D | gewiss | ex | Das ist gewiss richtig. | That is certainly right.
+C | dennoch | en | nevertheless
+D | dick | ex | Das Buch ist sehr dick. | The book is very thick.
+C | scharf | en | sharp; spicy
+D | scharf | ex | Das Messer ist sehr scharf. | The knife is very sharp.
+D | blind | ex | Ohne Brille bin ich fast blind. | Without glasses I'm almost blind.
+C | schlau | en | smart, clever
+C | definitiv | en | definitely
+D | frisch | ex | Das Brot ist ganz frisch. | The bread is very fresh.
+C | knapp | en | tight, scarce, barely
+D | dritte | ex | Das ist mein dritter Versuch. | This is my third attempt.
+C | fremd | en | foreign, unfamiliar
+D | fremd | ex | Ich bin hier fremd. | I'm a stranger here.
+C | extra | en | extra, separately
+D | nackt | ex | Sie lief mit nackten Füßen durch das Gras. | She walked through the grass in bare feet.
+C | deutlich | en | clear, clearly
+C | schief | en | crooked
+D | schief | ex | Das Bild hängt schief. | The picture is crooked.
+C | unrecht | en | wrong
+D | unrecht | ex | Es war unrecht von mir, das zu sagen. | It was wrong of me to say that.
+D | geheim | ex | Das Passwort ist geheim. | The password is secret.
+C | angeblich | en | supposedly
+C | eindeutig | en | clear, unambiguous
+D | vernünftig | ex | Das ist eine vernünftige Idee. | That is a sensible idea.
+D | freiwillig | ex | Er hat freiwillig geholfen. | He helped voluntarily.
+D | fähig | ex | Sie ist eine fähige Ärztin. | She is a capable doctor.
+D | korrekt | ex | Die Antwort ist korrekt. | The answer is correct.
+C | amerikanisch | en | American
+C | französisch | en | French
+C | spanisch | en | Spanish
+D | spanisch | ex | Wir essen spanischen Käse. | We eat Spanish cheese.
+D | hässlich | ex | Das Haus ist hässlich. | The house is ugly.
+D | eng | ex | Die Straße ist sehr eng. | The street is very narrow.
+D | extrem | ex | Im Sommer ist es hier extrem heiß. | It is extremely hot here in summer.
+D | negativ | ex | Der Test war negativ. | The test was negative.
+C | ungern | en | reluctantly
+C | scheinbar | en | seemingly
+C | gewöhnlich | en | usual, usually
+D | original | ex | Das Bild ist nicht original. | The painting is not original.
+D | rau | ex | Seine Hände sind rau. | His hands are rough.
+C | genial | en | brilliant, ingenious
+D | treu | ex | Hunde sind treue Tiere. | Dogs are loyal animals.
+C | ordentlich | en | tidy; decent
+D | ordentlich | ex | Dein Zimmer ist sehr ordentlich. | Your room is very tidy.
+D | hell | ex | Das Zimmer ist hell und freundlich. | The room is bright and friendly.
+C | durchaus | en | quite, perfectly
+# ---- topic 22
+D | Unterstützung | ex | Danke für deine Unterstützung! | Thank you for your support!
+D | Abteilung | ex | Er arbeitet in der Abteilung für Marketing. | He works in the marketing department.
+C | Mitarbeiter | en | employee, colleague
+D | leiten | ex | Sie leitet die Firma. | She runs the company.
+C | leiten | en | to lead, to run
+D | Manager | ex | Der Manager ist heute nicht im Büro. | The manager is not in the office today.
+C | Stellung | en | position, job
+D | Stellung | ex | Er sucht eine neue Stellung. | He is looking for a new job.
+C | einstellen | en | to hire; to adjust
+C | Führung | en | leadership; guided tour
+D | Führung | ex | Wir machen eine Führung durch das Museum. | We are taking a guided tour of the museum.
+C | Meeting | en | meeting
+C | Sekretärin | en | secretary
+D | garantieren | ex | Ich garantiere, dass es funktioniert. | I guarantee that it works.
+# ---- topic 24
+C | Ordnung | en | order, tidiness
+D | Ordnung | ex | Ist alles in Ordnung? | Is everything okay?
+C | Sache | en | thing, matter
+C | Ahnung | en | idea, clue
+D | Teufel | ex | Der Teufel hat Hörner. | The devil has horns.
+D | Art | ex | Welche Art von Musik magst du? | What kind of music do you like?
+C | Schatz | en | treasure; darling
+C | Gedanke | en | thought, idea
+C | zielen | en | to aim
+D | zielen | ex | Sie zielt mit dem Ball auf das Tor. | She aims the ball at the goal.
+D | beweisen | ex | Das beweist, dass er recht hat. | That proves that he is right.
+C | Lage | en | situation, location
+C | Geist | en | spirit, ghost
+C | Punkt | en | point, dot
+D | Schicksal | ex | Das war Schicksal. | That was fate.
+D | Zeichen | ex | Das ist ein gutes Zeichen. | That is a good sign.
+C | Spur | en | trace, track
+D | Spur | ex | Der Hund folgt einer Spur. | The dog follows a trail.
+F | Verantwortung | plural |
+D | planen | ex | Wir planen eine Reise nach Italien. | We are planning a trip to Italy.
+C | Vorstellung | en | idea; performance
+D | Chaos | ex | In der Küche herrscht Chaos. | There is chaos in the kitchen.
+D | akzeptieren | ex | Wir akzeptieren keine Kreditkarten. | We don't accept credit cards.
+D | Eindruck | ex | Er hat einen guten Eindruck gemacht. | He made a good impression.
+C | Einheit | en | unity, unit
+D | klären | ex | Wir müssen die Frage klären. | We have to clear up the question.
+D | Detail | ex | Die Details besprechen wir später. | We'll discuss the details later.
+D | Genie | ex | Er ist ein Genie in Mathe. | He is a genius at math.
+D | erschaffen | ex | Sie erschuf ein Kunstwerk aus Holz. | She created a work of art from wood.
+F | Verstand | plural |
+C | Verstand | en | mind, reason
+C | Mittel | en | means; remedy
+D | Mittel | ex | Dieses Mittel hilft gegen Husten. | This remedy helps against coughs.
+F | Heimat | plural |
+C | beschließen | en | to decide
+D | Basis | ex | Das ist die Basis unserer Arbeit. | That is the basis of our work.
+C | Einfluss | en | influence
+D | Einfluss | ex | Er hat großen Einfluss auf mich. | He has a great influence on me.
+D | Umstand | ex | Unter diesen Umständen bleibe ich. | Under these circumstances I'll stay.
+F | Wirklichkeit | plural |
+C | Identität | en | identity
+C | Sicht | en | view, visibility
+D | Sicht | ex | Bei Nebel ist die Sicht schlecht. | Visibility is poor in fog.
+F | Sicht | plural |
+C | Figur | en | figure; character
+C | einfallen | en | to come to mind
+D | einfallen | ex | Mir fällt der Name nicht ein. | I can't think of the name.
+D | Höhe | ex | Das Flugzeug fliegt in großer Höhe. | The plane flies at a great height.
+D | Anzeichen | ex | Das ist ein Anzeichen für Müdigkeit. | That is a sign of tiredness.
+D | vergleichen | ex | Man kann die beiden nicht vergleichen. | You can't compare the two.
+C | Abstand | en | distance, gap
+D | Abstand | ex | Bitte halte Abstand! | Please keep your distance!
+D | Bewusstsein | ex | Das Bewusstsein für die Umwelt wächst. | Awareness of the environment is growing.
+D | Irrtum | ex | Das war ein Irrtum. | That was a mistake.
+# ---- same sentence used by two words (the new word gets a new one)
+D | benutzen | ex | Darf ich dein Handy benutzen? | May I use your phone?
+D | schwanger | ex | Meine Schwester ist schwanger. | My sister is pregnant.
+D | Rad | ex | Er fährt jeden Tag mit dem Rad zur Arbeit. | He rides his bike to work every day.
+D | leiden | ex | Mein Opa leidet an Rückenschmerzen. | My grandpa suffers from back pain.
+D | Rose | ex | Er schenkt ihr eine rote Rose. | He gives her a red rose.
+D | Süden | ex | Im Süden ist das Wetter wärmer. | The weather is warmer in the south.
+D | ziemlich | ex | Es ist heute ziemlich kalt. | It is quite cold today.
+D | lebendig | ex | Der Fisch ist noch lebendig. | The fish is still alive.
+D | Mädchen | ex | Das Mädchen liest ein Buch. | The girl is reading a book.
+D | Team | ex | Unser Team trainiert dreimal pro Woche. | Our team trains three times a week.
+D | trocken | ex | Die Wäsche ist schon trocken. | The laundry is already dry.
+D | eindeutig | ex | Die Antwort ist eindeutig. | The answer is clear.
+D | interessant | ex | Das Buch ist sehr interessant. | The book is very interesting.
+D | zusammen | ex | Wir kochen heute zusammen. | We are cooking together today.
+D | Interesse | ex | Ich habe Interesse an Geschichte. | I am interested in history.
+D | offen | ex | Das Fenster ist offen. | The window is open.
+D | zurückkommen | ex | Er will bald zurückkommen. | He wants to come back soon.
+D | hinterlassen | ex | Sie hinterließ eine Nachricht auf dem Tisch. | She left a message on the table.
+D | süß | ex | Der Kuchen ist sehr süß. | The cake is very sweet.
+D | Ergebnis | ex | Das Ergebnis des Tests war gut. | The test result was good.

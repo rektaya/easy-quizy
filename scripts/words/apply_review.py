@@ -3,6 +3,7 @@
 
   python3 scripts/words/apply_review.py                      # a report of every change: current -> new, grouped (nothing is written)
   python3 scripts/words/apply_review.py --groups A,B --apply # applies only these groups
+  python3 scripts/words/apply_review.py --patch review_patch_pilot.txt --apply   # another patch file (default: review_patch.txt)
 After applying: npm run build:words, python3 scripts/words/rank_table.py, python3 scripts/words/extra_info.py,
 python3 scripts/words/verb_forms.py, npm run typecheck && npm test.
 """
@@ -59,7 +60,7 @@ def current(lines, index, core, item):
     if lemma in index:
         f = lines[index[lemma]].split('|')
         return {'en': f[4], 'ex': f[5] + ' // ' + f[6], 'exen': f[6], 'plural': f[3] or '(none)', 'tier': f[0], 'lemma': f[2], 'remove': f'{f[1]} {f[2]}',
-                'family-': f[7], 'family>': f[7]}[field]
+                'family-': f[7], 'family>': f[7], 'article': f[1] or '(none)'}[field]
     blk = core_block(core, lemma)
     if blk:
         b = core[blk[0]:blk[1]]
@@ -98,6 +99,7 @@ def apply(items, groups):
             elif field == 'ex': f[5], f[6] = value, value2
             elif field == 'exen': f[6] = value
             elif field == 'plural': f[3] = value
+            elif field == 'article': f[1] = value
             elif field == 'tier':
                 f[0] = value; overrides.append((lemma, TIER_RANK[int(value)]))
             elif field == 'family-': f[7] = ','.join(x for x in f[7].split(',') if x != value)
@@ -136,6 +138,8 @@ def apply(items, groups):
     print('applied; renamed ids:', renamed, '| removed:', removed, '| rank overrides:', len(overrides))
 
 if __name__ == '__main__':
+    if '--patch' in sys.argv:
+        PATCH = os.path.join(os.path.dirname(__file__), sys.argv[sys.argv.index('--patch') + 1])
     items = load_patch()
     groups = None
     if '--groups' in sys.argv:
