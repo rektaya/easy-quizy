@@ -1,5 +1,6 @@
 import React from 'react';
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Linking, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Text } from '../components/Text';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTabBarSpace } from '../components/FloatingTabBar';
 import { Card } from '../components/Card';
@@ -42,9 +43,9 @@ const SOURCES: Source[] = [
   },
   {
     title: 'type',
-    what: 'Figtree, designed by Erik D. Kennedy and the Figtree Project Authors.',
-    licence: 'SIL Open Font License 1.1',
-    links: [{ label: 'Figtree', url: 'https://github.com/erikdkennedy/figtree' }],
+    what: 'Satoshi, designed by the Indian Type Foundry and shared free on Fontshare.',
+    licence: 'ITF Free Font License',
+    links: [{ label: 'Satoshi', url: 'https://www.fontshare.com/fonts/satoshi' }],
   },
   {
     title: 'built with',

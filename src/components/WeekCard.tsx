@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from './Text';
 import { BlurMask, Canvas, Circle, RadialGradient, useClock, vec } from '@shopify/react-native-skia';
 import { useDerivedValue } from 'react-native-reanimated';
 import { CORE_RAMP, HALO_RAMP, ramp, shineOf } from '../circle/shine';

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Text } from '../components/Text';
 import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -245,7 +246,7 @@ const styles = StyleSheet.create({
   exampleDe: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 23, color: colors.text },
   exampleEn: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary },
   closing: { alignItems: 'center', gap: 12, paddingHorizontal: 8 },
-  closingTitle: { fontFamily: fonts.medium, fontSize: 28, color: colors.text },
+  closingTitle: { fontFamily: fonts.display, fontSize: 28, color: colors.text },
   closingBody: { fontFamily: fonts.regular, fontSize: 16, lineHeight: 23, color: colors.textSecondary, textAlign: 'center' },
   buttons: { alignSelf: 'stretch', gap: 12, marginTop: 28 },
   reminder: { alignSelf: 'stretch', marginTop: 26 },

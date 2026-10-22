@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Text } from './Text';
 import type { NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { EXTRA } from '../data/words.extra';
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
   word: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', gap: 6 },
   speak: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center', marginBottom: -6 },
   article: { fontFamily: fonts.regular, fontSize: 16, color: colors.textTertiary, marginBottom: -7 }, // close to the word
-  lemma: { fontFamily: fonts.medium, color: colors.text, textAlign: 'center', alignSelf: 'stretch' },
+  lemma: { fontFamily: fonts.display, color: colors.text, textAlign: 'center', alignSelf: 'stretch' },
   en: { fontFamily: fonts.regular, fontSize: 18, lineHeight: 25, color: colors.textSecondary, textAlign: 'center', marginTop: 6 },
   // everything but the word and its meaning sits under one thin line
   below: { gap: 12, paddingTop: 16, borderTopWidth: 1.5, borderTopColor: colors.border },

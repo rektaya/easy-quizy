@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text } from './Text';
 import { colors, fonts } from '../theme';
 
 // The user's avatar: their initial in a small round badge with an orange rim. Tapping it opens the profile.
@@ -26,5 +27,5 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: colors.accent,
   },
-  initial: { fontFamily: fonts.medium, color: colors.text },
+  initial: { fontFamily: fonts.display, color: colors.text },
 });

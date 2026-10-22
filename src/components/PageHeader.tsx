@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text } from './Text';
 import { colors, fonts } from '../theme';
 import { ChevronLeftIcon } from './Icons';
 
@@ -26,6 +27,6 @@ const styles = StyleSheet.create({
   row: { alignItems: 'center', justifyContent: 'center', minHeight: 32 },
   back: { position: 'absolute', left: -6, top: 0, height: 32, justifyContent: 'center', zIndex: 1 },
   titles: { alignItems: 'center', gap: 2, paddingHorizontal: 34 },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text, textAlign: 'center' },
+  title: { fontFamily: fonts.display, fontSize: 22, color: colors.text, textAlign: 'center' },
   sub: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, textAlign: 'center' },
 });

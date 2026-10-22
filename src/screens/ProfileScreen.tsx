@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Text, TextInput } from '../components/Text';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Avatar } from '../components/Avatar';
@@ -127,14 +128,14 @@ const styles = StyleSheet.create({
   pad: { paddingHorizontal: 24 },
   content: { paddingTop: 16, paddingHorizontal: 24, gap: 12 },
   me: { alignItems: 'center', gap: 12, marginBottom: 6 },
-  name: { fontFamily: fonts.medium, fontSize: 24, color: colors.text, textAlign: 'center', minWidth: 160, paddingVertical: 4 },
+  name: { fontFamily: fonts.display, fontSize: 24, color: colors.text, textAlign: 'center', minWidth: 160, paddingVertical: 4 },
   stats: { flexDirection: 'row', gap: 12 },
   rowCard: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16 },
   rowCardText: { flex: 1, gap: 2 },
   rowCardTitle: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   rowCardSub: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
   stat: { flex: 1, alignItems: 'center', paddingVertical: 14 },
-  statN: { fontFamily: fonts.medium, fontSize: 24, color: colors.text },
+  statN: { fontFamily: fonts.display, fontSize: 24, color: colors.text },
   statLabel: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, marginTop: 2 },
   section: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary, marginTop: 14, marginLeft: 4 },
 });

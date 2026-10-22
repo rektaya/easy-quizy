@@ -27,3 +27,12 @@ test('every gap written in a screen or component is on the spacing scale', () =>
   const off = literals(/\b(?:gap|columnGap|rowGap): *(\d+)\b/g).filter((l) => !GAPS.includes(l.value));
   assert.deepEqual(off, []);
 });
+
+// The letter-spacing of the type (-1%, theme.ts `tracking`) is added by components/Text.tsx, so every screen takes Text and
+// TextInput from there and never from react-native.
+test('no screen or component takes Text or TextInput from react-native', () => {
+  const bad = [...sources('src'), 'App.tsx']
+    .filter((file) => !file.endsWith('components/Text.tsx'))
+    .filter((file) => /import \{[^}]*\b(?:Text|TextInput)\b[^}]*\} from 'react-native'/.test(readFileSync(file, 'utf8')));
+  assert.deepEqual(bad, []);
+});

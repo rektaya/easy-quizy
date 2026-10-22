@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Text } from './Text';
 import { THEMES } from '../data/words';
 import type { FeedBy, PosFilter } from '../onboarding/feed';
 import type { ExploreSettings } from '../state/profile';
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
   // the title: "explore" and, by theme, the topic as a glass pill
   // the title: "explore" and, next to it, the selects on glass pills (a faint light fill with a hairline edge, like the Map's card)
   titleRow: { flex: 1, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 8, rowGap: 8 },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
+  title: { fontFamily: fonts.display, fontSize: 22, color: colors.text },
   pill: {
     marginTop: 3, // the word "explore" sits a little low in its line (its tail letters), so the pill drops by half of this to share its middle
     paddingHorizontal: 11,

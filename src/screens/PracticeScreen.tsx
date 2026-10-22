@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Text } from '../components/Text';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Circle } from '../circle/Circle';
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
   // the old text and the new one are laid over each other (not one after the other), so that the one fades out and the other fades in without anything jumping
   aboveInner: { position: 'absolute', left: 24, right: 24, top: 0, bottom: 0, alignItems: 'flex-start', justifyContent: 'center', gap: 8 },
   doneBody: { ...StyleSheet.absoluteFill, justifyContent: 'center', alignItems: 'flex-start', gap: 12, paddingHorizontal: 24 },
-  title: { fontFamily: fonts.medium, fontSize: 32, lineHeight: 38, color: colors.text, textAlign: 'left' },
+  title: { fontFamily: fonts.display, fontSize: 32, lineHeight: 38, color: colors.text, textAlign: 'left' },
   text: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary, textAlign: 'left' },
   buttonSpace: { height: 54 },
 });

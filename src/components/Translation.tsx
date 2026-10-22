@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
-import { colors, fonts } from '../theme';
+import { colors, fonts, tracking } from '../theme';
 
 // The translation takes the place of the German word inside the circle, in the same style.
 // Longer translations step down in size and wrap, so they stay inside the ring.
@@ -17,7 +17,7 @@ export function Translation({ text }: { text: string }) {
   return (
     <Animated.Text
       entering={FadeIn.duration(280)}
-      style={[styles.text, { fontSize: size, lineHeight: Math.round(size * 1.25) }]}
+      style={[styles.text, { fontSize: size, lineHeight: Math.round(size * 1.25), letterSpacing: tracking(size) }]}
     >
       {text}
     </Animated.Text>
@@ -25,5 +25,5 @@ export function Translation({ text }: { text: string }) {
 }
 
 const styles = StyleSheet.create({
-  text: { fontFamily: fonts.medium, color: colors.text, textAlign: 'center' },
+  text: { fontFamily: fonts.display, color: colors.text, textAlign: 'center' },
 });

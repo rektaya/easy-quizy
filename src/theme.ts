@@ -1,5 +1,5 @@
 // Look: a deep navy night (#0C1927) with a sparse field of small, dim stars (components/StarBackground), light
-// ink, one orange accent, lowercase Figtree, frosted cards, chunky buttons.
+// ink, one orange accent, lowercase Satoshi, tight letter-spacing, frosted cards, chunky buttons.
 export const colors = {
   bg: '#0C1927',
   surface: 'rgba(255,255,255,0.07)', // frosted cards, fields, ghost buttons
@@ -45,9 +45,13 @@ export function rgbOf(hex: string): [number, number, number] {
 }
 
 export const fonts = {
-  regular: 'Figtree_400Regular',
-  medium: 'Figtree_500Medium',
-} as const;
+  regular: 'AppFont_Regular',
+  medium: 'AppFont_Medium',
+  display: 'AppFont_Display', // headlines and big text (22 and up): the German word in the circle, its translation, page titles, big numbers
+} as const; // loaded under these names in src/useAppFonts.ts (Satoshi)
+
+/** Letter-spacing of a text of this size: -1% of the size (React Native only takes points). Applied by components/Text.tsx. */
+export const tracking = (size: number) => -size * 0.01;
 
 export const radius = { chip: 999, card: 26, button: 16, tile: 14 } as const;
 

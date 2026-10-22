@@ -37,7 +37,9 @@ back chevron already exists). If something is missing, say so and ask before add
   a button's job (see the first rule).
 - **What a word's answer is** is said by one badge, `RatingBadge`, always in the **same place** (just under the first line of the screen, at the top of the safe area plus 54), on every screen that has one: Explore (also the first-run test); the Study test and the practice screen have none. Never inside the circle, never a second position. There is no undo: a rated word's answer is changed with the handle on its ring (dragging the dot).
 - **No tutorials.** The gesture is taught once, on the practice screen; after that only the first-visit cards.
-- The look: deep navy `#0C1927`, light ink, one orange accent, Figtree (`src/theme.ts`).
+- The look: deep navy `#0C1927`, light ink, one orange accent, Satoshi with letter-spacing -1% (`src/theme.ts`).
+- **The type is Satoshi** (Indian Type Foundry, from Fontshare; Regular and Medium, files in `assets/fonts/satoshi/`), loaded by `src/useAppFonts.ts` under three names in `theme.ts`: `fonts.regular` and `fonts.medium` for small text and `fonts.display` for headlines and big text (every style from 22 up, the word in the circle, its translation, the avatar letter). Today all three are Satoshi; `display` is a separate name so headlines can get a typeface of their own by giving it another file in `useAppFonts.ts`. A new style of 22 or more uses `fonts.display`, a smaller one `fonts.regular`/`fonts.medium`. No screen names a typeface or a file.
+- **Letter-spacing is -1% of the size**, set by one thing: **`Text` and `TextInput` come from `src/components/Text.tsx`, never from react-native** (`scale.test.ts` fails otherwise). It works the spacing out from the `fontSize` in the style (`tracking()` in `theme.ts`), unless the style has its own `letterSpacing`; a nested text with no size of its own takes the spacing of the text around it. Outside it: `Animated.Text` and the map's svg labels add `letterSpacing: tracking(size)` themselves.
 
 ## Components (`src/components/`)
 | Component | What it is | Used on |
@@ -72,6 +74,7 @@ back chevron already exists). If something is missing, say so and ask before add
 | `Card` | the frosted plate (`surface`, hairline, `radius.card`; `round="tile"` for a small one, `strong` over the Map's sky): setting cards, the week, credits, the Map's topic card, the numbers in Profile | Profile, Map, Credits |
 | `Plate` | the solid plate that floats over the screen (`card` colour, hairline, shadow; `round` chip, button, tile or card): the rating badge, the hint, menus, the word card, the bottom sheet | many |
 | `Menu` / `MenuItem` | a menu that opens from a select or icon and fades in and out; an item is a name, a hint line when needed and an orange dot when it is the current one | Explore selects, sort, topic |
+| `Text` / `TextInput` | the app's text and text field: React Native's, plus the letter-spacing of the type (-1% of the size); every screen takes them from here | everywhere |
 | `PageHeader` | the header of a page one level down: chevron left at the left edge, the title (and a quiet line under it) in the middle | add new word, a topic's words, credits |
 | `BottomSheet` | a panel that slides up from the bottom over everything, on a dimmed screen: closes with a tap outside or a drag down (nothing is saved then); a "save" button inside saves and closes | Profile |
 | `ReminderCard` | the daily reminder: a switch and the time | Profile, "nicely done" |

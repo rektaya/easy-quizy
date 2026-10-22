@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Text } from './Text';
 import { verbForms } from '../data/words';
 import type { Word } from '../data/words';
 import { colors, fonts } from '../theme';

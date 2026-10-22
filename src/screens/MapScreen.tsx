@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Alert, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Text } from '../components/Text';
 import * as Haptics from 'expo-haptics';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -40,7 +41,7 @@ import { clampPan, minScale, panRange, snapScale } from '../onboarding/viewport'
 import { wordStatus } from '../onboarding/status';
 import { useProfile } from '../state/profile';
 import { useRatings } from '../state/ratings';
-import { colors, fonts, radius, stars } from '../theme';
+import { colors, fonts, radius, stars, tracking } from '../theme';
 
 // The Map is a night sky, and it now matches the rest of the app, which is the same deep navy. It looks like a plain, evenly starred sky, with no visible clusters: each
 // theme is just one bigger star among many small ones, and the more of a theme you have learned, the
@@ -301,6 +302,7 @@ export default function MapScreen({ bottomSpace, onExplore, onStudy }: Props) {
             x={places[i].x}
             y={places[i].y}
             fontSize={LABEL_FONT}
+            letterSpacing={tracking(LABEL_FONT)}
             fontFamily={fonts.medium}
             fill={ON_SKY}
             fillOpacity={0.68 + 0.32 * glows[i]}
@@ -776,7 +778,7 @@ const styles = StyleSheet.create({
   card: { position: 'absolute', left: 20, right: 20, gap: 12, padding: 18 },
   cardTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 },
   cardHead: { flex: 1, gap: 2 },
-  cardTitle: { fontFamily: fonts.medium, fontSize: 22, color: ON_SKY },
+  cardTitle: { fontFamily: fonts.display, fontSize: 22, color: ON_SKY },
   cardSub: { fontFamily: fonts.regular, fontSize: 13, color: ON_SKY_DIM },
   cardButtons: { gap: 12 },
   // the page with a theme's words

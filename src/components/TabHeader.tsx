@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from './Text';
 import { colors, fonts } from '../theme';
 
 /** Height of the header row; screens below it lay out from here. */
@@ -43,5 +44,5 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: HEADER_HEIGHT },
   noTitle: { justifyContent: 'flex-end' },
   center: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' },
-  title: { fontFamily: fonts.medium, fontSize: 22, color: colors.text },
+  title: { fontFamily: fonts.display, fontSize: 22, color: colors.text },
 });

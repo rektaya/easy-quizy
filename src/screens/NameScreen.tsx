@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
+import { Text, TextInput } from '../components/Text';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { colors, fonts, radius } from '../theme';
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   screen: { flex: 1 },
   inner: { flex: 1, paddingHorizontal: 24 },
   body: { flex: 1, justifyContent: 'center', gap: 16 },
-  title: { fontFamily: fonts.medium, fontSize: 28, lineHeight: 36, color: colors.text },
+  title: { fontFamily: fonts.display, fontSize: 28, lineHeight: 36, color: colors.text },
   input: {
     paddingHorizontal: 18,
     paddingVertical: 16,

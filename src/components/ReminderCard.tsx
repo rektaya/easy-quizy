@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Linking, StyleSheet, Switch, Text, View } from 'react-native';
+import { Alert, Linking, StyleSheet, Switch, View } from 'react-native';
+import { Text } from './Text';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
 import { askForPermission } from '../notifications/reminders';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Text } from './Text';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import type { Word } from '../data/words';
 import { colors, fonts } from '../theme';
@@ -21,5 +22,5 @@ export function WordFace({ word, fade = false }: { word: Word; fade?: boolean })
 const styles = StyleSheet.create({
   wrap: { alignItems: 'center' },
   article: { fontFamily: fonts.regular, fontSize: 18, color: colors.textSecondary, marginBottom: 4 },
-  lemma: { fontFamily: fonts.medium, color: colors.text },
+  lemma: { fontFamily: fonts.display, color: colors.text },
 });

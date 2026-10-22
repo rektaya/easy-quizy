@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from './Text';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { colors, fonts } from '../theme';
 import { Plate } from './Plate';

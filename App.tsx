@@ -1,4 +1,4 @@
-import { Figtree_400Regular, Figtree_500Medium, useFonts } from '@expo-google-fonts/figtree';
+import { useAppFonts } from './src/useAppFonts';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
@@ -203,7 +203,7 @@ function Root() {
 setupNotifications();
 
 export default function App() {
-  const [fontsLoaded] = useFonts({ Figtree_400Regular, Figtree_500Medium });
+  const fontsLoaded = useAppFonts();
   if (!fontsLoaded) return null;
 
   return (

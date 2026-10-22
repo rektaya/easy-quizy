@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
+import { Text } from './Text';
 import { colors, fonts, radius, shadow } from '../theme';
 
 type Props = { label: string; onPress: () => void; kind?: 'primary' | 'ghost'; disabled?: boolean };

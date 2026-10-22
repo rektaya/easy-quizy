@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text } from './Text';
 import { SESSION_MINUTES } from '../onboarding/batch';
 import type { SessionWords } from '../onboarding/batch';
 import { useProfile } from '../state/profile';
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
   title: { fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   sub: { fontFamily: fonts.regular, fontSize: 13, color: colors.textSecondary },
   head: { gap: 6 },
-  sheetTitle: { fontFamily: fonts.medium, fontSize: 24, color: colors.text },
+  sheetTitle: { fontFamily: fonts.display, fontSize: 24, color: colors.text },
   sheetLead: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 21, color: colors.textSecondary },
 });

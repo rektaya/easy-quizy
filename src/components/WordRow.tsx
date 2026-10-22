@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text } from './Text';
 import type { Word } from '../data/words';
 import type { WordStatus } from '../onboarding/status';
 import { colors, fonts, radius } from '../theme';

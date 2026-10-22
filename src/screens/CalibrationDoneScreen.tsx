@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from '../components/Text';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
@@ -28,6 +29,6 @@ export default function CalibrationDoneScreen({ onContinue }: { onContinue: () =
 const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: 24 },
   body: { flex: 1, justifyContent: 'center', gap: 16 },
-  title: { fontFamily: fonts.medium, fontSize: 36, lineHeight: 44, color: colors.text },
+  title: { fontFamily: fonts.display, fontSize: 36, lineHeight: 44, color: colors.text },
   lead: { fontFamily: fonts.regular, fontSize: 18, lineHeight: 26, color: colors.textSecondary },
 });
