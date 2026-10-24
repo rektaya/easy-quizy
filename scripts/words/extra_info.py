@@ -10,9 +10,12 @@ Run after the word list changes: python3 scripts/words/extra_info.py
 """
 import collections, difflib, math, os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
+import pick_lemmas as P
 from pick_lemmas import ROOT, DATA, resolve
 from compose_raw import slug
 
+# how many sentences two words must share to count as "often together" (5 gave odd partners for the words of the 2026-10 pilot: Eis / Gewicht)
+MIN_PAIR = 7
 TOKEN = re.compile(r"[A-Za-zÄÖÜäöüß]+")
 
 # Small words that are also a rare verb's inflected form in the dictionary ("mal" is an imperative of malen, "gar" a form of garen,
@@ -20,7 +23,7 @@ TOKEN = re.compile(r"[A-Za-zÄÖÜäöüß]+")
 PARTICLE_FORMS = {'mal', 'gar', 'halt'}
 # vulgar or sexual words: a sentence with one is never an example (the app is for learning, not for shock)
 VULGAR = re.compile(r"(?i)(scheiß|scheiss|fick|arsch|kack|wichs|hure|nutte|schlampe|titten|fotze|schwanz|pimmel|wixx|nazi|hitler|vergewalt|bumsen|pisse|pissen|verdammt|verfickt|idiot|blöd|dumm)")
-STOCK_NAMES = re.compile(r"\b(Tom|Mary|Maria|John|Boston|Tatoeba|Fyodor|Sysko|Bob|Paul|Hiroko|Amy|Antina|Tusnelda|Layla|Sami|Tim|David|Yoko|Kimura|Erkin|Mike|Takashi|Kelly|Miho|Peter|Dean|Sara|Anne|Ann|Jiro|Taro|Helen|Shai|Muiriel|Samuel|Mayuko|Taninna|Skura|Leon|Viviana|Wladimir|Janni|Perry|Stephen King|Justin Bieber|Hu Jintao|Pierce|James|Ziri|Liisa|Ken|Jack|Jane|Thomas|Haschimoto|Kensaku|Markku|Midori|Lucario|Frau Schneider)(s|\u2019s)?\b")
+STOCK_NAMES = re.compile(r"\b(Tom|Mary|Maria|John|Boston|Tatoeba|Fyodor|Sysko|Bob|Paul|Hiroko|Amy|Antina|Tusnelda|Layla|Sami|Tim|David|Yoko|Kimura|Erkin|Mike|Takashi|Kelly|Miho|Peter|Dean|Sara|Anne|Ann|Jiro|Taro|Helen|Shai|Muiriel|Samuel|Mayuko|Taninna|Skura|Leon|Viviana|Wladimir|Janni|Perry|Stephen King|Justin Bieber|Hu Jintao|Pierce|James|Ziri|Liisa|Ken|Jack|Jane|Thomas|Haschimoto|Kensaku|Markku|Midori|Lucario|Frau Schneider|General Motors|Microsoft|Google|Facebook|Amazon|Apple|Toyota|Honda|Nissan|Sony|IBM|Nokia|Twitter|YouTube|Wikipedia|Skype|iPhone|Windows|Linux|Coca-Cola|McDonald)(s|\u2019s)?\b")
 # sad, violent or sexual sentences are never examples (the headword itself is excused in main(), e.g. Krieg, Waffe)
 SENSITIVE = re.compile(r"(?i)(getötet|töten|tötet|ermordet|mord\b|erschossen|erschiess|gestorben|starb|verstorben|selbstmord|suizid|terror|bombe|vergewalt|folter|sklaverei|erbrach|betrog|betrügt|FKK|saufen|besoffen|leiche|kannibal|todesstrafe|leichte mädchen|schnaps|Satz \d{3,}|furigana|CC-BY|Kriegstreiber|abartig|ward\b|bukst|Netzpost|im Stich)")
 
@@ -100,7 +103,7 @@ def main():
             reflexive.add(slug(f[2]))
     REFLEXIVE_PRONOUNS = {'mich', 'dich', 'sich', 'uns', 'euch'}
 
-    sent_words, sent_text = {}, {}
+    sent_words, sent_text, sent_tok = {}, {}, {}
     count = collections.Counter()
     pair = collections.Counter()
     for line in open(os.path.join(DATA, 'deu_sentences.tsv'), encoding='utf8'):
@@ -108,7 +111,7 @@ def main():
         toks = TOKEN.findall(text)
         if not (4 <= len(toks) <= 12) or len(text) > 80:
             continue
-        ids = set()
+        ids, tokof = set(), {}
         for pos, t in enumerate(toks):
             cands = set()
             for key in (t, t.casefold()):
@@ -124,6 +127,8 @@ def main():
             if pos == 0 and any(noun[w] for w in cands) and any(not noun[w] for w in cands):
                 cands = {w for w in cands if not noun[w] or lemma_of[w] == t}
             exact = {w for w in cands if lemma_of[w] == t or (not noun[w] and lemma_of[w].casefold() == t.casefold())}
+            for w in (exact or cands):
+                tokof.setdefault(w, t)
             ids |= exact or cands
         if reflexive and not ({t.casefold() for t in toks} & REFLEXIVE_PRONOUNS):
             ids -= reflexive
@@ -132,10 +137,37 @@ def main():
             continue
         sent_words[sid] = ids
         sent_text[sid] = text
-        for a in ids:
+        sent_tok[sid] = {w: tokof[w] for w in ids}
+
+    # An inflected form that is also a word of its own ("schade" is not a form of schaden, it is the adjective schade): a sentence only
+    # counts for a word when its matching token is the headword, or no other Wiktionary entry is spelled like the token.
+    def spelled(wid, tok):
+        return tok if noun[wid] else tok.casefold()
+    pending = {(spelled(w, tok), noun[w]) for sid, m in sent_tok.items() for w, tok in m.items() if spelled(w, tok) != lemma_of[w] and tok.casefold() != lemma_of[w].casefold()}
+    print('forms to check against Wiktionary:', len(pending), flush=True)
+    def other_word(key):
+        spelling, _ = key
+        try:
+            es = P.fetch(spelling)
+        except Exception:
+            return key, False
+        return key, any(e.get('lang_code', 'de') == 'de' and e.get('word') == spelling and e.get('pos') != 'name' and not P.is_form_of(e) for e in es)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(16) as pool:
+        clash = {k for k, bad in pool.map(other_word, sorted(pending)) if bad}
+    print('forms that are a word of their own:', len(clash), flush=True)
+    for sid in list(sent_words):
+        keep = {w for w in sent_words[sid]
+                if (spelled(w, sent_tok[sid][w]), noun[w]) not in clash or sent_tok[sid][w].casefold() == lemma_of[w].casefold()}
+        if keep:
+            sent_words[sid] = keep
+        else:
+            del sent_words[sid]
+            continue
+        for a in keep:
             count[a] += 1
-        if len(ids) <= 6:
-            ids_l = sorted(ids)
+        if len(keep) <= 6:
+            ids_l = sorted(keep)
             for x in range(len(ids_l)):
                 for y in range(x + 1, len(ids_l)):
                     pair[(ids_l[x], ids_l[y])] += 1
@@ -144,7 +176,7 @@ def main():
     # partners by a cosine score
     partners = collections.defaultdict(list)
     for (a, b), n in pair.items():
-        if n < 5:
+        if n < MIN_PAIR:
             continue
         if word_block.get(a) in ('both', 'together') or word_block.get(b) in ('both', 'together'):
             continue

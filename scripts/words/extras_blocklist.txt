@@ -35,3 +35,6 @@ nehmen extras
 sollen extras
 fern extras      # fernsehen
 wuerde both      # Würde er..., Würden Sie... (werden), not dignity
+bessern both  # the sentences are about "besser"
+gehoeren both  # "gehört" is mostly hören
+rau together  # Rauch
