@@ -25,15 +25,13 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
   say honestly what you did not check.
 - **Always check visual changes yourself in the iOS Simulator** (see section 4) and say what you saw. Do not tell
   her to "go and test it on the phone": she already does that (this was a correction she gave once).
-- **Ask before committing and before pushing** (since 2026-10-28 there is a **private** GitHub repository, `git@github.com:rektaya/easy-quizy.git`, remote `origin`; she asked for it and `gh` is signed in as rektaya; before 2026-10-28 everything was local only). **Never start an EAS
-  build or a TestFlight submit unless she says so.** She often says "commit but do not build yet".
+- **Ask before committing and before pushing.** There is a GitHub repository (`git@github.com:rektaya/easy-quizy.git`, remote `origin`; `gh` is signed in as rektaya) that is prepared to be made public (see section 3); she asked for it on 2026-10-28.  build or a TestFlight submit unless she says so.** She often says "commit but do not build yet".
 - **Interface text rules** (also in `COMPONENTS.md`): all lowercase (German words keep their capitals), no full stop at
   the end of a short line, the typographic apostrophe `’`, one orange accent `#F75831` on deep navy `#0C1927`, Satoshi at -1% letter-spacing.
 - **UI rules that she enforces strictly:** going back is the chevron (never a "close" button); nothing pops, everything
   fades; the rating badge is always in the same place (there is no undo any more: the handle on the ring changes an answer); one way of doing a thing, not two; labels on the Map never
   overlap; reuse the existing patterns in `COMPONENTS.md`.
-- **Do not put secrets in files or messages.** An old chat contains a password typed in plain text; it is not
-  reproduced anywhere in the repo. Credentials (the App Store Connect API key) live on EAS, not here.
+- **Do not put secrets in files or messages.** Credentials (the App Store Connect API key) live on EAS, not here.
 - Keep `SPEC.md` and `COMPONENTS.md` updated in the same change as the code (she expects it).
 
 ## 3. State of the project (2026-10-20)
@@ -57,12 +55,13 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
   "Beta app description" texts were written in the chat (short, lowercase, plain); rewrite them if asked.
 - **The simulator and the dev server were stopped** at the end of the session.
 
-**The GitHub repository must stay PRIVATE (decided 2026-10-28).** Reasons, all still open: (1) the Satoshi font files are in the git history since commit
-`16de369` (and in `assets/fonts/`, `landing/fonts/`), and the ITF Free Font License forbids passing the files to other people: a public repo, or inviting
-anyone, would do exactly that; to go public the font must first be removed from the whole history (rewrite it or start from a clean snapshot) and
-Satoshi loaded some other allowed way. (2) `LICENSE` is still the Expo template's MIT text, not hers. (3) the word list is built from Wiktionary (CC BY-SA 4.0)
-and Tatoeba (CC BY 2.0 FR): a public repo needs the right attribution and a share-alike licence for the data, to be checked. (4) this file names a friend and his
-Apple account. No passwords or keys were ever committed (history scanned 2026-10-28); `*.apk` builds and `landing-publish/` are git-ignored.
+**The GitHub repository (since 2026-10-28):** `rektaya/easy-quizy`, created **private** and prepared so that she can make it public herself (GitHub > Settings > Danger zone).
+Done for that: the Satoshi font files were removed from the whole git history and from the tree (`assets/fonts/` and `landing/fonts/` are git-ignored and stay on her Mac; `README.md` says
+where to get the font; `.easignore` keeps them in EAS builds, so keep it in step with `.gitignore`); `LICENSE` is MIT (rektaya); the word data has its own `DATA-LICENSE.md` (CC BY-SA 4.0, credit to
+Wiktionary, Tatoeba, FrequencyWords: to be read by her or a lawyer); personal names were taken out of the notes and of the history; the history was scanned and has no passwords or keys; `*.apk` builds
+and `landing-publish/` are git-ignored. **Because the history was rewritten, every commit hash is new: hashes quoted in these notes (builds, "commit 7dde4ff"...) are from the old history.** The old, complete
+history (with the fonts) is kept in the **private** repository `rektaya/easy-quizy-private-backup`, in the file `~/Documents/design/vibecoding/better-anki-before-public-20261028.bundle`, and the old->new hash
+list is `better-anki-before-public-20261028.commit-map.txt` next to it. Never make the backup repository public. Her author email (rektaya@gmail.com) is in every commit.
 
 ## 4. How to run, test and verify
 
@@ -91,7 +90,7 @@ Screenshots and taps go through the iOS-simulator control tool (coordinates are 
 - Expo account **rektaya**, project `easy-quizy`, bundle id `com.tayarekhova.easyquizy`, App Store Connect app id
   `6823929317` (set in `eas.json`, so EAS Submit needs no Apple login). `appVersionSource` is remote and the build
   number auto-increments (build 9 is the latest).
-- The Apple Developer account belongs to a **friend (a friend), a personal account**. Taya has the **App Manager** role.
+- The Apple Developer account is a **personal account of someone else**. Taya has the **App Manager** role.
   The App Store Connect API key was created for EAS and is stored on EAS's servers. Certificates are managed by EAS.
 - Build and send to TestFlight in one go: `npx eas-cli build --platform ios --profile production --non-interactive
   --auto-submit` (about 15-25 minutes, then Apple processes it for 5-10 minutes and sends an email).
@@ -223,7 +222,7 @@ add it there. Topic ids that were merged are handled by `currentTheme()` in `wor
 - **Release prep:** a **privacy policy** text (offered, not requested); the **credits licence sentence** (the word list
   is shared under the same share-alike terms) needs her or a lawyer's check; **remove "start over"** and the hidden
   map-title gesture; Beta App Review for the public link; "What to test" text for build 6 (what is new: the handle on the ring, audio, verb forms, the week of study).
-- **Postponed on purpose:** a **widget** (needs a native build and a call with a friend about his account), **Storybook**
+- **Postponed on purpose:** a **widget** (needs a native build and a call with the owner of the Apple developer account), **Storybook**
   (maybe web only, later), **Reduce Motion** support for the newer animations.
 - **Product ideas:** what to do with the unused interests in `feed.ts`; a better "known word" moment (testers did not read the first
   one; stardust rising from the ring is the current answer, not yet re-tested); spot-checks of known words; a recorded voice (the phone's voice is built);

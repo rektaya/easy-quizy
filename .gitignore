@@ -59,3 +59,8 @@ landing-publish/
 
 # Android test builds (about 140 MB each; they live on EAS, not in git)
 *.apk
+
+# Satoshi font files. Their licence (ITF Free Font License) does not allow passing the files on, so they are not in the repository:
+# see README.md for where to get them. They stay on the developer's computer (and EAS builds take them through .easignore).
+assets/fonts/
+landing/fonts/

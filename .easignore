@@ -1,0 +1,69 @@
+# EAS Build packages the project with THIS file instead of .gitignore as soon as it exists. So it repeats the rules of .gitignore,
+# with one difference: the Satoshi font files are NOT listed here, because the app builds need them (they are not in git, see README.md).
+# (If you change .gitignore, change this file too.)
+
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# generated native folders
+/ios
+/android
+
+# Skia on the web: copied from node_modules by the postinstall script
+public/canvaskit.wasm
+
+# raw data used to build the word list (Wiktionary, Tatoeba, a frequency list): large, not part of the repo
+data-sources/
+
+# screen recordings of other apps and of this one (hundreds of MB each)
+ScreenRecording_*.MP4
+ScreenRecording_*.mov
+
+# Python caches of the word pipeline
+__pycache__/
+*.pyc
+
+# the landing page folder that is built for publishing (make with: sh landing/make-publish-folder.sh)
+landing-publish/
+
+# Android test builds (about 140 MB each; they live on EAS, not in git)
+*.apk
+
+# not part of the app build: the landing page (a separate website) and the notes
+landing/
+docs/
