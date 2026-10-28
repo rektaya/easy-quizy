@@ -25,7 +25,7 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
   say honestly what you did not check.
 - **Always check visual changes yourself in the iOS Simulator** (see section 4) and say what you saw. Do not tell
   her to "go and test it on the phone": she already does that (this was a correction she gave once).
-- **Ask before committing; never push** (there is no git remote, everything is local on her Mac). **Never start an EAS
+- **Ask before committing and before pushing** (since 2026-10-28 there is a **private** GitHub repository, `git@github.com:rektaya/easy-quizy.git`, remote `origin`; she asked for it and `gh` is signed in as rektaya; before 2026-10-28 everything was local only). **Never start an EAS
   build or a TestFlight submit unless she says so.** She often says "commit but do not build yet".
 - **Interface text rules** (also in `COMPONENTS.md`): all lowercase (German words keep their capitals), no full stop at
   the end of a short line, the typographic apostrophe `’`, one orange accent `#F75831` on deep navy `#0C1927`, Satoshi at -1% letter-spacing.
@@ -38,7 +38,7 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
 
 ## 3. State of the project (2026-10-20)
 
-- **Code:** branch `master`, last code commit is the one made on 2026-10-20 (`git log -1`); No remote.
+- **Code:** branch `master`, last commit is in `git log -1`; remote `origin` = the private GitHub repo `rektaya/easy-quizy` (pushed 2026-10-28, `master` tracks `origin/master`).
   `npm run typecheck` is clean and `npm test` passes (106 tests).
 - **TestFlight builds 8 and 9 (2026-10-21):** build 9 (EAS `f083f15f`, commit `7dde4ff`) has the whole design-system tidy-up, the new app icon and the menu fix. Build 8 (`bc684ef1`, commit `87ebcc7`) was started by mistake (a build command that looked rejected had run) and is the same without the menu fix: ignore it. Android APK versionCode 3 (EAS `1e249bf3`, same commit as build 9, new icon); the first APK (versionCode 2, `9a474384`) has the old icon and the old design.
 - **TestFlight, build 7 (2026-10-20):** built from commit `f32708e` (EAS build `3ac05935`, started 2026-10-20, sent to TestFlight automatically). On top of build 6 it has the week-of-stars card in Profile
@@ -56,6 +56,13 @@ topic). Three tabs plus a profile: **Explore** (meet words), **Study** (learn th
   approved build"). Whether any build was submitted for that review was not confirmed. Drafts of the "What to test" and
   "Beta app description" texts were written in the chat (short, lowercase, plain); rewrite them if asked.
 - **The simulator and the dev server were stopped** at the end of the session.
+
+**The GitHub repository must stay PRIVATE (decided 2026-10-28).** Reasons, all still open: (1) the Satoshi font files are in the git history since commit
+`16de369` (and in `assets/fonts/`, `landing/fonts/`), and the ITF Free Font License forbids passing the files to other people: a public repo, or inviting
+anyone, would do exactly that; to go public the font must first be removed from the whole history (rewrite it or start from a clean snapshot) and
+Satoshi loaded some other allowed way. (2) `LICENSE` is still the Expo template's MIT text, not hers. (3) the word list is built from Wiktionary (CC BY-SA 4.0)
+and Tatoeba (CC BY 2.0 FR): a public repo needs the right attribution and a share-alike licence for the data, to be checked. (4) this file names a friend and his
+Apple account. No passwords or keys were ever committed (history scanned 2026-10-28); `*.apk` builds and `landing-publish/` are git-ignored.
 
 ## 4. How to run, test and verify
 
