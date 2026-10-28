@@ -136,6 +136,27 @@ src/data/                    words.core.ts (33 hand-written words), words.raw.tx
 src/notifications/           the daily reminder (a local notification set when the app goes to the background)
 scripts/                     build-words.mjs, words/*.py (the word pipeline; see scripts/words/README.md)
 docs/portfolio/              the iterations story and old screenshots, for her portfolio
+landing/                     the landing page (plain HTML/CSS/JS, no build; from her Figma draft "easy-quizy-3.0", node 5:502).
+                             One gradient frame: the hero (a flipping german word, 20 words from the app's list, a waitlist form), a ring of
+                             stars that draws itself round "Feierabend" as you scroll, a bento grid of frosted feature cards, three phones with
+                             real screens (img/screen-*.webp: since 2026-10-28 real iPhone screenshots taken by her, 923x2000, they carry the phone's own status bar so the page draws no status bar or island; the earlier ones came from the web build with sample data: capture/seed-profile.mjs, which is still there), and the
+                             waitlist form again. Preview: `python3 -m http.server 4173` in the project root, then /landing/ (also the "landing"
+                             entry in .claude/launch.json).
+                             LIVE: https://easyquizywords.netlify.app (Netlify project easyquizywords in "taya's team", site id f27bead4-9533-42a5-add7-2010b847838c, first dragged
+                             in by her and updated by Claude with the command below on 2026-10-28; Netlify keeps every deploy, so a bad one can be rolled back in the
+                             Deploys tab). To update: `sh landing/make-publish-folder.sh`, then
+                             `npx netlify-cli deploy --prod --dir landing-publish --site f27bead4-9533-42a5-add7-2010b847838c` (her Netlify login is already
+                             saved on this Mac). Form detection was off for this site (ignore_html_forms) and was turned on through the API on 2026-10-28.
+                             PUBLISHING (Netlify, 2026-10-28): `sh landing/make-publish-folder.sh` builds ../landing-publish (only what the site
+                             needs, 296 KB); drag that folder onto https://app.netlify.com/drop. The two forms use Netlify Forms (name + data-netlify in
+                             the HTML, honeypot field "company"); the emails appear in Netlify under Forms > waitlist-hero / waitlist-end (they work only
+                             on the published site; on this computer the form says so). Fonts: the two official unmodified Satoshi WOFF2 files in
+                             landing/fonts (ITF Free Font License v2.0 allows self-hosting on her own website, forbids changing, subsetting or converting
+                             the files, and forbids passing them on: so landing/fonts and assets/fonts must never go into a public repo).
+                             landing/privacy.html (written 2026-10-28, linked under both forms) names "Taya" and rektaya@gmail.com as the contact (she chose this;
+                             a full name is better legally). Her choices there (kept 'until the app is released or until she asks', Netlify as the only
+                             processor) should be read by her, ideally by a lawyer; if the emails ever go to a mailing service, the text must change.
+                             Still open: a share image (og:image), a custom domain.
 ```
 
 **Data facts:** 1,474 words (33 hand-written + 1,441 generated), 24 topics (themes), each word has a

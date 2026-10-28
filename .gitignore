@@ -53,3 +53,9 @@ ScreenRecording_*.mov
 # Python caches of the word pipeline
 __pycache__/
 *.pyc
+
+# the landing page folder that is built for publishing (make with: sh landing/make-publish-folder.sh)
+landing-publish/
+
+# Android test builds (about 140 MB each; they live on EAS, not in git)
+*.apk

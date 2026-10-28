@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Easy Quizy Words</title>
+<meta name="description" content="learn german words by drawing a circle round them. no levels, no decks, no account. a map of stars grows as you learn.">
+<meta name="theme-color" content="#0C1927">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Easy Quizy Words">
+<meta property="og:description" content="learn german words by drawing a circle round them. no levels, no decks, no account. a map of stars grows as you learn.">
+<link rel="icon" href="img/star-big.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=42">
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<canvas id="dust" aria-hidden="true"></canvas>
+
+<main>
+  <!-- the hero, from the Figma draft -->
+  <section class="hero">
+    <div class="col">
+      <div class="hero-star" aria-hidden="true">
+        <img class="big" src="img/star-big.svg" alt="" width="132" height="132">
+        <img class="s1" src="img/star-small.svg" alt="" width="11" height="11">
+        <img class="s2" src="img/star-small.svg" alt="" width="11" height="11">
+        <img class="s3" src="img/star-small.svg" alt="" width="11" height="11">
+      </div>
+      <h1 class="sr-only">Easy Quizy Words</h1>
+      <p class="ask">Do you know this German word?</p>
+      <div class="word-line">
+        <span class="board" id="boardDe" aria-hidden="true">der Feierabend</span>
+        <p class="en" id="enBox"><i>/en/</i> <span id="enText">end of the work day</span></p>
+        <span class="sr-only" id="wordSr">der Feierabend: end of the work day</span>
+      </div>
+      <p class="story">expand your vocabulary daily with<br>easy quizy — we give you the words,<br>you study and watch them grow on a sky map. easy peazy lemon quezy.</p>
+
+      <!-- the waitlist (the same form is at the end of the page). Netlify Forms collects the emails once the site is published there: Site configuration > Forms -->
+      <form class="wait" name="waitlist-hero" method="POST" action="/" data-netlify="true" netlify-honeypot="company" novalidate>
+        <input type="hidden" name="form-name" value="waitlist-hero">
+        <p hidden><label>leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+        <label class="sr-only" for="emailHero">your email</label>
+        <input id="emailHero" class="wait-email" type="email" name="email" placeholder="your email" autocomplete="email" required>
+        <button class="button" type="submit">join the waitlist</button>
+        <p class="wait-note" aria-live="polite">we will only write when easy quizy is ready</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- scroll on: the circle draws itself round the word -->
+  <section class="draw" id="draw" aria-label="a ring of small stars draws itself round the word Feierabend as you scroll">
+    <div class="pin">
+      <div class="stage" id="stage">
+        <canvas id="ring" width="464" height="464"></canvas>
+        <div class="stage-word"><span class="art">der</span><span class="lemma">Feierabend</span></div>
+        <div class="stage-meaning">end of the work day</div>
+      </div>
+      <p class="caption" id="caption">how well do you know it?</p>
+
+    </div>
+  </section>
+
+  <!-- what the app does: frosted cards that appear one by one -->
+  <section class="bento" aria-label="what easy quizy does">
+    <div class="grid" id="grid">
+      <article class="card c-circle">
+        <div class="viz" id="vizRing" aria-hidden="true"></div>
+        <div><h3>draw a circle, not a button</h3>
+        <p>show how well you know a word by drawing a ring round it. the stars along your finger shine brighter the surer you are.</p></div>
+      </article>
+      <article class="card c-levels">
+        <div class="viz dots15" aria-hidden="true"></div>
+        <div><h3>no levels, no decks</h3>
+        <p>you start with one word. after fifteen, the app knows roughly where your german ends, and keeps adjusting with every answer.</p></div>
+      </article>
+      <article class="card c-explore">
+        <div><h3>explore your way</h3>
+        <p>2,300+ words in 24 topics, each one read and checked. meet them by:</p></div>
+        <div class="chips"><span>association</span><span>topic</span><span>usefulness</span><span>free</span></div>
+      </article>
+      <article class="card c-study">
+        <div class="viz gaps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div><h3>back at the right time</h3>
+        <p>spaced repetition brings a word back just before you forget it. a session is 10, 20 or 40 words, about 1, 2 or 4 minutes.</p></div>
+      </article>
+      <article class="card c-map">
+        <div class="viz" id="vizMap" aria-hidden="true"></div>
+        <div><h3>a sky of your own</h3>
+        <p>every topic is a star. it lights up as you learn its words, and related topics join up with thin threads.</p></div>
+      </article>
+      <article class="card c-week">
+        <div class="viz" id="vizWeek" aria-hidden="true"></div>
+        <div><h3>a week of stars</h3>
+        <p>one star a day. skip a day and it stays quiet: no streak to lose.</p></div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- three key screens of the real app -->
+  <section class="screens" aria-label="three screens of the app">
+    <div class="row" id="shots">
+      <figure class="shot">
+        <div class="phone">
+          <img src="img/screen-explore.webp?v=42" alt="the explore screen of easy quizy on an iphone: a ring of glowing stars drawn round the meaning honey, with a german example sentence and three related words below" width="923" height="2000" decoding="async">
+          <i class="home" aria-hidden="true"></i>
+        </div>
+        <figcaption><b>explore</b><span>meet a word, then draw a circle round it</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone">
+          <img src="img/screen-study.webp?v=42" alt="the study screen of easy quizy on an iphone: a list of german legal words with their meanings, each with a small circle that fills as the word is learned, and the study button" width="923" height="2000" decoding="async">
+          <i class="home" aria-hidden="true"></i>
+        </div>
+        <figcaption><b>study</b><span>the words you gathered, ready when you are</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="phone">
+          <img src="img/screen-map.webp?v=42" alt="the map screen of easy quizy on an iphone: a night sky where each topic is a star, offices and law glowing orange, with thin threads between the topics" width="923" height="2000" decoding="async">
+          <i class="home" aria-hidden="true"></i>
+        </div>
+        <figcaption><b>map</b><span>every topic is a star that lights up as you learn</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- the waitlist again, at the end of the page -->
+  <section class="join">
+    <form class="wait" name="waitlist-end" method="POST" action="/" data-netlify="true" netlify-honeypot="company" novalidate>
+      <input type="hidden" name="form-name" value="waitlist-end">
+      <p hidden><label>leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+      <label class="sr-only" for="emailEnd">your email</label>
+      <input id="emailEnd" class="wait-email" type="email" name="email" placeholder="your email" autocomplete="email" required>
+      <button class="button" type="submit">join the waitlist</button>
+      <p class="wait-note" aria-live="polite">we will only write when easy quizy is ready</p>
+    </form>
+    <!-- inside the last screen, at its bottom, so the form above keeps its place in the middle of the screen -->
+    <footer class="foot"><span>© 2026 rektaya</span><a href="privacy.html">privacy</a></footer>
+  </section>
+</main>
+
+<script src="main.js?v=42"></script>
+</body>
+</html>
